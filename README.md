@@ -15,3 +15,4 @@ If you have any issues about the documentation, please report them in [Issues](h
 
 ### Contributors
 If you would like to contribute to the documentation, please go to the [Contributor Guidelines](https://github.com/Cotalker/documentation/blob/main/contributors.md).
+
