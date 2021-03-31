@@ -1,6 +1,6 @@
 ## Cotalker Documentation
 
-Welcome! We have opened this collaborative space in the hopes that helps answer all questions regarding Cotalker.
+Welcome! We have opened this collaborative space in the hopes that it helps answer questions and solve any problems regarding Cotalker.
 
 ### Discussions
 Please feel free to join the [Discussions](https://github.com/Cotalker/documentation/discussions).
