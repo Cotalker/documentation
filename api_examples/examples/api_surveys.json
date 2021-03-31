@@ -1,0 +1,26 @@
+{
+    "data": {
+        "surveys": [
+            {
+                "_id": "5fb5c65463a7331eb6059ddb",
+                "display": "Customer Survey",
+                "code": "customer_survey",
+                "propertiesChannel": [],
+                "propertiesLimit": [],
+                "permissions": [],
+                "modifiedAt": "2020-10-29T14:20:40.786Z",
+                "createdAt": "2020-10-29T14:20:40.786Z"
+            },
+            {
+                "_id": "5fb5c7be20e367f5358565da",
+                "display": "Employee Survey",
+                "code": "employee_survey",
+                "propertiesChannel": [],
+                "propertiesLimit": [],
+                "permissions": [],
+                "modifiedAt": "2020-11-17T13:37:26.238Z",
+                "createdAt": "2020-07-27T20:21:55.650Z"
+            }   
+        ]
+    }
+}

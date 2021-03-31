@@ -1,0 +1,20 @@
+{
+  "name": "demo-doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.11.5",
+    "ts-node": "^9.0.0",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "@cotalker/cotalker-api": "^1.1.2"
+  }
+}

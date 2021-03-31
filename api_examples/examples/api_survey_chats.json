@@ -1,0 +1,36 @@
+{
+    "data": {
+        "surveyChats": [
+            {
+                "_id": "5fb6ddd3b3f9054d87f493f2",
+                "sender": "#user",
+                "survey": "5fb6dddbad035ed3ff1e6820",
+                "order": 0,
+                "contentType": "application/vnd.cotalker.survey",
+                "content": "",
+                "contentArray": [
+                    "5fb6dde6aaaa391d9cc3051e",
+                    "5fb6ddefa18dbf0d528a888d"
+                ],
+                "isActive": true,
+                "modifiedAt": "2017-08-31T16:05:25.634Z",
+                "isSystemModel": "<boolean>"
+            },
+            {
+                "_id": "5fb6ddfbfe00bf1ffa879417",
+                "sender": "#user",
+                "survey": "5fb6de03ebcc365bc127c730",
+                "order": 0,
+                "contentType": "application/vnd.cotalker.survey",
+                "content": "",
+                "contentArray": [
+                    "5fb6de11ccbfa4b0e2355260",
+                    "5fb6de1c42223cfd0536fe9e"
+                ],
+                "isActive": true,
+                "modifiedAt": "2017-10-17T15:47:36.848Z",
+                "isSystemModel": "<boolean>"
+            }
+        ]
+    }
+}

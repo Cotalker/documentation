@@ -1,0 +1,26 @@
+{
+  "item.label.Getting Started": {
+    "message": "Primeros Pasos",
+    "description": "Navbar item with label Getting Started"
+  },
+  "item.label.Updates": {
+    "message": "Actualizaciones",
+    "description": "Navbar item with label Updates"
+  },
+  "item.label.Documentation": {
+    "message": "Documentación",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Tutorials": {
+    "message": "Tutoriales",
+    "description": "Navbar item with label Tutorials"
+  },
+  "item.label.Certification": {
+    "message": "Certificación",
+    "description": "Navbar item with label Certification"
+  },
+  "item.label.Support & Help": {
+    "message": "Soporte y Ayuda",
+    "description": "Navbar item with label Support & Help"
+  }
+}

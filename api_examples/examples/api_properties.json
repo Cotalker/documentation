@@ -1,0 +1,26 @@
+{
+    "properties": [
+        {
+            "_id": "5fb59e1e1bd45143e4a5711e",
+            "display": "Random stuff",
+            "code": "random_stuff_01",
+            "extra": {
+                "object1": "name 01",
+                "object2": 50
+            },
+            "modifiedAt": "2017-12-12T22:59:48.774Z",
+            "createdAt": "2017-11-12T22:30:37.800Z"
+        },
+        {
+            "_id": "5fb59fb398988da8b7b1e1d9",
+            "display": "More random stuff",
+            "code": "random_stuff_02",
+            "extra": {
+                "object3": "name 02",
+                "object4": 45
+            },
+            "modifiedAt": "2017-12-12T22:59:48.909Z",
+            "createdAt": "2017-11-12T22:30:37.803Z"
+        }
+    ]
+}

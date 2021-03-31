@@ -1,0 +1,30 @@
+{
+  "link.title.General": {
+    "message": "General",
+    "description": "The title of the footer links column with title=General in the footer"
+  },
+  "link.title.Clients": {
+    "message": "Clientes",
+    "description": "The title of the footer links column with title=Clients in the footer"
+  },
+  "link.item.label.Cotalker": {
+    "message": "Cotalker",
+    "description": "The label of footer link with label=Cotalker linking to https://www.cotalker.com"
+  },
+  "link.item.label.Web Client": {
+    "message": "Cliente Web",
+    "description": "The label of footer link with label=Web Client linking to https://web.cotalker.com"
+  },
+  "link.item.label.Android": {
+    "message": "Android",
+    "description": "The label of footer link with label=Android linking to https://play.google.com/store/apps/details?id=com.cotalker.universal"
+  },
+  "link.item.label.iOS": {
+    "message": "iOS",
+    "description": "The label of footer link with label=iOS linking to https://apps.apple.com/app/cotalker/id1525633301"
+  },
+  "copyright": {
+    "message": "Copyright © 2021 Cotalker",
+    "description": "The footer copyright"
+  }
+}

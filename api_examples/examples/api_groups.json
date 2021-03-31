@@ -1,0 +1,20 @@
+{
+    "data": {
+        "groups": [
+            {
+                "_id": "5fb43a565ee842ad20f69751",
+                "name": "South Pacific Sales (2020)",
+                "code": "south_pacific_sales_2020",
+                "createdAt": "2020-11-12T15:39:33.001Z",
+                "modifiedAt": "2020-11-12T15:39:33.005Z"
+            },
+            {
+                "_id": "5fb43aedb4508f03e1d9916b",
+                "name": "Northern Division - Projections 2021",
+                "code": "north_division_2021",
+                "createdAt": "2020-10-14T19:38:39.585Z",
+                "modifiedAt": "2020-11-12T14:21:28.358Z"
+            }
+        ]
+    }
+}
