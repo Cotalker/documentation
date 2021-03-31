@@ -79,10 +79,6 @@ Let's make this readme better together.
 *  Check web-browser console for errors
 *  Update the roadmap file
 
-# Roadmap
-
-https://docs.google.com/spreadsheets/d/18UU7wzw8iuxriBWZaeLa_2I7P-KgCMYMWwNsYyDiowk/edit?usp=sharing
-
 # Quick Start
 
 __Install dependencies__  
