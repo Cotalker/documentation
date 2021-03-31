@@ -1,0 +1,15 @@
+{
+  "data": {
+    "_id": "5fb589b607ae0d8647792ec0",
+    "email": "john.doe@example.com",
+    "jobTitle": "full-stack developer",
+    "isActive": true,
+    "accessRoles": ["5fb58a84444beecfca50a2b4"],
+    "name": {
+      "names": "John",
+      "lastName": "Doe"
+    },
+    "modifiedAt": "2020-10-26T14:08:48.220Z",
+    "createdAt": "2019-04-26T22:00:31.263Z"
+  }
+}

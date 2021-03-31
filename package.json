@@ -1,0 +1,44 @@
+{
+  "name": "cotalker",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
+  },
+  "dependencies": {
+    "@cmfcmf/docusaurus-search-local": "^0.5.0",
+    "@docusaurus/core": "^2.0.0-alpha.72",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.72",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.72",
+    "classnames": "^2.2.6",
+    "mermaid": "^8.4.8",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "request": "^2.88.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "husky": "^5.0.0-beta.0",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1"
+  }
+}

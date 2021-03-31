@@ -1,0 +1,82 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.getting_started.category.Solutions": {
+    "message": "Solutions",
+    "description": "The label for category Solutions in sidebar getting_started"
+  },
+  "sidebar.documentation.category.Cotalker App": {
+    "message": "Cotalker App",
+    "description": "The label for category Cotalker App in sidebar documentation"
+  },
+  "sidebar.documentation.category.Admin": {
+    "message": "Admin",
+    "description": "The label for category Admin in sidebar documentation"
+  },
+  "sidebar.documentation.category.API": {
+    "message": "API",
+    "description": "The label for category API in sidebar documentation"
+  },
+  "sidebar.documentation.category.Users": {
+    "message": "Users",
+    "description": "The label for category Users in sidebar documentation"
+  },
+  "sidebar.documentation.category.Communication": {
+    "message": "Communication",
+    "description": "The label for category Communication in sidebar documentation"
+  },
+  "sidebar.documentation.category.Databases": {
+    "message": "Databases",
+    "description": "The label for category Databases in sidebar documentation"
+  },
+  "sidebar.documentation.category.Surveys": {
+    "message": "Surveys",
+    "description": "The label for category Surveys in sidebar documentation"
+  },
+  "sidebar.documentation.category.Tasks & State Machines": {
+    "message": "Tasks & State Machines",
+    "description": "The label for category Tasks & State Machines in sidebar documentation"
+  },
+  "sidebar.documentation.category.Automations": {
+    "message": "Automations",
+    "description": "The label for category Automations in sidebar documentation"
+  },
+  "sidebar.documentation.category.Others": {
+    "message": "Others",
+    "description": "The label for category Others in sidebar documentation"
+  },
+  "sidebar.documentation.category.BI & SQL": {
+    "message": "BI & SQL",
+    "description": "The label for category BI & SQL in sidebar documentation"
+  },
+  "sidebar.documentation.category.Extensions (FAAS)": {
+    "message": "Extensions (FAAS)",
+    "description": "The label for category Extensions (FAAS) in sidebar documentation"
+  },
+  "sidebar.documentation.category.Examples": {
+    "message": "Examples",
+    "description": "The label for category Examples in sidebar documentation"
+  },
+  "sidebar.documentation.category.Infrastructure": {
+    "message": "Infrastructure",
+    "description": "The label for category Infrastructure in sidebar documentation"
+  },
+  "sidebar.tutorials.category.Basic": {
+    "message": "Basic",
+    "description": "The label for category Basic in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Intermediate": {
+    "message": "Intermediate",
+    "description": "The label for category Intermediate in sidebar tutorials"
+  },
+  "sidebar.tutorials.category.Advanced": {
+    "message": "Advanced",
+    "description": "The label for category Advanced in sidebar tutorials"
+  },
+  "sidebar.certification.category.[1.a] Basic Admin": {
+    "message": "[1.a] Basic Admin",
+    "description": "The label for category [1.a] Basic Admin in sidebar certification"
+  }
+}

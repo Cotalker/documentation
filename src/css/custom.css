@@ -1,0 +1,229 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+
+/* @import url('https://fonts.googleapis.com/css?family=Merriweather:900|Roboto&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Roboto&display=swap');
+
+.aa-suggestion {
+  border: 1px solid #c1c1c1;
+  background: #fafafa;
+}
+
+.clear_style {
+  all: initial;
+}
+
+.full_width {
+  width: 100%;
+}
+
+.no_border > tbody > tr, .no_border > tbody > tr > td {
+  border: 0;
+}
+
+.card {
+  width: 100%;
+  padding: 20px 0 0 20px;
+  border-radius: 2px;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.support-frame {
+  width: 100%;
+  height: 500px;
+  border: 0;
+}
+
+html[data-theme='light'] {
+  --ifm-link-color: #5784b1;
+  --ifm-font-color-base: #113355;
+  --ifm-heading-color: #113355;
+  --ifm-color-primary: #113355;
+  --ifm-color-primary-dark: #0f2e4d;
+  --ifm-color-primary-darker: #0e2b48;
+  --ifm-color-primary-darkest: #0c243c;
+  --ifm-color-primary-light: #13385e;
+  --ifm-color-primary-lighter: #143b62;
+  --ifm-color-primary-lightest: #16426f;
+  --ifm-button-color: var(--ifm-font-color-base-inverse);
+  --ifm-font-color-base-inverse: var(--ifm-color-content-inverse);
+  --ifm-color-content-inverse: var(--ifm-color-emphasis-0);
+  --ifm-color-emphasis-0: var(--ifm-color-gray-0);
+  --ifm-color-gray-0: var(--ifm-color-white);
+  --ifm-color-white: #fff;
+}
+
+html[data-theme='dark'] {
+  --ifm-link-color: #c3c7ff;
+  --ifm-menu-color-active: #eee;
+  --ifm-navbar-link-hover-color: #eee;
+  --ifm-menu-color: #ccc;
+  /*--ifm-color-primary: #eee;*/
+  --ifm-button-color: #fff;
+  --ifm-heading-color: #ffffff;
+  --ifm-button-color: var(--ifm-font-color-base-inverse);
+}
+
+/*.navbar__logo {*/
+/*  width: 60%;*/
+/*  height: 60%;*/
+/*}*/
+
+/* This was overrided to put space between feature cards in the home page. MAC */
+.row .col.col--offset-1 {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  padding-top: 20px;
+}
+
+/* .card {
+  border: #ececec;
+  border-style: solid;
+  border-width: thin;
+} */
+/* ---My tweeks end here: MAC-- */
+
+:root {
+  --ifm-font-size-base: 14px;
+  /*---- Navy ----*/
+
+  /*---- Magenta ----*/
+  --ifm-color-danger: #ff3366;
+  --ifm-color-danger-dark: #ff144f;
+  --ifm-color-danger-darker: #ff0544;
+  --ifm-color-danger-darkest: #d60036;
+  --ifm-color-danger-light: #ff527d;
+  --ifm-color-danger-lighter: #ff6188;
+  --ifm-color-danger-lightest: #ff8fab;
+  /*---- Blue ----*/
+  --ifm-color-info: #2288ee;
+  --ifm-color-info-dark: #117ae3;
+  --ifm-color-info-darker: #1174d7;
+  --ifm-color-info-darkest: #0e5fb1;
+  --ifm-color-info-light: #3b96f0;
+  --ifm-color-info-lighter: #489cf1;
+  --ifm-color-info-lightest: #6eb1f4;
+  /*---- Teal ----*/
+  --ifm-color-success: #11bb99;
+  --ifm-color-success-dark: #0fa88a;
+  --ifm-color-success-darker: #0e9f82;
+  --ifm-color-success-darkest: #0c836b;
+  --ifm-color-success-light: #13cea8;
+  --ifm-color-success-lighter: #14d7b0;
+  --ifm-color-success-lightest: #1febc2;
+  /*---- Orange Text ----*/
+  --ifm-color-warning: #ffa300;
+  --ifm-color-warning-dark: #e69300;
+  --ifm-color-warning-darker: #d98b00;
+  --ifm-color-warning-darkest: #b37200;
+  --ifm-color-warning-light: #ffac1a;
+  --ifm-color-warning-lighter: #ffb126;
+  --ifm-color-warning-lightest: #ffbf4d;
+  --ifm-code-font-size: 95%;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: #479dc9;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+/*---- Footer Style ----*/
+footer {
+  background-color: #113355!important;
+}
+
+/*---- Fonts Family  ----*/
+h1, h2, h3, h4, h5{
+  font-family: 'Jost', sans-serif;
+}
+
+p, td, th {
+  font-family: 'Roboto', sans-serif;
+}
+/*---- Fonts Family  ----*/
+
+
+/*---- Admonition ----*/
+.admonition-important h5 {
+  color: white!important;
+}
+
+.admonition-important p {
+  color: white!important;
+}
+
+/* .admonition-note h5 {
+  color: #113355!important;
+}
+
+.admonition-note p {
+  color: #113355!important;
+} */
+/*---- Admonition ----*/
+
+/* Added by Maurice: testing responsiveness for tables and images */
+.table-row-1 {
+  background-color: #d4d4d4;
+  color: #0c243c;
+  padding: 1%;
+}
+
+.table-row-2 {
+  background-color: #e7e6e6;
+  color: #0c243c;
+  padding: 1%;
+}
+
+.img_title {
+  width: 90%;  
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.img_sizing {
+  width: 80%;  
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.img_card {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.logo {
+  width: 40%;
+  height: 40%; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+@media (max-width: 1000px) {
+  .img_title {
+    width: 70%;
+  }
+}
+
+@media (max-width: 700px) {
+  .img_sizing {
+    width: 100%;
+  }
+  .img_title {
+    width: 80%;
+  }
+}

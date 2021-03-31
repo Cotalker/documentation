@@ -1,0 +1,30 @@
+{
+    "data": {
+        "accessRoles": [
+            {
+                "_id": "5fb70070eb29d9c09346efeb",
+                "name": "Sales Manager",
+                "code": "sales_manager",
+                "permisions": [
+                    "stock-read",
+                    "sales-read",
+                    "sales-write"
+                ],
+                "modifiedAt": "2020-10-15T16:06:09.813Z",
+                "createdAt": "2020-10-15T16:06:09.813Z"
+            },
+            {
+                "_id": "5fb7019823ef8cc53b95e1bd",
+                "name": "Warehouse manager",
+                "code": "warehouse_manager",
+                "permisions": [
+                    "stock-read",
+                    "stock-write",
+                    "workshifts-read"
+                ],
+                "modifiedAt": "2020-10-14T19:38:39.585Z",
+                "createdAt": "2020-10-14T19:38:39.585Z"
+            }
+        ]
+    }
+}

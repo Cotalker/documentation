@@ -1,0 +1,183 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+
+html[data-theme='light'] {
+  --home-background-img-lg: url(/img/Header_Desktop_Grande-1863x1044.svg) no-repeat;
+  --home-background-img-md: url(/img/Header_Desktop_Chico.svg) no-repeat;
+  --home-background-img-sm: url(/img/Header_Mobile.svg) no-repeat;
+  --home-feature-img-workflow: url(/img/home_workflows_light.svg) no-repeat;
+  --home-feature-img-tools: url(/img/home_tools_light.svg) no-repeat;
+  --home-feature-img-admin: url(/img/home_admin_light.svg) no-repeat;
+}
+
+html[data-theme='dark'] {
+  --home-background-img-lg: url(/img/Header_Desktop_Grande_1863x1044_modo_nocturno.svg) no-repeat;
+  --home-background-img-md: url(/img/Header_Desktop_Chico-modo_nocturno.svg) no-repeat;
+  --home-background-img-sm: url(/img/Header_Mobile_modo_nocturno.svg) no-repeat;
+  --home-feature-img-workflow: url(/img/home_workflows_dark.svg) no-repeat;
+  --home-feature-img-tools: url(/img/home_tools_dark.svg) no-repeat;
+  --home-feature-img-admin: url(/img/home_admin_dark.svg) no-repeat;
+}
+
+.featureImageWorkflow, .featureImageTools, .featureImageAdmin {
+  background-position: center center;
+  height: 180px;
+  width: 180px;
+  margin: auto;
+}
+
+.featureImageWorkflow {
+  background: var(--home-feature-img-workflow);
+  background-size: 90%;
+  background-position: center center;
+}
+
+.featureImageTools {
+  background: var(--home-feature-img-tools);
+  background-size: 90%;
+  background-position: center center;
+}
+
+.featureImageAdmin {
+  background: var(--home-feature-img-admin);
+  background-size: 60%;
+  background-position: center center;
+}
+
+.features {
+  display: flex;
+  padding: 5rem 0rem;
+  width: 100%;
+  margin: auto;
+  color: rgb(146, 146, 146);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonhome {
+  padding: 1.5em 0em;
+}
+
+.heroBanner {
+  padding: 100px 0 200px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--home-background-img-lg);
+  background-size: cover;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+
+@media screen and (max-width: 1300px) {
+  .heroBanner {
+    padding: 50px 0 150px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--home-background-img-lg);
+    background-size: cover;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .heroBanner {
+    padding: 150px 0 300px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--home-background-img-lg);
+    background-size: cover;
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .heroBanner {
+    padding: 1rem 1rem 5rem 1rem;
+    background: var(--home-background-img-md);
+    background-size: cover;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+  }
+  .features {
+    width: 80%;
+    padding: 2rem 0rem;
+  }
+  .heroTitle {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .heroBanner {
+    padding: 0px 0px 100px 0px;
+    background: var(--home-background-img-sm);
+    background-size: 100%;
+    background-position: 0 50px;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    height: 710px;
+    width: auto;
+  }
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  .heroSubTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .heroBanner {
+    padding: 0px 0px 100px 0px;
+    background: var(--home-background-img-sm);
+    background-size: 100%;
+    background-position: 0 50px;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    height: 630px;
+    width: auto;
+  }
+  .heroTitle {
+    font-size: 2rem;
+  }
+  .heroSubTitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .heroBanner {
+    padding: 0px 0px 100px 0px;
+    background: var(--home-background-img-sm);
+    background-size: 100%;
+    /* background-position-x: center;
+    background-position-y: top; */
+    background-position: 0 50px;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    height: 535px;
+    width: auto;
+  }
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+  .heroSubTitle {
+    font-size: 1.2rem;
+  }
+}
