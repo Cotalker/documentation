@@ -17,7 +17,7 @@ There are four discussion channels available:
 - Bug Reports
 
 ### ❗ Documentation Issues
-If you have any issues about the documentation, please report them in [Issues](https://github.com/Cotalker/documentation/issues)
+If you have any issues concerning the documentation, please report them in [Issues](https://github.com/Cotalker/documentation/issues)
 
 ### 🙆 Contributors
 If you would like to contribute to the documentation, please go to the [Contributor Guidelines](https://github.com/Cotalker/documentation/blob/main/contributors.md).
