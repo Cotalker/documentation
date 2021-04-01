@@ -9,11 +9,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## We’re here to help {#were-here-to-help}
 
-Answers for many topics can be found in the [frequently asked questions](/docs/getting_started/faq).
+Answers for many topics can be found in the [**frequently asked questions**](/docs/getting_started/faq).
   
-You also might find answers using the search bar in the top right corner 
+You also might find answers using the **search bar** in the top right corner.
+
+:::tip
+Visit our _Documentation Repository_ where you can join the conversation in the [**Cotalker Community Platform**](https://github.com/Cotalker/documentation/discussions). There you can ask questions, raise documentation issues, report bugs, request features, search for answers to similar issuses you might be having, or start a conversation on anything related to Cotalker.
+:::
 
 
+## Contacts
+_For direct messaging with our staff, check out the following contacts:_
 ### Commercial Support {#commercial-support}
 
 *  Find the right solution for you
@@ -48,3 +54,8 @@ You also might find answers using the search bar in the top right corner
 ### Report abuse {#report-abuse}
 Please report any misuse of our platform [here](/docs/support/report_abuse), and we will be in touch.
 
+
+### Cotalker Documentation Repository
+* Join the discussions.
+* Report Documentation Issues
+* Report bugs
