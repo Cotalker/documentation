@@ -1,7 +1,7 @@
 ## Cotalker Documentation 📖 
-#### Coltaker Platform Community
+#### Cotalker Platform Community
 
-Welcome!
+**Welcome!**
 
 This is the repository for Cotalkers's official documentation, located at https://doc.cotalker.com, you'll probably just want to head over there and read it directly on the web.
 
