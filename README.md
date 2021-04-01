@@ -1,10 +1,11 @@
-## 📖 Cotalker Documentation
+## Cotalker Documentation 📖 
+#### Coltaker Platform Community
 
 Welcome!
 
 This is the repository for Cotalkers's official documentation, located at https://doc.cotalker.com, you'll probably just want to head over there and read it directly on the web.
 
-We have opened this collaborative space in the hopes that it will help answer questions and solve any problems regarding Cotalker.
+We have opened this collaborative space –intended mainly for partners, admins, and developers– in the hopes that it will help answer questions and solve any problems regarding Cotalker.
 
 ### 💬 Discussions
 
