@@ -10,6 +10,40 @@ import Highlight from '@theme/Highlight';
 <!-- <img alt="title image" class="img_title" src={useBaseUrl('img/design/title_pages/Updates.svg')} /> -->
 <!-- <br/> -->
 
+## April 2021 {#april-2021}
+
+<!-- New Feature begins after this line.-->
+
+<div class="card-demo">
+<div class="card">
+<div class="card__header">
+
+### Survey Tree Selector {#survey-tree-selector}
+
+<small class="avatar__subtitle">April 6, 2021</small>
+</div>
+<div class="card__image">
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/update_tree_selector_april_2021.png')} />
+<br/>
+</div>
+<div class="card__body">
+
+Surveys are great, and they just got better! Users can now answer questions with the help of _tree collections_. Select a general answer which will lead you to a more specific category. For example, a question configured to specify a location can start by asking for _country_, then _region_, and finally _city_.
+
+</div>
+<div class="card__footer">
+
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documention</a>
+<br/>
+
+</div>
+</div>
+</div>
+<br/>
+<br/>
+
+<!-- New Feature begins after this line.-->
+
 ## March 2021: {#march-2021}
 
 <!-- New Feature begins after this line.-->
