@@ -15,7 +15,7 @@ import Highlight from '@theme/Highlight';
 
 Cotalker University offers the official training for admins, consultants and partners. <br/><br/>
 
-<img alt="certification levels chart" class="img_title" src={useBaseUrl('img/certification_levels_chart.svg')} width= "60%" height= "60%" />
+<img alt="certification levels chart" class="img_title" src={useBaseUrl('img/certification_levels_chart.svg')} />
 <br/><br/>
   
 
