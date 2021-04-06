@@ -50,7 +50,7 @@ Below you will find the description and notes for each field of the _Create form
 
 The description of each button on the page where the _survey_ is created can be found in the [Overview section](admin_overview).
 
-### Components of the Form {#components-of-the-form}
+## Form Components {#form-components}
 From the _Forms_ settings panel, by selecting an existing _survey_/_form_ or by clicking the _create new element_ button, the _Form Template_ panel appears. There you can configure the _survey_ using several different components.
 <img alt="" src={useBaseUrl('img/admin_survey_components.png')} />
 <br /><br />
@@ -107,11 +107,11 @@ The descriptions of the fields are found below:
 | Criteria | The operator of the conditional. It could be: *Is equal to*, *Greater than or equal*, *Less than or equal* or *Regular expression*.  |  |
 | Value | Write down the value that the commander compares. |  |
 
-#### Text {#text}
+### Text {#text}
 The **text** component is used to display a text on the _form_. Its fields are described in the **generally repeated fields** above.
 <img alt="" src={useBaseUrl('img/admin_survey_text.png')} />
 
-#### Written Answer {#written-answer}
+### Written Answer {#written-answer}
 The **Written Answer** component is used for the _user_ to respond in a text box.
 <img alt="" src={useBaseUrl('img/admin_survey_writtenanswer.png')} />
 <br/><br/>
@@ -127,7 +127,7 @@ The field(s) unique to the **Written answer** component are described in the fol
 On the mobile app, QR code scans and NFC input can also be used to add text into the form. To make this option available, refer to the [API documentation on _survey questions_](../api/surveys/questions#qr-code--nfc-function).
 :::
 
-#### Multiple Choice {#multiple-choice}
+### Multiple Choice {#multiple-choice}
 The **Multiple Choice** component is used to display options to the _user_ in the _survey_.
 <img alt="" src={useBaseUrl('img/admin_survey_multiplechoice.png')} />
 <br/><br/>
@@ -137,20 +137,21 @@ The fields unique to the **Multiple choice** component are described in the foll
 | Field | Description | Notes |
 | ---- | ----------- | ----- |
 | Type | The options are *collection*, *users*, *item list* or *API*. | Depending on what is chosen, new fields will be displayed |
-| Collection | Choose the collection that contains the elements to display as an option. | If the collection type is chosen, this field will be added |
-| Filter Type | The filter could be by job title, subordinates, boss, peer or without one. | If the users type is chosen, this field will be added |
-| Job Title | The selected position is the one that will have the users shown as an option. | If the users type is chosen, this field will be added |
+| Collection | Choose the collection that contains the elements to display as an option. | You must have the _collection_ previously created in the _Database_ section of the _Administrator_. |
+| Hierarchy selection | Appears when _collection_ type is chosen. When selected, concatenating collections with their respective elements can be set up as answers. | For setup information, see [Tree Selector](#tree-selector). |
+| Filter Type | _User_ and _collection_ options allow filtering. | Filtering options will depende on the _type_ selected. |
+| Job Title | Apears when _users_ type is chosen. Selected options will appear in the survey. | |
 | Add item | Add an option to the dropdown list. The visual name (*visualization*) and its identifier (*value*) must be added. | If the item list type is chosen, this field will be added |
 | Source | The options are *external URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path, otherwise an absolute address. | If the *API* type is chosen, this field will be added | 
 | Method | The options are *POST* or *GET*. It's POST by default.  | If the *API* type is chosen, this field will be added |
 | Path | Field that receives the external url or the relative path. | If the *API* type is chosen, this field will be added |
 | Identifiers | The values ​​of the form that you want to pass to the API.  | If the *API* type is chosen, this field will be added |
 
-#### Rating {#rating}
+### Rating {#rating}
 The **Rating** component is used to rank with stars. Its fields are described in the **generally repeated fields** above.
 <img alt="" src={useBaseUrl('img/admin_survey_rating.png')} />
 
-#### Date and Time {#date-and-time}
+### Date and Time {#date-and-time}
 The **Date and Time** component is used to save a specific date and/or time.
 <img alt="" src={useBaseUrl('img/admin_survey_date.png')} />
 <br/><br/>
@@ -167,11 +168,11 @@ The fields unique to the **Date and Time** component are described in the follow
 | Days prior | Previous days to the relative date allowed. | If the *relative to response time* or *relative to send time* type is chosen, this field will be added |
 | Days after | days after to the relative date allowed. | If the *relative to response time* or *relative to send time* type is chosen, this field will be added |
 
-#### Location {#location}
+### Location {#location}
 The **Location** component is used to save the position of a _user_. For now, it only works on mobile applications. Its fields are described in the **generally repeated fields** above.
 <img alt="" src={useBaseUrl('img/admin_survey_location.png')} />
 
-#### Attachment {#attachment}
+### Attachment {#attachment}
 The **Attachment** component is used to save a _user's_ file(s).
 <img alt="" src={useBaseUrl('img/admin_survey_attachment.png')} />
 <br/><br/>
@@ -183,7 +184,7 @@ The fields unique to the **Attachment** component are described in the following
 | Allow all known file types | If it's active, it wil allow all known formats. Otherwise, it will not. | |
 | Allowed file types | Specify the allowed file types. The options are: *PDF document*, *Word Document*, *Spreadsheet document*, *Powerpoint document*, *Text document*, *HTML document*, *Markdown document*, *Video Document*, *Any image document*, *Any Office Document* and *Any Text Document* | |
 
-#### Camera {#camera}
+### Camera {#camera}
 The **Camera** component is used to save a user's picture.
 <img alt="" src={useBaseUrl('img/admin_survey_camera.png')} />
 <br/><br/>
@@ -193,11 +194,11 @@ The field(s) unique to the **Camera** component are described in the following t
 | ---- | ----------- | ----- |
 | Source | Specify the source of the image. The options are: *Any Source*, *Cellhpone's camera*, *Cellhpone's camera and web files* or *Cellhpone's gallery and web files*  | WIP |
 
-#### Signature {#signature}
+### Signature {#signature}
 The **Signature** component is used to save the user's signature. Its fields are described in the **generally repeated fields** above.
 <img alt="" src={useBaseUrl('img/admin_survey_firm.png')} />
 
-#### Survey {#survey}
+### Survey {#survey}
 The **Survey** component is used to add an existing _survey_ into the _survey/form_ you are editing.
 <img alt="" src={useBaseUrl('img/admin_survey_form.png')} />
 <br/><br/>
@@ -208,6 +209,37 @@ The fields unique to the **Survey** component are described in the following tab
 | ---- | ----------- | ----- |
 | Survey | Select a survey from a list of all existing surveys. |  |
 
+## Tree Selector {#tree-selector}
+
+The [multiple choice](#multiple-choice) component can be set up so that users can select answers from concatenating _collection_ trees, which means that each answer takes you to more specific options, like choosing a _country_, then a _region_, and finally a _city_.
+
+<img alt="Survey Tree Selector" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_survey_tree_selector_01.png')} />
+<br/>
+
+:::info Pre-Requisite
+First, you must create the collections and have them associated with each other through their _Elements_. For example, if you have a _countries_ collection, in its _Elements_ section add the _collection_ corresponding to _regions_. And do the same with regards to the _regions_ and the _cities_ collection.
+:::
+
+**Steps:**
+- Create a survey with a [multiple choice](#multiple-choice) component. 
+- Set the **type** to `Collection`  
+- Activate the **Hierarchy selection** option. 
+- Set **Collection** to the first and most general collection. 
+- Set **Target collection** to the last and most specific of the collections. 
+
+<img alt="Survey Tree Selector" class="img_sizing_narrow item shadow--lw" src={useBaseUrl('img/admin_survey_tree_selector_00.png')} />
+<br/>
+
+:::note
+If the collections are all associated with each other through their _elements_ section, then the _survey_ will contatenate them accordingly, from first to last.
+:::
+
+:::tip
+Filters can also be used. Select collections to define what elements will be displayed. All the collections that should be displayed must be selected in order for the question to work properly.
+:::
+
+
+
 ## Download Answered Surveys {#download-answered-surveys}
 From the _Forms_ settings panel, you can download the reponses to a _survey_ by pressing the **download button** found on each survey's row.
 This opens up the **Export data** dialog box. The **criteria** is the start date and you can specify the time frame. <br/>
@@ -217,4 +249,4 @@ The encoding field options are Windows, Macintosh, and UTF-8, and are downloaded
 <br />
 <br />
 
-The description of the icons are in the [Overview section](admin_overview).
+_The description of the icons are in the [Overview section](admin_overview)._
