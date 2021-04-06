@@ -231,7 +231,7 @@ First, you must create the collections and have them associated with each other 
 <br/>
 
 :::note
-If the collections are all associated with each other through their _elements_ section, then the _survey_ will contatenate them accordingly, from first to last.
+If the collections are all associated with each other through their _elements_ section, then the _survey_ will concatenate them accordingly, from first to last.
 :::
 
 :::tip
