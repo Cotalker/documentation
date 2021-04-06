@@ -23,7 +23,7 @@ import Highlight from '@theme/Highlight';
 <small class="avatar__subtitle">April 6, 2021</small>
 </div>
 <div class="card__image">
-<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/update_tree_selector_april_2021.png')} />
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/admin_survey_tree_selector_01.png')} />
 <br/>
 </div>
 <div class="card__body">
