@@ -71,7 +71,7 @@ _See the image below:_
   }
   ```
   
-### Command Array Elements: {#command-array-elements}
+### Command Array Elements {#command-array-elements}
 
 | _cmd-name_ | _cmd-value_ | _cmd-result_ | Description |
 | ----- | ----- | ----- | ----- |
@@ -93,7 +93,7 @@ _The following context variables are available for use in the code but must be s
 ## Examples {#examples}
 
 ### Example 1: Preload User and Channel {#example-1}
-_Displays the user name and current channel in the survey field._
+_Displays the user name and current channel in the survey field. Set on Preload stage._
 
 ```javascript
 function run(){
@@ -125,7 +125,7 @@ _Your settings panel should look something like this:_
 
 
 ### Example 2: Validate Value {#example-2}
-_Validates if a value is between 0 and 100._
+_Validates if a value is between 0 and 100. Set on Validate stage._
 
 ```javascript
 function run(){
@@ -174,7 +174,7 @@ _Your settings panel should look something like this:_
 <br/>
 
 ### Example 3: Validate Email Address {#validate-email-address}
-_Validates if response has "@"._
+_Validates if response has "@". Set on Validate stage._
 
 ```javascript
 function run() {
