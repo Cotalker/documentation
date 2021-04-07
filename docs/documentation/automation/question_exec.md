@@ -8,7 +8,7 @@ import Highlight from '@theme/Highlight';
 
 <span class="hero__subtitle">
 
-_Customize Survey Questions with Javascript Code_
+_Customize Survey Questions with JavaScript Code_
 
 </span>
 
@@ -18,8 +18,8 @@ Surveys are among Cotalker's main features. Their flexibility and customization 
 This spec expands the notion of survey functionality by introducing _Question EXEC_, custom code execution for your survey questions.
 
 :::info
-- Custom code must be written in **Javascript**.
-- Code should always be previously _sandboxed_.
+- Custom code must be written in **JavaScript**.
+- Code runs on the client side, within in a _sandbox_.
 :::
 
 ## Set Up
@@ -38,7 +38,7 @@ _See the image below:_
 <br/>
 
 ## Component Lifecycle Stages
-- **Preload**: The code executes when a new survey instance is summoned.
+- **Preload**: The code executes when the survey is created.
 - **onDisplay**: Code executes when a survey is in editing mode.
 - **Validate**: Code executes before internal validations, which permits adding additional levels of validation (business guidelines, protocols, etc.).
 - **Postsave**: Code executes after custom and internal validations.
@@ -95,9 +95,9 @@ _Validates if a value is between 0 and 100._
 ```javascript
 function run(){
 const val = context['responses#self'][0];
-if (!val) return [{ cmd: 'RESULT', result: false, value: 'Debe ingresar al menos un valor.' }];
-if (val < 0) return [{ cmd: 'RESULT', result: false, value: 'Valor es menor al mínimo permitido (0).' }];
-if (val > 100) return [{ cmd: 'RESULT', result: false, value: 'Valor es mayor al máximo permitido (100).' }];
+if (!val) return [{ cmd: 'RESULT', result: false, value: 'Please enter a number.' }];
+if (val < 0) return [{ cmd: 'RESULT', result: false, value: 'Value is lower than the minimum allowed (0).' }];
+if (val > 100) return [{ cmd: 'RESULT', result: false, value: 'Value is greater than maximum allowed (100).' }];
 else return [{ cmd: 'RESULT', result: true }];
 }
 ```
