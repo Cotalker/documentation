@@ -60,6 +60,7 @@ html[data-theme='light'] {
   --ifm-color-emphasis-0: var(--ifm-color-gray-0);
   --ifm-color-gray-0: var(--ifm-color-white);
   --ifm-color-white: #fff;
+  --ifm-color-danger: var(--ifm-color-danger-darker);
 }
 
 html[data-theme='dark'] {
