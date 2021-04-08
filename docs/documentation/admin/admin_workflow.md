@@ -1,97 +1,114 @@
 ---
 id: admin_workflow
-title: Workflows Section
+title: Workflows
 sidebar_label: Workflows
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
 
 
 ## Overview {#overview}
-<img alt="" src={useBaseUrl('img/admin_workflow.png')} width= "20%" height= "20%" align="left"/>
-Workflow is used to perform a process in cotalker. For example: the administrative request must be accepted by the CEO, boss and administrator. Therefore, there is a workflow that takes the request from one channel to another. It first asks the boss, then the CEO, and finally the manager for acceptance, if one of them doesn't approve, the request doesn't switch to the next channel and remains in a rejected state.<br/>
-The Workflow is made up of one or more State Machine. In the state machine, all states through which the task must pass are specified, as well as each routine. For example: once the request changes to the CEO channel, the system sends an email to notify him.<br clear="left" /><br/>
 
-You can check the [routine explanation on its section](/docs/documentation/automation/admin_routine) 
+<img alt="overview image" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_00.png')} />
+<br/>
+<br/>
 
-You can check the [channel explanation on its section](/docs/documentation/admin/admin_channels)
+_Workflows_ are used to create _tasks_ and their corresponding processes. For example, suppose an administrative request must be approved by a CEO, a manager, and an administrator. In that case, the _workflow_ could take the request to each one of them, one after another, for approval. If, along the line, one of them doesn't approve, the request gets rejected and doesn't continue down the chain.
 
-<br/><br/>
-The following image shows how it looks in the application.
+A _Workflow_ is made up of one or more _State Machines_. In the state machine, all states through which the _task_ must pass are specified, as well as each [_routine_](/docs/documentation/automation/admin_routine). Following the example given above, a _routine_ can be programmed to send an email notifying the CEO once the administrator and manager have approved the request.
+
+Workflows are hosted inside a _workflow group_. _Workflow groups_ can host multiple workflows and permit interaction among them.
+
+
+<!-- The following image shows how it looks in the application.
+
 <br /> <br />
 <img alt="" src={useBaseUrl('img/admin_task_webclient.png')} />
 <br /> <br />
+
 This example refers to a administrative request in a Company. So, on the open channel, the executive can send a request by answering a survey. The possible status through which the request can pass is "0. Levantamiento de Solicitud", "1. Pendiente por Jefatura" ... "5.1.- Rechazado por Jefatura", "5.2.- Rechazado por Gerencia" and "5.3.- Rechazado por Administración". And if you can see the channel called "Solicitud Insumo - 219 - Ariel - Lobos" it's an active request that is in the state "2. Pendiente por Gerencia".
-<br /> <br />
+<br /> <br /> -->
 
-## Workflow Groups {#workflow-groups}
-In this part, you can find the entire list of workflow groups that have been created. Only in this type of group can you create a workflow.
+## I. Workflow Groups {#workflow-groups}
+From the initial settings panel, you can find the entire list of _workflow groups_ that have been created. 
 
-<img alt="workflow group" src={useBaseUrl('img/admin_workflow_list.png')} />
+<img alt="workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_groups_00.png')} />
 <br/><br/>
 
-The description of the icons are in the [Overview section](/docs/documentation/admin/admin_overview).
+The description of the icons can be found in the [Overview section](/docs/documentation/admin/admin_overview).
 
 The information shown on the list is as follows:
 <!-- DEPRECATED- Weight: The relative number that positions the group on the main bar -->
-- Icon: Group icon
-- Name: Visible group name.
+- **Icon**: Group icon
+- **Name**: Visible group name.
 <!-- DEPRECATED- Last Modified: Last time the group was edited. -->
-- Initial Workflow: Workflow which starts off the task.
-- Options: Configure Workflows, View Channels, Edit Workflow Group
+- **Initial Workflow**: Workflow which starts off the task.
+- **Options**: _Configure Workflows_ - _View Channels_ - _Edit Workflow Group_
 
+:::note
+  _[**Configure Workflows**](#configure-workflows), [**View Channels**](/docs/documentation/admin/admin_channels#edit--create-single-channel), and [**Edit Workflow Group**](#createedit-a-workflow-group) options are represented respectively by the following icons:_
 
-## Create/Edit a Workflow Group {#createedit-a-workflow-group}
-In this section you can create a workflow group.
+<img alt="workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_options_00.png')} />
+<br/>
 
-<img alt="" src={useBaseUrl('img/admin_group_create_1.png')} />
-<img alt="" src={useBaseUrl('img/admin_group_create_2.png')} />
-<img alt="" src={useBaseUrl('img/admin_group_create_3.png')} />
+:::
+
+### Create/Edit a Workflow Group {#create-edit-a-workflow-group}
+When creating or editing a _workflow group_, you will see the following settings panel:
+
+<img alt="workflow group settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_create_group_00.png')} />
 <br/><br/>
 
-### General Information Section {#general-information-section}
-The description of the _general information_ fields is as follows:
+_Below, we will see each section of the settings panel in detail._
+
+### - General Information {#general-information-section}
+The **General information** fields are described below:
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
-| Name | The visual name of the group | It dosen't have to be unique. |
-| Code | The identifier of the group | It only accept lowercase, number and underscore and start with the letters. Once you create and save the code, you cannot change it.|
-| Weight | A relative number that positions the group on the main bar. A small number accommodates the group at the beginning, therefore a large one at the end. | If you don't type a number, the system will assign one. |
-| Parent Group | You can choose a group to position itself within it. | The group you choose must already be created |
+| **Name** | The visual name of the group | It doesn't have to be unique. |
+| **Code** | Group identification name | Must be unique. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter. The code cannot be edited once it is saved.|
+| **Weight** | A relative number that positions the group on the list. Smaller numbers accommodate the group near the top, larger numbers towards the end. | If you don't type a number, the system will assign one. |
+| **Parent Group** | The group can be related or positioned within another group as a child. | The parent group must already exist. |
 
 <br/>
-To illustrate the parent group, the following image is shown:
-<img alt="" src={useBaseUrl('img/admin_group_parent.png')} />
-<br/>
-As you can see I+D is the parent group shown in the main bar. Once you are there, you can see the subgroups. 
 
-### Icon Section {#icon-section}
-The _icon_ section configures the group symbol shown on the main bar. The description of the icon fields is as follows:
+
+:::note
+A _parent group_ with a direct access icon in the _main menu bar_ would host a child or sub-group like the image shown below:
+
+<img alt="parent group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_parent_00.png')} />
+<br/>
+
+:::
+
+### - Icon Section {#icon-section}
+The **Icon** section configures the group symbol shown on the main bar. **Icon** field descriptions are as follows:
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
-| Select icon | You can choose between personalized or once of the premade |  |
-| Color | You can choose from the list of colors that is shown |  |
-| Path | It's populated with Scalable Vector Graphics. If the icon is personalized, it must be completed manually, otherwise it will be completed automatically |  |
+| **Select icon** | Choose personalized or pre-designed icon from the menu. | Personalized icons are configured in the "Path" field. |
+| **Color** | Choose from the menu the icon's color. |  |
+| **Path** | Must be filled with Scalable Vector Graphics (SVG) code. | If the icon was selected from the list of pre-designed icons, the path is completed automatically. If a personalized SVG is desired, its code must be inserted manually. |
 
 <br/>
 
-### Help Section {#help-section}
-The _help_ section sets up the onboarding when you log in to the App or website. The description of the help fields is as follows:
+### - Help Section {#help-section}
+The **Help** section sets up the onboarding when you log in to the App or website. **Help** fields are described below:
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
-| Activate help for this group | This function is for cellular application | For now it is not being used |
-| Display in onboarding | If it is active it will show up after you log in the App or Website |  |
-| Instructions | Text that explain whatever you want in the onboarding. | It will show below the animation |
-| Frequently asked question's URL | This function is for cellular application | For now it is not being used |
-| Animation | It is the animated image shown in the onboarding of the group. It's field with animation json. | We recommend using Lottie File. |
+| **Activate help for this group** | This function is for cellular application | For now it is not being used |
+| **Display in onboarding** | If it is active it will show up after you log in the App or Website |  |
+| **Instructions** | Text that explain whatever you want in the onboarding. | It will show below the animation |
+| **Frequently asked question's URL** | This function is for cellular application | For now it is not being used |
+| **Animation** | It is the animated image shown in the onboarding of the group. It's field with animation json. | We recommend using Lottie File. |
 
 <br/>
 
-### Design Section {#design-section}
+### - Design Section {#design-section}
 The _design_ section configures how channels are displayed in the group. The description of the layout fields is as follows:
 
 | Field | Description | Notes | 
@@ -102,20 +119,21 @@ The _design_ section configures how channels are displayed in the group. The des
 | Order channels by | The channel sort by the selected option. You can choose between Created At, Last Message, Modified At and Name |  |
 <br/>
 
-### Channel Creation Section {#channel-creation-section}
+### - Channel Creation Section {#channel-creation-section}
 The description of the _channel creation_ fields is as follows:
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
-| Allow channel creation | When activated, it will allow users to create channels in the group. | Once active, the "Actions" button – a green floating button near the bottom of the group's channel panel – will appear. Pressing the button slides open a list of possible actions. |
+| Allow channel creation | When activated, it will allow users to create channels in the group. | Once active, press the "Actions" button – a green floating button near the bottom of the group's channel panel – to slide open a list of possible actions, including creating a channel. |
 | Permissions | Specific user permissions needed to create a channel in the group. | Although the button will be visible if activated, without the necessary permissions, users will not be allowed to create channels. |
 <br/>
 
-### Secondary Actions {#secondary-actions}
-Through the _Actions_ button – a green floating button that appears at the bottom of the group's channel panel – users can access URLs, which can be configured to open external websites, go to different sections of the app, answer surveys, and create tasks.
+### - Secondary Actions {#secondary-actions}
+
+Here you can configure the _Actions_ button –a green floating button that appears at the bottom of the group's channel panel– where users can access URLs, which can be configured to open external websites, go to different sections of the app, answer surveys, and create tasks.
 
 _The Actions button and its corresponding Actions Menu will look something like the image below:_
-<img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
+<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
 <br/>
 
 :::note
@@ -126,12 +144,12 @@ New channels can also be created through the _Action_ button. That option is act
 
 Descriptions of the fields and options in the _secondary actions_ section are explained below:
 
-The <span class="badge badge--secondary">+ ADD NEW ACTION</span>: creates an _action_ that can be accessed through the _Actions_ button.
-<img alt="add new action" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_00.png')} />
+The <span className="badge badge--secondary">+ ADD NEW ACTION</span>: creates an _action_ that can be accessed through the _Actions_ button.
+<img alt="add new action" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_00.png')} />
 <br/>
 
-Pressing this button opens up a <span class="badge badge--secondary">New action #1</span> pad. Press the pad to open the new action's settings panel.
-<img alt="add new action" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_01.png')} />
+Pressing this button opens up a <span className="badge badge--secondary">New action #1</span> pad. Press the pad to open the new action's settings panel.
+<img alt="add new action" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_01.png')} />
 <br/>
 
 The action's settings panel fields are described below:
@@ -143,49 +161,58 @@ The action's settings panel fields are described below:
 | Use authentication | Sends the user's authentication token to external sites. | This is needed for external sites that require Cotalker authentication. For security reasons, use only on trusted sites. |
 | Open link in a new tab | If activated, the URL will be opened in a new tab in your browser. Otherwise, it will open inside the Cotalker app window. | |
 | Select icon | You can choose between personalized or pre-designed icons.| The color cannot be changed. |
-| Path | Must be filled with Scalable Vector Graphics (SVG) code. | If the icon is selected from the list of pre-designed icons, the path will be completed automatically. If a personalized SVG is desired, it must be completed manually. |
+| Path | Must be filled with Scalable Vector Graphics (SVG) code. | If the icon was selected from the list of pre-designed icons, the path will be completed automatically. If a personalized SVG is desired, its code must be inserted manually. |
 
-## Workflows {#workflows}
-On the following image shows what the Workflow looks like:
-<br/>
-<img alt="" src={useBaseUrl('img/admin_workflow.png')} />
-<br/><br/>
+## II. Configure Workflows {#configure-workflows}
+A _workflow group_ can contain one or more workflows. These workflows are configured through the _workflows settings panel_. Once a _workflow-group_ is created, it is necesary to indicate here the group's initial workflow, along with other basic settings.
+
+Below, you can see what the settings panel looks like. It has three basic sections: **Configurati
+
+
 At the bottom are the list of the State machine created and in the center is the visualization of the whole process modulated with the created state machine.<br/>
 In this case, only one state machine was created, making it the only state machine that formed the process.
 
-## Workflow Configuration {#workflow-configuration}
-Once te state machines are created, is necesary to indicate which one is the seed or the start. And also to indicate some basics about the default format.
-<img alt="" src={useBaseUrl('img/admin_wfconfiguration.png')} />
+<img alt="settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_wfconfiguration.png')} />
+<br/>
+<br/>
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Flow Type | The option are State-machine or Free * |  |
-| Initial State Machine | You have to choose from the displayed list. The state machines that have been created in the group workflow will be displayed. |  |
-| Hide closed tasks after | The closing task will be hidden after the defined number|  |
+| Initial Workflow | Choose from list  |  |
 | Default view | The default view in the task view section. The option are Calendar view, Gantt view, Table view, Kanban view and List view |  |
+| Filter | Options: "Status" or "Critical task by department" | |
+| Hide closed tasks after | The closing task will be hidden after the defined number|  |
+| Read Permissions | [List of availavle Read Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) | |
+| Write Permissions | [List of availavle Write Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) | |
+
 <br/>
 
-<!-- :::warning
+:::warning
 Do not change the previously assigned permissions and the Initial State Machine. It could change some state machine already created. But you can add as many as you want. If you want to unassign a permission or chenge the initial state machine, check with support first.
-::: -->
+:::
 
-## Create a Single Workflow {#create-a-single-workflow}
+### Create a Workflow {#create-a-single-workflow}
 At first you can only define the general specifications of the state machine, after saving you can configure the states of the machine.
+
 <img alt="" src={useBaseUrl('img/admin_sm_create_1.png')} />
 <img alt="" src={useBaseUrl('img/admin_sm_create_2.png')} />
 <br/>
+
 Below you will find the description and notes for each field in the pictures above.<br/><br/>
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Name | The visual name of the State Machine | It dosen't have to be unique  | 
 | Code | The identifier of the State Machine | It only accept lowercase, number and underscore and start with the letters. Once you create and save the code, you cannot change it.  | 
-| Chat channels | One of the option must be selected. The options are: *bound*, *unbound*, *unbound-hierarchy*. |  Bound means two-way data binding, Unbound means that a channel is directly assigned to the task and the other one means that a channel acquired relationship because the parent had a channel and is always relative to the current hierarchy. More specific explanation will be below the table. | 
+| Chat channels | One of the option must be selected. The options are: *bound*, *unbound*, *unbound-hierarchy*. |  Bound means two-way data binding, Unbound means that a channel is directly assigned to the task and the other one means that a channel acquired relationship because the parent had a channel and is always relative to the current hierarchy. More [specific explanation](#further-details) will be below the table. | 
 | Type | The option are: *unique* or *generic* type.  | The generic type refers to a reapited task and the unique type that is not. For example: the sub-state machine could be a unique type. | 
 | Collection | The collection of the element to which it belongs is selected. This element is used to define the task that flows through the workflow. | Once selected, a field will appear to choose the element. Remember to create the colletion and elements before.| 
 | Additional field Nº | Add a collection. It is used to filter/group/sort the task in the task view in the web client. |  | 
 | State list | The collection of the element to which the states belongs is selected. Each element represents a state of the state machine. | Remember to create the colletion and elements before. | 
 <br/>
+
+#### Further Details of Chat Channels Option {#further-details}
 
 The type of Chat channels allow differents things:
 
@@ -205,7 +232,7 @@ The type of Chat channels allow differents things:
 - Doesn't have channel id, always check parents on update
 - This channel will be automatically set or unset depending on the current task hierarchy
 
-## Edit a Single Workflow {#edit-a-single-workflow}
+### Edit a Workflow {#edit-a-single-workflow}
 In this section the created state machine can be edited, but the states and SLA section is added, as can be seen in the following image:
 
 <img alt="" src={useBaseUrl('img/admin_state_list.png')} />
@@ -216,8 +243,10 @@ The SLA of a state machine is used to execute a routine when a task does not cha
 
 The description of the icons are in the [Overview section](admin_overview).
 
-### Create/Edit single State {#createedit-single-state}
-In this section you can edit or creat a single state of a State Machine.
+
+### - Create/Edit State {#createedit-single-state}
+
+In this section you can edit or create a single state of a State Machine.
 <img alt="" src={useBaseUrl('img/admin_state_create.png')} />
 <br/><br/>
 Below you will find the description and notes for each field in the pictures above.
@@ -233,7 +262,7 @@ Below you will find the description and notes for each field in the pictures abo
 
 The Routine builder is explained in the [Routine Section](/docs/documentation/automation/admin_routine).
 
-### Create/Edit single SLA {#createedit-single-sla}
+### - Create/Edit SLA {#createedit-single-sla}
 In this section you can edit or creat a single state of a State Machine.
 <img alt="" src={useBaseUrl('img/admin_sla.png')} />
 <br/><br/>
@@ -254,17 +283,17 @@ Below you will find the description and notes for each field in the pictures abo
 The Routine builder is explained in the [Routine Section](/docs/documentation/automation/admin_routine).
 
 
-## Required Surveys {#required-surveys}
+## III. Required Surveys {#required-surveys}
 <!-- TODO insert image from Tasks View with Required Survey -->
 By default, _Users_ can create a _task_ or change its state through the _tasks view_ section. However, _administrators_ may require _users_ to complete a _survey_ before **creating or changing the state of a task**. This feature – known as **required survey** – allows _administrators_ to:
 - control what type of _tasks_ users create, 
 - ensure that the _users_ provide all necessary information when creating _tasks_,  
 - and manage _task_ state changes.
 
-### Setting up a _required survey_ for a _new task_ {#setting-up-a-_required-survey_-for-a-_new-task_}
+### Setting up a _required survey_ for a _new task_ {#setting-up-a-required-survey-for-a-new-task_}
 Without selecting this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
 
-By setting up a _required survey_, a _channel_ is created within a _workflow group_ to host the newly created task, and in it will be displayed the _surveys_ used to create and modify the _task_.
+By setting up a _required survey_, a _channel_ is created within a _workflow group_ to host the newly created task and will display the _survey_ used to create and modify the _task_.
 
 :::info
 When using a required survey and some input error prevents a task from being created, the _channel_ will be generated but without an assigned task. It will be the implementor's duty to notify this problem adequately in the _channel_; the _user_ must be told to re-send the _survey_ and make the necessary corrections to create the _task_ appropriately.
@@ -318,7 +347,7 @@ When using a required survey and some input error prevents a task from being cre
     ```$VALUE#answer|user```
 
 
-### _Required survey_ for modifying task states {#_required-survey_-for-modifying-task-states}
+### _Required survey_ for modifying task states {#required-survey-for-modifying-task-states}
 
 Configuring a _required survey_ for when _users_ want to modify a _task's state_ is a little bit simpler than the previous case. Unlike the _required surveys_ used for creating _tasks_, it isn't necessary to add a bot or specify a routine to the _required survey_ when changing a task's state.
 
