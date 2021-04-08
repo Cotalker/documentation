@@ -66,6 +66,82 @@ _Below, we will see each section of the settings panel in detail._
 ### - General Information {#general-information-section}
 The **General information** fields are described below:
 
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--4">
+
+**Name:**
+
+</div>
+<div className="col col--4">
+
+The visual name of the group.
+
+</div>
+<div className="col col--4">
+
+_It doesn't have to be unique._
+
+</div>
+</div>
+
+<div className="row table-row-2">
+<div className="col col--4">
+
+**Code:**
+
+</div>
+<div className="col col--4">
+
+Group identification name
+
+</div>
+<div className="col col--4">
+
+_Must be unique. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter. The code cannot be edited once it is saved._
+
+</div>
+</div>
+
+<div className="row table-row-1">
+<div className="col col--4">
+
+**Weight:**
+
+</div>
+<div className="col col--4">
+
+A relative number that positions the group on the list. Smaller numbers accommodate the group near the top, larger numbers towards the end.
+
+</div>
+<div className="col col--4">
+
+_If you don't type a number, the system will assign one._
+
+</div>
+</div>
+
+<div className="row table-row-2">
+<div className="col col--4">
+
+**Parent Group:**
+
+</div>
+<div className="col col--4">
+
+The group can be related or positioned within another group as a child.
+
+</div>
+<div className="col col--4">
+
+_The parent group must already exist._
+
+</div>
+</div>
+
+</div>
+<br/>
+
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | **Name** | The visual name of the group | It doesn't have to be unique. |
