@@ -14,20 +14,41 @@ It is used to extract data from different contexts in Cotalker. It is useful to 
 ## Context of the data {#context-of-the-data}
 This table contains the data to which the different sources have access. For example, if you are using cotlang in a survey trigger routine, you will have direct access to the task. <br/>
 
-| Source | Context | Format | Notes |
-| ---- | --------- | -------- | ------- |
-| Global Bot Message | channel: cotChannel - message: cotMessage - cmdArgs: Array string | { channel, message, cmdArgs } | The source is a global bot that is trigger with a slash command. |
-| Global Bot Answer | 	answer: cotAnswer	- messages: cotMessage | answer: { ..., messages, ... } | Message have to be active to use. <br/> The source is a global bot that is trigger with a survey. |
-| Channel Bot Message	| channel: CotChannel - message: CotMessage - cmdArgs: Array string | { channel, message, cmdArgs } | Message have to be active to use. <br/> The source is a bot that is trigger with a slash command and is associated with particular channels. |	
-| Channel Bot Answer	|	answer: CotAnswer	- messages: cotMessage | answer: { ..., messages, ... } | Message have to be active to use. The source is a bot that is trigger with a survey and is associated with particular channels. |
-| SM SurveyTrigger	|	task: CotTask	- sentAnswer: CotAnswer | task: {..., sentAnswer: {...}, ...} |   |
-| SM Change State |	task: CotTask |	task: {...} | |
-| SM - New Subtask	|	task: CotTask - parent 	| { task, parent } | |
-| SM - New Task	|	task: CotTask - parent	| { task, parent } | |
-| SLA	|	taskId: Object Id - taskGroupId: Object id	| { taskId, taskGroupId } | |
-| Scheduler | null | null |	|	
-| SM - RequiredSurvey | { answer, meta: { parentTask, taskGroup } } | |
+| Source | Context | Notes |
+| ---- | --------- | ----  |
+| Global Message Trigger | <pre>{<br>  channel: COTChannel,<br>  message: COTMessage,<br>  cmdArgs: Array[string]<br>}</pre> | The source is a global bot that is trigger with a slash command. |
+| Channel Message Trigger	| <pre>{<br>  channel: COTChannel,<br>  message: COTMessage,<br>  cmdArgs: Array[string]<br>}</pre> | The source is a bot that is trigger with a slash command and is associated with particular channels. |	
+| Global Survey Trigger | 	<pre>{<br>  ...COTAnswer,<br>  messages: COTMessage,<br>}</pre>| Message have to be active to use. <br/> The source is a global bot that is trigger with a survey. |
+| Channe Survey Trigger	|	<pre>{<br>  ...COTAnswer,<br>  messages: COTMessage<br>}</pre>| Message have to be active to use. The source is a bot that is trigger with a survey and is associated with particular channels. |
+| SM SurveyTrigger	|	<pre>{<br>  ...COTTask,<br>  sentAnswer: COTAnswer<br>}</pre>|   |
+| SM Change State |	<pre>{<br>  ...COTTask<br>}</pre>| |
+| SM - New Subtask	|	<pre>{<br>  task: COTTask,<br>  parent: COTTask<br>}</pre>| |
+| SM - New Task	|	<pre>{<br>  task: COTTask,<br>  parent: COTTask<br>}</pre>| |
+| SLA	|	<pre>{<br>  taskId: ObjectId[COTTask]<br>  taskGroupId: ObjectId[COTTaskGroup]<br>}</pre>| |
+| Scheduler | <pre> custom body </pre>|	|	
+| SM - RequiredSurvey | <pre>{<br>  answer: COTAnswer,<br>  meta: {<br>    parentTask: ObjectId[COTTask],<br>    taskGroup: ObjectId[COTTaskGroup]<br>  }<br>}</pre>|
  
+ ### Context language description {#context-language}
+1. `...` Destructuring Operator: each key is merged into the parent object.
+For example:
+```
+if COTExample is { _id: ObjectId, content: String } 
+then             { ...COTExample,                  someKeyName: Number } 
+represents       { _id: ObjectId, content: String, someKeyName: Number }
+```
+2. Array[T]: is an array of type T.
+For example:
+```
+model       { commands: Array[String] }
+can contain { commands: ["hello", "world"] } 
+```
+3. [COTChannel Data model](/docs/documentation/api/communication/channels)
+4. [COTMessage Data model](/docs/documentation/api/communication/messages)
+5. [COTAnswer Data model](/docs/documentation/api/surveys/answers)
+6. [COTTask Data model](/docs/documentation/api/tasks/tasks) 
+7. [COTTaskGroup Data model](/docs/documentation/api/tasks/task_groups)
+8. ObjectID[T]: 24-character unique identifier that represents an object of type T
+
 
 ## How to use Cotlang {#how-to-use-cotlang}
 To configure the type of stages, COTlang is useful to easily get information from the database.
