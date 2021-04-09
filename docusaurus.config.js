@@ -116,7 +116,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/Cotalker/cotalker-doc/tree/master/',
+            'https://github.com/Cotalker/documentation/tree/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
