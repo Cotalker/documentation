@@ -16,8 +16,8 @@ A __channel__ is a space where users and bots can communicate through messages.
 | group   | id   | Channel belongs to this group   | Exactly 24 chars. Valid chars [0-9a-f] |
 | userIds   | Array\<id\>   | List of users in channel   | 
 | propertyIds   | Array\<id\>   | List of channel properties   | 
-| name  | string | Display   | Required |
-| code  | string | Code Name | Unique. Max 60 chars. Valid chars [a-z0-9_] |
+| nameDisplay  | string | Display name   | Required |
+| nameCode  | string | Identification code | Unique. Max 60 chars. Valid chars [a-z0-9_] |
 | modifiedAt | date | Last modification date
 | createdAt | date | Entry creation date
 NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.

@@ -90,6 +90,17 @@ _The following context variables are available for use in the code but must be s
 - **responses#self**: Survey field answer stored as value.
 - **messages#self**: Message associated with the survey.
 
+:::note
+These _parameters_ or _context variables_ can be further specified in your code. Just look up the appropriate [models](/docs/documentation/api/model) for each _parameter_. For example, if you wanted to use some specific channel properties, you could use the models to declare constants:
+
+```javascript
+const channelId = context['channel#self']._id;   //  e.g. 606b0d554c479b00080f0d27
+const channelCode = context['channel#self'].nameCode;    // identification code
+const channelDisplay = context['channel#self'].nameDisplay;  // display name
+```
+:::
+
+
 ## Examples {#examples}
 
 ### Example 1: Preload User and Channel {#example-1}
