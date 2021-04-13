@@ -17,7 +17,7 @@ import Highlight from '@theme/Highlight';
 <br/>
 <img alt="" src={useBaseUrl('img/admin_groupstype.png')} width= "25%" height= "25%" align="left"/>
 
-The Cotalker environment revolves around _groups_. _Groups_ are divided into three sections: [_workflows_](admin_workflow), [_links_](admin_links), and [_communications_](#communication-groups). From this part of the _administrative panel_, you can create, search, check, and download the company's _groups_.
+The Cotalker environment revolves around _groups_. _Groups_ are divided into three sections: [_workflows_](/docs/documentation/admin/workflows/admin_workflow_overview), [_links_](admin_links), and [_communications_](#communication-groups). From this part of the _administrative panel_, you can create, search, check, and download the company's _groups_.
 
 <br/>
 
@@ -32,7 +32,7 @@ In the following image, you can see that each group's name and icon appear in th
 <br/>
 
 ## Communication Groups {#communication-groups}
-Here we will deal with _communication groups_ specifically. We will see the other two groups – [workflows](admin_workflow) and [links](admin_links) – separately.
+Here we will deal with _communication groups_ specifically. We will see the other two groups – [workflows](/docs/documentation/admin/workflows/admin_workflow_overview) and [links](admin_links) – separately.
 The _communication group_ refers to a group where users chat with each other or answer _surveys_ to capture information.
 <br />
 The following image shows how it looks in the application:

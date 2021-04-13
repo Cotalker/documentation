@@ -51,7 +51,17 @@ module.exports = {
         'documentation/admin/admin_survey',
         'documentation/admin/admin_bots',
         'documentation/admin/admin_scheduler',
-        'documentation/admin/admin_workflow',
+        {
+          type: 'category',
+          label: 'Workflows',
+          items: [
+            'documentation/admin/workflows/admin_workflow_overview',
+            'documentation/admin/workflows/admin_workflow_groups',
+            'documentation/admin/workflows/admin_workflow_configure',
+            'documentation/admin/workflows/admin_workflow_required_survey',
+          ],
+          collapsed: true,
+        },
         'documentation/admin/admin_links',
         'documentation/admin/admin_company',
         'documentation/admin/routines',
