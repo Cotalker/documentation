@@ -6,6 +6,8 @@ sidebar_label: COTLang
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
+# WIP
+
 # Cotlang Overview {#cotlang-overview}
 Language created by Cotalker. <br/>
 
@@ -14,19 +16,7 @@ It is used to extract data from different contexts in Cotalker. It is useful to 
 ## Context of the data {#context-of-the-data}
 This table contains the data to which the different sources have access. For example, if you are using cotlang in a survey trigger routine, you will have direct access to the task. <br/>
 
-| Source | Context | Notes |
-| ---- | --------- | ----  |
-| Global Message Trigger | <pre>{<br>  channel: COTChannel,<br>  message: COTMessage,<br>  cmdArgs: Array[string]<br>}</pre> | The source is a global bot that is trigger with a slash command. |
-| Channel Message Trigger	| <pre>{<br>  channel: COTChannel,<br>  message: COTMessage,<br>  cmdArgs: Array[string]<br>}</pre> | The source is a bot that is trigger with a slash command and is associated with particular channels. |	
-| Global Survey Trigger | 	<pre>{<br>  ...COTAnswer,<br>  messages: COTMessage,<br>}</pre>| Message have to be active to use. <br/> The source is a global bot that is trigger with a survey. |
-| Channe Survey Trigger	|	<pre>{<br>  ...COTAnswer,<br>  messages: COTMessage<br>}</pre>| Message have to be active to use. The source is a bot that is trigger with a survey and is associated with particular channels. |
-| SM SurveyTrigger	|	<pre>{<br>  ...COTTask,<br>  sentAnswer: COTAnswer<br>}</pre>|   |
-| SM Change State |	<pre>{<br>  ...COTTask<br>}</pre>| |
-| SM - New Subtask	|	<pre>{<br>  task: COTTask,<br>  parent: COTTask<br>}</pre>| |
-| SM - New Task	|	<pre>{<br>  task: COTTask,<br>  parent: COTTask<br>}</pre>| |
-| SLA	|	<pre>{<br>  taskId: ObjectId[COTTask]<br>  taskGroupId: ObjectId[COTTaskGroup]<br>}</pre>| |
-| Scheduler | <pre> custom body </pre>|	|	
-| SM - RequiredSurvey | <pre>{<br>  answer: COTAnswer,<br>  meta: {<br>    parentTask: ObjectId[COTTask],<br>    taskGroup: ObjectId[COTTaskGroup]<br>  }<br>}</pre>|
+#### Coming soon!
  
  ### Context language description {#context-language}
 1. `...` Destructuring Operator: each key is merged into the parent object.
