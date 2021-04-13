@@ -18,6 +18,36 @@ import Highlight from '@theme/Highlight';
 <div class="card">
 <div class="card__header">
 
+### File Sharing Security Update {#file-sharing-security}
+
+<small class="avatar__subtitle">April 13, 2021</small>
+</div>
+<div class="card__image">
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/admin_survey_tree_selector_01.png')} />
+<br/>
+</div>
+<div class="card__body">
+
+You can never be too careful... But now you can relax a bit with Cotalker's new implementation of file signatures for some extra security. Running completely in the back-end, this new feature checks user authentication before allowing users to view files for 15 minutes, after which they would have to request the file again. This new feature update also includes improvement in file structures and switching from a synchronous to an asynchronous upload operation. Admins can configure this feature through API 
+
+</div>
+<div class="card__footer">
+
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documentation</a>
+<br/>
+
+</div>
+</div>
+</div>
+<br/>
+<br/>
+
+<!-- New Feature begins after this line.-->
+
+<div class="card-demo">
+<div class="card">
+<div class="card__header">
+
 ### Survey Tree Selector {#survey-tree-selector}
 
 <small class="avatar__subtitle">April 6, 2021</small>
@@ -33,7 +63,7 @@ Surveys are great, and they just got better! Users can now answer questions with
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documention</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documentation</a>
 <br/>
 
 </div>
