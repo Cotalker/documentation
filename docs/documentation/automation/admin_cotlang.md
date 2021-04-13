@@ -6,13 +6,133 @@ sidebar_label: COTLang
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-# Cotlang Overview {#cotlang-overview}
+## Overview {#overview}
 Language created by Cotalker. <br/>
 
 It is used to extract data from different contexts in Cotalker. It is useful to configure the routine.
 
-## Context of the data {#context-of-the-data}
+## Data Context {#data-context}
 This table contains the data to which the different sources have access. For example, if you are using cotlang in a survey trigger routine, you will have direct access to the task. <br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+
+### Global Message Trigger {#global-message-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    channel: COTChannel,
+    message: COTMessage,
+    cmdArgs: Array[string]
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _The source is a global bot that is triggered with a slash command:_ `/command`
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Channel Message Trigger {#channel-message-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+  channel: COTChannel,
+  message: COTMessage,
+  cmdArgs: Array[string]
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Global Survey Trigger {#global-survey-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+  ...COTAnswer,
+  messages: COTMessage
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Channel Survey Trigger {#channel-survey-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    ...COTAnswer,
+    messages: COTMessage
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _Messages have to be active to use them. The source is a bot that is triggered with a survey and is associated with particular channels._
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Source {#source}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    channel: COTChannel,
+    message: COTMessage,
+    cmdArgs: Array[string]
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _notes_
+
+</div>
+</div>
+
+</div>
+<br/>
+
+
+<!-- | Channel Message Trigger	| {<br>  channel: COTChannel,<br>  message: COTMessage,<br>  cmdArgs: Array[string]<br>} | The source is a bot that is trigger with a slash command and is associated with particular channels. |	
+| Global Survey Trigger | 	{<br>  ...COTAnswer,<br>  ...COTAnswer,<br>}| Message have to be active to use. <br/> The source is a global bot that is trigger with a survey. |
+| Channel Survey Trigger	|	{<br>  ...COTAnswer,<br>  messages: COTMessage<br>}| Message have to be active to use. The source is a bot that is trigger with a survey and is associated with particular channels. |
+| SM SurveyTrigger	|	{<br>  ...COTTask,<br>  sentAnswer: COTAnswer<br>}|   |
+| SM Change State |	{<br>  ...COTTask<br>}| |
+| SM - New Subtask	|	{<br>  task: COTTask,<br>  parent: COTTask<br>}| |
+| SM - New Task	|	{<br>  task: COTTask,<br>  parent: COTTask<br>}| |
+| SLA	|	{<br>  taskId: ObjectId[COTTask]<br>  taskGroupId: ObjectId[COTTaskGroup]<br>}| |
+| Scheduler |  custom body |	|	
+| SM - RequiredSurvey | {<br>  answer: COTAnswer,<br>  meta: {<br>    parentTask: ObjectId[COTTask],<br>    taskGroup: ObjectId[COTTaskGroup]<br>  }<br>}| -->
 
 | Source | Context | Format | Notes |
 | ---- | --------- | -------- | ------- |
@@ -41,7 +161,7 @@ To configure the type of stages, COTlang is useful to easily get information fro
 | JOIN | Concatenate values |  $JOIN#[Some char to join]#[ARG A]#[ARG B]#...#[ARG N] |
 | TIME | Generates date, relative to the current date. | $$TIME#[PARAM1]#[PARAM2] |
 | META | Extracts data from message.meta (Questions). | $META#[EXTRACTOR] |
-| EXTRACTOR | Token values: (1) *Values*: Dive into value or (2) *Operators*: Apply funtion to current data. |
+| EXTRACTOR | Token values: (1) *Values*: Dive into value or (2) *Operators*: Apply function to current data. |
 
 ### Examples {#examples}
 

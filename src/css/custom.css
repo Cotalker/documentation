@@ -56,8 +56,13 @@
   color: var(--note-title-color);
 }
 
+.alert--info h5 {
+  color: var(--ifm-color-white);
+}
 
-
+.alert--success h5 {
+  color: var(--ifm-color-white);
+}
 
 html[data-theme='light'] {
   --ifm-link-color: #5784b1;
@@ -205,6 +210,13 @@ p, td, th {
   border-right-width: 1px;
   border-color: var(--box-color);
   border-style: solid;
+  font-family: 'Roboto', sans-serif;
+}
+
+.box h3 {
+  font-size: 1.5rem;
+  font-weight: 100;
+  
 }
 
 .table-row-1 {
@@ -215,7 +227,7 @@ p, td, th {
   border-left-width: 0;
   border-right-width: 0;
   background-color: var(--row-1-color);
-  padding: 2%;
+  padding: 1%;
   align-items: center;
 }
 
@@ -227,7 +239,7 @@ p, td, th {
   border-left-width: 0;
   border-right-width: 0;
   background-color: var(--row-2-color);
-  padding: 2%;
+  padding: 1%;
   align-items: center;
 }
 
@@ -237,6 +249,22 @@ p, td, th {
 
 .table-row-2 p {
   margin: auto;
+}
+
+.code-table-1 {
+  background-color: var(--row-1-color);
+  
+}
+
+.code-table-2 {
+  background-color: var(--row-2-color);
+}
+
+.row .col.col--offset-1 {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  padding-top: 0px;
 }
 
 .img_title {
