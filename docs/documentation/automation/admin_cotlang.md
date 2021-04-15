@@ -6,7 +6,11 @@ sidebar_label: COTLang
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-## Overview {#overview}
+
+# WIP
+
+# Cotlang Overview {#cotlang-overview}
+
 Language created by Cotalker. <br/>
 
 It is used to extract data from different contexts in Cotalker. It is useful to configure the routine.
@@ -14,140 +18,30 @@ It is used to extract data from different contexts in Cotalker. It is useful to 
 ## Data Context {#data-context}
 This table contains the data to which the different sources have access. For example, if you are using cotlang in a survey trigger routine, you will have direct access to the task. <br/>
 
-<div className="container box">
+#### Coming soon!
 
-<div className="row table-row-1">
-
-### Global Message Trigger {#global-message-trigger}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-    channel: COTChannel,
-    message: COTMessage,
-    cmdArgs: Array[string]
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _The source is a global bot that is triggered with a slash command:_ `/command`
-
-</div>
-</div>
-
-<div className="row table-row-1">
-
-### Channel Message Trigger {#channel-message-trigger}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-  channel: COTChannel,
-  message: COTMessage,
-  cmdArgs: Array[string]
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
-
-</div>
-</div>
-
-<div className="row table-row-1">
-
-### Global Survey Trigger {#global-survey-trigger}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-  ...COTAnswer,
-  messages: COTMessage
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
-
-</div>
-</div>
-
-<div className="row table-row-1">
-
-### Channel Survey Trigger {#channel-survey-trigger}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-    ...COTAnswer,
-    messages: COTMessage
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _Messages have to be active to use them. The source is a bot that is triggered with a survey and is associated with particular channels._
-
-</div>
-</div>
-
-<div className="row table-row-1">
-
-### Source {#source}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-    channel: COTChannel,
-    message: COTMessage,
-    cmdArgs: Array[string]
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _notes_
-
-</div>
-</div>
-
-</div>
-<br/>
-
-
-<!-- | Channel Message Trigger	| {<br>  channel: COTChannel,<br>  message: COTMessage,<br>  cmdArgs: Array[string]<br>} | The source is a bot that is trigger with a slash command and is associated with particular channels. |	
-| Global Survey Trigger | 	{<br>  ...COTAnswer,<br>  ...COTAnswer,<br>}| Message have to be active to use. <br/> The source is a global bot that is trigger with a survey. |
-| Channel Survey Trigger	|	{<br>  ...COTAnswer,<br>  messages: COTMessage<br>}| Message have to be active to use. The source is a bot that is trigger with a survey and is associated with particular channels. |
-| SM SurveyTrigger	|	{<br>  ...COTTask,<br>  sentAnswer: COTAnswer<br>}|   |
-| SM Change State |	{<br>  ...COTTask<br>}| |
-| SM - New Subtask	|	{<br>  task: COTTask,<br>  parent: COTTask<br>}| |
-| SM - New Task	|	{<br>  task: COTTask,<br>  parent: COTTask<br>}| |
-| SLA	|	{<br>  taskId: ObjectId[COTTask]<br>  taskGroupId: ObjectId[COTTaskGroup]<br>}| |
-| Scheduler |  custom body |	|	
-| SM - RequiredSurvey | {<br>  answer: COTAnswer,<br>  meta: {<br>    parentTask: ObjectId[COTTask],<br>    taskGroup: ObjectId[COTTaskGroup]<br>  }<br>}| -->
-
-| Source | Context | Format | Notes |
-| ---- | --------- | -------- | ------- |
-| Global Bot Message | channel: cotChannel - message: cotMessage - cmdArgs: Array string | { channel, message, cmdArgs } | The source is a global bot that is trigger with a slash command. |
-| Global Bot Answer | 	answer: cotAnswer	- messages: cotMessage | answer: { ..., messages, ... } | Message have to be active to use. <br/> The source is a global bot that is trigger with a survey. |
-| Channel Bot Message	| channel: CotChannel - message: CotMessage - cmdArgs: Array string | { channel, message, cmdArgs } | Message have to be active to use. <br/> The source is a bot that is trigger with a slash command and is associated with particular channels. |	
-| Channel Bot Answer	|	answer: CotAnswer	- messages: cotMessage | answer: { ..., messages, ... } | Message have to be active to use. The source is a bot that is trigger with a survey and is associated with particular channels. |
-| SM SurveyTrigger	|	task: CotTask	- sentAnswer: CotAnswer | task: {..., sentAnswer: {...}, ...} |   |
-| SM Change State |	task: CotTask |	task: {...} | |
-| SM - New Subtask	|	task: CotTask - parent 	| { task, parent } | |
-| SM - New Task	|	task: CotTask - parent	| { task, parent } | |
-| SLA	|	taskId: Object Id - taskGroupId: Object id	| { taskId, taskGroupId } | |
-| Scheduler | null | null |	|	
-| SM - RequiredSurvey | { answer, meta: { parentTask, taskGroup } } | |
  
+ ### Context language description {#context-language}
+1. `...` Destructuring Operator: each key is merged into the parent object.
+For example:
+```
+if COTExample is { _id: ObjectId, content: String } 
+then             { ...COTExample,                  someKeyName: Number } 
+represents       { _id: ObjectId, content: String, someKeyName: Number }
+```
+2. Array[T]: is an array of type T.
+For example:
+```
+model       { commands: Array[String] }
+can contain { commands: ["hello", "world"] } 
+```
+3. [COTChannel Data model](/docs/documentation/api/communication/channels)
+4. [COTMessage Data model](/docs/documentation/api/communication/messages)
+5. [COTAnswer Data model](/docs/documentation/api/surveys/answers)
+6. [COTTask Data model](/docs/documentation/api/tasks/tasks) 
+7. [COTTaskGroup Data model](/docs/documentation/api/tasks/task_groups)
+8. ObjectID[T]: 24-character unique identifier that represents an object of type T
+
 
 ## How to use Cotlang {#how-to-use-cotlang}
 To configure the type of stages, COTlang is useful to easily get information from the database.
