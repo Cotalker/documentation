@@ -7,29 +7,42 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 <img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
+<br/>
+
+<div className="alert alert--secondary">
+
+## Summary
+Learn here how to create and edit _workflow groups_. Familiarize yourself with the [initial settings panel](#initial-settings-panel) and the [create/edit workflow group settings panel](#create-edit-a-workflow-group).
+
+</div>
+<br/>
 
 
-
-### Initial Settings Panel {#initial-settings-panel}
-From the initial settings panel, you can find the entire list of _workflow groups_ that have been created. 
+## Initial Settings Panel {#initial-settings-panel}
+From the initial settings panel, you can find the entire list of _workflow groups_ that have been created. Read below to see how you can: 
+- [Create and edit workflow groups](#create-edit-a-workflow-group)
+- [Configure workflows](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel)
+- [View workflow group channels](/docs/documentation/admin/admin_channels#edit--create-single-channel)
 
 _Workflow groups settings panel shown below:_
 
 <img alt="workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_groups_00.png')} />
 <br/><br/>
 
-New _workflow groups_ can be created by pressing the <span class="badge badge--secondary">+</span> icon found in the upper right-hand corner. 
+
+**Create a new workflow group:** New _workflow groups_ can be created by pressing the <span class="badge badge--secondary">+</span> icon found in the upper right-hand corner. Once you press the icon, the [create a workflow group settings panel](#create-edit-a-workflow-group) will open up.
+
 
 Further icon descriptions can be found in the [Overview section](/docs/documentation/admin/admin_overview).
 
-_The table information is explained below:_
+_The "Initial Settings Panel" table information is explained below:_
 - **Icon**: Group icon
 - **Name**: Visible group name.
 - **Initial Workflow**: Workflow which starts off the task.
 - **Options**: _Configure Workflows_ - _View Channels_ - _Edit Workflow Group_
 
 :::note
-  _[**Configure Workflows**](#configure-workflows), [**View Channels**](/docs/documentation/admin/admin_channels#edit--create-single-channel), and [**Edit Workflow Group**](#create-edit-a-workflow-group) options are represented respectively by the following icons:_
+  _**Configure Workflows**, **View Channels**, and **Edit Workflow Group** options are represented respectively by the following icons:_
 
 <img alt="workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_options_00.png')} />
 <br/>
@@ -38,7 +51,7 @@ _The table information is explained below:_
 
 <br/>
 
-### Create/Edit a Workflow Group {#create-edit-a-workflow-group}
+## Create/Edit a Workflow Group {#create-edit-a-workflow-group}
 After choosing to create or edit a _workflow group_ from the [initial settings panel](#initial-settings-panel), you will see the following settings panel:
 
 <img alt="workflow group settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_create_group_00.png')} />
@@ -49,7 +62,7 @@ After choosing to create or edit a _workflow group_ from the [initial settings p
 
 
 
-### - <span className="badge badge--secondary">General Information</span> {#general-information}
+### <span className="badge badge--secondary">General Information</span> {#general-information}
 _Basic setup and display options._
 
 <div className="container box">
@@ -84,7 +97,7 @@ A _parent group_ with a direct access icon in the _main menu bar_ would host a c
 
 :::
 
-### - <span className="badge badge--secondary">Icon Fields</span> {#icon-section}
+### <span className="badge badge--secondary">Icon Fields</span> {#icon-section}
 _Configures the group symbol shown on the Main Menu Bar._
 
 <div className="container box">
@@ -106,7 +119,7 @@ _Configures the group symbol shown on the Main Menu Bar._
 </div>
 <br/>
 
-### - <span className="badge badge--secondary">Help Fields</span> {#help-section}
+### <span className="badge badge--secondary">Help Fields</span> {#help-section}
 _Sets up onboarding when users log in to the app or website._
 
 <div className="container box">
@@ -142,7 +155,7 @@ We recommend using [Lottie File](https://lottiefiles.com/).
 </div>
 <br/>
 
-### - <span className="badge badge--secondary">Layout Fields</span> {#design-section}
+### <span className="badge badge--secondary">Layout Fields</span> {#design-section}
 _Configures how channels are displayed in a workflow group._
 
 <div className="container box">
@@ -170,7 +183,7 @@ _Configures how channels are displayed in a workflow group._
 </div>
 <br/>
 
-### - <span className="badge badge--secondary">Channel Creation Fields</span> {#channel-creation-section}
+### <span className="badge badge--secondary">Channel Creation Fields</span> {#channel-creation-section}
 The description of the _channel creation_ fields is as follows:
 
 <div className="container box">
@@ -188,7 +201,7 @@ The description of the _channel creation_ fields is as follows:
 </div>
 <br/>
 
-### - <span className="badge badge--secondary">Secondary Actions</span> {#secondary-actions}
+### <span className="badge badge--secondary">Secondary Actions</span> {#secondary-actions}
 
 Here you can configure the _Actions_ button –a green floating button that appears at the bottom of the group's channel panel– where users can access URLs, which can be configured to open external websites, go to different sections of the app, answer surveys, and create tasks.
 

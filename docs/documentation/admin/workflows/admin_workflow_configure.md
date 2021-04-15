@@ -9,28 +9,30 @@ import Highlight from '@theme/Highlight';
 <img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
 <br/>
 
-:::note Summary
-Configuring workflows and workflow groups.
-:::
+<div className="alert alert--secondary">
 
-## Introduction {introduction}
-A _workflow group_ can contain one or more workflows. The workflow group and individual workflow are configured through the _workflows settings panel_.
+## Summary
+A _workflow group_ can contain one or more workflows. The workflow group and individual workflows are configured through the _workflows settings panel_. Learn here about configuring a _workflow group_, as well as how to create and configure individual _workflows_, their _states_, and SLAs.  
 
-You can access the _workflows settings panel_ by 
-
+</div>
+<br/>
 
 ## Workflows Settings Panel {#workflows-settings-panel}
- Once a _workflow-group_ is created, the group's initial workflow, along with other basic settings, can be configured from this settings panel.
+ _Workflow-groups_ can be created and accessed for configuration through the [initial settings panel](/docs/documentation/admin/workflows/admin_workflow_groups#initial-settings-panel). Once accessed for configuration, you will be taken to the _workflows settings panel_, which we wil cover here. Things like the group's initial workflow, how tasks are viewed and sorted, along with other basic settings, can be configured from this settings panel.
 
-Below, you can see what the settings panel looks like. It has three basic sections: **Configuration** settings panel,**workflow diagram**, **workflow list**.
+_Below, you can see what the settings panel looks like. It has three basic sections: **Configuration** settings panel, **workflow diagram**, **workflow list**._
+
+_In the next section you will find the descriptions of the [**Configuration**](#workflows-configuration-panel) fields._
+
+_Whenever you [create](#create-a-single-workflow) or [edit](#edit-a-single-workflow) an individual workflow, the changes will appear in the **workflow diagram** and **workflow list**._
 
 <img alt="settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_wfconfiguration.png')} />
 <br/>
 <br/>
 
-_Below you will find descriptions of the **Configuration** section. The setup for **workflow diagram** and **workflow list** can be found in [Create a Workflow](/docs/documentation/admin/admin_workflow#create-a-single-workflow) and [Edit a Workflow](/docs/documentation/admin/admin_workflow#edit-a-single-workflow) sections._
 
-### - <span className="badge badge--secondary">Configuration Fields</span> {#workflows-configuration-panel}
+
+### <span className="badge badge--secondary">Configuration Fields</span> {#workflows-configuration-panel}
 
 <div className="container box">
 <div className="row table-row-1">
@@ -81,12 +83,20 @@ Options are determined by the [global filters](/docs/documentation/client/taskvi
 <div className="row table-row-2">
 <div className="col col--3"><b>Read Permissions:</b></div>
 <div className="col col--5">Permissions required to view the workflows.</div>
-<div className="col col--4"><em>[List of availavle Read Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)</em></div>
+<div className="col col--4"><em>
+
+[List of available Read Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
+
+</em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Write Permissions:</b></div>
 <div className="col col--5">Permissions required to edit the workflows.</div>
-<div className="col col--4"><em>[List of availavle Write Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)</em></div>
+<div className="col col--4"><em>
+
+[List of available Write Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
+
+</em></div>
 </div>
 
 </div>
@@ -96,8 +106,8 @@ Options are determined by the [global filters](/docs/documentation/client/taskvi
 You may add as many permissions as you want, but do not change the previously assigned _permissions_. Nor should you change the _initial workflow_. These changes could alter existing workflows' functionality.  If you want to unassign a _permission_ or change the initial _workflow_, please check with the support team.
 :::
 
-### Create a Workflow {#create-a-single-workflow}
-You can create a new workflow by pressing the <span className="badge badge--secondary">+</span> icon found in the upper right-hand corner of the [Workflows Settings Panel](/docs/documentation/admin/admin_workflow#workflows-settings-panel).
+## Create a Workflow {#create-a-single-workflow}
+You can create a new workflow by pressing the <span className="badge badge--secondary">+</span> icon found in the upper right-hand corner of the [Workflows Settings Panel](#workflows-settings-panel).
 
 After pressing the icon to create a new workflow , you will see the following settings panel:
 
@@ -106,13 +116,16 @@ After pressing the icon to create a new workflow , you will see the following se
 <br/>
 
 :::note
-At first, you can only define general specifications for the _workflow_, but after saving the _workflow_ you can create states for it by [editing](/docs/documentation/admin/admin_workflow#create-edit-single-state) it.
+At first, you can only define general specifications for the _workflow_, but after saving the _workflow_ you can create states for it by choosing to [edit](#edit-a-single-workflow) it.
 :::
 
 
-### - <span className="badge badge--secondary">Settings Panel Fields </span> {#create-workflow-fields}
+### <span className="badge badge--secondary">Settings Panel Fields</span> {#create-workflow-fields}
 
 <div className="container box">
+<div className="row table-row-title">
+<div className="col col--12"><b>General information</b></div>
+</div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Name:</b></div>
 <div className="col col--5">Workflow's display name.</div>
@@ -136,6 +149,9 @@ Options are: _bound_, _unbound_, and _unbound-hierarchy_. Refers to the relation
 
 </em></div>
 </div>
+<div className="row table-row-title">
+<div className="col col--12"><b>Asset</b></div>
+</div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Type:</b></div>
 <div className="col col--5">
@@ -155,10 +171,16 @@ Options are: _unique_ or _generic_.
 <div className="col col--5">An element from the chosen collection must be selected. This element is used to define the task that flows through the workflow.</div>
 <div className="col col--4"><em>This field appears once the collection is chosen.</em></div>
 </div>
+<div className="row table-row-title">
+<div className="col col--12"><b>Additional fields</b></div>
+</div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Additional field Nº:</b></div>
 <div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>Tip: The added collections with their respective elements can indicate things like task priority or corresponding company department.</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12"><b>States</b></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>State list:</b></div>
@@ -167,7 +189,11 @@ Options are: _unique_ or _generic_.
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Start from:</b></div>
-<div className="col col--5">Option that indicates a survey that will initialize the task.</div>
+<div className="col col--5">
+
+Indicates that a survey that will initialize the task. Once selected, the <span className="badge badge--secondary">Share</span> button will appear in [editing mode](#edit-a-single-workflow).
+
+</div>
 <div className="col col--4"><em>All created surveys will appear as options, but only the survey created for the task should be chosen.</em></div>
 </div>
 <div className="row table-row-2">
@@ -182,8 +208,8 @@ Options are: _unique_ or _generic_.
 </div>
 <br/>
 
-### - Chat Channels Options (details) {#further-details}
-In the [settings panel](/docs/documentation/admin/admin_workflow#create-workflow-fields), workflow chat channels can be set to one of three options. Each option permits a different relationship between the task and its channel. The options are explained below:
+### Chat Channels Options (details) {#further-details}
+In the [Create Workflow settings panel](#create-a-single-workflow), workflow chat channels can be set to one of three options. Each option permits a different relationship between the task and its channel. The options are explained below:
 
 *Bound* (two-way data binding):
 - Task copies main-state and sub-states to bounded channel.
@@ -201,17 +227,17 @@ In the [settings panel](/docs/documentation/admin/admin_workflow#create-workflow
 - Doesn't have a channel id, and always checks parent on update.
 - This channel will be automatically set or unset depending on the current task hierarchy.
 
-### Edit a Workflow {#edit-a-single-workflow}
-Created _workflows_ can be edited and configured exhaustively by selecting them from the _workflows list_ in the [_workflows settings panel_](/docs/documentation/admin/admin_workflow#workflows-settings-panel).
+## Edit a Workflow {#edit-a-single-workflow}
+Created _workflows_ can be edited and configured exhaustively by selecting them from the _workflows list_ in the [_workflows settings panel_](#workflows-settings-panel).
 
-Apart from the settings mentioned for [creating a workflow](#create-a-single-workflow), editing an existing workflow permits you to [create states](#create-edit-single-state) and [configure service-level agreement (SLA) settings](create-edit-sla).
+Apart from the settings mentioned for [creating a workflow](#create-a-single-workflow), editing an existing workflow permits you to [create/edit states](#create-edit-single-state) and [configure service-level agreement (SLA) settings](#create-edit-sla).
 
 _Once you open a workflow for editing, the settings panel will look something like this:_
 
 <img alt="edit workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_edit_workflow_00.png')} />
 <br/>
 
-### - <span className="badge badge--secondary">States Section</span> {#states-section}
+### <span className="badge badge--secondary">States Section</span> {#states-section}
 
 <div className="box container">
 <div className="row table-row-1">
@@ -239,17 +265,29 @@ In the table, you can see workflow states listed by _name_, _type_, and _date la
 <div className="row table-row-2">
 <div className="col col--12">
 
-To create a new state, press the <span className="badge badge--secondary">+</span> icon in the **Workflow states** section.
-
+To [create a new state](#create-edit-single-state), press the <span className="badge badge--secondary">+</span> icon in the **Workflow states** section.
 </div>
 </div>
 <div className="row table-row-1">
 <div className="col col--12">
 
-To edit an existing _state_, click on the state listed in the _table_.
+To [edit](#create-edit-single-state) an existing _state_, click on the state listed in the _table_. 
 
 </div>
 </div>
+
+<div className="row table-row-2">
+<div className="col col--12">
+
+The <span className="badge badge--secondary">Share</span> button appears when a _survey_ is selected in the **Start from** field. 
+
+Press this button to get a **link** which will permit you to share the survey outside the Cotalker environment.
+
+See the [Survey](/docs/documentation/admin/admin_survey) documentation for more details.
+
+</div>
+</div>
+
 </div>
 <br/>
 
@@ -259,44 +297,223 @@ To edit an existing _state_, click on the state listed in the _table_.
 - The collection is assigned through the **State list** field in the [workflow settings panel](#create-workflow-fields).
 :::
 
-### - Create/Edit State {#create-edit-single-state}
+### Create/Edit State {#create-edit-single-state}
 
-After
-<img alt="" src={useBaseUrl('img/admin_state_create.png')} />
-<br/><br/>
-Below you will find the description and notes for each field in the pictures above.
-<br/><br/>
+You will be taken to the following settings panel after pressing the <span className="badge badge--secondary">+</span> create state icon or after clicking on the workflow state from the table in the [**States** section](#states-section).
 
-| Field | Description | Notes | 
-| ---- | ----------- | ----- | 
-| Type | State type. Corresponds to the location of the state. There are three options: closed (conects to end), in progress (connect to other states) or new (connect with to start). |  |
-| Elements | Choose the element corresponding to the state you want to create | The collection was already selected on the created Statemachine. |
-| Add state change | Add successor states. If it is the final state, it has none. The name of the state has to be added and the capacity for change must be defined. It could be the survey, the task-ui (task) or * (both). | The added states must already be created in the state machine. |
-| State machine | Select the sub - state machine | The added state machine must already be created in the workflow |
-| Add survey trigger | A survey is used to trigger the passage of the state to its successors. |  |
+<img alt="create state" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_create_state_00.png')} />
+<br/>
+<br/>
 
-The Routine builder is explained in the [Routine Section](/docs/documentation/automation/admin_routine).
+_Below you will find the descriptions and notes for each field in the **Create State** settings panel._
 
-### - Create/Edit SLA {#create-edit-sla}
+<div className="container box">
+<div className="row table-row-title">
+<div className="col col--12"><b>General information</b></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Type:</b></div>
+<div className="col col--5">
 
-The SLA of a state machine is used to execute a routine when a task does not change from one state to another in a stipulated time. In the image, the SLA list is shown. <br/><br/>
+Indicates the state type. Options are: _new_ (connects with start), _in progress_ (connects to other states), or _closed_ (connects to end).
 
+</div>
+<div className="col col--4"><em>This field is mandatory.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Elements:</b></div>
+<div className="col col--5">Enter the state name.</div>
+<div className="col col--4"><em>
 
-In this section you can edit or creat a single state of a State Machine.
-<img alt="" src={useBaseUrl('img/admin_sla.png')} />
-<br/><br/>
-Below you will find the description and notes for each field in the pictures above.
-<br/><br/>
+The state should already exist as an element in the collection selected previously in the State list field in the [States](#states-section) section.
 
-| Field | Description | Notes | 
-| -- | ----- | ------------ | 
-| Name |  The visual name of the SLA | It dosen't have to be unique  | 
-| Code | The identifier of the SLA | It only accept lowercase, number and underscore and start with the letters. Once you create and save the code, you cannot change it.   |  |
-| State types | The type of state selected is specified in the field next to it. |  |
-| States | One or more of the states of the State Machine is specified. | If it is the *start*, the start of the state is the one defined by the SLA. If it is the end, it means that the start of the state is the one that stops the SLA. |
-| Time Type | The option are: (1)Dynamic or (2)Static | **Dynamic** means that the time is calculated with task information. <br/> **Static** means that the time can be a specific date or calculated from amount of months, days, or hours from the date the action is executed |
-| Time | The date or time is specified that the task is supposed to go from the initial state to the final state is specified. | The format for Static type is as follows: <br/>"HOURS&#124;*Number*" spedified the *number* hours from action, <br/>"DAYS&#124;*Number*" specified the *number*  days form action or <br/>"DATE&#124;$YYYY-$MM-$DDT${HH + 5}:00:000Z" specified a date.<br/> The format for Dynamic type is as follows: <br/> "DATE&#124;endDate" use the task endDate,  <br/> "DATE&#124;parent&#124;endDate" use parent task endDate |
-| Reset | If active, *time* will start again when the task returns to *start state*. |  |
-| Repeat | If active, *time* will cycle infinitely until the condition is met. Therefore, the SLA will be executed as many times as necessary. Otherwise, the SLA will only run once. |  |
+</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12"><b>State changes</b></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Add state change:</b></div>
+<div className="col col--5">Indicates successor states. If it is the final state, this field is not required. Multiple state changes can be added, allowing diverse course of action.</div>
+<div className="col col--4"><em>When pressed, the other fields and buttons appear.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>State:</b></div>
+<div className="col col--5">Enter the name of the succeeding state.</div>
+<div className="col col--4"><em>States must have been previously saved into the workflow.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Can change:</b></div>
+<div className="col col--5">
 
-The Routine builder is explained in the [Routine Section](/docs/documentation/automation/admin_routine).
+Options are: _survey_, _task-ui_ (task), or _*_ (both).
+
+</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Start form:</b></div>
+<div className="col col--5">Indicates that a survey that will initialize with the task.</div>
+<div className="col col--4"><em>All created surveys will appear as options, but only the survey created for the task should be chosen.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>+ Edit Routine:</b></div>
+<div className="col col--5">Routines automate processes within the workflow.</div>
+<div className="col col--4"><em>
+
+[Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
+
+</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12"><b>Subtask</b></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Workflow:</b></div>
+<div className="col col--5">Indicates a subtask that continues through a different workflow.</div>
+<div className="col col--4"><em>Only existing workflows in the workflow group can be selected.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>+ Edit Routine:</b></div>
+<div className="col col--5">Routines automate processes within the workflow.</div>
+<div className="col col--4"><em>
+
+[Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
+
+</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12"><b>Survey triggers</b></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>+ Add Survey Trigger:</b></div>
+<div className="col col--5">A survey is used to trigger the passage of the state to its successors. Multiple survey triggers can be added.</div>
+<div className="col col--4"><em>When pressed, new fields appear.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Survey:</b></div>
+<div className="col col--5">Choose from existing surveys.</div>
+<div className="col col--4"><em>
+
+[Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
+
+</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>+ Edit Routine:</b></div>
+<div className="col col--5">Routines automate processes within the workflow.</div>
+<div className="col col--4"><em>
+
+[Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
+
+</em></div>
+</div>
+</div>
+<br/>
+
+### Create/Edit SLA {#create-edit-sla}
+
+A service-level agreement (SLA) can be incorporated into the workflow. When a task does not change from one state to another at a pre-determined time, a routine can be built to take an action, like sending a reminder to whomever was assigned the task.
+
+_The **SLAs** section is located at the bottom of the [settings panel](#edit-a-single-workflow). You should see something like this:_
+
+<img alt="sla section" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_sla_00.png')} />
+<br/>
+<br/>
+
+**Create a new SLA:** Press the <span className="badge badge--secondary">+</span> icon and the Create _SLA settings panel_ opens up.
+
+_SLA settings panel:_
+
+<img alt="sla section" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_sla_01.png')} />
+<br/>
+<br/>
+
+_Fields described below:_
+
+<div className="container box">
+<div className="row table-row-title">
+<div className="col col--12"><b>General information</b></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--2"><b>Name:</b></div>
+<div className="col col--6">SLA's display name.</div>
+<div className="col col--4"><em>It doesn't have to be unique.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--2"><b>Code:</b></div>
+<div className="col col--6">SLA's identification name. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter.</div>
+<div className="col col--4"><em> The code cannot be edited once it is saved.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--2"><b>State types:</b></div>
+<div className="col col--6">
+
+State type options are _closed_, _in-progress_, and/or _new_. **START** state types indicate type when the SLA routine is activated; **END** state types, when it is deactivated. 
+
+</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--2"><b>States:</b></div>
+<div className="col col--6">Choose the states that activate the SLA routine (START) and deactivate it (END).</div>
+<div className="col col--4"><em>Only exiting states can be chosen.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--2"><b>Time type:</b></div>
+<div className="col col--7">
+
+Options are: 
+- _Dynamic_: time is calculated with task information.
+- _Static_: time can be a specific date or calculated from amount of months, days, or hours from the date the action is executed.
+
+</div>
+<div className="col col--3"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--2"><b>Time:</b></div>
+<div className="col col--3">
+
+Specifies date or time that the task is supposed to go from its initial to final state.
+
+</div>
+<div className="col col--7">
+
+Static type format:
+- "HOURS&#124;*Number*" = *number* of hours from the action.
+- "DAYS&#124;*Number*" = *number* of days from the action.
+- "DATE&#124;$YYYY-$MM-$DDT${HH + 5}:00:000Z" = date and time.
+
+Dynamic type format:
+- "DATE&#124;endDate" = task's endDate.
+- "DATE&#124;parent&#124;endDate" = parent task's endDate.
+
+</div>
+</div>
+
+<div className="row table-row-1">
+<div className="col col--2"><b>Reset:</b></div>
+<div className="col col--6">
+
+If active, _time_ will start again when the task returns to START state.
+
+</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--2"><b>Repeat:</b></div>
+<div className="col col--6">If active, time will cycle infinitely until the condition is met. Therefore, the SLA routine will be executed as many times as necessary. Otherwise, the SLA will only run once.</div>
+<div className="col col--4"><em>Use with precaution.</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12"><b>Routine builder</b></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--12"><em>
+
+[Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
+
+</em></div>
+</div>
+</div>
+<br/>

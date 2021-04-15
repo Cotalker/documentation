@@ -85,6 +85,7 @@ html[data-theme='light'] {
   --note-title-color: #113355;
   --row-1-color: var(--ifm-color-white);
   --row-2-color: #f5f6f7;
+  --row-title-color: #e1e2e4;
   --box-color: lightgrey;
 }
 
@@ -99,6 +100,7 @@ html[data-theme='dark'] {
   --ifm-button-color: var(--ifm-font-color-base-inverse);
   --note-title-color: #113355;
   --row-2-color: #1c1e21;
+  --row-title-color: #000000;
   --box-color: #606770;
 }
 
@@ -239,6 +241,18 @@ p, td, th {
   border-left-width: 0;
   border-right-width: 0;
   background-color: var(--row-2-color);
+  padding: 1%;
+  align-items: center;
+}
+
+.table-row-title {
+  border-color: var(--box-color);
+  border-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  background-color: var(--row-title-color);
   padding: 1%;
   align-items: center;
 }
