@@ -18,15 +18,15 @@ import Highlight from '@theme/Highlight';
 
 0. [Introduction](#introduction)
 1. [Workflow Groups](/docs/documentation/admin/workflows/admin_workflow_groups)
-    1. Initial Settings Panel
-    2. Create/Edit a Workflow Group
+    1. [Initial Settings Panel](/docs/documentation/admin/workflows/admin_workflow_groups#initial-settings-panel)
+    2. [Create/Edit a Workflow Group](/docs/documentation/admin/workflows/admin_workflow_groups#create-edit-a-workflow-group)
 2. [Workflow Configuration](/docs/documentation/admin/workflows/admin_workflow_configure)
-    1. Workflows Settings Panel
-    2. Create a Workflow
-    3. Edit a Workflow
+    1. [Workflows Settings Panel](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel)
+    2. [Create a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#create-a-single-workflow)
+    3. [Edit a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#edit-a-single-workflow)
 3. [Required Surveys](/docs/documentation/admin/workflows/admin_workflow_required_survey)
-    1. Setting up a required survey for a new task
-    2. Required survey for modifying task states.
+    1. [Setting up a required survey for a new task](/docs/documentation/admin/workflows/admin_workflow_required_survey#setting-up-a-required-survey-for-a-new-task_)
+    2. [Required survey for modifying task states](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)
 
 </div>
 <br/>
@@ -45,3 +45,8 @@ A _Workflows_ is made up of one or more _State Machines_. In a state machine, al
 
 Workflows are hosted inside a [_workflow group_](/docs/documentation/admin/workflows/admin_workflow_groups). _Workflow groups_ can host multiple workflows and permit interaction among them.
 
+
+<br/>
+<br/>
+
+_[Go back to Table of Contents](#table-of-contents)_
