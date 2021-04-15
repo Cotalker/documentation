@@ -52,24 +52,21 @@ _See the image below:_
 1. The QuestionExec function **MUST** be written as a function named `run`, without any arguments e.g., 
 
   ```javascript
-  const run = () => { yourCode };
-  ```
-  
-  or
-
-  ```javascript
-  function run () { yourCode }
+  function run () { /* yourCode; */ return []; }
   ```
 
 2. The function **MUST** return a _command_ array with the following structure:
   
   ```javascript
-  { 
-    cmd: <cmd-name>, 
-    value: <cmd-value>, 
-    result: <cmd-result> 
-  }
+  return [
+    { 
+      cmd: <cmd-name>, 
+      value: <cmd-value>, 
+      result: <cmd-result> 
+    }
+  ];
   ```
+The function may return more than one command.
   
 ### Command Array Elements {#command-array-elements}
 
@@ -78,7 +75,7 @@ _See the image below:_
 | **SET_READONLY** | "true", "false" | | Sets the field to read-only mode.|
 | **SET_RESPONSES** | [value] | | Replaces the value stored in the field. |
 | **SET_REQUIRED** | "true", "false" | | Sets the field as mandatory, requiring an answer. |
-| **RESULT** | | "true", "false" | Validates responses with a "true" or "false" _result_ |
+| **RESULT** | Custom error message | "true", "false" | Validates responses with a "true" or "false" _result_ |
 
 ### Parameters (Context Variables) {#parameters-context-variables}
 _The following context variables are available for use in the code but must be selected from the Parameters menu for them to be accessible:_
