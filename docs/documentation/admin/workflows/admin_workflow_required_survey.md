@@ -23,7 +23,7 @@ By default, _users_ can create a _task_ or change its state through the _tasks v
 <!-- TODO insert image from Tasks View with procedural Survey -->
 
 
-## Setting up a _procedural survey_ for a _new task_ {#setting-up-a-procedural-survey-for-a-new-task_}
+## New Task Procedural Survey {#setting-up-a-procedural-survey-for-a-new-task_}
 Without selecting this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
 
 By setting up a _procedural survey_, a _channel_ is created within a _workflow group_ to host the newly created task and will display the _survey_ used to create and modify the _task_.
@@ -80,7 +80,7 @@ When using a procedural survey and some input error prevents a task from being c
     ```$VALUE#answer|user```
 
 
-## _procedural survey_ for modifying task states {#procedural-survey-for-modifying-task-states}
+## Modifying Task States Procedural Survey {#procedural-survey-for-modifying-task-states}
 
 Configuring a _procedural survey_ for when _users_ want to modify a _task's state_ is a little bit simpler than the previous case. Unlike the _procedural surveys_ used for creating _tasks_, it isn't necessary to add a bot or specify a routine to the _procedural survey_ when changing a task's state.
 

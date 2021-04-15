@@ -25,8 +25,8 @@ import Highlight from '@theme/Highlight';
     2. [Create a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#create-a-single-workflow)
     3. [Edit a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#edit-a-single-workflow)
 3. [Procedural Surveys](/docs/documentation/admin/workflows/admin_workflow_required_survey)
-    1. [Setting up a procedural survey for a new task](/docs/documentation/admin/workflows/admin_workflow_required_survey#setting-up-a-required-survey-for-a-new-task_)
-    2. [Procedural survey for modifying task states](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)
+    1. [New Task Procedural Survey](/docs/documentation/admin/workflows/admin_workflow_required_survey#setting-up-a-required-survey-for-a-new-task_)
+    2. [Modifying Task States Procedural Survey](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)
 
 </div>
 <br/>
