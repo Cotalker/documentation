@@ -12,6 +12,69 @@ import Highlight from '@theme/Highlight';
 
 ## April 2021 {#april-2021}
 
+
+<!-- New Feature begins after this line.-->
+
+<div class="card-demo">
+<div class="card">
+<div class="card__header">
+
+### Permissions {#permissions}
+
+
+
+<small class="avatar__subtitle">April 13, 2021</small>
+</div>
+<div class="card__image">
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/updates/update_permission.jpg')} />
+<br/>
+</div>
+<div class="card__body">
+
+It's always good to have an old friend around. That's why we have now implemented _bot versions_! We have a small army of predefined system bots that are used as **stage types** in _routines_. And every once in a while, we tweak the bots extending functions and improving automations. But, because your existing _routines_ and _bots_ might not work with newer versions, you can keep the old ones around just in case. 🤖
+
+</div>
+<div class="card__footer">
+
+<a class ="button button--secondary button--block" href="/docs/documentation/automation/admin_routine#stage-type-versions">See Documentation</a>
+<br/>
+
+</div>
+</div>
+</div>
+<br/>
+<br/>
+
+<!-- New Feature begins after this line.-->
+
+<div class="card-demo">
+<div class="card">
+<div class="card__header">
+
+### Bot Versions {#bot-versions}
+
+<small class="avatar__subtitle">April 13, 2021</small>
+</div>
+<div class="card__image">
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/updates/update_old_bot.jpg')} />
+<br/>
+</div>
+<div class="card__body">
+
+It's always good to have an old friend around. That's why we have now implemented _bot versions_! We have a small army of predefined system bots that are used as **stage types** in _routines_. And every once in a while, we tweak the bots extending functions and improving automations. But, because your existing _routines_ and _bots_ might not work with newer versions, you can keep the old ones around just in case. 🤖
+
+</div>
+<div class="card__footer">
+
+<a class ="button button--secondary button--block" href="/docs/documentation/automation/admin_routine#stage-type-versions">See Documentation</a>
+<br/>
+
+</div>
+</div>
+</div>
+<br/>
+<br/>
+
 <!-- New Feature begins after this line.-->
 
 <div class="card-demo">
@@ -20,20 +83,20 @@ import Highlight from '@theme/Highlight';
 
 ### File Sharing Security Update {#file-sharing-security}
 
-<small class="avatar__subtitle">April 13, 2021</small>
+<small class="avatar__subtitle">April 12, 2021</small>
 </div>
 <div class="card__image">
-<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/admin_survey_tree_selector_01.png')} />
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/updates/stockvault-digital-padlock-on-data-screen-web-and-data-security180399.jpg')} />
 <br/>
 </div>
 <div class="card__body">
 
-You can never be too careful... But now you can relax a bit with Cotalker's new implementation of file signatures for some extra security. Running completely in the back-end, this new feature checks user authentication before allowing users to view files for 15 minutes, after which they would have to request the file again. This new feature update also includes improvement in file structures and switching from a synchronous to an asynchronous upload operation. Admins can configure this feature through API 
+You can never be too careful... But now, you can relax a bit because uploaded files are now digitally signed for some extra security. Running completely in the back-end, this new feature checks user authentication before allowing users to view files for 15 minutes, after which they would have to request the file again. This new feature update also includes improvement in the file structure and switching from a synchronous to an asynchronous upload operation. More updates soon to come!
 
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/api/communication/files">See Documentation</a>
 <br/>
 
 </div>
