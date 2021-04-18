@@ -165,6 +165,7 @@ module.exports = {
         'documentation/automation/existing_routines',
         'documentation/automation/question_exec',
         'documentation/automation/scheduling',
+        'documentation/automation/sla'
 
       ],
       collapsed: true,
