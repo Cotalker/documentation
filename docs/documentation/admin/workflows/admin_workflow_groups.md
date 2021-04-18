@@ -210,7 +210,7 @@ _The Actions button and its corresponding Actions Menu will look something like 
 <br/>
 
 :::note
-New channels can also be created through the _Action_ button. That option is activated in the [Channel Creation Section](admin_workflow#channel-creation-section)
+New channels can also be created through the _Action_ button. That option is activated in the [Channel Creation Section](#channel-creation-section)
 :::
 
 <br/>
