@@ -1,7 +1,7 @@
 ---
 id: admin_workflow_required_survey
-title: III. Procedural Surveys
-sidebar_label: III. Procedural Surveys
+title: III. Task Procedure Forms (TPF)
+sidebar_label: III. Task Procedure Forms
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -13,23 +13,28 @@ import Highlight from '@theme/Highlight';
 
 ## Summary {#summary}
 
-By default, _users_ can create a _task_ or change its state through the _tasks view_ section. However, _administrators_ may require _users_ to complete a _survey_ before **creating or changing the state of a task**. This feature – known as **procedural survey** – allows _administrators_ to:
+By default, _users_ can create a _task_ or change its state through the _tasks view_ section. However, _administrators_ may require _users_ to complete a _survey_ before **creating a new task** or **before changing the state of a task**. This type of _survey_ – known as a **task procedure form (TPF)** – allows _administrators_ to:
 - control what type of _tasks_ users create, 
 - ensure that the _users_ provide all necessary information when creating _tasks_,  
 - and manage _task_ state changes.
 
 </div>
+<br/>
 
-<!-- TODO insert image from Tasks View with procedural Survey -->
+:::tip
+Task procedure forms for creating new tasks can also be [shared](/docs/documentation/admin/admin_survey) outside the Cotalker environment. 
+:::
+
+<!-- TODO insert image from Tasks View with procedure form -->
 
 
-## New Task Procedural Survey {#setting-up-a-procedural-survey-for-a-new-task_}
+## TPFs for New Tasks {#setting-up-a-procedure-form-for-a-new-task_}
 Without selecting this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
 
-By setting up a _procedural survey_, a _channel_ is created within a _workflow group_ to host the newly created task and will display the _survey_ used to create and modify the _task_.
+By setting up a _task procedure form_, a _channel_ is created within a _workflow group_ to host the newly created task and will display the _survey_ used to create and modify the _task_.
 
 :::info
-When using a procedural survey and some input error prevents a task from being created, the _channel_ will be generated but without an assigned task. It will be the implementor's duty to notify this problem adequately in the _channel_; the _user_ must be told to re-send the _survey_ and make the necessary corrections to create the _task_ appropriately.
+When using a task procedure form and some input error prevents a task from being created, the _channel_ will be generated but without an assigned task. It will be the implementor's duty to notify this problem adequately in the _channel_; the _user_ must be told to re-send the _survey_ and make the necessary corrections to create the _task_ appropriately.
 :::
 
 ### Step-by-step configuration: {#step-by-step-configuration}
@@ -71,7 +76,7 @@ When using a procedural survey and some input error prevents a task from being c
 
     ```$VALUE#meta|parentTask```
 
-11. The _procedural survey_ must be associated as an **answer** to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **answers** field: 
+11. The _task procedure form_ must be associated as an **answer** to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **answers** field: 
 
     ```$VALUE#answer|uuid```
 
@@ -80,11 +85,11 @@ When using a procedural survey and some input error prevents a task from being c
     ```$VALUE#answer|user```
 
 
-## Modifying Task States Procedural Survey {#procedural-survey-for-modifying-task-states}
+## TPFs for Modifying Task States {#procedure-form-for-modifying-task-states}
 
-Configuring a _procedural survey_ for when _users_ want to modify a _task's state_ is a little bit simpler than the previous case. Unlike the _procedural surveys_ used for creating _tasks_, it isn't necessary to add a bot or specify a routine to the _procedural survey_ when changing a task's state.
+Configuring a _procedure form_ for when _users_ want to modify a _task's state_ is a little bit simpler than the previous case. Unlike the _procedure forms_ used for creating _tasks_, it isn't necessary to add a bot or specify a routine to the _procedure form_ when changing a task's state.
 
-This feature makes configuring the _procedural survey_ easier. In case an automatic response – like sending an email to the CEO –  is desired after changing the state of a task, a bot can be configured through the **Edit routine** button.
+This feature makes configuring the _procedure form_ easier. In case an automatic response – like sending an email to the CEO –  is desired after changing the state of a task, a bot can be configured through the **Edit routine** button.
 
 :::info
 If a _routine_ is afterwards added, the automatic change of _state_ is disabled and must be then configured manually as a step in the routine.
@@ -110,3 +115,5 @@ If a _routine_ is afterwards added, the automatic change of _state_ is disabled 
 4. Under **State changes**, in **Start form**, choose the _survey_ created to process the _state_ change. (The specific _survey_ must be previously elaborated for this purpose.)
 
 5. If administrators desire an automatic response to occur when a change of _state_ is made, a _bot_ should be created through the **Edit routine** button. Otherwise, it is not necessary to go through this step.
+
+

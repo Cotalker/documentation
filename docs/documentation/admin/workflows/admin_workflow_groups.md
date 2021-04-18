@@ -11,7 +11,7 @@ import Highlight from '@theme/Highlight';
 
 <div className="alert alert--secondary">
 
-## Summary
+## Summary {#summary}
 Learn here how to create and edit _workflow groups_. Familiarize yourself with the [initial settings panel](#initial-settings-panel) and the [create/edit workflow group settings panel](#create-edit-a-workflow-group).
 
 </div>
