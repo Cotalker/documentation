@@ -6,17 +6,20 @@ sidebar_label: COTLang
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
+
 # WIP
 
 # Cotlang Overview {#cotlang-overview}
+
 Language created by Cotalker. <br/>
 
 It is used to extract data from different contexts in Cotalker. It is useful to configure the routine.
 
-## Context of the data {#context-of-the-data}
+## Data Context {#data-context}
 This table contains the data to which the different sources have access. For example, if you are using cotlang in a survey trigger routine, you will have direct access to the task. <br/>
 
 #### Coming soon!
+
  
  ### Context language description {#context-language}
 1. `...` Destructuring Operator: each key is merged into the parent object.
@@ -52,7 +55,7 @@ To configure the type of stages, COTlang is useful to easily get information fro
 | JOIN | Concatenate values |  $JOIN#[Some char to join]#[ARG A]#[ARG B]#...#[ARG N] |
 | TIME | Generates date, relative to the current date. | $$TIME#[PARAM1]#[PARAM2] |
 | META | Extracts data from message.meta (Questions). | $META#[EXTRACTOR] |
-| EXTRACTOR | Token values: (1) *Values*: Dive into value or (2) *Operators*: Apply funtion to current data. |
+| EXTRACTOR | Token values: (1) *Values*: Dive into value or (2) *Operators*: Apply function to current data. |
 
 ### Examples {#examples}
 
