@@ -7,18 +7,236 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-# WIP
+# Overview {#cotlang-overview}
 
-# Cotlang Overview {#cotlang-overview}
+Script language created by Cotalker.
 
-Language created by Cotalker. <br/>
-
-It is used to extract data from different contexts in Cotalker. It is useful to configure the routine.
+It is used to extract data from different contexts in Cotalker. It is useful for configuring routines.
 
 ## Data Context {#data-context}
-This table contains the data to which the different sources have access. For example, if you are using cotlang in a survey trigger routine, you will have direct access to the task. <br/>
+This table contains the data to which the different sources have access. For example, if you are using Cotlang in a survey trigger routine, you will have direct access to the task.
 
-#### Coming soon!
+<div className="row table-row-1">
+
+### Global Message Trigger {#global-message-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    channel: COTChannel,
+    message: COTMessage,
+    cmdArgs: Array[string]
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _The source is a global bot that is triggered with a slash command:_ `/command`
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Channel Message Trigger {#channel-message-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+  channel: COTChannel,
+  message: COTMessage,
+  cmdArgs: Array[string]
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Global Survey Trigger {#global-survey-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+  ...COTAnswer,
+  messages: COTMessage
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Channel Survey Trigger {#channel-survey-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    ...COTAnswer,
+    messages: COTMessage
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _Messages have to be active to use them. The source is a bot that is triggered with a survey and is associated with particular channels._
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### SM Survey Trigger {#sm-survey-trigger}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    ...COTTask,
+    sentAnswer: COTAnswer
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: 
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### SM Change State {#sm-change-state}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    ...COTTASK
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: 
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### SM - New Subtask {#new-subtask}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    task: COTTask,
+    parent: COTTask,
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: 
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### SM - New Task {#new-task}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    task: COTTask,
+    parent: COTTask
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: 
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Service-Level Agreement (SLA) {#sla}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    taskId: ObjectId[COTTask],
+    taskGroupId: ObjectId[COTTaskGroup]
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: 
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### Scheduler {#scheduler}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+_custom body_
+
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**:
+
+</div>
+</div>
+
+<div className="row table-row-1">
+
+### SM - Required Survey {#required-survey}
+
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    answer: COTAnswer,
+    meta: {
+        parentTask: ObjectId[COTTask],
+        taskGroup: ObjectId[COTTaskGroup]
+    }
+}
+```
+</div>
+<div className="col col--11 col--offset-1 code-table-2">
+
+**Note**: _notes_
+
+</div>
+</div>
+
+<br/>
 
  
  ### Context language description {#context-language}
