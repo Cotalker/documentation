@@ -73,7 +73,7 @@ This table contains the data to which the different sources have access. For exa
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
+**Note**: _Global Survey Trigger_ is a bot that is triggered with a specific type of survey sent in any channel.
 
 </div>
 </div>
@@ -93,14 +93,14 @@ This table contains the data to which the different sources have access. For exa
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: _Messages have to be active to use them. The source is a bot that is triggered with a survey and is associated with particular channels._
+**Note**: A _Channel Survey Trigger_ is a bot that is triggered with a specific type of survey sent in a specific channel.
 
 </div>
 </div>
 
 <div className="row table-row-1">
 
-### SM Survey Trigger {#sm-survey-trigger}
+### Workflow Survey Trigger {#sm-survey-trigger}
 
 <div className="col col--11 col--offset-1 code-table-1">
 
@@ -113,14 +113,14 @@ This table contains the data to which the different sources have access. For exa
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: 
+**Note**: _Workflow Survey Triggers_ are triggered within any task by a specific survey and at specific states.
 
 </div>
 </div>
 
 <div className="row table-row-1">
 
-### SM Change State {#sm-change-state}
+### Workflow Change State {#sm-change-state}
 
 <div className="col col--11 col--offset-1 code-table-1">
 
@@ -132,14 +132,14 @@ This table contains the data to which the different sources have access. For exa
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: 
+**Note**: _Workflow Change State_ is triggered when a task changes state.
 
 </div>
 </div>
 
 <div className="row table-row-1">
 
-### SM - New Subtask {#new-subtask}
+### Workflow New Subtask {#new-subtask}
 
 <div className="col col--11 col--offset-1 code-table-1">
 
@@ -152,14 +152,14 @@ This table contains the data to which the different sources have access. For exa
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: 
+**Note**: _Workflow New Subtask_ is triggered after a sub-task is created.
 
 </div>
 </div>
 
 <div className="row table-row-1">
 
-### SM - New Task {#new-task}
+### Workflow New Task {#new-task}
 
 <div className="col col--11 col--offset-1 code-table-1">
 
@@ -172,7 +172,7 @@ This table contains the data to which the different sources have access. For exa
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: 
+**Note**: _Workflow New Task_ is triggered after a task is created.
 
 </div>
 </div>
@@ -192,7 +192,7 @@ This table contains the data to which the different sources have access. For exa
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: 
+**Note**: SLAs are time triggered events based on how much time a task is in a specific state.
 
 </div>
 </div>
@@ -208,14 +208,14 @@ _custom body_
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**:
+**Note**: A _Scheduler_ is an event that can be executed at a specific time or at pre-established intervals.
 
 </div>
 </div>
 
 <div className="row table-row-1">
 
-### SM - Required Survey {#required-survey}
+### Workflow Required Survey {#required-survey}
 
 <div className="col col--11 col--offset-1 code-table-1">
 
@@ -231,7 +231,7 @@ _custom body_
 </div>
 <div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: _notes_
+**Note**: _Required Surveys_ are events that are triggered either **before** a new task or sub-task is created, or when a state-change is performed. A survey **must** be previously created for the event.
 
 </div>
 </div>
