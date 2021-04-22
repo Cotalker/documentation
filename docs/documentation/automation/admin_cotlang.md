@@ -7,40 +7,33 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-# Overview {#cotlang-overview}
+## Overview {#cotlang-overview}
 
 Script language created by Cotalker.
 
-It is used to extract data from different contexts in Cotalker. It is useful for configuring routines.
+It is used to extract data from different _contexts_ in Cotalker. It is useful for configuring _routines_.
 
 ## Data Context {#data-context}
-This table contains the data to which the different sources have access. For example, if you are using Cotlang in a survey trigger routine, you will have direct access to the task.
+This table contains the data to which the different sources have access. For example, if you are using Cotlang in a _survey trigger_ routine, you will have direct access to the task.
+
+<div className="container box">
 
 <div className="row table-row-1">
+<div className="col col--12 code-table-1">
 
-### Global Message Trigger {#global-message-trigger}
+*Source*:
 
+</div>
 <div className="col col--11 col--offset-1 code-table-1">
 
-```typescript
-{
-    channel: COTChannel,
-    message: COTMessage,
-    cmdArgs: Array[string]
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _The source is a global bot that is triggered with a slash command:_ `/command`
+### Slash Command Trigger {#channel-message-trigger}
 
 </div>
+<div className="col col--12 code-table-1">
+
+*Context*:
+
 </div>
-
-<div className="row table-row-1">
-
-### Channel Message Trigger {#channel-message-trigger}
-
 <div className="col col--11 col--offset-1 code-table-1">
 
 ```typescript
@@ -51,37 +44,72 @@ This table contains the data to which the different sources have access. For exa
 }
 ```
 </div>
-<div className="col col--11 col--offset-1 code-table-2">
+<div className="col col--12 code-table-2">
 
-**Note**: _The source is a bot that is triggered with a slash command and is associated with particular channels:_ `/command`
+*Description*:
+
+</div>
+<div className="col col--12 code-table-2">
+
+The source is a bot that is triggered with a slash command and is associated with a particular channel: `/command`
 
 </div>
 </div>
 
 <div className="row table-row-1">
+<div className="col col--12 code-table-1">
 
-### Global Survey Trigger {#global-survey-trigger}
+*Source:*
 
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+### Global Slash Command Trigger {#global-message-trigger}
+
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
 <div className="col col--11 col--offset-1 code-table-1">
 
 ```typescript
 {
-  ...COTAnswer,
-  messages: COTMessage
+    channel: COTChannel,
+    message: COTMessage,
+    cmdArgs: Array[string]
 }
 ```
 </div>
-<div className="col col--11 col--offset-1 code-table-2">
+<div className="col col--12 code-table-2">
 
-**Note**: _Global Survey Trigger_ is a bot that is triggered with a specific type of survey sent in any channel.
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+The source is a global bot that is triggered in any channel with a slash command: `/command`
 
 </div>
 </div>
 
 <div className="row table-row-1">
+<div className="col col--12 code-table-1">
+
+*Source:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
 
 ### Channel Survey Trigger {#channel-survey-trigger}
 
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
 <div className="col col--11 col--offset-1 code-table-1">
 
 ```typescript
@@ -91,132 +119,105 @@ This table contains the data to which the different sources have access. For exa
 }
 ```
 </div>
-<div className="col col--11 col--offset-1 code-table-2">
+<div className="col col--12 code-table-2">
 
-**Note**: A _Channel Survey Trigger_ is a bot that is triggered with a specific type of survey sent in a specific channel.
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+A _Channel Survey Trigger_ is a bot that is triggered with a specific type of survey sent in a specific channel.
 
 </div>
 </div>
 
 <div className="row table-row-1">
+<div className="col col--12 code-table-1">
 
-### Workflow Survey Trigger {#sm-survey-trigger}
+*Source:*
 
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+### Global Survey Trigger {#global-survey-trigger}
+
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
 <div className="col col--11 col--offset-1 code-table-1">
 
 ```typescript
 {
-    ...COTTask,
-    sentAnswer: COTAnswer
+  ...COTAnswer,
+  messages: COTMessage
 }
 ```
 </div>
-<div className="col col--11 col--offset-1 code-table-2">
+<div className="col col--12 code-table-2">
 
-**Note**: _Workflow Survey Triggers_ are triggered within any task by a specific survey and at specific states.
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+_Global Survey Trigger_ is a bot that is triggered with a specific type of survey sent in any channel.
 
 </div>
 </div>
 
 <div className="row table-row-1">
+<div className="col col--12 code-table-1">
 
-### Workflow Change State {#sm-change-state}
+*Source:*
 
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+### Schedule {#scheduler}
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
 <div className="col col--11 col--offset-1 code-table-1">
 
 ```typescript
-{
-    ...COTTASK
-}
+// Custom body.
 ```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
 
-**Note**: _Workflow Change State_ is triggered when a task changes state.
+</div>
+<div className="col col--12 code-table-2">
+
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+A _Scheduler_ is an event that can be executed at a specific time (non-recurring) or at pre-established intervals (recurring).
 
 </div>
 </div>
 
 <div className="row table-row-1">
+<div className="col col--12 code-table-1">
 
-### Workflow New Subtask {#new-subtask}
+*Source:*
 
+</div>
 <div className="col col--11 col--offset-1 code-table-1">
 
-```typescript
-{
-    task: COTTask,
-    parent: COTTask,
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _Workflow New Subtask_ is triggered after a sub-task is created.
+### Workflow Start {#required-survey}
 
 </div>
-</div>
+<div className="col col--12 code-table-1">
 
-<div className="row table-row-1">
-
-### Workflow New Task {#new-task}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-    task: COTTask,
-    parent: COTTask
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: _Workflow New Task_ is triggered after a task is created.
+*Context:*
 
 </div>
-</div>
-
-<div className="row table-row-1">
-
-### Service-Level Agreement (SLA) {#sla}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-    taskId: ObjectId[COTTask],
-    taskGroupId: ObjectId[COTTaskGroup]
-}
-```
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: SLAs are time triggered events based on how much time a task is in a specific state.
-
-</div>
-</div>
-
-<div className="row table-row-1">
-
-### Scheduler {#scheduler}
-
-<div className="col col--11 col--offset-1 code-table-1">
-
-_custom body_
-
-</div>
-<div className="col col--11 col--offset-1 code-table-2">
-
-**Note**: A _Scheduler_ is an event that can be executed at a specific time or at pre-established intervals.
-
-</div>
-</div>
-
-<div className="row table-row-1">
-
-### Workflow Required Survey {#required-survey}
-
 <div className="col col--11 col--offset-1 code-table-1">
 
 ```typescript
@@ -229,17 +230,202 @@ _custom body_
 }
 ```
 </div>
-<div className="col col--11 col--offset-1 code-table-2">
+<div className="col col--12 code-table-2">
 
-**Note**: _Required Surveys_ are events that are triggered either **before** a new task or sub-task is created, or when a state-change is performed. A survey **must** be previously created for the event.
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+A survey is triggered before starting a new workflow. The survey can be created and configured for new workflow initialization.
 
 </div>
 </div>
 
+<div className="row table-row-1">
+<div className="col col--12 code-table-1">
+
+*Source:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+### Post Workflow Start {#sm-new-task}
+
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    task: COTTask,
+    parent: COTTask
+}
+```
+</div>
+<div className="col col--12 code-table-2">
+
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+_Post workflow start_ is triggered after a workflow is started.
+
+</div>
+</div>
+
+<div className="row table-row-1">
+<div className="col col--12 code-table-1">
+
+*Source:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+### State Survey Trigger {#sm-survey-trigger}
+
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    ...COTTask,
+    sentAnswer: COTAnswer
+}
+```
+</div>
+<div className="col col--12 code-table-2">
+
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+_State Survey Triggers_ are triggered within any task by a specific survey and at specific states.
+
+</div>
+</div>
+
+<div className="row table-row-1">
+<div className="col col--12 code-table-1">
+
+*Source:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+### Changed State {#sm-change-state}
+
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    ...COTTASK
+}
+```
+</div>
+<div className="col col--12 code-table-2">
+
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+_Changed State_ is triggered when a task changes state.
+
+</div>
+</div>
+
+<div className="row table-row-1">
+<div className="col col--12 code-table-1">
+
+*Source:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+### Service-Level Agreement (SLA) {#sla}
+</div>
+<div className="col col--12 code-table-1">
+
+*Context:*
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    taskId: ObjectId[COTTask],
+    taskGroupId: ObjectId[COTTaskGroup]
+}
+```
+</div>
+<div className="col col--12 code-table-2">
+
+*Description:*
+
+</div>
+<div className="col col--12 code-table-2">
+
+_SLAs_ are time triggered events based on how much time a task is in a specific state.
+
+</div>
+</div>
+
+</div>
 <br/>
 
- 
- ### Context language description {#context-language}
+<!-- <div className="row table-row-1">
+<div className="col col--12 code-table-1">
+
+**Source:**
+
+</div>
+<div className="col col--12 code-table-1">
+
+
+### Workflow New Subtask {#new-subtask}
+
+</div>
+<div className="col col--11 col--offset-1 code-table-1">
+
+```typescript
+{
+    task: COTTask,
+    parent: COTTask,
+}
+```
+
+</div>
+<div className="col col--12 code-table-2">
+
+**Description:**
+
+</div>
+<div className="col col--12 code-table-2">
+
+_Workflow New Subtask_ is triggered after a sub-task is created.
+
+</div>
+</div> -->
+
+## Context language description {#context-language}
 1. `...` Destructuring Operator: each key is merged into the parent object.
 For example:
 ```
