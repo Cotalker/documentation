@@ -24,9 +24,13 @@ import Highlight from '@theme/Highlight';
     1. [Workflows Settings Panel](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel)
     2. [Create a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#create-a-single-workflow)
     3. [Edit a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#edit-a-single-workflow)
-3. [Task Procedure Form](/docs/documentation/admin/workflows/admin_workflow_required_survey)
-    1. [New Task Procedure Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#setting-up-a-required-survey-for-a-new-task_)
-    2. [Modifying Task States Procedure Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)
+3. [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey)
+    1. [Workflow Start Survey](/docs/documentation/admin/workflows/admin_workflow_required_survey#setting-up-a-required-survey-for-a-new-task_)
+    2. [State Survey](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)
+4. [Public Survey](/docs/documentation/admin/workflows/admin_workflow_public_survey)
+    1. [Basic Setup](/docs/documentation/admin/workflows/admin_workflow_public_survey#basic-setup)
+    2. [Public Survey for Subtasks](/docs/documentation/admin/workflows/admin_workflow_public_survey#public-survey-subtask)
+    3. [Adding a Message](/docs/documentation/admin/workflows/admin_workflow_public_survey#adding-message)
 
 </div>
 <br/>
