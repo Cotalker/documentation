@@ -50,8 +50,12 @@ Public Surveys only work with _initial workflow start surveys_. Nonetheless, we 
 <br/>
 
 :::note
-  - The public access link, _Anyone with the Link_ option, only works if there is no open Cotalker session in the browser.
+  - The public access link, _Anybody with the Link_ option, only works if there is no open Cotalker session in the browser. 
   - The _Restricted_ access option is not fully operational. For now, users can open the link, but cannot send the survey.
+:::
+
+:::caution Take into account:
+When the _Anybody with the Link_ option is used, the collections required to answer the survey questions will be publicly accessible.
 :::
 
 </div>
