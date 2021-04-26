@@ -23,7 +23,7 @@ Understanding of the basics elements of the Admin:
 **WORKFLOW** <br/>
 Workflow is used to perform a process in cotalker. For example: the administrative request must be accepted by the CEO, boss and administrator. Therefore, there is a workflow that takes the request from one channel to another. It first asks the boss, then the CEO, and finally the manager for acceptance, if one of them doesn't approve, the request doesn't switch to the next channel and remains in a rejected state.<br/>
 The Workflow is made up of one or more State Machine. In the state machine, all states through which the task must pass are specified, as well as each routine. For example: once the request changes to the CEO channel, the system sends an email to notify him.<br/>
-For more details, go to the [admin's Workflow section](/docs/documentation/admin/admin_workflow). <br/>
+For more details, go to the [admin's Workflow section](/docs/documentation/admin/workflows/admin_workflow_overview). <br/>
 
 **ROUTINE** <br/>
 Routine is not a module of the admin, but it is used in Statemachine, Bot, Scheduler and SLA. So, this section will explain the routine. <br/>

@@ -162,7 +162,7 @@ In our ongoing effort to improve our GUI to make your life a little bit simpler,
 
 <a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_group#channel-creation-section">See Groups Documentation</a>
 <br/>
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_workflow#channel-creation-section">See Workflows Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/workflows/admin_workflow_groups#channel-creation-section">See Workflows Documentation</a>
 <br/>
 
 </div>
