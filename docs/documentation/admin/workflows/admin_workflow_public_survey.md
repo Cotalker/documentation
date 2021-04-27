@@ -9,18 +9,10 @@ import Highlight from '@theme/Highlight';
 <img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
 <br/>
 
-<div className="alert alert--secondary">
 
-## Summary {#summary}
-Sometimes companies might want to give people outside the Cotalker environment the opportunity to create a task. For example, by sharing a link, customers who recur for support can fill out a form with their issue and automatically create a Cotalker task that would act as a support ticket. We call this feature a _public survey_.
+## Overview {#overview}
+Sometimes companies might want to give people outside the Cotalker environment the opportunity to create a task. For example, through a _shared link_, customers who recur for support can fill out a form with their issue and automatically create a Cotalker task that would act as a support ticket. We call this feature a _public survey_.
 
-</div>
-<br/>
-
-
-:::important
-Public Surveys only work with _initial workflow start surveys_. Nonetheless, we offer a [workaround](#public-survey-subtask) for associating public surveys with _subtask start forms_. Some manual tweaking is required. We wish to have this integrated into our GUI sometime soon.
-:::
 
 ## Basic Setup {#basic-setup}
 <div className="alert alert--secondary">
@@ -44,18 +36,23 @@ Public Surveys only work with _initial workflow start surveys_. Nonetheless, we 
 
 <div className="alert alert--secondary">
 
-3. Press the <span className="badge badge--primary">Share</span> button. A _Share survey_ dialog box will appear. The **Share** field has two options: _Restricted_ and _Any People with the Link_.
+3. Press the <span className="badge badge--primary">Share</span> button. A _Share survey_ dialog box will appear. The **Share** field has three options: _Restricted_, _Anybody with the Link_, and _Disabled_.
 
 <img alt="share dialog box" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_share_01.png')} />
 <br/>
 
-:::note
-  - The public access link, _Anybody with the Link_ option, only works if there is no open Cotalker session in the browser. 
-  - The _Restricted_ access option is not fully operational. For now, users can open the link, but cannot send the survey.
+:::note Sharing Options
+  - _Anyone with the Link_: Public link. It only works if there is no open Cotalker session in the browser. 
+  - _Restricted_: Limited to Cotalker users. Requires users to log in.
+  - _Disabled_: Disables the _sharing_ option, even if a link was previously given to a user.
+:::
+
+:::tip Adding a Message
+Once visitors respond the survey, a screen appears indicating that the survey was sent successfully. You may add a custom message to this screen by simply filling out the _message_ field.
 :::
 
 :::caution Take into account:
-When the _Anybody with the Link_ option is used, the collections required to answer the survey questions will be publicly accessible.
+When the _Anyone with the Link_ option is used, the collections required to answer the survey questions will be publicly accessible.
 :::
 
 </div>
@@ -63,17 +60,20 @@ When the _Anybody with the Link_ option is used, the collections required to ans
 
 <div className="alert alert--secondary">
 
-4. After selecting the option, copy the URL. Now you can share the link, add it to an email, or copy it into a webpage, or whatever suits you best to let people outside the Cotalker environment answer your survey.
+4. After selecting the option, copy the URL. Now you can share the link by email, as webpage link, or even embed it, whatever suits you best to let users –even outside the Cotalker environment– answer your survey.
 
 :::note
-- For security reasons, the following [survey components](/docs/documentation/admin/admin_survey) do not function in the public survey: _properties_, _user_, and _files_.
-- Survey embedding has not yet been developed, but is in our backlog for future updates.
+- For security reasons, the _usergit_ collections do not function in [survey components](/docs/documentation/admin/admin_survey) for public surveys.
 :::
 
 </div>
 <br/>
 
-#### Expected Results
+## Public Surveys for Subtasks
+Public surveys work ideally with initial workflows, but can be made to work with subtasks (or _child_ workflows). A reference note will appear when trying to share a subtask survey, indicating that a _parameter_ with the parent task ID number has to be added to the link: `?parentTask=[task-id]`.
+
+
+## Expected Results
 _Here is an example of what users might see when they access public surveys:_
 
 
@@ -87,91 +87,7 @@ _And this is what users are expected to see when the survey is sent successfully
 <img alt="send success" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_share_03.png')} />
 <br/>
 
-## Public Survey for Subtasks {#public-survey-subtask}
-
-Public surveys work ideally with initial workflows, but we offer here a workaround to associate a public survey with a subtask.
-
-<div className="alert alert--secondary">
-
-1. Encode the following body, with the corresponding task ID, at https://www.base64encode.org/:
-```json
-  {
-      "parentTask": "abcdefgh1234567890"
-  }
-```
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-2. Copy the generated code.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-3. Get the public link.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-4. Add the following parameter to the public link: `?data=[base64token]`, where _base64token_ is the generated code obtained through https://www.base64encode.org/.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-5. You can now share the modified URL to allow visitors complete the subtask's public survey.
-
-</div>
-<br/>
-
-## Adding a Message {#adding-message}
-
-Once visitors respond the survey, a screen appears indicating that the survey was sent successfully. You may add a message to this screen by following the indicated steps:
-
-<div className="alert alert--secondary">
-
-1. Encode the following body, with the corresponding ID, at https://www.base64encode.org/:
-```json
-  {
-      "parentTask": "abcdefgh1234567890"
-      "sentMessage": "We have received your message."
-  }
-```
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-2. Copy the generated code.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-3. Get the public link.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-4. Add the following parameter to the public link: `?data=[base64token]`, where _base64token_ is the generated code obtained through https://www.base64encode.org/.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-5. Visitors will see your message once they send the form.
-
-</div>
-<br/>
+:::note
+- Mobile versions might look slightly different.
+- When the survey is unavailable –either because it has been disabled, it doesn't exist, or any other error– a splash screen will appear indicating the error.
+:::
