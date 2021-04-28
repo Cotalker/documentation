@@ -12,6 +12,67 @@ import Highlight from '@theme/Highlight';
 
 ## April 2021 {#april-2021}
 
+
+<!-- New Feature begins after this line.-->
+
+<div class="card-demo">
+<div class="card">
+<div class="card__header">
+
+### Public Surveys {#bot-versions}
+
+<small class="avatar__subtitle">April 14, 2021</small>
+</div>
+<div class="card__image">
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/admin_survey_share_00.png')} />
+<br/>
+</div>
+<div class="card__body">
+
+Good things are meant to be shared. That's why we've now implemented survey sharing outside the Cotalker environment. By simply sharing the link, anybody can now start a workflow or create a task.  For example, through a shared link, customers who recur for support can fill out a form with their issue and automatically create a Cotalker task that would act as a support ticket. We call this feature a _public survey_.
+
+</div>
+<div class="card__footer">
+
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/workflows/admin_workflow_public_survey">See Documentation</a>
+<br/>
+
+</div>
+</div>
+</div>
+<br/>
+<br/>
+
+<!-- New Feature begins after this line.-->
+
+<div class="card-demo">
+<div class="card">
+<div class="card__header">
+
+### File Sharing Security Update {#file-sharing-security}
+
+<small class="avatar__subtitle">April 12, 2021</small>
+</div>
+<div class="card__image">
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/updates/stockvault-digital-padlock-on-data-screen-web-and-data-security180399.jpg')} />
+<br/>
+</div>
+<div class="card__body">
+
+You can never be too careful... But now, you can relax a bit because uploaded files are now digitally signed for some extra security. Running completely in the back-end, this new feature checks user authentication before allowing users to view files for 15 minutes, after which they would have to request the file again. This new feature update also includes improvement in the file structure and switching from a synchronous to an asynchronous upload operation. More updates soon to come!
+
+</div>
+<div class="card__footer">
+
+<a class ="button button--secondary button--block" href="/docs/documentation/api/communication/files">See Documentation</a>
+<br/>
+
+</div>
+</div>
+</div>
+<br/>
+<br/>
+
 <!-- New Feature begins after this line.-->
 
 <div class="card-demo">
@@ -33,7 +94,7 @@ Surveys are great, and they just got better! Users can now answer questions with
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documention</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documentation</a>
 <br/>
 
 </div>
