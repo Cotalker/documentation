@@ -107,6 +107,13 @@ The Stage Types will be explained in the following table:
 
 _Stage types_ are actually predefined system bots. Every once in a while, we update these bots, add new features, and improve automations. But, because these changes might affect your existing _routines_ and _bots_, access to older versions are available.
 
-You can see where the _version_ field is located and how versions can have different settings in the following image.
+You can see where the _version_ field is located and how versions can have different settings in the following image:
 
 <img alt="stage type versions" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_stage_type_version_00.png')} />
+<br/>
+<br/>
+
+:::caution Attention
+- In case a new version is available, an alert message will appear in the settings panel.
+- If you change the version of a stage type, you will not be able to go back to previous versions after saving.
+:::
