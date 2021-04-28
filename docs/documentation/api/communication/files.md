@@ -16,7 +16,7 @@ API/V1/FILE has been deprecated.
 ## Security Features
 For security reasons, uploaded files are digitally signed and require user verification in order to be viewed. Only users from the same company can view the uploaded files. In future updates, access to files will be configurable to more limited circles of users.
 
-As a default, verified users will have only 15 minute access to files. Once that time passes, the file must be requested again. Access time is configurable.
+As a default, verified users will have only 15 minute access to files. Once that time passes, the file must be signed again.
 
 ## File Formats & Size
 
@@ -34,7 +34,7 @@ As a default, verified users will have only 15 minute access to files. Once that
 
 Upload a file and return the COTFile instance.
 
-`POST https://cotalker.com/api/file/upload`
+`POST /api/v3/media/file/upload`
 
 
 ### Request Body
@@ -83,7 +83,7 @@ const signedUrl = await api.signUrl(uploadedFile.url);
 
 ```curl
 
-curl -X POST "https://cotalker.com/api/file/upload" -H  "accept: text/html; charset=utf-8" -H  "Content-Type: multipart/form-data" -F "uploadInput="public": true" -F "file=@image.png;type=image/png" \ --header 'Authorization: Bearer TOKEN'
+curl -X POST "https://cotalker.com/api/v3/media/file/upload" -H  "accept: text/html; charset=utf-8" -H  "Content-Type: multipart/form-data" -F "uploadInput="public": true" -F "file=@image.png;type=image/png" \ --header 'Authorization: Bearer TOKEN'
 
 ```
 
@@ -119,7 +119,7 @@ _The new instance of a COTFile is returned._
 
 Requests file with signature for user verification. Returns the signed URL.
 
-`POST https://cotalker.com/api/signature`
+`POST /api/v3/media/signature`
 
 ### Request Body
 _application/json_
