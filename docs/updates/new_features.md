@@ -19,54 +19,22 @@ import Highlight from '@theme/Highlight';
 <div class="card">
 <div class="card__header">
 
-### Permissions {#permissions}
+### Public Surveys {#bot-versions}
 
-
-
-<small class="avatar__subtitle">April 13, 2021</small>
+<small class="avatar__subtitle">April 14, 2021</small>
 </div>
 <div class="card__image">
-<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/updates/update_permission.jpg')} />
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/admin_survey_share_00.png')} />
 <br/>
 </div>
 <div class="card__body">
 
-It's always good to have an old friend around. That's why we have now implemented _bot versions_! We have a small army of predefined system bots that are used as **stage types** in _routines_. And every once in a while, we tweak the bots extending functions and improving automations. But, because your existing _routines_ and _bots_ might not work with newer versions, you can keep the old ones around just in case. 🤖
+Good things are meant to be shared. That's why we've now implemented survey sharing outside the Cotalker environment. By simply sharing the link, anybody can now start a workflow or create a task.  For example, through a shared link, customers who recur for support can fill out a form with their issue and automatically create a Cotalker task that would act as a support ticket. We call this feature a _public survey_.
 
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/automation/admin_routine#stage-type-versions">See Documentation</a>
-<br/>
-
-</div>
-</div>
-</div>
-<br/>
-<br/>
-
-<!-- New Feature begins after this line.-->
-
-<div class="card-demo">
-<div class="card">
-<div class="card__header">
-
-### Bot Versions {#bot-versions}
-
-<small class="avatar__subtitle">April 13, 2021</small>
-</div>
-<div class="card__image">
-<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/updates/update_old_bot.jpg')} />
-<br/>
-</div>
-<div class="card__body">
-
-It's always good to have an old friend around. That's why we have now implemented _bot versions_! We have a small army of predefined system bots that are used as **stage types** in _routines_. And every once in a while, we tweak the bots extending functions and improving automations. But, because your existing _routines_ and _bots_ might not work with newer versions, you can keep the old ones around just in case. 🤖
-
-</div>
-<div class="card__footer">
-
-<a class ="button button--secondary button--block" href="/docs/documentation/automation/admin_routine#stage-type-versions">See Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/workflows/admin_workflow_public_survey">See Documentation</a>
 <br/>
 
 </div>
