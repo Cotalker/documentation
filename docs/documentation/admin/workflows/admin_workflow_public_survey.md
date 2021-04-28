@@ -42,8 +42,8 @@ Sometimes companies might want to give people outside the Cotalker environment t
 <br/>
 
 :::note Sharing Options
-  - _Anyone with the Link_: Public link. It only works if there is no open Cotalker session in the browser. 
-  - _Restricted_: Limited to Cotalker users. Requires users to log in.
+  - _Anyone with the Link_: Public link. Accessible to all, except if a user is logged into a Cotalker account from a different company than the one that made the survey. 
+  - _Restricted_: Limited to Cotalker users from the same company. Requires users to log in.
   - _Disabled_: Disables the _sharing_ option, even if a link was previously given to a user.
 :::
 
