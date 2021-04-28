@@ -105,7 +105,7 @@ The Stage Types will be explained in the following table:
   
 ### Stage Type Versions {#stage-type-versions}
 
-_Stage types_ are actually predefined system bots. Every once in a while, we update these bots, add new features, and improve automations. But, because these changes might affect your existing _routines_ and _bots_, access to older versions are available.
+_Stage types_ are actually predefined system bots. Every once in a while, we update these bots, adding new features and options, or just improving automations. But, because these changes might affect your existing _routines_, access to older versions are available.
 
 You can see where the _version_ field is located and how versions can have different settings in the following image:
 
