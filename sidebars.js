@@ -59,6 +59,7 @@ module.exports = {
             'documentation/admin/workflows/admin_workflow_groups',
             'documentation/admin/workflows/admin_workflow_configure',
             'documentation/admin/workflows/admin_workflow_required_survey',
+            'documentation/admin/workflows/admin_workflow_public_survey',
           ],
           collapsed: true,
         },
