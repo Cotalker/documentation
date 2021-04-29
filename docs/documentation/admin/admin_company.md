@@ -9,18 +9,26 @@ import Highlight from '@theme/Highlight';
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Company.svg')} />
 
 ## Overview {#company-overview}
-<img alt="" src={useBaseUrl('img/admin_company.png')} width= "20%" height= "20%" align="left"/>
-The company is where the created users belong. For now, the user can only be related to one company, but in the future it could be more than one. <br/> In this section you can only edit aspects of the company.
-<br clear="left" />
+The _company_ is where the created users belong. For now, the user can only be related to one company, but in the future it could be more than one. 
 
-# Company editor {#company-editor}
-In this section you can edit or creat a single company.
-<img alt="" src={useBaseUrl('img/admin_company_edit_1.png')} />
-<img alt="" src={useBaseUrl('img/admin_company_edit_2.png')} />
+_In this section you can only edit aspects of the company._
 
-<br/><br/>
 
-Below you will find the description and notes for each field in the pictures above.
+<img alt="company" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_company_00.png')} />
+<br/>
+
+
+
+## Company Settings Panel {#company-editor}
+In this section you can edit or create a single company.
+
+<img alt="settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_company_01.png')} />
+<br/>
+
+
+
+## Field Descriptions
+_Below are the settings panel's field description:_
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
@@ -36,5 +44,8 @@ Below you will find the description and notes for each field in the pictures abo
 | Show terms of service | The TOS will be displayed the first time the user enters to Cotalker. | When active, the TOS will be the assigned URL. Otherwise it will display a default cotalker URL. |
 | Terms of service's URL | The URL displayed in the terms of Service. |  |
 | Show contact list | If it's active, it show the contact of a user in the main bar. | You can still see the conversations with the users you chatted with previously. |
+| Contact display mode | Available options: _All company users_, _All user with whom you have activities in Cotalker_, and _All the users with whom you have activities in cotalker and the colleagues that you have in your contacts_. | This option will limit users' ability to see other users in their contact lists and other places, like surveys where _user lists_ are used as options for answering survey questions.
 | Read user's contacts list | Ask the user if the application can access their contacts. | For mobile Users |
 | Read user's geolocation | Ask the user if the application can access their geolocation. | For mobile Users |
+| Initial section | Enables to force starting the session from a specific group. | Only groups in the Main Menu Bar are available. |
+| News properties' categories | | |
