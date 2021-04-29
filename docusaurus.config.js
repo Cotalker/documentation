@@ -36,8 +36,9 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'docs/updates/new_features',
-          activeBasePath: 'docs',
+          // to: 'docs/updates/new_features',
+          // activeBasePath: 'docs',
+          to: 'blog',
           label: 'Updates',
           position: 'left',
         },
