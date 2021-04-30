@@ -31,5 +31,3 @@ It's always good to have an old friend around. That's why we have now implemente
 </div>
 </div>
 </div>
-<br/>
-<br/>
