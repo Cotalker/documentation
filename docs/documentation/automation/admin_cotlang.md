@@ -12,33 +12,6 @@ import Highlight from '@theme/Highlight';
 COTLang is a script language created by Cotalker, primarily used in _routines_.
 It is used to extract data from different _contexts_ in Cotalker.
 
-## Command Quick Reference Guide {#command-quick-reference-guide}
-
-<iframe className="framedPage" src="https://www.cotalker.com/function/cotlang/"></iframe>
-
-
-## Context language description {#context-language}
-1. `...` Destructuring Operator: each key is merged into the parent object.
-For example:
-```
-if COTExample is { _id: ObjectId, content: String } 
-then             { ...COTExample,                  someKeyName: Number } 
-represents       { _id: ObjectId, content: String, someKeyName: Number }
-```
-2. Array[T]: is an array of type T.
-For example:
-```
-model       { commands: Array[String] }
-can contain { commands: ["hello", "world"] } 
-```
-3. [COTChannel Data model](/docs/documentation/api/communication/channels)
-4. [COTMessage Data model](/docs/documentation/api/communication/messages)
-5. [COTAnswer Data model](/docs/documentation/api/surveys/answers)
-6. [COTTask Data model](/docs/documentation/api/tasks/tasks) 
-7. [COTTaskGroup Data model](/docs/documentation/api/tasks/task_groups)
-8. ObjectID[T]: 24-character unique identifier that represents an object of type T
-
-
 ## How to use Cotlang {#how-to-use-cotlang}
 To configure the type of stages, COTlang is useful to easily get information from the database.
 
@@ -115,3 +88,7 @@ Example: $VALUE#answer_data|[cotanswer_list=>array]<br/><br/>
 Example: $VALUE#path|to|string|[gencode=>*]<br/><br/>
 
 
+## Quick Reference Guide & Command Tester {#command-quick-reference-guide}
+
+<iframe scrolling="yes" className="framedPage" src="https://www.cotalker.com/function/cotlang/"></iframe>
+<br/>

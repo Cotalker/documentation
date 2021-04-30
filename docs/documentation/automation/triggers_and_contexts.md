@@ -7,7 +7,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
+## Overview
+
 The following table contains the data to which the different _sources_ have access. For example, if you are using Cotlang in a _survey trigger_ routine, you will have direct access to the task.
+
+
+## Contexts Table {#contexts-table}
 
 <div className="container box">
 
@@ -417,3 +422,25 @@ _Workflow New Subtask_ is triggered after a sub-task is created.
 
 </div>
 </div> -->
+
+
+## Context language description {#context-language}
+1. `...` Destructuring Operator: each key is merged into the parent object.
+For example:
+```
+if COTExample is { _id: ObjectId, content: String } 
+then             { ...COTExample,                  someKeyName: Number } 
+represents       { _id: ObjectId, content: String, someKeyName: Number }
+```
+2. Array[T]: is an array of type T.
+For example:
+```
+model       { commands: Array[String] }
+can contain { commands: ["hello", "world"] } 
+```
+3. [COTChannel Data model](/docs/documentation/api/communication/channels)
+4. [COTMessage Data model](/docs/documentation/api/communication/messages)
+5. [COTAnswer Data model](/docs/documentation/api/surveys/answers)
+6. [COTTask Data model](/docs/documentation/api/tasks/tasks) 
+7. [COTTaskGroup Data model](/docs/documentation/api/tasks/task_groups)
+8. ObjectID[T]: 24-character unique identifier that represents an object of type T
