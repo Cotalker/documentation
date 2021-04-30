@@ -28,9 +28,9 @@ As shown in the image below, from the _Access roles_ button in the _Administrati
 <img alt="access roles settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_00.png')} />
 <br />
 
-Icon descriptions can be found in the [Overview section](admin_overview).
+_Icon descriptions can be found in the [Overview section](admin_overview)._
 
-Checkboxes enable you to select from one to all _access roles_ for deactivation with one action.
+Checkboxes enable you to select from one to all _access roles_, so you can deactivate them together with just one click.
 
 ## Edit / Create Single Access Role {#edit--create-single-access-role}
 From the _Access roles_ settings panel, you can edit or create a single access role. By selecting an existing _access role_ or by pressing the _create new element_ button, the _Create access role_ settings panel will appear.
@@ -38,23 +38,23 @@ From the _Access roles_ settings panel, you can edit or create a single access r
 <img alt="edit or create" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_01.png')}  />
 <br />
 
+_Button descriptions can be found in the [Overview section](admin_overview)._
 
 ### Field Descriptions
 
 | Field | Description | Notes |
 | ---- | ----------- | ----- |
-| Name | The visual name of the Access Role | It dosen't have to be unique|
+| Name | The visual name of the Access Role | It doesn't have to be unique|
 | Description | Text that explains the Access Role | |
 | Permissions | Permissions available in access role. | See the full list of default permissions [below](#default-permissions). |
 | Assigned to users | List of users who have been assigned this access role. | The list will be automatically filled when users are granted an access role. |
 
-The description of each button on the page where the _access role_ is created can be found in the [Overview section](admin_overview).
 
 :::warning
-Do not change the permission and name of an access role already created. It could alter an existing workflow's functionality. If you want to change an access role, check with support first.
+Do not change the permission and name of an access role already created. It could alter an existing workflow's functionality or a users ability to work in Cotalker. If you want to change an access role, check with the support team first.
 :::
 
-### Default Access Roles {#default-access-roles}
+## Default Access Roles {#default-access-roles}
 The following table contains the default _access roles_ that are available by default in all companies.
 
 | Access Role | Description |
@@ -64,69 +64,83 @@ The following table contains the default _access roles_ that are available by de
 | default          | basic client access  |
 | bot-default      | full read            |
 
-### Default Permissions {#default-permissions}
+## Default Permissions {#default-permissions}
 Default _permissions_ come pre-installed and can be assigned to any _access role_.
-The following table contains the default _permissions_ present in all company configurations.
 
-:::note
-_Admin-accesscontrol-read permission_ or _admin-accesscontrol-write permission_ are required to read or write permissions respectively.
-:::
+The following diagram and table contain the default _permissions_ present in all company configurations. There are four permission types, three correspond to configuration areas accessible through the _Main Menu Bar_ when the respective permissions have been granted: _Administrator_, _Report_, and _Database_. A fourth permission type, _Endpoint_, refers to the different categories available in the _Administrator_ section and require the _admin-access_ permission to be accessible through the Administrative Panel.
 
-| Permissions for Admin Access | Description |
+<img alt="permissions tree" className="img_sizing" src={useBaseUrl('https://camo.githubusercontent.com/377a94a6105b687fcd8609b41251651a0f6899c457310f1f8f5b53e21ee8cd56/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d3176517351585f5876662d36316f67764543504a735a455170324d4e4877343532436b55767a51467974393872545f456c735779792d386564777373644e6443743564445f4c536e6c66344676394e482f7075623f773d3137323326683d363939')} />
+
+
+### Administrator Section {#admin-section}
+
+| Administrator section | Description |
 |-----|-----|
-| admin-*-read | Read all |
-| admin-*-write | Write all |
-| admin-access | |
+| admin-*-read | Reading permission for all _endpoints_ in **Administrator** section. |
+| admin-*-write | Permits reading and editing all _endpoints_ in **Administrator** section. |
+| admin-access | Grants access to the **Administrator** section, but will only show the _endpoint permissions_ the user has been granted. |
 
-
-| Report Section          | Description          |
-|----------------------|----------------------|
-| report-*-write | |
-| report-*-read | allows to view the report section |
-| report-surveys-write |  |
-| report-surveys-read | web reports	access |
-| report-users-read |  |
-| report-workflows-write |  |
-| report-workflows-read |  |
-| report-properties-write |  |
-| report-users-write |  |
-| report-properties-read |  |
-
-| Database section | Description     |
-|----------------------|----------------------|
-| db-*-write | |
-| db-*-read | |
-| db-properties-read | allows viewing database section |
-| db-properties-write | allows editing properties in database view |
+### Endpoints for Admin {#endpoint-permissions}
 
 | Endpoint permissions | Description |
-| ---- | - --- |
-| admin-groups-read	| Group Read |
-| admin-groups-write | Group write |
-| admin-channels-read	| Channels read |
-| admin-channels-write	| Channels write |
+| ---- | ---- |
+
+| admin-groups-read	| Permits reading _groups_. |
+| admin-channels-read | Permits viewing _channels_. |
 | admin-tasks-read | |
-| admin-tasks-write | Task write |
-| admin-accesscontrol-read	| permission needed to use any other reading permission |
-| admin-accesscontrol-write | permission needed to create or edit access roles and permissions. |
-| admin-users-read | Users read |
-| admin-users-write | User write |
-| admin-bots-read | |
-| admin-bots-write | Bot write |
-| admin-properties-read | Properties read |
-| admin-properties-write | Properties write |
-| admin-company-read | Company read |
-| admin-company-write | Company write |
-| admin-surveys-read | Surveys read |
-| admin-surveys-write | Surveys write |
+| admin-accesscontrol-read | Permits viewing _access roles_. |
+| admin-users-read | Permits viewing _users_. |
+| admin-bots-read | Permits viewing _bots_. |
+| admin-properties-read | Permits viewing the _database_. |
+| admin-company-read | Permits viewing _company_. |
+| admin-surveys-read | Permits viewing _surveys_. |
 | admin-answers-read | |
+| admin-groups-write | Permits editing _groups_. |
+| admin-channels-write | Permits editing _channels_. |
+| admin-tasks-write | Permits editing _tasks_. |
+| admin-accesscontrol-write | Permits editing _access roles_. |
+| admin-users-write | Permits editing _users_. |
+| admin-bots-write | Permits editing _bots_. |
+| admin-properties-write | Permits editing _database_. |
+| admin-company-write | Permits editing _company_. |
+| admin-surveys-write | Permits editing _surveys_. |
 
 
-:::note
-In order to apply any _permission_ to a _user_ you must have _admin-accesscontrol-read permission_ **and** _admin-users-write permission_.
+### Report Section {#report-section}
+
+| Report Section | Description |
+|----------------------|----------------------|
+| report-*-read | Allows viewing of the **Report** section and all its categories. |
+| report-surveys-read | web reports	access |
+| report-workflows-read | Permits viewing the _workflows_ category in the **Reports** section. |
+| report-properties-read | Permits viewing the _properties_ category in the **Reports** section. |
+| report-users-read | Permits viewing the _users_ category in the **Reports** section. |
+| report-*-write | Permits viewing and editing the **Reports** section and all its categories. |
+| report-surveys-write | Permits viewing and editing the _surveys_ category in the **Reports** section. |
+| report-workflows-write | Permits viewing and editing the _workflows_ category in the **Reports** section. |
+| report-properties-write | Permits viewing and editing the _properties_ category in the **Reports** section. |
+| report-users-write | Permits viewing and editing the _users_ category in the **Reports** section. |
+
+### Database Section {#database-section}
+
+| Database section | Description |
+|----------------------|----------------------|
+| db-*-read | Allows entering the **Database** section and viewing all of its collections and elements. |
+| db-properties-read | Allows entering the **Database** section and viewing collections. |
+| db-*-write | Permits reading and writing in all of the collections and elements of the **Database** section. |
+| db-properties-write | Allows editing collections in the **Database** section. |
+
+:::tip
+For the time being, _db-*-read_ and _db-properties-read_ fulfill equivalent roles. Likewise, so do _db-*-write_ and _db-properties-write_.
 :::
 
-### Configuring Permissions {#configuring-permissions}
+
+:::info Take into account:
+- _Admin-accesscontrol-read permission_ or _admin-accesscontrol-write permission_ are required to read or write permissions respectively.
+- In order to apply any _permission_ to a _user_ you must have _admin-accesscontrol-read permission_ **and** _admin-users-write permission_.
+:::
+
+## Configuring Permissions {#configuring-permissions}
 
 If administrators wish to configure permissions, they can do it through the library package. For access to the _Permissions Library Package_, please contact the [technical support team](/docs/support/technical).
 
@@ -134,17 +148,17 @@ If administrators wish to configure permissions, they can do it through the libr
 Hard-coding _permissions_ has been deprecated.
 :::
 
-### Deprecated Permissions {#deprecated-permissions}
+## Deprecated Permissions {#deprecated-permissions}
 
 | Legacy Permissions for Admin and Users (soon to be deprecated) | Description |
 |----------------------|----------------------|
 | modify-permissions |  |
-| web-admin-write | permission needed to use any other writing permission. |
-| web-admin-read | permission needed to use any other reading permission. |
+| web-admin-write | Equivalent to _admin-*-write_. |
+| web-admin-read | Equivalent to _admin-*read_. |
 | web-dashboard |  |
-| web-survey-read |  |
-| web-survey-write |  |
+| web-survey-read | Equivalent to _admin-survey-read_. |
+| web-survey-write | Equivalent to _admin-survey-write_. |
 | create-invites |  |
 | news-write |  |
 | web-access |  |
-| app-access |	can use any client	|
+| app-access | can use any client |
