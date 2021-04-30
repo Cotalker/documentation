@@ -31,5 +31,3 @@ You can never be too careful... But now, you can relax a bit because uploaded fi
 </div>
 </div>
 </div>
-<br/>
-<br/>
