@@ -67,7 +67,7 @@ The following table contains the default _access roles_ that are available by de
 ## Default Permissions {#default-permissions}
 Default _permissions_ come pre-installed and can be assigned to any _access role_.
 
-The following diagram and table contain the default _permissions_ present in all company configurations. There are four permission types, three correspond to configuration areas accessible through the _Main Menu Bar_ when the respective permissions have been granted: _Administrator_, _Report_, and _Database_. A fourth permission type, _Endpoint_, refers to the different categories available in the _Administrator_ section and require the _admin-access_ permission to be accessible through the Administrative Panel.
+The following diagram and table contain the default _permissions_ present in all company configurations. There are four permission types, three correspond to configuration areas accessible through the _Main Menu Bar_ when the respective permissions have been granted: _Administrator_, _Report_, and _Database_. A fourth permission type, _Endpoint_, is like a sub-category for the other three types. 
 
 <img alt="permissions tree" className="img_sizing" src={useBaseUrl('https://camo.githubusercontent.com/377a94a6105b687fcd8609b41251651a0f6899c457310f1f8f5b53e21ee8cd56/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d3176517351585f5876662d36316f67764543504a735a455170324d4e4877343532436b55767a51467974393872545f456c735779792d386564777373644e6443743564445f4c536e6c66344676394e482f7075623f773d3137323326683d363939')} />
 
@@ -80,38 +80,12 @@ The following diagram and table contain the default _permissions_ present in all
 | admin-*-write | Permits reading and editing all _endpoints_ in **Administrator** section. |
 | admin-access | Grants access to the **Administrator** section, but will only show the _endpoint permissions_ the user has been granted. |
 
-### Endpoints for Admin {#endpoint-permissions}
-
-| Endpoint permissions | Description |
-| ---- | ---- |
-
-| admin-groups-read	| Permits reading _groups_. |
-| admin-channels-read | Permits viewing _channels_. |
-| admin-tasks-read | |
-| admin-accesscontrol-read | Permits viewing _access roles_. |
-| admin-users-read | Permits viewing _users_. |
-| admin-bots-read | Permits viewing _bots_. |
-| admin-properties-read | Permits viewing the _database_. |
-| admin-company-read | Permits viewing _company_. |
-| admin-surveys-read | Permits viewing _surveys_. |
-| admin-answers-read | |
-| admin-groups-write | Permits editing _groups_. |
-| admin-channels-write | Permits editing _channels_. |
-| admin-tasks-write | Permits editing _tasks_. |
-| admin-accesscontrol-write | Permits editing _access roles_. |
-| admin-users-write | Permits editing _users_. |
-| admin-bots-write | Permits editing _bots_. |
-| admin-properties-write | Permits editing _database_. |
-| admin-company-write | Permits editing _company_. |
-| admin-surveys-write | Permits editing _surveys_. |
-
-
 ### Report Section {#report-section}
 
 | Report Section | Description |
 |----------------------|----------------------|
 | report-*-read | Allows viewing of the **Report** section and all its categories. |
-| report-surveys-read | web reports	access |
+| report-surveys-read | Permits viewing the _surveys_ category in the **Reports** section. |
 | report-workflows-read | Permits viewing the _workflows_ category in the **Reports** section. |
 | report-properties-read | Permits viewing the _properties_ category in the **Reports** section. |
 | report-users-read | Permits viewing the _users_ category in the **Reports** section. |
@@ -134,8 +108,33 @@ The following diagram and table contain the default _permissions_ present in all
 For the time being, _db-*-read_ and _db-properties-read_ fulfill equivalent roles. Likewise, so do _db-*-write_ and _db-properties-write_.
 :::
 
+### Endpoint Permissions {#endpoint-permissions}
+
+| Endpoint permissions | Description |
+| ---- | ---- |
+| admin-groups-read	| Permits reading _groups_. |
+| admin-channels-read | Permits viewing _channels_. |
+| admin-tasks-read | Permits viewing _tasks_. |
+| admin-accesscontrol-read | Permits viewing _access roles_. |
+| admin-users-read | Permits viewing _users_. |
+| admin-bots-read | Permits viewing _bots_. |
+| admin-properties-read | Permits viewing the _database_. |
+| admin-company-read | Permits viewing _company_. |
+| admin-surveys-read | Permits viewing _surveys_. |
+| admin-answers-read | Permits viewing _answers_. |
+| admin-groups-write | Permits editing _groups_. |
+| admin-channels-write | Permits editing _channels_. |
+| admin-tasks-write | Permits editing _tasks_. |
+| admin-accesscontrol-write | Permits editing _access roles_. |
+| admin-users-write | Permits editing _users_. |
+| admin-bots-write | Permits editing _bots_. |
+| admin-properties-write | Permits editing _database_. |
+| admin-company-write | Permits editing _company_. |
+| admin-surveys-write | Permits editing _surveys_. |
+
 
 :::info Take into account:
+- _Endpoint_ permissions require at least the _admin-access_ permission to be accessible through the Administrative Panel.
 - _Admin-accesscontrol-read permission_ or _admin-accesscontrol-write permission_ are required to read or write permissions respectively.
 - In order to apply any _permission_ to a _user_ you must have _admin-accesscontrol-read permission_ **and** _admin-users-write permission_.
 :::
