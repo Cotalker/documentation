@@ -20,7 +20,7 @@ import Highlight from '@theme/Highlight';
 </div>
 <div class="card__body">
 
-Giving permission has always been a problematic task. For this reason, we have re-arranged our default permissions by categories and hierarchy, making it simpler to assign them in access roles, while intensify security at the same time. Check out our new permissions, read their descriptions, look at the new permissions tree, and discover which ones will be deprecated.
+Giving permission has always been a problematic task. For this reason, we have re-arranged our default _permissions_ by categories and hierarchy, making it simpler to assign them in _access roles_ while intensifying security at the same time. Check out our _new permissions_, read their _descriptions_, look at the new _permissions tree_, and discover which ones will be _deprecated_.
 
 </div>
 <div class="card__footer">
