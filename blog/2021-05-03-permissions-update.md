@@ -2,7 +2,7 @@
 title: Permissions Update
 image: https://doc.cotalker.com/img/updates/update_permission.jpg
 draft: false
-description: New Feature! Bot versions for routine stage types.
+description: New Feature! We've updated our default permissions, making it easier and safer to assign them to access roles.
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
