@@ -77,7 +77,7 @@ The following diagram and table contain the default _permissions_ present in all
 | Administrator section | Description |
 |-----|-----|
 | admin-*-read | Reading permission for all _endpoints_ in **Administrator** section. |
-| admin-*-write | Permits reading and editing all _endpoints_ in **Administrator** section. |
+| admin-*-write | Allows reading and editing all _endpoints_ in **Administrator** section. |
 | admin-access | Grants access to the **Administrator** section, but will only show the _endpoint permissions_ the user has been granted. |
 
 ### Report Section {#report-section}
@@ -85,15 +85,15 @@ The following diagram and table contain the default _permissions_ present in all
 | Report Section | Description |
 |----------------------|----------------------|
 | report-*-read | Allows viewing of the **Report** section and all its categories. |
-| report-surveys-read | Permits viewing the _surveys_ category in the **Reports** section. |
-| report-workflows-read | Permits viewing the _workflows_ category in the **Reports** section. |
-| report-properties-read | Permits viewing the _properties_ category in the **Reports** section. |
-| report-users-read | Permits viewing the _users_ category in the **Reports** section. |
-| report-*-write | Permits viewing and editing the **Reports** section and all its categories. |
-| report-surveys-write | Permits viewing and editing the _surveys_ category in the **Reports** section. |
-| report-workflows-write | Permits viewing and editing the _workflows_ category in the **Reports** section. |
-| report-properties-write | Permits viewing and editing the _properties_ category in the **Reports** section. |
-| report-users-write | Permits viewing and editing the _users_ category in the **Reports** section. |
+| report-surveys-read | Allows viewing the _surveys_ category in the **Reports** section. |
+| report-workflows-read | Allows viewing the _workflows_ category in the **Reports** section. |
+| report-properties-read | Allows viewing the _properties_ category in the **Reports** section. |
+| report-users-read | Allows viewing the _users_ category in the **Reports** section. |
+| report-*-write | Allows viewing and editing the **Reports** section and all its categories. |
+| report-surveys-write | Allows viewing and editing the _surveys_ category in the **Reports** section. |
+| report-workflows-write | Allows viewing and editing the _workflows_ category in the **Reports** section. |
+| report-properties-write | Allows viewing and editing the _properties_ category in the **Reports** section. |
+| report-users-write | Allows viewing and editing the _users_ category in the **Reports** section. |
 
 ### Database Section {#database-section}
 
@@ -101,7 +101,7 @@ The following diagram and table contain the default _permissions_ present in all
 |----------------------|----------------------|
 | db-*-read | Allows entering the **Database** section and viewing all of its collections and elements. |
 | db-properties-read | Allows entering the **Database** section and viewing collections. |
-| db-*-write | Permits reading and writing in all of the collections and elements of the **Database** section. |
+| db-*-write | Allows reading and writing in all of the collections and elements of the **Database** section. |
 | db-properties-write | Allows editing collections in the **Database** section. |
 
 :::tip
@@ -112,25 +112,25 @@ For the time being, _db-*-read_ and _db-properties-read_ fulfill equivalent role
 
 | Endpoint permissions | Description |
 | ---- | ---- |
-| admin-groups-read	| Permits reading _groups_. |
-| admin-channels-read | Permits viewing _channels_. |
-| admin-tasks-read | Permits viewing _tasks_. |
-| admin-accesscontrol-read | Permits viewing _access roles_. |
-| admin-users-read | Permits viewing _users_. |
-| admin-bots-read | Permits viewing _bots_. |
-| admin-properties-read | Permits viewing the _database_. |
-| admin-company-read | Permits viewing _company_. |
-| admin-surveys-read | Permits viewing _surveys_. |
-| admin-answers-read | Permits viewing _answers_. |
-| admin-groups-write | Permits editing _groups_. |
-| admin-channels-write | Permits editing _channels_. |
-| admin-tasks-write | Permits editing _tasks_. |
-| admin-accesscontrol-write | Permits editing _access roles_. |
-| admin-users-write | Permits editing _users_. |
-| admin-bots-write | Permits editing _bots_. |
-| admin-properties-write | Permits editing _database_. |
-| admin-company-write | Permits editing _company_. |
-| admin-surveys-write | Permits editing _surveys_. |
+| admin-groups-read	| Allows reading _groups_. |
+| admin-channels-read | Allows viewing _channels_. |
+| admin-tasks-read | Allows viewing _tasks_. |
+| admin-accesscontrol-read | Allows viewing _access roles_. |
+| admin-users-read | Allows viewing _users_. |
+| admin-bots-read | Allows viewing _bots_. |
+| admin-properties-read | Allows viewing the _database_. |
+| admin-company-read | Allows viewing _company_. |
+| admin-surveys-read | Allows viewing _surveys_. |
+| admin-answers-read | Allows viewing _answers_. |
+| admin-groups-write | Allows editing _groups_. |
+| admin-channels-write | Allows editing _channels_. |
+| admin-tasks-write | Allows editing _tasks_. |
+| admin-accesscontrol-write | Allows editing _access roles_. |
+| admin-users-write | Allows editing _users_. |
+| admin-bots-write | Allows editing _bots_. |
+| admin-properties-write | Allows editing _database_. |
+| admin-company-write | Allows editing _company_. |
+| admin-surveys-write | Allows editing _surveys_. |
 
 
 :::info Take into account:
