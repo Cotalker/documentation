@@ -163,11 +163,11 @@ module.exports = {
         'documentation/automation/overview',
         'documentation/automation/admin_routine',
         'documentation/automation/admin_cotlang',
+        'documentation/automation/triggers_and_contexts',
         'documentation/automation/existing_routines',
         'documentation/automation/question_exec',
         'documentation/automation/scheduling',
-        'documentation/automation/sla'
-
+        'documentation/automation/sla',
       ],
       collapsed: true,
     },

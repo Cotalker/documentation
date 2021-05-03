@@ -136,7 +136,7 @@ The fields unique to the **Multiple choice** component are described in the foll
 
 | Field | Description | Notes |
 | ---- | ----------- | ----- |
-| Type | The options are *collection*, *users*, *item list* or *API*. | Depending on what is chosen, new fields will be displayed |
+| Type | The options are *collection*, *users*, *item list* or *API*. Depending on what is chosen, new fields will be displayed. | The choices available when using the _users_ option will depend on the company's [_contact display mode_](/docs/documentation/admin/admin_company#field-descriptions) configuration. |
 | Collection | Choose the collection that contains the elements to display as an option. | You must have the _collection_ previously created in the _Database_ section of the _Administrator_. |
 | Hierarchy selection | Appears when _collection_ type is chosen. When selected, concatenating collections with their respective elements can be set up as answers. | For setup information, see [Tree Selector](#tree-selector). |
 | Filter Type | _User_ and _collection_ options allow filtering. | Filtering options will depende on the _type_ selected. |
