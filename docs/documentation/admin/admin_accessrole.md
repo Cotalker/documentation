@@ -89,7 +89,7 @@ _The following "permissions tree" shows how the four permission types are relate
 
 ### Administrator Section {#admin-section}
 _Grant access to the Administrator Section:_
-<img alt="admin section" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_accessroles_administrator_permissions.png')} />
+<img alt="admin section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_administrator_permissions.png')} />
 <br/>
 
 | Administrator section | Description |
@@ -100,7 +100,7 @@ _Grant access to the Administrator Section:_
 
 ### Report Section {#report-section}
 _Grant access to the Report Section:_
-<img alt="admin section" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_accessroles_reports_permissions.png')} />
+<img alt="admin section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_reports_permissions.png')} />
 <br/>
 
 | Report Section | Description |
