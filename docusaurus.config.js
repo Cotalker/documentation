@@ -36,8 +36,9 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'docs/updates/new_features',
-          activeBasePath: 'docs',
+          // to: 'docs/updates/new_features',
+          // activeBasePath: 'docs',
+          to: 'blog',
           label: 'Updates',
           position: 'left',
         },
@@ -120,6 +121,13 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        blog: {
+          blogSidebarCount: 'ALL',
+          blogSidebarTitle: 'Latest features:',
+          feedOptions: {
+            type: 'all',
+          },
         },
       },
     ],
