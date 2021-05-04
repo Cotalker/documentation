@@ -67,12 +67,30 @@ The following table contains the default _access roles_ that are available by de
 ## Default Permissions {#default-permissions}
 Default _permissions_ come pre-installed and can be assigned to any _access role_.
 
-The following diagram and table contain the default _permissions_ present in all company configurations. There are four permission types, three correspond to configuration areas accessible through the _Main Menu Bar_ when the respective permissions have been granted: _Administrator_, _Report_, and _Database_. A fourth permission type, _Endpoint_, is like a sub-category for the other three types. 
+There are four permission types. Three correspond to configuration areas accessible through the **Main Menu Bar** when the respective permissions have been granted: 
 
-<a target="_blank" href="https://camo.githubusercontent.com/377a94a6105b687fcd8609b41251651a0f6899c457310f1f8f5b53e21ee8cd56/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d3176517351585f5876662d36316f67764543504a735a455170324d4e4877343532436b55767a51467974393872545f456c735779792d386564777373644e6443743564445f4c536e6c66344676394e482f7075623f773d3137323326683d363939"><img alt="permissions tree" className="img_sizing" src={useBaseUrl('https://camo.githubusercontent.com/377a94a6105b687fcd8609b41251651a0f6899c457310f1f8f5b53e21ee8cd56/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d3176517351585f5876662d36316f67764543504a735a455170324d4e4877343532436b55767a51467974393872545f456c735779792d386564777373644e6443743564445f4c536e6c66344676394e482f7075623f773d3137323326683d363939')} /></a>
+- [_Administrator_](#admin-section)
+- [_Report_](#report-section)
+- [_Database_](#database-section) 
+
+The fourth permission type is like a sub-category for the other three types: 
+- [_Endpoint_](#endpoint-permissions)
+
+<div className="alert alert--secondary">
+
+_The following "permissions tree" shows how the four permission types are related. Click the image to enlarge._
+
+<a target="_blank" href="https://camo.githubusercontent.com/377a94a6105b687fcd8609b41251651a0f6899c457310f1f8f5b53e21ee8cd56/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d3176517351585f5876662d36316f67764543504a735a455170324d4e4877343532436b55767a51467974393872545f456c735779792d386564777373644e6443743564445f4c536e6c66344676394e482f7075623f773d3137323326683d363939"><img alt="permissions tree" className="img_sizing" src='https://camo.githubusercontent.com/377a94a6105b687fcd8609b41251651a0f6899c457310f1f8f5b53e21ee8cd56/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d3176517351585f5876662d36316f67764543504a735a455170324d4e4877343532436b55767a51467974393872545f456c735779792d386564777373644e6443743564445f4c536e6c66344676394e482f7075623f773d3137323326683d363939' /></a>
+
+</div>
+<br/>
+
 
 
 ### Administrator Section {#admin-section}
+_Grant access to the Administrator Section:_
+<img alt="admin section" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_accessroles_administrator_permissions.png')} />
+<br/>
 
 | Administrator section | Description |
 |-----|-----|
@@ -81,6 +99,9 @@ The following diagram and table contain the default _permissions_ present in all
 | admin-access | Grants access to the **Administrator** section, but will only show the _endpoint permissions_ the user has been granted. |
 
 ### Report Section {#report-section}
+_Grant access to the Report Section:_
+<img alt="admin section" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_accessroles_reports_permissions.png')} />
+<br/>
 
 | Report Section | Description |
 |----------------------|----------------------|
@@ -96,6 +117,9 @@ The following diagram and table contain the default _permissions_ present in all
 | report-users-write | Allows viewing and editing the _users_ category in the **Reports** section. |
 
 ### Database Section {#database-section}
+_Grant access to the Database Section:_
+<img alt="admin section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_database_permissions.png')} />
+<br/>
 
 | Database section | Description |
 |----------------------|----------------------|
@@ -109,6 +133,7 @@ For the time being, _db-*-read_ and _db-properties-read_ fulfill equivalent role
 :::
 
 ### Endpoint Permissions {#endpoint-permissions}
+_Permissions for specific sections only. Must be used in conjunction with at least "admin-access"._
 
 | Endpoint permissions | Description |
 | ---- | ---- |
