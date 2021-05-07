@@ -6,7 +6,7 @@ key: PBUpdateChannel
 Channel Id  
 Required: true  
 Data Type: CotChannelId   
-### 2. group (key: group)  
+### 2. Group (key: group)  
   
 Required: no  
 Data Type: CotGroupId   
@@ -22,7 +22,7 @@ Data Type: string
 Array with the IDs of Channel users  
 Required: no  
 Data Type: array CotUserId  
-### 6. propertyIds (key: propertyIds)  
+### 6. Property Ids (key: propertyIds)  
   
 Required: no  
 Data Type: array CotPropertyId  
@@ -48,11 +48,11 @@ Stage to be executed when the operation finishes
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. status (key: status)  
+### 1. Status (key: status)  
   
 Required: no  
 Data Type: boolean   
-### 2. channel (key: channel)  
+### 2. Channel (key: channel)  
   
 Required: no  
 Data Type: object 

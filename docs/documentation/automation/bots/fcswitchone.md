@@ -56,7 +56,7 @@ Stage to be executed when all previous stages were executed
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. selected (key: selected)  
+### 1. Selected (key: selected)  
   
 Required: no  
 Data Type: string 

@@ -30,8 +30,8 @@ Data Type: boolean
 Copies to be generated  
 Required: no  
 Data Type: string   
-### 8. useAltPdfConverter (key: useAltPdfConverter)  
-  
+### 8. Alternative Converter (key: useAltPdfConverter)  
+Use Alternative Pdf Converter.  
 Required: no  
 Data Type: boolean   
 ## Next Stages  
@@ -40,19 +40,19 @@ Stage to be executed when the operation ends
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. status (key: status)  
+### 1. Status (key: status)  
   
 Required: no  
 Data Type: string   
-### 2. contentType (key: contentType)  
+### 2. Content Type (key: contentType)  
   
 Required: no  
 Data Type: string   
-### 3. contentUrl (key: contentUrl)  
+### 3. Content URL (key: contentUrl)  
   
 Required: no  
 Data Type: string   
-### 4. content (key: content)  
+### 4. Content (key: content)  
   
 Required: no  
 Data Type: string 

@@ -1,16 +1,16 @@
-#   
+# Duplicate Task  
 ****  
 key: PBDuplicateTask  
 ## Inputs  
-### 1. targetId (key: targetId)  
+### 1. Target Id (key: targetId)  
   
 Required: no  
 Data Type: CotTaskId   
-### 2. taskGroup (key: taskGroup)  
+### 2. Task Group (key: taskGroup)  
   
 Required: true  
 Data Type: CotTaskGroupId   
-### 3. ignoreChildren (key: ignoreChildren)  
+### 3. Ignore Children (key: ignoreChildren)  
   
 Required: true  
 Data Type: boolean   
@@ -24,7 +24,7 @@ Data Type: undefined
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. task (key: task)  
+### 1. Task (key: task)  
   
 Required: no  
 Data Type: object 

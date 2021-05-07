@@ -20,7 +20,7 @@ Stage to be executed when the operation ends
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. messages (key: messages)  
+### 1. Messages (key: messages)  
   
 Required: no  
 Data Type: array object

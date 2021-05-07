@@ -2,7 +2,7 @@
 **Makes a network request to execute a legacy bot**  
 key: NWBotV2V3  
 ## Inputs  
-### 1. uri (key: uri)  
+### 1. URI (key: uri)  
   
 Required: true  
 Data Type: string   
@@ -28,15 +28,15 @@ Stage to be executed when the network request returned an error code (Ex: HTTP 5
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. statusCode (key: statusCode)  
+### 1. Status Code (key: statusCode)  
   
 Required: no  
 Data Type: number   
-### 2. errorMessage (key: errorMessage)  
+### 2. Error Message (key: errorMessage)  
   
 Required: no  
 Data Type: string   
-### 3. data (key: data)  
+### 3. Data (key: data)  
   
 Required: no  
 Data Type: any 

@@ -36,7 +36,7 @@ Stage to be executed when the Channel was not edited
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. channel (key: channel)  
+### 1. Channel (key: channel)  
   
 Required: no  
 Data Type: object 

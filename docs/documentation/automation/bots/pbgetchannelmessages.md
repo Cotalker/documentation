@@ -1,16 +1,16 @@
-#   
+# Get Channel Messages  
 ****  
 key: PBGetChannelMessages  
 ## Inputs  
-### 1. channel (key: channel)  
+### 1. Channel (key: channel)  
   
 Required: true  
 Data Type: CotChannelId   
-### 2. uuid (key: uuid)  
+### 2. UUID (key: uuid)  
   
 Required: true  
 Data Type: string   
-### 3. answer (key: answer)  
+### 3. Answer (key: answer)  
   
 Required: true  
 Data Type: CotSurveyId   
@@ -24,7 +24,7 @@ Data Type: undefined
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. messages (key: messages)  
+### 1. Messages (key: messages)  
   
 Required: no  
 Data Type: array object

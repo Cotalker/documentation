@@ -20,7 +20,7 @@ Stage to be executed when the operation ends
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. url (key: url)  
+### 1. URL (key: url)  
   
 Required: no  
 Data Type: string 

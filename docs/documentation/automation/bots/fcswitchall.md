@@ -60,11 +60,11 @@ Stage to be executed when all previous stages were executed
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. contextNames (key: contextNames)  
+### 1. Context names (key: contextNames)  
   
 Required: no  
 Data Type: array string  
-### 2. contextNext (key: contextNext)  
+### 2. Context next step (key: contextNext)  
   
 Required: no  
 Data Type: array string

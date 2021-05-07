@@ -48,7 +48,7 @@ Stage to be executed when the User was not created
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. user (key: user)  
+### 1. User (key: user)  
   
 Required: no  
 Data Type: object 

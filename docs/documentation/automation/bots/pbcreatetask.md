@@ -30,7 +30,7 @@ Data Type: number
 Task Start Date  
 Required: no  
 Data Type: date   
-### 8. channel (key: channel)  
+### 8. Channel (key: channel)  
   
 Required: no  
 Data Type: CotChannelId   
@@ -82,11 +82,11 @@ Data Type: array CotUserId
 User ID assigned to the new Task  
 Required: no  
 Data Type: array CotUserId  
-### 21. visibility (key: visibility)  
+### 21. Visibility (key: visibility)  
   
 Required: no  
 Data Type: array CotUserId  
-### 22. followers (key: followers)  
+### 22. Followers (key: followers)  
   
 Required: no  
 Data Type: array CotUserId  
@@ -108,7 +108,7 @@ Stage to execute when the Task was not created
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. task (key: task)  
+### 1. Task (key: task)  
   
 Required: no  
 Data Type: object 

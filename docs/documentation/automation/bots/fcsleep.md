@@ -12,7 +12,7 @@ Stage to be executed at the end of the wait
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. image (key: image)  
+### 1. mS (key: milliseconds)  
   
 Required: no  
 Data Type: number 

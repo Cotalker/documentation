@@ -20,7 +20,7 @@ Stage to execute when all iterations have finished
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. contextNames (key: contextNames)  
+### 1. Context Names (key: contextNames)  
   
 Required: no  
 Data Type: array string

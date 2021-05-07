@@ -20,7 +20,7 @@ Stage to be executed when no answers are found
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. answers (key: answers)  
+### 1. Answers (key: answers)  
   
 Required: no  
 Data Type: array CotAnswerId
