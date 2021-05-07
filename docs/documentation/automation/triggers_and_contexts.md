@@ -370,7 +370,8 @@ _Changed State_ is triggered when a task changes state.
 ```typescript
 {
     taskId: ObjectId[COTTask],
-    taskGroupId: ObjectId[COTTaskGroup]
+    taskGroupId: ObjectId[COTTaskGroup],
+    ChannelID: ObjectId[COTChannel]
 }
 ```
 </div>
@@ -388,40 +389,6 @@ _SLAs_ are time triggered events based on how much time a task is in a specific 
 
 </div>
 <br/>
-
-<!-- <div className="row table-row-1">
-<div className="col col--12 code-table-1">
-
-**Source:**
-
-</div>
-<div className="col col--12 code-table-1">
-
-
-### Workflow New Subtask {#new-subtask}
-
-</div>
-<div className="col col--11 col--offset-1 code-table-1">
-
-```typescript
-{
-    task: COTTask,
-    parent: COTTask,
-}
-```
-
-</div>
-<div className="col col--12 code-table-2">
-
-**Description:**
-
-</div>
-<div className="col col--12 code-table-2">
-
-_Workflow New Subtask_ is triggered after a sub-task is created.
-
-</div>
-</div> -->
 
 
 ## Context language description {#context-language}
