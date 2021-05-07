@@ -18,11 +18,9 @@ Data Type: any
 ### 1. True condition (key: IF)  
 Stage to be executed when the operation results in true  
 Required: no  
-Data Type: undefined   
 ### 2. False condition (key: ELSE)  
 Stage to execute when the operation results in false  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Left hand side (key: lhs)  
   

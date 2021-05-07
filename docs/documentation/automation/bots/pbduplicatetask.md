@@ -18,11 +18,9 @@ Data Type: boolean
 ### 1. CREATED (key: CREATED)  
   
 Required: no  
-Data Type: undefined   
 ### 2. NOT-CREATED (key: NOT-CREATED)  
   
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Task (key: task)  
   

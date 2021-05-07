@@ -14,11 +14,9 @@ Data Type: string
 ### 1. SUCCESS (key: SUCCESS)  
   
 Required: no  
-Data Type: undefined   
 ### 2. ERROR (key: ERROR)  
   
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Dictionary (key: dict)  
   

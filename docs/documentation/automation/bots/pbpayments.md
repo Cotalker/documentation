@@ -66,7 +66,6 @@ Data Type: array string
 ### 1. DEFAULT (key: DEFAULT)  
   
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Status (key: status)  
   

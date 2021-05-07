@@ -42,11 +42,9 @@ Data Type: dictionary any
 ### 1. User created (key: CREATED)  
 Stage to be executed when the User was created  
 Required: no  
-Data Type: undefined   
 ### 2. User not created (key: NOT-CREATED)  
 Stage to be executed when the User was not created  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. User (key: user)  
   

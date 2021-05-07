@@ -14,11 +14,9 @@ Data Type: array object
 ### 1. Answers found (key: FOUND)  
 Stage to execute when answers are found  
 Required: no  
-Data Type: undefined   
 ### 2. Answers not found (key: NOT-FOUND)  
 Stage to be executed when no answers are found  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Answers (key: answers)  
   

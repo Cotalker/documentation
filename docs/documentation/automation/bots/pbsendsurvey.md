@@ -34,7 +34,6 @@ Data Type: dictionary boolean
 ### 1. Default (key: DEFAULT)  
 Stage to be executed when the operation ends  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Status (key: status)  
   

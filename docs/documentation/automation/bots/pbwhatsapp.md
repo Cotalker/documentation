@@ -34,7 +34,6 @@ Data Type: string
 ### 1. DEFAULT (key: DEFAULT)  
   
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. status (key: status)  
   

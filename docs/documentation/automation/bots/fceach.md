@@ -14,11 +14,9 @@ Data Type: string
 ### 1. Iteration (key: STEP)  
 Stage to be executed in each iteration  
 Required: no  
-Data Type: undefined   
 ### 2. Iterations finished (key: DONE)  
 Stage to execute when all iterations have finished  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Context Names (key: contextNames)  
   

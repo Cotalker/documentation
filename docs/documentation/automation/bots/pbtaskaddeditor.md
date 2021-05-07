@@ -34,11 +34,9 @@ Data Type: string
 ### 1. Task edited (key: ADDED)  
 Stage to execute when the Task was edited  
 Required: no  
-Data Type: undefined   
 ### 2. Unedited task (key: NOT-ADDED)  
 Stage to be executed when the Task was edited  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Task (key: task)  
   

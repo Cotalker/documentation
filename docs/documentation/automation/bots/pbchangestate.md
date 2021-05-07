@@ -18,7 +18,6 @@ Data Type: CotTaskGroupId
 ### 1. Default (key: DEFAULT)  
 Stage to be executed after the operation  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Task (key: task)  
   

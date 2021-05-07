@@ -46,7 +46,6 @@ Data Type: array string
 ### 1. Default (key: DEFAULT)  
   
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Event (key: event)  
   

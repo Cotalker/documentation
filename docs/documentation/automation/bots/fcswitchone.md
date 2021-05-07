@@ -34,27 +34,21 @@ Data Type: string
 ### 1. Case A (key: CASE_A)  
 Stage to be executed when the operation for case A results in true  
 Required: no  
-Data Type: undefined   
 ### 2. Case B (key: CASE_B)  
 Stage to be executed when the operation for case B results in true  
 Required: no  
-Data Type: undefined   
 ### 3. Case C (key: CASE_C)  
 Stage to be executed when the operation for case C results in true  
 Required: no  
-Data Type: undefined   
 ### 4. Case D (key: CASE_D)  
 Stage to be executed when the operation for case D results in true  
 Required: no  
-Data Type: undefined   
 ### 5. Case E (key: CASE_E)  
 Stage to be executed when the operation for case E results in true  
 Required: no  
-Data Type: undefined   
 ### 6. Default (key: DEFAULT)  
 Stage to be executed when all previous stages were executed  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Selected (key: selected)  
   

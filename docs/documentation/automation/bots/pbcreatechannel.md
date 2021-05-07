@@ -42,11 +42,9 @@ Data Type: object
 ### 1. Channel created (key: CREATED)  
 Stage to execute when the Channel was created  
 Required: no  
-Data Type: undefined   
 ### 2. Channel not created (key: NOT-CREATED)  
 Stage to be executed when the Channel was not created  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Channel (key: channel)  
   

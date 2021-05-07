@@ -102,11 +102,9 @@ Data Type: CotUserId
 ### 1. Task created (key: CREATED)  
 Stage to execute when the Task was created  
 Required: no  
-Data Type: undefined   
 ### 2. Task not created (key: NOT-CREATED)  
 Stage to execute when the Task was not created  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Task (key: task)  
   
