@@ -45,7 +45,6 @@ Data Type: array string
 ## Next Stages  
 ### 1. Default (key: DEFAULT)  
   
-Required: no  
 ## Outputs  
 ### 1. Event (key: event)  
   

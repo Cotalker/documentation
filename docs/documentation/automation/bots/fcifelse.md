@@ -17,10 +17,8 @@ Data Type: any
 ## Next Stages  
 ### 1. True condition (key: IF)  
 Stage to be executed when the operation results in true  
-Required: no  
 ### 2. False condition (key: ELSE)  
 Stage to execute when the operation results in false  
-Required: no  
 ## Outputs  
 ### 1. Left hand side (key: lhs)  
   

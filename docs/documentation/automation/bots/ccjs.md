@@ -7,22 +7,20 @@ Must return an Object. e.g., return { hello: 'world' };. Variables 'value' and '
 Required: true  
 Data Type: string   
 ## Next Stages  
-### 1. SUCCESS (key: SUCCESS)  
+### 1. SUCCESS  
   
-Required: no  
-### 2. ERROR (key: ERROR)  
+### 2. ERROR  
   
-Required: no  
 ## Outputs  
-### 1. statusCode (key: statusCode)  
+### 1. statusCode  
 Status code number: 0 if successful  
 Required: no  
 Data Type: number   
-### 2. error (key: error)  
+### 2. error  
 Error message.  
 Required: no  
 Data Type: string   
-### 3. data (key: data)  
+### 3. data  
 Returned value.  
 Required: no  
 Data Type: any 

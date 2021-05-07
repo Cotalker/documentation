@@ -25,10 +25,8 @@ Data Type: dictionary string
 ## Next Stages  
 ### 1. Property created (key: CREATED)  
 Stage to execute when the Property was created  
-Required: no  
 ### 2. Property not created (key: NOT-CREATED)  
 Stage to execute when the Property was not created  
-Required: no  
 ## Outputs  
 ### 1. Property (key: property)  
   

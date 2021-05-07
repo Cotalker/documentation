@@ -41,10 +41,8 @@ Data Type: dictionary any
 ## Next Stages  
 ### 1. User created (key: CREATED)  
 Stage to be executed when the User was created  
-Required: no  
 ### 2. User not created (key: NOT-CREATED)  
 Stage to be executed when the User was not created  
-Required: no  
 ## Outputs  
 ### 1. User (key: user)  
   

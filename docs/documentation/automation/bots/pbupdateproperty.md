@@ -29,7 +29,6 @@ Data Type: array CotPropertyId
 ## Next Stages  
 ### 1. Default (key: DEFAULT)  
 Stage to be executed when the operation finishes  
-Required: no  
 ## Outputs  
 ### 1. Status (key: status)  
   

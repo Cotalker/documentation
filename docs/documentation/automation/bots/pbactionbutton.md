@@ -43,12 +43,10 @@ Data Type: string
 Required: no  
 Data Type: string   
 ## Next Stages  
-### 1. DEFAULT (key: DEFAULT)  
+### 1. DEFAULT  
   
-Required: no  
-### 2. ERROR (key: ERROR)  
+### 2. ERROR  
   
-Required: no  
 ## Outputs  
 ### 1. Status (key: status)  
   

@@ -37,10 +37,8 @@ Data Type: boolean
 ## Next Stages  
 ### 1. Success (key: SUCCESS)  
 Stage to be executed when the network request returned a success code (Ex: HTTP 2xx)  
-Required: no  
 ### 2. Error (key: ERROR)  
 Stage to execute when the network request returned an error code (Ex: HTTP 5xx)  
-Required: no  
 ## Outputs  
 ### 1. Status Code (key: statusCode)  
   

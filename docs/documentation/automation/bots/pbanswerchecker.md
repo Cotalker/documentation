@@ -13,10 +13,8 @@ Data Type: array object
 ## Next Stages  
 ### 1. Answers found (key: FOUND)  
 Stage to execute when answers are found  
-Required: no  
 ### 2. Answers not found (key: NOT-FOUND)  
 Stage to be executed when no answers are found  
-Required: no  
 ## Outputs  
 ### 1. Answers (key: answers)  
   

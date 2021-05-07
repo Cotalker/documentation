@@ -33,25 +33,18 @@ Data Type: string
 ## Next Stages  
 ### 1. Case A (key: CASE_A)  
 Stage to be executed when the operation for case A results in true  
-Required: no  
 ### 2. Case B (key: CASE_B)  
 Stage to be executed when the operation for case B results in true  
-Required: no  
 ### 3. Case C (key: CASE_C)  
 Stage to be executed when the operation for case C results in true  
-Required: no  
 ### 4. Case D (key: CASE_D)  
 Stage to be executed when the operation for case D results in true  
-Required: no  
 ### 5. E (key: CASE_E)  
 Stage to be executed when the operation for case E results in true  
-Required: no  
 ### 6. Default (key: DEFAULT)  
 Stage to be executed when none of the cases results in true  
-Required: no  
 ### 7. Cases terminated (key: DONE)  
 Stage to be executed when all previous stages were executed  
-Required: no  
 ## Outputs  
 ### 1. Context names (key: contextNames)  
   

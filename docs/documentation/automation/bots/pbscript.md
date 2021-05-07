@@ -11,12 +11,10 @@ Data Type: any
 Required: true  
 Data Type: string   
 ## Next Stages  
-### 1. SUCCESS (key: SUCCESS)  
+### 1. SUCCESS  
   
-Required: no  
-### 2. ERROR (key: ERROR)  
+### 2. ERROR  
   
-Required: no  
 ## Outputs  
 ### 1. Dictionary (key: dict)  
   
