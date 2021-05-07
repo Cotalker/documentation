@@ -30,7 +30,6 @@ Data Type: dictionary any
 ### 1. Default (key: DEFAULT)  
 Stage to be executed when the operation finishes  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Status (key: status)  
   

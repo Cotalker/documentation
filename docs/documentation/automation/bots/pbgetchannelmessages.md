@@ -18,11 +18,9 @@ Data Type: CotSurveyId
 ### 1. FOUND (key: FOUND)  
   
 Required: no  
-Data Type: undefined   
 ### 2. NOT-FOUND (key: NOT-FOUND)  
   
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Messages (key: messages)  
   

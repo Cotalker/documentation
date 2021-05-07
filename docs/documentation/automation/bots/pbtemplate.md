@@ -18,7 +18,6 @@ Data Type: string
 ### 1. Default (key: DEFAULT)  
 Stage to be executed when the operation ends  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. File Path (key: filePath)  
   

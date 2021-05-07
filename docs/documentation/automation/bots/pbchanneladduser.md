@@ -30,11 +30,9 @@ Data Type: string
 ### 1. Channel edited (key: ADDED)  
 Stage to be executed when the Channel was edited  
 Required: no  
-Data Type: undefined   
 ### 2. Channel not edited (key: NOT-ADDED)  
 Stage to be executed when the Channel was not edited  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. Channel (key: channel)  
   

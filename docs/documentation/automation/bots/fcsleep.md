@@ -10,7 +10,6 @@ Data Type: number
 ### 1. Wait finished (key: DEFAULT)  
 Stage to be executed at the end of the wait  
 Required: no  
-Data Type: undefined   
 ## Outputs  
 ### 1. mS (key: milliseconds)  
   
