@@ -24,19 +24,19 @@ Stage to execute when the operation results in false
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. lhs (key: lhs)  
+### 1. Left hand side (key: lhs)  
   
 Required: no  
 Data Type: any   
-### 2. rhs (key: rhs)  
+### 2. Right hand side (key: rhs)  
   
 Required: no  
 Data Type: any   
-### 3. res (key: res)  
+### 3. Result (key: res)  
   
 Required: no  
 Data Type: boolean   
-### 4. next (key: next)  
+### 4. Next step (key: next)  
   
 Required: no  
 Data Type: string 

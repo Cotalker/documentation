@@ -2,7 +2,7 @@
 **Create a new Channel**  
 key: PBCreateChannel  
 ## Inputs  
-### 1. group (key: group)  
+### 1. Group (key: group)  
   
 Required: true  
 Data Type: CotGroupId   
@@ -10,31 +10,31 @@ Data Type: CotGroupId
 Channel Code  
 Required: no  
 Data Type: string   
-### 3. nameDisplay (key: nameDisplay)  
+### 3. Display Name (key: nameDisplay)  
   
 Required: no  
 Data Type: string   
-### 4. userIds (key: userIds)  
+### 4. User Ids (key: userIds)  
   
 Required: no  
 Data Type: array CotUserId  
-### 5. propertyIds (key: propertyIds)  
+### 5. Property Ids (key: propertyIds)  
   
 Required: no  
 Data Type: array CotPropertyId  
-### 6. groupOwnerIds (key: groupOwnerIds)  
+### 6. Group Owner Ids (key: groupOwnerIds)  
   
 Required: no  
 Data Type: array CotUserId  
-### 7. isActive (key: isActive)  
+### 7. is Active (key: isActive)  
   
 Required: no  
 Data Type: boolean   
-### 8. settings (key: settings)  
+### 8. Settings (key: settings)  
   
 Required: no  
 Data Type: object   
-### 9. image (key: image)  
+### 9. Image (key: image)  
   
 Required: no  
 Data Type: object   
@@ -48,7 +48,7 @@ Stage to be executed when the Channel was not created
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. channel (key: channel)  
+### 1. Channel (key: channel)  
   
 Required: no  
 Data Type: object 

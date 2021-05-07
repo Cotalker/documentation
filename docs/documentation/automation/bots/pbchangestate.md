@@ -20,7 +20,7 @@ Stage to be executed after the operation
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. task (key: task)  
+### 1. Task (key: task)  
   
 Required: no  
 Data Type: object 

@@ -1,12 +1,12 @@
-#   
+# Script  
 ****  
 key: PBScript  
 ## Inputs  
-### 1. data (key: data)  
+### 1. Data (key: data)  
   
 Required: true  
 Data Type: any   
-### 2. code (key: code)  
+### 2. Code (key: code)  
   
 Required: true  
 Data Type: string   
@@ -20,7 +20,7 @@ Data Type: undefined
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. dict (key: dict)  
+### 1. Dictionary (key: dict)  
   
 Required: no  
 Data Type: any 

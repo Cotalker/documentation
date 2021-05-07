@@ -24,7 +24,7 @@ Stage to be executed when the operation finishes
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. messages (key: messages)  
+### 1. Messages (key: messages)  
   
 Required: no  
 Data Type: object 

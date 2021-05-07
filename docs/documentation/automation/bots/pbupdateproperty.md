@@ -32,11 +32,11 @@ Stage to be executed when the operation finishes
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. status (key: status)  
+### 1. Status (key: status)  
   
 Required: no  
 Data Type: boolean   
-### 2. property (key: property)  
+### 2. Property (key: property)  
   
 Required: no  
 Data Type: CotPropertyId 

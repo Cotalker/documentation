@@ -32,7 +32,7 @@ Stage to execute when the Property was not created
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. property (key: property)  
+### 1. Property (key: property)  
   
 Required: no  
 Data Type: object 

@@ -42,15 +42,15 @@ Data Type: array CotUserId
 User ID assigned to the new Task  
 Required: no  
 Data Type: CotUserId   
-### 11. followers (key: followers)  
+### 11. Followers (key: followers)  
   
 Required: no  
 Data Type: array CotUserId  
-### 12. visibility (key: visibility)  
+### 12. Visibility (key: visibility)  
   
 Required: no  
 Data Type: array CotUserId  
-### 13. validators (key: validators)  
+### 13. Validators (key: validators)  
   
 Required: no  
 Data Type: array CotUserId  
@@ -82,7 +82,7 @@ Data Type: string
 Channel Id associated with the Task  
 Required: no  
 Data Type: CotChannelId   
-### 21. parent (key: parent)  
+### 21. Parent (key: parent)  
   
 Required: no  
 Data Type: CotTaskId   
@@ -96,7 +96,7 @@ Stage to be executed when the operation finishes
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. task (key: task)  
+### 1. Task (key: task)  
   
 Required: no  
 Data Type: object 

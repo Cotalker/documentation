@@ -1,44 +1,44 @@
-#   
+# Action Button  
 ****  
 key: PBActionButton  
 ## Inputs  
-### 1. isActive (key: isActive)  
+### 1. Is Active (key: isActive)  
   
 Required: true  
 Data Type: boolean   
-### 2. channelId (key: channelId)  
+### 2. Channel Id (key: channelId)  
   
 Required: true  
 Data Type: CotChannelId   
-### 3. actionType (key: actionType)  
+### 3. Action Type (key: actionType)  
   
 Required: true  
 Data Type: string   
-### 4. channelProperties (key: channelProperties)  
+### 4. Channel Properties (key: channelProperties)  
   
 Required: no  
 Data Type: array CotPropertyId  
-### 5. accessRoles (key: accessRoles)  
+### 5. Access Roles (key: accessRoles)  
   
 Required: no  
 Data Type: array CotAccessRoleId  
-### 6. uri (key: uri)  
+### 6. URI (key: uri)  
   
 Required: no  
 Data Type: string   
-### 7. queryParams (key: queryParams)  
+### 7. Query Params (key: queryParams)  
   
 Required: no  
 Data Type: dictionary string  
-### 8. windowConfig (key: windowConfig)  
+### 8. Window Config (key: windowConfig)  
   
 Required: no  
 Data Type: string   
-### 9. windowName (key: windowName)  
+### 9. Window Name (key: windowName)  
   
 Required: no  
 Data Type: string   
-### 10. openMode (key: openMode)  
+### 10. Open Mode (key: openMode)  
   
 Required: no  
 Data Type: string   
@@ -52,11 +52,11 @@ Data Type: undefined
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. status (key: status)  
+### 1. Status (key: status)  
   
 Required: no  
 Data Type: boolean   
-### 2. channel (key: channel)  
+### 2. Channel (key: channel)  
   
 Required: no  
 Data Type: CotChannelId 

@@ -1,64 +1,64 @@
-#   
+# Payments  
 ****  
 key: PBPayments  
 ## Inputs  
-### 1. type (key: type)  
+### 1. Type (key: type)  
   
 Required: true  
 Data Type: string   
-### 2. service (key: service)  
+### 2. Service (key: service)  
   
 Required: true  
 Data Type: string   
-### 3. paymentMethod (key: paymentMethod)  
+### 3. Payment Method (key: paymentMethod)  
   
 Required: true  
 Data Type: string   
-### 4. amount (key: amount)  
+### 4. Amount (key: amount)  
   
 Required: true  
 Data Type: number   
-### 5. currency (key: currency)  
+### 5. Currency (key: currency)  
   
 Required: true  
 Data Type: string   
-### 6. buyerName (key: buyerName)  
+### 6. Buyer Name (key: buyerName)  
   
 Required: true  
 Data Type: string   
-### 7. buyerEmail (key: buyerEmail)  
+### 7. Buyer Email (key: buyerEmail)  
   
 Required: true  
 Data Type: string   
-### 8. buyerNationalId (key: buyerNationalId)  
+### 8. Buyer National Id (key: buyerNationalId)  
   
 Required: true  
 Data Type: string   
-### 9. sellerName (key: sellerName)  
+### 9. Seller Name (key: sellerName)  
   
 Required: true  
 Data Type: string   
-### 10. sellerEmail (key: sellerEmail)  
+### 10. Seller Email (key: sellerEmail)  
   
 Required: true  
 Data Type: string   
-### 11. sellerNationalId (key: sellerNationalId)  
+### 11. Seller National Id (key: sellerNationalId)  
   
 Required: true  
 Data Type: string   
-### 12. webhook (key: webhook)  
+### 12. Webhook (key: webhook)  
   
 Required: true  
 Data Type: string   
-### 13. development (key: development)  
+### 13. Development (key: development)  
   
 Required: true  
 Data Type: boolean   
-### 14. meta (key: meta)  
+### 14. Meta (key: meta)  
   
 Required: true  
 Data Type: string   
-### 15. emails (key: emails)  
+### 15. Emails (key: emails)  
   
 Required: no  
 Data Type: array string  
@@ -68,7 +68,7 @@ Data Type: array string
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. status (key: status)  
+### 1. Status (key: status)  
   
 Required: no  
 Data Type: boolean 

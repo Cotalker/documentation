@@ -44,15 +44,15 @@ Stage to execute when the network request returned an error code (Ex: HTTP 5xx)
 Required: no  
 Data Type: undefined   
 ## Outputs  
-### 1. statusCode (key: statusCode)  
+### 1. Status Code (key: statusCode)  
   
 Required: no  
 Data Type: number   
-### 2. errorMessage (key: errorMessage)  
+### 2. Error Message (key: errorMessage)  
   
 Required: no  
 Data Type: string   
-### 3. data (key: data)  
+### 3. Data (key: data)  
   
 Required: no  
 Data Type: any 
