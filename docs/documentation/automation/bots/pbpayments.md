@@ -63,9 +63,8 @@ Data Type: string
 Required: no  
 Data Type: array string  
 ## Next Stages  
-### 1. DEFAULT (key: DEFAULT)  
+### 1. DEFAULT  
   
-Required: no  
 ## Outputs  
 ### 1. Status (key: status)  
   

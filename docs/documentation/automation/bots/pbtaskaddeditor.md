@@ -33,10 +33,8 @@ Data Type: string
 ## Next Stages  
 ### 1. Task edited (key: ADDED)  
 Stage to execute when the Task was edited  
-Required: no  
 ### 2. Unedited task (key: NOT-ADDED)  
 Stage to be executed when the Task was edited  
-Required: no  
 ## Outputs  
 ### 1. Task (key: task)  
   

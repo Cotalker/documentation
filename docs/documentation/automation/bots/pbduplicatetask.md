@@ -15,12 +15,10 @@ Data Type: CotTaskGroupId
 Required: true  
 Data Type: boolean   
 ## Next Stages  
-### 1. CREATED (key: CREATED)  
+### 1. CREATED  
   
-Required: no  
-### 2. NOT-CREATED (key: NOT-CREATED)  
+### 2. NOT-CREATED  
   
-Required: no  
 ## Outputs  
 ### 1. Task (key: task)  
   

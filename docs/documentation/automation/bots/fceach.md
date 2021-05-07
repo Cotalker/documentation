@@ -13,10 +13,8 @@ Data Type: string
 ## Next Stages  
 ### 1. Iteration (key: STEP)  
 Stage to be executed in each iteration  
-Required: no  
 ### 2. Iterations finished (key: DONE)  
 Stage to execute when all iterations have finished  
-Required: no  
 ## Outputs  
 ### 1. Context Names (key: contextNames)  
   

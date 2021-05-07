@@ -41,10 +41,8 @@ Data Type: object
 ## Next Stages  
 ### 1. Channel created (key: CREATED)  
 Stage to execute when the Channel was created  
-Required: no  
 ### 2. Channel not created (key: NOT-CREATED)  
 Stage to be executed when the Channel was not created  
-Required: no  
 ## Outputs  
 ### 1. Channel (key: channel)  
   

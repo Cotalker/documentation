@@ -15,12 +15,10 @@ Data Type: string
 Required: true  
 Data Type: CotSurveyId   
 ## Next Stages  
-### 1. FOUND (key: FOUND)  
+### 1. FOUND  
   
-Required: no  
-### 2. NOT-FOUND (key: NOT-FOUND)  
+### 2. NOT-FOUND  
   
-Required: no  
 ## Outputs  
 ### 1. Messages (key: messages)  
   
