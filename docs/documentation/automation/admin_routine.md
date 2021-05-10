@@ -75,19 +75,6 @@ Click links for more detailed information.
 
 <br/>
 
-| Stage Type Name (Bot) | Description |
-| ---- | ---- | 
-| [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. |
-| [Iterate](/docs/documentation/automation/bots/fceach) | Iterate over an array. |
-| [Conditional](/docs/documentation/automation/bots/fcifelse) | Executes the next stage conditionally based on the operator's left and right hand. |
-| [Wait](/docs/documentation/automation/bots/fcsleep) | Executes the next stage after the defined milliseconds. |
-| [Multiple Switch](/docs/documentation/automation/bots/fcswitchall) | Executes all stages conditionally and in parallel according to the operator's left and right hand. |
-|[ Switch](/docs/documentation/automation/bots/fcswitchone) | Conditionally executes the next stage based on the left and right hand of the operator. |
-| [Run Legacy Bot](/docs/documentation/automation/bots/nwbotv2v3) | Makes a network request to execute a legacy bot. |
-| [Network Request](/docs/documentation/automation/bots/nwrequest) | Makes a network request (URL) using an HTTP method. |
-| [Action Button](/docs/documentation/automation/bots/pbactionbutton) | |
-
-
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Iterar | Itera sobre un Array |  | 
