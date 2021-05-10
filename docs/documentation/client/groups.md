@@ -55,8 +55,8 @@ _The following image shows how to open the side panel:_
 <img alt="task change state menu" class="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_sidepanel_00.png')} />
 <br/>
 
-### Floating Action Button (FAB) {#floating-action-button-fab}
-Within a group's channel panel, you might see a green button floating near the bottom. This is a floating action button (FAB) that can be configured for a group's specfic needs. This button can let you create a new channel, answer a survey, create a task, redirect to another URL, among others.
+### "Actions" Button {#floating-action-button-fab}
+Within a group's channel panel, you might see a green button floating near the bottom. The _Actions_ button that can be configured for a group's specific needs. This button can let you create a new channel, answer a survey, create a task, redirect to another URL, among others.
 
 _The FAB and the enabled actions will look something like the image below:_
 <img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
