@@ -42,6 +42,16 @@ When there are multiple _channels_ in a group, it is recommended to use the *sea
 ### View of Chat Channel {#view-of-chat-channel}
 <img alt="" src={useBaseUrl('img/channelopen.jpg')} />
 
+### Chat Message Options {#chat-message-options}
+
+Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with three options: 
+
+- _Reply_: Send a message with the original message and author embedded. Only the first three lines of the original message will be available. You can reply to more than one message at a time.
+- _Copy_: Copy text messages to your clipboard.
+- _Delete_: Delete message you have sent. This option is available only for a limited time after you send the message.
+
+<!-- TODO insert image with message menu and/or a reply example-->
+
 ### Task Menus within Channel {#task-menus-within-channel}
 From within the respective _channel_, you can change a _task's_ state. Simply hover over the task in the group's channel list and left-click over the icon that appears to the right.
 
