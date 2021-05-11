@@ -1,7 +1,7 @@
 ---
 title: Automation Log
 description: New Feature! Use this tool to test and debug all of your automated routines.
-image: https://www.doc.cotalker.com/img/updates/update_automation_log.png
+image: https://www.doc.cotalker.com/img/updates/update_automation_log_01.png
 draft: false
 
 ---
