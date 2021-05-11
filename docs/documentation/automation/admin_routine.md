@@ -69,17 +69,44 @@ It's common to use COTLANG to get data for the fields.
 | Stage Type Name (Bot) | Description | Key |
 | ---- | ---- | ---- |
 | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
-| [Iterate](/docs/documentation/automation/bots/fceach) | Iterate over an array. | _FCEach_ |
+| [Iterate](/docs/documentation/automation/bots/fceach) | Iterates over an array. | _FCEach_ |
 | [Conditional](/docs/documentation/automation/bots/fcifelse) | Executes the next stage conditionally based on the operator's left and right hand. | _FCIfElse_ |
 | [Wait](/docs/documentation/automation/bots/fcsleep) | Executes the next stage after the defined milliseconds. | _FCSleep_ |
 | [Multiple Switch](/docs/documentation/automation/bots/fcswitchall) | Executes all stages conditionally and in parallel according to the operator's left and right hand. | _FCSwitchAll_ |
 |[ Switch](/docs/documentation/automation/bots/fcswitchone) | Conditionally executes the next stage based on the left and right hand of the operator. | _FCSwitchOne_ |
 | [Run Legacy Bot](/docs/documentation/automation/bots/nwbotv2v3) | Makes a network request to execute a legacy bot. | _NWbotV2V3_ |
 | [Network Request](/docs/documentation/automation/bots/nwrequest) | Makes a network request (URL) using an HTTP method. | _NWRequest_ |
-| [Action Button](/docs/documentation/automation/bots/pbactionbutton) | _PBActionButton_ |
-
-
-
+| [Action Button](/docs/documentation/automation/bots/pbactionbutton) | | _PBActionButton_ |
+| [Search for Answers](/docs/documentation/automation/bots/pbanswerchecker) | Searches for form responses. | _PBAnswerChecker_ |
+| [Change Task Status](/docs/documentation/automation/bots/pbchangestate) | Changes the status of a task. | _PBChangeState_ |
+| [Edit Channel Users](/docs/documentation/automation/bots/pbchanneladduser) | Adds or removes users from a channel. | _PBChannelAddUser_ |
+| [Get the Task from a Channel](/docs/documentation/automation/bots/pbchanneltotaskse) | Gets the task associated with a channel (if any). | _PBChannelToTaskSE_ |
+| [Clean Channels](/docs/documentation/automation/bots/pbcleanchannel) | Deletes messages in the indicated channels. | _PBCleanChannel_ |
+| [Copy Messages](/docs/documentation/automation/bots/pbcopysurvey) | Copies messages from one channel to another. | _PBCopySurvey_ |
+| [Create Channel](/docs/documentation/automation/bots/pbcreatechannel) | Creates channels. | _PBCreateChannel_ |
+| [Create Property](/docs/documentation/automation/bots/pbcreateproperty) | Creates new properties. | _PBCreateProperty_ |
+| [Create Task](/docs/documentation/automation/bots/pbcreatetask) | Creates new tasks. | _PBCreateTask_ |
+| [Create User](/docs/documentation/automation/bots/pbcreateuser) | Creates new users. | _PBCreateUser_ |
+| [Duplicate Task](/docs/documentation/automation/bots/pbduplicatetask) | | _PBDuplicateTask_ |
+| [Change Form to Edit Mode](/docs/documentation/automation/bots/pbeditablesurvey) | Changes a set of forms to edit mode. | _PBEditableSurvey_ |
+| [Send Email](/docs/documentation/automation/bots/pbemail) | Sends an email. | _PBEmail_ |
+| [Get Channel Messages](/docs/documentation/automation/bots/pbgetchannelmessages) | | _PBGetChannelMessages_ |
+| [Send GIF](/docs/documentation/automation/bots/pbgiphy) | Sends an externally selected GIF image based on keyword to a channel. | _PBGiphy_ |
+| [Google Calendar Integration](/docs/documentation/automation/bots/pbgooglecalendar) | Creates a Google Calendar event. Uses domain-wide delegation to add events to your users' calendars. | _PBGoogleCalendar_ |
+| [Hide Messages](/docs/documentation/automation/bots/pbhidemessages) | Hides messages in a channel. | _PBHideMessages_ |
+| [Send Message](/docs/documentation/automation/bots/pbmessage) | Sends a message to a set of channels. | _PBMessage_ |
+| [Payments](/docs/documentation/automation/bots/pbpayments) | Makes payments online | _PBPayments_ |
+| [Create PDF](/docs/documentation/automation/bots/pbpdf) | Creates a PDF form a local file or URL. | _PBPdf_ |
+| [Generate QR Code](/docs/documentation/automation/bots/pbqrcode) | Generates QR Code. | _PBQRCode_ |
+| [Script](/docs/documentation/automation/bots/pbscript) | | _PBScript_ |
+| [Submit Form](/docs/documentation/automation/bots/pbsendsurvey) | Sends a form/survey to a channel. | _PBSendSurvey_ |
+| [Edit Users of a Task](/docs/documentation/automation/bots/pbtaskaddeditor) | Adds or removes users from a task. | _PBTaskAddEditor_ |
+| [Generate HTML](/docs/documentation/automation/bots/pbtemplate) | Generates an HTML from a template and an object with data. | _PBTemplate_ |
+| [Update Channel](/docs/documentation/automation/bots/pbupdatechannel) | Updates a channel's settings. | _PBUpdateChannel_ |
+| [Update a Property](/docs/documentation/automation/bots/pbupdateproperty) | Updates a property's settings. | _PBUpdateProperty_ |
+| [Update Task](/docs/documentation/automation/bots/pbupdatetask) | Updates a task's settings. | _PBUpdateTask_ |
+| [Update User](/docs/documentation/automation/bots/pbupdateuser) | Updates a user's settings. | _PBUpdateUser_ |
+| [WhatsApp Integration](/docs/documentation/automation/bots/pbwhatsapp) | Sends messages via WhatsApp. Additional fees may apply. | _PBWhatsApp_ |
 
 
 The Stage Types will be explained in the following table:
