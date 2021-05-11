@@ -46,9 +46,9 @@ When there are multiple _channels_ in a group, it is recommended to use the *sea
 
 Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with three options: 
 
-- _Reply_: Send a message with the original message and author embedded. Only the first three lines of the original message will be available. You can reply to more than one message at a time.
-- _Copy_: Copy text messages to your clipboard.
-- _Delete_: Delete message you have sent. This option is available only for a limited time after you send the message.
+- **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be available. You can reply to more than one message at a time.
+- **Copy**: Copy text messages to your clipboard.
+- **Delete**: Delete message you have sent. This option is available only for a limited time after you send the message.
 
 <!-- TODO insert image with message menu and/or a reply example-->
 
