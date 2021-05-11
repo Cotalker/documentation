@@ -66,6 +66,21 @@ Field box has its name at the top left (in this case: "CHANNEL"). Next to it, yo
 It's common to use COTLANG to get data for the fields. 
 
 ### Stage Types List {#stage-type-list}
+| Stage Type Name (Bot) | Description | Key |
+| ---- | ---- | ---- |
+| [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
+| [Iterate](/docs/documentation/automation/bots/fceach) | Iterate over an array. | _FCEach_ |
+| [Conditional](/docs/documentation/automation/bots/fcifelse) | Executes the next stage conditionally based on the operator's left and right hand. | _FCIfElse_ |
+| [Wait](/docs/documentation/automation/bots/fcsleep) | Executes the next stage after the defined milliseconds. | _FCSleep_ |
+| [Multiple Switch](/docs/documentation/automation/bots/fcswitchall) | Executes all stages conditionally and in parallel according to the operator's left and right hand. | _FCSwitchAll_ |
+|[ Switch](/docs/documentation/automation/bots/fcswitchone) | Conditionally executes the next stage based on the left and right hand of the operator. | _FCSwitchOne_ |
+| [Run Legacy Bot](/docs/documentation/automation/bots/nwbotv2v3) | Makes a network request to execute a legacy bot. | _NWbotV2V3_ |
+| [Network Request](/docs/documentation/automation/bots/nwrequest) | Makes a network request (URL) using an HTTP method. | _NWRequest_ |
+| [Action Button](/docs/documentation/automation/bots/pbactionbutton) | _PBActionButton_ |
+
+
+
+
 
 The Stage Types will be explained in the following table:
 
