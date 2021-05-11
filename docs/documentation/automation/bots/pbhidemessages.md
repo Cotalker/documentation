@@ -1,5 +1,5 @@
 # Hide messages  
-**Hide messages from a Channel**  
+**Hide messages in a Channel**  
 key: PBHideMessages  
 ## Inputs  
 ### 1. Messages (key: messages)  
