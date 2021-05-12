@@ -6,18 +6,35 @@ sidebar_label: Routine Builder
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
+
 ## Overview {#routine-overview}
 
 The _Routine Builder_ is used to build routines in _Workflows_, _Bots_, _Schedules_ and _SLAs_. This section explains how to build a routine within the mentioned processes.
 
-_Routines_ are used to configure various actions within a company. For example, you can automate the sending of an email or a message. But it also is used to run a workflow, bot or scheduler, for example, changing from one state to another or creating and updating tasks.
+_Routines_ are used to configure various actions within a company. For example, you can automate the sending of an email or a message, create a task, or change a workflow from one state to another. 
 
-_A routine looks like the following image:_
+- Checkout the [list](#stage-type-list) of automations that you can include in your _routines_. 
 
-<img alt="" src={useBaseUrl('img/admin_routine.png')} />
+- Test your _routines_ with the [automation log](#run-routine).
+
+
+<div className="alert alert--secondary">
+
+#### Routine builder in settings panels:
+
+
+<img alt="routine builder" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_00.png')} />
+<br/>
 <br/>
 
-On the right side is the visualization of the routine that has been created. A routine is build by a set of stage and its functionality is chosen based on the type. You will find types of stages that can:
+#### Routine builder in workflows:
+
+<img alt="routine builder" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_01.png')} />
+<br/>
+<br/>
+
+The settings panel shows a visualization of the _routine_ that has been created. A _routine_ is built by a set of _stages_ or _steps_ that can function in different ways according to the chosen type. In general, [stage types](#stage-type-list) can do the following:
 
 * help with configuration
 * make decisions based on context
@@ -26,46 +43,52 @@ On the right side is the visualization of the routine that has been created. A r
 * edit workflow components
 * update workflow components
 
-<br /><br />
-The buttons in this section will be explained in the following table.<br /><br />
-
-| Action Name | Image | Description |
-| ---- | ----- | ----------- |
-| Delete | <img alt="" src={useBaseUrl('img/icon_deleteroutine.png')} /> | Delete the stage |
-| Test | <img alt="" src={useBaseUrl('img/icon_testroutine.png')} /> | Test the whole routine |
+</div>
+<br/>
 
 ## Routine Setup {#setup-the-routine}
-A routine setup looks like the following image:
 
-<img alt="" src={useBaseUrl('img/admin_routine_setup.png')} />
-<br /><br />
-
-Below you will find the description and notes for each field in the pictures above.
+Below you will find the description and notes for each field in the Routine Builder's settings panel.
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Initial State | Select the stage that initializes the routine. | The list shows the stages that have been created so far in this particular routine. You can fill in this field after you have added the stage or stages. |
 | Max Iterations | Specifies the number of stages iterated. | Make sure looping stages are taken into account when specifying maximum number of iterations. |
-| Add Stage | Adds a stage to the routine. | The code and the type of stage must be specified. After that, it will show the settings for the selected stage type. |
+| Add Stage | Adds a stage to the routine. | The code and the type of stage must be specified. After that, the settings for the selected stage type will be displayed. |
 | Code | Stage identification name | This field only allows lowercase letters, underscores and should always start with a letter.  |
 | Type | Select the stage type. | [Stage type descriptions](#stage-type-list) are listed below. |
 | Version | Select the stage type version. | Available versions will appear in the dropdown menu. For more information, [click here](#stage-type-versions).|
 
 ## Stage Type Configuration {#configure-stage-types}
-There are various actions that can be configured, displayed in a list. If you hover over the name, a brief explanation of the function will be displayed. <br/>
+After selecting <span className="badge badge--primary">+ Add Stage</span>, there are various _stages_ or _steps_ that can be chosen and configured. The **Type** field has a dropdown menu with a list of all the available _stage bots_. If you hover over the name, a brief explanation of the function will be displayed. <br/>
 
-When adding a stage, once the type is selected, the field to make the bot work will be displayed.
 
-_For example:_
+<div className="alert alert--secondary">
 
-<img alt="" src={useBaseUrl('img/admin_routine_field.png')} />
+Once the type is selected, its specific settings fields will be displayed.
+
+_For example, if you chose the **Send gif** stage type, you will see the following fields appear:_
+
+<img alt="type fields" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_02.png')} />
 <br/>
 
-Field box has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](admin_cotlang)). At the bottom of the box, in italic letter, is the explanation of the expected input (_ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT_).
+- **Options**: In this example, the **Send gif** stage type has three options or fields: _Search_, _Channel_, and _User_. 
+- **Required Fields**: The _required_ fields are outlined by a red box (_Search_ and _Channel_). 
+- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](admin_cotlang)). At the bottom of the box, in italic letters, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
 
-It's common to use COTLANG to get data for the fields. 
+**Note:** _It's common to use [COTLang](admin_cotlang) (Cotalker Script Language) for getting automatized data for fields._
+
+</div>
+<br/>
 
 ### Stage Types List {#stage-type-list}
+Stage Types will be explained in the following table:
+
+:::tip
+- Click links for more detailed information.
+- When using _automation logs_, stage types will be referred to by the _key_ indicated in this table.
+:::
+
 | Stage Type Name (Bot) | Description | Key |
 | ---- | ---- | ---- |
 | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
@@ -109,9 +132,7 @@ It's common to use COTLANG to get data for the fields.
 | [WhatsApp Integration](/docs/documentation/automation/bots/pbwhatsapp) | Sends messages via WhatsApp. Additional fees may apply. | _PBWhatsApp_ |
 
 
-The Stage Types will be explained in the following table:
-
-| Field | Description | Notes | 
+<!-- | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Iterar | Itera sobre un Array |  | 
 | Condicional | Ejecuta la siguiente etapa condicionalmente en función de la mano izquierda y derecha del operador |  | 
@@ -143,7 +164,7 @@ The Stage Types will be explained in the following table:
 | Actualizar Canal | Actualiza un Canal |  | 
 | Actualizar Propiedad | Actualiza una Propiedad |  | 
 | Actualizar Tarea | Actualiza una Tarea |  | 
-| Actualizar Usuario | Actualizar un Usuario |  | 
+| Actualizar Usuario | Actualizar un Usuario |  |  -->
   
 ### Stage Type Versions {#stage-type-versions}
 
@@ -158,4 +179,18 @@ You can see where the _version_ field is located and how versions can have diffe
 :::caution Attention
 - In case a new version is available, an alert message will appear in the settings panel.
 - If you change the version of a stage type, you will not be able to go back to previous versions after saving.
+:::
+
+## Run Routine {#run-routine}
+
+<img alt="run routine" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
+<br/>
+
+The <span className="badge badge--primary">Run Routine</span> button is a blue button found in the *Routine Builder*. This button opens up an automation log that will help you test and debug your routines while you are building them.
+
+For more information about the log information shown in **Run Routine**, please refer to [Automation Log](/docs/documentation/automation/automation_log).
+
+:::warning
+*Run Routine* is **not** a "playground" or "sandbox". The routine will actually execute all the steps. So, for example, if you program the routine to send an email, it will really send the email.
+You can insert mock data into the *Context* editor to avoid mishaps.
 :::
