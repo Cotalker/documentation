@@ -69,6 +69,12 @@ It's common to use COTLANG to get data for the fields.
 
 The Stage Types will be explained in the following table:
 
+:::tip
+Click links for more detailed information.
+:::
+
+<br/>
+
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Iterar | Itera sobre un Array |  | 
@@ -117,3 +123,18 @@ You can see where the _version_ field is located and how versions can have diffe
 - In case a new version is available, an alert message will appear in the settings panel.
 - If you change the version of a stage type, you will not be able to go back to previous versions after saving.
 :::
+
+## Run Routine
+
+<img alt="run routine" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
+<br/>
+
+The <span className="badge badge--primary">Run Routine</span> button is a blue button found in the *Routine Builder*. This button opens up an automation log that will help you test and debug your routines while you are building them.
+
+For more information about the log information shown in **Run Routine**, please refer to [Automation Log](/docs/documentation/automation/automation_log).
+
+:::caution Warning
+*Run Routine* is **not** a "playground". The routine will actually execute all the steps. So, for example, if you program the routine to send an email, it will really send the email.
+You can insert mock data into the *Context* editor to avoid mishaps.
+:::
+

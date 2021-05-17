@@ -163,6 +163,7 @@ module.exports = {
       items: [
         'documentation/automation/overview',
         'documentation/automation/admin_routine',
+        'documentation/automation/automation_log',
         'documentation/automation/admin_cotlang',
         'documentation/automation/triggers_and_contexts',
         'documentation/automation/existing_routines',
