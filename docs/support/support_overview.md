@@ -9,53 +9,82 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## We’re here to help {#were-here-to-help}
 
-Answers for many topics can be found in the [**frequently asked questions**](/docs/getting_started/faq).
-  
-You also might find answers using the **search bar** in the top right corner.
+We have two main ways for getting support or help on this page:
+- **Contact Forms:** For direct consultations, involving internal or private information and requirements, clients should use one of our [contact forms](#contacts).
+- **Documentation Repository:** For general discussions, administrators, implementors, and users in general, are invited to post their questions and share their solutions in our [Documentation Repository](#repository).
 
 :::tip
-Visit our _Documentation Repository_ where you can join the conversation in the [**Cotalker Community Platform**](https://github.com/Cotalker/documentation/discussions). There you can ask questions, raise documentation issues, report bugs, request features, search for answers to similar issuses you might be having, or start a conversation on anything related to Cotalker.
+- Answers for many topics can be found in the [**frequently asked questions**](/docs/getting_started/faq).
+- You also might find answers in our documentation using the **search bar** in the top right corner.
 :::
 
-
-## Contacts
+## Contact Forms {#contacts}
 _For direct messaging with our staff, check out the following contacts:_
-### Commercial Support {#commercial-support}
 
-*  Find the right solution for you
-*  Tech and business consulting 
-*  Explain pricing options
-*  Connect you with helpful resources
-  
+<div className="alert alert--secondary">
+
+### Commercial Support {#commercial-support}
+* _Find the right solution for you_
+* _Tech and business consulting_
+* _Explain pricing options_
+* _Connect you with helpful resources_
+
 [Contact Commercial Team](/docs/support/commercial)
 
-### Technical Support {#technical-support}
+-------
 
-*  Documentation missing
-*  Unexpected behaviors
-*  Feature not explained clearly
-  
+### Technical Support {#technical-support}
+* _Documentation missing_
+* _Unexpected behaviors_
+* _Feature not explained clearly_
+
 [Contact Technical Team](/docs/support/technical)
 
-### Report a Bug {#report-a-bug}
-*  Inconsistent behaviors
-*  Documentation does not reflect reality
-*  App crashes or freezes
-*  API or subsystem not responding
-  
-[Contact QA Team](/docs/support/bug_report)
+-------
 
-### Feature Request {#feature-request}
-*  Ideas, features, and improvements
-  
+### Report a Bug {#report-a-bug}
+* _Inconsistent behaviors_
+* _Documentation does not reflect reality_
+* _App crashes or freezes_
+* _API or subsystem not responding_
+
+[Contact Q&A Team](/docs/support/bug_report)
+
+-------
+
+### Feature Requests {#feature-request}
+* _Ideas, features, and improvements_
+
 [Contact Product Team](/docs/support/feature_request)
 
+-------
 
 ### Report abuse {#report-abuse}
-Please report any misuse of our platform [here](/docs/support/report_abuse), and we will be in touch.
+_Please report any misuse of our platform [here](/docs/support/report_abuse), and we will be in touch with you shortly._
 
+</div>
+<br/>
 
-### Cotalker Documentation Repository
-* Join the discussions.
-* Report Documentation Issues
+## Documentation Repository {#repository}
+_Open discussions on all-things-Cotalker:_
+
+<div className="alert alert--secondary">
+
+### Discussions {#discussions}
+* Ask questions
 * Report bugs
+* Request features
+* Search for similar issues you might be having
+* Start a conversation on anything related to Cotalker
+[Visit the Discussions board](https://github.com/Cotalker/documentation/discussions)
+
+
+### Issues {#issues}
+* Raise documentation issues
+* Check issue status
+* Contribute in helping solve issues
+
+[Visit our Documentation Issues](https://github.com/Cotalker/documentation/issues)
+
+</div>
+<br/>

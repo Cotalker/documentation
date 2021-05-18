@@ -205,6 +205,12 @@ p, td, th {
 /*---- Admonition ----*/
 
 /* Added by Maurice: testing responsiveness for tables and images */
+.framedPage {
+  width: 100%;
+  height: 500px;
+  border-width: 1px;
+}
+
 .box {
   border-top-width: 0;
   border-bottom-width: 1px;
