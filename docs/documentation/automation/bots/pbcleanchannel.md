@@ -1,5 +1,6 @@
 # Clean channels  
-**Delete messages in the indicated channels**  
+  
+**Delete the messages that have the indicated channels**  
 key: PBCleanChannel  
 ## Inputs  
 ### 1. Channels (key: channelIds)  

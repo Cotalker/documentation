@@ -1,4 +1,5 @@
 # Update Channel  
+  
 **Update a Channel**  
 key: PBUpdateChannel  
 ## Inputs  

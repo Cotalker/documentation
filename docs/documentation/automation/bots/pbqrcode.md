@@ -1,4 +1,5 @@
 # Generate QR code  
+  
 **Generate a QR code**  
 key: PBQRCode  
 ## Inputs  

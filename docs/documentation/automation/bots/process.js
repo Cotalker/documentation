@@ -59,8 +59,14 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
 (async () => {
   const doc = await getBotRawDocumentation();
   const bots = {};
+  const table = [];
+
+  doc.data.parametrizedBots.sort((a, b) => a.key.localeCompare(b.key));
 
   for (const bot of doc.data.parametrizedBots) {
+    // | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
+    table.push(`| [${bot.display}](/docs/documentation/automation/bots/${bot.key.toLocaleLowerCase()}) | ${bot.description} | _${bot.key}_ |`);
+
     bots[bot.key] = [];
    
     bots[bot.key].push(`# ${bot.display}`);
@@ -92,6 +98,17 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
     try {
       await fs.promises.unlink(`${__dirname}/${fileName}`);
     } catch (e) {}
-    await fs.promises.writeFile(`${__dirname}/${fileName}`, bots[botcode].join('  \n'), 'utf8');
-  } 
+    let manualData = '';
+    try {
+      await fs.promises.access(`${__dirname}/${botcode.toLowerCase()}-manual.md`);
+      manualData = await fs.promises.readFile(`${__dirname}/${botcode.toLowerCase()}-manual.md`);
+    } catch (e) {
+
+    }
+    const first = bots[botcode].shift();
+    await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, manualData, ...bots[botcode]].join('  \n'), 'utf8');
+  }
+
+  await fs.promises.writeFile(`${__dirname}/table.md`, table.join('  \n'), 'utf8');
+
 })();
