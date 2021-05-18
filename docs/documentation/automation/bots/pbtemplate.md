@@ -1,4 +1,5 @@
 # Generate HTML  
+  
 **Generates an HTML from a template and an object with data**  
 key: PBTemplate  
 ## Inputs  

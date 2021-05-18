@@ -17,6 +17,7 @@
     "@docusaurus/core": "^2.0.0-alpha.75",
     "@docusaurus/preset-classic": "^2.0.0-alpha.75",
     "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.75",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "mermaid": "^8.4.8",
     "react": "^16.8.4",

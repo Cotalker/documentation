@@ -1,4 +1,5 @@
 # Multiple switch  
+  
 **Execute all stages conditionally and in parallel according to the operator's left and right hand**  
 key: FCSwitchAll  
 ## Inputs  

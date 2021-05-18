@@ -1,4 +1,5 @@
 # Switch  
+  
 **Conditionally executes the next stage based on the left and right hand of the operator**  
 key: FCSwitchOne  
 ## Inputs  
