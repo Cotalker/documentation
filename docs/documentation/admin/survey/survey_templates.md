@@ -1,111 +1,9 @@
 ---
-title: Surveys Section
-sidebar_label: Surveys
+title: Survey Components
+sidebar_label: Components
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
-
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Surveys.svg')} />
-
-## Overview {#survey-overview}
-<img alt="" src={useBaseUrl('img/admin_survey.png')} width= "20%" height= "20%" align="left" />
-
-A _survey_ is a way of capturing information for a _state machine_, _channel_ or _bot_. For example, a _survey_ could lead a _state machine_ to trigger a new state or simply to store new information.
-
-Through the _survey_ button in the _administrative panel_ you will open the _Forms_ settings panel where you can create, search, check and download the _surveys_ of the company.
-
-<br clear="left" />
-
-## All Surveys {#all-surveys}
-In the _Forms_ settings panel, you can find the entire list of _surveys_ that have been created.
-<br />
-<img alt="" src={useBaseUrl('img/admin_survey_list.png')} />
-<br /><br />
-
-You will find the description of each button in the [Overview Section](admin_overview).
-
-<br/>
-
-## Edit/Create Single Survey(Form) {#editcreate-single-surveyform}
-From the _Forms_ settings panel, by choosing an existing _survey_/_form_ or pressing the _create element_ button, you can open the _Create form_ settings panel to edit or create a single _survey_.
-<br />
-<img alt="" src={useBaseUrl('img/admin_survey_create_1.png')} />
-<img alt="" src={useBaseUrl('img/admin_survey_create_2.png')} />
-<br />
-<br />
-<br />
-
-Below you will find the description and notes for each field of the _Create form_ settings panel shown above.
-
-
-| Field | Description | Notes |
-| ---- | ----------- | ----- |
-| Name | The visual name of the Survey | |
-| Code | The identifier of the Survey | It only accepts lowercase letters, numbers, and underscore; and it must start with a letter. Once you create and save the code, you cannot change it. |
-| Group Permission | Select the group permission to allow displaying the survey in the group| |
-| Access Role | List of access roles. | It is enough that the user has one of them to have the survey enabled. At least one access role must be added |
-| Add Elements | Element Addition | Add the Collection and elements of a channel. If the group channel doesn't have the specified element, the survey won't display. |
-| Form Template | Set up the form using the components |  Each component is explained below |
-<br />
-
-The description of each button on the page where the _survey_ is created can be found in the [Overview section](admin_overview).
-
-## Form Components {#form-components}
-From the _Forms_ settings panel, by selecting an existing _survey_/_form_ or by clicking the _create new element_ button, the _Form Template_ panel appears. There you can configure the _survey_ using several different components.
-<img alt="" src={useBaseUrl('img/admin_survey_components.png')} />
-<br /><br />
-
-The above image shows us how the _form template_ looks with the _components_ list.
-
-**Press the blue _components_ button** on the upper right side of the template to make the list appear or disappear.
-
-To **add a _component_** to the _survey_, just drag the _component_ to the yellow background area.
-
-You can **edit a _component_** by clicking it on the template.
-
-The template permits you to preview how the responding _user_ will visualize the _components_ put in a _survey_. Bear in mind, a _user's_ visualization might change slightly depending on their web browser.
-
-<br />
-<img alt="" src={useBaseUrl('img/admin_survey_c_prev.png')} />
-<br />
-
-The description of the buttons in the **_Form Template_** section is as follow:
-
-<br />
-
-| Action Name | Image | Description |
-| ---- | ----- | ----------- |
-| Drag | <img alt="" src={useBaseUrl('img/icon_drag.png')} /> | Hold click to drag component |
-| Required | <img alt="" src={useBaseUrl('img/icon_required.png')} /> | Click to force user response on the component. |
-| WIP | <img alt="" src={useBaseUrl('img/icon_idw.png')} /> | WIP |
-| Duplicate | <img alt="" src={useBaseUrl('img/icon_duplicate.png')} /> | Duplicate the component. It will not duplicate the identifier. |
-| Delete | <img alt="" src={useBaseUrl('img/icon_delete.png')} /> | Delete the component |
-
-<br/>
-
-There are also some **generally repeated fields**, their descriptions are as follows:
-
-<br/><br/>
-
-| Field | Description | Notes |
-| ---- | ----------- | ----- |
-| Field label | The visual name of the component |  |
-| Identifier | The id of the component. It must be unique in the form | It will be useful when analyzing the data for a dashboard or routine |
-| Minimum | Lower Limit. Could indicate a minimum of component responses.  | In the case of a written response, each character will be counted. |
-| Maximum | Upper Limit. Could indicate a maximum of component responses.  | In the case of a written response, each character will be counted. |
-
-Also, each _component_ has the **conditional display** button which allows you to make a _conditional component_. For example, if the response of component *X* is *A*, component *Y* will be displayed, otherwise it will remain hidden. <br/>
-The following image shows what the **conditional display** looks like.
-
-<img alt="" src={useBaseUrl('img/admin_survey_c_conditional.png')} />
-<br/>
-The descriptions of the fields are found below:
-
-| Field | Description | Notes |
-| ---- | ----------- | ----- |
-| Commander | Select the dependent component. All identifiers are displayed |  |
-| Criteria | The operator of the conditional. It could be: *Is equal to*, *Greater than or equal*, *Less than or equal* or *Regular expression*.  |  |
-| Value | Write down the value that the commander compares. |  |
 
 ### Text {#text}
 The **text** component is used to display a text on the _form_. Its fields are described in the **generally repeated fields** above.
@@ -124,7 +22,7 @@ The field(s) unique to the **Written answer** component are described in the fol
 | Input Type | The option are long text, short text and number. |  |
 
 :::note
-On the mobile app, QR code scans and NFC input can also be used to add text into the form. To make this option available, refer to the [API documentation on _survey questions_](../api/surveys/questions#qr-code--nfc-function).
+On the mobile app, QR Code scans and NFC input can also be used to add text into the form. To make this option available, refer to the [API documentation on _survey questions_](../api/surveys/questions#qr-code--nfc-function).
 :::
 
 ### Multiple Choice {#multiple-choice}
@@ -238,15 +136,10 @@ If the collections are all associated with each other through their _elements_ s
 Filters can also be used. Select collections to define what elements will be displayed. All the collections that should be displayed must be selected in order for the question to work properly.
 :::
 
+## subproperties
 
+## time zone
 
-## Download Answered Surveys {#download-answered-surveys}
-From the _Forms_ settings panel, you can download the reponses to a _survey_ by pressing the **download button** found on each survey's row.
-This opens up the **Export data** dialog box. The **criteria** is the start date and you can specify the time frame. <br/>
-The encoding field options are Windows, Macintosh, and UTF-8, and are downloaded in CSV format.
-<br />
-<img alt="" src={useBaseUrl('img/admin_survey_download.png')} />
-<br />
-<br />
+## IsCommanded???
 
-_The description of the icons are in the [Overview section](admin_overview)._
+[(Check this out for guidance: Dynamic Surveys)](/docs/tutorials/intermediate/isCommanded)

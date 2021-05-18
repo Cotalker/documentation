@@ -62,7 +62,15 @@ module.exports = {
         },
         'documentation/admin/admin_links',
         'documentation/admin/admin_properties',
-        'documentation/admin/admin_survey',
+        {
+          type: 'category',
+          label: 'Surveys',
+          items: [
+            'documentation/admin/survey/survey_overview',
+            'documentation/admin/survey/survey_templates',
+          ],
+          collapsed: true,
+        },
         'documentation/admin/admin_bots',
         'documentation/admin/admin_scheduler',
         'documentation/admin/admin_company',
