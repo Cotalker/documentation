@@ -42,13 +42,13 @@ When there are multiple _channels_ in a group, it is recommended to use the *sea
 ### View of Chat Channel {#view-of-chat-channel}
 <img alt="" src={useBaseUrl('img/channelopen.jpg')} />
 
-### Chat Message Options {#chat-message-options}
+### Chat Message Options
 
-Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with three options: 
+Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with three options:
 
-- **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be available. You can reply to more than one message at a time.
+- **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be displayed. You can reply to more than one message at a time.
 - **Copy**: Copy text messages to your clipboard.
-- **Delete**: Delete message you have sent. This option is available only for a limited time after you send the message.
+- **Delete**: Delete a message you have sent. This option is available only for a limited time after you have sent the message.
 
 <!-- TODO insert image with message menu and/or a reply example-->
 
