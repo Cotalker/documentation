@@ -75,10 +75,10 @@ _Tasks_ can be generated automatically through _surveys_ but they can also be cr
 <br/>
 
 :::note
-In some configurations, administrators might program a _workflow survey_ to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
+In some configurations, administrators might program a [_workflow survey_](/docs/documentation/admin/workflows/admin_workflow_required_survey) to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
 :::
 
-You can also modify existing tasks by simply choosing one from the task view. A dialog box will open where you can view and edit the task's properties. If programmed by the administrator, a _required survey_ window might also appear here.
+You can also modify existing tasks by simply choosing one from the task view. A dialog box will open where you can view and edit the task's properties. If programmed by the administrator, a _workflow survey_ window might also appear here.
 
 _Your screen should look something like this:_
 <img alt="edit task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_06.png')} />
