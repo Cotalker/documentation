@@ -1,14 +1,12 @@
-# MY TEST MARKDOWN
+## Overview
 
-Hello 
+This stage-bot permits sending automated messages through WhatsApp. Configure templates with your message...
 
-* 1
-* 2
-* 3
+## Requirements
 
-asdfasdf 
-asd
-fasd
-f
-asdf
-asdf
+## Basic Setup
+
+## Expected Results
+
+## Technical Details
+
