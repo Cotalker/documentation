@@ -6,26 +6,23 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Surveys.svg')} />
+<br/>
 
-<div className="alert alert--secondary">
-
-:::warning
-Update links to components!
-:::
+<div className="shadow--tl alert alert--secondary">
 
 ## Summary {#survey-overview}
 A _survey_ is a way of capturing information for a _workflow_, _channel_ or _bot_. 
 
-Configure survey questions to receive information from **different input sources**: _text, GPS, signatures, QR codes, NFC, digital cameras, file attachments_. See the [Form Components](#form-components) section for more information.
+Configure survey questions to receive information from different **input sources** and **formats**, e.g., _text, dates, GPS, signatures, QR codes, NFC, digital cameras, file attachments, collections, and elements_. See the [Form Components](#form-components) section for more information.
 
 _Surveys_ can also be programmed to respond to certain answers or contexts. For example, you can: 
 - make **dynamic surveys** that with certain answers display new [questions](#conditional-display) or [options](/docs/documentation/admin/survey/components/multiple_choice#tree-selector), 
 - lead a _workflow_ to **[trigger](/docs/documentation/admin/workflows/admin_workflow_required_survey) a new state or create a new task**; these last surveys can be even made [**public**](/docs/documentation/admin/workflows/admin_workflow_public_survey) for users outside the Cotalker environment,
 - automate your surveys with [**Javascript code**](/docs/documentation/automation/question_exec), e.g., loading the current users information when opening a survey, validating input information, or automatically sending an email after responding a survey. 
 
-:::note
-If you wish to **download** the results of a _survey_, go to the [_Reports_](/docs/documentation/client/reports) section.
-:::
+
+**NOTE:** If you wish to **download** the results of a _survey_, go to the [_Reports_](/docs/documentation/client/reports) section.
+
 
 </div>
 <br/>
@@ -83,8 +80,8 @@ More information in the [Form Components](#form-components) section.
 </div>
 <br/>
 
-
-## Form Components {#form-components}
+## Form Template
+### Form Components {#form-components}
 Form components are different input types that can be used and configured to make your survey questions. 
 
 <div className="alert alert--secondary">
@@ -92,7 +89,7 @@ Form components are different input types that can be used and configured to mak
 #### Available Form Components: {#form-components-list}
 
 - [**Text**](/docs/documentation/admin/survey/components/text_component): _Inserts text into the survey. Usually used as instructions._ 
-- [**Written Answer**](/docs/documentation/admin/survey/components/written_answer): _Users can write a reply to the question._
+- [**Written Answer**](/docs/documentation/admin/survey/components/written_answer): _Users can write a reply to the question. This component can also be configured to read QR Codes or NFC input on mobile devices._
 - [**Multiple choice**](/docs/documentation/admin/survey/components/multiple_choice): _Users have multiple choice answers. This component can be configured to display more options as certain answers are given._
 - [**Rating**](docs/documentation/admin/survey/components/rating): _Users can rate an item with "stars"._
 - [**Date and time**](/docs/documentation/admin/survey/components/date_and_time): _Answers are received in date or date & time format._
