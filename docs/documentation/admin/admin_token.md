@@ -7,8 +7,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 <img alt="title image" class="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
+<br/>
 
-## Overview
+## Overview {#overview}
 An _API Token_ is a key or _bearer token_ that grants users different levels of permission to access the Cotalker API.
 
 For information on how to use an API Token with our API, please refer to the [Auth section of the API documentation](/docs/documentation/api/auth#authorization).
@@ -21,7 +22,8 @@ API Tokens are useful in many ways:
 - Create a _bearer token_ to let users and partners send messages in Cotalker channels.
 :::
 
-## How to Create an API Token
+## How to Create an API Token {#create-token}
+
 Users can create API Tokens by either:
 
 - using the **Administrator** (This is the simplest way to create API Tokens, which we will discuss below.)
@@ -76,7 +78,7 @@ Make sure to copy the token before closing the window because it will **not** ap
 </div>
 <br/>
 
-## Editing API Tokens
+## Editing API Tokens {#edit-token}
 
 Once created, API Tokens are permanent, but can be revoked or modified at any time.
 
