@@ -64,6 +64,10 @@
   color: var(--ifm-color-white);
 }
 
+.alert--primary h2 {
+  color: var(--ifm-color-white);
+}
+
 html[data-theme='light'] {
   --ifm-link-color: #5784b1;
   --ifm-font-color-base: #113355;
