@@ -44,13 +44,10 @@ module.exports = {
       items: [
         'documentation/admin/admin_overview',
         'documentation/admin/users',
+        'documentation/admin/admin_accessrole',
+        'documentation/admin/admin_token',
         'documentation/admin/admin_group',
         'documentation/admin/admin_channels',
-        'documentation/admin/admin_properties',
-        'documentation/admin/admin_accessrole',
-        'documentation/admin/admin_survey',
-        'documentation/admin/admin_bots',
-        'documentation/admin/admin_scheduler',
         {
           type: 'category',
           label: 'Workflows',
@@ -64,6 +61,10 @@ module.exports = {
           collapsed: true,
         },
         'documentation/admin/admin_links',
+        'documentation/admin/admin_properties',
+        'documentation/admin/admin_survey',
+        'documentation/admin/admin_bots',
+        'documentation/admin/admin_scheduler',
         'documentation/admin/admin_company',
         'documentation/admin/routines',
 
