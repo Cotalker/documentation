@@ -15,11 +15,11 @@ module.exports = {
     'getting_started/faq',
     'getting_started/glossary'
   ],
-  updates: [
-    'updates/new_features',
-    'updates/versioning',
-    'updates/roadmap'
-  ],
+  // updates: [
+  //   'updates/new_features',
+  //   'updates/versioning',
+  //   'updates/roadmap'
+  // ],
   documentation: [
     'documentation/documentation_overview',
     {

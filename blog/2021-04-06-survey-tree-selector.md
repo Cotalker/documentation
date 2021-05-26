@@ -25,7 +25,7 @@ Surveys are great, and they just got better! Users can now answer questions with
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_survey#tree-selector">See Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/admin/survey/components/multiple_choice#tree-selector">See Documentation</a>
 <br/>
 
 </div>
