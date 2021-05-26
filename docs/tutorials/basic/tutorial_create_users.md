@@ -13,7 +13,7 @@ A _user_, as in most applications, permits a person to access and interact with 
 :::
 
 ## Company Requirements {#company-requirements}
-#### _Tutorial Objectives_ {#_tutorial-objectives_}
+#### Tutorial Objectives {#tutorial-objectives}
 
 Our mock company, Ruanda, wants to add all their employees (about 40 people) to the app. 
 
