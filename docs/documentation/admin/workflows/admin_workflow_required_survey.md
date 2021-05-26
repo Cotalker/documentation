@@ -29,7 +29,7 @@ Workflow Start Surveys can also be [shared](/docs/documentation/admin/workflows/
 
 
 ## Workflow Start Survey {#required-survey-for-a-new-task}
-Without selecting this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
+Without configuring this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
 
 By setting up a _Workflow Start Survey_, a _channel_ is created within a _workflow group_ to host the newly created task and will display the _survey_ used to create and modify the _task_.
 
@@ -42,93 +42,125 @@ When using a Workflow Start Surveys and some input error prevents a task from be
 
 <div className="alert alert--secondary">
 
-1. _Administrators_ must first enter the **workflow configuration panel**:
-    - To get there, from the _main menu_, select the **administrative panel**. 
-    - Then, go to the **workflows** section and select a _workflow group_.
-    - Finally, inside the _workflow group_ select an existing _workflow_ or create a new one. The _workflow configuration panel_ will open up.
+1. Go to the <span className="badge badge--primary">Workflow</span> section and select a _workflow group_ from the list.
 
-<!-- TODO add image of main menu bar with administration panel & workflow panel -->
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_00.png')} />
+  <br/>
 
-</div>
-<br/>
+  Inside the _workflow group_ select a _workflow_ or create a new one. 
 
-<div className="alert alert--secondary">
-
-2. Once inside the **workflow configuration panel** follow the general procedure for configuring _workflows_ and employ the subsequent steps' configuration options.
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_01.png')} />
+  <br/>
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-3. Under **General information**, ensure that the **Chat channels** option is set to **BOUND**. This will generate the necessary channel for the new task.
+2. After choosing the workflow, **workflow settings panel** will appear. Follow the general procedure for configuring _workflows_, while also applying the subsequent steps.
+
+<img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_02a.png')} />
+<br/>
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-4. Under **States**, in the **Start form** option, choose the _survey_ that will guide _users_ in creating new _tasks_. (The specific _survey_ must be previously elaborated for this purpose.)
+3. Under <span className="badge badge--primary">General information</span>, ensure that the **Chat channels** option is set to `BOUND`. This will generate the necessary channel for the new task.
+
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_03a.png')} />
+  <br/>
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-5. Next, select the **Edit Routine** button to create the necessary **bot**. Once inside the **Routine builder** dialog box, follow the general procedure for making bots keeping in mind the required configurations mentioned below.
-<!-- TODO insert image with Routine Builder dialog box -->
+4. Under <span className="badge badge--primary">States</span>, in the **Start form** field, choose the previously made _survey_ that will guide _users_ in starting new _workflows_.
+
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_03b.png')} />
+  <br/>
+  <br/>
+
+  :::note
+  Once a survey is selected, the <span className="badge badge--primary">Share</span> button will appear. Go to [Public Survey](/docs/documentation/admin/workflows/admin_workflow_public_survey) to find out more about sharing _Workflow Start Surveys_ with external users.
+  :::
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-6. In the **Name** field, press the *add item* button, and include something like the following: 
+5. Next, select the <span className="badge badge--primary">Edit Routine</span> button to create the necessary _automation_. 
 
-    ```$VALUE#answer|data|[find=>identifier=text_input_question_identifier]|process|0```
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-7. Ensure to add the **group** from which the _task_ is created. The **Group** field should look like this: 
-
-    ```$VALUE#meta|taskGroup```
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_03c.png')} />
+  <br/>
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-8. The **User** field must have the following: 
+6. The **Routine builder** dialog box will appear. Add a **stage** and set the **Type** field to `Create Task`.
 
-    ```$VALUE#answer|user```
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_03.png')} />
+  <br/>
+
+  _Follow the general procedure for [building routines](/docs/documentation/automation/admin_routine) keeping in mind the required configurations mentioned below._
+
+</div>
+<br/>
+
+
+<div className="alert alert--secondary">
+
+7. New fields –based on the the _Create Task_ bot– will appear. In the **Name** field, press the <span className="badge badge--primary">Add item</span> button, and include a [COTLang Script command](/docs/documentation/automation/admin_cotlang) like the following: 
+
+  `$VALUE#answer|data|[find=>identifier=text_input_question_identifier]|process|0`
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-9. In the **Channel** field, the corresponding _channel_ must be indicated with the following: 
+8. Ensure to add the _group_ from which the _task_ is created. The **Group** field should look like this: 
 
-    ```$VALUE#answer|channel```
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-10. If the task being created is a sub-task within a **parent task**, the following must be indicated: 
-
-    ```$VALUE#meta|parentTask```
+  `$VALUE#meta|taskGroup`
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-11. The _Workflow Start form_ must be associated as an **answer** to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **answers** field: 
+9. The **User** field must have the following: 
+
+  `$VALUE#answer|user`
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+10. In the **Channel** field, the corresponding _channel_ must be indicated with the following: 
+
+  `$VALUE#answer|channel`
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+11. If the task being created is a sub-task within a **parent task**, the following must be indicated: 
+
+  `$VALUE#meta|parentTask`
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+12. The _Workflow Start Survey_ must be associated as an _answer_ to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **Answers** field: 
 
     ```$VALUE#answer|uuid```
 
@@ -137,7 +169,7 @@ When using a Workflow Start Surveys and some input error prevents a task from be
 
 <div className="alert alert--secondary">
 
-12. The **assignee** value is optional. By default, the _user_ creating the task is set as the _assignee_, but this value can be changed: 
+13. The **assignee** value is optional. By default, the _user_ creating the task is set as the _assignee_, but this value can be changed: 
 
     ```$VALUE#answer|user```
 
@@ -146,9 +178,9 @@ When using a Workflow Start Surveys and some input error prevents a task from be
 
 ## State Survey {#required-survey-for-modifying-task-states}
 
-Configuring a _State Survey_ for when _users_ want to modify a _workflow's state_ is a little bit simpler than the previous case. Unlike the _Workflow Start Survey_ used for creating new workflow, it isn't necessary to add a bot or specify a routine to the _State Survey_ when changing a workflow's state.
+Configuring a _State Survey_ for when _users_ want to modify a _workflow's state_ is a little bit simpler than the previous case. Unlike the _Workflow Start Survey_ used for creating a new workflow, it isn't necessary to add a bot or specify a routine to the _State Survey_ when changing a workflow's state.
 
-This feature makes configuring the _State Survey_ easier. In case an automatic response – like sending an email to the CEO –  is desired after changing the state of a workflow, a bot can be configured through the **Edit routine** button.
+This feature makes configuring the _State Survey_ easier. In case an automatic response –like sending an email to the CEO–  is desired after changing the state of a workflow, a bot can be configured through the _Edit Routine_ button.
 
 :::important
 If a _routine_ is afterwards added, the automatic change of _state_ is disabled and must be then configured manually as a step in the routine.
@@ -159,42 +191,44 @@ If a _routine_ is afterwards added, the automatic change of _state_ is disabled 
 
 <div className="alert alert--secondary">
 
-1. _Administrators_ must first enter the **workflow configuration panel**:
-    - To get there, from the _main menu_, select the **administrative panel**. 
-    - Then, go to the **workflows** section and select a _workflow group_.
-    - Finally, inside the _workflow group_ select an existing _workflow_. The _workflow configuration panel_ will open up.
+1. Go to the <span className="badge badge--primary">Workflow</span> section and select a _workflow group_ from the list.
 
-<!-- TODO add image of main menu bar with administration panel & workflow configuration panel -->
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_00.png')} />
+  <br/>
 
-</div>
-<br/>
+  Inside the _workflow group_ select a _workflow_ or create a new one. 
 
-<div className="alert alert--secondary">
-
-2. Finally, in the _workflow configuration panel_, find the _state list_ and select the **state** that is going to be changed. The _create state panel_ opens up.
-<!-- TODO add image with state list -->
+  <img alt="workflow section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_start_survey_01.png')} />
+  <br/>
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-3. From the _create state panel_, under **State changes**, choose the _state_ to be changed into.
-<!-- TODO add image of the Create State Panel -->
+2. Finally, in the _workflow settings panel_, find the _state list_ and select the **state** that is going to be changed.
+
+  <img alt="state survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_state_survey_00.png')} />
+  <br/>
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-4. Under **State changes**, in **Start form**, choose the _survey_ created to process the _state_ change. (The specific _survey_ must be previously elaborated for this purpose.)
+3. The _create state panel_ will open up. 
+
+  Under **State changes**, go to the state(s) the will require a survey. In their **Start form** field, choose the _survey_ previously created to process the _state_ change.
+
+  <img alt="state survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_state_survey_01.png')} />
+  <br/>
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-5. If administrators desire an automatic response to occur when a change of _state_ is made, a _bot_ should be created through the **Edit routine** button. Otherwise, it is not necessary to go through this step.
+4. If administrators desire an automatic response to occur when a change of _state_ is made, a _bot_ should be created through the <span className="badge badge--primary">Edit routine</span> button. Otherwise, it is not necessary to go through this step.
 
 </div>
 <br/>
