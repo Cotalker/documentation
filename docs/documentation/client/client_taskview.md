@@ -11,19 +11,34 @@ import Highlight from '@theme/Highlight';
 ## Overview {#overview}
 As the name implies, a _task_ is 'something' that 'someone' has to do. _Tasks_ are found within a _workflow group_. They can be created manually or through _surveys_. Our tools permit _tasks_ to be assigned, monitored, and updated.
 
-Through the *task button* – found on top of the _group_ menu bar – you can access the _tasks view_.
+Through the *task button* – found on top of the _group_ menu bar – you can access the _tasks view_. 
 
-<!-- TODO insert image of task button in group menu bar -->
+<img alt="task button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_00.png')} />
+<br/>
 
 ## Tasks Views {#tasks-views}
 _Tasks views_ are an easy way to search for and manage tasks, along with getting a general idea of ​​the status of tasks in your company. Furthermore, it can also cover the visualization of other implemented solutions, such as a company client's statuses.
 
-There are three different _tasks views_. Each view permits different ways to visualize and handle the data.
-- List view
-- Kanban view
-- Table view
+There are four different _task_ views: _list view_, _calendar view_, _kaban view_, and  _table view_. Each view permits different ways to visualize and handle the tasks.
 
-## Buttons {#buttons}
+#### List View {#list-view}
+<img alt="list view" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_01.png')} />
+<br/>
+
+#### Calendar View {#calendar-view}
+<img alt="calendar button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_02.png')} />
+<br/>
+
+#### Kaban View {#kaban-view}
+<img alt="kaban button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_03.png')} />
+<br/>
+
+#### Table View {#kaban-view}
+<img alt="table button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_04.png')} />
+<br/>
+
+
+## Menu Bar Icons {#menu-bar-icons}
 From the *button bar* on the top of the _tasks_ screen you can access the different _tasks views_ as well as other tools, like _filters_ and the creation of _new tasks_.
 
 | Action Name | Image | Description |
@@ -35,6 +50,7 @@ From the *button bar* on the top of the _tasks_ screen you can access the differ
 | Search | <img alt="" src={useBaseUrl('img/taskview_search.png')} /> | Search for tasks/items by name |
 | Filter | <img alt="" src={useBaseUrl('img/taskview_filter.png')} /> | Filter display |
 | List View | <img alt="" src={useBaseUrl('img/taskview_listview.png')} /> |Vertical order |
+| Calendar View | <img alt="" src={useBaseUrl('img/taskview_calendarview.png')} /> | Sort by days, weeks, or months |
 | Kanban View | <img alt="" src={useBaseUrl('img/taskview_kanvanview.png')} /> |Horizontal order |
 | Table View | <img alt="" src={useBaseUrl('img/taskview_tableview.png')} /> |Sort by process |
 
@@ -43,20 +59,36 @@ Customizing the display of elements is crucial. You can sort or filter them thro
 
 When creating a filter for the first time, press the *filter button* in the top menu bar. A small *cog icon* will appear. Press it to open the *filter dialog box*. 
 
+_Your screen should look something like this:_
+<img alt="filter" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_05.png')} />
+<br/>
+
 Once you are done adjusting the filters in the dialog box, it's possible to *save the filter* as a preset, so the next time the _task view_ is accessed, the saved filter will be shown as an option next to the *filter button*.
 
-We can see the *filter dialog box* in the following picture:
-<img alt="" src={useBaseUrl('img/taskview_filtercreate2.png')} width= "40%" height= "40%"/> <br/>
-<img alt="" src={useBaseUrl('img/taskview_filtercreate1.png')} width= "40%" height= "40%"/>
 
 ## Creating and Modifying Tasks {#creating-and-modifying-tasks}
 
-_Tasks_ can be generated automatically through _surveys_ but they can also be created manually. Once in the _task views_, you can **create a task** by pressing the corresponding icon in the menu bar. A dialog box will open with all the options needed to name the new task, assign it to someone, establish its status and deadline, among others.
+_Tasks_ can be generated automatically through _surveys_ but they can also be created manually. Once in _task views_, you can **create a task** by pressing the <span className="badge badge--secondary">+</span> icon in the menu bar. A new task will appear in the list where you can name the task, and a side panel will open up with all the options needed to assign it to someone, establish its status and deadline, among other options.
 
-In some configurations, administrators might program a _required survey_ to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
+<img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_07.png')} />
+<br/>
+<br/>
 
-You can also modify existing tasks by simply choosing one from the task view. A dialog box will open where you can view and edit the task's properties. Again, if programmed by the administrator, a _required survey_ window might appear.
+:::note
+In some configurations, administrators might program a [_workflow survey_](/docs/documentation/admin/workflows/admin_workflow_required_survey) to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
+:::
 
-<img alt="" src={useBaseUrl('img/taskview_taskcreate1.png')} width= "40%" height= "40%"/> <br/>
-<img alt="" src={useBaseUrl('img/taskview_taskcreate2.png')} width= "40%" height= "40%"/> <br/>
-<img alt="" src={useBaseUrl('img/taskview_taskcreate3.png')} width= "40%" height= "40%"/>
+You can also modify existing tasks by simply choosing one from the task view. A dialog box will open where you can view and edit the task's properties. If programmed by the administrator, a _workflow survey_ window might also appear here.
+
+_Your screen should look something like this:_
+<img alt="edit task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_06.png')} />
+<br/>
+
+## Chat in Task View {#chat-in-task}
+
+Chat channels are also viewable from _task views_. By simply pressing the _chat_ icon in the task's information box, the task's chat channel will appear on a side panel.
+
+_Your screen will look something like this:_
+<img alt="chat in task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_08.png')} />
+<br/>
+
