@@ -63,7 +63,7 @@ When the _Anyone with the Link_ option is used, the collections required to answ
 4. After selecting the option, copy the URL. Now you can share the link by email, as webpage link, or even embed it, whatever suits you best to let users –even outside the Cotalker environment– answer your survey.
 
 :::note
-- For security reasons, the _usergit_ collections do not function in [survey components](/docs/documentation/admin/admin_survey) for public surveys.
+- For security reasons, the _usergit_ collections do not function in [survey components](/docs/documentation/admin/survey/survey_overview) for public surveys.
 :::
 
 </div>
