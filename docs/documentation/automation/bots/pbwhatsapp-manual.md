@@ -11,7 +11,7 @@ You will need the following:
 
 **Templates** are used for sending automated messages. Templates can be personalized but they require Facebook approval, which can take awhile. We recommend you use our already approved and ready-to-use _Default_ template.
 
-## Default Template:
+### Default Template
 
 <div className="alert alert--secondary">
 
@@ -21,7 +21,7 @@ Hi `NAME`! You have a new request for the process `WORKFLOW NAME`.
 </div>
 <br/>
 
-## Basic Setup
+### Basic Setup
 
 - `NAME`: The recipients name should be set in the settings panel's **Name** field.
 - `WORKFLOW NAME`: The _workflow name_ should be set in the settings panel's **First** field.
@@ -32,11 +32,11 @@ _The settings panel should look something like this:_
 <img alt="whatsapp message" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_stage_whatsapp_01.png')} />
 <br/>
 
-## Expected Results
+### Expected Results
 
 _Your message will look something like this:_
 
-<img alt="whatsapp message" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_stage_whatsapp_00.jpeg')} />
+<img alt="whatsapp message" className="img_whatsapp item shadow--tl" src={useBaseUrl('img/automations_routines_stage_whatsapp_00.jpeg')} />
 <br/>
 
 -----
