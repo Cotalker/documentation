@@ -42,6 +42,9 @@ From the _Forms_ settings panel, by pressing the <span className="badge badge--s
 Below you will find the description and notes for each field of the _Create form_ settings panel shown above.
 
 <div className="container box">
+<div className="row table-row-title">
+<div className="col col--12"><b>General information</b></div>
+</div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Name:</b></div>
 <div className="col col--5">The survey's display name.</div>
@@ -51,6 +54,9 @@ Below you will find the description and notes for each field of the _Create form
 <div className="col col--3"><b>Code:</b></div>
 <div className="col col--5">The survey's identification code.</div>
 <div className="col col--4"><em>Only lowercase letters, numbers, and underscores are accepted; the code must start with a letter. Once you create and save a code, it cannot be modified.</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12"><b>Access</b></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Group Permission:</b></div>
@@ -67,7 +73,7 @@ Below you will find the description and notes for each field of the _Create form
 <div className="col col--5">Assigns the collection and element of a channel.</div>
 <div className="col col--4"><em>The element will be used to show the survey only on the channels that have the same element assigned.</em></div>
 </div>
-<div className="row table-row-2">
+<div className="row table-row-title">
 <div className="col col--3"><b>Form Template:</b></div>
 <div className="col col--5">Set up the form using different components or input types for setting up questions.</div>
 <div className="col col--4"><em>
@@ -90,7 +96,7 @@ Form components are different input types that can be used and configured to mak
 
 - [**Text**](/docs/documentation/admin/survey/components/text_component): _Inserts text into the survey. Usually used as instructions._ 
 - [**Written Answer**](/docs/documentation/admin/survey/components/written_answer): _Users can write a reply to the question. This component can also be configured to read QR Codes or NFC input on mobile devices._
-- [**Multiple choice**](/docs/documentation/admin/survey/components/multiple_choice): _Users have multiple choice answers. This component can be configured to display more options as certain answers are given._
+- [**Multiple choice**](/docs/documentation/admin/survey/components/multiple_choice): _Give users multiple choice questions. This component can be configured as a dynamic survey, i.e., to display more options as certain answers are given._
 - [**Rating**](docs/documentation/admin/survey/components/rating): _Users can rate an item with "stars"._
 - [**Date and time**](/docs/documentation/admin/survey/components/date_and_time): _Answers are received in date or date & time format._
 - [**Location**](/docs/documentation/admin/survey/components/location): _GPS location is given as answer. Only available in mobile applications."_
