@@ -60,7 +60,7 @@ Below you will find the description and notes for each field in the Routine Buil
 | Version | Select the stage type version. | Available versions will appear in the dropdown menu. For more information, [click here](#stage-type-versions).|
 
 ## Stage Type Configuration {#configure-stage-types}
-After selecting <span className="badge badge--primary">+ Add Stage</span>, there are various _stages_ or _steps_ that can be chosen and configured. The **Type** field has a dropdown menu with a list of all the available _stage bots_. If you hover over the name, a brief explanation of the function will be displayed. <br/>
+After selecting <span className="badge badge--primary">+ Add Stage</span>, there are various _stages_ or _steps_ that can be chosen and configured. The **Type** field has a dropdown menu with a list of all the available _stage bots_. If you hover over the name, a brief explanation of the function will be displayed. There is also a [**Version**](#stage-type-versions) field with which you can set the stage type's version if available.
 
 
 <div className="alert alert--secondary">
@@ -87,7 +87,7 @@ Stage Types will be explained in the following table:
 :::tip
 - Click links for more detailed information.
 - When using _automation logs_, stage types will be referred to by the _key_ indicated in this table.
-  :::
+:::
 
 | Stage Type Name (Bot) | Description | Key |
 | ---- | ---- | ---- |
@@ -132,40 +132,6 @@ Stage Types will be explained in the following table:
 | [WhatsApp Integration](/docs/documentation/automation/bots/pbwhatsapp) | Send message via WhatsApp | _PBWhatsApp_ |
 
 
-<!-- | Field | Description | Notes | 
-| ---- | ----------- | ----- | 
-| Iterar | Itera sobre un Array |  | 
-| Condicional | Ejecuta la siguiente etapa condicionalmente en función de la mano izquierda y derecha del operador |  | 
-| Switch múltiple | Ejecuta condicionalmente y en paralelo todas las etapas en función de la mano izquierda y derecha del operador |  | 
-| Switch | Ejecuta condicionalmente la siguiente etapa en función de la mano izquierda y derecha del operador |  | 
-| Ejecutar bot legado | Hace una solicitud de red para ejecutar un bot legado |  | 
-| Solicitud de red | Hace una solicitud de red |  | 
-| Esperar | Ejecuta la siguiente etapa después de los milisegundos definidos |  | 
-| Buscar respuestas | Busca respuestas de formularios |  | 
-| Cambiar estado de Tarea | Cambia el estado de una Tarea |  | 
-| Editar usuarios de Canal | Añade o remueve usuarios de un Canal |  | 
-| Obtener Tarea de un Canal | Obtiene la Tarea asociada a un Canal (en caso de que exista) |  | 
-| Limpiar canales | Elimina los mensajes que tengan los canales indicados |  | 
-| Copiar mensajes | Copia mensajes de un Canal a otro |  | 
-| Crear Canal | Crea un nuevo Canal |  | 
-| Crear Propiedad | Crea una nueva Propiedad |  | 
-| Crear Tarea | Crear una nueva Tarea |  | 
-| Crear Usuario | Crea un nuevo Usuario |  | 
-| Cambiar Formulario a modo edición | Cambia un conjunto de formularios a modo edición |  | 
-| Enviar email | Envía un email |  | 
-| Enviar gif | Envía un gif a un Canal |  | 
-| Ocultar mensajes | Oculta mensajes de un Canal |  | 
-| Enviar mensaje | Envía un mensaje a un conjunto de canales |  | 
-| Crear PDF | Crea un PDF a partir de un archivo local o una URL |  | 
-| Generar código QR | Genera un código QR |  | 
-| Enviar Formulario | Envía un Formulario a un Canal |  | 
-| Editar usuarios de una Tarea | Añade o remueve los usuarios de una Tarea |  | 
-| Generar HTML | Genera un HTML a partir de una plantilla y un objeto con datos |  | 
-| Actualizar Canal | Actualiza un Canal |  | 
-| Actualizar Propiedad | Actualiza una Propiedad |  | 
-| Actualizar Tarea | Actualiza una Tarea |  | 
-| Actualizar Usuario | Actualizar un Usuario |  |  -->
-
 ### Stage Type Versions {#stage-type-versions}
 
 _Stage types_ are actually predefined system bots. Every once in a while, we update these bots, adding new features and options, or just improving automations. But, because these changes might affect your existing _routines_, access to older versions are available.
@@ -179,7 +145,7 @@ You can see where the _version_ field is located and how versions can have diffe
 :::caution Attention
 - In case a new version is available, an alert message will appear in the settings panel.
 - If you change the version of a stage type, you will not be able to go back to previous versions after saving.
-  :::
+:::
 
 ## Run Routine {#run-routine}
 
