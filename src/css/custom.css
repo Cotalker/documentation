@@ -301,6 +301,13 @@ p, td, th {
   display: block;
 }
 
+.img_whatsapp {
+  width: 50%;  
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .img_sizing_narrow {
   margin-left: auto;
   margin-right: auto;
