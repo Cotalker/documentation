@@ -25,7 +25,7 @@ import Highlight from '@theme/Highlight';
 </div>
 <div class="card__body">
 
-Just when you thought the _task viewer_ couldn't get any better, our engineers came up with a neat new feature. Managing tasks and checking up on the conversation related to it can now all be done from the _task viewer_. All the information you need at a glance!
+Just when you thought the _task viewer_ couldn't get any better, our engineers came up with a neat new feature. Managing _tasks_ and checking up on the _channels_ related to them can now all be done from the _task viewer_. All the information you need at a glance!
 
 </div>
 <div class="card__footer">
