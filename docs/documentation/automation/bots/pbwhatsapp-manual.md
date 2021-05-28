@@ -9,7 +9,7 @@ You will need the following:
 - Recipient's full international phone number, e.g., +1 (234) 555-6789
 - Template information
 
-**Templates** are used for sending automated messages. Templates can be personalized but they require Facebook approval, which can take awhile. We recommend you use our already approved and ready-to-use _Default_ template.
+**Templates** are used for sending automated messages. Templates can be personalized but they require Facebook approval, which can take a while. We recommend you use our already approved and ready-to-use _Default_ template.
 
 ### Default Template
 
