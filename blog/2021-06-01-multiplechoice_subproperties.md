@@ -1,5 +1,5 @@
 ---
-title: Survey Subproperty Filter
+title: Subproperty Filter for Multiple-Choice Surveys
 description: New Feature! Enhance your surveys with the multiple choice component's subproperty filter. Apply the filter between concatenating collections to create dynamic surveys.
 image: https://doc.cotalker.com/img/updates/update_multiplechoice_subproperty.png
 draft: true
@@ -14,7 +14,7 @@ import Highlight from '@theme/Highlight';
 <div class="card">
 <div class="card__header">
 
-<span className="hero__subtitle"><em>"One thing after another..."</em></span>
+<span className="hero__subtitle"><em>"One thing leads to another..."</em></span>
 
 </div>
 <div class="card__image">
@@ -25,7 +25,7 @@ import Highlight from '@theme/Highlight';
 </div>
 <div class="card__body">
 
-With the **subproperty filter**, you can easily create customized _dynamic surveys_, i.e., answers to one survey question will filter the possible options in the following questions. Though similar to our [_hierarchy selection_](/docs/documentation/admin/survey/components/multiple_choice#tree-selector) tool, the **subproperty filter** gives you greater control to set the _elements_ users will be able to choose. 
+With the **subproperty filter**, you can easily customize multiple-choice surveys_, i.e., answers to one survey question will filter the possible options in the following questions. Though similar to our [_hierarchy selection_](/docs/documentation/admin/survey/components/multiple_choice#tree-selector) tool, the **subproperty filter** gives you greater control to set the _elements_ users will be able to choose. 
 
 </div>
 <div class="card__footer">
