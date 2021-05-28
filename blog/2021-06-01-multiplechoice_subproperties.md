@@ -1,6 +1,6 @@
 ---
-title: Multiple Choice Subproperty Filter
-description: New Feature! Enhance your surveys with the multiple choice component's subproperty filter. Apply the filter with between concatenating collections to create dynamic surveys.
+title: Survey Subproperty Filter
+description: New Feature! Enhance your surveys with the multiple choice component's subproperty filter. Apply the filter between concatenating collections to create dynamic surveys.
 image: https://doc.cotalker.com/img/updates/update_multiplechoice_subproperty.png
 draft: true
 
