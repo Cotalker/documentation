@@ -1,6 +1,6 @@
 ---
 title: Chat Message Action Menu
-description: New Feature! Reply, copy, and delete messages from the new message bubble menu.
+description: New Feature! Reply, copy, and delete chat messages from the new message bubble menu.
 image: https://doc.cotalker.com/img/updates/update_chat-message-menu.png
 draft: false
 
@@ -25,7 +25,7 @@ import Highlight from '@theme/Highlight';
 </div>
 <div class="card__body">
 
-With a simple click on a **chat message bubble**, not only can you **delete** messages, but now you can quickly **copy** text messages to your clipboard and **reply** to messages. Message replies embed the original message (attached files and media included), which helps maintain the context in long, diverse, or overpopulated conversations.
+We've added more functions when you click on a **chat message bubble**. Now, not only can you **delete** a chat message, but also give a **reply** or even **copy** its text to your clipboard. Message replies embed the original message (attached files and media included), which helps maintain the context in long, diverse, or overpopulated conversations.
 
 </div>
 <div class="card__footer">
