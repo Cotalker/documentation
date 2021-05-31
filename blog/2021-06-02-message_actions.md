@@ -30,7 +30,7 @@ We've added more functions when you click on a **chat message bubble**. Now, not
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_token">See Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/client/groups_channels#chat-message-options">See Documentation</a>
 <br/>
 
 </div>
