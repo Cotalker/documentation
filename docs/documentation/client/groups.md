@@ -46,11 +46,12 @@ When there are multiple _channels_ in a group, it is recommended to use the *sea
 
 Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with three options:
 
-- **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be displayed. You can reply to more than one message at a time.
+- **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be displayed. You can reply to more than one message at a time. You can respond to anything sent through the chat, i.e., files, media, surveys, etc.
 - **Copy**: Copy text messages to your clipboard.
 - **Delete**: Delete a message you have sent. This option is available only for a limited time after you have sent the message.
 
-<!-- TODO insert image with message menu and/or a reply example-->
+_Examples of replies to text, video, and surveys, respectively:_
+<img alt="chat response text" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_03.png')} />
 
 ### Task Menus within Channel {#task-menus-within-channel}
 From within the respective _channel_, you can change a _task's_ state. Simply hover over the task in the group's channel list and left-click over the icon that appears to the right.
