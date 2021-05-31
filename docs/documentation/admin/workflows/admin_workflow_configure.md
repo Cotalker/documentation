@@ -283,7 +283,7 @@ The <span className="badge badge--secondary">Share</span> button appears when a 
 
 Press this button to get a **link** which will permit you to share the survey outside the Cotalker environment.
 
-See the [Survey](/docs/documentation/admin/admin_survey) documentation for more details.
+See the [Survey](/docs/documentation/admin/survey/survey_overview) documentation for more details.
 
 </div>
 </div>

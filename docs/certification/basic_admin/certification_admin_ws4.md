@@ -24,7 +24,7 @@ The survey is a way of capturing information for a state machine, channel or bot
 In this section of the admin you can creat, search, check and downloads the surveys of the company.
 <br/>
 
-For more details, go to the [admin's survey section](/docs/documentation/admin/admin_survey).
+For more details, go to the [admin's survey section](/docs/documentation/admin/survey/survey_overview).
 
 ### What to build {#what-to-build}
 In this workshop we will simulate that we are working with a client of a financial company.. <br/>
