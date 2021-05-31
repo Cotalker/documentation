@@ -48,7 +48,7 @@ Right-click (or long-press on mobile devices) chat message bubbles in the channe
 
 - **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be displayed. You can reply to more than one message at a time. You can respond to anything sent through the chat, i.e., files, media, surveys, etc.
 - **Copy**: Copy text messages to your clipboard.
-- **Delete**: Delete a message you have sent. This option is available only for a limited time after you have sent the message.
+- **Delete**: Delete a message you have sent. This option is available only up to 24 hours after you have sent the message.
 
 _Examples of replies to text, video, and surveys, respectively:_
 <img alt="chat response text" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_03.png')} />
