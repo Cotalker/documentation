@@ -115,7 +115,7 @@ Stage Types will be explained in the following table:
 | [Send email](/docs/documentation/automation/bots/pbemail) | Send an email | _PBEmail_ |
 | [Get Channel Messages](/docs/documentation/automation/bots/pbgetchannelmessages) |  | _PBGetChannelMessages_ |
 | [Send gif](/docs/documentation/automation/bots/pbgiphy) | Send a gif to a Channel | _PBGiphy_ |
-| [Google Calendar Integration](/docs/documentation/automation/bots/pbgooglecalendar) | Domain wide integration | _PBGoogleCalendar_ |
+| [Google Calendar Integration](/docs/documentation/automation/bots/pbgooglecalendar) | Send Google Calendar invitations. Domain wide integration; Google Workspace required. | _PBGoogleCalendar_ |
 | [Hide messages](/docs/documentation/automation/bots/pbhidemessages) | Hide messages from a Channel | _PBHideMessages_ |
 | [Send message](/docs/documentation/automation/bots/pbmessage) | Send a message to a set of channels | _PBMessage_ |
 | [Payments](/docs/documentation/automation/bots/pbpayments) |  | _PBPayments_ |
@@ -129,7 +129,7 @@ Stage Types will be explained in the following table:
 | [Update Property](/docs/documentation/automation/bots/pbupdateproperty) | Update a Property | _PBUpdateProperty_ |
 | [Update Task](/docs/documentation/automation/bots/pbupdatetask) | Update a Task | _PBUpdateTask_ |
 | [Update User](/docs/documentation/automation/bots/pbupdateuser) | Update a User | _PBUpdateUser_ |
-| [WhatsApp Integration](/docs/documentation/automation/bots/pbwhatsapp) | Send message via WhatsApp | _PBWhatsApp_ |
+| [WhatsApp Integration](/docs/documentation/automation/bots/pbwhatsapp) | Send automated messages via WhatsApp | _PBWhatsApp_ |
 
 
 ### Stage Type Versions {#stage-type-versions}
