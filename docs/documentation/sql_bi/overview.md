@@ -1,16 +1,22 @@
 ---
 id: overview
-title: SQL BI Overview
+title: Business Intelligence & SQL
 sidebar_label: Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-# BI & SQL {#bi--sql}
+## Overview {#overview}
 
-Cotalker generates a readonly database and allows the access via [Metabase](https://www.metabase.com/) BI.
+Cotalker integrates SQL and Business Intelligence (BI) tools to transform raw data into information businesses and organizations can visualize to monitor processes and make informed decisions.
 
-<img alt="Docusaurus with Keytar" src={useBaseUrl('img/admin_bi.png')} />
+Using SQL, our software generates a read-only database that is accessed through [Metabase](https://www.metabase.com/), a third-party BI platform.
 
-For enterprise plans it is possible to allow a direct connections to the SQL Database for third party BIs.
-The exact model changes per company and it is based on users, surveys, channels, databases (properties), tasks, sessions and custom ETLs
+<img alt="metabase" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_bi.png')} />
+<br/>
+<br/>
+
+:::info Additional information
+- The exact [**model**](model) varies from company to company, but is basically based on _users_, _surveys_, _channels_,  _collections_ (databases), _tasks_, _sessions_ and custom _ETL_ (Extract, Transform, Load) tools.
+- For **enterprise plans**, it is possible to have direct access to the SQL Database from a third party BI platform. _Contact your Cotalker sales representative for more information._
+:::

@@ -1,7 +1,7 @@
 ---
 id: model
-title: SQL Model
-sidebar_label: Model
+title: SQL Data Model
+sidebar_label: SQL Data Model
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
