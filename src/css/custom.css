@@ -64,6 +64,14 @@
   color: var(--ifm-color-white);
 }
 
+.alert--success {
+  color: #0c243c;
+}
+
+.alert--success a {
+  color: #0c243c;
+}
+
 .alert--primary h2 {
   color: var(--ifm-color-white);
 }
