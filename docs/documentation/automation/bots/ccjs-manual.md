@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-With the _Custom Javascript Code_ stage-bot, you can add extra customization to your routines. This powerful tool runs safely in a sandboxed _node.js_ enviornment with the ability to extract, process, and return data for use in the rest of your routine.
+With the _Custom Javascript Code_ stage-bot, you can add extra customization to your routines. This powerful tool runs safely in a sandboxed _node.js_ environment with the ability to extract, process, and return data for use in the rest of your routine.
 
 Simply add your Javascript code into the **source code** field in the stage-bot's settings panel:
 
@@ -27,7 +27,7 @@ By default, your function can access two variables:
 
 One common example of how this tool can be used -but not limited to- is automated data extraction from _collections_ and returning the results in string format for use in the routine's upcoming stage.
 
-Another example -shown below- has data taken from multiple stages and then processed to generate data for other steps.
+Another example -like the one shown below- has data taken from multiple stages and then processed to generate data for other steps.
 
 ```javascript
 const users = output.find(o => o.key === 'user_step').data;
