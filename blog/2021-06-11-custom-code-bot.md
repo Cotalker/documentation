@@ -30,7 +30,7 @@ Cotalker's routine automation potential just stepped up a level with its brand n
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/automation/bots/pbwhatsapp">See Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/automation/bots/ccjs">See Documentation</a>
 <br/>
 
 </div>
