@@ -9,9 +9,9 @@ import Mermaid from '@theme/Mermaid';
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
 
 ## Groups {#groups}
-Displayed in the main menu bar, _groups_ are the primary places to share information among users. _Groups_ – which can only be created by administrators – are classified into three kinds: _communication_, _workflow_, and _links_. 
+Displayed in the main menu bar, _groups_ are the primary places to share information among users. _Groups_ –which can only be created by administrators– are classified into three kinds: _communication_, _workflow_, and _links_. 
 
-- _Communication Groups_: They incorporate a list of users and include _channels_ – chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel.
+- _Communication Groups_: They incorporate a list of users and include _channels_, which are chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel. Normally, we refer to _communication groups_ simply as _groups_.
 
 - _Workflow Groups_: These are made up of _tasks_ and can incorporate _channels_. _Tasks_, _channels_, and subgroups can be multiple within a group. We shall later look into how _tasks_ function within the workflow.
 
@@ -29,7 +29,7 @@ The *messaging service* in _channels_ permits sending texts, emojis, links, imag
 Within certain _groups_, users are allowed to create _channels_. The _user_ can then choose what _users_ to include in the newly made _channel_. 
 <!-- TODO ##### image of the top of channels list with "plus sign" shown here -->
 
-When there are multiple _channels_ in a group, it is recommended to use the *search bar* which permits finding a _channel_ by its name.
+When there are multiple _channels_ in a group, it is recommended to use the *search bar*, which permits finding a _channel_ by its name.
 <!-- TODO ##### image of the top of the channels list with a magnifying glass -->
 
 *Direct messages* for other users can be made through the _contacts_ button at the top of the _main menu_.
@@ -44,14 +44,19 @@ When there are multiple _channels_ in a group, it is recommended to use the *sea
 
 ### Chat Message Options
 
-Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with three options:
-
+Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with the following options:
+- **React**: Add an emoji reaction to a message. You can also click on an already given emoji to sum yourself on the counter. To retract from a _reaction_, on the message bubble press on the emoji you sent. The following emojis are available: 👍 👎 😄 🎉 😕 ❤️ 🚀 👀
 - **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be displayed. You can reply to more than one message at a time. You can respond to anything sent through the chat, i.e., files, media, surveys, etc.
 - **Copy**: Copy text messages to your clipboard.
-- **Delete**: Delete a message you have sent. This option is available only up to 24 hours after you have sent the message.
+- **Delete**: Delete a message _you_ have sent. This option is available only up to 24 hours after you have sent the message.
 
 _Examples of replies to text, video, and surveys, respectively:_
 <img alt="chat response text" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_03.png')} />
+<br/>
+
+_Example of emoji reactions:_
+<img alt="chat response text" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_emoji.png')} />
+<br/>
 
 ### Task Menus within Channel {#task-menus-within-channel}
 From within the respective _channel_, you can change a _task's_ state. Simply hover over the task in the group's channel list and left-click over the icon that appears to the right.
@@ -67,7 +72,7 @@ _The following image shows how to open the side panel:_
 <br/>
 
 ### "Actions" Button {#floating-action-button-fab}
-Within a group's channel panel, you might see a green button floating near the bottom. The _Actions_ button that can be configured for a group's specific needs. This button can let you create a new channel, answer a survey, create a task, redirect to another URL, among others.
+Within a group's channel panel, you might see a green button floating near the bottom. The _Actions_ button can be configured for a group's specific needs. This button can let you create a new channel, answer a survey, create a task, redirect to another URL, among others.
 
 _The FAB and the enabled actions will look something like the image below:_
 <img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
