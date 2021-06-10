@@ -312,6 +312,13 @@ p, td, th {
   display: block;
 }
 
+.img_sizing_small {
+  width: 60%;  
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .img_sizing_narrow {
   margin-left: auto;
   margin-right: auto;
