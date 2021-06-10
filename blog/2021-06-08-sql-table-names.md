@@ -1,5 +1,5 @@
 ---
-title: SQL Table Names Update
+title: New SQL Table Names
 description: Naming Convention Update – SQL database table names have been renamed to make it even easier to work with the third-party Business Intelligence tools incorporated into Cotalker.
 image: https://doc.cotalker.com/img/updates/update_sql_table_names.png
 draft: true
@@ -14,7 +14,11 @@ import Highlight from '@theme/Highlight';
 <div class="card">
 <div class="card__header">
 
-<span className="hero__subtitle"><em>A name says a lot.</em></span>
+<span className="hero__subtitle"><em>
+
+No more `#$<>~{#}`
+
+</em></span>
 
 </div>
 <div class="card__image">
@@ -25,7 +29,7 @@ import Highlight from '@theme/Highlight';
 </div>
 <div class="card__body">
 
-While doing some housework on our BI & SQL database service, **we re-wrote the table names**. With our newly instated naming convention, it is now visually easier to understand the content of your SQL database tables. Find out more about the new table name structure and our BI & SQL service in the [documentation](/docs/documentation/sql_bi/overview). 
+While doing some housework on our BI & SQL database service, we removed the clutter and **re-wrote the table names**. With our newly instated naming convention, it is now visually easier to understand the content of your SQL database tables. Find out more about the new table name structure and our BI & SQL service in the [documentation](/docs/documentation/sql_bi/overview). 
 
 </div>
 <div class="card__footer">
