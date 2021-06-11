@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 With the _Custom JavaScript Code_ stage-bot, you can add extra customization to your routines. This powerful tool runs safely in a sandboxed _node.js_ environment with the ability to extract, process, and return data for use in the rest of your routine.
 
-Simply add your Javascript code into the **source code** field in the stage-bot's settings panel:
+Simply add your JavaScript code into the **source code** field in the stage-bot's settings panel:
 
 <img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_00.png')} />
 <br/>
@@ -22,7 +22,7 @@ By default, your function can access two variables:
 :::caution Attention:
 - The JavaScript code runs in a sandboxed _node.js_ environment without access to `require` `Buffer` or `process.env`.
 Therefore no network or IO activity will work. This means that this block is intended to transform data from the `value` and `output` variables, not to store o gather external information.
-- The code must always return a value. This value can later be used in the following stages as [COTLang](/docs\documentation\automation\admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
+- The code must always return a value. This value can later be used in the following stages as [COTLang](/docs/documentation/automation/admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
 :::
 
 <div className="alert alert--secondary">
