@@ -9,7 +9,7 @@ Required: true
 Data Type: CotUserId   
 ### 2. Cargo (key: jobTitle)  
 User Fee  
-Required: false  
+Required: no  
 Data Type: string   
 ### 3. Properties (key: properties)  
 Array with the IDs of the User Properties  
