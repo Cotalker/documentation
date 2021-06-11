@@ -16,8 +16,8 @@ Simply add your Javascript code into the **source code** field in the stage-bot'
 
 By default, your function can access two variables:
 
-- **Value** is an object that contains the [context](/docs/documentation/automation/triggers_and_contexts) data, this will depend on the [trigger](/docs/documentation/automation/triggers_and_contexts).
-- **Output** is an array of objects `{ key: 'step-name', result: Object }` with all the previous executed steps.
+- `value` is an object that contains the [context](/docs/documentation/automation/triggers_and_contexts) data, this will depend on the [trigger](/docs/documentation/automation/triggers_and_contexts).
+- `output` is an array of objects -e.g.,`{ key: 'step-name', result: Object }`- with all the previous executed steps.
 
 **NOTE**: The code runs in a sandboxed _node.js_ environment. No _requires_ are allowed (or _will_ word) - so no storage or network requests will work.
 
@@ -27,7 +27,7 @@ By default, your function can access two variables:
 
 One common example of how this tool can be used -but not limited to- is automated data extraction from _collections_ and returning the results in string format for use in the routine's upcoming stage.
 
-Another example -like the one shown below- has data taken from multiple stages and then processed to generate data for other steps.
+Another example -like the one shown below- takes a `list-input` value of "email" or "name", to either convert a list of `COTUsers` into a list of `emails` or `names`.
 
 ```javascript
 const users = output.find(o => o.key === 'user_step').data;
