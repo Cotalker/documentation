@@ -3,7 +3,7 @@ id: model
 title: SQL Data Model
 sidebar_label: SQL Data Model
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl'; 
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="design" className="img_sizing" src={useBaseUrl('img/design/Database.svg')} />
 <br/>
@@ -24,7 +24,7 @@ We have structured **table names** in such a manner to make it visually easier t
 4. [model]_[model]_subtype
 
 :::note
-- _Model_ indicates the data type. 
+- _Model_ indicates the data type.
 - Singular names are normally used. Plural names are used when there are various table relations.
 - Examples are provided in the section below.
 :::
@@ -35,11 +35,11 @@ We have structured **table names** in such a manner to make it visually easier t
 
 ------
 
-<span className="hero__title">Data Types and Models:</span> 
+<span className="hero__title">Data Types and Models:</span>
 
 ## channels {#channels}
 _Table with all company channels_
-  
+
 * Number: 1
 * Naming: n/a
 
@@ -55,11 +55,11 @@ modifiedat_unixms:  bigint
 
 ------
 
-## cp_* {#cp}
+## channel_property_* {#channel_property}
 _Channel Property Relations_
 
 * Number: equal to property types
-* Naming: cp_[property-type-code] e.g., cp_products, cp_stores, cp_engines, etc.
+* Naming: channel_property_[model] e.g., channel_property_products, channel_property_stores, channel_property_engines, etc.
 
 **Columns**
 ```json
@@ -74,9 +74,9 @@ primary key (channel, property)
 
 ------
 
-## cu {#cu}
+## channel_user {#cu}
 _Channel User Relations_
-  
+
 * Number: 1
 * Naming: n/a
 
@@ -94,8 +94,8 @@ primary key (channel, userid)
 ------
 
 ## data_* {#data}
-_Short description_ 
-  
+_Short description_
+
 * Number: equal to the number of surveys
 * Naming: data_responses, data_new_issue, etc.
 
@@ -119,7 +119,7 @@ uuid:               varchar(1000) not null primary key
 
 ## properties_* {#properties}
 _Properties Table_
-  
+
 * Number: Equal to Collections or Property Types
 * Naming: properties_clients, properties_*
 
@@ -135,14 +135,14 @@ modifiedat_unixms:   bigint
 __DYNAMIC__:         __DYNAMIC__
 ```
 
-**NOTE**: DYNAMIC Columns are schema nodes, i.e., a sub-table or collection that stores extra data. They can be manually created in the Admin as [**additional fields**](/docs/documentation/admin/admin_properties#additional-fields) of a collection. 
+**NOTE**: DYNAMIC Columns are schema nodes, i.e., a sub-table or collection that stores extra data. They can be manually created in the Admin as [**additional fields**](/docs/documentation/admin/admin_properties#additional-fields) of a collection.
 
 
 ------
 
 ## sessions {#sessions}
 _Sessions Table_  
-  
+
 * Number: 1
 * Naming: n/a
 
