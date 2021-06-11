@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-With the _Custom Javascript Code_ stage-bot, you can add extra customization to your routines. This powerful tool runs safely in a sandboxed _node.js_ environment with the ability to extract, process, and return data for use in the rest of your routine.
+With the _Custom JavaScript Code_ stage-bot, you can add extra customization to your routines. This powerful tool runs safely in a sandboxed _node.js_ environment with the ability to extract, process, and return data for use in the rest of your routine.
 
 Simply add your Javascript code into the **source code** field in the stage-bot's settings panel:
 
@@ -19,7 +19,10 @@ By default, your function can access two variables:
 - `value` is an object that contains the [context](/docs/documentation/automation/triggers_and_contexts) data, this will depend on the [trigger](/docs/documentation/automation/triggers_and_contexts).
 - `output` is an array of objects -e.g.,`{ key: 'step-name', result: Object }`- with all the previous executed steps.
 
-**NOTE**: The code runs in a sandboxed _node.js_ environment. No _requires_ are allowed (or _will_ word) - so no storage or network requests will work.
+:::caution Attention:
+- The JavaScript code runs in a sandboxed _node.js_ environment without access to `require` `Buffer` or `process.env`.
+Therefore no network or IO activity will work. This means that this block is intended to transform data from the `value` and `output` variables, not to store o gather external information.
+- The code must always return a value. This value can later be used in the following stages as [COTLang](/docs\documentation\automation\admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
 
 <div className="alert alert--secondary">
 
