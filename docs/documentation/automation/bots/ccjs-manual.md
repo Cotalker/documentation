@@ -23,6 +23,7 @@ By default, your function can access two variables:
 - The JavaScript code runs in a sandboxed _node.js_ environment without access to `require` `Buffer` or `process.env`.
 Therefore no network or IO activity will work. This means that this block is intended to transform data from the `value` and `output` variables, not to store o gather external information.
 - The code must always return a value. This value can later be used in the following stages as [COTLang](/docs\documentation\automation\admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
+:::
 
 <div className="alert alert--secondary">
 
