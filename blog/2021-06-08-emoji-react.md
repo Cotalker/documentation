@@ -14,7 +14,7 @@ import Highlight from '@theme/Highlight';
 <div class="card">
 <div class="card__header">
 
-<span className="hero__subtitle">👍 👎 😄 🎉 😕 ❤️ 🚀 👀</span>
+<span className="hero__subtitle">Let your processes have emotions 😄</span>
 
 </div>
 <div class="card__image">
