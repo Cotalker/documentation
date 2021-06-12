@@ -29,7 +29,7 @@ No more `#$<>~{#}`
 </div>
 <div class="card__body">
 
-While doing some housework on our BI & SQL database service, we removed the clutter and **re-wrote the table names**. With our newly instated naming convention, it is now visually easier to understand the content of your SQL database tables. Find out more about the new table name structure and our BI & SQL service in the [documentation](/docs/documentation/sql_bi/overview). 
+While doing some housework on our BI & SQL database service, we removed the clutter and **re-wrote the table names**. With our newly instated naming convention, it is now visually easier to understand the content of your SQL database tables. Find out more about the new table name structure and our BI & SQL service in the documentation. 
 
 </div>
 <div class="card__footer">
