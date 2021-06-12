@@ -55,11 +55,11 @@ modifiedat_unixms:  bigint
 
 ------
 
-## channel_property_* {#channel_property}
+## channel\_property\_* {#channel_property}
 _Channel Property Relations_
 
 * Number: equal to property types
-* Naming: channel_property_[model] e.g., channel_property_products, channel_property_stores, channel_property_engines, etc.
+* Naming: channel\_property\_[model] e.g., channel_property_products, channel_property_stores, channel_property_engines, etc.
 
 **Columns**
 ```json
@@ -159,7 +159,7 @@ modifiedat_unixms:  bigint
 
 ------
 
-## sl {#sl}
+## survey_list {#sl}
 _Survey List Relations_
 
 * Number: 1
@@ -175,11 +175,11 @@ value:       varchar(1000)
 
 ------
 
-## sp_* {#sp}
+## survey\_property\_* {#sp}
 _Survey Property Relations_
 
 * Number: Same as property types
-* Naming: sp_clients, sp_colors, sp_cells, etc.
+* Naming: survey_property_clients, survey_property_colors, survey_property_cells, etc.
 
 **Columns**
 ```json
@@ -191,7 +191,7 @@ identifier:  varchar(1000)
 
 ------
 
-## ss {#ss}
+## survey_survey {#ss}
 _Survey Survey Relations_
 
 * Number: 1
@@ -213,7 +213,7 @@ primary key (parent, child)
 
 ------
 
-## su {#su}
+## survey_user {#su}
 _Survey User Relations_
 
 * Number: 1
@@ -251,7 +251,7 @@ child_propertytype:   varchar(1000)
 
 ------
 
-## ta {#ta}
+## task_answer {#ta}
 _Task Answer Relations_
 
 * Number: 1
@@ -292,7 +292,7 @@ createdat_unixms:     bigint
 
 ------
 
-## tasks_* {#tasks}
+## task_* {#task}
 _Tasks Table_
 
 * Number: Same as Workflows

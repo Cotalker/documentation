@@ -2,7 +2,7 @@
 title: New SQL Table Names
 description: Naming Convention Update – SQL database table names have been renamed to make it even easier to work with the third-party Business Intelligence tools incorporated into Cotalker.
 image: https://doc.cotalker.com/img/updates/update_sql_table_names.png
-draft: true
+draft: false
 
 ---
 
