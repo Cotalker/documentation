@@ -25,7 +25,7 @@ It's always good to have an old friend around. That's why we have now implemente
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/automation/admin_routine#stage-type-versions">See Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/automation/existing_routines#stage-type-versions">See Documentation</a>
 <br/>
 
 </div>
