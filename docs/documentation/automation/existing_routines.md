@@ -6,6 +6,9 @@ sidebar_label: Routine Stage Types
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Platforms.svg')} />
+
+
 ## Overview {#overview}
 
 **Routine stage types** can be thought of as _stage bots_ or _predefined_. By using these bots, you can easily automate processes by being part of [routines](/docs/documentation/automation/admin_routine) summoned through surveys, slash commands, SLAs, workflows, and others.
