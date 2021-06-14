@@ -56,15 +56,14 @@ Below you will find the description and notes for each field in the Routine Buil
 | Max Iterations | Specifies the number of stages iterated. | Make sure looping stages are taken into account when specifying maximum number of iterations. |
 | Add Stage | Adds a stage to the routine. | The code and the type of stage must be specified. After that, the settings for the selected stage type will be displayed. |
 | Code | Stage identification name | This field only allows lowercase letters, underscores and should always start with a letter.  |
-| Type | Select the stage type. | [Stage type descriptions](#stage-type-list) are listed below. |
-| Version | Select the stage type version. | Available versions will appear in the dropdown menu. For more information, [click here](#stage-type-versions).|
+| Type | Select the stage type. | he **Type** field has a dropdown menu with a list of all the available _stage types_. If you hover over the name, a brief explanation of the function will be displayed. [Click here](/docs/documentation/automation/existing_routines#stage-list) for more information. |
+| Version | Select the stage type version. | Available versions will appear in the dropdown menu. For more information, [click here](/docs/documentation/automation/existing_routines#stage-type-versions).|
 
 ## Stage Type Configuration {#configure-stage-types}
 After selecting <span className="badge badge--primary">+ Add Stage</span>, there are various _stage types_ that can be chosen and configured. 
 
 The **Type** field has a dropdown menu with a list of all the available _stage types_. If you hover over the name, a brief explanation of the function will be displayed. 
 
-There is also a **Version** field with which you can set the stage type's version if available.
 
 :::tip
 Click here to learn more about [stage types](/docs/documentation/automation/existing_routines).
