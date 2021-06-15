@@ -333,8 +333,8 @@ The state should already exist as an element in the collection selected previous
 <div className="col col--12"><b>State changes</b></div>
 </div>
 <div className="row table-row-1">
-<div className="col col--3"><b>Add state change:</b></div>
-<div className="col col--5">Indicates successor states. If it is the final state, this field is not required. Multiple state changes can be added, allowing diverse course of action.</div>
+<div className="col col--3"><b>+ Add state change:</b></div>
+<div className="col col--5">Indicates successor states. If it is the final state, this field is not required. Multiple state changes can be added, allowing diverse courses of action.</div>
 <div className="col col--4"><em>When pressed, the other fields and buttons appear.</em></div>
 </div>
 <div className="row table-row-2">
@@ -411,9 +411,15 @@ Options are: _survey_, _task-ui_ (task), or _*_ (both).
 </div>
 <br/>
 
+:::tip About Subtask States
+- Subtask states are intertwined with their parent workflow. Since a workflow can have diverse subtasks depending on its state, a workflow's state affects subtasks, i.e., it defines its subtasks.
+- A change of workflow state must allow subtasks to change state as well. If the initial and succeeding states have the same subtask, this is not required.
+- If a workflow is changing to a _closed_ type state, all of its subtasks must also be _closed_. This is not done automatically since it is an irreversible change. Therefore, before changing to the _closed_ state, all the subtasks must be manually _closed_.
+:::
+
 ### SLA Routine {#create-edit-sla}
 
-A service-level agreement (SLA) can be incorporated into the workflow. When a task does not change from one state to another at a pre-determined time, a routine can be built to take an action, like sending a reminder to whomever was assigned the task.
+A service-level agreement (SLA) can be incorporated into the workflow. When a task does not change from one state to another at a pre-determined time, a routine can be built to take a course of action, like sending a reminder to whoever was assigned the task.
 
 _The **SLAs** section is located at the bottom of the [settings panel](#edit-a-single-workflow). You should see something like this:_
 
