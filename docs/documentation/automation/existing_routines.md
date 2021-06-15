@@ -11,7 +11,7 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#overview}
 
-**Routine stage types** can be thought of as _stage bots_ or _predefined_. By using these bots, you can easily automate processes by being part of [routines](/docs/documentation/automation/admin_routine) summoned through surveys, slash commands, SLAs, workflows, and others.
+**Routine stage types** can be thought of as _stage bots_ or _predefined routines_. By using these bots, you can easily automate processes by being part of [routines](/docs/documentation/automation/admin_routine) summoned through surveys, slash commands, SLAs, workflows, and others.
 
 
 ## Stage Types List {#stage-list}
@@ -67,7 +67,7 @@ Stage Types are explained in the following table:
 
 ## Stage Type Versions {#stage-type-versions}
 
-_Stage types_ are actually predefined system bots. Every once in a while, we update these bots, adding new features and options, or just improving automations. But, because these changes might affect your existing _routines_, access to older versions are available.
+_Stage types_ are actually predefined system bots. Every once in a while, we update these bots, adding new features and options or just improving automations. But, because these changes might affect your existing _routines_, access to older versions is available.
 
 You can see where the _version_ field is located and how versions can have different settings in the following image:
 
@@ -77,5 +77,5 @@ You can see where the _version_ field is located and how versions can have diffe
 
 :::caution Attention
 - In case a new version is available, an alert message will appear in the settings panel.
-- If you change the version of a stage type, you will not be able to go back to previous versions after saving.
+- If you change the version of a stage type, you will not go back to previous versions after saving.
 :::

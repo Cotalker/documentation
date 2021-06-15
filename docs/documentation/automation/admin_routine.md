@@ -10,11 +10,11 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#routine-overview}
 
-The _Routine Builder_ is used to build routines in _Workflows_, _Bots_, _Schedules_ and _SLAs_. This section explains how to build a routine within the mentioned processes.
+The _Routine Builder_ is used to build routines in _Workflows_, _Bots_, _Schedules_, and _SLAs_. This section explains how to build a _routine_ within the mentioned processes.
 
 _Routines_ are used to configure various actions within a company. For example, you can automate the sending of an email or a message, create a task, or change a workflow from one state to another.
 
-- Checkout the [list](#stage-type-list) of automations that you can include in your _routines_.
+- Check out the [list](/docs/documentation/automation/existing_routines#stage-list) of automations that you can include in your _routines_.
 
 - Test your _routines_ with the [automation log](#run-routine).
 
@@ -53,10 +53,10 @@ Below you will find the description and notes for each field in the Routine Buil
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Initial State | Select the stage that initializes the routine. | The list shows the stages that have been created so far in this particular routine. You can fill in this field after you have added the stage or stages. |
-| Max Iterations | Specifies the number of stages iterated. | Make sure looping stages are taken into account when specifying maximum number of iterations. |
-| Add Stage | Adds a stage to the routine. | The code and the type of stage must be specified. After that, the settings for the selected stage type will be displayed. |
+| Max Iterations | Specifies the number of stages iterated. | Make sure looping stages are taken into account when specifying the maximum number of iterations. |
+| Add Stage | Adds a stage to the routine. | The _code_ and _stage type_ must be specified. After that, the settings for the selected stage type will be displayed. |
 | Code | Stage identification name | This field only allows lowercase letters, underscores and should always start with a letter.  |
-| Type | Select the stage type. | he **Type** field has a dropdown menu with a list of all the available _stage types_. If you hover over the name, a brief explanation of the function will be displayed. [Click here](/docs/documentation/automation/existing_routines#stage-list) for more information. |
+| Type | Select the stage type. | The dropdown menu lists all the available _stage types_. Hover over the name for a brief explanation. [Click here](/docs/documentation/automation/existing_routines#stage-list) for more information. |
 | Version | Select the stage type version. | Available versions will appear in the dropdown menu. For more information, [click here](/docs/documentation/automation/existing_routines#stage-type-versions).|
 
 ## Stage Type Configuration {#configure-stage-types}
@@ -80,7 +80,7 @@ _For example, if you chose the **Send gif** stage type, you will see the followi
 
 - **Options**: In this example, the **Send gif** stage type has three options or fields: _Search_, _Channel_, and _User_.
 - **Required Fields**: The _required_ fields are outlined by a red box (_Search_ and _Channel_).
-- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](admin_cotlang)). At the bottom of the box, in italic letters, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
+- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](admin_cotlang)). In italic letters, at the bottom of the box, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
 
 **Note:** _It's common to use [COTLang](admin_cotlang) (Cotalker Script Language) for getting automatized data for fields._
 
@@ -93,9 +93,9 @@ _For example, if you chose the **Send gif** stage type, you will see the followi
 <img alt="run routine" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
 <br/>
 
-The <span className="badge badge--primary">Run Routine</span> button is a blue button found in the *Routine Builder*. This button opens up an automation log that will help you test and debug your routines while you are building them.
+The <span className="badge badge--primary">Run Routine</span> button is a blue button found in the *Routine Builder*. This button opens up an automation log that will help you test and debug your routines while still building them.
 
-For more information about the log information shown in **Run Routine**, please refer to [Automation Log](/docs/documentation/automation/automation_log).
+To learn more about the log information shown in **Run Routine**, please refer to [Automation Log](/docs/documentation/automation/automation_log).
 
 :::warning
 *Run Routine* is **not** a "playground" or "sandbox". The routine will actually execute all the steps. So, for example, if you program the routine to send an email, it will really send the email.
