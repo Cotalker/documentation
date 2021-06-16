@@ -12,9 +12,9 @@ import Highlight from '@theme/Highlight';
 
 <div className="alert alert--primary">
 
-A Cotalker **task** is basically _something_ that _someone_ has to do, but it is not limited to that. _Tasks_ can have _states_, _chat channels_, _assignees_, _users_, _start and end dates_, _SLAs_, and more. This amplitude of functions gives **tasks** great versatility that can adapt to each company's needs.
+A Cotalker **task** is basically _something_ that _someone_ has to do, but it is not limited to that. Every **task** represents an asset and has at least a _name_, _description_, _state_, and _assignee_. Other options are also available, e.g., _chat channels_, _users_, _start and end dates_, _SLAs_, and more. This amplitude of functions gives **tasks** great versatility that can adapt to each company's needs.
 
-_Tasks_ are found within a [workflow group](/docs/documentation/client/groups_channels). They can be created manually –either through the [tasks view](/docs/documentation/client/taskview#creating-and-modifying-tasks) or the [actions button](/docs/documentation/client/groups_channels#floating-action-button-fab)– or through automatically through internal or external [surveys](/docs/documentation/client/surveys). Our tools permit _tasks_ to be assigned, monitored, and updated.
+_Tasks_ are found within a [workflow group](/docs/documentation/client/groups_channels). They can be created manually –either through the [tasks view](/docs/documentation/client/taskview#creating-and-modifying-tasks) or the [actions button](/docs/documentation/client/groups_channels#floating-action-button-fab)– or automatically through internal or external [surveys](/docs/documentation/client/surveys). Our tools permit _tasks_ to be assigned, monitored, and updated.
 
 </div>
 
@@ -111,5 +111,3 @@ _Your screen should look something like this:_
 - If the _task_ has a _channel_ associated to it, the _channel_ will open up first in the side panel. Press the channel's title bar and the configuration side panel will then open up. 
 - If programmed by the administrator, a _state survey_ window might also appear when trying to modify the task.
 :::
-
-
