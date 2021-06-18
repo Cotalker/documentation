@@ -1,10 +1,16 @@
 ---
 id: admin_cotlang
-title: COTLang Script Language
+title: COTLang
 sidebar_label: COTLang
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
+
+<span className="hero__subtitle"><em>Cotalker Scripting Language</em></span>
+<br/>
+<br/>
+<br/>
+
 
 <img alt="design" class="img_sizing_title" src={useBaseUrl('img/design/scheduler.svg')} />
 <br/>
@@ -14,14 +20,14 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#cotlang-overview}
 
-COTLang is a script language created by Cotalker, primarily used in _routines_.
+COTLang is a scripting language created by Cotalker, primarily used in its _routines_.
 It is used to extract data from different [_contexts_](/docs/documentation/automation/triggers_and_contexts) in Cotalker.
 
 </div>
 <br/>
 
-## How to use COTLang {#how-to-use-cotlang}
-When setting up routine stages, COTlang can be used for getting information from the database.
+## COTLang Commands {#how-to-use-cotlang}
+When setting up routine stages, COTLang can be used for getting information from Cotalker databases.
 
 _Below is a table with COTLang commands, their descriptions, and format:_
 
@@ -114,9 +120,7 @@ Token values:
 
 - message.meta = '`{"somekey":"Happy New Year"}'`
 
-:::note
-When a value is required, question.display should return `["$META#somekey"]`
-:::
+  When a value is required, question.display should return `["$META#somekey"]`
 
 ------
 
@@ -125,9 +129,7 @@ When a value is required, question.display should return `["$META#somekey"]`
 - General Example: 
 `{a: { b: { c1: 'Hola', c2: 'Mundo' }  }  }`
 
-:::note
-To access the info of variable c1, use the following token: *a|b|c1* . It wil respond with *Hola* 
-:::
+  To access the info of variable _c1_, use the following token: `a|b|c1`. It wil respond with `Hola`.
 
 </div>
 <br/>
