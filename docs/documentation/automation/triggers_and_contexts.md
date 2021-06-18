@@ -6,11 +6,22 @@ sidebar_label: Triggers & Contexts
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
+<span className="hero__subtitle"><em>COTLang Data Extraction</em></span>
+<br/>
+<br/>
+<br/>
+
+<img alt="design" class="img_sizing_title" src={useBaseUrl('img/design/Database.svg')} />
+<br/>
+<br/>
 
 ## Overview
 
-The following table contains the data to which the different _sources_ have access. For example, if you are using Cotlang in a _survey trigger_ routine, you will have direct access to the task.
+The [table](#contexts-table) below contains the data to which different _sources_ or _triggers_ have access. For example, you can use [COTLang](/docs/documentation/automation/admin_cotlang) in a [_state survey trigger_](#sm-survey-trigger) routine to get direct access to the task.
 
+:::tip
+See the [Context Language Description](#context-language) section for a brief explanation of the values shown in the table below.
+:::
 
 ## Contexts Table {#contexts-table}
 
@@ -382,7 +393,7 @@ _Changed State_ is triggered when a task changes state.
 </div>
 <div className="col col--12 code-table-2">
 
-_SLAs_ are time triggered events based on how much time a task is in a specific state.
+_SLAs_ are time-triggered events based on how much time a task is in a specific state.
 
 </div>
 </div>
@@ -391,23 +402,74 @@ _SLAs_ are time triggered events based on how much time a task is in a specific 
 <br/>
 
 
-## Context language description {#context-language}
-1. `...` Destructuring Operator: each key is merged into the parent object.
-For example:
-```
-if COTExample is { _id: ObjectId, content: String } 
-then             { ...COTExample,                  someKeyName: Number } 
-represents       { _id: ObjectId, content: String, someKeyName: Number }
-```
-2. Array[T]: is an array of type T.
-For example:
-```
-model       { commands: Array[String] }
-can contain { commands: ["hello", "world"] } 
-```
-3. [COTChannel Data model](/docs/documentation/api/communication/channels)
-4. [COTMessage Data model](/docs/documentation/api/communication/messages)
-5. [COTAnswer Data model](/docs/documentation/api/surveys/answers)
-6. [COTTask Data model](/docs/documentation/api/tasks/tasks) 
-7. [COTTaskGroup Data model](/docs/documentation/api/tasks/task_groups)
-8. ObjectID[T]: 24-character unique identifier that represents an object of type T
+<div className="alert alert--secondary">
+
+## Context Language Description {#context-language}
+_Brief explanation of the values used in the [Contexts Table](#contexts-table)._
+
+1. `...` : Destructuring operator, i.e., each key is merged into the parent object.
+
+  _For example:_
+
+  If `COTExample` is:
+
+    ```typescript
+    { _id: ObjectId, content: String }
+    ```
+  
+  then
+
+    ```typescript
+    { ...COTExample, someKeyName: Number }
+    ```
+  
+  represents
+
+    ```typescript
+    { _id: ObjectId, content: String, someKeyName: Number }
+    ```
+
+------
+
+2. `Array[T]`: is an array of type _T_.
+  
+  _For example:_
+  
+  Model 
+  
+  ```typescript
+  { commands: Array[String] }
+  ```
+
+  can contain 
+
+  ```typescript
+  { commands: ["hello", "world"] } 
+  ```
+
+-----
+
+3. [`COTChannel` Data model](/docs/documentation/api/communication/channels)
+
+----
+
+4. [`COTMessage` Data model](/docs/documentation/api/communication/messages)
+
+----
+
+5. [`COTAnswer` Data model](/docs/documentation/api/surveys/answers)
+
+-----
+
+6. [`COTTask` Data model](/docs/documentation/api/tasks/tasks) 
+
+-----
+
+7. [`COTTaskGroup` Data model](/docs/documentation/api/tasks/task_groups)
+
+-----
+
+8. `ObjectID[T]`: 24-character unique identifier that represents an object of type _T_
+
+</div>
+
