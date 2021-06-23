@@ -39,7 +39,7 @@ _The "Initial Settings Panel" table information is explained below:_
 - **Icon**: Group icon
 - **Name**: Visible group name.
 - **Initial Workflow**: Workflow which starts off the task.
-- **Options**: _Configure Workflows_ - _View Channels_ - _Edit Workflow Group_
+- **Options**: [_Configure Workflows_](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel) - [_View Channels_](/docs/documentation/admin/admin_channels#edit--create-single-channel) - [_Edit Workflow Group_](#create-edit-a-workflow-group) (_View following note._)
 
 :::note
   _**Configure Workflows**, **View Channels**, and **Edit Workflow Group** options are represented respectively by the following icons:_
