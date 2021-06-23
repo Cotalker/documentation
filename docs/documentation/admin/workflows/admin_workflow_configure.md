@@ -184,17 +184,23 @@ Options are: _unique_ or _generic_.
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>State list:</b></div>
-<div className="col col--5">The collection with the available states for tasks is to be selected. The states are stored as elements in the collection.</div>
-<div className="col col--4"><em>The collection with its elements must be previously created.</em></div>
+<div className="col col--5">Select the collection that has the available workflow states. The states are stored as elements in the collection.</div>
+<div className="col col--4"><em>The collection –with its elements– must be previously created.</em></div>
 </div>
 <div className="row table-row-1">
-<div className="col col--3"><b>Start from:</b></div>
+<div className="col col--3"><b>Start form:</b></div>
 <div className="col col--5">
 
-Indicates that a survey that will initialize the task. Once selected, the <span className="badge badge--secondary">Share</span> button will appear in [editing mode](#edit-a-single-workflow).
+Indicates that a survey will initialize the workflow. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.
+
+Once selected, the <span className="badge badge--secondary">Share</span> button will appear in [editing mode](#edit-a-single-workflow).
 
 </div>
-<div className="col col--4"><em>All created surveys will appear as options, but only the survey created for the task should be chosen.</em></div>
+<div className="col col--4"><em>
+
+Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+
+</em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>+ Edit Routine</b></div>
@@ -237,58 +243,79 @@ _Once you open a workflow for editing, the settings panel will look something li
 <img alt="edit workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_edit_workflow_00.png')} />
 <br/>
 
-### <span className="badge badge--secondary">States Section</span> {#states-section}
+### <span className="hero__subtitle">States Section</span> {#states-section}
+As shown above, the <span className="badge badge--secondary">States</span> section contains a diagram of the _workflow states_, a table with the created _states_, along with some other settings, which are explained below.
+
+<img alt="state fields" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflow_states_01.png')} />
+<br/>
+
 
 <div className="box container">
 <div className="row table-row-1">
-<div className="col col--12">
-
-In the **states** section you can see a diagram of the _workflow states_, a table with the created _states_, along with some other settings which will be explained below.
-
-</div>
-
+<div className="col col--3"><b>State list</b>:</div>
+<div className="col col--5">Select the collection that has the available workflow states. The states are stored as elements in the collection.</div>
+<div className="col col--4"><em>The collection –with its elements– must be previously created.</em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--12">
+<div className="col col--3"><b>Initial state</b>:</div>
+<div className="col col--5">Indicates in which state the workflow starts off by default.</div>
+<div className="col col--4"><em>
 
-Most of the settings fields are discussed [here](#create-workflow-fields).
+Available options are the elements present in the collection selected in the **State list** field.
 
-</div>
+</em></div>
 </div>
 <div className="row table-row-1">
-<div className="col col--12">
+<div className="col col--3"><b>Start form</b>:</div>
+<div className="col col--5">
 
-In the table, you can see workflow states listed by _name_, _type_, and _date last modified_.
+Indicates that a survey will initialize the workflow. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.
+
+Once selected, the <span className="badge badge--secondary">Share</span> button will appear.
 
 </div>
+<div className="col col--4"><em>
+
+Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+
+</em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--12">
+<div className="col col--3"><b>+ Edit Routine</b>:</div>
+<div className="col col--5">Routines automate processes within the workflow.</div>
+<div className="col col--4"><em>
 
-To [create a new state](#create-edit-single-state), press the <span className="badge badge--secondary">+</span> icon in the **Workflow states** section.
+[Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
+
+</em></div>
 </div>
-</div>
+
 <div className="row table-row-1">
-<div className="col col--12">
+<div className="col col--3"><b>Share</b>:</div>
+<div className="col col--5">
 
-To [edit](#create-edit-single-state) an existing _state_, click on the state listed in the _table_. 
+Press this button to get a **link** which will permit you to share the survey outside the Cotalker environment. Appears when a _survey_ is selected in the **Start form** field.
 
 </div>
-</div>
-
-<div className="row table-row-2">
-<div className="col col--12">
-
-The <span className="badge badge--secondary">Share</span> button appears when a _survey_ is selected in the **Start from** field. 
-
-Press this button to get a **link** which will permit you to share the survey outside the Cotalker environment.
+<div className="col col--4"><em>
 
 See the [Survey](/docs/documentation/admin/survey/survey_overview) documentation for more details.
 
-</div>
+</em></div>
 </div>
 
 </div>
+<br/>
+
+To [create a new state](#create-edit-single-state), press the <span className="badge badge--secondary">+</span> icon (circled in red in the image below) in the **Workflow states** section.
+
+<img alt="create state" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflow_states_02.png')} />
+<br/>
+
+
+In the table, you can see workflow states listed by _name_, _type_, and _date last modified_. To [edit](#create-edit-single-state) a _state_, in the _options_ column, click on the icon circled red as shown in the image below.
+
+<img alt="create state" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflow_states_03.png')} />
 <br/>
 
 :::tip
@@ -305,7 +332,7 @@ You will be taken to the following settings panel after pressing the <span class
 <br/>
 <br/>
 
-_Below you will find the descriptions and notes for each field in the **Create State** settings panel._
+_Below, you will find the descriptions and notes for each field in the **Create State** settings panel._
 
 <div className="container box">
 <div className="row table-row-title">
@@ -346,15 +373,23 @@ The state should already exist as an element in the collection selected previous
 <div className="col col--3"><b>Can change:</b></div>
 <div className="col col--5">
 
-Options are: _survey_, _task-ui_ (task), or _*_ (both).
+Options are: _None_, _Survey_, or _Manual_.
 
 </div>
 <div className="col col--4"><em></em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Start form:</b></div>
-<div className="col col--5">Indicates that a survey that will initialize with the task.</div>
-<div className="col col--4"><em>All created surveys will appear as options, but only the survey created for the task should be chosen.</em></div>
+<div className="col col--5">
+
+Appears when the **Can change** field is set to _survey_. Indicates that a survey will initialize the workflow. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.
+
+</div>
+<div className="col col--4"><em>
+
+Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+
+</em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>+ Edit Routine:</b></div>
@@ -387,15 +422,19 @@ Options are: _survey_, _task-ui_ (task), or _*_ (both).
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>+ Add Survey Trigger:</b></div>
-<div className="col col--5">A survey is used to trigger the passage of the state to its successors. Multiple survey triggers can be added.</div>
-<div className="col col--4"><em>When pressed, new fields appear.</em></div>
+<div className="col col--5">A survey is used to change a workflow's state. Multiple survey triggers can be added. When pressed, new fields appear.</div>
+<div className="col col--4"><em>
+
+Go to [State Survey](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) for setup information.
+
+</em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Survey:</b></div>
 <div className="col col--5">Choose from existing surveys.</div>
 <div className="col col--4"><em>
 
-[Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
+[Click here](/docs/documentation/admin/survey) to learn more about surveys.
 
 </em></div>
 </div>
@@ -417,7 +456,7 @@ Options are: _survey_, _task-ui_ (task), or _*_ (both).
 - If a workflow is changing to a _closed_ type state, all of its subtasks must also be _closed_. This is not done automatically since it is an irreversible change. Therefore, before changing to the _closed_ state, all the subtasks must be manually _closed_.
 :::
 
-### SLA Routine {#create-edit-sla}
+### SLAs {#create-edit-sla}
 
 A service-level agreement (SLA) can be incorporated into the workflow. When a task does not change from one state to another at a pre-determined time, a routine can be built to take a course of action, like sending a reminder to whoever was assigned the task.
 
@@ -427,4 +466,6 @@ _The **SLAs** section is located at the bottom of the [settings panel](#edit-a-s
 <br/>
 <br/>
 
-_For information on how to add an SLA routine to your workflow, go to the [Automations > SLA Routine](/docs/documentation/automation/sla) section._
+:::info
+_For information on how to add an SLA routine to your workflow, go to the [SLA Routine](/docs/documentation/automation/sla) section._
+:::
