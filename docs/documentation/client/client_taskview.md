@@ -81,33 +81,41 @@ _Your screen will look something like this:_
 <br/>
 
 ## Creating Tasks {#creating-tasks}
-
-_Tasks_ can be generated automatically by [surveys](/docs/documentation/client/surveys) accessed through the _actions button_, _channel options button_, or a _public survey_. They can also be created manually through the _tasks view_. 
-
-_If configured, you can create tasks from the "actions button" and "channel options button":_
+If configured, you can create tasks from the _actions button_ in the workflow's channel, as shown below:
 <img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_09.png')} />
 <br/>
 
-
-From within the _task views_, you can manually **create a task** by pressing the <span className="badge badge--secondary">+</span> icon in the menu bar. A new task will appear in the list where you can name the task, and a side panel will open up with all the options needed to assign it to someone, establish its status and deadline, among other options.
+You can manually **create a task** from within the _task views_ by pressing the <span className="badge badge--secondary">+</span> icon in the menu bar. A new task will appear in the list where you can name the task, and a side panel will open up with all the options needed to assign it to someone, establish its status and deadline, among other options.
 
 <img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_07.png')} />
 <br/>
 <br/>
 
 :::note
-In some configurations, administrators might program a [_workflow start survey_](/docs/documentation/admin/workflows/admin_workflow_required_survey) to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
+- In some configurations, administrators might program a [_workflow start survey_](/docs/documentation/admin/workflows/admin_workflow_required_survey) to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
+- Tasks can also be created through _public surveys_ for users outside the Cotalker environment.
 :::
 
 ## Modifying a Task {#modifying-tasks}
+If configured, you can change a task's state using the _actions button_ in its channel, as shown below.
 
-You can modify an existing _task_ by selecting it from the _tasks view_. A configuration side panel will open where you can view and edit the task's properties. 
+<img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_10.png')} />
+<br/>
 
-_Your screen should look something like this:_
+
+You can also modify an existing _task_ by opening its configuration side panel either by selecting it through the _task view_ or by pressing the _title bar_ in the task's channel.
+
+#### _Task view:_
 <img alt="edit task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_06.png')} />
 <br/>
 
+#### _Task's channel:_
+<img alt="edit task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_11.png')} />
+<br/>
+
+
+
 :::note
-- If the _task_ has a _channel_ associated to it, the _channel_ will open up first in the side panel. Press the channel's title bar and the configuration side panel will then open up. 
+- In the _task view_, if the _task_ has a _channel_ associated with it, the _channel_ will open up first in the side panel. Press the channel's title bar, and the configuration side panel will then open up. 
 - If programmed by the administrator, a _state survey_ window might also appear when trying to modify the task.
 :::
