@@ -313,7 +313,7 @@ To [create a new state](#create-edit-single-state), press the <span className="b
 <br/>
 
 
-In the table, you can see workflow states listed by _name_, _type_, and _date last modified_. To [edit](#create-edit-single-state) a _state_, click on the icon circled red as shown in the image below.
+In the table, you can see workflow states listed by _name_, _type_, and _date last modified_. To [edit](#create-edit-single-state) a _state_, in the _options_ column, click on the icon circled red as shown in the image below.
 
 <img alt="create state" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflow_states_03.png')} />
 <br/>
@@ -373,14 +373,18 @@ The state should already exist as an element in the collection selected previous
 <div className="col col--3"><b>Can change:</b></div>
 <div className="col col--5">
 
-Options are: _survey_, _task-ui_ (task), or _*_ (both).
+Options are: _None_, _Survey_, or _Manual_.
 
 </div>
 <div className="col col--4"><em></em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Start form:</b></div>
-<div className="col col--5">Indicates that a survey will initialize the workflow. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.</div>
+<div className="col col--5">
+
+Appears when the **Can change** field is set to _survey_. Indicates that a survey will initialize the workflow. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.
+
+</div>
 <div className="col col--4"><em>
 
 Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
@@ -452,7 +456,7 @@ Go to [State Survey](/docs/documentation/admin/workflows/admin_workflow_required
 - If a workflow is changing to a _closed_ type state, all of its subtasks must also be _closed_. This is not done automatically since it is an irreversible change. Therefore, before changing to the _closed_ state, all the subtasks must be manually _closed_.
 :::
 
-### SLA Routine {#create-edit-sla}
+### SLAs {#create-edit-sla}
 
 A service-level agreement (SLA) can be incorporated into the workflow. When a task does not change from one state to another at a pre-determined time, a routine can be built to take a course of action, like sending a reminder to whoever was assigned the task.
 
@@ -462,4 +466,6 @@ _The **SLAs** section is located at the bottom of the [settings panel](#edit-a-s
 <br/>
 <br/>
 
-_For information on how to add an SLA routine to your workflow, go to the [Automations > SLA Routine](/docs/documentation/automation/sla) section._
+:::info
+_For information on how to add an SLA routine to your workflow, go to the [SLA Routine](/docs/documentation/automation/sla) section._
+:::
