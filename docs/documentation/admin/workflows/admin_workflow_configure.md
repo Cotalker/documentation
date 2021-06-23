@@ -441,7 +441,7 @@ Go to [State Survey](/docs/documentation/admin/workflows/admin_workflow_required
 <div className="col col--5">Choose from existing surveys.</div>
 <div className="col col--4"><em>
 
-[Click here](/docs/documentation/admin/survey) to learn more about surveys.
+[Click here](/docs/documentation/admin/survey/survey_overview) to learn more about surveys.
 
 </em></div>
 </div>
