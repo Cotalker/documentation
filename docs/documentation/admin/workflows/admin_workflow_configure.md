@@ -337,7 +337,11 @@ _Below, you will find the descriptions and notes for each field in the **Create 
 
 <div className="container box">
 <div className="row table-row-title">
-<div className="col col--12"><b>General information</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### General information {#create-state-general-information}
+
+</b></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Type</b>:</div>
@@ -358,7 +362,11 @@ The state should already exist as an element in the collection selected previous
 </em></div>
 </div>
 <div className="row table-row-title">
-<div className="col col--12"><b>State changes</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### State changes {#create-state-state-changes}
+
+</b></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>+ Add state change</b>:</div>
@@ -410,12 +418,16 @@ Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workf
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>State change permissions</b>:</div>
-<div className="col col--5">Select the specific permissions a user needs to create a task or modify its state.</div>
+<div className="col col--5">Select the specific permissions a user needs to change a task's state.</div>
 <div className="col col--4"><em></em></div>
 
 </div>
 <div className="row table-row-title">
-<div className="col col--12"><b>Subtask</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### Subtask {#create-state-subtask}
+
+</b></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Workflow:</b></div>
@@ -437,7 +449,11 @@ Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workf
 <div className="col col--4"><em></em></div>
 </div>
 <div className="row table-row-title">
-<div className="col col--12"><b>Survey triggers</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### Survey triggers {#create-state-survey-trigger}
+
+</b></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>+ Add Survey Trigger:</b></div>
