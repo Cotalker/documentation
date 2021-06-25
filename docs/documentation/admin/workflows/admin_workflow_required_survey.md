@@ -13,7 +13,7 @@ import Highlight from '@theme/Highlight';
 
 ## Summary {#summary}
 
-By default, _users_ can create a _task_ or change its state through the _tasks view_ section. However, _administrators_ may require _users_ to complete a _survey_ before **creating a new task** or **before changing the state of a task**. Adding _survey trigger_ before creating a workflow ([Workflow Start Survey](#required-survey-for-a-new-task)) or changing a state ([State Survey](#required-survey-for-modifying-task-states)) allows _administrators_ to:
+By default, _users_ can create a _task_ or change its state through the _tasks view_ section. However, _administrators_ may require _users_ to complete a _survey_ before **creating a new task** or **before changing the state of a task**. Adding a _survey trigger_ before creating a workflow ([Workflow Start Survey](#required-survey-for-a-new-task)) or changing a state ([State Survey](#required-survey-for-modifying-task-states)) allows _administrators_ to:
 - control what type of _tasks_ users create, 
 - ensure that the _users_ provide all necessary information when creating _tasks_,  
 - and manage _workflow_ state changes.
@@ -31,7 +31,9 @@ Workflow Start Surveys can also be [shared](/docs/documentation/admin/workflows/
 ## Workflow Start Survey {#required-survey-for-a-new-task}
 Without configuring this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
 
-By setting up a _Workflow Start Survey_, a _channel_ is created within a _workflow group_ to host the newly created task and will display the _survey_ used to create and modify the _task_.
+Once set up, the survey can be accessed through the workflow group's [action button](/docs/documentation/client/groups_channels#floating-action-button-fab).
+
+By setting up a _Workflow Start Survey_, a _channel_ is created within the _workflow group_ to host the newly created task and will display the answered _survey_ used to generate the _task_.
 
 :::important
 When using a Workflow Start Surveys and some input error prevents a task from being created, the _channel_ will be generated but without an assigned task. It will be the implementor's duty to notify this problem adequately in the _channel_; the _user_ must be told to re-send the _survey_ and make the necessary corrections to create the _task_ appropriately.
