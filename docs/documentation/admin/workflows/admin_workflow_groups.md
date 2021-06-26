@@ -183,7 +183,8 @@ _Configures how channels are displayed in a workflow group._
 </div>
 <br/>
 
-### <span className="badge badge--secondary">Channel Creation Fields</span> {#channel-creation-section}
+<!-- DEPRECATED -->
+<!-- ### <span className="badge badge--secondary">Channel Creation Fields</span> {#channel-creation-section}
 The description of the _channel creation_ fields is as follows:
 
 <div className="container box">
@@ -199,23 +200,28 @@ The description of the _channel creation_ fields is as follows:
 <div className="col col--4"><em>Although the button may be visible, without the necessary permissions, users will not be allowed to create channels.</em></div>
 </div>
 </div>
-<br/>
+<br/> -->
 
 ### <span className="badge badge--secondary">Secondary Actions</span> {#secondary-actions}
 
-Here you can configure the _Actions_ button –a green floating button that appears at the bottom of the group's channel panel– where users can access URLs, which can be configured to open external websites, go to different sections of the app, answer surveys, and create tasks.
+This section allows you to set up the _secondary actions_ available in a group's _action button_. With _secondary actions_ users can access URLs, which can be configured to go to different channels or even open external websites.
 
-_The Actions button and its corresponding Actions Menu will look something like the image below:_
-<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
+<div className="alert alert--secondary">
+
+_The **Actions button** appears at the bottom of the group's channel panel as shown in the image below:_
+
+<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_workflow_groups_actionbutton.png')} />
 <br/>
 
 :::note
-New channels can also be created through the _Action_ button. That option is activated in the [Channel Creation Section](#channel-creation-section)
+- _Action buttons_ in **workflow groups** can also open [workflow start surveys](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-a-new-task).
+- But, unlike _action buttons_ in regular groups, _action buttons in workflow groups_ cannot create new channels.
 :::
 
+</div>
 <br/>
 
-Descriptions of the fields and options in the _secondary actions_ section are explained below:
+_Descriptions of the fields and options in the **secondary actions** section are explained below:_
 
 The <span className="badge badge--secondary">+ ADD NEW ACTION</span>: creates an _action_ that can be accessed through the _Actions_ button.
 <img alt="add new action" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_00.png')} />

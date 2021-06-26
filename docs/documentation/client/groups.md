@@ -71,9 +71,12 @@ _The following image shows how to open the side panel:_
 <img alt="task change state menu" class="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_sidepanel_00.png')} />
 <br/>
 
-### "Actions" Button {#floating-action-button-fab}
-Within a group's channel panel, you might see a green button floating near the bottom. The _Actions_ button can be configured for a group's specific needs. This button can let you create a new channel, answer a survey, create a task, redirect to another URL, among others.
+### Actions Button {#floating-action-button-fab}
+Within a group's channel panel, there is a green button floating near the bottom. _Action buttons_ can perform the following actions:
+- In _workflow groups_, create tasks with surveys.
+- In _communication/regular groups_, create new channels.
+- In all groups, there can be links to any URL.
 
-_The FAB and the enabled actions will look something like the image below:_
+_The **actions button** will look something like the image below:_
 <img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
 <br/>
