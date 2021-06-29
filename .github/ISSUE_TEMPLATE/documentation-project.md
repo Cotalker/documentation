@@ -18,3 +18,6 @@ Further details about the task.
 
 # Other
 Any extra information or optional tasks.
+
+# Priority
+High, Medium or Low
