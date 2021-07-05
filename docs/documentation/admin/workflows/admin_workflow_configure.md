@@ -303,6 +303,15 @@ See the [Survey](/docs/documentation/admin/survey/survey_overview) documentation
 
 </em></div>
 </div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Start form permissions</b>:</div>
+<div className="col col--5">Select permissions users need to create a subtask. Users are requiered to have at least one of the selected persmissions.</div>
+<div className="col col--4"><em>
+
+Users are assigned permissions through their [access roles](/docs/documentation/admin/admin_accessrole).
+
+</em></div>
+</div>
 
 </div>
 <br/>
@@ -418,8 +427,12 @@ Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workf
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>State change permissions</b>:</div>
-<div className="col col--5">Select the specific permissions a user needs to change a task's state.</div>
-<div className="col col--4"><em></em></div>
+<div className="col col--5">Select permissions users need to change a task's state. Users are requiered to have at least one of the selected persmissions.</div>
+<div className="col col--4"><em>
+
+Users are assigned permissions through their [access roles](/docs/documentation/admin/admin_accessrole).
+
+</em></div>
 
 </div>
 <div className="row table-row-title">
@@ -442,11 +455,6 @@ Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workf
 [Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
 
 </em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Subtask creation permissions:</b></div>
-<div className="col col--5">Select the specific permissions a user needs to create a subtask or modify its state.</div>
-<div className="col col--4"><em></em></div>
 </div>
 <div className="row table-row-title">
 <div className="col col--12 not-heading"><b>
