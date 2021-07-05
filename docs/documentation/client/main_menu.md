@@ -4,9 +4,45 @@ title: Main menu
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />
+<br/>
+<br/>
 
-The _main menu_ offers access to personal settings, contacts, search bar, direct messages, groups, links, workflows, databases, reports, dashboards, administration tools, and other customizable options. The menu display varies for every user, depending on company specifications and user visibility permissions.
+Through the **Main Menu Bar**, you can go pretty much anywhere in your company's Cotalker environment. Depending on company specifications and user visibility permissions, the **Main Menu Bar** display varies for every _user_.
 
-<!-- TODO __make image diagram of menu bar like here: https://slack.zendesk.com/hc/article_attachments/360092361134/slack_desktop_experience.png__ -->
 
-<img width="200px" alt="" src={useBaseUrl('img/menu.jpg')} /> 
+<div className="alert alert--primary">
+
+The **Main Menu Bar** offers access to:
+
+_General options:_
+- personal settings, 
+- home panel
+- contacts
+- search bar
+- communication groups 
+- workflow groups
+- URL links
+
+_Special Access:_
+- databases
+- reports
+- dashboards
+- administration tools
+
+_and other customizable options._
+
+</div>
+<br/>
+
+#### Main Menu Bar layout: {#main-menu-bar-layout}
+<img alt="main_menu" className="img_title" src={useBaseUrl('img/client_mainmenu_00a.png')} /> 
+<br/>
+<br/>
+
+:::note
+_The **Main Menu Bar** can autohide in desktop mode and will take up the entire screen in mobile mode._
+:::
+
+:::tip
+Learn more about how to use the [search tool](/docs/documentation/client/client_search) to navigate through the Cotalker environment.
+:::

@@ -28,6 +28,7 @@ module.exports = {
       items: [
         'documentation/client/platforms',
         'documentation/client/main_menu',
+        'documentation/client/client_search',
         'documentation/client/groups_channels',
         'documentation/client/surveys',
         'documentation/client/taskview',
