@@ -4,32 +4,45 @@ title: Main menu
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />
+<br/>
+<br/>
 
-## Overview {#overview}
-
-The _main menu_ offers access to personal settings, contacts, search bar, direct messages, groups, links, workflows, databases, reports, dashboards, administration tools, and other customizable options. The menu display varies for every user, depending on company specifications and user visibility permissions.
+Through the **Main Menu Bar**, you can go pretty much anywhere in your company's Cotalker environment. Depending on company specifications and user visibility permissions, the **Main Menu Bar** display varies for every _user_.
 
 
+<div className="alert alert--primary">
+
+The **Main Menu Bar** offers access to:
+
+_General options:_
+- personal settings, 
+- home panel
+- contacts
+- search bar
+- communication groups 
+- workflow groups
+- URL links
+
+_Special Access:_
+- databases
+- reports
+- dashboards
+- administration tools
+
+_and other customizable options._
+
+</div>
+<br/>
+
+#### Main Menu Bar layout: {#main-menu-bar-layout}
 <img alt="main_menu" className="img_title" src={useBaseUrl('img/client_mainmenu_00a.png')} /> 
 <br/>
-
-_**NOTE**: The **Main Menu Bar** can autohide in desktop mode and will take up the full screen in mobile mode._
-
-## Search {#search}
-
-Access the **search** tool through the **Main Menu Bar** or on top of a _group panel_. 
-
-<img alt="main_menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_mainmenu_search_03.png')} /> 
 <br/>
 
-You can search through Cotalker _contacts_, _tasks_, _channels_, and _elements_. 
+:::note
+_The **Main Menu Bar** can autohide in desktop mode and will take up the entire screen in mobile mode._
+:::
 
-The _search query results_ window allows you to easily navigate and select an occurrence.
-
-<img alt="main_menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_mainmenu_search_02.png')} /> 
-<br/>
-
-_Search keywords don't have to be exact:_
-
-<img alt="main_menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_mainmenu_search_01.png')} /> 
-<br/>
+:::tip
+Learn more about how to use the [search tool](/docs/documentation/client/client_search) to navigate through the Cotalker environment.
+:::
