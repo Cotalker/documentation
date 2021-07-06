@@ -43,6 +43,13 @@
   border: 0;
 }
 
+
+.not-heading h4 {
+  margin-bottom: 0px;
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
 .alert--danger {
   --ifm-alert-background-color: #fa383e;
   --ifm-alert-border-color:  #fa383e;
