@@ -105,6 +105,10 @@ _Administrative users_ can view and perform changes, depending on their _permiss
 
 When creating or modifying a _user_, it may be desirable to add extra information depending on the company's needs. Since this information can be multiple and varied, a special arrangement has been developed in order to associate a _user_ to a _collection_ created to host the extra user-data requirements. The **additional fields** can include information in _string_, _number_, _date_, _boolean_, and _URL_ format. They can also host files, other _elements_, or even _users_.
 
+:::note
+_Attributes_ assigned to a user's [_job title_](/docs/documentation/admin/admin_company#job-titles) are automatically assigned as **additional fields**.
+:::
+
 _In order to activate **Additional Fields**, press the button in the upper-right corner:_
 
 <img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_00.png')} />
