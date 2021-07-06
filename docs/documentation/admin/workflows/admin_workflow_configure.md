@@ -303,17 +303,27 @@ See the [Survey](/docs/documentation/admin/survey/survey_overview) documentation
 
 </em></div>
 </div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Start form permissions</b>:</div>
+<div className="col col--5">Select permissions users need to create a subtask. Users are requiered to have at least one of the selected persmissions.</div>
+<div className="col col--4"><em>
+
+Users are assigned permissions through their [access roles](/docs/documentation/admin/admin_accessrole).
+
+</em></div>
+</div>
 
 </div>
 <br/>
 
+#### How to create a state {#how-to-create-a-state}
 To [create a new state](#create-edit-single-state), press the <span className="badge badge--secondary">+</span> icon (circled in red in the image below) in the **Workflow states** section.
 
 <img alt="create state" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflow_states_02.png')} />
 <br/>
 
-
-In the table, you can see workflow states listed by _name_, _type_, and _date last modified_. To [edit](#create-edit-single-state) a _state_, in the _options_ column, click on the icon circled red as shown in the image below.
+#### How to edit a state {#how-to-edit-a-state}
+Workflow _states_ are listed on a table found at the end of the <span className="badge badge--secondary">states</span> section. To [edit](#create-edit-single-state) a _state_, click anywhere on its row.
 
 <img alt="create state" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflow_states_03.png')} />
 <br/>
@@ -326,7 +336,7 @@ In the table, you can see workflow states listed by _name_, _type_, and _date la
 
 ### Create/Edit State {#create-edit-single-state}
 
-You will be taken to the following settings panel after pressing the <span className="badge badge--secondary">+</span> create state icon or after clicking on the workflow state from the table in the [**States** section](#states-section).
+You will be taken to the following settings panel after pressing the <span className="badge badge--secondary">+</span> [create state icon](#how-to-create-a-state) or after clicking on the workflow state from the [table](#how-to-edit-a-state) in the <span className="badge badge--secondary">States</span> section.
 
 <img alt="create state" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_create_state_00.png')} />
 <br/>
@@ -336,10 +346,14 @@ _Below, you will find the descriptions and notes for each field in the **Create 
 
 <div className="container box">
 <div className="row table-row-title">
-<div className="col col--12"><b>General information</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### General information {#create-state-general-information}
+
+</b></div>
 </div>
 <div className="row table-row-1">
-<div className="col col--3"><b>Type:</b></div>
+<div className="col col--3"><b>Type</b>:</div>
 <div className="col col--5">
 
 Indicates the state type. Options are: _new_ (connects with start), _in progress_ (connects to other states), or _closed_ (connects to end).
@@ -348,7 +362,7 @@ Indicates the state type. Options are: _new_ (connects with start), _in progress
 <div className="col col--4"><em>This field is mandatory.</em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--3"><b>Elements:</b></div>
+<div className="col col--3"><b>Elements</b>:</div>
 <div className="col col--5">Enter the state name.</div>
 <div className="col col--4"><em>
 
@@ -357,15 +371,19 @@ The state should already exist as an element in the collection selected previous
 </em></div>
 </div>
 <div className="row table-row-title">
-<div className="col col--12"><b>State changes</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### State changes {#create-state-state-changes}
+
+</b></div>
 </div>
 <div className="row table-row-1">
-<div className="col col--3"><b>+ Add state change:</b></div>
+<div className="col col--3"><b>+ Add state change</b>:</div>
 <div className="col col--5">Indicates successor states. If it is the final state, this field is not required. Multiple state changes can be added, allowing diverse courses of action.</div>
 <div className="col col--4"><em>When pressed, the other fields and buttons appear.</em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--3"><b>State:</b></div>
+<div className="col col--3"><b>State</b>:</div>
 <div className="col col--5">Enter the name of the succeeding state.</div>
 <div className="col col--4"><em>States must have been previously saved into the workflow.</em></div>
 </div>
@@ -386,7 +404,7 @@ Creates an action button in the workflow's channel that indicates how a state ch
 </em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--3"><b>Start form:</b></div>
+<div className="col col--3"><b>Start form</b>:</div>
 <div className="col col--5">
 
 Indicates that a survey will change the workflow's state. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.
@@ -399,7 +417,7 @@ Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workf
 </em></div>
 </div>
 <div className="row table-row-1">
-<div className="col col--3"><b>+ Edit Routine:</b></div>
+<div className="col col--3"><b>+ Edit Routine</b>:</div>
 <div className="col col--5">Routines automate processes within the workflow.</div>
 <div className="col col--4"><em>
 
@@ -407,8 +425,22 @@ Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workf
 
 </em></div>
 </div>
+<div className="row table-row-2">
+<div className="col col--3"><b>State change permissions</b>:</div>
+<div className="col col--5">Select permissions users need to change a task's state. Users are requiered to have at least one of the selected persmissions.</div>
+<div className="col col--4"><em>
+
+Users are assigned permissions through their [access roles](/docs/documentation/admin/admin_accessrole).
+
+</em></div>
+
+</div>
 <div className="row table-row-title">
-<div className="col col--12"><b>Subtask</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### Subtask {#create-state-subtask}
+
+</b></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Workflow:</b></div>
@@ -425,7 +457,11 @@ Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workf
 </em></div>
 </div>
 <div className="row table-row-title">
-<div className="col col--12"><b>Survey triggers</b></div>
+<div className="col col--12 not-heading"><b>
+
+#### Survey triggers {#create-state-survey-trigger}
+
+</b></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>+ Add Survey Trigger:</b></div>
