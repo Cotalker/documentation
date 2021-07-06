@@ -66,8 +66,9 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
   for (const bot of doc.data.parametrizedBots) {
     // | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
     const key = `${bot.key.toLocaleLowerCase()}${bot.version ? '-'+bot.version : '' }`;
+    const parensVersion = bot.version ? ` (${bot.version})` : '';
    
-    table.push(`| [${bot.display}](/docs/documentation/automation/bots/${key}) | ${bot.version || ' '} | ${bot.description} | _${bot.key}_ |`);
+    table.push(`| [${bot.display}${parensVersion}](/docs/documentation/automation/bots/${key}) | ${bot.description} | _${bot.key}_ |`);
     bots[key] = { text:[], key: bot.key.toLocaleLowerCase() , version: bot.version || '' };
    
     bots[key].text.push(`# ${bot.display}`);
