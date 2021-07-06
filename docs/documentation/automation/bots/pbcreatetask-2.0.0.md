@@ -100,12 +100,16 @@ User ID creator of the new Task
 Required: no  
 Data Type: CotUserId   
 ## Next Stages  
-### 1. Task created (key: CREATED)  
-Stage to execute when the Task was created  
-### 2. Task not created (key: NOT-CREATED)  
-Stage to execute when the Task was not created  
+### 1. SUCCESS  
+  
+### 2. ERROR  
+  
 ## Outputs  
 ### 1. Task (key: task)  
   
 Required: no  
-Data Type: object 
+Data Type: object   
+### 2. Errors (key: errors)  
+  
+Required: no  
+Data Type: array string

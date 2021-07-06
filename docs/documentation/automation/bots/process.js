@@ -65,48 +65,51 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
 
   for (const bot of doc.data.parametrizedBots) {
     // | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
-    table.push(`| [${bot.display}](/docs/documentation/automation/bots/${bot.key.toLocaleLowerCase()}) | ${bot.description} | _${bot.key}_ |`);
-
-    bots[bot.key] = [];
+    const key = `${bot.key.toLocaleLowerCase()}${bot.version ? '-'+bot.version : '' }`;
    
-    bots[bot.key].push(`# ${bot.display}`);
-    bots[bot.key].push(`**${bot.description}**`);
-    bots[bot.key].push(`key: ${bot.key}`);
+    table.push(`| [${bot.display}](/docs/documentation/automation/bots/${key}) | ${bot.version || ' '} | ${bot.description} | _${bot.key}_ |`);
+    bots[key] = { text:[], key: bot.key.toLocaleLowerCase() , version: bot.version || '' };
+   
+    bots[key].text.push(`# ${bot.display}`);
+    bots[key].text.push(`**${bot.description}**`);
+    bots[key].text.push(`key: ${bot.key}`);
 
-    bots[bot.key].push('## Inputs');
+    bots[key].text.push('## Inputs');
     let count = 1;
     for (const input of bot.dataType) {
-      generateInputOutputDoc(bots[bot.key], input, count, false);
+      generateInputOutputDoc(bots[key].text, input, count, false);
       count += 1;
     }
     count = 1;
-    bots[bot.key].push('## Next Stages');
+    bots[key].text.push('## Next Stages');
     for (const next of bot.nextType) {
-      generateInputOutputDoc(bots[bot.key], next, count, true);
+      generateInputOutputDoc(bots[key].text, next, count, true);
       count += 1;
     }
     count = 1;
-    bots[bot.key].push('## Outputs');
+    bots[key].text.push('## Outputs');
     for (const output of bot.resultType) {
-      generateInputOutputDoc(bots[bot.key], output, count, false);
+      generateInputOutputDoc(bots[key].text, output, count, false);
       count += 1;
     }
   }
 
   for (const botcode of Object.keys(bots)) {
+    const bot = bots[botcode];
+
     const fileName = `${botcode.toLowerCase()}.md`;
     try {
       await fs.promises.unlink(`${__dirname}/${fileName}`);
     } catch (e) {}
     let manualData = '';
     try {
-      await fs.promises.access(`${__dirname}/${botcode.toLowerCase()}-manual.md`);
-      manualData = await fs.promises.readFile(`${__dirname}/${botcode.toLowerCase()}-manual.md`);
+      await fs.promises.access(`${__dirname}/${bot.key.toLowerCase()}-manual.md`);
+      manualData = await fs.promises.readFile(`${__dirname}/${bot.key.toLowerCase()}-manual.md`);
     } catch (e) {
 
     }
-    const first = bots[botcode].shift();
-    await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, manualData, ...bots[botcode]].join('  \n'), 'utf8');
+    const first = bots[botcode].text.shift();
+    await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, manualData, ...bots[botcode].text].join('  \n'), 'utf8');
   }
 
   await fs.promises.writeFile(`${__dirname}/table.md`, table.join('  \n'), 'utf8');
