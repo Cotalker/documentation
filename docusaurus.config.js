@@ -124,7 +124,7 @@ module.exports = {
         },
         blog: {
           blogSidebarCount: 'ALL',
-          blogSidebarTitle: 'Latest features:',
+          blogSidebarTitle: `What's New:`,
           feedOptions: {
             type: 'all',
           },
