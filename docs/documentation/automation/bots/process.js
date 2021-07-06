@@ -61,7 +61,11 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
   const bots = {};
   const table = [];
 
-  doc.data.parametrizedBots.sort((a, b) => a.key.localeCompare(b.key));
+  doc.data.parametrizedBots.sort((a, b) => {
+    const name = a.key.localeCompare(b.key);
+    if (name !== 0) return name;
+    return (b.version || '').localeCompare(a.version || '');
+  });
 
   for (const bot of doc.data.parametrizedBots) {
     // | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
