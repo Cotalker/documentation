@@ -16,14 +16,14 @@ An _access role_ is a set of previously arranged _permissions_ assignable to _us
 
 In the _Access Roles_ section of the _administrative panel_, you can create, search, and edit the company's access roles.
 
-Within a company, _users_ fulfill different roles. It is important to assign specific _permissions_ to some _users_ and not to others. Assigning _access roles_ permits the quick designation of the sets of _permissions_ that _users_ will need to read or modify something in the application. The access given can go from answering a _survey_ from a specific _channel_ to configuring the _administrative panel_.
+Within a company, _users_ fulfill different roles. It is important to assign specific _permissions_ to some _users_ and not to others. Assigning _access roles_ permits the quick designation of the sets of _permissions_ that _users_ will need to read or modify something in the application. The access given can go from answering a _survey_ from a specific _channel_ to configuring the _administrative panel_ or changing the state of a _workflow_.
 
 There is a wide range of default _permissions_ to choose from, but personalized ones can also be created. Created _permissions_ are given functionalities when other models are configured.
 
 
 ## Main Settings Panel {#settings-panel}
 
-As shown in the image below, from the _Access roles_ button in the _Administrative Panel_ a list of all the _access roles_ that have been created in the company appear in the settings panel.
+As shown in the image below, from the _Access roles_ button in the _Administrative Panel_, a list of all the _access roles_ that have been created in the company appears in the settings panel.
 
 <img alt="access roles settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_00.png')} />
 <br />
