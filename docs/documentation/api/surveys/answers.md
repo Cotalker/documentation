@@ -16,6 +16,7 @@ It contains the latest version of the survey data.
 | channel  | id | Unique Identifier   | Unique. Exactly 24 chars. Valid chars [0-9a-f] |
 | user | id | Unique Identifier   | Unique. Exactly 24 chars. Valid chars [0-9a-f] |
 | survey | id | Unique Identifier   | Unique. Exactly 24 chars. Valid chars [0-9a-f] |
+| formId | id | Refers to `messages.form.id`. | Used for retriving [_messages_](/docs/documentation/api/communication/messages) |
 | modifiedAt | date | Last modification date
 | createdAt | date | Entry creation date
 | data | Array<DataModel\> | List of Data

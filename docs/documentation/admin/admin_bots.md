@@ -126,7 +126,7 @@ Indicates the _survey_ that initializes the _bot_. Any _survey_ can be selected.
 
 If set, then information sent through the _survey_ is added to the [context](/docs/documentation/automation/triggers_and_contexts#channel-survey-trigger) response as _messages_ ([COTMessage](/docs/documentation/api/communication/messages) Array) and can be read with COTLang with `$VALUE#messages`.
 
-**NOTE:** This feature is deprecated, now messages retrieved by _form.id_ can be obtained by comparing this with _answer.formId_.
+**NOTE:** This feature is deprecated, now messages retrieved by [_messages.form.id_](/docs/documentation/api/communication/messages#model) can be obtained by comparing this with [_answer.formId_](/docs/documentation/api/surveys/answers#model).
 
 </div>
 <div className="col col--4"><em>This slide button only appears when the 'It's a survey command' option is activated.</em></div>
