@@ -8,6 +8,10 @@ import TabItem from '@theme/TabItem';
 
 Surveys are a list of questions. Each question has a `type` and `identifier`. 
 
+:::note
+_Surveys_ are built by [messages](/docs/documentation/api/communication/messages), automatically setting the fields.
+:::
+
 ## Survey Model {#survey-model}
 
 | Field | Type | Description | Notes |
