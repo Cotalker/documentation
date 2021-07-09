@@ -25,33 +25,33 @@ The processes covered in the following sections will range from human resources 
 ## Basic {#basic}
 Basic standalone settings for the new company, Ruanda. 
 
-* [Configure Company](basic/configure_company)
-* [Create User](basic/create_user)
-* [Create Access Role](basic/create_accessroles)
-* [Create Collection](basic/create_database)
-* [Create Group](basic/create_group)
-* [Create Survey](basic/create_survey)
-* [Create Bot](basic/create_bot)
-* [Create Workflow](basic/create_state_machines)
-* [Task View](basic/tutorial_taskview)
+* [Configure Company](/docs/tutorials/basic/configure_company)
+* [Create User](/docs/tutorials/basic/create_user)
+* [Create Access Role](/docs/tutorials/basic/create_accessroles)
+* [Create Collection](/docs/tutorials/basic/create_database)
+* [Create Group](/docs/tutorials/basic/create_group)
+* [Create Survey](/docs/tutorials/basic/create_survey)
+* [Create Bot](/docs/tutorials/basic/create_bot)
+* [Create Workflow](/docs/tutorials/basic/create_state_machines)
+* [Task View](/docs/tutorials/basic/tutorial_taskview)
 
 ## Intermediate {#intermediate}
 Intermediate standalone settings that allow complex configurations and workflows with many basic elements.
 
-* [Create Survey-Triggered Bot](intermediate/create_survey_bot)
-* [Create Command-Triggerd Bot](intermediate/create_cmd_bot)
-* [Create Survey that starts up a Workflow](intermediate/create_survey_sm)
-* [Setup is Commanded](intermediate/isCommanded)
-* [Setup SLAs](intermediate/sla)
-* [Create scheduled routine](intermediate/tutorial_scheduler)
+* [Create Survey-Triggered Bot](/docs/tutorials/intermediate/create_survey_bot)
+* [Create Command-Triggerd Bot](/docs/tutorials/intermediate/create_cmd_bot)
+* [Create Survey that starts up a Workflow](/docs/tutorials/intermediate/create_survey_sm)
+* [Dynamic Survey](/docs/tutorials/intermediate/isCommanded)
+* [Setup SLAs](/docs/tutorials/intermediate/sla)
+* [Create scheduled routine](/docs/tutorials/intermediate/tutorial_scheduler)
 
 ## Advanced {#advanced}
 Advanced tutorials are workflows with many settings and complex interactions.
 
-* [Implement Custom Bot](advanced/cutomizebot)
-* [Workflow: Project Manager](advanced/project_manager) 
-* [Workflow: Approval Flow](advanced/tutorial_approval_flow)
+* [Implement Custom Bot](/docs/tutorials/advanced/cutomizebot)
+* [Workflow: Project Manager](/docs/tutorials/advanced/project_manager) 
+* [Workflow: Approval Flow](/docs/tutorials/advanced/tutorial_approval_flow)
 
 :::tip
-At a first glance, configuring Cotalker might seem overwhelming. But as you go through the tutorial you'll discover that it's quite intuitive and easy to follow. We hope you have fun learning how to use Cotalker!
+At first glance, configuring Cotalker might seem overwhelming. But as you go through the tutorial, you'll discover that it's quite intuitive and easy to follow. We hope you have fun learning how to use Cotalker!
 :::
