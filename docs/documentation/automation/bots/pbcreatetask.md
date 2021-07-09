@@ -82,7 +82,7 @@ Data Type: array CotUserId
 ### 20. Assigned (key: assignee)  
 User ID assigned to the new Task  
 Required: no  
-Data Type: array CotUserId  
+Data Type: CotUserId   
 ### 21. Visibility (key: visibility)  
   
 Required: no  
