@@ -20,7 +20,7 @@ Bots Represents a actions that triggers based on its configuration.
 | global | boolean | If is company-wide 
 | modifiedAt | date | Last modification date
 | createdAt | date | Entry creation date
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.
 
 ### CommModel {#commmodel}
 
@@ -30,7 +30,7 @@ NOTE: This is a simplified version. Please check the [API](https://api.cotalker.
 | slashCmd | string | Word that triggers bot e.g., giphy |
 | isSlash | boolean | Activated by "/cmd" | 
 | isSurvey | boolean | Activated by some survey | 
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.
 
 ### PBModel {#pbmodel}
 
@@ -43,7 +43,7 @@ NOTE: This is a simplified version. Please check the [API](https://api.cotalker.
 | stages[].data | Object | step input data | |
 | stages[].next | Object | possible next steps | | 
 
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.
 
 <!--
 ## Parametrized Bots {#parametrized-bots}

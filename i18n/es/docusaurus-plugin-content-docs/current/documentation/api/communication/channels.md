@@ -20,7 +20,7 @@ A __channel__ is a space where users and bots can communicate through messages.
 | code  | string | Code Name | Unique. Max 60 chars. Valid chars [a-z0-9_] |
 | modifiedAt | date | Last modification date
 | createdAt | date | Entry creation date
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.
 
 ## API {#api}
 
