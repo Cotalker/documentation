@@ -20,7 +20,7 @@ State machines are definitions of how tasks behaves. They define the initial sta
 | taskGroup | id | Associated group | |
 | modifiedAt | date | Last modification date
 | createdAt | date | Entry creation date
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.
 
 ## State Model {#state-model}
 
@@ -36,4 +36,4 @@ NOTE: This is a simplified version. Please check the [API](https://api.cotalker.
 | _id   | id   | Unique Identifier   | Unique. Exactly 24 chars. Valid chars [0-9a-f] |
 | pb | Object | Parametrized Bot | View Bot documentation
 | data.time | string | How much time before triggering event
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.

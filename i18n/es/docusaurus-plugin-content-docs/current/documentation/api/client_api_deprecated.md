@@ -7,7 +7,7 @@ import Mermaid from '@theme/Mermaid';
 
 # Cotalker API Methods {#cotalker-api-methods}
 
-The full API documentation can be found at [api.cotalker.com](https://api.cotalker.com)
+The full API documentation can be found at [api.cotalker.com](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f)
 
 # Example {#example}
 

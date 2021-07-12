@@ -18,4 +18,4 @@ They can limit access to groups, state machines, surveys and others elements.
 | permissions | Array\<string\> | List of permissions 
 | modifiedAt | date | Last modification date
 | createdAt | date | Entry creation date
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.

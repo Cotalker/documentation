@@ -21,7 +21,7 @@ A __User__ represents a person or bot that can perform actions within a company 
 | createdAt | date | Entry creation date
 | accessroles | array-id | List of access roles | [Access Roles API](/docs/documentation/api/users/accessroles)
 
-NOTE: This is a simplified version. Please check the [API](https://api.cotalker.com) docs for the full data model.
+NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full data model.
 ## API {#api}
 
 The user API has a _client_ and _admin_ version. The former allows us to perform actions and gather data as a regular user (e.g., using the mobile app to change their password), the latter allows company-wide as disabling multiple users.  
@@ -41,7 +41,7 @@ The main features of the API are:
 
 NOTE: To use the Admin User-API the HTTP-header __Admin: true__ must be sent in the request.
 
-For all endpoints and parameters please check the [API](https://api.cotalker.com)
+For all endpoints and parameters please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f)
 
 ## Examples {#examples}
 
