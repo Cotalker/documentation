@@ -1,26 +1,39 @@
 ---
-id: overview
-title: Model Overview
+title: Data Models Overview
 sidebar_label: Overview
 ---
 import Mermaid from '@theme/Mermaid';
 
-# Interactions {#interactions}
 
-Cotalker has a limted set a internal models. The settings of these models allow to build custom workflows.
+<div className="alert alert--primary">
 
-* __Users__ Represents persons o bots that can perform actions within a company.
-* __Groups__ Represents a workflow, may contain channels and/or tasks or a link.
-* __Channels__ Represents a space where users can communicate
-* __Databases__ Custom tables for companies. E.g., Products, Offices, Custumers, Colors, SKUs, States, etc
-* __Messages__ Has a content and contentType that determines how to represent the element
-* __Surveys__ Format of a form
-* __Access Roles__ Set of permissions
-* __State Machine__ Rules of how tasks are created and manipulated
-* __Tasks__ Element that represents a task or active
-* __Scheduler__ Time based, or repetitive action
-* __Bots__ Represents a actions that triggers based on its configuration.
-* __Answers__ An answer is created each time a survey is filled.
+## Introduction {#introduction}
+
+**Data models** are the backbone of the Cotalker environment. Almost everything in Cotalker sustains itself inside a _data model_. 
+
+Model settings allow building custom workflows. Knowing _data model_ structures is especially important for admins and developers when using [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
+
+There are a limited set of internal _data models_ which are explained below.
+
+</div>
+<br/>
+
+## Descriptions {#descriptions}
+
+* [__Users__](/docs/documentation/models/model_users) Represents a person or bot that can perform actions within a company.
+* [__Groups__](/docs/documentation/models/model_groups) Represents a workflow, may contain channels and/or tasks or a link.
+* [__Channels__](/docs/documentation/models/model_channels) Represents a space where users can communicate
+* [__Databases__](/docs/documentation/models/model_propertytypes) Custom tables for companies. E.g., Products, Offices, Customers, Colors, SKUs, States, etc
+* [__Messages__](/docs/documentation/models/model_messages) Has a content and contentType that determines how to represent the element
+* [__Surveys__](/docs/documentation/models/model_surveys) Format of a form
+* [__Access Roles__](/docs/documentation/models/model_accessroles) Set of permissions
+* [__State Machine__](/docs/documentation/models/model_statemachine) Rules of how tasks are created and manipulated
+* [__Tasks__](/docs/documentation/models/model_tasks) Element that represents a task or active
+* [__Scheduler__](/docs/documentation/models/model_scheduler) Time based, or repetitive action
+* [__Bots__](/docs/documentation/models/model_bots) Represents an action that is triggered based on its configuration.
+* [__Answers__](/docs/documentation/models/model_answers) An _answer_ is created each time a _survey_ is filled.
+
+## Interactions {#interactions}
 
 <Mermaid chart={`
 	graph LR;

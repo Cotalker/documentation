@@ -9,6 +9,7 @@ import Highlight from '@theme/Highlight';
 
 ## Introduction {#introduction}
 
-Make the most out of Cotalker's potential using its API tools.
+Make the most out of Cotalker's potential for your automation processes using its API tools.
 
 In this section, you can find REST API commands documented with references to their [models](/docs/documentation/models/overview_model).
+
