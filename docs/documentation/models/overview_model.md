@@ -1,5 +1,5 @@
 ---
-id: model
+id: overview
 title: Model Overview
 sidebar_label: Overview
 ---

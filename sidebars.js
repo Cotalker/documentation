@@ -93,7 +93,7 @@ module.exports = {
       type: 'category',
       label: 'API',
       items: [
-        'documentation/api/model',
+        'documentation/api/overview_api',
         'documentation/api/auth',
         {
           type: 'category',
