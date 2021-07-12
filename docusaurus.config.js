@@ -39,13 +39,13 @@ module.exports = {
           // to: 'docs/updates/new_features',
           // activeBasePath: 'docs',
           to: 'blog',
-          label: 'Updates',
+          label: `What's New`,
           position: 'left',
         },
         {
           to: 'docs/documentation/documentation_overview',
           activeBasePath: 'docs',
-          label: 'Documentation',
+          label: 'Reference Docs',
           position: 'left',
         },
         {
@@ -54,12 +54,12 @@ module.exports = {
           label: 'Tutorials',
           position: 'left',
         },
-        {
-          to: 'docs/certification/certification_overview',
-          activeBasePath: 'docs',
-          label: 'Certification',
-          position: 'left',
-        },
+        // {
+        //   to: 'docs/certification/certification_overview',
+        //   activeBasePath: 'docs',
+        //   label: 'Certification',
+        //   position: 'left',
+        // },
         {
           to: 'docs/support/support_overview',
           activeBasePath: 'docs',

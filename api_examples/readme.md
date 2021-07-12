@@ -1,15 +1,18 @@
 ### Quick Start
 
-First login and then install packages
+First log in and then install packages
+
 ```
 npm login --registry=https://npm.pkg.github.com/ --scope=@cotalker
 npm ci
 ```
 
+Copy your _Access Token_ into `.env`
+
 To run examples:
 
 ```
-soruce .env
+source .env
 npx ts-node examples/api_user.ts
 ```
 
