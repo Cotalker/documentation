@@ -11,9 +11,9 @@ module.exports = {
       ],
       collapsed: false,
     },
-    'getting_started/partners',
+    // 'getting_started/partners',
     'getting_started/faq',
-    'getting_started/glossary'
+    // 'getting_started/glossary'
   ],
   // updates: [
   //   'updates/new_features',
@@ -26,6 +26,7 @@ module.exports = {
       type: 'category',
       label: 'Cotalker App',
       items: [
+        'documentation/client/client_overview',
         'documentation/client/platforms',
         'documentation/client/main_menu',
         'documentation/client/client_search',
@@ -35,7 +36,7 @@ module.exports = {
         'documentation/client/database',
         'documentation/client/dashboard',
         'documentation/client/reports',
-        'documentation/client/videocalls',
+        // 'documentation/client/videocalls',
       ],
       collapsed: true,
     },
@@ -84,7 +85,7 @@ module.exports = {
         'documentation/admin/admin_bots',
         'documentation/admin/admin_scheduler',
         'documentation/admin/admin_company',
-        'documentation/admin/routines',
+        // 'documentation/admin/routines',
 
       ],
       collapsed: true,
@@ -101,7 +102,7 @@ module.exports = {
           items: [
             'documentation/api/users/users',
             'documentation/api/users/accessroles',
-            'documentation/api/other/versiontracker',
+            // 'documentation/api/other/versiontracker',
           ],
           collapsed: true,
         },
@@ -113,13 +114,13 @@ module.exports = {
             'documentation/api/communication/messages',
             'documentation/api/communication/groups',
             'documentation/api/communication/files',
-            'documentation/api/communication/unreadmessages',
+            // 'documentation/api/communication/unreadmessages',
           ],
           collapsed: true,
         },
         {
           type: 'category',
-          label: 'Databases',
+          label: 'Collections',
           items: [
             'documentation/api/databases/property_types',
             'documentation/api/databases/properties',
@@ -143,7 +144,7 @@ module.exports = {
           label: 'Tasks & State Machines',
           items: [
             'documentation/api/tasks/tasks',
-            'documentation/api/tasks/task_groups',
+            // 'documentation/api/tasks/task_groups',
             'documentation/api/tasks/statemachines',
           ],
           collapsed: true,
@@ -154,22 +155,22 @@ module.exports = {
           items: [
             'documentation/api/bots',
             'documentation/api/scheduler',
-            'documentation/api/pbscripts',
-            'documentation/api/documentation',
+            // 'documentation/api/pbscripts',
+            // 'documentation/api/documentation',
           ],
           collapsed: true,
         },
-        {
-          type: 'category',
-          label: 'Others',
-          items: [
-            'documentation/api/other/search',
-            'documentation/api/other/redirect',
-            'documentation/api/other/kb_legacy',
-            'documentation/api/other/ratelimits',
-          ],
-          collapsed: true,
-        },
+        // {
+        //   type: 'category',
+        //   label: 'Others',
+        //   items: [
+        //     'documentation/api/other/search',
+        //     'documentation/api/other/redirect',
+        //     'documentation/api/other/kb_legacy',
+        //     'documentation/api/other/ratelimits',
+        //   ],
+        //   collapsed: true,
+        // },
 
         'documentation/api/company',
       ],
@@ -183,7 +184,7 @@ module.exports = {
         'documentation/automation/admin_routine',
         'documentation/automation/existing_routines',
         'documentation/automation/question_exec',
-        'documentation/automation/scheduling',
+        // 'documentation/automation/scheduling',
         'documentation/automation/sla',
         'documentation/automation/automation_log',
         'documentation/automation/admin_cotlang',
@@ -197,41 +198,41 @@ module.exports = {
       items: [
         'documentation/sql_bi/overview',
         'documentation/sql_bi/model',
-        'documentation/sql_bi/bi_examples',
-        'documentation/sql_bi/sql_examples',
-        'documentation/sql_bi/sql_connection',
+        // 'documentation/sql_bi/bi_examples',
+        // 'documentation/sql_bi/sql_examples',
+        // 'documentation/sql_bi/sql_connection',
       ],
       collapsed: true,
     },
-    {
-      type: 'category',
-      label: 'Extensions (FAAS)',
-      items:  [
-        'documentation/extensions/overview',
-        'documentation/extensions/getting_started',
-        'documentation/extensions/cli',
-        {
-          type: 'category',
-          label: 'Examples',
-          items:  [
-            'documentation/extensions/examples/send_survey',
-            'documentation/extensions/examples/static_site',
-            'documentation/extensions/examples/survey_api',
-            'documentation/extensions/examples/write_api'
-          ],
-          collapsed: true,
-        },
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Infrastructure',
-      items:  [
-        'documentation/infrastructure/overview',
-      ],
-      collapsed: true,
-    }
+    // {
+    //   type: 'category',
+    //   label: 'Extensions (FAAS)',
+    //   items:  [
+    //     'documentation/extensions/overview',
+    //     'documentation/extensions/getting_started',
+    //     'documentation/extensions/cli',
+    //     {
+    //       type: 'category',
+    //       label: 'Examples',
+    //       items:  [
+    //         'documentation/extensions/examples/send_survey',
+    //         'documentation/extensions/examples/static_site',
+    //         'documentation/extensions/examples/survey_api',
+    //         'documentation/extensions/examples/write_api'
+    //       ],
+    //       collapsed: true,
+    //     },
+    //   ],
+    //   collapsed: true,
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Infrastructure',
+    //   items:  [
+    //     'documentation/infrastructure/overview',
+    //   ],
+    //   collapsed: true,
+    // }
   ],
   tutorials: [
     'tutorials/tutorial_overview',
@@ -277,23 +278,23 @@ module.exports = {
       collapsed: false,
     }
   ],
-  certification: [
-    'certification/certification_overview',
-    {
-      type: 'category',
-      label: '[1.a] Basic Admin',
-      items: [
-        'certification/basic_admin/certification_admin_ws1',
-        'certification/basic_admin/certification_admin_ws2',
-        'certification/basic_admin/certification_admin_ws3',
-        'certification/basic_admin/certification_admin_ws4',
-        'certification/basic_admin/certification_admin_ws5',
-        'certification/basic_admin/certification_admin_ws6'
-      ],
-      collapsed: true,
-    },
+  // certification: [
+  //   'certification/certification_overview',
+  //   {
+  //     type: 'category',
+  //     label: '[1.a] Basic Admin',
+  //     items: [
+  //       'certification/basic_admin/certification_admin_ws1',
+  //       'certification/basic_admin/certification_admin_ws2',
+  //       'certification/basic_admin/certification_admin_ws3',
+  //       'certification/basic_admin/certification_admin_ws4',
+  //       'certification/basic_admin/certification_admin_ws5',
+  //       'certification/basic_admin/certification_admin_ws6'
+  //     ],
+  //     collapsed: true,
+  //   },
 
-  ],
+  // ],
   support: [
     'support/support_overview',
     'support/commercial',
