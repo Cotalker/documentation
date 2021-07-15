@@ -1,5 +1,5 @@
 ---
-title: Databases (Property Types)
+title: Collections (Property Types)
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

@@ -449,23 +449,23 @@ _Brief explanation of the values used in the [Contexts Table](#contexts-table)._
 
 -----
 
-3. [`COTChannel` Data model](/docs/documentation/api/communication/channels)
+3. [`COTChannel` Data model](/docs/documentation/models/communication/model_channels)
 
 ----
 
-4. [`COTMessage` Data model](/docs/documentation/api/communication/messages)
+4. [`COTMessage` Data model](/docs/documentation/models/communication/model_messages)
 
 ----
 
-5. [`COTAnswer` Data model](/docs/documentation/api/surveys/answers)
+5. [`COTAnswer` Data model](/docs/documentation/models/surveys/model_answers)
 
 -----
 
-6. [`COTTask` Data model](/docs/documentation/api/tasks/tasks) 
+6. [`COTTask` Data model](/docs/documentation/models/tasks/model_tasks) 
 
 -----
 
-7. [`COTTaskGroup` Data model](/docs/documentation/api/tasks/task_groups)
+7. [`COTTaskGroup` Data model](/docs/documentation/models/tasks/model_taskgroup)
 
 -----
 
