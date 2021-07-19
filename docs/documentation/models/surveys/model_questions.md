@@ -1,12 +1,12 @@
 ---
-title: Questions
+title: Questions Model
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Question Model {#question-model}
+
 | Field | Type | Description | Notes |
 | ----  | ---- | ----------- | ----  |
 | _id   | id   | Unique Identifier   | Unique. Exactly 24 chars. Valid chars [0-9a-f] |

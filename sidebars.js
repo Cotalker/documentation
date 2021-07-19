@@ -153,8 +153,8 @@ module.exports = {
           type: 'category',
           label: 'Automations',
           items: [
-            'documentation/api/bots',
-            'documentation/api/scheduler',
+            'documentation/api/automations/bots',
+            'documentation/api/automations/scheduler',
             // 'documentation/api/pbscripts',
             // 'documentation/api/documentation',
           ],
