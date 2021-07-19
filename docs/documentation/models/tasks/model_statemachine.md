@@ -1,5 +1,4 @@
 ---
-id: statemachines
 title: State Machines
 sidebar_label: State Machines
 ---

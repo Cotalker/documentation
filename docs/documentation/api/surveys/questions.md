@@ -6,19 +6,10 @@ import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Question Model {#question-model}
-| Field | Type | Description | Notes |
-| ----  | ---- | ----------- | ----  |
-| _id   | id   | Unique Identifier   | Unique. Exactly 24 chars. Valid chars [0-9a-f] |
-| identifier | string | Unique Identifier | 
-| contentType | string | Question Type
-| code | Array<string\> | Array of settings. Depends on content type
-| display | Array<string\> | Array of settings. Depends on content type
-| modifiedAt | date | Last modification date
-| createdAt | date | Entry creation date
+:::info
+Click here for [data model descriptions](/docs/documentation/models/surveys/model_questions)
 
-:::note 
-This is a simplified version. The complete model will be published soon.
+Click here for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
 :::
 
 ## Client Questions-API {#client-questions-api}

@@ -1,5 +1,4 @@
 ---
-id: documentation_overview
 title: Reference Docs Overview
 sidebar_label: Overview
 ---
@@ -15,7 +14,7 @@ import Highlight from '@theme/Highlight';
 
 _If you're looking to understand how our documentation is set up, you've come to the right place._
 
-The _Reference Docs_ are the core of the [**Partner & Technical Consultants Documentation**](https://doc.cotalker.com) – which includes an [introductory section](/docs/getting_started/intro_overview), [tutorials](/docs/tutorials/tutorial_overview), [updates](/blog), and a [support section](/docs/support/support_overview).
+The _Reference Docs_ are the core of the [**Partner & Technical Consultants Documentation**](https://doc.cotalker.com) – which also includes an [introductory section](/docs/getting_started/intro_overview), [tutorials](/docs/tutorials/tutorial_overview), [updates](/blog), and a [support section](/docs/support/support_overview).
 
 
 <div className="alert alert--primary">
@@ -24,8 +23,9 @@ The _Reference Docs_ include:
 
 - [**Cotalker App**](/docs/documentation/client/client_overview): Basic platform tools explained for end-users.
 - [**Admin**](/docs/documentation/admin/admin_overview): Technical guide for administradors, complete with definitions and examples.
-- [**API**](/docs/documentation/api/model): API reference guide for admins and developers.
+- [**API**](/docs/documentation/api/overview_api): API reference guide for admins and developers.
 - [**Automations**](/docs/documentation/automation/overview): In-depth process automation guide for admins.
+- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
 - [**BI & SQL**](/docs/documentation/sql_bi/overview): Business Intelligence & SQL tools guide for admins.
 
 </div>

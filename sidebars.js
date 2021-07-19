@@ -94,7 +94,7 @@ module.exports = {
       type: 'category',
       label: 'API',
       items: [
-        'documentation/api/model',
+        'documentation/api/overview_api',
         'documentation/api/auth',
         {
           type: 'category',
@@ -120,7 +120,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Collections',
+          label: 'Databases',
           items: [
             'documentation/api/databases/property_types',
             'documentation/api/databases/properties',
@@ -153,8 +153,8 @@ module.exports = {
           type: 'category',
           label: 'Automations',
           items: [
-            'documentation/api/bots',
-            'documentation/api/scheduler',
+            'documentation/api/automations/bots',
+            'documentation/api/automations/scheduler',
             // 'documentation/api/pbscripts',
             // 'documentation/api/documentation',
           ],
@@ -189,6 +189,68 @@ module.exports = {
         'documentation/automation/automation_log',
         'documentation/automation/admin_cotlang',
         'documentation/automation/triggers_and_contexts',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Data Models',
+      items: [
+        'documentation/models/overview_model',
+        {
+          type: 'category',
+          label: 'Users',
+          items: [
+            'documentation/models/users/model_users',
+            'documentation/models/users/model_accessroles',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Communication',
+          items: [
+            'documentation/models/communication/model_channels',
+            'documentation/models/communication/model_messages',
+            'documentation/models/communication/model_groups',
+            'documentation/models/communication/model_filesharing',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Databases',
+          items: [
+            'documentation/models/databases/model_propertytypes',
+            'documentation/models/databases/model_properties',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Surveys',
+          items: [
+            'documentation/models/surveys/model_surveys',
+            'documentation/models/surveys/model_surveychats',
+            'documentation/models/surveys/model_questions',
+            'documentation/models/surveys/model_answers',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Task & State Machines',
+          items: [
+            'documentation/models/tasks/model_tasks',
+            'documentation/models/tasks/model_statemachine',
+            'documentation/models/tasks/model_taskgroup',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Automations',
+          items: [
+            'documentation/models/automations/model_bots',
+            'documentation/models/automations/model_scheduler',
+          ]
+        },
+        'documentation/models/model_company',
       ],
       collapsed: true,
     },
