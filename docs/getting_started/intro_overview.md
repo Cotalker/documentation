@@ -1,7 +1,7 @@
 ---
 id: intro_overview
-title: Cotalker Overview
-sidebar_label: Cotalker Overview
+title: What is Cotalker?
+sidebar_label: What is Cotalker?
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -9,10 +9,8 @@ import Highlight from '@theme/Highlight';
 <img alt="title image" class="img_title" src={useBaseUrl('img/design/title_pages/getting_started.svg')} />
 <br/>
 
-## Product Summary {#cotalker-product-documentation}
+## What is Cotalker? {#what-is-cotalker}
 
-*This guide is intended for comercial and technical users.* 
-  
 Cotalker is a Cross-Business Areas Solution, hosting different solutions in just one place. It can resolve many organizational and business solution challenges from basic communication, knowledge-base, asset management, task management, recruitment, onboarding, telemedicine, administrative requests, data collection and processing, alerts, automatizations, among many other processes. All this can be created with Cotalker's tools: channels, surveys, scheduled tasks, routine programming, state machines, among others.
 
 Furthermore, Cotalker can be easily integrated with other software such as *SAP*, *Salesforce*, other *ERPs*, or directly to any API or database. Cotalker can contribute within the company ecosystem by generating data and executing operations.
@@ -63,12 +61,17 @@ Here's what the Cotalker app looks like:
 ## How to Use this Documentation {#how-to-use}
 _Coming soon!_
 
+:::tip
+*This guide is intended for commercial and technical users.* 
+:::
+
+
 ## Getting Help {#getting-help}
 
 | Item | Site | Description | 
 | -------- | --------- | ---------- |
 | Documentation Errors    | <docs@cotalker.com>         | Report any error in this website |
 | Support |  <support@cotalker.com> | For help and support
-| API | https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f | API Documentation
-| Blog | https://www.cotalker.com/en/blog/ | API Documentation
-| Product Documentation | This document | Product Guide
+| API | https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f | API Documentation |
+| Blog | https://www.cotalker.com/en/blog/ | API Documentation |
+| Product Documentation | This document | Product Guide |

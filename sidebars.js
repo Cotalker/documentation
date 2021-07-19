@@ -11,20 +11,9 @@ module.exports = {
       ],
       collapsed: false,
     },
-    // 'getting_started/partners',
-    'getting_started/faq',
-    // 'getting_started/glossary'
-  ],
-  // updates: [
-  //   'updates/new_features',
-  //   'updates/versioning',
-  //   'updates/roadmap'
-  // ],
-  documentation: [
-    'documentation/documentation_overview',
     {
       type: 'category',
-      label: 'Cotalker App',
+      label: 'App Basics',
       items: [
         'documentation/client/client_overview',
         'documentation/client/platforms',
@@ -40,9 +29,20 @@ module.exports = {
       ],
       collapsed: true,
     },
+    // 'getting_started/partners',
+    'getting_started/faq',
+    // 'getting_started/glossary'
+  ],
+  // updates: [
+  //   'updates/new_features',
+  //   'updates/versioning',
+  //   'updates/roadmap'
+  // ],
+  documentation: [
+    'documentation/documentation_overview',
     {
       type: 'category',
-      label: 'Admin',
+      label: 'Administrative Panel',
       items: [
         'documentation/admin/admin_overview',
         'documentation/admin/users',
@@ -92,92 +92,6 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'API',
-      items: [
-        'documentation/api/overview_api',
-        'documentation/api/auth',
-        {
-          type: 'category',
-          label: 'Users',
-          items: [
-            'documentation/api/users/users',
-            'documentation/api/users/accessroles',
-            // 'documentation/api/other/versiontracker',
-          ],
-          collapsed: true,
-        },
-        {
-          type: 'category',
-          label: 'Communication',
-          items: [
-            'documentation/api/communication/channels',
-            'documentation/api/communication/messages',
-            'documentation/api/communication/groups',
-            'documentation/api/communication/files',
-            // 'documentation/api/communication/unreadmessages',
-          ],
-          collapsed: true,
-        },
-        {
-          type: 'category',
-          label: 'Databases',
-          items: [
-            'documentation/api/databases/property_types',
-            'documentation/api/databases/properties',
-          ],
-          collapsed: true,
-        },
-        {
-          type: 'category',
-          label: 'Surveys',
-          items: [
-            'documentation/api/surveys/surveys',
-            'documentation/api/surveys/survey_chats',
-            'documentation/api/surveys/questions',
-            'documentation/api/surveys/answers',
-
-          ],
-          collapsed: true,
-        },
-        {
-          type: 'category',
-          label: 'Tasks & State Machines',
-          items: [
-            'documentation/api/tasks/tasks',
-            // 'documentation/api/tasks/task_groups',
-            'documentation/api/tasks/statemachines',
-          ],
-          collapsed: true,
-        },
-        {
-          type: 'category',
-          label: 'Automations',
-          items: [
-            'documentation/api/automations/bots',
-            'documentation/api/automations/scheduler',
-            // 'documentation/api/pbscripts',
-            // 'documentation/api/documentation',
-          ],
-          collapsed: true,
-        },
-        // {
-        //   type: 'category',
-        //   label: 'Others',
-        //   items: [
-        //     'documentation/api/other/search',
-        //     'documentation/api/other/redirect',
-        //     'documentation/api/other/kb_legacy',
-        //     'documentation/api/other/ratelimits',
-        //   ],
-        //   collapsed: true,
-        // },
-
-        'documentation/api/company',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
       label: 'Automations',
       items: [
         'documentation/automation/overview',
@@ -189,68 +103,6 @@ module.exports = {
         'documentation/automation/automation_log',
         'documentation/automation/admin_cotlang',
         'documentation/automation/triggers_and_contexts',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Data Models',
-      items: [
-        'documentation/models/overview_model',
-        {
-          type: 'category',
-          label: 'Users',
-          items: [
-            'documentation/models/users/model_users',
-            'documentation/models/users/model_accessroles',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Communication',
-          items: [
-            'documentation/models/communication/model_channels',
-            'documentation/models/communication/model_messages',
-            'documentation/models/communication/model_groups',
-            'documentation/models/communication/model_filesharing',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Databases',
-          items: [
-            'documentation/models/databases/model_propertytypes',
-            'documentation/models/databases/model_properties',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Surveys',
-          items: [
-            'documentation/models/surveys/model_surveys',
-            'documentation/models/surveys/model_surveychats',
-            'documentation/models/surveys/model_questions',
-            'documentation/models/surveys/model_answers',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Task & State Machines',
-          items: [
-            'documentation/models/tasks/model_tasks',
-            'documentation/models/tasks/model_statemachine',
-            'documentation/models/tasks/model_taskgroup',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Automations',
-          items: [
-            'documentation/models/automations/model_bots',
-            'documentation/models/automations/model_scheduler',
-          ]
-        },
-        'documentation/models/model_company',
       ],
       collapsed: true,
     },
@@ -357,13 +209,150 @@ module.exports = {
   //   },
 
   // ],
+  api: [
+    'documentation/api/overview_api',
+    'documentation/api/auth',
+    {
+      type: 'category',
+      label: 'Users',
+      items: [
+        'documentation/api/users/users',
+        'documentation/api/users/accessroles',
+        // 'documentation/api/other/versiontracker',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Communication',
+      items: [
+        'documentation/api/communication/channels',
+        'documentation/api/communication/messages',
+        'documentation/api/communication/groups',
+        'documentation/api/communication/files',
+        // 'documentation/api/communication/unreadmessages',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Databases',
+      items: [
+        'documentation/api/databases/property_types',
+        'documentation/api/databases/properties',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Surveys',
+      items: [
+        'documentation/api/surveys/surveys',
+        'documentation/api/surveys/survey_chats',
+        'documentation/api/surveys/questions',
+        'documentation/api/surveys/answers',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Tasks & State Machines',
+      items: [
+        'documentation/api/tasks/tasks',
+        // 'documentation/api/tasks/task_groups',
+        'documentation/api/tasks/statemachines',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Automations',
+      items: [
+        'documentation/api/automations/bots',
+        'documentation/api/automations/scheduler',
+        // 'documentation/api/pbscripts',
+        // 'documentation/api/documentation',
+      ],
+      collapsed: true,
+    },
+    // {
+    //   type: 'category',
+    //   label: 'Others',
+    //   items: [
+    //     'documentation/api/other/search',
+    //     'documentation/api/other/redirect',
+    //     'documentation/api/other/kb_legacy',
+    //     'documentation/api/other/ratelimits',
+    //   ],
+    //   collapsed: true,
+    // },
+    'documentation/api/company',
+  ],
+  models: [
+    'documentation/models/overview_model',
+    {
+      type: 'category',
+      label: 'Users',
+      items: [
+        'documentation/models/users/model_users',
+        'documentation/models/users/model_accessroles',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Communication',
+      items: [
+        'documentation/models/communication/model_channels',
+        'documentation/models/communication/model_messages',
+        'documentation/models/communication/model_groups',
+        'documentation/models/communication/model_filesharing',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Databases',
+      items: [
+        'documentation/models/databases/model_propertytypes',
+        'documentation/models/databases/model_properties',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Surveys',
+      items: [
+        'documentation/models/surveys/model_surveys',
+        'documentation/models/surveys/model_surveychats',
+        'documentation/models/surveys/model_questions',
+        'documentation/models/surveys/model_answers',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Task & State Machines',
+      items: [
+        'documentation/models/tasks/model_tasks',
+        'documentation/models/tasks/model_statemachine',
+        'documentation/models/tasks/model_taskgroup',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Automations',
+      items: [
+        'documentation/models/automations/model_bots',
+        'documentation/models/automations/model_scheduler',
+      ]
+    },
+    'documentation/models/model_company',
+  ],
   support: [
     'support/support_overview',
-    'support/commercial',
-    'support/technical',
-    'support/bug_report',
-    'support/feature_request',
-    'support/report_abuse',
+    // 'support/commercial',
+    // 'support/technical',
+    // 'support/bug_report',
+    // 'support/feature_request',
+    // 'support/report_abuse',
   ],
+
 }
 
