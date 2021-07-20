@@ -1,7 +1,6 @@
 ---
-id: quick_start
-title: Quick Start
-sidebar_label: Quick Start
+title: Basic Concepts
+sidebar_label: Basic Concepts
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

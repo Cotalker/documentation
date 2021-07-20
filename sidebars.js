@@ -1,43 +1,35 @@
 module.exports = {
   getting_started: [
     'getting_started/intro_overview',
-    'getting_started/quick_start',
     {
       type: 'category',
-      label: 'Solutions',
+      label: 'Plaform Basics',
       items: [
-        'getting_started/solutions',
-        'getting_started/mobility',
-      ],
-      collapsed: false,
-    },
-    {
-      type: 'category',
-      label: 'App Basics',
-      items: [
-        'documentation/client/client_overview',
-        'documentation/client/platforms',
-        'documentation/client/main_menu',
-        'documentation/client/client_search',
-        'documentation/client/groups_channels',
-        'documentation/client/surveys',
-        'documentation/client/taskview',
-        'documentation/client/database',
-        'documentation/client/dashboard',
-        'documentation/client/reports',
-        // 'documentation/client/videocalls',
+        'getting_started/basic_concepts',
+        {
+          type: 'category',
+          label: 'Using the tools',
+          items: [
+            'documentation/client/client_overview',
+            'documentation/client/platforms',
+            'documentation/client/main_menu',
+            'documentation/client/client_search',
+            'documentation/client/groups_channels',
+            'documentation/client/surveys',
+            'documentation/client/taskview',
+            'documentation/client/database',
+            'documentation/client/dashboard',
+            'documentation/client/reports',
+            // 'documentation/client/videocalls',
+          ],
+          collapsed: true,
+        },
       ],
       collapsed: true,
     },
-    // 'getting_started/partners',
-    'getting_started/faq',
-    // 'getting_started/glossary'
+    'getting_started/doc_guide',
+    'getting_started/support',
   ],
-  // updates: [
-  //   'updates/new_features',
-  //   'updates/versioning',
-  //   'updates/roadmap'
-  // ],
   documentation: [
     'documentation/documentation_overview',
     {
