@@ -6,7 +6,7 @@ sidebar_label: What is Cotalker?
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="title image" className="img_sizing" src={useBaseUrl('img/design/title_pages/getting_started.svg')} />
+<img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/getting_started.svg')} />
 <br/>
 
 ## Cotalker is... {#cotalker-is}

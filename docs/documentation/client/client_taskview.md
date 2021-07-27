@@ -14,7 +14,7 @@ import Highlight from '@theme/Highlight';
 
 A Cotalker **task** is basically _something_ that _someone_ has to do, but it is not limited to that. Every **task** represents an asset and has at least a _name_, _description_, _state_, and _assignee_. Other options are also available, e.g., _chat channels_, _users_, _start and end dates_, _SLAs_, and more. This amplitude of functions gives **tasks** great versatility that can adapt to each company's needs.
 
-_Tasks_ are found within a [workflow group](/docs/documentation/client/groups). They can be created manually –either through the [tasks view](/docs/documentation/client/taskview#creating-and-modifying-tasks) or the [actions button](/docs/documentation/client/actions_button.md)– or automatically through internal or external [surveys](/docs/documentation/client/surveys). Our tools permit _tasks_ to be assigned, monitored, and updated.
+_Tasks_ are found within a [workflow group](/docs/documentation/client/groups). They can be created manually –either through the [tasks view](/docs/documentation/client/taskview#creating-and-modifying-tasks) or the [actions button](/docs/documentation/client/actions_button)– or automatically through internal or external [surveys](/docs/documentation/client/surveys). Our tools permit _tasks_ to be assigned, monitored, and updated.
 
 </div>
 

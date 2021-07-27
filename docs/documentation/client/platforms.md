@@ -29,7 +29,7 @@ import Mermaid from '@theme/Mermaid';
     - Home Button
     - Contacts Button
     - [Global Search Tool](/docs/documentation/client/client_search#global-search)
-    - [Groups Section](/docs/documentation/client/groups_channels)
+    - [Groups Section](/docs/documentation/client/groups)
     - [Database](/docs/documentation/client/database)
     - [Reports](/docs/documentation/client/reports)
     - [Administrator](/docs/documentation/admin/admin_overview)

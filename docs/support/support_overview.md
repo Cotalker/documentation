@@ -14,7 +14,7 @@ We have two main ways for getting support or help on this page:
 - **Documentation Repository:** For general discussions, administrators, implementors, and users in general, are invited to post their questions and share their solutions in our [Documentation Repository](#repository).
 
 :::tip
-- Answers for many topics can be found in the [**frequently asked questions**](/docs/getting_started/faq).
+- Answers for many topics can be found in the [**frequently asked questions**](/docs/getting_started/temp/faq).
 - You also might find answers in our documentation using the **search bar** in the top right corner.
 :::
 

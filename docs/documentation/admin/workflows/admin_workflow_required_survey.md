@@ -31,7 +31,7 @@ Workflow Start Surveys can also be [shared](/docs/documentation/admin/workflows/
 ## Workflow Start Survey {#required-survey-for-a-new-task}
 Without configuring this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
 
-Once set up, the survey can be accessed through the workflow group's [action button](/docs/documentation/client/actions_button.md).
+Once set up, the survey can be accessed through the workflow group's [action button](/docs/documentation/client/actions_button).
 
 By setting up a _Workflow Start Survey_, a _channel_ is created within the _workflow group_ to host the newly created task and will display the answered _survey_ used to generate the _task_.
 
