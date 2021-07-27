@@ -1,5 +1,5 @@
 ---
-title: Main menu
+title: Main Menu Bar
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
@@ -9,40 +9,39 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Through the **Main Menu Bar**, you can go pretty much anywhere in your company's Cotalker environment. Depending on company specifications and user visibility permissions, the **Main Menu Bar** display varies for every _user_.
 
+_Example:_
 
-<div className="alert alert--primary">
-
-The **Main Menu Bar** offers access to:
-
-_General options:_
-- personal settings, 
-- home panel
-- contacts
-- search bar
-- communication groups 
-- workflow groups
-- URL links
-
-_Special Access:_
-- databases
-- reports
-- dashboards
-- administration tools
-
-_and other customizable options._
-
-</div>
+<img alt="main menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_mainmenu_01.gif')} />
 <br/>
+<br/>
+
+<div className="alert alert--secondary">
 
 #### Main Menu Bar layout: {#main-menu-bar-layout}
-<img alt="main_menu" className="img_title" src={useBaseUrl('img/client_mainmenu_00a.png')} /> 
+
+<div className="container">
+<div className="row">
+<div className="col col--6">
+
+<img alt="main_menu" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/platform_mainmenu_00.png')} /> 
 <br/>
 <br/>
 
-:::note
-_The **Main Menu Bar** can autohide in desktop mode and will take up the entire screen in mobile mode._
-:::
+</div>
+<div className="col col--6">
 
-:::tip
-Learn more about how to use the [search tool](/docs/documentation/client/client_search) to navigate through the Cotalker environment.
-:::
+1. **Online/Busy Status**: _set online/busy status, set away time_
+2. **Profile Configuration**: _change photo, name, phone, password_
+3. **Home**: _opens panel with most recent conversations_
+4. **Contacts**: _find contacts and send them a message_
+5. [**Search Tool**](/docs/documentation/client/client_search#global-search): _make a global search query_
+6. [**Groups Section**](/docs/documentation/client/groups): _select a group to view its channels and tasks in the group panel_
+7. **Data and Information**: _access to [database](/docs/documentation/client/database) and [reports](/docs/documentation/client/reports)_
+8. **Administrator**: _access to the [administrative panel](/docs/documentation/admin/admin_overview)_
+
+</div>
+</div>
+
+</div>
+</div>
+<br/>

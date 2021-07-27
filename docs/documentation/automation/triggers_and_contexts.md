@@ -11,7 +11,7 @@ import Highlight from '@theme/Highlight';
 <br/>
 <br/>
 
-<img alt="design" class="img_sizing_title" src={useBaseUrl('img/design/Database.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Database.svg')} />
 <br/>
 <br/>
 

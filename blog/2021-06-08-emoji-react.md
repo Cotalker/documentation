@@ -30,7 +30,7 @@ To help make your conversations in chat channels more fluent and participative, 
 </div>
 <div class="card__footer">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/client/groups_channels#chat-message-options">See Documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/client/channels#chat-message-options">See Documentation</a>
 <br/>
 
 </div>

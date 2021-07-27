@@ -1,9 +1,60 @@
 ---
 title: Documentation Guide
-sidebar label: Documentation Guide
 --- 
 
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-:::tip
-*This guide is intended for commercial and technical users.* 
+:::info [Visit our documentation repoistory on GitHub](https://github.com/Cotalker/documentation)
+- [**GitHub discussions**](https://github.com/Cotalker/documentation/discussions): Enter the forum for help or anything not mentioned in the documentation.
+- [**Raise documentation issues**](https://github.com/Cotalker/documentation/issues): if something is unclear, wrong, or missing from the documentation.
 :::
+
+## General Outline
+
+<span className="hero__subtitle">Main Sections</span>
+
+- [Getting Started](/docs/getting_started/intro_overview): For end-users, first-time admins, and partners.
+- [What's New](/blog): New features and improvements.
+- [Admin Docs](/docs/documentation/documentation_overview): Setup details and examples.
+- [API](/docs/documentation/api/overview_api): Reference to API tools, descriptions, and examples.
+- [Data Models](/docs/documentation/models/overview_model): Data structures and their contexts.
+- [Tutorials](/docs/tutorials/tutorial_overview): Real-life examples.
+- [Support & Help](/docs/support/support_overview): Support directory and help links.
+
+
+<div className="alert alert--secondary">
+
+## Desktop Screen Layout
+
+<img alt="doc desktop layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/docguide_01.png')} />
+<br/>
+
+1. Main Menu: Access the main sections of the documentation.
+2. Section Navigation Bar: Navigate through a section's topics and subtopics.
+3. Search Tool: Search for any word throughout the documentation.
+4. Doc Headers: The titles and subtitles of the page being viewed.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+## Narrow Screen Layout
+<img alt="doc mobile layout" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/docguide_02.png')} />
+
+1. Main Menu: Access the main sections of the documentation.
+2. Section Navigation Bar: Navigate through a section's topics and subtopics.
+3. Search Tool: Search for any word throughout the documentation.
+
+</div>
+<br/>
+
+<div className="alert alert--warning">
+
+## Take into account
+
+We use [Docusaurus](https://docusaurus.io/) to generate our documentation. **There is one known issue**:
+- Depending on your browser configuration, some header links direct you a little above the actual header.
+- Refreshing the screen solves this and takes you to the correct header location.
+
+</div>

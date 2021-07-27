@@ -12,7 +12,7 @@ import Highlight from '@theme/Highlight';
 <br/>
 
 
-<img alt="design" class="img_sizing_title" src={useBaseUrl('img/design/scheduler.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/scheduler.svg')} />
 <br/>
 <br/>
 

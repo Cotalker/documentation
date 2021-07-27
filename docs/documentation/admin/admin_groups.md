@@ -108,7 +108,7 @@ Below are the descriptions of the fields found in this section:
 
 | Field | Description | Notes |
 | ---- | ----------- | ----- |
-| Allow channel creation | When activated, it will allow users to create channels in the group. | Once active, the "Actions" button – a green floating button near the bottom of the group's channel panel – will appear. Pressing the button slides open a list of possible actions.|
+| Allow channel creation | When activated, it will allow users to create channels in the group. | Once active, the "Actions" button – a green floating button near the bottom of the group's panel – will appear. Pressing the button slides open a list of possible actions.|
 | Permissions | Specific user permissions needed to create a channel in the group. | Although the button will be visible if activated, without the necessary permissions, users will not be allowed to create channels. |
 <br/>
 
@@ -118,7 +118,7 @@ _If activated, users will be able to create new channels through the Actions but
 <br/>
 
 ### Secondary Actions {#secondary-actions}
-Through the _Actions_ button – a green floating button that appears at the bottom of the group's channel panel – users can access URLs, which can be configured to open external websites, go to different sections of the app, and answer surveys.
+Through the _Actions_ button – a green floating button that appears at the bottom of the group panel – users can access URLs, which can be configured to open external websites, go to different sections of the app, and answer surveys.
 
 _The Actions button and its corresponding Actions Menu will look something like the image below:_
 <img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />

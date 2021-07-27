@@ -208,7 +208,7 @@ This section allows you to set up the _secondary actions_ available in a group's
 
 <div className="alert alert--secondary">
 
-_The **Actions button** appears at the bottom of the group's channel panel as shown in the image below:_
+_The **Actions button** appears at the bottom of the group panel as shown in the image below:_
 
 <img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_workflow_groups_actionbutton.png')} />
 <br/>

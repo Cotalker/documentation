@@ -1,5 +1,5 @@
 ---
-title: Platforms
+title: Layout & Versions
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
@@ -7,8 +7,70 @@ import Mermaid from '@theme/Mermaid';
 
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Platforms.svg')} />
 
-## Overview {#overview}
-You can access Cotalker through different platforms or user interfaces (UI): *Web client* version and *Mobile* version ([Android](https://play.google.com/store/apps/details?id=com.cotalker.android) and [iOS](https://apps.apple.com/cl/app/cotalker/id1121103618)). Each platform offers a similar experience through its design so that users can easily pass from one device to another.
+
+<div className="alert alert--secondary">
+<div className="container">
+<div className="row">
+<div className="col col--12">
+
+## Platform Layout
+
+<img alt="general overview" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_general_00.png')} />
+<br/>
+
+</div>
+</div>
+
+<div className="row">
+<div className="col col--4">
+
+1. [**Main Menu Bar**](/docs/documentation/client/main_menu)
+    - Configuration Button
+    - Home Button
+    - Contacts Button
+    - [Global Search Tool](/docs/documentation/client/client_search#global-search)
+    - [Groups Section](/docs/documentation/client/groups_channels)
+    - [Database](/docs/documentation/client/database)
+    - [Reports](/docs/documentation/client/reports)
+    - [Administrator](/docs/documentation/admin/admin_overview)
+
+</div>
+<div className="col col--4">
+
+2. [**Groups Panel**](/docs/documentation/client/groups)
+    - Group Types
+    - Channels
+    - Task Views
+    - Actions Button
+    - Group Search Tool
+    - Workflow Start Surveys
+
+</div>
+<div className="col col--4">
+
+3. [**Channel Workspace**](/docs/documentation/client/channels)
+    - Action Button
+    - File Sharing
+    - Messaging
+    - Channel Details
+    - Task Details
+
+</div>
+
+</div>
+
+</div>
+</div>
+<br/>
+
+
+## Available platforms: {#available-platforms}
+- [*Web client* version](#web-client-platform) 
+- *Mobile* versions:
+  - [Android](#mobile-apps)
+  - [iOS](#cotalker-ios-app). 
+  
+_Each platform offers a similar experience through its design so that users can easily pass from one device to another._
 
 
 
@@ -19,7 +81,11 @@ This platform permits the most versatile use. Because it runs through a web brow
 
 *The lastest version of Chrome is recommended for the best performance.*
 
-<img alt="" src={useBaseUrl('img/chat.jpg')} />
+<img alt="desktop versions" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_00.png')} />
+<br/>
+
+
+
 
 ## Mobile Apps: {#mobile-apps}
 

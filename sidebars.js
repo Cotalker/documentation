@@ -3,24 +3,33 @@ module.exports = {
     'getting_started/intro_overview',
     {
       type: 'category',
-      label: 'Plaform Basics',
+      label: 'The Basics',
       items: [
-        'getting_started/basic_concepts',
+        'documentation/client/client_overview',
+        'documentation/client/basic_concepts',
         {
           type: 'category',
-          label: 'Using the tools',
+          label: 'Platform Basics',
           items: [
-            'documentation/client/client_overview',
             'documentation/client/platforms',
             'documentation/client/main_menu',
+            'documentation/client/groups',
+            'documentation/client/channels',
+            // 'documentation/client/videocalls',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Basic Tools',
+          items: [
             'documentation/client/client_search',
-            'documentation/client/groups_channels',
+            'documentation/client/actions_button',
             'documentation/client/surveys',
             'documentation/client/taskview',
             'documentation/client/database',
             'documentation/client/dashboard',
             'documentation/client/reports',
-            // 'documentation/client/videocalls',
           ],
           collapsed: true,
         },
@@ -139,6 +148,14 @@ module.exports = {
     //   ],
     //   collapsed: true,
     // }
+    {
+      type: 'category',
+      label: 'How To Guide',
+      items: [
+        'documentation/how-to/overview',
+      ],
+      collapsed: true,
+    },
   ],
   tutorials: [
     'tutorials/tutorial_overview',
