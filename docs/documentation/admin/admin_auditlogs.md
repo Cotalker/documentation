@@ -77,7 +77,7 @@ Indicates the data model created or modified:
 <div className="col col--3">5. <b>Created at</b>:</div>
 <div className="col col--5">
 
-Indicates the the date and time of the event, whether it was created, modified, disabled or enabled.
+Indicates the date and time of the event, whether it was created, modified, disabled or enabled.
 
 </div>
 <div className="col col--4"><em></em></div>
