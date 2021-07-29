@@ -44,7 +44,7 @@ _The settings panel should look something like this:_
 
 _Your message will look something like this:_
 
-<img alt="whatsapp message" className="img_whatsapp item shadow--tl" src={useBaseUrl('img/automations_routines_stage_whatsapp_00.jpeg')} />
+<img alt="whatsapp message" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/automations_routines_stage_whatsapp_00.jpeg')} />
 <br/>
 
 -----

@@ -146,7 +146,7 @@ Accessing a _task's_ data panel and changing its _state_ is now just a click awa
 
 </div>
 <div class="card__footer">
-<a class ="button button--secondary button--block" href='/docs/documentation/client/groups_channels#task-menus-within-channel'>See Documentation</a>
+<a class ="button button--secondary button--block" href='/docs/documentation/client/groups#task-menus-within-channel'>See Documentation</a>
 </div>
 </div>
 </div>

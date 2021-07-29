@@ -39,7 +39,7 @@ Checkout these links for more information:
 
 ### 1.a Basic Admin {#1a-basic-admin}
 To get started, read the following introductions:
- - [Cotalker Intro](/docs/getting_started/quick_start) 
+ - [Cotalker Intro](/docs/getting_started/intro_overview) 
  - [Admin Intro](/docs/documentation/admin/admin_overview)
 
 After reading the introductions, start the workshops:

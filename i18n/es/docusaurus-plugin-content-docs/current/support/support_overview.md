@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## We’re here to help {#were-here-to-help}
 
-Answers for many topics can be found in the [frequently asked questions](/docs/getting_started/faq).
+Answers for many topics can be found in the [frequently asked questions](/docs/getting_started/temp/faq).
   
 You also might find answers using the search bar in the top right corner 
 

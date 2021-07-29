@@ -51,7 +51,7 @@ When searching through a _group_, a _tag_ with the group's name will show up, in
 
 Each search query goes through all the following fields:
 
-- **Actions**: When summoned, the search tool will automatically show all available _actions_, i.e., links or _tasks_ that can be opened through the [_Actions button_](/docs/documentation/client/groups_channels#floating-action-button-fab). Queries will search through _action_ names.
+- **Actions**: When summoned, the search tool will automatically show all available _actions_, i.e., links or _tasks_ that can be opened through the [_Actions button_](/docs/documentation/client/actions_button). Queries will search through _action_ names.
 - **Users**: Search through the _user_ names found in the company's Cotalker environment. Bots also have _user_ accounts.
 - **Channels**: Search through _channel_ names.
 - **Properties**: Search by names of _properties_, also known as _elements_. _Properties_ (_elements_) are the components of _collections_ (_databases_ or _property types_).

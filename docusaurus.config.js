@@ -45,7 +45,19 @@ module.exports = {
         {
           to: 'docs/documentation/documentation_overview',
           activeBasePath: 'docs',
-          label: 'Reference Docs',
+          label: 'Admin Docs',
+          position: 'left',
+        },
+        {
+          to: 'docs/documentation/api/overview_api',
+          activeBasePath: 'docs',
+          label: 'API',
+          position: 'left',
+        },
+        {
+          to: 'docs/documentation/models/overview_model',
+          activeBasePath: 'docs',
+          label: 'Data Models',
           position: 'left',
         },
         {

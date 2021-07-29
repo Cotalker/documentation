@@ -11,7 +11,7 @@ A __User__ represents a person or bot that can perform actions within a company 
 
 | Field | Type | Description | Notes |
 | ----  | ---- | ----------- | ----  |
-| _id   | id   | Unique Identifier   | [ObjectId](/docs/getting_started/glossary#ObjectId) |
+| _id   | id   | Unique Identifier   | [ObjectId](/docs/getting_started/temp/glossary#ObjectId ) |
 | email | string | Login email | Unique
 | jobTitle | string | Job | 
 | isActive | boolean | Can user login and user the API |
