@@ -46,11 +46,6 @@ module.exports = {
       label: 'Administrative Panel',
       items: [
         'documentation/admin/admin_overview',
-        'documentation/admin/users',
-        'documentation/admin/admin_accessrole',
-        'documentation/admin/admin_token',
-        'documentation/admin/admin_group',
-        'documentation/admin/admin_channels',
         {
           type: 'category',
           label: 'Workflows',
@@ -64,6 +59,10 @@ module.exports = {
           collapsed: true,
         },
         'documentation/admin/admin_links',
+        'documentation/admin/admin_group',
+        'documentation/admin/users',
+        'documentation/admin/admin_accessrole',
+        'documentation/admin/admin_token',
         'documentation/admin/admin_properties',
         {
           type: 'category',
@@ -83,9 +82,12 @@ module.exports = {
           ],
           collapsed: true,
         },
+        'documentation/admin/admin_company',
         'documentation/admin/admin_bots',
         'documentation/admin/admin_scheduler',
-        'documentation/admin/admin_company',
+        'documentation/automation/automation_log',
+        'documentation/automation/admin_auditlogs',
+        'documentation/admin/admin_channels',
         // 'documentation/admin/routines',
 
       ],
@@ -101,7 +103,7 @@ module.exports = {
         'documentation/automation/question_exec',
         // 'documentation/automation/scheduling',
         'documentation/automation/sla',
-        'documentation/automation/automation_log',
+        
         'documentation/automation/admin_cotlang',
         'documentation/automation/triggers_and_contexts',
       ],
