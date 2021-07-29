@@ -28,7 +28,7 @@ Who, what, when?
 </div>
 <div class="card__body">
 
-Keep track of who did what and when. With this new audit log, admins can monitor who created or modified _user_ profiles and _access roles_ and when. See also who activated or deactivated an element, user or access role.
+Keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, disactivation, and activation of _user_ profiles and _access roles_. See also who, what, and when something was added or modified, complete with IP address tracker and links to the items in question. Use display filters to easily find the events you need to track.
 
 </div>
 <div class="card__footer">
