@@ -15,7 +15,7 @@ import Highlight from '@theme/Highlight';
 
 <span className="hero__subtitle"><em>
 
-Who, what, when?
+Who, what, when?!
 
 </em></span>
 
@@ -28,7 +28,7 @@ Who, what, when?
 </div>
 <div class="card__body">
 
-Keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, disactivation, and activation of _user_ profiles and _access roles_. See also who, what, and when something was added or modified, complete with IP address tracker and links to the items in question. Use display filters to easily find the events you need to track.
+Keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, deactivation, and activation of _user_ profiles and _access roles_. See also who, what, and when something was added or modified, complete with IP address tracker and links to the items in question. Use display filters to easily find the events you need to track.
 
 </div>
 <div class="card__footer">
