@@ -13,13 +13,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Main Sections</span>
 
-- [Getting Started](/docs/getting_started/intro_overview): For end-users, first-time admins, and partners.
-- [What's New](/blog): New features and improvements.
-- [Admin Docs](/docs/documentation/documentation_overview): Setup details and examples.
-- [API](/docs/documentation/api/overview_api): Reference to API tools, descriptions, and examples.
-- [Data Models](/docs/documentation/models/overview_model): Data structures and their contexts.
-- [Tutorials](/docs/tutorials/tutorial_overview): Real-life examples.
-- [Support & Help](/docs/support/support_overview): Support directory and help links.
+- [**Getting Started**](/docs/getting_started/intro_overview): Meant for end-users, first-time admins, and partners.
+- [**What's New**](/blog): Latest features, improvements, and updates.
+- [**Admin Docs**](/docs/documentation/documentation_overview): Complete description of the administrative panel, setup details, and examples.
+- [**API**](/docs/documentation/api/overview_api): API reference guide for admins and developers, complete with descriptions and examples.
+- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
+- [**Tutorials**](/docs/tutorials/tutorial_overview): Real-life examples.
+- [**Support & Help**](/docs/support/support_overview): Support directory and help links.
+
 
 
 <div className="alert alert--secondary">

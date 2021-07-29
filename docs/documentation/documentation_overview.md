@@ -1,6 +1,5 @@
 ---
-title: Reference Docs Overview
-sidebar_label: Overview
+title: Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -8,24 +7,32 @@ import Highlight from '@theme/Highlight';
 <img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/Documentation.svg')} />
 <br/>
 
-<span className="hero__title">Welcome!</span>
+<span className="hero__title">Welcome Admins!</span>
 <br/>
 <br/>
 
-_If you're looking to understand how our documentation is set up, you've come to the right place._
+_If you're an admin and looking for information on how to use this documentation, you've come to the right place._
 
-The _Reference Docs_ are the core of the [**Partner & Technical Consultants Documentation**](https://doc.cotalker.com) – which also includes an [introductory section](/docs/getting_started/intro_overview), [tutorials](/docs/tutorials/tutorial_overview), [updates](/blog), and a [support section](/docs/support/support_overview).
-
+The _Admin Docs_ are the core of the [**Partner & Technical Consultants Documentation**](https://doc.cotalker.com).
 
 <div className="alert alert--primary">
 
-The _Reference Docs_ include:
+The _Admin Docs_ include:
 
-- [**Cotalker App**](/docs/documentation/client/client_overview): Basic platform tools explained for end-users.
-- [**Admin**](/docs/documentation/admin/admin_overview): Technical guide for administradors, complete with definitions and examples.
-- [**API**](/docs/documentation/api/overview_api): API reference guide for admins and developers.
-- [**Automations**](/docs/documentation/automation/overview): In-depth process automation guide for admins.
-- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
+- [**Administrative Panel**](/docs/documentation/admin/admin_overview): Descriptions of the administrative panel configuration settings.
+- [**Automations**](/docs/documentation/automation/overview): In-depth process automation guide .
 - [**BI & SQL**](/docs/documentation/sql_bi/overview): Business Intelligence & SQL tools guide for admins.
+- [**How To Guide**](/docs/documentation/how-to/overview): Simple step-by-step setup instructions.
 
 </div>
+<br/>
+
+
+You might also want to visit these other sections:
+
+- [**Getting Started**](/docs/getting_started/intro_overview): Platform basics
+- [**What's New**](/blog): Latest features and updates
+- [**API**](/docs/documentation/api/overview_api): API reference guide for admins and developers, complete with descriptions and examples.
+- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
+- [**Tutorials**](/docs/tutorials/tutorial_overview): Real-life examples
+- [**Support & Help**](/docs/support/support_overview): Contacts and other useful resources
