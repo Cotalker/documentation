@@ -68,8 +68,8 @@ The following table describes each field shown above.
 | Surname | User's last name | |
 | Email | User's email | It has to be unique. This email is used to log in. |
 | Phone | User's phone number | |
-| Job title | User's job | The Job Title must be created in the *Job Category* of the company section to be selected. |
-| Access Roles | User assigned access roles | You can only choose from existing access roles.|
+| Job title | User's job | Learn how to [create job titles](/docs/documentation/admin/admin_company#job-titles).  |
+| Access Roles | Assigned user access roles | You can only choose from existing access roles.|
 | Password | Create or change password | This field starts empty; the password can be changed in this field.|
 | Repeat Password | Create or change password | Required to validate secret password creation or change |
 | Add additional Attributes | Custom additional field | Add a name and value for the new field |
@@ -104,6 +104,10 @@ _Administrative users_ can view and perform changes, depending on their _permiss
 ## Additional Fields {#additional-fields}
 
 When creating or modifying a _user_, it may be desirable to add extra information depending on the company's needs. Since this information can be multiple and varied, a special arrangement has been developed in order to associate a _user_ to a _collection_ created to host the extra user-data requirements. The **additional fields** can include information in _string_, _number_, _date_, _boolean_, and _URL_ format. They can also host files, other _elements_, or even _users_.
+
+:::note
+_Attributes_ assigned to a user's [_job title_](/docs/documentation/admin/admin_company#job-titles) are automatically assigned as **additional fields** and cannot be removed.
+:::
 
 _In order to activate **Additional Fields**, press the button in the upper-right corner:_
 
