@@ -43,7 +43,7 @@ With our routine builder, you can set diverse automations triggered by surveys, 
 ## Channel {#channel}
 <span className="hero__subtitle">Chat, send files, fill out forms, interact with bots, trigger events, view task information, change task status.</span>
 
-The channel workspace is a frontend for interacting and triggering different systems, e.g., a survey within the chat can call a bot and extract data from the sales database. This interface simplifies human-machine interactions into a generic chat and normalizes all systems into a simple view.
+The [channel workspace](/docs/documentation/client/channels) is a frontend for interacting and triggering different systems, e.g., a survey within the chat can call a bot and extract data from the sales database. This interface simplifies human-machine interactions into a generic chat and normalizes all systems into a simple view.
 
 In channels associated with tasks, you can view and change a task's state or status, assign users and determine deadlines.
 

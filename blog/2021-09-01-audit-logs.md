@@ -1,6 +1,6 @@
 ---
 title: Audit Logs
-description: Keep track of who did what and when. With this new audit log, admins will be able to monitor who and when created or modified _user_ profiles and _access roles_. 
+description: Because people make mistakes, it's always a good idea to keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, deactivation, and activation of _user_ profiles and _access roles_. 
 image: https://doc.cotalker.com/img/updates/update_auditlog.png
 draft: false
 ---
@@ -28,7 +28,7 @@ Who, what, when?!
 </div>
 <div class="card__body">
 
-Keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, deactivation, and activation of _user_ profiles and _access roles_. See also who, what, and when something was added or modified, complete with IP address tracker and links to the items in question. Use display filters to easily find the events you need to track.
+Keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, deactivation, and activation of _user_ profiles and _access roles_. See also who, what, and when something was added or modified. The log comes complete with IP address tracker and links to the items in question. Use display filters to easily find the events you need to track.
 
 </div>
 <div class="card__footer">

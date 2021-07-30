@@ -81,12 +81,19 @@ _Your screen will look something like this:_
 <br/>
 
 ## Creating Tasks {#creating-tasks}
-If configured, you can create tasks from the _actions button_ in the workflow's channel, as shown below:
+If configured, you can create tasks from the _actions button_ wither in the channel workspace or group panel.
+
+_Creating tasks from channel workspace:_
 <img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_09.png')} />
 <br/>
 
-You can manually **create a task** from within the _task views_ by pressing the <span className="badge badge--secondary">+</span> icon in the menu bar. A new task will appear in the list where you can name the task, and a side panel will open up with all the options needed to assign it to someone, establish its status and deadline, among other options.
+_Creating tasks from the group panel:_
+<img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_actionsbutton_01.png')} />
+<br/>
 
+You can manually **create a task** from within the [_task views_](/docs/documentation/client/taskview#tasks-views) by pressing the <span className="badge badge--secondary">+</span> icon in the menu bar. A new task will appear in the list where you can name the task, and a side panel will open up with all the options needed to assign it to someone, establish its status and deadline, among other options.
+
+_Creating tasks from the task view:_
 <img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_07.png')} />
 <br/>
 <br/>

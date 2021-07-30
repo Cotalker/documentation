@@ -1,30 +1,53 @@
 ---
-title: Overview
-sidebar_label: Overview
+title: Introduction
 ---
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/overview.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/overview.svg')} />
+<br/>
 
-## Introduction {#introduction}
-Cotalker customers will find themselves with different _data models_.
-One of these _models_ is the _user_, the basic unit of a company, which can:
-- Be assigned an _access role_ which defines what information they can read or edit.
-- Interact through _channels_ using _surveys_ or _messages_ with other _users_ in a particular _group_.
-- Participate in a company process modeled by a _workflow_ guided by a _task_. For example, a workflow can be the rendering of expenses. In the _group channel_, _users_ can send a request to have it managed as a _task_. The _task_ is then sent to each of the bosses – through the use of _surveys_ – for their approval. Each created _task_ will be housed in its own unique _channel_, where the respective responses of the people involved will be found.
-The **workflow** requires the creation of a _state machine_ to configure the process. It is built upon relations (represented by arrows) and states (represented by nodes), as you can see in the following image:
-<img alt="" src={useBaseUrl('img/admin_overview_statemachine.png')} />
+The _administrative panel_ is the admin's main workplace. From here, they can configure and monitor the entire Cotalker environment.
 
-Furthermore, it is important to know that:
-- Creating a _routine_ is necessary for the state machine to perform any action, such as changing from one state to another, sending an email, or sending a standard message to a channel.
-- A _bot_ corresponds to the _model_ that executes a _routine_ to start a state machine or a standard activity in a company.
-- Finally, the _scheduler_ works to execute a routine periodically in the company. For example: sending the pending task of the week every Monday.
+## Accessing the Administrative Panel {#access-administrative-panel}
 
-_Elements_ are a state machine's basic unit because they determine the states a _state machine_ can have. Each _element_ corresponds to a unit derived from a _collection_. Following the example above, the _elements_ of the state machine (Headquarters Review, CEOs reviews, Management Review, Rejected Requests, and Accepted Requests) belong to the same _collection_ ("Expenses Report").
+<img alt="access" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_00.png')} />
+<br/>
 
-_Elements_ can also be used with different data models (_surveys_, _channels_, _users_, and others). The concepts used in each model are specified accordingly in the documentation.
+1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
+2. The _administrative panel_ opens up, 
+3. A corresponding settings shows up.
 
+:::note
+Access and use of the administrative panel is limited by the user's [access roles](/docs/documentation/admin/admin_accessrole).
+:::
+
+## Outline {#outline}
+
+From the administrative panel, access the following:
+
+- Sections
+  - [Workflows](/docs/documentation/admin/workflows/admin_workflow_overview): Create and configure workflow groups and workflows.
+  - [Link Groups](/docs/documentation/admin/admin_links): Create links that appear on the _Main Menu Bar_ or within a _group_.
+  - [Groups](/docs/documentation/admin/admin_group): Create _regular groups_ for communicating with other users and sharing information.
+- Data
+  - [Users](/docs/documentation/admin/users):
+  - [Access Roles](/docs/documentation/admin/admin_accessrole):
+  - [API Tokens](/docs/documentation/admin/admin_token):
+  - [Database](/docs/documentation/admin/admin_properties):
+  - [Surveys](/docs/documentation/admin/survey/survey_overview):
+  - [Company](/docs/documentation/admin/admin_company):
+- Automations
+  - [Bots](/docs/documentation/admin/admin_bots):
+  - [Schedules](/docs/documentation/admin/admin_bots):
+  - [Automation Log](/docs/documentation/automation/automation_log):
+  - [Audit Logs](/docs/documentation/admin/admin_auditlogs):
+  - Routines:
+
+:::note
+The _Administrative Panel_ section of this documentation is organized in the same order.
+:::
 
 ## Icons {#icons}
 When using the _administrative panel_, various icons will appear to offer possible actions or options in the different windows.

@@ -43,14 +43,17 @@ module.exports = {
     'documentation/documentation_overview',
     {
       type: 'category',
+      label: 'How To Guide',
+      items: [
+        'documentation/how-to/overview',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
       label: 'Administrative Panel',
       items: [
         'documentation/admin/admin_overview',
-        'documentation/admin/users',
-        'documentation/admin/admin_accessrole',
-        'documentation/admin/admin_token',
-        'documentation/admin/admin_group',
-        'documentation/admin/admin_channels',
         {
           type: 'category',
           label: 'Workflows',
@@ -64,6 +67,10 @@ module.exports = {
           collapsed: true,
         },
         'documentation/admin/admin_links',
+        'documentation/admin/admin_group',
+        'documentation/admin/users',
+        'documentation/admin/admin_accessrole',
+        'documentation/admin/admin_token',
         'documentation/admin/admin_properties',
         {
           type: 'category',
@@ -83,9 +90,12 @@ module.exports = {
           ],
           collapsed: true,
         },
+        'documentation/admin/admin_company',
         'documentation/admin/admin_bots',
         'documentation/admin/admin_scheduler',
-        'documentation/admin/admin_company',
+        'documentation/automation/automation_log',
+        'documentation/admin/admin_auditlogs',
+        'documentation/admin/admin_channels',
         // 'documentation/admin/routines',
 
       ],
@@ -148,15 +158,7 @@ module.exports = {
     //   ],
     //   collapsed: true,
     // }
-    {
-      type: 'category',
-      label: 'How To Guide',
-      items: [
-        'documentation/how-to/overview',
-      ],
-      collapsed: true,
-    },
-  ],
+   ],
   tutorials: [
     'tutorials/tutorial_overview',
     {
