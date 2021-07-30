@@ -43,6 +43,14 @@ module.exports = {
     'documentation/documentation_overview',
     {
       type: 'category',
+      label: 'How To Guide',
+      items: [
+        'documentation/how-to/overview',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
       label: 'Administrative Panel',
       items: [
         'documentation/admin/admin_overview',
@@ -86,7 +94,7 @@ module.exports = {
         'documentation/admin/admin_bots',
         'documentation/admin/admin_scheduler',
         'documentation/automation/automation_log',
-        'documentation/automation/admin_auditlogs',
+        'documentation/admin/admin_auditlogs',
         'documentation/admin/admin_channels',
         // 'documentation/admin/routines',
 
@@ -103,7 +111,7 @@ module.exports = {
         'documentation/automation/question_exec',
         // 'documentation/automation/scheduling',
         'documentation/automation/sla',
-        
+        'documentation/automation/automation_log',
         'documentation/automation/admin_cotlang',
         'documentation/automation/triggers_and_contexts',
       ],
@@ -150,15 +158,7 @@ module.exports = {
     //   ],
     //   collapsed: true,
     // }
-    {
-      type: 'category',
-      label: 'How To Guide',
-      items: [
-        'documentation/how-to/overview',
-      ],
-      collapsed: true,
-    },
-  ],
+   ],
   tutorials: [
     'tutorials/tutorial_overview',
     {
