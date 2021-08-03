@@ -22,7 +22,7 @@ A _workflow group_ can contain one or more workflows. The workflow group and ind
 
 _Below, you can see what the settings panel looks like. It has three basic sections: **Configuration** settings panel, **workflow diagram**, **workflow list**._
 
-_In the next section you will find the descriptions of the [**Configuration**](#workflows-configuration-panel) fields._
+_In the next section, you will find the descriptions of the [**Configuration**](#workflows-configuration-panel) fields._
 
 _Whenever you [create](#create-a-single-workflow) or [edit](#edit-a-single-workflow) an individual workflow, the changes will appear in the **workflow diagram** and **workflow list**._
 

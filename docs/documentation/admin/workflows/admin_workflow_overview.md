@@ -1,16 +1,48 @@
 ---
-id: admin_workflow_overview
-title: Workflows Overview
-sidebar_label: Overview
+title: Introduction
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/Workflows.svg')} />
 <br/>
 <br/>
 
+<div className="alert alert--primary">
 
+## What is a "Workflow"? {#description}
+
+Assets come in different sizes and shapes. Usually, a company will need to assign a [_task_](/docs/documentation/client/basic_concepts#tasks) in relation to an asset. A _workflow_ is the process your _tasks_ have to go through. Inside the workflow, the _task_ can pass through different _states_. This configuration of available _states_ is referred to as a _state machine_. 
+
+_Workflows_ are used to create _tasks_ and their corresponding processes. For example, suppose an administrative request must be approved by a CEO, a manager, and an administrator. In that case, whenever an administrative request needs approval, a _workflow_ could be set up to create a _task_ that would ask each one of them, one after another, for approval. If along the line, one of them doesn't approve, the request gets rejected and doesn't continue down the chain.
+
+A _workflow_ is made up of one or more _state machines_. In a state machine, all states through which the _task_ could pass are specified, as well as each [_routine_](/docs/documentation/automation/admin_routine). Following the example given above, a _routine_ can be programmed to send an email notifying the CEO once the administrator and manager have approved the request.
+
+Workflows are hosted inside a [_workflow group_](/docs/documentation/client/groups#workflow-groups). _Workflow groups_ can host multiple workflows and permit interaction among them.
+
+</div>
+<br/>
+
+## Settings Panels {#settings-panels}
+- [**Initial Settings Panel / Workflow Groups**](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial)
+- [**Create New Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create)
+- [**Edit Workflows**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-edit)
+- [**Channel Manager**](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels)
+- [**Edit Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflows-setup)
+
+
+## Related How-To Guide {#how-to-guide}
+- Create a workflow group
+- Create a workflow
+- Set up Workflow Survey Triggers
+- Set up a Public Survey
+
+## Real-life Examples
+- [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)
+- [Create a Survey that Starts a Workflow](/docs/tutorials/intermediate/create_survey_sm)
+
+
+<!-- ---------
 
 <div className="alert alert--secondary">
 
@@ -37,20 +69,10 @@ import Highlight from '@theme/Highlight';
 
 
 
-## Introduction {#introduction}
 
-<img alt="overview image" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_00.png')} />
-<br/>
-<br/>
-
-[_Workflows_](/docs/documentation/admin/workflows/admin_workflow_configure) are used to create _tasks_ and their corresponding processes. For example, suppose an administrative request must be approved by a CEO, a manager, and an administrator. In that case, whenever an administrative request needs approval, a _workflow_ could be set up to create a _task_ that would ask each one of them, one after another, for approval. If, along the line, one of them doesn't approve, the request gets rejected and doesn't continue down the chain.
-
-A _Workflows_ is made up of one or more _State Machines_. In a state machine, all states through which the _task_ could pass are specified, as well as each [_routine_](/docs/documentation/automation/admin_routine). Following the example given above, a _routine_ can be programmed to send an email notifying the CEO once the administrator and manager have approved the request.
-
-Workflows are hosted inside a [_workflow group_](/docs/documentation/admin/workflows/admin_workflow_groups). _Workflow groups_ can host multiple workflows and permit interaction among them.
 
 
 <br/>
 <br/>
 
-_[Go back to Table of Contents](#table-of-contents)_
+_[Go back to Table of Contents](#table-of-contents)_ -->

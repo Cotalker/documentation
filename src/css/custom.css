@@ -100,6 +100,13 @@ html[data-theme='light'] {
   --ifm-link-color: #5784b1;
   --ifm-font-color-base: #113355;
   --ifm-heading-color: #113355;
+  --ifm-color-secondary: #ebedf0;
+  --ifm-color-secondary-dark: rgb(212, 213, 216);
+  --ifm-color-secondary-darker: rgb(200, 201, 204);
+  --ifm-color-secondary-darkest: rgb(164, 166, 168);
+  --ifm-color-secondary-light: rgb(238, 240, 242);
+  --ifm-color-secondary-lighter: rgb(241, 242, 245);
+  --ifm-color-secondary-lightest: rgb(245, 246, 248);
   --ifm-color-primary: #113355;
   --ifm-color-primary-dark: #0f2e4d;
   --ifm-color-primary-darker: #0e2b48;
@@ -131,9 +138,11 @@ html[data-theme='dark'] {
   --ifm-heading-color: #ffffff;
   --ifm-button-color: var(--ifm-font-color-base-inverse);
   --note-title-color: #113355;
+  --row-1-color: #202020;
   --row-2-color: #1c1e21;
   --row-title-color: #000000;
   --box-color: #606770;
+  --ifm-color-secondary: #4a4a4a;
 }
 
 /*.navbar__logo {*/
@@ -269,6 +278,7 @@ p, td, th {
   background-color: var(--row-1-color);
   padding: 1%;
   align-items: center;
+  color: var(--ifm-font-color-base);
 }
 
 .table-row-2 {
@@ -281,6 +291,7 @@ p, td, th {
   background-color: var(--row-2-color);
   padding: 1%;
   align-items: center;
+  color: var(--ifm-font-color-base);
 }
 
 .table-row-title {
