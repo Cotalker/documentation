@@ -5,7 +5,7 @@ title: Introduction
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_title" src={useBaseUrl('img/design/overview.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Platforms.svg')} />
 <br/>
 
 The _administrative panel_ is the admin's main workplace. From here, they can configure and monitor the entire Cotalker environment.

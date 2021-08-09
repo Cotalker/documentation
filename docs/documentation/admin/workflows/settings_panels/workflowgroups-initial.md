@@ -1,13 +1,16 @@
 ---
-title: Initial Settings Panel / Workflow Groups
+title: Initial Settings Panel
+sidebar_label: Initial Settings Panel (Workflow Groups)
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## Accessing the Workflows Section {#workflows}
-In the <span className="badge badge--primary">Workflows</span> section you can create and configure workflows.
+<span className="hero__subtitle">Settings Panel Guide</span>
 
-_To access this section:_
+_From the initial settings panel, create and edit workflow groups and their workflows._
+
+## Accessing the Workflows Section {#workflows}
+To access <span className="badge badge--primary">Workflows</span> section:
 
 <img alt="overview image" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_00.png')} />
 <br/>
@@ -20,26 +23,31 @@ _To access this section:_
 <div className="alert alert--secondary">
 
 ## Initial Settings Panel Layout {#layout}
-This is the **Workflow Groups Settings Panel**. It opens up as the _initial settings panel_ in the <span className="badge badge--primary">Workflows</span> section. From here you can access all of the section's settings panels.
+The **Workflow Groups Settings Panel** opens up as the _initial settings panel_ in the <span className="badge badge--primary">Workflows</span> section. From here, you can access all of the section's settings panels.
 
-**Workflow groups** unite workflows with tasks and users. Each workflow group hosts at least one workflow. 
-
-End-users interact with workflow groups through the [groups panel](/docs/documentation/client/groups#workflow-groups).
+_This is the layout of the workflow groups settings panel:_
 
 <img alt="workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroups_00.png')} />
 <br/>
 
-1. [**Create New Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create)
+1. [**Create New Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit)
 2. **Workflow Group List**
-    1. [**Edit Workflows**](/docs/documentation/admin/workflows/settings_panels/workflows-setup)
+    1. [**Set Up Workflows**](/docs/documentation/admin/workflows/settings_panels/workflows-setup)
     2. [**Channel Manager**](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels)
-    3. [**Edit Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-edit)
+    3. [**Edit Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit)
+
+:::note
+- **Workflow groups** unite workflows with tasks and users. Each workflow group hosts at least one workflow. 
+- End-users interact with workflow groups through the [groups panel](/docs/documentation/client/groups#workflow-groups).
+:::
 
 </div>
 <br/>
 
-## Related How-To Guide{#how-to-guide}
-- Create a workflow group
-- Create a workflow
-- Set up Workflow Survey Triggers
-- Set up a Public Survey
+## Related Topics {#related-topics}
+- [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)
+- [**Set up Workflow Survey Triggers**](/docs/documentation/admin/workflows/admin_workflow_required_survey)
+- [**Set up a Public Survey**](/docs/documentation/admin/workflows/admin_workflow_public_survey)
+- [**Routine Builder**](/docs/documentation/automation/admin_routine)
+- [**SLAs**](/docs/documentation/automation/sla)
+- [**Create a Survey that Starts a Workflow**](/docs/tutorials/intermediate/create_survey_sm)

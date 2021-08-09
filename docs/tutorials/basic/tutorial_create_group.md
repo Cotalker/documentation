@@ -9,13 +9,13 @@ Tutorial on how to create _groups_ and _channels_.
 Time: 15 minutes
 
 :::tip Vocabulary Note:
-- _Groups_ are different ways to organize, access, and communicate data among _users_. There are three kinds of groups: workflows, links, and communications.
+- _Groups_ are different ways to organize, access, and communicate data among _users_. There are three kinds of groups: workflows, links, and regular.
 - _Channels_ are like chats for _groups_. Inside a _channel_, _users_ can message each other, send images, files, emoticons, and answer _surveys_.
 :::
 
 ## Company Requirements {#company-requirements}
 #### Tutorial Objectives {#tutorial-objectives}
-For this tutorial, the company wants to help its employees (_users_) to communicate and share information. They want to create a _communication group_ for each area or department. For now, each _group_ will have two types of _channels_: one, where all employees can communicate with the department, and another, for the department's private conversations.
+For this tutorial, the company wants to help its employees (_users_) to communicate and share information. They want to create a _group_ for each area or department. For now, each _group_ will have two types of _channels_: one, where all employees can communicate with the department, and another, for the department's private conversations.
 
 The company also needs to add a direct link to each department's file on Google Drive for one-click access.
 
@@ -48,7 +48,7 @@ The company's departments or areas and their respective links are as follow:
 * A _user_ for each employee of the company.
 
 ## Steps {#steps}
-### I. Create New Communications Group {#i-create-new-communications-group}
+### I. Create New Regular Group {#i-create-new-regular-group}
 
 <div class="alert alert--secondary">
 

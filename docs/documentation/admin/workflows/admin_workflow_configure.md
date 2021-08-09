@@ -111,7 +111,7 @@ You can create a new workflow by pressing the <span className="badge badge--seco
 
 After pressing the icon to create a new workflow , you will see the following settings panel:
 
-<img alt="create workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_create_workflow_00.png')} />
+<img alt="create workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_workflow_create_edit_00.png')} />
 <br/>
 <br/>
 
@@ -240,7 +240,7 @@ Apart from the settings mentioned for [creating a workflow](#create-a-single-wor
 
 _Once you open a workflow for editing, the settings panel will look something like this:_
 
-<img alt="edit workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_edit_workflow_00.png')} />
+<img alt="edit workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_workflow_create_edit_00.png')} />
 <br/>
 
 ### <span className="hero__subtitle">States Section</span> {#states-section}

@@ -41,14 +41,7 @@ module.exports = {
   ],
   documentation: [
     'documentation/documentation_overview',
-    {
-      type: 'category',
-      label: 'How To Guide',
-      items: [
-        'documentation/how-to/overview',
-      ],
-      collapsed: true,
-    },
+    'documentation/admin_basic_concepts',
     {
       type: 'category',
       label: 'Administrative Panel',
@@ -63,12 +56,29 @@ module.exports = {
               label: 'Workflows',
               items: [
                 'documentation/admin/workflows/admin_workflow_overview',
-                'documentation/admin/workflows/settings_panels/workflowgroups-initial',
-                'documentation/admin/workflows/settings_panels/workflowgroup-create',
-                'documentation/admin/workflows/settings_panels/workflowgroup-edit',
-                'documentation/admin/workflows/admin_workflow_configure',
-                'documentation/admin/workflows/admin_workflow_required_survey',
-                'documentation/admin/workflows/admin_workflow_public_survey',
+                {
+                  type: 'category',
+                  label: 'Settings Panels',
+                  items: [
+                    'documentation/admin/workflows/settings_panels/workflowgroups-initial',
+                    'documentation/admin/workflows/settings_panels/workflowgroup-create-edit',
+                    'documentation/admin/workflows/settings_panels/workflowgroup_channels',
+                    'documentation/admin/workflows/settings_panels/workflows-setup',
+                    'documentation/admin/workflows/settings_panels/workflow_create_edit',
+                    'documentation/admin/workflows/settings_panels/create_edit_state',
+                  ],
+                  collapsed: true,
+                },
+                {
+                  type: 'category',
+                  label: 'Basic Operations',
+                  items: [
+                    // 'documentation/admin/workflows/admin_workflow_configure',
+                    'documentation/admin/workflows/admin_workflow_required_survey',
+                    'documentation/admin/workflows/admin_workflow_public_survey',
+                  ],
+                  collapsed: true,
+                },
               ],
               collapsed: true,
             },
@@ -115,8 +125,7 @@ module.exports = {
             'documentation/admin/admin_scheduler',
             'documentation/automation/automation_log',
             'documentation/admin/admin_auditlogs',
-            'documentation/admin/admin_channels',
-            'documentation/admin/routines',
+            // 'documentation/admin/routines',
           ],
           collapsed: true,
         },
@@ -127,7 +136,7 @@ module.exports = {
       type: 'category',
       label: 'Automation Tools',
       items: [
-        'documentation/automation/overview',
+        // 'documentation/automation/overview',
         'documentation/automation/admin_routine',
         'documentation/automation/existing_routines',
         'documentation/automation/question_exec',

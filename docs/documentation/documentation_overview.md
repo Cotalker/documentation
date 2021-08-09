@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Admin Docs Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -19,10 +19,10 @@ The _Admin Docs_ are the core of the [**Partner & Technical Consultants Document
 
 The _Admin Docs_ include:
 
+- [**Admin Basics**](/docs/documentation/admin_basic_concepts)
 - [**Administrative Panel**](/docs/documentation/admin/admin_overview): Descriptions of the administrative panel configuration settings.
 - [**Automations**](/docs/documentation/automation/overview): In-depth process automation guide .
 - [**BI & SQL**](/docs/documentation/sql_bi/overview): Business Intelligence & SQL tools guide for admins.
-- [**How To Guide**](/docs/documentation/how-to/overview): Simple step-by-step setup instructions.
 
 </div>
 <br/>

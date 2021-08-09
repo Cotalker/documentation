@@ -22,7 +22,7 @@ Learn here how to create and edit _workflow groups_. Familiarize yourself with t
 From the initial settings panel, you can find the entire list of _workflow groups_ that have been created. Read below to see how you can: 
 - [Create and edit workflow groups](#create-edit-a-workflow-group)
 - [Configure workflows](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel)
-- [View workflow group channels](/docs/documentation/admin/admin_channels#edit--create-single-channel)
+- [View workflow group channels](/docs/documentation/admin/admin_group)
 
 _Workflow groups settings panel shown below:_
 
@@ -39,7 +39,7 @@ _The "Initial Settings Panel" table information is explained below:_
 - **Icon**: Group icon
 - **Name**: Visible group name.
 - **Initial Workflow**: Workflow which starts off the task.
-- **Options**: [_Configure Workflows_](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel) - [_View Channels_](/docs/documentation/admin/admin_channels#edit--create-single-channel) - [_Edit Workflow Group_](#create-edit-a-workflow-group) (_View following note._)
+- **Options**: [_Configure Workflows_](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel) - [_View Channels_](/docs/documentation/admin/admin_group) - [_Edit Workflow Group_](#create-edit-a-workflow-group) (_View following note._)
 
 :::note
   _**Configure Workflows**, **View Channels**, and **Edit Workflow Group** options are represented respectively by the following icons:_

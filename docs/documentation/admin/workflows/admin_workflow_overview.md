@@ -4,6 +4,9 @@ title: Introduction
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
+<span className="hero__subtitle">Settings Panel Guide</span>
+
+
 <img alt="design" className="img_title" src={useBaseUrl('img/design/Workflows.svg')} />
 <br/>
 <br/>
@@ -12,7 +15,7 @@ import Highlight from '@theme/Highlight';
 
 ## What is a "Workflow"? {#description}
 
-Assets come in different sizes and shapes. Usually, a company will need to assign a [_task_](/docs/documentation/client/basic_concepts#tasks) in relation to an asset. A _workflow_ is the process your _tasks_ have to go through. Inside the workflow, the _task_ can pass through different _states_. This configuration of available _states_ is referred to as a _state machine_. 
+Usually, a company will need to assign a [_task_](/docs/documentation/client/basic_concepts#tasks) in relation to an asset. A _workflow_ is the process your _tasks_ have to go through. Inside the workflow, the _task_ can pass through different _states_. This configuration of available _states_ is referred to as a _state machine_. 
 
 _Workflows_ are used to create _tasks_ and their corresponding processes. For example, suppose an administrative request must be approved by a CEO, a manager, and an administrator. In that case, whenever an administrative request needs approval, a _workflow_ could be set up to create a _task_ that would ask each one of them, one after another, for approval. If along the line, one of them doesn't approve, the request gets rejected and doesn't continue down the chain.
 
@@ -25,19 +28,24 @@ Workflows are hosted inside a [_workflow group_](/docs/documentation/client/grou
 
 ## Settings Panels {#settings-panels}
 - [**Initial Settings Panel / Workflow Groups**](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial)
-- [**Create New Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create)
-- [**Edit Workflows**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-edit)
-- [**Channel Manager**](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels)
-- [**Edit Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflows-setup)
+- [**Create/Edit Workflow Group**](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit)
+- [**Workflow-group Channels**](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels)
+- [**Set Up Workflows**](/docs/documentation/admin/workflows/settings_panels/workflows-setup)
+- [**Create/Edit State**](/docs/documentation/admin/workflows/settings_panels/create_edit_state)
 
 
-## Related How-To Guide {#how-to-guide}
-- Create a workflow group
-- Create a workflow
-- Set up Workflow Survey Triggers
-- Set up a Public Survey
+## Basic Operations {#basic-operations}
+<!-- - Create a workflow -->
+- [**Set up Workflow Survey Triggers**](/docs/documentation/admin/workflows/admin_workflow_required_survey)
+- [**Set up a Public Survey**](/docs/documentation/admin/workflows/admin_workflow_public_survey)
 
-## Real-life Examples
+## Advanced Operations {#advanced-operations}
+- [**Routine Builder**](/docs/documentation/automation/admin_routine)
+- [**SLAs**](/docs/documentation/automation/sla)
+
+
+
+## Related Tutorials {#tutorials}
 - [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)
 - [Create a Survey that Starts a Workflow](/docs/tutorials/intermediate/create_survey_sm)
 

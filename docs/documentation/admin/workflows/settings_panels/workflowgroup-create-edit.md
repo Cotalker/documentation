@@ -1,29 +1,41 @@
 ---
-title: Edit Workflow Group Settings Panel
+title: Create/Edit a Workflow Group
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl'; 
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## Accessing the Panel {#accessing}
+<span className="hero__subtitle">Settings Panel Guide</span>
+
+_Basic workflow group settings_
+
+## Create a Workflow Group {#create-workflow-group}
+
+From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press <span className="badge badge--secondary">+</span>.
+
+<img alt="create new workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00a.png')} />
+<br/>
+
+## Edit a Workflow Group {#edit-workflow-group}
 
 From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press the corresponding icon from the _workflow group list_.
 
 <img alt="edit workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_edit_00a.png')} />
 <br/>
 
+
 <div className="alert alert--secondary">
 
 ## Settings Panel Layout {#panel-layout}
-After choosing the workflow group to edit, the following settings panel opens up:
+After choosing to create a new workflow group, the following settings panel opens up:
 
-<img alt="settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_edit_00.png')} />
+<img alt="settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00.png')} />
 <br/>
 
 _Options:_
-1. **Deactivate**: Deactivate the group.
+1. **Deactivate**: Deactivate the element.
 2. **Save**: Save current configuration.
 
-_Configurations:_
+_Settings_:
 - [**A. General information**](#general-information-section)
 - [**B. Icon**](#icon-section)
 - [**C. Help**](#help-section)
@@ -242,3 +254,6 @@ Pressing this button opens up a **New action** pad. Press the pad to open the ne
 
 </div>
 <br/>
+
+## Related Topics {#related-topics}
+- [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)

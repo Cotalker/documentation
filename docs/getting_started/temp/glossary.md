@@ -16,7 +16,7 @@ This access-token can be obtained through the API.
 
 #### Group (MA) {#group-ma}
 
-A group is a particular form of sharing information. Access to groups is through the main menu bar. There are three types of groups: *communication*, *workflow*, and *link*. A *communication group* consists primarily of a _channel_ which unites users and appears as a chatroom to share messages and _surveys_. A *workflow group* associates users based on _tasks_ and _state machines_. A *link group* is simply a link that redirects users to specific data such as dashboards, documentation, or anything else considered relevant by administrators.
+A group is a particular form of sharing information. Access to groups is through the main menu bar. There are three types of groups: *regular*, *workflow*, and *link*. A *regular group* consists primarily of a _channel_ which unites users and appears as a chatroom to share messages and _surveys_. A *workflow group* associates users based on _tasks_ and _state machines_. A *link group* is simply a link that redirects users to specific data such as dashboards, documentation, or anything else considered relevant by administrators.
 
 #### Channel (MA) {#channel-ma}
 
