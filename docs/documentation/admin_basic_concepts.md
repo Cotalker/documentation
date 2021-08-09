@@ -1,13 +1,13 @@
 ---
-title: How-To Guide Introduction
-sidebar_label: Introduction
+title: Admin Basics
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-This guide will help you find step-by-step examples of how to set up basic configurations or actions.
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
+<br/>
 
-But first, we need to look at some basic concepts.
+_Brief introduction to Cotalker concepts for admins._
 
 ## Users {#users}
 

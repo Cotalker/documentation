@@ -20,13 +20,13 @@ _Groups_ are the primary place to interact and exchange information in the Cotal
 _Groups_ – which can only be created by administrators – are classified into three kinds:
 
 ### Regular Groups {#regular-groups} 
-Normally, we refer to _regular groups_ simply as _groups_.They incorporate a list of users and include _channels_, i.e., chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel. 
+Normally, we refer to _regular groups_ simply as _groups_. They incorporate a list of users and include [_channels_](/docs/documentation/client/basic_concepts#channel), i.e., chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel. 
 
 ### Workflow Groups {#workflow-groups}
-Similar to regular groups, they include channels and subgroups. Their great advantage is that they host _tasks_  with their corresponding _channels_. You can access task details either through the _group panel_ or the _channel workspace_.
+Similar to regular groups, they include channels and subgroups. Their great advantage is that they host [_tasks_](/docs/documentation/client/basic_concepts#tasks)  with their corresponding [_channels_](/docs/documentation/client/basic_concepts#channel). You can access task details either through the [_group panel_](#group-panel) or the [_channel workspace_](/docs/documentation/client/channels).
 
 ### Link Groups {#link-groups}
-This kind of _group_ is a _link_ which can be found in the _main menu bar_ or _group panel_. It can redirect the user to another source of information, whether it be internal or external to the Cotalker environment.
+This kind of _group_ is a _link_ which can be found in the [_main menu bar_](/docs/documentation/client/main_menu) or [_group panel_](#group-panel). It can redirect the user to another source of information, whether internal or external to the Cotalker environment.
 
 </div>
 <br/>

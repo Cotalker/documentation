@@ -1,74 +1,62 @@
 ---
-id: admin_workflow_groups
-title: I. Workflow Groups
-sidebar_label: I. Workflow Groups
+title: Create/Edit a Workflow Group
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<span className="hero__subtitle">Settings Panel Guide</span>
+
+_Basic workflow group settings_
+
+## Create a Workflow Group {#create-workflow-group}
+
+From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press <span className="badge badge--secondary">+</span>.
+
+<img alt="create new workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00a.png')} />
 <br/>
+
+## Edit a Workflow Group {#edit-workflow-group}
+
+From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press the corresponding icon from the _workflow group list_.
+
+<img alt="edit workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_edit_00a.png')} />
+<br/>
+
 
 <div className="alert alert--secondary">
 
-## Summary {#summary}
-Learn here how to create and edit _workflow groups_. Familiarize yourself with the [initial settings panel](#initial-settings-panel) and the [create/edit workflow group settings panel](#create-edit-a-workflow-group).
+## Settings Panel Layout {#panel-layout}
+After choosing to create a new workflow group, the following settings panel opens up:
+
+<img alt="settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00.png')} />
+<br/>
+
+_Options:_
+1. **Deactivate**: Deactivate the element.
+2. **Save**: Save current configuration.
+
+_Settings_:
+- [**A. General information**](#general-information-section)
+- [**B. Icon**](#icon-section)
+- [**C. Help**](#help-section)
+- [**D. Layout**](#layout-section)
+- [**E. Secondary actions**](#secondary-actions-section)
 
 </div>
 <br/>
 
+<div className="alert alert--secondary">
 
-## Initial Settings Panel {#initial-settings-panel}
-From the initial settings panel, you can find the entire list of _workflow groups_ that have been created. Read below to see how you can: 
-- [Create and edit workflow groups](#create-edit-a-workflow-group)
-- [Configure workflows](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel)
-- [View workflow group channels](/docs/documentation/admin/admin_group)
-
-_Workflow groups settings panel shown below:_
-
-<img alt="workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_groups_00.png')} />
-<br/><br/>
-
-
-**Create a new workflow group:** New _workflow groups_ can be created by pressing the <span class="badge badge--secondary">+</span> icon found in the upper right-hand corner. Once you press the icon, the [create a workflow group settings panel](#create-edit-a-workflow-group) will open up.
-
-
-Further icon descriptions can be found in the [Overview section](/docs/documentation/admin/admin_overview).
-
-_The "Initial Settings Panel" table information is explained below:_
-- **Icon**: Group icon
-- **Name**: Visible group name.
-- **Initial Workflow**: Workflow which starts off the task.
-- **Options**: [_Configure Workflows_](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel) - [_View Channels_](/docs/documentation/admin/admin_group) - [_Edit Workflow Group_](#create-edit-a-workflow-group) (_View following note._)
-
-:::note
-  _**Configure Workflows**, **View Channels**, and **Edit Workflow Group** options are represented respectively by the following icons:_
-
-<img alt="workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_options_00.png')} />
-<br/>
-
-:::
-
-<br/>
-
-## Create/Edit a Workflow Group {#create-edit-a-workflow-group}
-After choosing to create or edit a _workflow group_ from the [initial settings panel](#initial-settings-panel), you will see the following settings panel:
-
-<img alt="workflow group settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_create_group_00.png')} />
-<br/><br/>
-
-
-#### In the following sub-sections, we will review each section of the settings panel in detail: {#sub-sections}
-
-
-
-### <span className="badge badge--secondary">General Information</span> {#general-information}
+### A. General Information {#general-information-section}
 _Basic setup and display options._
+
+<img alt="general info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_01.png')} />
+<br/>
 
 <div className="container box">
 <div className="row table-row-1">
 <div className="col col--3"><b>Name:</b></div>
-<div className="col col--5">The visual name of the group.</div>
+<div className="col col--5">The group's display name.</div>
 <div className="col col--4"><em>It doesn't have to be unique.</em></div>
 </div>
 <div className="row table-row-2">
@@ -83,22 +71,27 @@ _Basic setup and display options._
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Parent Group:</b></div>
-<div className="col col--5">The group can be related or positioned within another group as a child.</div>
-<div className="col col--4"><em>The parent group must already exist.</em></div>
+<div className="col col--5">The group can be positioned within another group as a child. The parent group must already exist.</div>
+<div className="col col--4"><em>
+
+[Learn more about parent groups](/docs/documentation/admin/tips/parent_group)
+
+</em></div>
 </div>
 </div>
 <br/>
 
-:::note
-A _parent group_ with a direct access icon in the _main menu bar_ would host a child or sub-group like the image shown below:
-
-<img alt="parent group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_parent_00.png')} />
+</div>
 <br/>
 
-:::
 
-### <span className="badge badge--secondary">Icon Fields</span> {#icon-section}
+<div className="alert alert--secondary">
+
+### B. Icon Fields {#icon-section}
 _Configures the group symbol shown on the Main Menu Bar._
+
+<img alt="icon" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_02.png')} />
+<br/>
 
 <div className="container box">
 <div className="row table-row-1">
@@ -119,8 +112,16 @@ _Configures the group symbol shown on the Main Menu Bar._
 </div>
 <br/>
 
-### <span className="badge badge--secondary">Help Fields</span> {#help-section}
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### C. Help Fields {#help-section}
 _Sets up onboarding when users log in to the app or website._
+
+<img alt="help" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_03.png')} />
+<br/>
 
 <div className="container box">
 <div className="row table-row-1">
@@ -155,8 +156,17 @@ We recommend using [Lottie File](https://lottiefiles.com/).
 </div>
 <br/>
 
-### <span className="badge badge--secondary">Layout Fields</span> {#design-section}
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### D. Layout Fields {#layout-section}
 _Configures how channels are displayed in a workflow group._
+
+<img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_04.png')} />
+<br/>
 
 <div className="container box">
 <div className="row table-row-1">
@@ -183,55 +193,28 @@ _Configures how channels are displayed in a workflow group._
 </div>
 <br/>
 
-<!-- DEPRECATED -->
-<!-- ### <span className="badge badge--secondary">Channel Creation Fields</span> {#channel-creation-section}
-The description of the _channel creation_ fields is as follows:
 
-<div className="container box">
-<div className="row table-row-1">
-<div className="col col--3"><b>Allow channel creation:</b></div>
-<div className="col col--5">Allows users to create channels in the group by pressing the "Actions" button.</div>
-<div className="col col--4"><em>The "Actions" button is a green round button found at the bottom of the workflow groups channel panel.
-</em></div>
 </div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Permissions:</b></div>
-<div className="col col--5">Specific user permissions needed to create a channel in the group.</div>
-<div className="col col--4"><em>Although the button may be visible, without the necessary permissions, users will not be allowed to create channels.</em></div>
-</div>
-</div>
-<br/> -->
-
-### <span className="badge badge--secondary">Secondary Actions</span> {#secondary-actions}
-
-This section allows you to set up the _secondary actions_ available in a group's _action button_. With _secondary actions_ users can access URLs, which can be configured to go to different channels or even open external websites.
+<br/>
 
 <div className="alert alert--secondary">
 
-_The **Actions button** appears at the bottom of the group panel as shown in the image below:_
+### E. Secondary Actions {#secondary-actions-section}
 
-<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_workflow_groups_actionbutton.png')} />
+_This section allows you to set up the ***secondary actions*** which are made available for end-users through a group's ***actions button***. With secondary actions users can access URLs, which can be configured to go to different channels or even open external websites._
+
+_Learn more about the [workflow group actions button](/docs/documentation/admin/tips/action_button)._
+
+<img alt="add new action" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_05a.png')} />
 <br/>
 
-:::note
-- _Action buttons_ in **workflow groups** can also open [workflow start surveys](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-a-new-task).
-- But, unlike _action buttons_ in regular groups, _action buttons in workflow groups_ cannot create new channels.
-:::
+**+ ADD NEW ACTION**: creates an _action_ that can be accessed through the _actions button_.
 
-</div>
+
+
+Pressing this button opens up a **New action** pad. Press the pad to open the new action's settings panel.
+<img alt="add new action" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_05b.png')} />
 <br/>
-
-_Descriptions of the fields and options in the **secondary actions** section are explained below:_
-
-The <span className="badge badge--secondary">+ ADD NEW ACTION</span>: creates an _action_ that can be accessed through the _Actions_ button.
-<img alt="add new action" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_00.png')} />
-<br/>
-
-Pressing this button opens up a <span className="badge badge--secondary">New action #1</span> pad. Press the pad to open the new action's settings panel.
-<img alt="add new action" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_01.png')} />
-<br/>
-
-The action's settings panel fields are described below:
 
 <div className="container box">
 <div className="row table-row-1">
@@ -268,3 +251,9 @@ The action's settings panel fields are described below:
 </div>
 <br/>
 
+
+</div>
+<br/>
+
+## Related Topics {#related-topics}
+- [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)

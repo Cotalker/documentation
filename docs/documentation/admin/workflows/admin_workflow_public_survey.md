@@ -1,7 +1,7 @@
 ---
 id: admin_workflow_public_survey
-title: IV. Public Survey
-sidebar_label: IV. Public Survey
+title: Public Survey
+sidebar_label: Public Survey
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

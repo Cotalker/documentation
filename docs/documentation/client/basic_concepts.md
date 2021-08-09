@@ -11,7 +11,7 @@ import Highlight from '@theme/Highlight';
 
 In this section, we introduce basic concepts and vocabulary used in the Cotalker environment. 
 
-- For general setup instructions, see the [How To Guide](/docs/documentation/how-to/overview).
+- For general setup instructions, see the [Admin Docs](/docs/documentation/documentation_overview).
 - For step-by-step, real-world examples, check out our [Tutorial](/docs/tutorials/tutorial_overview) section.
 - For basic tools and section descriptions, go to [The Basics](/docs/documentation/client/client_overview).
 

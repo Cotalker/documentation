@@ -22,7 +22,7 @@ A _workflow group_ can contain one or more workflows. The workflow group and ind
 
 _Below, you can see what the settings panel looks like. It has three basic sections: **Configuration** settings panel, **workflow diagram**, **workflow list**._
 
-_In the next section you will find the descriptions of the [**Configuration**](#workflows-configuration-panel) fields._
+_In the next section, you will find the descriptions of the [**Configuration**](#workflows-configuration-panel) fields._
 
 _Whenever you [create](#create-a-single-workflow) or [edit](#edit-a-single-workflow) an individual workflow, the changes will appear in the **workflow diagram** and **workflow list**._
 
@@ -111,7 +111,7 @@ You can create a new workflow by pressing the <span className="badge badge--seco
 
 After pressing the icon to create a new workflow , you will see the following settings panel:
 
-<img alt="create workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_create_workflow_00.png')} />
+<img alt="create workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_workflow_create_edit_00.png')} />
 <br/>
 <br/>
 
@@ -240,7 +240,7 @@ Apart from the settings mentioned for [creating a workflow](#create-a-single-wor
 
 _Once you open a workflow for editing, the settings panel will look something like this:_
 
-<img alt="edit workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_edit_workflow_00.png')} />
+<img alt="edit workflow settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_workflows_workflow_create_edit_00.png')} />
 <br/>
 
 ### <span className="hero__subtitle">States Section</span> {#states-section}

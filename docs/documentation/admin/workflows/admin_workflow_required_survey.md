@@ -1,7 +1,7 @@
 ---
 id: admin_workflow_required_survey
-title: III. Workflow Survey Triggers
-sidebar_label: III. Workflow Survey Triggers
+title: Workflow Survey Triggers
+sidebar_label: Workflow Survey Triggers
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

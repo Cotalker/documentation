@@ -5,10 +5,14 @@ title: Introduction
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_title" src={useBaseUrl('img/design/overview.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Platforms.svg')} />
 <br/>
 
 The _administrative panel_ is the admin's main workplace. From here, they can configure and monitor the entire Cotalker environment.
+
+:::info
+Access and use of the administrative panel is limited by the user's [access roles](/docs/documentation/admin/admin_accessrole).
+:::
 
 ## Accessing the Administrative Panel {#access-administrative-panel}
 
@@ -17,43 +21,65 @@ The _administrative panel_ is the admin's main workplace. From here, they can co
 
 1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
 2. The _administrative panel_ opens up, 
-3. A corresponding settings shows up.
+3. A corresponding settings panel shows up.
 
-:::note
-Access and use of the administrative panel is limited by the user's [access roles](/docs/documentation/admin/admin_accessrole).
-:::
 
-## Outline {#outline}
 
-From the administrative panel, access the following:
 
-- Sections
-  - [Workflows](/docs/documentation/admin/workflows/admin_workflow_overview): Create and configure workflow groups and workflows.
-  - [Link Groups](/docs/documentation/admin/admin_links): Create links that appear on the _Main Menu Bar_ or within a _group_.
-  - [Groups](/docs/documentation/admin/admin_group): Create _regular groups_ for communicating with other users and sharing information.
-- Data
-  - [Users](/docs/documentation/admin/users):
-  - [Access Roles](/docs/documentation/admin/admin_accessrole):
-  - [API Tokens](/docs/documentation/admin/admin_token):
-  - [Database](/docs/documentation/admin/admin_properties):
-  - [Surveys](/docs/documentation/admin/survey/survey_overview):
-  - [Company](/docs/documentation/admin/admin_company):
-- Automations
-  - [Bots](/docs/documentation/admin/admin_bots):
-  - [Schedules](/docs/documentation/admin/admin_bots):
-  - [Automation Log](/docs/documentation/automation/automation_log):
-  - [Audit Logs](/docs/documentation/admin/admin_auditlogs):
-  - Routines:
 
-:::note
-The _Administrative Panel_ section of this documentation is organized in the same order.
-:::
+<div className="container alert alert--secondary">
+<div className="row">
+<div className="col col--12">
+
+## Layout/Index {#layout}
+
+The administrative panel's layout serves also as this documentation section's index.
+
+_From the administrative panel, you can access the following:_
+
+</div>
+</div>
+<div className="row">
+<div className="col col--6">
+<img alt="access" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_01.png')} />
+<br/>
+</div>
+<div className="col col--6">
+
+<span className="hero__subtitle">SECTIONS</span>
+
+  1. [**Workflows**](/docs/documentation/admin/workflows/admin_workflow_overview): Create and configure workflow groups and workflows.
+  2. [**Link Groups**](/docs/documentation/admin/admin_links): Create links that appear on the _Main Menu Bar_ or within a _group_.
+  3. [**Groups**](/docs/documentation/admin/admin_group): Create _regular groups_ for communicating with other users and sharing information.
+
+<span className="hero__subtitle">DATA</span>
+
+  4. [**Users**](/docs/documentation/admin/users): Create and modify _user profiles_ along with their access roles, job titles, and additional fields.
+  5. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
+  6. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
+  7. [**Database**](/docs/documentation/admin/admin_properties): Manage collections and elements.
+  8. [**Surveys**](/docs/documentation/admin/survey/survey_overview): Create and modify surveys used to gather information from users or configure workflows.
+  9. [**Company**](/docs/documentation/admin/admin_company): Edit company information, environment configuration, and job titles.
+
+<span className="hero__subtitle">AUTOMATIONS</span>
+
+  10. [**Bots**](/docs/documentation/admin/admin_bots): Create and edit customized bots to carry out automated routines.
+  11. [**Schedules**](/docs/documentation/admin/admin_bots): Create and edit scheduled routines.
+  12. [**Automation Log**](/docs/documentation/automation/automation_log): Monitor all automations carried out in the Cotalker environment.
+  13. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
+  14. [**Routines**](/docs/documentation/admin/routines): Create or edit predetermined bots that can be later used in routines.
+
+</div>
+
+</div>
+</div>
+<br/>
 
 ## Icons {#icons}
-When using the _administrative panel_, various icons will appear to offer possible actions or options in the different windows.
+When using the _administrative panel_, various icons will appear in its settings panels to offer possible actions or options.
 
 
-Below, we find the descriptions of the buttons used for **element lists in all _models_**:
+_Below, we find the descriptions of the buttons used for in all list tables:_
 
 | Action Name | Image | Description |
 | ---- | ----- | ----------- |
