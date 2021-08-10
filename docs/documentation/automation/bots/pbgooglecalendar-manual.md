@@ -5,7 +5,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-This stage-bot integrates Cotalker with Google Calenders. Create meetings or events and send invitations via email. 
+This stage-bot integrates Cotalker with Google Calenders. Create meetings or events and send ICS invitations to any email. 
+
+Most email clients will show the event.
 
 Before beginning, you will need to have a Google email account associated with the company's Google Workspace.
 
