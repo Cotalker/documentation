@@ -17,6 +17,47 @@ Before beginning, you will need to have a Google email account associated with t
 - **Timezone** must be set using the TZ Database name format, e.g., America/Santiago, America/Sao_Paulo, Asia/Dubai, Asia/Shanghai, etc.
 - Invitations can be sent to any user, even those **not** in the organization's Google Workspace.
 :::
+
+<div className="alert--secondary">
+
+## Setup Example {#setup-example}
+
+```json
+    {
+        "_id" : "5f59923c42d99d000982d0aa", 
+        "key" : "calendar", 
+        "name" : "PBCalendar", 
+        "version" : "2.0.0", 
+        "data" : {
+            "title" : "PBCalendar Event", 
+            "description" : "Description of event", 
+            "initialDate" : ISODate("2021-08-05T20:51:30.551+0000"), 
+            "durationMinutes" : 30.0, 
+            "invitedById" : [
+                "5f6cfcaf7e081c0008502f3a", 
+                "5bc9ffc7f25ac42f0410179d"
+            ], 
+            "invitedByEmail" : [
+                "sample@gmail.com"
+            ], 
+            "owner" : "5f57dc679d700e0008cc131e"
+        }, 
+        "customNetworkRequest" : [
+        ], 
+        "next" : {
+            "DEFAULT" : null
+        }
+    }
+```
+
+</div>
+<br/>
+
+## Expected Result {#expected-result}
+
+<img alt="email" className="img_sizing item shadow--tl" src={useBaseUrl('img/pbcalendar_00.png')} />
+<br/>
+
   
 **Domain wide integration**  
 key: PBGoogleCalendar  

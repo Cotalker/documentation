@@ -14,7 +14,7 @@ Data Type: array CotUserId
 ### 3. Access role (key: accessRole)  
 Id of the access role that users must have in case the criterion is 'accessRole'  
 Required: no  
-Data Type: CotAccessRoleId   
+Data Type: string   
 ### 4. Property (key: property)  
 Property Id that users must have in case the criterion is 'property'  
 Required: no  

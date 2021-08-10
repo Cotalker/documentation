@@ -27,29 +27,29 @@ Data Type: string
 Use Alternative Pdf Converter.  
 Required: no  
 Data Type: boolean   
+### 7. Identifier (key: linkIdentifier)  
+Code used to identify the PDF  
+Required: no  
+Data Type: string   
 ## Next Stages  
 ### 1. SUCCESS  
   
 ### 2. ERROR  
   
 ## Outputs  
-### 1. Status (key: status)  
+### 1. Content Type (key: contentType)  
   
 Required: no  
 Data Type: string   
-### 2. Content Type (key: contentType)  
+### 2. Content URL (key: contentUrl)  
   
 Required: no  
 Data Type: string   
-### 3. Content URL (key: contentUrl)  
+### 3. Content (key: content)  
   
 Required: no  
 Data Type: string   
-### 4. Content (key: content)  
-  
-Required: no  
-Data Type: string   
-### 5. Errors (key: errors)  
+### 4. Errors (key: errors)  
   
 Required: no  
 Data Type: array string
