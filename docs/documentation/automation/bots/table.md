@@ -25,6 +25,7 @@
 | [Create Channel](/docs/documentation/automation/bots/pbcreatechannel) | Create a new Channel | _PBCreateChannel_ |  
 | [Create Property (2.0.0)](/docs/documentation/automation/bots/pbcreateproperty-2.0.0) | Create a new Property | _PBCreateProperty_ |  
 | [Create Property](/docs/documentation/automation/bots/pbcreateproperty) | Create a new Property | _PBCreateProperty_ |  
+| [Create Task (2.0.1)](/docs/documentation/automation/bots/pbcreatetask-2.0.1) | Create a new Task | _PBCreateTask_ |  
 | [Create Task (2.0.0)](/docs/documentation/automation/bots/pbcreatetask-2.0.0) | Create a new Task | _PBCreateTask_ |  
 | [Create Task](/docs/documentation/automation/bots/pbcreatetask) | Create a new Task | _PBCreateTask_ |  
 | [Create User (2.0.0)](/docs/documentation/automation/bots/pbcreateuser-2.0.0) | Create a new User | _PBCreateUser_ |  
@@ -60,8 +61,10 @@
 | [Generate HTML](/docs/documentation/automation/bots/pbtemplate) | Generates an HTML from a template and an object with data | _PBTemplate_ |  
 | [Update Channel (2.0.0)](/docs/documentation/automation/bots/pbupdatechannel-2.0.0) | Update a Channel | _PBUpdateChannel_ |  
 | [Update Channel](/docs/documentation/automation/bots/pbupdatechannel) | Update a Channel | _PBUpdateChannel_ |  
+| [Update Property (2.0.1)](/docs/documentation/automation/bots/pbupdateproperty-2.0.1) | Update a Property | _PBUpdateProperty_ |  
 | [Update Property (2.0.0)](/docs/documentation/automation/bots/pbupdateproperty-2.0.0) | Update a Property | _PBUpdateProperty_ |  
 | [Update Property](/docs/documentation/automation/bots/pbupdateproperty) | Update a Property | _PBUpdateProperty_ |  
+| [Update Task (2.0.1)](/docs/documentation/automation/bots/pbupdatetask-2.0.1) | Update a Task | _PBUpdateTask_ |  
 | [Update Task (2.0.0)](/docs/documentation/automation/bots/pbupdatetask-2.0.0) | Update a Task | _PBUpdateTask_ |  
 | [Update Task](/docs/documentation/automation/bots/pbupdatetask) | Update a Task | _PBUpdateTask_ |  
 | [Update User (2.0.0)](/docs/documentation/automation/bots/pbupdateuser-2.0.0) | Update a User | _PBUpdateUser_ |  
