@@ -65,3 +65,16 @@ There are a limited set of internal _data models_ which are explained below.
         U --> W
         C --> W
 `}/>
+
+## Data Types {#data-types}
+_Data types used in the models._
+
+- **string**
+- **number**
+- **boolean**
+- **ISO date**: YYYY-MM-DDTHH:mm:ss.SSSZ 
+- **ObjectId<T\>**:  
+  ObjectId: a data object's unique 24 character hexadecimal (a-f 0-9) ID number, e.g., 507f1f77bcf86cd799439011
+  
+  <T\> = indicates a data model: COT* (examples: COTUser, COTCompany, COTGroup)
+- **[ ]** : indicates an array
