@@ -78,3 +78,4 @@ _Data types used in the models._
   
   <T\> = indicates a data model: COT* (examples: COTUser, COTCompany, COTGroup)
 - **[ ]** : indicates an array
+- **object**: indicates an internal object
