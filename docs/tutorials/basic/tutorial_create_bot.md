@@ -112,7 +112,7 @@ _Your screen should look something like the following image:_
 - Fill the fields with the following information:
 
   * **Subject**: `Hey! We need to talk to you.`
-  * **Data**: `{"recipientName":"","recipientEmail":"","companyName":"Ruanda","title":["Your team is looking for you."],"action":"","code":"","messageA":"$JOIN# #Your presence is requested in the channel:#($VALUE#channel|nameDisplay)#","messageB":""}`
+  * **Data**: `{"recipientName":"","recipientEmail":"","companyName":"Ruanda","title":["Your team is looking for you."],"action":"","code":"","messageA":"$JOIN# #Your presence is requested in the #($VALUE#channel|nameDisplay)# channel.","messageB":""}`
   * In the **To** section, press <span class="badge badge--primary">+ Add Item</span>
   * Then, in the **Item** field, type `$VALUE#cmdArgs`
 
