@@ -85,7 +85,7 @@ module.exports = {
             'documentation/admin/admin_links',
             'documentation/admin/admin_group',
           ],
-          collapsed: true,
+          collapsed: false,
         },
         {
           type: 'category',
@@ -115,7 +115,7 @@ module.exports = {
             },
             'documentation/admin/admin_company',
           ],
-          collapsed: true,
+          collapsed: false,
         },
         {
           type: 'category',
@@ -127,7 +127,7 @@ module.exports = {
             'documentation/admin/admin_auditlogs',
             // 'documentation/admin/routines',
           ],
-          collapsed: true,
+          collapsed: false,
         },
       ],
       collapsed: true,
@@ -347,7 +347,7 @@ module.exports = {
         'documentation/models/communication/model_channels',
         'documentation/models/communication/model_messages',
         'documentation/models/communication/model_groups',
-        'documentation/models/communication/model_filesharing',
+        // 'documentation/models/communication/model_filesharing',
       ]
     },
     {
