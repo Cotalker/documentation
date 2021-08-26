@@ -134,7 +134,7 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 
 ## Help {#help}
 
-- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post yours questions or search for previous answers given in the forum
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
 
 ## Deprecated Elements {#deprecated}
 _The following deprecated items might still be found in the model:_

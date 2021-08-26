@@ -65,4 +65,4 @@ Permissions grant access to read or write in the [administrative panel](/docs/do
 
 ## Help {#help}
 
-- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post yours questions or search for previous answers given in the forum
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
