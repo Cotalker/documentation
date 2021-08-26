@@ -46,7 +46,7 @@ Permissions grant access to read or write in the [administrative panel](/docs/do
 
 ## Elements {#elements}
 
-| Field | Description | Type | Notes |
+| Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | -------- | ---- | ---- |
 | _id | Access role's unique ID number | ObjectId<COTAccessRole\> | |
 | active | Indicates if the access role is active or not | boolean | |
