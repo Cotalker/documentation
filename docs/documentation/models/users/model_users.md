@@ -30,7 +30,6 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
         "611421e627bec7f78be84cb0",
         "611421ef613b523cb41fbf28"
     ],
-    "permissions": [],
     "isActive": true,
     "termsConditions": true,
     "search": [
@@ -90,17 +89,7 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 | Element | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
 | _id | The user's ID number | ObjectId<COTUser\> | |
-| name | User's full name | object | |
-| name.displayName | | string | |
-| name.names | User's first and second names | string | |
-| name.lastName | User's surname | string | |
-| name.secondLastName | User's second surname | string | |
-| properties | [Properties (elements)](/docs/documentation/client/basic_concepts#elements) assigned to the user | ObjectID<COTProperty\>[ ] | [Property(Elements) Model](/docs/documentation/models/databases/model_properties) |
 | accessRoles | The [access roles](/docs/documentation/admin/admin_accessrole) the user has been designated | ObjectID<COTAccessRole\>[ ] | [Access Roles Model](/docs/documentation/models/users/model_accessroles) |
-| isActive | | boolean | |
-| termsConditions | Displays the company's terms of conditions to new users | boolean | |
-| search | Search engine keywords to let other users locate them | string[ ] | Automatically created |
-| isOnline | | boolean | |
 | avatar | User's profile picture | object | |
 | avatar.small | Small profile picture | string | URL |
 | avatar.square | Square profile picture | string | URL |
@@ -110,21 +99,30 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 | companies[index].hierarchy.boss | The ID number of the user's boss | ObjectId<COTUser\>[ ] | |
 | companies[index].hierarchy.peers | The ID number of the user's peers | ObjectId<COTUser\>[ ] | |
 | companies[index].hierarchy.subordinate | The ID number of the user's subordinates | ObjectId<COTUser\>[ ] | |
-| companies[index]._id | This object's ID number | ObjectId | |
+| companies[index]._id | Internal system ID. | ObjectId | Ignore this field. |
 | companies[index].companyId | The company's ID number | ObjectId<COTCompany\> | [Company Model](/docs/documentation/models/model_company) |
+| createdAt | The date the _user_ was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | email | The user's email. | string | The email cannot be changed. |
+| extensions | Collections used to store user information | object | [Additional fields](/docs/documentation/admin/users#additional-fields) |
+| isActive | Indicates if the user is still active or if it has been deactivated | boolean | |
+| isOnline | | boolean | |
+| job | ID number of the [job title](/docs/documentation/admin/admin_company#job-titles) assigned to the user | ObjectId<COTJobTitles\> | |
 | jobTitle | The user's job title | string | |
+| lastRequestDate | | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| modifiedAt | Last time the user's data was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| name | User's full name | object | |
+| name.displayName | | string | |
+| name.names | User's first and second names | string | |
+| name.lastName | User's surname | string | |
+| name.secondLastName | User's second surname | string | |
+| permissionsV2 | Permissions the user has been granted | string[ ] | [List of default permissions](/docs/documentation/admin/admin_accessrole#default-permissions) |
+| phone | The user's registered phone number | string | |
+| properties | [Properties (elements)](/docs/documentation/client/basic_concepts#elements) assigned to the user | ObjectID<COTProperty\>[ ] | [Property(Elements) Model](/docs/documentation/models/databases/model_properties) |
+| search | Search engine keywords to let other users locate them | string[ ] | Automatically created |
 | settings | | object | |
 | settings.hideSummary | | boolean | |
 | settings.hideContacts | | boolean | |
-| phone | The user's registered phone number | string | |
-| lastRequestDate | | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| createdAt | The date the _user_ was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| modifiedAt | Last time the user's data was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| job | ID number of the [job title](/docs/documentation/admin/admin_company#job-titles) assigned to the user | ObjectId<COTJobTitles\> | |
-| extensions | Collections used to store user information | object | [Additional fields](/docs/documentation/admin/users#additional-fields) |
-| permissionsV2 | Permissions the user has been granted | string[ ] | [List of default permissions](/docs/documentation/admin/admin_accessrole#default-permissions) |
-
+| termsConditions | Displays the company's terms of conditions to new users | boolean | |
 
 
 ## Additional Resources {#resources}
@@ -136,13 +134,21 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 
 ## Help {#help}
 
-- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post yours questions or search for previous answers given in the forum
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
 
 ## Deprecated Elements {#deprecated}
 _The following deprecated items might still be found in the model:_
 
 | Element | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
+| badge | | string[ ] | DEPRECATED |
+| devices | The devices or platforms the user has installed | DevicesModel | DEPRECATED |
+| emailIsVerified | | boolean | DEPRECATED |
+| extra | Additional attributes; Additional fields (_user.extensions_) takes its place | object | DEPRECATED |
+| hierarchyLevel | | string | DEPRECATED |
+| isPhoneVerified | | boolean | DEPRECATED |
+| messagesUnread | | string[ ] | DEPRECATED |
+| needPasswordChange | | boolean | DEPRECATED |
 | notifications | Notification options | NotificationModel | DEPRECATED |
 | notifications.general | Options: `all, none, work` | string | DEPRECATED |
 | notifications.turnOffGroup | | strings[ ] | DEPRECATED |
@@ -153,16 +159,10 @@ _The following deprecated items might still be found in the model:_
 | notifications.work[index].start | Indicates the hour the user begins their workday | string (HH:MM) | DEPRECATED |
 | notifications.work[index].end | Indicates the hour the user ends their workday | string (HH:MM | DEPRECATED |
 | permissions | | string[ ] | DEPRECATED |
-| devices | The devices or platforms the user has installed | DevicesModel | DEPRECATED |
-| emailIsVerified | | boolean | DEPRECATED |
-| extra | Additional attributes; Additional fields (_user.extensions_) takes its place | object | DEPRECATED |
-| requiredChanges | | string[ ] | DEPRECATED |
-| isPhoneVerified | | boolean | DEPRECATED |
-| role | Options: `user, admin, super` | string | DEPRECATED |
-| needPasswordChange | | boolean | DEPRECATED |
-| hierarchyLevel | | string | DEPRECATED |
-| taskManager | | boolean | DEPRECATED |
-| messagesUnread | | string[ ] | DEPRECATED |
-| badge | | string[ ] | DEPRECATED |
 | profileInfo | | ProfileSettingsModel | DEPRECATED |
 | provider | | string | DEPRECATED |
+| requiredChanges | | string[ ] | DEPRECATED |
+| role | Options: `user, admin, super` | string | DEPRECATED |
+| taskManager | | boolean | DEPRECATED |
+
+

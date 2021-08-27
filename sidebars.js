@@ -347,7 +347,6 @@ module.exports = {
         'documentation/models/communication/model_channels',
         'documentation/models/communication/model_messages',
         'documentation/models/communication/model_groups',
-        // 'documentation/models/communication/model_filesharing',
       ]
     },
     {
