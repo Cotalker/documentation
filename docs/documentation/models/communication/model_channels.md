@@ -96,7 +96,7 @@ import TabItem from '@theme/TabItem';
 | ----  | ---- | ----------- | ----  |
 | _id | Channel ID number | ObjectId<COTChannel\> | |
 | __v | Document version. | | Cannot be modified and should never be used. |
-| bots | Array with the IDs of the bots assigned to the channel | ObjectId[ ] | [Bot Data Model](/docs/documentation/models/automations/model_bots) |
+| bots | Array with the IDs of the bots assigned to the channel | ObjectId<COTBot\>[ ] | [Bot Data Model](/docs/documentation/models/automations/model_bots) |
 | company | Company ID number | ObjectId<COTCompany\> | [Channel Data Model](/docs/documentation/models/model_company) |
 | createdAt | Channel creation date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | group | The channel's group ID number | ObjectId<COTGroup\> | [Group Data Model](/docs/documentation/models/communication/model_groups) |
