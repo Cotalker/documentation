@@ -11,6 +11,7 @@
 | [Action Button](/docs/documentation/automation/bots/pbactionbutton) |  | _PBActionButton_ |  
 | [Search for answers (2.0.0)](/docs/documentation/automation/bots/pbanswerchecker-2.0.0) | Search for form responses | _PBAnswerChecker_ |  
 | [Search for answers](/docs/documentation/automation/bots/pbanswerchecker) | Search for form responses | _PBAnswerChecker_ |  
+| [Calendar 2.0.0 (2.0.0)](/docs/documentation/automation/bots/pbcalendar-2.0.0) |  | _PBCalendar_ |  
 | [Change Task Status (2.0.0)](/docs/documentation/automation/bots/pbchangestate-2.0.0) | Change the status of a Task | _PBChangeState_ |  
 | [Change Task Status](/docs/documentation/automation/bots/pbchangestate) | Change the status of a Task | _PBChangeState_ |  
 | [Edit Channel Users (2.0.0)](/docs/documentation/automation/bots/pbchanneladduser-2.0.0) | Add or remove users from a Channel | _PBChannelAddUser_ |  
@@ -53,6 +54,7 @@
 | [Generate QR code](/docs/documentation/automation/bots/pbqrcode) | Generate a QR code | _PBQRCode_ |  
 | [Script (2.0.0)](/docs/documentation/automation/bots/pbscript-2.0.0) |  | _PBScript_ |  
 | [Script](/docs/documentation/automation/bots/pbscript) |  | _PBScript_ |  
+| [Submit Form (3.0.0)](/docs/documentation/automation/bots/pbsendsurvey-3.0.0) | Send a Form to a Channel | _PBSendSurvey_ |  
 | [Submit Form (2.0.0)](/docs/documentation/automation/bots/pbsendsurvey-2.0.0) | Send a Form to a Channel | _PBSendSurvey_ |  
 | [Submit Form](/docs/documentation/automation/bots/pbsendsurvey) | Send a Form to a Channel | _PBSendSurvey_ |  
 | [Edit users of a Task (2.0.0)](/docs/documentation/automation/bots/pbtaskaddeditor-2.0.0) | Add or remove users from a Task | _PBTaskAddEditor_ |  
