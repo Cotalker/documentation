@@ -25,7 +25,6 @@ There are a limited set of internal _data models_ which are explained below.
 * [__Channels__](/docs/documentation/models/communication/model_channels): Represents a space where users can communicate
 * [__Messages__](/docs/documentation/models/communication/model_messages): Has content and contentType that determines how to represent the element
 * [__Groups__](/docs/documentation/models/communication/model_groups): Represents a workflow, may contain channels and/or tasks or a link.
-* [__File Sharing__](/docs/documentation/models/communication/model_filesharing): Shared file 
 * [__Collections (Property Types)__](/docs/documentation/models/databases/model_propertytypes): Custom tables for companies. E.g., Products, Offices, Customers, Colors, SKUs, States, etc
 * [__Elements (Properties)__](docs/documentation/models/databases/model_properties): Items that fill or make up a _collection_.
 * [__Surveys__](/docs/documentation/models/surveys/model_surveys): Format of a form
