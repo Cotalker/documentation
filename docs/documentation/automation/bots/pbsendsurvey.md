@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-This parameterized bot sends surveys to channels. You can also configure the bot to automatically prefill survey fields. 
+This parameterized bot automatically fills out forms and sends them to the channel of your preference.
 
 :::caution Take note
 This bot is not retro-compatible. Use the latest version for best results.
