@@ -15,7 +15,7 @@ import Highlight from '@theme/Highlight';
 
 <span className="hero__subtitle"><em>
 
-Don't have time to fill out a survey. Let the bots do it!
+Don't have time to fill out a survey? Let the bots do it!
 
 </em></span>
 
@@ -28,7 +28,7 @@ Don't have time to fill out a survey. Let the bots do it!
 </div>
 <div class="card__body">
 
-Forms are essential for gathering and sharing data. That's why we've implemented a new version of the _Submit Form Bot_. Easily automate form submission by making the bots fill them out with the information they gather from your database. Gather all types of data with our flexible and programable surveys, and now with the power of automation!
+Forms are essential for gathering and sharing data. That's why we've implemented a new version of the _Submit Form Bot_. Gather all types of data with our flexible and programable surveys, and now with the power of automation! Easily automate form submissions by making the bots fill them out with the information they gather from your database. 🤖
 
 </div>
 <div class="card__footer">
