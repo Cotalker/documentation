@@ -48,7 +48,7 @@ _Further details about options available in the channel workspace._
 ### Chat Message Options {#chat-message-options}
 
 Right-click (or long-press on mobile devices) chat message bubbles in the channel to open up a menu with the following options:
-- **React**: Add an emoji reaction to a message. You can also click on an already given emoji to sum yourself on the counter. To retract from a _reaction_, on the message bubble press on the emoji you sent. The following emojis are available: 👍 👎 😄 🎉 😕 ❤️ 🚀 👀
+- **React**: Add an emoji reaction to a message. Click on emojis given by other users to add your reaction to the counter. To retract from a _reaction_, find the emoji you sent on the message bubble and click on it. 👍 👎 😄 🎉 😕 ❤️ 🚀 👀
 - **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be displayed. You can reply to more than one message at a time. You can respond to anything sent through the chat, i.e., files, media, surveys, etc.
 - **Copy**: Copy text messages to your clipboard.
 - **Delete**: Delete a message _you_ have sent. This option is available only up to 24 hours after you have sent the message.
@@ -57,7 +57,10 @@ _Examples of replies to text, video, and surveys, respectively:_
 <img alt="chat response text" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_03.png')} />
 <br/>
 
-_Example of emoji reactions:_
+_Examples of emoji reactions:_
+<img alt="chat response text" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/client_channels_emoji_list.png')} />
+<br/>
+
 <img alt="chat response text" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_emoji.png')} />
 <br/>
 
