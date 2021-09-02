@@ -11,23 +11,19 @@ Data Type: string
 URL from which the PDF will be created  
 Required: no  
 Data Type: string   
-### 3. Name (key: outputFile)  
-PDF name  
-Required: true  
-Data Type: string   
-### 4. Disable automatic header (key: disableAutoHeaders)  
+### 3. Disable automatic header (key: disableAutoHeaders)  
 Indicates whether the automatic header should be disabled when loading the URL to generate the PDF  
 Required: no  
 Data Type: boolean   
-### 5. Copies (key: copies)  
+### 4. Copies (key: copies)  
 Copies to be generated  
 Required: no  
 Data Type: string   
-### 6. Alternative Converter (key: useAltPdfConverter)  
+### 5. Alternative Converter (key: useAltPdfConverter)  
 Use Alternative Pdf Converter.  
 Required: no  
 Data Type: boolean   
-### 7. Identifier (key: linkIdentifier)  
+### 6. Identifier (key: linkIdentifier)  
 Code used to identify the PDF  
 Required: no  
 Data Type: string   
