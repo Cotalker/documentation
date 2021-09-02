@@ -28,7 +28,7 @@ An emoji is worth a thousand words.
 </div>
 <div class="card__body">
 
-We're very emotional about emojis! 👍 😄 🎉  ❤️ 🚀 👀  ! And because there's such a broad spectrum of human emotions, it's only fair that our software developers have painstakingly added even more emojis so that you can react correspondingly to text messages in the channel workspace. Express yourself and have fun, while being productive at the same time!
+We're very emotional about emojis! 👍 😄 🎉  ❤️ 🚀 👀  ! And because there's such a broad spectrum of human emotions, it's only fair that our software developers have painstakingly added even more emojis so that you can react correspondingly to text messages in the channel workspace. And if that wasn't enough, we've thrown in an emoji _search_ option and a _recently used_ section. Express yourself and have fun, while being productive at the same time!
 
 </div>
 <div class="card__footer">
