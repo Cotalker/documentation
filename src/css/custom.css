@@ -96,6 +96,10 @@
   font-size: 28px;
 }
 
+/* .alert--secondary {
+  color: #ffb126;
+} */
+
 html[data-theme='light'] {
   --ifm-link-color: #5784b1;
   --ifm-font-color-base: #113355;
@@ -119,6 +123,7 @@ html[data-theme='light'] {
   --ifm-color-content-inverse: var(--ifm-color-emphasis-0);
   --ifm-color-emphasis-0: var(--ifm-color-gray-0);
   --ifm-color-gray-0: var(--ifm-color-white);
+  --ifm-color-gray-900: #1c1e21;
   --ifm-color-white: #fff;
   --ifm-color-danger: var(--ifm-color-danger-darker);
   --note-title-color: #113355;
@@ -137,12 +142,13 @@ html[data-theme='dark'] {
   --ifm-button-color: #fff;
   --ifm-heading-color: #ffffff;
   --ifm-button-color: var(--ifm-font-color-base-inverse);
-  --note-title-color: #113355;
+  --note-title-color: #ffffff;
   --row-1-color: #202020;
   --row-2-color: #1c1e21;
   --row-title-color: #000000;
   --box-color: #606770;
-  --ifm-color-secondary: #a1a1a1;
+  --ifm-color-secondary: #242526;
+  --ifm-color-gray-900: #ffffff;
 }
 
 /*.navbar__logo {*/
