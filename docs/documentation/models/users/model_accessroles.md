@@ -14,33 +14,17 @@ Permissions grant access to read or write in the [administrative panel](/docs/do
 
 ```json
 {
-    "accessRoles": [
-        {
-            "_id": "611aa33968a0c11d03eb671c",
-            "active": true,
-            "permissions": [
-                "admin-*-write",
-                "report-*-write",
-                "db-*-write"
-            ],
-            "name": "Full Admin Access",
-            "description": "Power to destroy and create!",
-            "company": "611aa342e9f6fe9c2c13ce72"
-        },
-        {
-            "_id": "611aa34dd0f0f9fa10b52dd3",
-            "active": true,
-            "permissions": [
-                "admin-access",
-                "admin-accesscontrol-read",
-                "admin-answers-read",
-                "admin-groups-read"
-            ],
-            "name": "Tester",
-            "description": "Restricted admin access",
-            "company": "611aa342e9f6fe9c2c13ce72"
-        }
-    ]
+    "_id": "611aa34dd0f0f9fa10b52dd3",
+    "active": true,
+    "permissions": [
+        "admin-access",
+        "admin-accesscontrol-read",
+        "admin-answers-read",
+        "admin-groups-read"
+    ],
+    "name": "Tester",
+    "description": "Restricted admin access",
+    "company": "611aa342e9f6fe9c2c13ce72"
 }
 ```
 
