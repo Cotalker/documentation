@@ -54,20 +54,27 @@ _From the administrative panel, you can access the following:_
 
 <span className="hero__subtitle">DATA</span>
 
-  4. [**Users**](/docs/documentation/admin/users): Create and modify _user profiles_ along with their access roles, job titles, and additional fields.
-  5. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
-  6. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
-  7. [**Database**](/docs/documentation/admin/admin_properties): Manage collections and elements.
-  8. [**Surveys**](/docs/documentation/admin/survey/survey_overview): Create and modify surveys used to gather information from users or configure workflows.
-  9. [**Company**](/docs/documentation/admin/admin_company): Edit company information, environment configuration, and job titles.
+  4. [**Database**](/docs/documentation/admin/admin_properties): Manage collections and elements.
+  5. [**Surveys**](/docs/documentation/admin/survey/survey_overview): Create and modify surveys used to gather information from users or configure workflows.
+
+<span className="hero__subtitle">COMPANY</span>
+
+  6. [**Users**](/docs/documentation/admin/users): Create and modify _user profiles_ along with their access roles, job titles, and additional fields.
+  7. [**Job Titles**](/docs/documentation/admin/admin_jobtitles): Create job titles that can be associated to users as elements with special attributes.
+  8. [**Configuration**](/docs/documentation/admin/admin_company): Edit company information and language.
 
 <span className="hero__subtitle">AUTOMATIONS</span>
 
-  10. [**Bots**](/docs/documentation/admin/admin_bots): Create and edit customized bots to carry out automated routines.
-  11. [**Schedules**](/docs/documentation/admin/admin_bots): Create and edit scheduled routines.
-  12. [**Automation Log**](/docs/documentation/automation/automation_log): Monitor all automations carried out in the Cotalker environment.
-  13. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
-  14. [**Routines**](/docs/documentation/admin/routines): Create or edit predetermined bots that can be later used in routines.
+  9. [**Bots**](/docs/documentation/admin/admin_bots): Create and edit customized bots to carry out automated routines.
+  10. [**Schedules**](/docs/documentation/admin/admin_bots): Create and edit scheduled routines.
+  11. [**Automation Log**](/docs/documentation/automation/automation_log): Monitor all automations carried out in the Cotalker environment.
+  12. [**Routines**](/docs/documentation/admin/routines): Create or edit predetermined bots that can be later used in routines.
+
+<span className="hero__subtitle">SECURITY</span>
+
+  13. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
+  14. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
+  15. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
 
 </div>
 

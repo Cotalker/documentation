@@ -91,9 +91,6 @@ module.exports = {
           type: 'category',
           label: 'Data',
           items: [
-            'documentation/admin/users',
-            'documentation/admin/admin_accessrole',
-            'documentation/admin/admin_token',
             'documentation/admin/admin_properties',
             {
               type: 'category',
@@ -113,6 +110,16 @@ module.exports = {
               ],
               collapsed: true,
             },
+            
+          ],
+          collapsed: false,
+        },
+        {
+          type: 'category',
+          label: 'Company',
+          items: [
+            'documentation/admin/users',
+            'documentation/admin/admin_jobtitles',
             'documentation/admin/admin_company',
           ],
           collapsed: false,
@@ -124,8 +131,17 @@ module.exports = {
             'documentation/admin/admin_bots',
             'documentation/admin/admin_scheduler',
             'documentation/automation/automation_log',
-            'documentation/admin/admin_auditlogs',
             // 'documentation/admin/routines',
+          ],
+          collapsed: false,
+        },
+        {
+          type: 'category',
+          label: 'Security',
+          items: [
+            'documentation/admin/admin_accessrole',
+            'documentation/admin/admin_token',
+            'documentation/admin/admin_auditlogs',
           ],
           collapsed: false,
         },

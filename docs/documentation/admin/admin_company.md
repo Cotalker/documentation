@@ -1,7 +1,7 @@
 ---
 id: admin_company
-title: Company Section
-sidebar_label: Company
+title: Configuration (Company Section)
+sidebar_label: Configuration
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -9,59 +9,21 @@ import Highlight from '@theme/Highlight';
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Company.svg')} />
 
 ## Overview {#company-overview}
-The _company_ represents your organization in which all your workflows, groups, databases, users, access roles, surveys, and automations exist and relate with each other. 
-
-From the <span className="badge badge--primary">Company</span> section in the **Administration Panel**, you can create [job titles](#job-titles), edit [general](#general-information) and [billing](#billing-information) information, change some [appearance](#apperance) values of the Cotalker environment, and tweek other [features](#features) as well.
+From the <span className="badge badge--primary">Configuration</span> section in the **Administration Panel**, you can edit [general](#general-information) and [billing](#billing-information) company information, and even change some [appearance](#apperance) values in the Cotalker environment.
 
 
-_Access the Company section from the Administrative Panel:_
+## Access the Configuration Settings Panel {#access}
+
+To access the <span className="badge badge--primary">Configuration</span> section:
 
 <img alt="company" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_company_00.png')} />
 <br/>
 
+1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
+2. Select <span className="badge badge--primary">Configuration</span> from the **Administrative Panel**.
+3. The Configuration (Company) settings panel will open up.
 
-<!-- Waiting for PROD image -->
-<!-- <img alt="settings panel" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_company_01.png')} />
-<br/> -->
-
-## Job Titles {#job-titles}
-Administrators are able to create "pools" of _users_ using **job titles**. Each **job title** may have _attributes_ that are extended to the _users_.
-
-<div className="alert alert--secondary">
-
-### Create/Edit Job Titles {#create_edit_job_titles}
-
-_To create or edit **job titles**, press the <span className="badge badge--primary">Job Titles</span> button in the upper righthand corner:_
-
-<img alt="company" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_jobtitles_00.png')} />
-<br/>
-
-From the **Job Titles** settings panel, either: 
-
-- Create a new _job title_ by press the <span className="badge badge--primary">+</span> icon:
-
-<img alt="company" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_jobtitles_01a.png')} />
-<br/>
-
-- Edit an existing _job title_ by pressing the edit icon.
-
-<img alt="company" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_jobtitles_01b.png')} />
-<br/>
-
-When creating or editing **job titles**, you will find the following settings panel:
-
-<img alt="company" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_jobtitles_02.png')} />
-<br/>
-
-:::note
-- The _attributes_ added to the **job title** act like [_additional fields_](/docs/documentation/admin/users#additional-fields) and are assigned to all users belonging to that **job title** along with the ones they already have.
-- Just like _additional fields_, _attributes_ are selected from existing collections in the database. Go to the [Database](/docs/documentation/admin/admin_properties#creating-an-additional-fields-collection) section for more setup information.
-:::
-
-</div>
-<br/>
-
-## Field Descriptions
+## Field Descriptions {#field-descriptions}
 _Below are the settings panel's field description:_
 
 <div className="container box">
@@ -81,7 +43,7 @@ _Below are the settings panel's field description:_
 
 <div className="row table-row-2">
 <div className="col col--3"><b>Legal identifier</b>:</div>
-<div className="col col--5"></div>
+<div className="col col--5">The company's legal identification (tax) number.</div>
 <div className="col col--4"><em></em></div>
 </div>
 
@@ -106,8 +68,8 @@ _Below are the settings panel's field description:_
 
 <div className="row table-row-1">
 <div className="col col--3"><b>Taxpayer ID number</b>:</div>
-<div className="col col--5">For example: Employer Identification Number (EIN) in the U.S.; R.U.T. in Chile.</div>
-<div className="col col--4"><em></em></div>
+<div className="col col--5">The country's tax number code.</div>
+<div className="col col--4"><em>For example: Employer Identification Number (EIN) in the USA; RUT in Chile.</em></div>
 </div>
 
 <div className="row table-row-title">
@@ -120,7 +82,7 @@ _Below are the settings panel's field description:_
 <div className="row table-row-2">
 <div className="col col--3"><b>Default language</b>:</div>
 <div className="col col--5">You can choose between English or Spanish.</div>
-<div className="col col--4"><em>Determines the language sent by the server and does not depend on the device. For example, bot names will be in the chosen language.</em></div>
+<div className="col col--4"><em>Determines the language the platform displays its responses. This option is independant of the device or web browser language. For example, bot names will be displayed in the chosen language but generic displays will be in the web browser’s language.</em></div>
 </div>
 
 <div className="row table-row-1">
@@ -128,6 +90,8 @@ _Below are the settings panel's field description:_
 <div className="col col--5">Work in progress.</div>
 <div className="col col--4"><em></em></div>
 </div>
+
+<!-- CURRENTLY NOT AVAILABLE
 
 <div className="row table-row-title">
 <div className="col col--12"><b>
@@ -195,6 +159,6 @@ This option will limit users' ability to see other users in their contact lists,
 <div className="col col--3"><b>News properties' categories</b>:</div>
 <div className="col col--5">Work in progress.</div>
 <div className="col col--4"><em></em></div>
-</div>
+</div> -->
 
 </div>

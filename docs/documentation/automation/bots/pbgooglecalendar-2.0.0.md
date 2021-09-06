@@ -1,32 +1,60 @@
 # Google Calendar Integration  
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img alt="title image" className="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />
+<img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
 <br/>
 
 ## Overview {#overview}
 
-This stage-bot integrates Cotalker with Google Calenders. Create meetings or events and send ICS invitations to any email. 
+This stage-bot integrates Cotalker with Google Calendars. Create meetings or events and send ICS invitations to any email. 
 
-Most email clients will show the event.
+Most email clients will show the event. Invitations can be sent to any user, even those _not_ in the organization's Google Workspace.
 
 Before beginning, you will need to have a Google email account associated with the company's Google Workspace.
 
-:::note keep in mind
-- The **Organizer ID** must contain a valid domain email, i.e., a Google email account that belongs to the organization's Google Workspace. Events will be scheduled in the organization's Google Workspace Calendar.
-- _Date & Time_ must be in Javascript Format: `YYYY-MM-DDTHH:mm:ss.sssZ`
-- The **Invitees IDs** field supports email addresses or Cotalker ID numbers. Press the <span className="badge badge--primary">+ Add Item</span> button for each invitation recipient. 
-- **Timezone** must be set using the TZ Database name format, e.g., America/Santiago, America/Sao_Paulo, Asia/Dubai, Asia/Shanghai, etc.
-- Invitations can be sent to any user, even those **not** in the organization's Google Workspace.
+## Special Inputs {#special-inputs}
+
+<div className="alert alert--secondary">
+
+### Date & Time Inputs {#date-time-input}
+In [Start Date](#4-start-date-key-initialdate) and [End Date](#5-end-date-key-enddate), valid inputs are:
+
+<div className="padding-left--lg">
+
+**ISODate**: <br/>
+`YYYY-MM-DDTHH:mm:ss.sssZ`
+
+**Survey Date Answer**:<br/>
+`$VALUE#answer|data[find=>identifier=myidentifier]|process|0`
+
+**Date Object**:<br/>
+`$VALUE#createdAt`
+
+:::note
+Go to [COTLang](/docs/documentation/automation/admin_cotlang) section for more information on scripts shown above.
 :::
 
-<div className="alert--secondary">
+</div>
+<br/>
 
-## Setup Example {#setup-example}
+### Timezone {#timezone}
+The [Timezone](#7-timezone-key-timezone) must be set using the TZ Database name format, e.g., America/Santiago, America/Sao_Paulo, Asia/Dubai, Asia/Shanghai, etc.
+
+### Organizer ID {#organizer-id}
+For the [Organizer ID](#8-organizer-id-key-organizer), you must use the ObjectId of a [COTUser](docs/documentation/models/users/model_users) with a valid domain email, i.e., a Google email account that belongs to the organization's Google Workspace. Events will be scheduled in the organization's Google Workspace Calendar.
+
+### Invitees IDs {#invitees}
+The [Invitees IDs](#9-invitees-ids-key-invitedbyid) field supports email addresses or [COTUser](/docs/documentation/models/users/model_users) ObjectIDs. Press the <span className="badge badge--primary">+ Add Item</span> button for each invitation recipient. 
+
+</div>
+<br/>
+
+
+## JSON Sample {#json-sample}
 
 ```json
     {
-        "_id" : "5f59923c42d99d000982d0aa", 
+        "_id" : "6130ecc9a3c2f31c626d4404", 
         "key" : "calendar", 
         "name" : "PBCalendar", 
         "version" : "2.0.0", 
@@ -36,13 +64,13 @@ Before beginning, you will need to have a Google email account associated with t
             "initialDate" : ISODate("2021-08-05T20:51:30.551+0000"), 
             "durationMinutes" : 30.0, 
             "invitedById" : [
-                "5f6cfcaf7e081c0008502f3a", 
-                "5bc9ffc7f25ac42f0410179d"
+                "6130ecd1f24f031951a4d29d", 
+                "6130ecd8a2aa9b74a14d03ab"
             ], 
             "invitedByEmail" : [
                 "sample@gmail.com"
             ], 
-            "owner" : "5f57dc679d700e0008cc131e"
+            "owner" : "6130ece1611250a6b29a9879"
         }, 
         "customNetworkRequest" : [
         ], 
@@ -52,13 +80,13 @@ Before beginning, you will need to have a Google email account associated with t
     }
 ```
 
-</div>
-<br/>
-
 ## Expected Result {#expected-result}
 
 <img alt="email" className="img_sizing item shadow--tl" src={useBaseUrl('img/pbcalendar_00.png')} />
 <br/>
+
+
+--------
 
   
 **Domain wide integration**  
