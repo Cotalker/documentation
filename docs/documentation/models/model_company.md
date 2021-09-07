@@ -14,17 +14,31 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 
 ```json
 {
+    "__v" : 14,
     "_id" : "6136968b580aaf2b0e49d844",
-    
-    
-    "subdomain" : "acme",
+    "admin" : [ 
+        "6136969432d0379f7490cdf3"
+    ],
+    "appContacts" : true,
+    "contactMode" : "default",
+    "createdAt" : "2018-10-19T15:06:35.726Z",
+    "defaultCountry" : "US",
+    "defaultLanguage" : "en",
     "displayName" : "ACME",
+    "emailDomains" : [ 
+        "cotalker.com"
+    ],
+    "help" : "6136969de063469044d87926",
+    "hideSummary": false,
+    "isActive" : true,
     "legalName" : "ACME INC.",
     "legalIdentifierCode": "EIN",
     "legalIdentifier": "123-45-6789",
-    "accessRolesVersion" : "v.1.0",
-    "allowUserCreation" : true,
-    "contactMode" : "default",
+    "modifiedAt" : "2021-08-20T19:35:11.648Z",
+    "offline" : {
+        "isActive" : false,
+        "maxSyncTimeMs" : 0
+    },
     "permissions" : {
         "receiveNotifications" : true,
         "readLocation" : true,
@@ -32,30 +46,8 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
             "value" : true
         }
     },
-    "modifiedAt" : "2021-08-20T19:35:11.648Z",
-    "createdAt" : "2018-10-19T15:06:35.726Z",
-    "appContacts" : true,
-    
-    "isActive" : true,
-    "defaultLanguage" : "en",
-    "defaultCountry" : "US",
-    
-    "admin" : [ 
-        "6136969432d0379f7490cdf3"
-    ],
-    "__v" : 14,
-    "help" : "6136969de063469044d87926",
-    
-    "emailDomains" : [ 
-        "cotalker.com"
-    ],
     "signatureDuration" : 604800,
-    
-    "offline" : {
-        "isActive" : false,
-        "maxSyncTimeMs" : 0
-    },
-
+    "subdomain" : "acme",
     "system" : "613696a4a43cf12cb25c7de5"
 }
 ```
@@ -74,8 +66,7 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | defaultLanguage | Determines the language the platform displays responses. This option is independant of the device or web browser language. For example, bot names will be displayed in the chosen language but generic displays will be in the web browser's language. | string | `en` (English) or `es` (Spanish) |
 | emailDomains | Indicates company's email address domains | string[ ] | Example: `company.com` |
 | help | Indicates the user ID of help contact | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
-| hideHome | Hides home icon in the Main Menu Bar |boolean | ??? |
-| hideSummary | If `false`, displays the home icon in the Main Menu Bar. | boolean | Pressing the _home_ icon shows all recent conversations in the _group panel_. |
+| hideSummary | If `false`, it displays the home icon in the Main Menu Bar. | boolean | Pressing the _home_ icon shows all recent conversations in the _group panel_. |
 | isActive | Indicates if a company is active or if it has been desactivated | boolean | |
 | legalName | The official name of the company | string | |
 | legalIdentifierCode | Indicates a country's taxpayer identifier; doesn't have to exact. | string | For examlple, `RUT` in Chile, `EIN` or `TIN` in the USA |
@@ -88,9 +79,9 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | permissions.showTos | Displays "terms of service" document when new users log in for the first time | object | |
 | permissions.showTos.value | Determines whether or not to display the "terms of service" | boolean | If no URL is indicated, Cotalker will display its generic terms of service. |
 | permissions.showTos.url | Indicates the URL of the "terms of service" document to display; a Google document will work just fine | string | URL |
-| signatureDuration | | number | ??? |
+| signatureDuration | Indicates the time period for which the authentication signature is valid | number | The value is in seconds; default is `604800`, i.e., seven days.  |
 | startGroup | Indicates which _group_ appears in the [group panel](/docs/documentation/client/groups#group-panel) at start up | ObjectId<COTGroup\> | If left `null`, a summary of most recent conversations will show up in the [group panel](/docs/documentation/client/groups#group-panel).
-| subdomain | | string | ??? |
+| subdomain | Provides the company's subdomain name | string | |
 | system | Indicates the user ID of system manager contact | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
 
 
@@ -113,6 +104,7 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | ----  | ---- | ----------- | ---- |
 | accessRolesVersion | | string | |
 | allowUserCreation | | boolean | |
+| hideHome | |boolean | |
 | permissions.receiveNotifications | Notification pop-ups | boolean | |
 | permissions.readLocation | Obtain GPS location data | boolean | |
 | appSearch | | boolean | |
