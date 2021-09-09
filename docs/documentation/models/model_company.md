@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description
 
-The Company Data Model (COTCompany) is the underlying configuration for the platform and most data models are associated with it. It contains basic company information, such as name, tax identification number, and country. It also establishes platform display settings such as language, icon display, initial groups, and much more.
+The Company Data Model (COTCompany) is the underlying configuration for the platform. Most data models are associated with it. It contains basic company information, such as name, tax identification number, and country. It also establishes platform display settings such as language, icon display, initial groups, and much more.
 
 ## JSON Sample {#json-sample}
 
@@ -52,7 +52,7 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 }
 ```
 
-## Elements {#elements}
+## Fields {#fields}
 
 | Field | Type | Description | Notes |
 | ----  | ---- | ----------- | ----  |
@@ -85,7 +85,7 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | system | Indicates the user ID of system manager contact | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
 
 
-## Elements Currently on Standby {#standby}
+## Fields Currently on Standby {#standby}
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
 | plan | | string | |
@@ -93,11 +93,11 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | appFiles | | boolean | |
 | appLogo | | string | URL |
 
-## SHOULD NOT BE USED
+## Should not be modified {#not-to-be-modified}
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
 | __v | version number | number | |
-| propertyTypes | | string[ ] | |
+| propertyTypes | Indicates the property types or collections associated with the company | string[ ] | |
 
 ## Soon to be deprecated {#soon-to-be-deprecated}
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
@@ -109,7 +109,7 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | permissions.readLocation | Obtain GPS location data | boolean | |
 | appSearch | | boolean | |
 
-## DEPRECATED
+## Deprecated {#deprecated}
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |

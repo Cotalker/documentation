@@ -13,42 +13,40 @@ A message model (COTMessage) contains all the information concerning a particula
 ## JSON Sample {#json-sample}
 
 
-## Elements {#elements}
+## Field {#fields}
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
 | \_id | Message ID number | ObjectId<COTMessage\> | |
 | answer | A survey _answer_ that is sent back as a message in the channel workspace | ObjectId<COTAnswer.uuid\>#ObjectId<COTSurvey\> | [Answers Model](/docs/documentation/models/surveys/model_answers), [Survey Model](/docs/documentation/models/surveys/model_surveys) |
 | channel | The channel the message is sent in | ObjectId<COTChannel\> | [Channel Model](/docs/documentation/models/communication/model_channels) |
-| cmd | ____ | object | ???? |
-| cmd.ids | array | [ ] | DATABASE ONLY HAS ARRAYS WITH 0 ELEMENTS |
+| cmd | ____ | object |  |
+| cmd.ids | array | [ ] | |
 | cmd.by | ____ | ObjectId | ____ |
-| cmd.status | ____ | number | _____ |
+| cmd.status | ____ | number | ____ |
 | cmd.visibility | ____ | boolean | ____ |
 | content | Displayed data; could be user text input, system message, or file. | string | Required |
 | contentArray | ID number of survey _questions_ answered | ObjectId<COTQuestion\>[ ] | [Question Model](/docs/documentation/models/surveys/model_questions) |
 | contentType | Indicates content type, for example: `text/plain` (user text input), `text/system` (system generated text), `application/vnd.cotalker.survey` (answered survey), `application/pdf` (system generated file), `image/gif` (uploaded gif image) | string | Required |
 | createdAt | The date and time the message was created | double |  |
-| form | General information of a survey or form. | object | |
-| form.modifiedAt | array | ISODate[ ] | YYYY-MM-DDTHH:mm:ss.SSSZ  |
-| form.id | Contains the main-survey id, unique for the entire survey. | ObjectId | **RESPECTIVE ObjectId NOT FOUND** |
-| form.createdAt | ____ | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| extendsAnswer | ____ | string | |
+| form | General information of a submitted form. | object | A copy of the question responses can be found in `messages.responses` |
+| form.createdAt | Date the form was submitted originally submitted | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| form.id | Contains the main-survey id, unique for the entire survey. | ObjectId | |
+| form.modifiedAt | List of dates the form was modified | ISODate[ ] | YYYY-MM-DDTHH:mm:ss.SSSZ  |
 | form.subid | contains the sub-survey id, unique per sub-survey (null for the non-sub-survey parts) | ObjectId | |
-| isActive | ____ | boolean | ____ |  ¿Aqui tengo una duda?
-| isSaved | ____ | number | ??? **EN LA BASE DE DATOS SOLO APARECE EL NUMERO '16' COMO 'VALUE'.** |
-| reply | array | [ ] | **NO EXAMPLES. DATABASE ONLY HAS EMPTY ARRAYS.** |
+| isActive | ____ | boolean | ____ |
+| isHidden | Used to hide sent messages from the view of other users in the chat room | boolean | When users choose to delete a message from the channel's workspace, this option is set to `true`; messages are never truly deleted, just hidden. |
+| isSaved | | number | ??? **EN LA BASE DE DATOS SOLO APARECE EL NUMERO '16' COMO 'VALUE'.** |
+| reply | Array of message IDs this message is replying to | ObjectID<COTMessage\>[ ] | |
 | modifiedAt | Date and time last modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ  |
 | modifiedLocal | Date and time last modified | double | |
-| responses | array | object[ ] | –––– | 
-| responses[index].cdata | array | string[ ] | ???? |
-| responses[index].cref | ____ | ObjectId | ???? |
+| responses | List of responses filled out in a form | object[ ] | Check `message.form` for the forms identification data | 
+| responses[index].cdata | Contains the responses to a given survey question | string[ ] | |
+| responses[index].cref | References the question | ObjectId<COTQuestion\> | [Question Data Model](/docs/documentation/models/surveys/model_questions) |
 | reactions | Emoji reactions to message | object | Emojis used on message appear as object keys, e.g., `reactions.laugh`, `reactions.rocket` |
 | sentBy | Indicates the ID number of the user that sent the message | ObjectId<COTUser\> | [User Model](/docs/documentation/models/users/model_users) |
 
-
-## JUST FOUND
-- [ ] extendsAnswer | ____ | string | **JUST FOUND. WHAT DOES IT DO?** |
-- [ ] isHidden | ____ | boolean | **JUST FOUND. WHAT DOES IT DO?** |
 
 # Additional Resources {#resources}
 

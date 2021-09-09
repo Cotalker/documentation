@@ -28,7 +28,7 @@ Permissions grant access to read or write in the [administrative panel](/docs/do
 }
 ```
 
-## Elements {#elements}
+## Fields {#fields}
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | -------- | ---- | ---- |

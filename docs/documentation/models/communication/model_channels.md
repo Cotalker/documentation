@@ -90,7 +90,7 @@ import TabItem from '@theme/TabItem';
 }
 ```
 
-## Elements {#elements}
+## Fields {#Fields}
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
@@ -130,9 +130,6 @@ import TabItem from '@theme/TabItem';
 | videoCall.isActive | Indicates if the video calls can be initiated within the channel | boolean | If `true`, calls are permitted |
 | videoCall.publishVideo | Indicates permissions needed to use the video | string[ ] | |
 | videoCall.publishAudio | Indicates permissions needed to use the audio | string[ ] | |
-
-
-
 
 ## Additional Resources {#resources}
 
