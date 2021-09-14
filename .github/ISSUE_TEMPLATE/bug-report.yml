@@ -1,4 +1,4 @@
----
+
 name: Bug report
 about: Use this template to report a new bug
 title: 'Bug report: '
@@ -99,6 +99,3 @@ body:
      - type: markdown
           attributes:
           value: "Thanks for reporting a bug!"
----
-
-test
