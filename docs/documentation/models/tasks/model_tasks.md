@@ -1,6 +1,6 @@
 ---
-title: Tasks
-sidebar_label: Tasks
+title: Tasks Data Model
+sidebar_label: COTTask
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 

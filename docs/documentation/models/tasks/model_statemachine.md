@@ -1,6 +1,6 @@
 ---
-title: State Machines
-sidebar_label: State Machines
+title: State Machines Data Model
+sidebar_label: COTStateMachine
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 

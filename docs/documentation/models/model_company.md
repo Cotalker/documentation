@@ -1,6 +1,6 @@
 ---
-title: Company
-sidebar_label: Company
+title: Companies Data Model
+sidebar_label: COTCompany
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description
 
-The Company Data Model (COTCompany) is the underlying configuration for the platform. Most data models are associated with it. It contains basic company information, such as name, tax identification number, and country. It also establishes platform display settings such as language, icon display, initial groups, and much more.
+The _Companies_ Data Model (COTCompany) is the underlying configuration for the platform. Most data models are associated with it. It contains basic company information, such as name, tax identification number, and country. It also establishes platform display settings such as language, icon display, initial groups, and much more.
 
 ## JSON Sample {#json-sample}
 
@@ -46,7 +46,6 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
             "value" : true
         }
     },
-    "signatureDuration" : 604800,
     "subdomain" : "acme",
     "system" : "613696a4a43cf12cb25c7de5"
 }
@@ -63,13 +62,13 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | createdAt | Creation date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | displayName | Company Name as viewed by users | string | |
 | defaultCountry | Country where the company resides. | string | Use ISO 3166-1 alpha-2 country codes, e.g., `US`, `CL`.  |
-| defaultLanguage | Determines the language the platform displays responses. This option is independant of the device or web browser language. For example, bot names will be displayed in the chosen language but generic displays will be in the web browser's language. | string | `en` (English) or `es` (Spanish) |
+| defaultLanguage | Determines the language the platform displays responses. This option is independent of the device or web browser language. For example, bot names will be displayed in the chosen language, but generic displays will be in the web browser's language. | string | `en` (English) or `es` (Spanish) |
 | emailDomains | Indicates company's email address domains | string[ ] | Example: `company.com` |
 | help | Indicates the user ID of help contact | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
 | hideSummary | If `false`, it displays the home icon in the Main Menu Bar. | boolean | Pressing the _home_ icon shows all recent conversations in the _group panel_. |
-| isActive | Indicates if a company is active or if it has been desactivated | boolean | |
+| isActive | Indicates if a company is active or if it has been deactivated | boolean | |
 | legalName | The official name of the company | string | |
-| legalIdentifierCode | Indicates a country's taxpayer identifier; doesn't have to exact. | string | For examlple, `RUT` in Chile, `EIN` or `TIN` in the USA |
+| legalIdentifierCode | Indicates a country's taxpayer identifier; doesn't have to be exact. | string | For example, `RUT` in Chile, `EIN` or `TIN` in the USA |
 | legalIdentifier | Company's legal identification number; any legal format is valid. | string | Format examples: `123-45-6789` (EIN); `12.345.678-9` (RUT) |
 | modifiedAt | Last modification date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | offline | Sets offline mode for mobile apps | object | Only available in enterprise edition |
@@ -79,9 +78,8 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | permissions.showTos | Displays "terms of service" document when new users log in for the first time | object | |
 | permissions.showTos.value | Determines whether or not to display the "terms of service" | boolean | If no URL is indicated, Cotalker will display its generic terms of service. |
 | permissions.showTos.url | Indicates the URL of the "terms of service" document to display; a Google document will work just fine | string | URL |
-| signatureDuration | Indicates the time period for which the authentication signature is valid | number | The value is in seconds; default is `604800`, i.e., seven days.  |
-| startGroup | Indicates which _group_ appears in the [group panel](/docs/documentation/client/groups#group-panel) at start up | ObjectId<COTGroup\> | If left `null`, a summary of most recent conversations will show up in the [group panel](/docs/documentation/client/groups#group-panel).
-| subdomain | Provides the company's subdomain name | string | |
+| startGroup | Indicates which _group_ appears in the [group panel](/docs/documentation/client/groups#group-panel) at startup | ObjectId<COTGroup\> | If left `null`, a summary of most recent conversations will show up in the [group panel](/docs/documentation/client/groups#group-panel).
+| subdomain | Used to internally reference the company; also used to indicate subdomain name for web client | string | |
 | system | Indicates the user ID of system manager contact | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
 
 
@@ -93,11 +91,11 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | appFiles | | boolean | |
 | appLogo | | string | URL |
 
-## Should not be modified {#not-to-be-modified}
+## SHOULD NOT BE USED
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
 | __v | version number | number | |
-| propertyTypes | Indicates the property types or collections associated with the company | string[ ] | |
+| propertyTypes | | string[ ] | |
 
 ## Soon to be deprecated {#soon-to-be-deprecated}
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
@@ -109,7 +107,7 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | permissions.readLocation | Obtain GPS location data | boolean | |
 | appSearch | | boolean | |
 
-## Deprecated {#deprecated}
+## DEPRECATED
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
@@ -125,6 +123,7 @@ The Company Data Model (COTCompany) is the underlying configuration for the plat
 | hierarchy | array | [ ] | DEPRECATED |
 | jobs | Array of job titles that can be assigned to users | string[ ] | DEPRECATED |
 | newsPropertyTypes | array | [ ] | DEPRECATED |
+| signatureDuration | Indicates the time period for which the authentication signature is valid | number; the value is in seconds; default is `604800`, i.e., seven days. | DEPRECATED |
 
 ## Additional Resources {#resources}
 

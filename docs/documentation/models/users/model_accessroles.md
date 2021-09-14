@@ -1,9 +1,10 @@
 ---
-title: Access Roles Model
-sidebar_label: Access Roles
+title: Access Roles Data Model
+sidebar_label: COTAccessRole
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<span className="hero__subtitle">COTAccessRole</span>
 
 
 ## Description {#description}

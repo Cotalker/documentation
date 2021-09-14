@@ -1,5 +1,6 @@
 ---
 title: Task Group
+sidebar_label: COTTaskGroup
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

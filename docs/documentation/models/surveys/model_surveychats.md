@@ -1,5 +1,6 @@
 ---
-title: Survey Chats
+title: Survey Chats Data Model
+sidebar_label: COTSurveyChat
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

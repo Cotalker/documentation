@@ -1,6 +1,6 @@
 ---
-title: Scheduler
-sidebar_label: Scheduler
+title: Scheduler Data Model
+sidebar_label: COTScheduler
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
