@@ -106,7 +106,7 @@ A message model (COTMessage) contains all the information concerning a particula
 | ----  | ---- | ----------- | ----  |
 | isActive | Used for hiding messages; replaced by `messages.isHidden` | boolean | DEPRECATED |
 | responses[index].\_id | Automatically generated internal system code | ObjectId | Not to be used |
-| readBy | Users that have read the message | ObjectId<COTUser\>[ ] | Deprecated |
+| readBy | Users that have read the message | ObjectId<COTUser\>[ ] | DEPRECATED |
 | cmd | ____ | object | DEPRECATED |
 | cmd.ids | array | [ ] | DEPRECATED |
 | cmd.by | ____ | ObjectId | DEPRECATED |
