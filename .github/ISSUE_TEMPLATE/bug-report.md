@@ -2,7 +2,7 @@
 name: Bug report
 about: 'Bug report: '
 title: 'Bug report: '
-labels: New Features
+labels: Bug report
 assignees: 'guillevalin'
 
 ---
