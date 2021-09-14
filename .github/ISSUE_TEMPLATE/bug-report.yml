@@ -47,15 +47,14 @@ body:
     - Production
     - Staging
     - Development
+  validations:
+    required: true
 
 - type: input
   id: affected_environment_other
   attributes:
     label: Affected environment (other)
     description: Please indicate any additional environment affected by this issue
-
-  validations:
-    required: true
 
 - type: input
   id: app_version
@@ -111,8 +110,6 @@ body:
       - Task: ...<!-- id:... code:... -->
       - Channel: ...<!-- id:... code:... -->
       - User: ...<!-- id:... email:... -->
-  validations:
-    required: true
 
 - type: markdown
   attributes:
