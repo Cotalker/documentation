@@ -3,7 +3,7 @@ name: Bug report
 about: 'Bug report: '
 title: 'Bug report: '
 labels: Bug report
-assignees: 'guillevalin'
+assignees: 'guillevalin,jdurandpaz'
 
 ---
 
