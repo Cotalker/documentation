@@ -63,7 +63,7 @@ body:
     label: App version
     description: |
      If this bug occurs in our web application, android or ios, please indicate the version
-     > :info: ![Cotalker app version](Cotalker/documentation/.github/ISSUE_TEMPLATE/assets/cotalker-app-version.gif?raw=true "Cotalker app version")
+     > :info: ![Cotalker app version](.github/ISSUE_TEMPLATE/assets/cotalker-app-version.gif?raw=true "Cotalker app version")
     placeholder: "16.4.5"
   validations:
     required: false
