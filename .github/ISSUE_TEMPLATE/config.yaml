@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Cotalker documentation
+    url: https://doc.cotalker.com/
+    about: Please read our documentation and tutorials to lear how to use Cotalker
+  - name: Cotalker dicussions
+    url: https://github.com/Cotalker/documentation/discussions
+    about: Please use discussions if you have any question about Cotalker or any specific implementation your are doing
