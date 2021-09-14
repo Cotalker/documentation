@@ -107,11 +107,11 @@ A message model (COTMessage) contains all the information concerning a particula
 | isActive | Used for hiding messages; replaced by `messages.isHidden` | boolean | DEPRECATED |
 | responses[index].\_id | Automatically generated internal system code | ObjectId | Not to be used |
 | readBy | Users that have read the message | ObjectId<COTUser\>[ ] | DEPRECATED |
-| cmd | ____ | object | DEPRECATED |
-| cmd.ids | array | [ ] | DEPRECATED |
-| cmd.by | ____ | ObjectId | DEPRECATED |
-| cmd.status | ____ | number | DEPRECATED |
-| cmd.visibility | ____ | boolean | DEPRECATED |
+| cmd | Used in mobile apps to calculate and save commanded message visibility | object | DEPRECATED |
+| cmd.ids | List of users I can command | ObjectID<COTUser\>[ ] | DEPRECATED |
+| cmd.by | User that commands me | ObjectId<COTUser\> | DEPRECATED |
+| cmd.status | `1`: _ids_ calculated; `2`: _by_ calculated; `3`: both | number | DEPRECATED |
+| cmd.visibility | My current state | boolean | DEPRECATED |
 
 # Additional Resources {#resources}
 
