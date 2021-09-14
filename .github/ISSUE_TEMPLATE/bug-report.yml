@@ -20,26 +20,26 @@ body:
     label: Affected system
     description: Please let us know which of our systems is affecting your Cotalker experience
     multiple: true
+    options:
+    - Cotalker Web Application
+    - Cotalker Android Application
+    - Cotalker iOS Application
+    - Cotalker Api
   validations:
     required: true
-  options:
-  - Cotalker Web Application
-  - Cotalker Android Application
-  - Cotalker iOS Application
-  - Cotalker Api
 
 - type: dropdown
-  id: affected_system
+  id: affected_environment
   attributes:
     label: Affected environment
     description: Only change this answer if you have access to a special Cotalker environment such as Staging or Development, please indicate which environment it corresponds to.
     multiple: true
+    options:
+    - Production
+    - Staging
+    - Development
   validations:
     required: true
-  options:
-  - Production
-  - Staging
-  - Development
 
 - type: input
   id: app_version
