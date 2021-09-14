@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__subtitle">COTMessageContentType</span>
 
 ## Description {#description}
-Message content types are part of the [COTMessage](/docs/documentation/models/communication/model_messages) data model: `messages.contentType`. The field's value are in string format. The following contains a list of the possible values and examples. Along with `messages.contentType`, `messages.content`contains the text or file data.
+Message content types are part of the [COTMessage](/docs/documentation/models/communication/model_messages) data model: `messages.contentType`. The field's value is in string format. The following contains a list of the possible values and examples. Along with `messages.contentType`, `messages.content` contains the text or file data.
 
 ## FileObject Sample
 
