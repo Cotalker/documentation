@@ -15,8 +15,7 @@ body:
      or consider asking a question on [Discussions](https://github.com/Cotalker/documentation/discussions)
      If you have found a bug then fill out the template below.
      
-     > :warning: **Please do not include any non-public information about your company, users and settings when posting an issue. Avoid entering data associated with access keys, passwords, data for internal use, user information or any other that you consider sensitive.
-**
+     > :warning: **Please do not include any non-public information about your company, users and settings when posting an issue. Avoid entering data associated with access keys, passwords, data for internal use, user information or any other that you consider sensitive.**
 
 - type: dropdown
   id: affected_system
