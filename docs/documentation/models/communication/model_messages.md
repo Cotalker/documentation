@@ -17,8 +17,8 @@ A message model (COTMessage) contains all the information concerning a particula
 ### Text Message {#text-message}
 ```json
 {
-    "_id": "613647a1c7d8ac89ffd60e7d",
-    "channel": "612e468581155c0007baa084",
+    "_id": "6140e8a49d0ad6efd374ab7f",
+    "channel": "6140e8bafaddd3a2f4fc743c",
     "content": "Hello, world!",
     "contentType": "text/plain",
     "createdAt": 1630947233455,
@@ -26,16 +26,16 @@ A message model (COTMessage) contains all the information concerning a particula
     "isHidden": false,
     "isSaved": 16,
     "modifiedAt": "2021-09-06T16:54:14.517Z",
-    "sentBy": "600ac7d8df54617a28ac89ff",
+    "sentBy": "6140e8c5745ce660679a3da4",
 }
 ```
 
 ### Survey Message {#survey-message}
 ```json
 {
-    "_id": "613fd15cc7d8ac89ffa972fc",
+    "_id": "6140e8df7ba70ee0d3e7aaba",
     "answer": "613fd15cc7d8ac89ff82d9c9#613fd0e14a8541000782ed58",
-    "channel": "612e468581155c0007baa084",
+    "channel": "6140e8bafaddd3a2f4fc743c",
     "contentArray": [
         "613fd0e14a8541000782ed5c",
         "613fd0e14a8541000782ed5d"
