@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: 'Use this template to report a new bug'
+about: Use this template to report a new bug
 title: 'Bug report: '
 labels: Bug report
 assignees:
@@ -101,3 +101,4 @@ body:
           value: "Thanks for reporting a bug!"
 ---
 
+test
