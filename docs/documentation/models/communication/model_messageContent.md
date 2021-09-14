@@ -7,33 +7,37 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__subtitle">COTMessageContentType</span>
 
 ## Description {#description}
-Message content types are part of the [COTMessage](/docs/documentation/models/communication/model_messages) data model: `messages.contentType`. The field's value are in string format. The following contains a list of the possible values and examples.
+Message content types are part of the [COTMessage](/docs/documentation/models/communication/model_messages) data model: `messages.contentType`. The field's value are in string format. The following contains a list of the possible values and examples. Along with `messages.contentType`, `messages.content`contains the text or file data.
 
-## JSON Sample (video)
+## FileObject Sample
+
 ```json
-{ 
-    "_id" : ObjectId("59cbf49aece8902250a72d09"), 
+"contentType" : "video/mp4",
+"content" : { 
+    "_id" : ObjectId("69cbf49aece8902250a72d09"), 
     "modifiedAt" : 1506538650245.0, 
-    "company" : ObjectId("58fe83eda8b7259625b9b15d"), 
+    "company" : ObjectId("68fe83eda8b7259625b9b16d"), 
     "name" : "VID_20170927_155716.mp4", 
-    "url" : "https://s3-sa-east-1.amazonaws.com/cotalker/cotalkerreframe/u_5901187fda281cad276780c8/video/P3ZXyNxie1506538644457_converted_.mp4", 
-    "createdBy" : ObjectId("5901187fda281cad276780c8"), 
+    "url" : "https://s3-sa-east-1.amazonaws.com/cotalker/cotalkerreframe/u_6981187fda281cad276780c8/video/P3ZXyNxie1506538644457_converted_.mp4", 
+    "createdBy" : ObjectId("6901187fda281cad276780c8"), 
     "contentType" : "video/mp4", 
     "createdAt" : ISODate("2017-09-27T18:57:30.241+0000"), 
     "version" : NumberInt(1), 
     "screenshots" : [
-       "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P3ZXyNxie1506538644457_ss_3.png", 
-        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P3ZXyNxie1506538644457_ss_4.png", 
-        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P3ZXyNxie1506538644457_ss_2.png", 
-        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P3ZXyNxie1506538644457_ss_1.png", 
-        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P3ZXyNxie1506538644457_ss_5.png"
+       "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P4ZXyNxie1506538644457_ss_3.png", 
+        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P4ZXyNxie1506538644457_ss_4.png", 
+        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P4ZXyNxie1506538644457_ss_2.png", 
+        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P4ZXyNxie1506538644457_ss_1.png", 
+        "https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/P4ZXyNxie1506538644457_ss_5.png"
     ], 
     "isActive" : true, 
     "__v" : NumberInt(0)
-}
+   }
 ```
+## Content Types {#content-types}
 
-## text/plain
+### Plain Text
+`text/plain`
 ```json
 { 
 "contentType" : "text/plain",
@@ -41,7 +45,8 @@ Message content types are part of the [COTMessage](/docs/documentation/models/co
 }
 ```
 
-## text/system
+### Markdown Text
+`text/system`
 ```json
 { 
 "contentType" : "text/system", 
@@ -49,15 +54,17 @@ Message content types are part of the [COTMessage](/docs/documentation/models/co
 }
 ```
 
-## video/mp4
+### MP4 Video
+`video/mp4`
 ```json
     { 
     "contentType" : "video/mp4",
-    "content" : "{\"__v\":0,\"modifiedAt\":1506538650245,\"company\":\"58fe83eda8b7259625b9b15d\",    \"name\":\"VID_20170927_155716.mp4\",\"url\":\"https://s3-sa-east-1.amazonaws.com/cotalker/    cotalkerreframe/u_5901187fda281cad276780c8/video/P3ZXyNxie1506538644457_converted_.mp4\",    \"createdBy\":\"5901187fda281cad276780c8\",\"contentType\":\"video/mp4\",    \"_id\":\"59cbf49aece8902250a72d09\",\"createdAt\":\"2017-09-27T18:57:30.241Z\",\"version\":1,    \"screenshots\":[\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P3ZXyNxie1506538644457_ss_3.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P3ZXyNxie1506538644457_ss_4.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P3ZXyNxie1506538644457_ss_2.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P3ZXyNxie1506538644457_ss_1.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P3ZXyNxie1506538644457_ss_5.png\"],\"isActive\":true}", 
+    "content" : "{\"__v\":0,\"modifiedAt\":1506538650245,\"company\":\"68fe83eda8b7259625b9b16d\",    \"name\":\"VID_20170927_155716.mp4\",\"url\":\"https://s3-sa-east-1.amazonaws.com/cotalker/    cotalkerreframe/u_5901187fda281cad276780c8/video/P3ZXyNxie1506538644457_converted_.mp4\",    \"createdBy\":\"6901187fda281cad276780c8\",\"contentType\":\"video/mp4\",    \"_id\":\"69cbf49aece8902250a72d09\",\"createdAt\":\"2017-09-27T18:57:30.241Z\",\"version\":1,    \"screenshots\":[\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P3ZXyNxie1506538644457_ss_3.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P4ZXyNxie1506538644457_ss_4.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P4ZXyNxie1506538644457_ss_2.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P4ZXyNxie1506538644457_ss_1.png\",\"https://s3-sa-east-1.amazonaws.com/cotalker/video_screenshots/    P4ZXyNxie1506538644457_ss_5.png\"],\"isActive\":true}", 
     }
 ```
 
-## image/jpg image/jpeg image/png image/gif
+### Image
+`image/jpg` `image/jpeg` `image/png` `image/gif`
 ```json
 { 
 "contentType" : "image/*",
@@ -66,7 +73,8 @@ Message content types are part of the [COTMessage](/docs/documentation/models/co
 }
 ```
 
-## application/word
+### MS Word Document
+`application/word`
 ```json
 { 
 "contentType" : "application/msword",
@@ -74,7 +82,8 @@ Message content types are part of the [COTMessage](/docs/documentation/models/co
 }
 ```
 
-## application/vnd.openxmlformats-officedocument.wordprocessingml.document
+### Office Open XML Document
+`application/vnd.openxmlformats-officedocument.wordprocessingml.document`
 ```json
 { 
 "contentType" : "application/vnd.openxmlformats-officedocument.
@@ -83,7 +92,8 @@ wordprocessingml.document",
 }
 ```
 
-## application/vnd.ms-excel
+### MS Excel Spreadsheet
+`application/vnd.ms-excel`
 ```json
 { 
 "contentType" : "application/vnd.ms-excel",
@@ -91,7 +101,8 @@ wordprocessingml.document",
 }
 ```
 
-## application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+### Office Open XML Workbook
+`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`
 ```json
 { 
 "contentType" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -99,7 +110,8 @@ wordprocessingml.document",
 }
 ```
 
-## application/vnd.ms-powerpoint
+### MS Powerpoint Presentation
+`application/vnd.ms-powerpoint`
 ```json
 { 
 "contentType" : "application/vnd.ms-powerpoint",
@@ -107,7 +119,8 @@ wordprocessingml.document",
 }
 ```
 
-## application/vnd.openxmlformats-officedocument.presentationml.presentation
+### Office Open XML Presentation
+`application/vnd.openxmlformats-officedocument.presentationml.presentation`
 ```json
 { 
 "contentType" : "application/vnd.openxmlformats-officedocument.presentationml.presentation",
@@ -115,7 +128,8 @@ wordprocessingml.document",
 }
 ```
 
-## application/pdf
+### PDF Document
+`application/pdf`
 ```json
 { 
 "contentType" : "application/pdf",
@@ -123,7 +137,8 @@ wordprocessingml.document",
 }
 ```
 
-## application/vnd.cotalker.contact
+### Cotalker User Contacts
+`application/vnd.cotalker.contact`
 ```json
 {
 "contentType" : "application/vnd.cotalker.contact",
