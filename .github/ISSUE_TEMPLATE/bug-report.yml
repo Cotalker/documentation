@@ -11,8 +11,7 @@ body:
     value: |
      If you are looking for support, please check out our [Documentation](https://doc.cotalker.com/)
      or consider asking a question on [Discussions](https://github.com/Cotalker/documentation/discussions)
-     If you have found a bug or if our documentation doesn't have an answer
-     to what you're looking for, then fill out the template below.
+     If you have found a bug then fill out the template below.
 
 - type: dropdown
   id: affected_system
@@ -48,7 +47,7 @@ body:
     description: If this bug occurs in our web application, android or ios, please indicate the version
     placeholder: "16.4.5"
   validations:
-    required: true
+    required: false
 
 - type: textarea
   id: details
