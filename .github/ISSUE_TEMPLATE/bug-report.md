@@ -1,6 +1,6 @@
-
+---
 name: Bug report
-about: 'Bug report: '
+about: 'Use this template to report a new bug'
 title: 'Bug report: '
 labels: Bug report
 assignees:
@@ -99,5 +99,5 @@ body:
      - type: markdown
           attributes:
           value: "Thanks for reporting a bug!"
-
+---
 
