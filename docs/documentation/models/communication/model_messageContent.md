@@ -45,7 +45,7 @@ Message content types are part of the [COTMessage](/docs/documentation/models/co
 }
 ```
 
-### Markdown Text
+### System Messages with Markdown Format
 `text/system`
 ```json
 { 
