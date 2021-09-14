@@ -1,5 +1,6 @@
 ---
-title: Surveys
+title: Surveys Data Model
+sidebar_label: COTSurvey
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';

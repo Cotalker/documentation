@@ -1,6 +1,6 @@
 ---
-title: Users Model
-sidebar_label: Users
+title: Users Data Model
+sidebar_label: COTUser
 ---
 
 <span className="hero__subtitle">COTUser</span>
@@ -84,9 +84,9 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 ```
 
 
-## Elements {#elements}
+## Fields {#fields}
 
-| Element | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
+| Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
 | _id | The user's ID number | ObjectId<COTUser\> | |
 | accessRoles | The [access roles](/docs/documentation/admin/admin_accessrole) the user has been designated | ObjectID<COTAccessRole\>[ ] | [Access Roles Model](/docs/documentation/models/users/model_accessroles) |
@@ -124,22 +124,10 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 | settings.hideContacts | | boolean | |
 | termsConditions | Displays the company's terms of conditions to new users | boolean | |
 
-
-## Additional Resources {#resources}
-
-- ["Users" REST API documentation](/docs/documentation/api/users/users): basic "Users" API requests
-- [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
-- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
-- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
-
-## Help {#help}
-
-- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-
-## Deprecated Elements {#deprecated}
+## Deprecated Fields {#deprecated}
 _The following deprecated items might still be found in the model:_
 
-| Element | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
+| Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
 | badge | | string[ ] | DEPRECATED |
 | devices | The devices or platforms the user has installed | DevicesModel | DEPRECATED |
@@ -165,4 +153,14 @@ _The following deprecated items might still be found in the model:_
 | role | Options: `user, admin, super` | string | DEPRECATED |
 | taskManager | | boolean | DEPRECATED |
 
+## Additional Resources {#resources}
+
+- ["Users" REST API documentation](/docs/documentation/api/users/users): basic "Users" API requests
+- [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
+- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+
+## Help {#help}
+
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
 

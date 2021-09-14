@@ -1,5 +1,6 @@
 ---
-title: Elements Model (Properties)
+title: Elements (Properties) Data Model
+sidebar_label: COTProperty
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

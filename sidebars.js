@@ -348,59 +348,24 @@ module.exports = {
   ],
   models: [
     'documentation/models/overview_model',
-    {
-      type: 'category',
-      label: 'Users',
-      items: [
-        'documentation/models/users/model_users',
-        'documentation/models/users/model_accessroles',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Communication',
-      items: [
-        'documentation/models/communication/model_channels',
-        'documentation/models/communication/model_messages',
-        'documentation/models/communication/model_groups',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Databases',
-      items: [
-        'documentation/models/databases/model_propertytypes',
-        'documentation/models/databases/model_properties',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Surveys',
-      items: [
-        'documentation/models/surveys/model_surveys',
-        'documentation/models/surveys/model_surveychats',
-        'documentation/models/surveys/model_questions',
-        'documentation/models/surveys/model_answers',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Task & State Machines',
-      items: [
-        'documentation/models/tasks/model_tasks',
-        'documentation/models/tasks/model_statemachine',
-        'documentation/models/tasks/model_taskgroup',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Automations',
-      items: [
-        'documentation/models/automations/model_bots',
-        'documentation/models/automations/model_scheduler',
-      ]
-    },
     'documentation/models/model_company',
+    'documentation/models/users/model_users',
+    'documentation/models/users/model_accessroles',
+    'documentation/models/communication/model_groups',
+    'documentation/models/communication/model_channels',
+    'documentation/models/communication/model_messages',
+    'documentation/models/communication/model_messageContent',
+    'documentation/models/surveys/model_surveys',
+    'documentation/models/surveys/model_surveychats',
+    'documentation/models/surveys/model_questions',
+    'documentation/models/surveys/model_answers',
+    'documentation/models/databases/model_propertytypes',
+    'documentation/models/databases/model_properties',
+    'documentation/models/tasks/model_tasks',
+    'documentation/models/tasks/model_statemachine',
+    'documentation/models/tasks/model_taskgroup',
+    'documentation/models/automations/model_bots',
+    'documentation/models/automations/model_scheduler',
   ],
   support: [
     'support/support_overview',

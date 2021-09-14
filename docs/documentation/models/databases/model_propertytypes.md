@@ -1,5 +1,6 @@
 ---
-title: Collections Model (Property Types)
+title: Collections (Property Types) Data Model
+sidebar_label: COTPropertyType
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

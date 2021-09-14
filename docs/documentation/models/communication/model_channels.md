@@ -1,6 +1,6 @@
 ---
-title: Channels Model
-sidebar_label: Channels
+title: Channels Data Model
+sidebar_label: COTChannel
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
@@ -90,12 +90,12 @@ import TabItem from '@theme/TabItem';
 }
 ```
 
-## Elements {#elements}
+## Fields {#Fields}
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
 | _id | Channel ID number | ObjectId<COTChannel\> | |
-| __v | Document version. | | Cannot be modified and should never be used. |
+| __v | Document version | number | Cannot be modified and should never be used. |
 | bots | Array with the IDs of the bots assigned to the channel | ObjectId<COTBot\>[ ] | [Bot Data Model](/docs/documentation/models/automations/model_bots) |
 | company | Company ID number | ObjectId<COTCompany\> | [Channel Data Model](/docs/documentation/models/model_company) |
 | createdAt | Channel creation date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
@@ -131,20 +131,6 @@ import TabItem from '@theme/TabItem';
 | videoCall.publishVideo | Indicates permissions needed to use the video | string[ ] | |
 | videoCall.publishAudio | Indicates permissions needed to use the audio | string[ ] | |
 
-
-
-
-## Additional Resources {#resources}
-
-- ["Channel" REST API documentation](/docs/documentation/api/communication/channels): basic "Channel" API requests
-- [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
-- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
-- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
-
-## Help {#help}
-
-- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-
 ## Deprecated Elements {#deprecated}
 _The following deprecated items might still be found in the model:_
 
@@ -162,3 +148,12 @@ _The following deprecated items might still be found in the model:_
 | systemPinned | | boolean | DEPRECATED |
 | videoCall.duration | Array of allowed times for video calls | number[ ] | DEPRECATED |
 | visibility | | object | DEPRECATED |
+
+## Additional Resources {#resources}
+- ["Channel" REST API documentation](/docs/documentation/api/communication/channels): basic "Channel" API requests
+- [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
+- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+
+## Help {#help}
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum

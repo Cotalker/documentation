@@ -1,6 +1,6 @@
 ---
-title: Bots
-sidebar_label: Bots
+title: Bots Data Model
+sidebar_label: COTBot
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';

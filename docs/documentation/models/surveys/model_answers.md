@@ -1,6 +1,6 @@
 ---
-title: Answers Model
-sidebar_label: Answers
+title: Answers Data Model
+sidebar_label: COTAnswer
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 

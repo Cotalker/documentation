@@ -1,5 +1,6 @@
 ---
-title: Questions Model
+title: Questions Data Model
+sidebar_label: COTQuestions
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
