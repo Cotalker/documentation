@@ -10,9 +10,13 @@ body:
 - type: markdown
   attributes:
     value: |
+     
      If you are looking for support, please check out our [Documentation](https://doc.cotalker.com/)
      or consider asking a question on [Discussions](https://github.com/Cotalker/documentation/discussions)
      If you have found a bug then fill out the template below.
+     
+     > :warning: **Please do not include any non-public information about your company, users and settings when posting an issue. Avoid entering data associated with access keys, passwords, data for internal use, user information or any other that you consider sensitive.
+**
 
 - type: dropdown
   id: affected_system
@@ -28,6 +32,12 @@ body:
   validations:
     required: true
 
+- type: input
+  id: affected_system_other
+  attributes:
+    label: Affected system (other)
+    description: Please indicate any additional system affected by this issue
+
 - type: dropdown
   id: affected_environment
   attributes:
@@ -38,6 +48,13 @@ body:
     - Production
     - Staging
     - Development
+
+- type: input
+  id: affected_environment_other
+  attributes:
+    label: Affected environment (other)
+    description: Please indicate any additional environment affected by this issue
+
   validations:
     required: true
 
@@ -45,7 +62,9 @@ body:
   id: app_version
   attributes:
     label: App version
-    description: If this bug occurs in our web application, android or ios, please indicate the version
+    description: |
+     If this bug occurs in our web application, android or ios, please indicate the version
+     > :info: ![Cotalker app version](/.github/ISSUE_TEMPLATE/assets/cotalker-app-version.gif?raw=true "Cotalker app version")
     placeholder: "16.4.5"
   validations:
     required: false
@@ -68,7 +87,7 @@ body:
     placeholder: |
       1. ...
       2. ...
-      3. ...
+      3. ...ptional Title
   validations:
     required: true
 
