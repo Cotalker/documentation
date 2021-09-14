@@ -1,4 +1,4 @@
----
+
 name: Bug report
 about: 'Bug report: '
 title: 'Bug report: '
@@ -99,5 +99,5 @@ body:
      - type: markdown
           attributes:
           value: "Thanks for reporting a bug!"
----
+
 
