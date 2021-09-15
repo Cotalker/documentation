@@ -1,7 +1,7 @@
 ---
 id: admin_workflow_required_survey
-title: Workflow Survey Triggers
-sidebar_label: Workflow Survey Triggers
+title: Start Forms
+sidebar_label: Start Forms
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -13,7 +13,7 @@ import Highlight from '@theme/Highlight';
 
 ## Summary {#summary}
 
-By default, _users_ can create a _task_ or change its state through the _tasks view_ section. However, _administrators_ may require _users_ to complete a _survey_ before **creating a new task** or **before changing the state of a task**. Adding a _survey trigger_ before creating a workflow ([Workflow Start Survey](#required-survey-for-a-new-task)) or changing a state ([State Survey](#required-survey-for-modifying-task-states)) allows _administrators_ to:
+By default, _users_ can create a _task_ or change its state through the _tasks view_ section. However, _administrators_ may require _users_ to complete a _survey_ before **creating a new task** or **before changing the task state**. Adding a _survey trigger_ before creating a workflow ([Workflow Start Form](#required-survey-for-a-new-task)) or changing a state ([State Start Form](#required-survey-for-modifying-task-states)) allows _administrators_ to:
 - control what type of _tasks_ users create, 
 - ensure that the _users_ provide all necessary information when creating _tasks_,  
 - and manage _workflow_ state changes.
@@ -22,21 +22,19 @@ By default, _users_ can create a _task_ or change its state through the _tasks v
 <br/>
 
 :::tip
-Workflow Start Surveys can also be [shared](/docs/documentation/admin/workflows/admin_workflow_public_survey) outside the Cotalker environment, allowing visitors to create new tasks.
+Workflow Start Forms can also be [shared](/docs/documentation/admin/workflows/admin_workflow_public_survey) outside the Cotalker environment, allowing visitors to create new tasks.
 :::
 
-<!-- TODO insert image of required survey -->
 
-
-## Workflow Start Survey {#required-survey-for-a-new-task}
+## Workflow Start Form {#required-survey-for-a-new-task}
 Without configuring this feature, _administrators_ will allow _users_  to create any _task_ and create them with incomplete data, such as assignee, deadline, state, and other necessary information.
 
 Once set up, the survey can be accessed through the workflow group's [action button](/docs/documentation/client/actions_button).
 
-By setting up a _Workflow Start Survey_, a _channel_ is created within the _workflow group_ to host the newly created task and will display the answered _survey_ used to generate the _task_.
+By setting up a _Workflow Start Form_, a _channel_ is created within the _workflow group_ to host the newly created task and will display the answered _survey_ used to generate the _task_.
 
 :::important
-When using a Workflow Start Surveys and some input error prevents a task from being created, the _channel_ will be generated but without an assigned task. It will be the implementor's duty to notify this problem adequately in the _channel_; the _user_ must be told to re-send the _survey_ and make the necessary corrections to create the _task_ appropriately.
+When using a Workflow Start Form and some input error prevents a task from being created, the _channel_ will be generated but without an assigned task. It will be the implementor's duty to notify this problem adequately in the _channel_; the _user_ must be told to re-send the _survey_ and make the necessary corrections to create the _task_ appropriately.
 :::
 
 ### Step-by-step configuration: {#step-by-step-configuration}
@@ -86,7 +84,7 @@ When using a Workflow Start Surveys and some input error prevents a task from be
   <br/>
 
   :::note
-  Once a survey is selected, the <span className="badge badge--primary">Share</span> button will appear. Go to [Public Survey](/docs/documentation/admin/workflows/admin_workflow_public_survey) to find out more about sharing _Workflow Start Surveys_ with external users.
+  Once a survey is selected, the <span className="badge badge--primary">Share</span> button will appear. Go to [Public Survey](/docs/documentation/admin/workflows/admin_workflow_public_survey) to find out more about sharing _Workflow Start Forms_ with external users.
   :::
 
 </div>
@@ -162,7 +160,7 @@ When using a Workflow Start Surveys and some input error prevents a task from be
 
 <div className="alert alert--secondary">
 
-12. The _Workflow Start Survey_ must be associated as an _answer_ to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **Answers** field: 
+12. The _Workflow Start Form_ must be associated as an _answer_ to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **Answers** field: 
 
     ```$VALUE#answer|uuid```
 
@@ -178,11 +176,11 @@ When using a Workflow Start Surveys and some input error prevents a task from be
 </div>
 <br/>
 
-## State Survey {#required-survey-for-modifying-task-states}
+## State Start Form {#required-survey-for-modifying-task-states}
 
-Configuring a _State Survey_ for when _users_ want to modify a _workflow's state_ is a little bit simpler than the previous case. Unlike the _Workflow Start Survey_ used for creating a new workflow, it isn't necessary to add a bot or specify a routine to the _State Survey_ when changing a workflow's state.
+Configuring a _State Start Form_ for when _users_ want to modify a _workflow's state_ is a little bit simpler than the previous case. Unlike the _Workflow Start Form_ used for creating a new workflow, it isn't necessary to add a bot or specify a routine to the _State Start Form_ when changing a workflow's state.
 
-This feature makes configuring the _State Survey_ easier. In case an automatic response –like sending an email to the CEO–  is desired after changing the state of a workflow, a bot can be configured through the _Edit Routine_ button.
+This feature makes configuring the _State Start Form_ easier. In case an automatic response –like sending an email to the CEO–  is desired after changing the state of a workflow, a bot can be configured through the _Edit Routine_ button.
 
 :::important
 If a _routine_ is afterwards added, the automatic change of _state_ is disabled and must be then configured manually as a step in the routine.
@@ -210,7 +208,7 @@ If a _routine_ is afterwards added, the automatic change of _state_ is disabled 
 
 2. Finally, in the _workflow settings panel_, find the _state list_ and select the **state** that is going to be changed.
 
-  <img alt="state survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_state_survey_00.png')} />
+  <img alt="State Start Form" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_state_survey_00.png')} />
   <br/>
 
 </div>
@@ -222,7 +220,7 @@ If a _routine_ is afterwards added, the automatic change of _state_ is disabled 
 
   Under **State changes**, go to the state(s) the will require a survey. In their **Start form** field, choose the _survey_ previously created to process the _state_ change.
 
-  <img alt="state survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_state_survey_01.png')} />
+  <img alt="State Start Form" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflows_state_survey_01.png')} />
   <br/>
 
 </div>

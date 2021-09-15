@@ -99,7 +99,7 @@ _Creating tasks from the task view:_
 <br/>
 
 :::note
-- In some configurations, administrators might program a [_workflow start survey_](/docs/documentation/admin/workflows/admin_workflow_required_survey) to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
+- In some configurations, administrators might program a [_Workflow Start Form_](/docs/documentation/admin/workflows/admin_workflow_required_survey) to appear when creating a new task. This feature permits _administrators_ make sure that _users_ correctly fill out all the necessary information for a _task_ and help teams stay informed of all created _tasks_.
 - Tasks can also be created through _public surveys_ for users outside the Cotalker environment.
 :::
 
@@ -124,5 +124,5 @@ You can also modify an existing _task_ by opening its configuration side panel e
 
 :::note
 - In the _task view_, if the _task_ has a _channel_ associated with it, the _channel_ will open up first in the side panel. Press the channel's title bar, and the configuration side panel will then open up. 
-- If programmed by the administrator, a _state survey_ window might also appear when trying to modify the task.
+- If programmed by the administrator, a _State Start Form_ window might also appear when trying to modify the task.
 :::

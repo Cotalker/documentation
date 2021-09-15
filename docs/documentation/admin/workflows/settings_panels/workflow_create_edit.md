@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Settings Panel Guide</span>
 
-_Settings panel for creating and editing a workflow. Edit an existing workflow to configure settings not initially available when creating it. From this panel, modify and add states, rountines, subtasks, start forms, and SLAs. Make your workflow start forms public._
+_Settings panel for creating and editing a workflow. Edit an existing workflow to configure settings not initially available when creating it. From this panel, modify and add states, rountines, subtasks, start forms, and SLAs. Make your Start Forms public._
 
 ## Create a Workflow {#create-workflow}
 You can create a new workflow by pressing the <span className="badge badge--secondary">+</span> icon found in the upper right-hand corner of the [Workflows Settings Panel](/docs/documentation/admin/workflows/settings_panels/workflows-setup).
@@ -176,7 +176,7 @@ Once selected, the <span className="badge badge--secondary">Share</span> button 
 </div>
 <div className="col col--4"><em>
 
-Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+Go to [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
 
 </em></div>
 </div>
@@ -272,7 +272,7 @@ _For information on how to **add an SLA routine** to your workflow, go to the [S
 ## Related Topics {#related-topics}
 - [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)
 - [**Create a Survey that Starts a Workflow Tutorial**](/docs/tutorials/intermediate/create_survey_sm)
-- [**Set up Workflow Survey Triggers**](/docs/documentation/admin/workflows/admin_workflow_required_survey)
+- [**Set up Start Forms**](/docs/documentation/admin/workflows/admin_workflow_required_survey)
 - [**Set up a Public Survey**](/docs/documentation/admin/workflows/admin_workflow_public_survey)
 - [**Routine Builder**](/docs/documentation/automation/admin_routine)
 - [**SLAs**](/docs/documentation/automation/sla)

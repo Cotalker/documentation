@@ -109,7 +109,7 @@ As you can see, the versatility of elements is quite significant.
 
 Surveys are the base tool for workflows. Among other things, surveys allow users to start processes, make reports, change data, assign tasks, and execute any custom process adapted to your workflow.
 
-_Workflow start survey:_
+_Workflow Start Form:_
 
 <img alt="surveys" className="img_sizing item shadow--tl" src={useBaseUrl('img/concepts_survey_00.png')} />
 

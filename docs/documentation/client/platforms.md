@@ -43,7 +43,7 @@ import Mermaid from '@theme/Mermaid';
     - Task Views
     - Actions Button
     - Group Search Tool
-    - Workflow Start Surveys
+    - Workflow Start Forms
 
 </div>
 <div className="col col--4">
