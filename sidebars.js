@@ -358,6 +358,7 @@ module.exports = {
     'documentation/models/surveys/model_surveys',
     'documentation/models/surveys/model_surveychats',
     'documentation/models/surveys/model_questions',
+    'documentation/models/surveys/model_questionContentType',
     'documentation/models/surveys/model_answers',
     'documentation/models/databases/model_propertytypes',
     'documentation/models/databases/model_properties',
