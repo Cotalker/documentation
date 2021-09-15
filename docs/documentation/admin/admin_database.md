@@ -94,37 +94,6 @@ _Below you will find the description and notes for each field of the **Create el
 
 <br/><br/>
 
-## Download Collection {#download-collection}
-
-You can download the _elements_ of a _collection_ only in CSV format. The encoding field options are _Windows_, _Macintosh_ and _UTF-8_.
-
-<br />
-<img alt="download collection" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_download.png')} />
-<br />
-<br />
-
-
-
-:::note
-- The encoding field is currently disabled.
-- The descriptions of the icons are in the [Overview section](admin_overview).
-:::
-
-<br/><br/>
-
-## Import Collection {#import-collection}
-
-You can import an _element_ list to a _collection_ in CSV format. The encoding field options are _Windows_, _Macintosh_ and _UTF-8_.
-
-<img alt="import collection" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_import.png')} />
-<br />
-<br />
-
-:::note
-The descriptions of the icons are in the [Overview section](admin_overview).
-:::
-
-<br/><br/>
 
 ## Additional Fields {#additional-fields}
 
