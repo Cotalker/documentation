@@ -9,10 +9,6 @@ import Highlight from '@theme/Highlight';
 <img alt="design" class="img_sizing" src={useBaseUrl('img/design/Groups.svg')} />
 
 ## Overview {#group-overview}
-<!-- <br/>
-<img alt="" src={useBaseUrl('img/admin_group.png')} width= "25%" height= "25%" align="left"/>
-<br/> -->
-<!-- The Cotalker environment revolves around _groups_. Inside a _group_, you can create _channels_ where users chat or reply to _surveys_. For example, on a specific _channel_, _users_ can write the week's _tasks_, manage the tasks' status according to whether they're in progress or solved, maintain the sprint week, or use the channel merely to chat with other users. Furthermore, a _group_ can be created as a hyperlink, redirecting the _user_ to a specific link. -->
 
 <br/>
 <img alt="" src={useBaseUrl('img/admin_groupstype.png')} width= "25%" height= "25%" align="left"/>
@@ -21,13 +17,10 @@ The Cotalker environment revolves around _groups_. _Groups_ are divided into thr
 
 <br/>
 
-<!-- <br clear="left" /> -->
 In the following image, you can see that each group's name and icon appear in the main menu bar. Clicking on them redirects you to the chosen group or link.
 
 <br/>
 <img alt="" src={useBaseUrl('img/admin_group_overview.png')} width= "40%" height= "40%" align=""/>
-
-
 
 <br/>
 
@@ -196,22 +189,3 @@ Below you will find the description and notes for each field of the **Create cha
 
 
 The description of each button in the **Create channel** settings panel can be found in the [Overview section](admin_overview).
-
-### Download Channel List {#download-channel-list}
-You can only download _channels_ in CSV format. The encoding field options are Windows, Macintosh and UTF-8.
-<br />
-<img alt="" src={useBaseUrl('img/admin_channel_download.png')} />
-<br />
-<br />
-
-The description of the icons are in the [Overview section](admin_overview).
-
-### Import Channel List {#import-channel-list}
-You can import a _channel_ list in CSV format. The encoding field options are Windows, Macintosh and UTF-8.
-<br />
-<img alt="" src={useBaseUrl('img/admin_channel_import.png')} />
-<br />
-<br />
-
-The description of the icons are in the [Overview section](admin_overview).
-
