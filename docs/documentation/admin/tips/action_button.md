@@ -10,6 +10,6 @@ _The **Actions button** appears at the bottom of the group panel as shown in the
 <br/>
 
 :::note
-- The _actions button_ in a **workflow group** can open [workflow start surveys](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-a-new-task).
+- The _actions button_ in a **workflow group** can open [Workflow Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-a-new-task).
 - But, unlike _actions buttons_ in regular groups, _action buttons in workflow groups_ cannot create new channels.
 :::

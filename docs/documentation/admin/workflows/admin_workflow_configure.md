@@ -198,7 +198,7 @@ Once selected, the <span className="badge badge--secondary">Share</span> button 
 </div>
 <div className="col col--4"><em>
 
-Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+Go to [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
 
 </em></div>
 </div>
@@ -276,7 +276,7 @@ Once selected, the <span className="badge badge--secondary">Share</span> button 
 </div>
 <div className="col col--4"><em>
 
-Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+Go to [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
 
 </em></div>
 </div>
@@ -412,7 +412,7 @@ Indicates that a survey will change the workflow's state. Remember to previously
 </div>
 <div className="col col--4"><em>
 
-Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+Go to [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
 
 </em></div>
 </div>
@@ -468,7 +468,7 @@ Users are assigned permissions through their [access roles](/docs/documentation/
 <div className="col col--5">A survey is used to change a workflow's state. Multiple survey triggers can be added. When pressed, new fields appear.</div>
 <div className="col col--4"><em>
 
-Go to [State Survey](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) for setup information.
+Go to [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) for setup information.
 
 </em></div>
 </div>

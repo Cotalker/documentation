@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Settings Panel Guide</span>
 
-_States are the different moments or status through which a task could pass by in its lifecycle within the workflow._
+_States are the different moments or statuses through which a task could pass by in its lifecycle within the workflow._
 
 ## How to Create a State {#how-to-create-a-state}
 To create a new state, press the <span className="badge badge--secondary">+</span> icon (circled in red in the image below) in the [**states** section of the create/edit workflow settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#states).
@@ -36,7 +36,7 @@ After choosing to create or edit a state, you will be taken to the following set
 <br/>
 
 _Options:_
-1. Save: save current configuration
+1. Save: save the current configuration
 
 _Settings:_
 - [**A. General information**](#create-state-general-information)
@@ -123,7 +123,7 @@ Indicates that a survey will change the workflow's state. Remember to previously
 </div>
 <div className="col col--4"><em>
 
-Go to [Workflow Survey Triggers](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+Go to [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
 
 </em></div>
 </div>
@@ -199,7 +199,7 @@ Users are assigned permissions through their [access roles](/docs/documentation/
 <div className="col col--5">A survey is used to change a workflow's state. Multiple survey triggers can be added. When pressed, new fields appear.</div>
 <div className="col col--4"><em>
 
-Go to [State Survey](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) for setup information.
+Go to [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) for setup information.
 
 </em></div>
 </div>

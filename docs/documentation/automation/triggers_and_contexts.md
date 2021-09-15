@@ -17,7 +17,7 @@ import Highlight from '@theme/Highlight';
 
 ## Overview
 
-The [table](#contexts-table) below contains the data to which different _sources_ or _triggers_ have access. For example, you can use [COTLang](/docs/documentation/automation/admin_cotlang) in a [_state survey trigger_](#sm-survey-trigger) routine to get direct access to the task.
+The [table](#contexts-table) below contains the data to which different _sources_ or _triggers_ have access. For example, you can use [COTLang](/docs/documentation/automation/admin_cotlang) in a [_state survey trigger_](#sm-survey-trigger) (i.e., [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)) routine to get direct access to the task's data.
 
 :::tip
 See the [Context Language Description](#context-language) section for a brief explanation of the values shown in the table below.
@@ -320,7 +320,7 @@ _Post workflow start_ is triggered after a workflow is started.
 </div>
 <div className="col col--12 code-table-2">
 
-_State Survey Triggers_ are triggered within any task by a specific survey and at specific states.
+_State Survey Triggers_ are triggered within any task by a specific survey and at specific states (see [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) for more information).
 
 </div>
 </div>
