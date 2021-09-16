@@ -50,15 +50,27 @@ _Fields described below:_
 <div className="col col--2"><b>State types:</b></div>
 <div className="col col--6">
 
-State type options are _closed_, _in-progress_, and/or _new_. **START** state types indicate type when the SLA routine is activated; **END** state types, when it is deactivated. 
+Choose the _State types_ that indicate the **START** and **END** of the SLA routine. State type options are _closed_, _in-progress_, and/or _new_.
 
 </div>
-<div className="col col--4"><em></em></div>
+<div className="col col--4"><em>
+
+Use either _States_ or _State types_ fields to configure **START** and **END**. Although _States_ and _State types_ can be used simultaneously, it is not normally recommended.
+
+</em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--2"><b>States:</b></div>
-<div className="col col--6">Choose the states that activate the SLA routine (START) and deactivate it (END).</div>
-<div className="col col--4"><em>Only exiting states can be chosen.</em></div>
+<div className="col col--6">
+
+Choose the states that activate the SLA routine (START) and deactivate it (END). 
+
+</div>
+<div className="col col--4"><em>
+
+Use either _States_ or _State types_ fields to configure **START** and **END**. Although _States_ and _State types_ can be used simultaneously, it is not normally recommended.
+
+</em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--2"><b>Time type:</b></div>
@@ -66,33 +78,52 @@ State type options are _closed_, _in-progress_, and/or _new_. **START** state ty
 
 Options are: 
 - _Dynamic_: time is calculated with task information.
-- _Static_: time can be a specific date or calculated from amount of months, days, or hours from the date the action is executed.
+- _Static_: time can be a specific date or calculated from the amount of months, days, or hours from the date the action is executed.
 
 </div>
+
 <div className="col col--3"><em></em></div>
 </div>
 <div className="row table-row-2">
+<div className="col col--2"><b>Base date:</b></div>
+<div className="col col--3">
+
+_Static_ and _Dynamic_ time are calculated in relation to a _Base date_. 
+
+</div>
+<div className="col col--7">
+
+Options are: 
+- `Default`: The moment the task enters its start state
+- `Start date`: Start date defined in task settings
+- `End date`: Deadline date defined in task settings
+- `Resolution date`: Date task is resolved (closed)
+
+</div>
+</div>
+<div className="row table-row-1">
 <div className="col col--2"><b>Time:</b></div>
 <div className="col col--3">
 
-Specifies date or time that the task is supposed to go from its initial to final state.
+Specifies the date or time that the task is supposed to go from its initial to final state.
 
 </div>
 <div className="col col--7">
 
 Static type format:
-- "HOURS&#124;*Number*" = *number* of hours from the action.
-- "DAYS&#124;*Number*" = *number* of days from the action.
-- "DATE&#124;$YYYY-$MM-$DDT${HH + 5}:00:000Z" = date and time.
+- "HOURS|*Number*" = *number* of hours from the action
+- "DAYS|*Number*" = *number* of days from the action
+- "DATE|$YYYY-$MM-$DDT${HH + 5}:00:000Z" = date and time
 
 Dynamic type format:
-- "DATE&#124;endDate" = task's endDate.
-- "DATE&#124;parent&#124;endDate" = parent task's endDate.
+- "DATE|endDate" = task's endDate
+- "DATE|parent&#124;endDate" = parent task's endDate
+- 'DAYS|*status*|[switch => [ObjectId<COTProperty\>, _number_, ObjectId<COTProperty\>, _number_]]' = days calculated according to _properties_
 
 </div>
 </div>
 
-<div className="row table-row-1">
+<div className="row table-row-2">
 <div className="col col--2"><b>Reset:</b></div>
 <div className="col col--6">
 
@@ -101,7 +132,7 @@ If active, _time_ will start again when the task returns to START state.
 </div>
 <div className="col col--4"><em></em></div>
 </div>
-<div className="row table-row-2">
+<div className="row table-row-1">
 <div className="col col--2"><b>Repeat:</b></div>
 <div className="col col--6">If active, time will cycle infinitely until the condition is met. Therefore, the SLA routine will be executed as many times as necessary. Otherwise, the SLA will only run once.</div>
 <div className="col col--4"><em>Use with precaution to avoid undesired looping activity.</em></div>
@@ -109,7 +140,7 @@ If active, _time_ will start again when the task returns to START state.
 <div className="row table-row-title">
 <div className="col col--12"><b>Routine builder</b></div>
 </div>
-<div className="row table-row-1">
+<div className="row table-row-2">
 <div className="col col--12"><em>
 
 [Click here](/docs/documentation/automation/admin_routine) to learn more about routines.
