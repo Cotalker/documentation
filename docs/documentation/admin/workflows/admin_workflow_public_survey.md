@@ -17,16 +17,16 @@ Sometimes companies might want to give people outside the Cotalker environment t
 ## Basic Setup {#basic-setup}
 <div className="alert alert--secondary">
 
-1. From <span className="badge badge--primary">Administration</span>, go to <span className="badge badge--primary">Workflows</span> section, select a **workflow group**, and finally choose the corresponding **workflow**.
+1. From <span className="badge badge--primary">Administration</span>, go to the <span className="badge badge--primary">Workflows</span> section, select the corresponding [**workflows setup**](/docs/documentation/admin/workflows/settings_panels/workflows-setup), and finally choose the corresponding [**workflow**](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#edit-workflow).
 
-  The [workflow settings panel](/docs/documentation/admin/workflows/admin_workflow_configure#edit-a-single-workflow) will open up.
+  The [workflow settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#layout) will open up.
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-2. In the **Start Form** field, choose the desired survey. Once a _survey_ has been selected, the <span className="badge badge--primary">Share</span> button appears.
+2. In the [**Start Form**](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#states) field, choose the desired survey. Once a _survey_ has been selected, the <span className="badge badge--primary">Share</span> button appears.
 
 <img alt="share survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_share_00.png')} />
 <br/>

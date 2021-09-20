@@ -69,7 +69,7 @@ Choose the _initial workflow_ from the existing workflows in the group.
 Chooses what will be the default view in the _task view_ section. Options are _Calendar view_, _Gantt view_, _Table view_, _Kanban view_, and _List view_.
 
 </div>
-<div className="col col--4"><em>This is needed for external sites that require Cotalker authentication. For security reasons, use only on trusted sites.</em></div>
+<div className="col col--4"><em></em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Default filter:</b></div>

@@ -50,30 +50,7 @@ Workflows are hosted inside a [_workflow group_](/docs/documentation/client/grou
 - [Create a Survey that Starts a Workflow](/docs/tutorials/intermediate/create_survey_sm)
 
 
-<!-- ---------
 
-<div className="alert alert--secondary">
-
-## Table of Contents {#table-of-contents}
-
-0. [Introduction](#introduction)
-1. [Workflow Groups](/docs/documentation/admin/workflows/admin_workflow_groups)
-    1. [Initial Settings Panel](/docs/documentation/admin/workflows/admin_workflow_groups#initial-settings-panel)
-    2. [Create/Edit a Workflow Group](/docs/documentation/admin/workflows/admin_workflow_groups#create-edit-a-workflow-group)
-2. [Workflow Configuration](/docs/documentation/admin/workflows/admin_workflow_configure)
-    1. [Workflows Settings Panel](/docs/documentation/admin/workflows/admin_workflow_configure#workflows-settings-panel)
-    2. [Create a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#create-a-single-workflow)
-    3. [Edit a Workflow](/docs/documentation/admin/workflows/admin_workflow_configure#edit-a-single-workflow)
-3. [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey)
-    1. [Workflow Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#setting-up-a-required-survey-for-a-new-task_)
-    2. [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)
-4. [Public Survey](/docs/documentation/admin/workflows/admin_workflow_public_survey)
-    1. [Basic Setup](/docs/documentation/admin/workflows/admin_workflow_public_survey#basic-setup)
-    2. [Public Survey for Subtasks](/docs/documentation/admin/workflows/admin_workflow_public_survey#public-survey-subtask)
-    3. [Adding a Message](/docs/documentation/admin/workflows/admin_workflow_public_survey#adding-message)
-
-</div>
-<br/>
 
 
 
