@@ -11,6 +11,7 @@ module.exports = {
           type: 'category',
           label: 'Platform Basics',
           items: [
+            'documentation/client/first_steps',
             'documentation/client/platforms',
             'documentation/client/main_menu',
             'documentation/client/groups',
