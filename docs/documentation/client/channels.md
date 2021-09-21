@@ -73,7 +73,7 @@ _Examples of emoji reactions:_
 In channels associated with a task, you can change a _task's_ state from the channel's _actions button_.
 If configured, you can answer any survey associated with the channel by pressing the _actions button_.
 
-_The actions button is found nera te bottom of the channel workspace:_
+_The actions button is found near the bottom of the channel workspace:_
 <img alt="task change state menu" class="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_actions_00.png')} />
 <br/>
 
