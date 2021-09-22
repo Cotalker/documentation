@@ -28,5 +28,5 @@ End of quarter.
 Update Engine Documentation
 Update Fuel Documentation
 
-# (Supplementry information)
+# (Supplementary information)
 Links to diagrams, API (Swagger), screenshots, etc.
