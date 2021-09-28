@@ -59,7 +59,7 @@ _Each platform offers a similar experience through its design so that users can 
 
 <div className="alert alert--secondary">
 
-4. Congratulations! You're in! Now take a moment to play around and take a good look at the Cotalker environment. We'll explain the [platform layout](/docs/documentation/client/platforms) in the following section.
+4. Congratulations! You're in! Now take a moment to play around and take a good look at the Cotalker environment. We'll explain the [platform layout](/docs/documentation/client/layout) in the following section.
 
 <img alt="desktop versions" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_00.png')} />
 <br/>
@@ -136,7 +136,7 @@ For those who are constantly on the go or doing fieldwork, our _mobile apps_ –
 
 <div className="col col--6">
 
-4. Welcome! You'll now find yourself with the Main Menu. We'll explain the [platform layout](/docs/documentation/client/platforms) in the following section.
+4. Welcome! You'll now find yourself with the Main Menu. We'll explain the [platform layout](/docs/documentation/client/layout) in the following section.
 
 </div>
 

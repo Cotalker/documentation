@@ -1,5 +1,5 @@
 ---
-title: Basic Concepts
+title: Basic Concepts / Glossary
 sidebar_label: Basic Concepts
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

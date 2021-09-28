@@ -18,7 +18,7 @@ Channels allow quick and transparent communication between people working on a _
 :::
 
 ## How to access a Channel
-_From the [group panel](/docs/documentation/client/groups#group-panel), select a channel from the list and the channel's workspace will open up:_
+_From the [group panel](/docs/documentation/client/groups#group-panel), select a channel from the list, the channel's workspace will then open up:_
 
 <img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_00a.png')} />
 <br/>
@@ -31,11 +31,11 @@ _From the [group panel](/docs/documentation/client/groups#group-panel), select a
 <img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_00.png')} />
 <br/>
 
-1. **Title Bar**: Displays channel name and users. If a task is associated with a channel, press the title bar to slide open the task's configuration panel. If the channel is part of regular group, press the title bar to contact other users directly or view shared media and files.
+1. **Title Bar**: Displays channel name and users. If a task is associated with a channel, press the title bar to slide open the task's configuration panel. If the channel is part of a regular group, press the title bar to contact other users directly or view shared media and files.
 2. **Chat Area**: Displays messages, files, images, emojis, task state updates, bot interactions, and more. [Click here for more details.](#chat-message-options)
 3. **Attachment Icon**: Press to add files you wish to share. Or you can simply drag and drop files in the chat area.
-4. **Actions Button**: Direct access to actions allowed in the channel. Actions can filling out a survey or changing a task's state. [Click here for more details.](#task-menus-within-channel)
-5. **Text Input Area**: Send text message to chat, emojis can be added. HTML code can also be used to format text. Some channels can be configured to accept slash commands, e.g., `/command` can summon a bot that will carry out a preconfigured automated routine.
+4. **Actions Button**: Direct access to actions allowed in the channel. Actions can be filling out a survey or changing a task's state. [Click here for more details.](#task-menus-within-channel)
+5. **Text Input Area**: Send text messages to chat; emojis can be added. HTML code can also be used to format text. Some channels can be configured to accept slash commands, e.g., `/command` can be programmed to summon a bot that will carry out a preconfigured automated routine.
 
 </div>
 <br/>
@@ -97,5 +97,5 @@ From the task configuration panel:
 <br/>
 
 :::tip
-Changing task states or configuration require appropiate access roles. Ask your admin for more details in case you need access to these options.
+Changing task states or configurations require appropriate access roles. Ask your admin for more details in case you need access to these options.
 :::
