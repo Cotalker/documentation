@@ -1,5 +1,5 @@
 ---
-title: Documentation Guide
+title: Using the Documentation
 --- 
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -21,8 +21,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 - [**Tutorials**](/docs/tutorials/tutorial_overview): Real-life examples.
 - [**Support & Help**](/docs/support/support_overview): Support directory and help links.
 
+:::tip
+The documentation doesn't have to be read in sequential order. Feel free to skip around using the search tool and the links distributed throughout the documentation.
+:::
 
-
+<br/>
 <div className="alert alert--secondary">
 
 ## Desktop Screen Layout

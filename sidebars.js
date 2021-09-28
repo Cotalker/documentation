@@ -1,6 +1,7 @@
 module.exports = {
   getting_started: [
     'getting_started/intro_overview',
+    'getting_started/doc_guide',
     {
       type: 'category',
       label: 'The Basics',
@@ -12,8 +13,9 @@ module.exports = {
           label: 'Platform Basics',
           items: [
             'documentation/client/first_steps',
-            'documentation/client/platforms',
+            'documentation/client/layout',
             'documentation/client/main_menu',
+            'documentation/client/tool_bar',
             'documentation/client/groups',
             'documentation/client/channels',
             // 'documentation/client/videocalls',
@@ -31,13 +33,13 @@ module.exports = {
             'documentation/client/database',
             'documentation/client/dashboard',
             'documentation/client/reports',
+            'documentation/client/notes'
           ],
           collapsed: true,
         },
       ],
       collapsed: true,
     },
-    'getting_started/doc_guide',
     'getting_started/support',
   ],
   documentation: [

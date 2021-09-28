@@ -5,18 +5,35 @@ sidebar_label: Overview
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/overview.svg')} />
+<img alt="design" className="img_sizing_small" src={useBaseUrl('img/design/overview.svg')} />
 <br/>
 <br/>
+
+## Introductory note {#intro}
+
+There are basically two kinds of Cotalker users:
+- _End-users_: use Cotalker to plan, execute, and communicate information. 
+- _Administrators_: Also known as _admins_, build arbitrary workflows and processes.
+
+**The Basics** section contains everything an _end-user_ needs to know (basic tools and graphic user interface).
+First-time _admins_ will also benefit from this section.
+
+
+:::tip For Admins:
+For more in-depth information for administrators, please refer to the [Admin Docs](/docs/documentation/documentation_overview) section.
+:::
 
 <div className="alert alert--secondary">
 
 ## Table of Contents {#table-of-contents}
 
-- [**Basic Concepts**](/docs/documentation/client/basic_concepts): introductory notes on the fundamental concepts you will encounter in the Cotalker environment
+- [**Basic Concepts / Glossary**](/docs/documentation/client/basic_concepts): introductory notes on the fundamental concepts you will encounter in the Cotalker environment
 
 - **Platform Basics**
-  - [Main Menu Bar](/docs/documentation/client/main_menu): general description of the availble tools on the main menu
+  - [First Steps](/docs/documentation/client/first_steps): accessing and logging in to the different platform versions
+  - [Platform Layout](/docs/documentation/client/layout): overview of platform seccions: Main Menu, Tool Bar, Groups Panel, and Channel Workspace
+  - [Main Menu Bar](/docs/documentation/client/main_menu): general description of the options available on the main menu
+  - [Tool Bar](/docs/documentation/client/tool_bar): overview of search tool and contact button
   - [Groups](/docs/documentation/client/groups): explanation of groups, group types, and the tools found in group panel.
   - [Channels](/docs/documentation/client/channels): discover the wide range of actions that can be taken from the channel workspace
 - **Basic Tools**
@@ -30,19 +47,3 @@ import Highlight from '@theme/Highlight';
 
 </div>
 <br/>
-
--------
-
-## Introductory note {#intro}
-
-There are basically two kinds of Cotalker users:
-- _End-users_: use Cotalker to plan, execute, and communicate information. 
-- _Administrators_: Also known as _admins_, build arbitrary workflows and processes.
-
-**The Basics** section contains everything an _end-user_ needs to know (basic tools and graphic user interface).
-First-time _admins_ will also benefit from this section.
-
-:::tip For Admins:
-For more in-depth information for administrators, please refer to the [Admin Docs](/docs/documentation/documentation_overview) section.
-:::
-
