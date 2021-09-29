@@ -189,7 +189,7 @@ Users are assigned permissions through their [access roles](/docs/documentation/
 
 ### D. Survey triggers {#survey-trigger}
 
-<img alt="state changes" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_state_04.png')} />
+<img alt="state changes" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_state_06.png')} />
 <br/>
 
 <div className="container box">
