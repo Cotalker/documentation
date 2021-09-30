@@ -15,7 +15,7 @@ import Highlight from '@theme/Highlight';
 
 <span className="hero__subtitle"><em>
 
-An emoji is worth a thousand words.
+Put a little bit of ❤️ into your workflows.
 
 </em></span>
 
@@ -28,7 +28,7 @@ An emoji is worth a thousand words.
 </div>
 <div class="card__body">
 
-We're very emotional about emojis! 👍 😄 🎉  ❤️ 🚀 👀  ! And because there's such a broad spectrum of human emotions, it's only fair that our software developers have painstakingly added even more emojis so that you can react correspondingly to text messages in the channel workspace. And if that wasn't enough, we've thrown in an emoji _search_ option and a _recently used_ section. Express yourself and have fun, while being productive at the same time!
+Communication within your processes is vital. But sometimes, words aren't enough. That's why we've added even more emojis for channel workspace messages, making interaction among those involved in a task quicker and more effective. Apart from the wide range of emojis added, we've included an emoji search option and a recently used section. Have fun being productive! 🚀
 
 </div>
 <div className="card__footer text-center align-padding-center">
