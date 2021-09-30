@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -23,9 +23,9 @@ import Highlight from '@theme/Highlight';
 Giving permission has always been a problematic task. For this reason, we have re-arranged our default _permissions_ by categories and hierarchy, making it simpler to assign them in _access roles_ while intensifying security at the same time. Check out our _new permissions_, read their _descriptions_, look at the new _permissions tree_, and discover which ones will be _deprecated_.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_accessrole#default-permissions">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/admin_accessrole#default-permissions">See Documentation</a>
 <br/>
 
 </div>

@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -23,9 +23,9 @@ import Highlight from '@theme/Highlight';
 Good things are meant to be shared. That's why we've now implemented survey sharing outside the Cotalker environment. By simply sharing the link, anybody can now start a workflow or create a task.  For example, through a shared link, customers who recur for support can fill out a form with their issue and automatically create a Cotalker task that would act as a support ticket. We call this feature a _public survey_.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/workflows/admin_workflow_public_survey">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/workflows/admin_workflow_public_survey">See Documentation</a>
 <br/>
 
 </div>

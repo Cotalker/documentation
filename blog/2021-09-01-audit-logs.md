@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -31,9 +31,9 @@ Who, what, when?!
 Keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, deactivation, and activation of _user_ profiles and _access roles_. See also who, what, and when something was added or modified. The log comes complete with IP address tracker and links to the items in question. Use display filters to easily find the events you need to track.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_auditlogs">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/admin_auditlogs">See Documentation</a>
 <br/>
 
 </div>

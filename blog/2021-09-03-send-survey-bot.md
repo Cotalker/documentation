@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -31,9 +31,9 @@ Don't have time to fill out a survey? Let the bots do it!
 Forms are essential for gathering and sharing data. That's why we've implemented a new version of the _Submit Form Bot_. Gather all types of data with our flexible and programable surveys, and now with the power of automation! Easily automate form submissions by making the bots fill them out with the information they gather from your database. 🤖
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/automation/bots/pbsendsurvey-3.0.0">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/bots/pbsendsurvey-3.0.0">See Documentation</a>
 <br/>
 
 </div>

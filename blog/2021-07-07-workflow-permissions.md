@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -28,9 +28,9 @@ import Highlight from '@theme/Highlight';
 Admins can now further define _users'_ faculties over a task's lifecycle in a workflow. With this new security update, _users_ can be required to have specific permissions to change a task's state or create a subtask.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/workflows/settings_panels/create_edit_state#state-changes">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/workflows/settings_panels/create_edit_state#state-changes">See Documentation</a>
 <br/>
 
 </div>
