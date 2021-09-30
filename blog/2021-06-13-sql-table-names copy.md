@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -32,9 +32,9 @@ No more `#$<>~{#}`
 While doing some housework on our BI & SQL database service, we removed the clutter and **re-wrote the table names**. With our newly instated naming convention, it is now visually easier to understand the content of your SQL database tables. Find out more about the new table name structure and our BI & SQL service in the documentation. 
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/sql_bi/model">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/sql_bi/model">See Documentation</a>
 <br/>
 
 </div>

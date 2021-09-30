@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -31,9 +31,9 @@ This integration allows you to create Google Calendar events and send invitation
 **NOTE**: _This feature requires that your organization's Google Workspace has domain-wide delegation enabled._
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/automation/bots/pbgooglecalendar">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/bots/pbgooglecalendar">See Documentation</a>
 <br/>
 
 </div>

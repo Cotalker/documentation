@@ -24,8 +24,8 @@ _This is the basic layout of the Cotalker platform. The layout in mobile devices
 </div>
 </div>
 
-<div class="row">
-<div class="col col--3">
+<div className="row align-center">
+<div className="col col--6">
 
 1. [<Highlight text="Main Menu Bar" color="rgb(255, 0, 0)"/>](/docs/documentation/client/main_menu)
 - Settings Button
@@ -36,15 +36,13 @@ _This is the basic layout of the Cotalker platform. The layout in mobile devices
 - [Notes](/docs/documentation/client/notes)
 - [Administrator](/docs/documentation/admin/admin_overview)
 
-</div>
-<div class="col col--3">
 
 2. [<Highlight text="Tool Bar" color="rgb(0, 200, 150)"/>](/docs/documentation/client/tool_bar)
 - [Search Tool](/docs/documentation/client/client_search)
 - Contacts Button
 
 </div>
-<div class="col col--3">
+<div className="col col--6">
 
 3. [<Highlight text="Group Panel" color="rgb(240, 140, 0)"/>](/docs/documentation/client/groups)
 - [Group Types](/docs/documentation/client/groups#group-types)
@@ -53,8 +51,6 @@ _This is the basic layout of the Cotalker platform. The layout in mobile devices
 - [Actions Button](/docs/documentation/client/actions_button)
 - [Group Search Tool](/docs/documentation/client/client_search#group-search)
 
-</div>
-<div class="col col--3">
 
 4. [<Highlight text="Channel Workspace" color="rgb(0, 150, 255)"/>](/docs/documentation/client/channels)
 - [Action Button](/docs/documentation/client/channels#task-menus-within-channel)

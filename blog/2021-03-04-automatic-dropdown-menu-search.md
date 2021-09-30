@@ -8,7 +8,7 @@ description: New Feature! Get help filling fields with element names.
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 

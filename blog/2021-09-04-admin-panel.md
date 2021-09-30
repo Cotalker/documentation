@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -31,9 +31,9 @@ Intuitive and coherent
 Things are growing fast in Cotalker! So our design experts decided to reorganize the Administrative Panel to help users and administrators have a more intuitive and coherent menu, making it easier to find the tool or settings panel that you need.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_overview">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/admin_overview">See Documentation</a>
 <br/>
 
 </div>

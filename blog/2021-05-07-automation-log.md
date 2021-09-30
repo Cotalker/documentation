@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -28,9 +28,9 @@ import Highlight from '@theme/Highlight';
 With our new _automation log_ you can find everything you need to know about your routines. It's a perfect tool for helping implementors test, create, manage, and debug routines in workflows, bots, schedules, and SLAs. Logs are accessible through the _Administrative Panel_ and are also present anywhere a _routine builder_ can be found.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/automation/automation_log">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/automation_log">See Documentation</a>
 <br/>
 
 </div>

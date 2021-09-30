@@ -74,13 +74,13 @@ Each search query goes through all the following fields:
 #### Smart Search {#smart-search}
 _Automatically search for root words in task descriptions. In the example below, the query for the word "distribution" returned a result with the word "distribute" found in a task's additional information._
 
-<img alt="search global" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_search_05.png')} /> 
+<img alt="search global" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_search_06.png')} /> 
 <br/>
 
 #### Compact Results
 _Press the **SEE MORE** option to find more search query results in a specific field._
 
-<img alt="search global" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_search_06.png')} /> 
+<img alt="search global" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_search_05.png')} /> 
 <br/>
 
 #### Shared documents {#shared-documents}

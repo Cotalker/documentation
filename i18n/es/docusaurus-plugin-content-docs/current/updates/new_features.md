@@ -11,7 +11,7 @@ import Highlight from '@theme/Highlight';
 
 <!-- New Feature begins after this line.-->
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -28,9 +28,9 @@ import Highlight from '@theme/Highlight';
 En nuestro esfuerzo continuo por mejorar nuestra GUI para hacer su vida un poco más simple, ahora hemos agregado un nuevo botón ** Acciones ** que flota cerca de la parte inferior del panel _canales_. El nuevo botón es una mejora del ícono "agregar canal" que teníamos en la parte superior del panel de _canales_. Con el botón ** Acciones **, ahora más visible y de fácil acceso, los usuarios no solo pueden crear nuevos _canales_, sino que también pueden abrir enlaces, acceder a diferentes secciones de la aplicación, responder encuestas e incluso crear tareas. Consulte la documentación para ver cómo los administradores pueden configurar el nuevo botón.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_group#channel-creation-section">Ver Documentación de "Grupos"</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/admin_group#channel-creation-section">Ver Documentación de "Grupos"</a>
 <br/>
 <a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_workflow#channel-creation-section">Ver Documentación de "Flujos de Trabajo"</a>
 <br/>
@@ -43,7 +43,7 @@ En nuestro esfuerzo continuo por mejorar nuestra GUI para hacer su vida un poco 
 
 <!-- New Feature begins after this line.-->
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -70,7 +70,7 @@ Customizing your _Database_ is an ongoing project. And because you're also alway
 
 <!-- New Feature begins after this line.-->
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -97,7 +97,7 @@ It can be quite hard remembering the _names_ of all the _elements_ you have to w
 
 <!-- New Feature begins after this line.-->
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -128,7 +128,7 @@ Time and mobility are essential concerns for "Cotalkers" everywhere. That's why 
 
 <!-- New Feature begins after this line.-->
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -155,7 +155,7 @@ Accessing a _task's_ data panel and changing its _state_ is now just a click awa
 
 <!-- New Feature begins after this line.-->
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 

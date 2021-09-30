@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -23,9 +23,9 @@ import Highlight from '@theme/Highlight';
 You can never be too careful... But now, you can relax a bit because uploaded files are now digitally signed for some extra security. Running completely in the back-end, this new feature checks user authentication before allowing users to view files for 15 minutes, after which they would have to request the file again. This new feature update also includes improvement in the file structure and switching from a synchronous to an asynchronous upload operation. More updates soon to come!
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/api/communication/files">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/api/communication/files">See Documentation</a>
 <br/>
 
 </div>

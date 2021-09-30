@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -23,9 +23,9 @@ import Highlight from '@theme/Highlight';
 In our ongoing effort to improve our GUI to make your life a little bit simpler, we have now added a new **Actions** button that floats near the bottom of the _channels_ panel. The new button is an improvement to the "add channel" icon we had at the top of the _channels_ panel. With the now more visible and easy to access **Actions** button, not only can users create new _channels_, but they can also open links, access different sections of the app, answer surveys, and even create tasks. Check out the documentation to see how admins can configure the new button.
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/admin_group#channel-creation-section">See Groups Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/admin_group#channel-creation-section">See Groups Documentation</a>
 <br/>
 
 </div>

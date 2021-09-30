@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<div class="card-demo">
+<div className="align-center">
 <div class="card">
 <div class="card__header">
 
@@ -28,9 +28,9 @@ import Highlight from '@theme/Highlight';
 With the **subproperty filter**, you can easily customize multiple-choice surveys, i.e., answers to one survey question will filter the possible options in the following questions. Though similar to our [_hierarchy selection_](/docs/documentation/admin/survey/components/multiple_choice#tree-selector) tool, the **subproperty filter** gives you greater control to set the _elements_ users will be able to choose. (Thanks to all of our users' feedback we were able revise and edit this section to include more examples.)
 
 </div>
-<div class="card__footer">
+<div className="card__footer text-center align-padding-center">
 
-<a class ="button button--secondary button--block" href="/docs/documentation/admin/survey/components/multiple_choice#subproperty-example">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/survey/components/multiple_choice#subproperty-example">See Documentation</a>
 <br/>
 
 </div>
