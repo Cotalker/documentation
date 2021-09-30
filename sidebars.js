@@ -134,7 +134,7 @@ module.exports = {
             'documentation/admin/admin_bots',
             'documentation/admin/admin_scheduler',
             'documentation/automation/automation_log',
-            // 'documentation/admin/routines',
+            'documentation/admin/routines',
           ],
           collapsed: false,
         },
