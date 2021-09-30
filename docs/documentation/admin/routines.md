@@ -12,7 +12,9 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#overview}
 
-Routines are the automations that you create and perhaps one of the most valuable tools. They can be recycled by other users or other processes. Everything you create –such as an integration with another system or some other automation– can be recycled, bringing a lot of scalability to all your processes.
+Routines are the automations that you can create and save for later use. They're perhaps one of our most valuable tools because they make automations easier to replicate throughout your processes. They can be recycled or modified by other users and applied to any operation, bringing a lot of scalability to all your processes.
+
+For example, let's say that in many of your workflows you need to send a system message and an email in each state change. You can create a _routine_ with that specific automation sequence and add it as a stage through any [routine builder](/docs/documentation/automation/admin_routine). You can reuse the routine in any and as many processes as you need. If you need a similar routine but with some slight differences, open the existing routine, make the chagnes, and save it with another name, conserving both routines for later use.
 
 ## Accessing Routines {#accessing}
 
@@ -23,13 +25,22 @@ To access the <span className="badge badge--primary">Routines</span> section:
 
 1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
 2. Select <span className="badge badge--primary">Routines</span> from the **Administrative Panel**.
-3. The [Routines settings panel](#layout) will open up.
+3. The **Routines** settings panel will open up.
 
 <div className="alert alert--secondary">
 
-## Routines Settings Panel Layout {#layout}
+## Create Routine Settings Panel Layout {#layout}
 
-After selecting <span className="badge badge--primary">Routines</span> from the **Administrative Panel**, the following settings panel opens up:
+Create or edit a routine from the **Routines** settings panel:
+
+<img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_00a.png')} />
+<br/>
+
+_Press:_
+1. Create a new routine
+2. Edit an existing routine
+
+After choosing an option, the following settings panel opens up:
 
 <img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_01.png')} />
 <br/>
@@ -144,4 +155,5 @@ For setup information, go to the [Routine Builder](/docs/documentation/automatio
 
 ## Related Topics {#related}
 
-[Routine Stage Types](/docs/documentation/automation/existing_routines): Learn more about the Routine Stage Types that appear in the list of routines. 
+- [Routine Builder](/docs/documentation/automation/admin_routine): Read how routines are added to processes.
+- [Routine Stage Types](/docs/documentation/automation/existing_routines): Learn more about the Routine Stage Types that can be used to make your routines.
