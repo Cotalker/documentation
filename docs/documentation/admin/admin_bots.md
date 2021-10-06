@@ -124,9 +124,9 @@ Indicates the _survey_ that initializes the _bot_. Any _survey_ can be selected.
 <div className="col col--3"><b>Save form response:</b></div>
 <div className="col col--5">
 
-If set, then information sent through the _survey_ is added to the [context](/docs/documentation/automation/triggers_and_contexts#channel-survey-trigger) response as _messages_ ([COTMessage](/docs/documentation/api/communication/messages) Array) and can be read with COTLang with `$VALUE#messages`.
+If set, then information sent through the _survey_ is added to the [context](/docs/documentation/automation/triggers_and_contexts#channel-survey-trigger) response as _messages_ ([COTMessage](/docs/documentation/models/communication/model_messages) Array) and can be read with COTLang using `$VALUE#messages`.
 
-**NOTE:** This feature is deprecated, now messages retrieved by [_messages.form.id_](/docs/documentation/api/communication/messages#model) can be obtained by comparing this with [_answer.formId_](/docs/documentation/api/surveys/answers#model).
+**NOTE:** This feature is deprecated, now messages retrieved by [_messages.form.id_](/docs/documentation/models/communication/model_messages) can be obtained through [_answers.formId_](/docs/documentation/models/surveys/model_answers).
 
 </div>
 <div className="col col--4"><em>This slide button only appears when the 'It's a survey command' option is activated.</em></div>

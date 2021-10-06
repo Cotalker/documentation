@@ -6,9 +6,23 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Mermaid from '@theme/Mermaid';
+
+<span className="hero__subtitle">COTSurvey</span>
 
 ## Description {#description}
 Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey) is the main information of a survey and consilidates its other parts: [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats), [COTQuestion](/docs/documentation/models/surveys/model_questions), [COTAnswer](/docs/documentation/models/surveys/model_answers) .
+
+<Mermaid chart={`
+	graph LR;
+        S[COTSurvey] --> C1[COTSurveyChat #1]
+        S --> C2[COTSurveyChat #2]
+        C1 --> Q1T[COTQuestion - Field Label]
+        C1 --> Q1I[COTQuestion - Input Settings]
+        C2 --> Q2T[COTQuestion - Field Label]
+        C2 --> Q2I[COTQuestion - Input Settings]
+        Q2I --> QE[COTQuestionExec]
+`}/>
 
 ## JSON Sample {#json-sample}
 

@@ -149,22 +149,42 @@ From the **General** tab, configure basic _component_ settings. Each component w
 | ---- | ----- | ----------- |
 | Drag | <img alt="" src={useBaseUrl('img/icon_drag.png')} /> | Hold click to drag component |
 | Required | <img alt="" src={useBaseUrl('img/icon_required.png')} /> | Click to force user response on the component. |
-| WIP | <img alt="" src={useBaseUrl('img/icon_idw.png')} /> | WIP |
+| Writing not permitted | <img alt="" src={useBaseUrl('img/icon_idw.png')} /> | Users cannot answer the question but will still be visible in the survey. |
 | Duplicate | <img alt="" src={useBaseUrl('img/icon_duplicate.png')} /> | Duplicate the component. It will not duplicate the identifier. |
 | Delete | <img alt="" src={useBaseUrl('img/icon_delete.png')} /> | Delete the component |
 
 #### General Field Descriptions: {#field-descriptions}
 
-| Field | Description | Notes |
-| ---- | ----------- | ----- |
-| Field label | The visual name of the component |  |
-| Identifier | The id of the component. It must be unique in the form | It will be useful when analyzing the data for a dashboard or routine |
-| Minimum | Lower Limit. Could indicate a minimum of component responses.  | In the case of a written response, each character will be counted. |
-| Maximum | Upper Limit. Could indicate a maximum of component responses.  | In the case of a written response, each character will be counted. |
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><b>Field label:</b></div>
+<div className="col col--5">The visual name of the component</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Identifier:</b></div>
+<div className="col col--5">The unique id of the component.</div>
+<div className="col col--4"><em>
+
+It will be needed if working with APIs, dashboards, routines, or [conditional display](#conditional-display).
+
+</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Minimum:</b></div>
+<div className="col col--5">Indicates a minimum of responses that the component requires.</div>
+<div className="col col--4"><em>In the case of a written response, each character will be taken into account.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Maximum:</b></div>
+<div className="col col--5">Indicates the maximum number of responses the component can accept.</div>
+<div className="col col--4"><em>In the case of a written response, each character will be taken into account.</em></div>
+</div>
+</div>
 
 ### Conditional Display Tab {#conditional-display}
 
-Each _component_ has the **conditional display** tab which allows you to make a _dynamic survey_, i.e., depending on the answers given to a certain question, new questions relative to the answer will appear. For example, if the response of component *X* is *A*, component *Y* will be displayed, otherwise it will remain hidden.
+Each _component_ has the **conditional display** tab, which allows you to make a _dynamic survey_, i.e., depending on the answers given to a certain question, new questions relative to the answer will appear. For example, if the response of component *X* is *A*, component *Y* will be displayed; otherwise, it will remain hidden.
 
 _The conditional display settings panel:_
 
@@ -173,11 +193,45 @@ _The conditional display settings panel:_
 
 The descriptions of the fields are found below:
 
-| Field | Description | Notes |
-| ---- | ----------- | ----- |
-| Commander | Select the _commander identifier_, i.e., the [_identifier_](#field-descriptions) of the **component** that will determine if the _conditionally displayed component_ opens up. | All existing component _identifiers_ of the present survey are displayed.  |
-| Criteria | Select the comparison criteria, i.e., the operator of the conditional. | Options are: *Is equal to*, *Greater than or equal*, *Less than or equal* or *Regular expression*. |
-| Value | Write down the value that the commander compares. | For example, this value will look for either _example1_ or _example2_: `(example1)|(example2)` |
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><b>Commander:</b></div>
+<div className="col col--5">
+
+Select the _commander identifier_, i.e., the [_identifier_](#field-descriptions) of the **component** that will determine if the _conditionally displayed component_ opens up.
+
+</div>
+<div className="col col--4"><em>
+
+All existing component _identifiers_ of the present survey are displayed.
+
+</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Criteria:</b></div>
+<div className="col col--5">Select the comparison criteria, i.e., the operator of the conditional.</div>
+<div className="col col--4"><em>
+
+Options are: *Is equal to*, *Greater than or equal*, *Less than or equal* or *Regular expression*.
+
+</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Value:</b></div>
+<div className="col col--5">
+
+Write the `identifier` related to the commanding answer.
+
+</div>
+<div className="col col--4"><em>
+
+For multiple answers, use the following syntax: `(example1)|(example2)`
+
+</em></div>
+</div>
+
+</div>
+
 
 ### Automation Tab {#automation}
 

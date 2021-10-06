@@ -8,8 +8,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-A message model (COTMessage) contains all the information concerning a particular message sent through the [channel workspace chat](/docs/documentation/client/channels#channel-workspace-layout). Messages can contain text, multimedia files, answered surveys, or system-generated responses.
+A message model (COTMessage) contains all the information concerning a particular message sent through the [channel workspace chat](/docs/documentation/client/channels#channel-workspace-layout). Messages can contain text, multimedia files, answered surveys, or system-generated responses. 
 
+When displaying a form, i.e., a submitted survey, there is a _message_ for each answered survey _question_ displayed in the chat. If a submitted survey has two _questions_, two corresponding _messages_ are sent.
 
 
 ## JSON Samples {#json-sample}
@@ -81,13 +82,13 @@ A message model (COTMessage) contains all the information concerning a particula
 | answer | A survey _answer_ that is sent back as a message in the channel workspace | ObjectId<COTAnswer.uuid\> #ObjectId<COTSurvey\> | [Answers Model](/docs/documentation/models/surveys/model_answers), [Survey Model](/docs/documentation/models/surveys/model_surveys) |
 | channel | The channel the message is sent in | ObjectId<COTChannel\> | [Channel Model](/docs/documentation/models/communication/model_channels) |
 | content | Displayed data; could be user text input, system message, or file object. | string | Required. For details, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent). |
-| contentArray | ID number of survey _questions_ answered | ObjectId<COTQuestion\>[ ] | [Question Model](/docs/documentation/models/surveys/model_questions) |
+| contentArray | Array of answered survey _questions_ | COTQuestion[ ] | [Questions Model](/docs/documentation/models/surveys/model_questions) |
 | contentType | Indicates content type, for example: `text/plain` (user text input), `application/vnd.cotalker.survey` (answered survey), `application/pdf` (pdf file), `image/gif` (uploaded gif image) | string | Required. For details, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent). |
 | createdAt | The date and time the message was created | number | Unix epoch time format |
-| extendsAnswer | Indicates an answer from a survey extends or adds information to another survey answer | string | Superseded by [COTQuestion](/docs/documentation/models/surveys/model_questions) Content Type `survey+survey`. See also [Survey Component](/docs/documentation/admin/survey/components/survey). |
+| extendsAnswer | Extra information added to a survey question's answer through another survey | string | Superseded by [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType#survey) `survey+survey` available through `messages.contentArray`. |
 | form | General information of a submitted form. | object | A copy of the question responses can be found in `messages.responses` |
-| form.createdAt | Date the form was submitted originally submitted | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| form.id | Contains the main-survey ID, unique for the entire survey. | ObjectId | |
+| form.createdAt | Date the form was originally submitted | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| form.id | Contains the main-survey ID, unique for the entire submitted survey. | ObjectId | This ID is present in all the _messages_ corresponding to answered survey _questions_. It is also present in the corresponding [Answers Data Models](/docs/documentation/models/surveys/model_answers) as `answers.formId`. |
 | form.modifiedAt | List of dates the form was modified | ISODate[ ] | YYYY-MM-DDTHH:mm:ss.SSSZ  |
 | form.subid | contains the sub-survey ID, unique per sub-survey (null for the non-sub-survey parts) | ObjectId | |
 | isHidden | Used to hide sent messages from the view of other users in the chat room | boolean | When users choose to delete a message from the channel's workspace, this option is set to `true`; messages are never truly deleted, just hidden. |
@@ -95,8 +96,8 @@ A message model (COTMessage) contains all the information concerning a particula
 | reply | List of messages this message is replying to | ObjectID<COTMessage\>[ ] | |
 | modifiedAt | Date and time last modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ  |
 | modifiedLocal | Date and time last modified | number | Unix epoch time format |
-| responses | List of responses filled out in a form | object[ ] | Check `message.form` for the forms identification data | 
-| responses[index].cdata | Contains the responses to a given survey question | string[ ] | |
+| responses | Responses refer to an answered survey question. Sometimes, responses come in pairs, the first response object contains the field label, the second, the submitted data. | object[ ] | Check `messages.form` for the forms identification data | 
+| responses[index].cdata | Contains the responses submitted to a given survey question | string[ ] | |
 | responses[index].cref | References the question | ObjectId<COTQuestion\> | [Question Model](/docs/documentation/models/surveys/model_questions) |
 | reactions | Emoji reactions to message | object | Emojis used on message appear as object keys, e.g., `reactions.laugh`, `reactions.rocket` |
 | sentBy | Indicates the ID number of the user that sent the message | ObjectId<COTUser\> | [User Model](/docs/documentation/models/users/model_users) |
@@ -104,14 +105,15 @@ A message model (COTMessage) contains all the information concerning a particula
 ## Deprecated or Not to be used {#deprecated}
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
-| isActive | Used for hiding messages; replaced by `messages.isHidden` | boolean | DEPRECATED |
-| responses[index].\_id | Automatically generated internal system code | ObjectId | Not to be used |
-| readBy | Users that have read the message | ObjectId<COTUser\>[ ] | DEPRECATED |
 | cmd | Used in mobile apps to calculate and save commanded message visibility | object | DEPRECATED |
 | cmd.ids | List of users I can command | ObjectID<COTUser\>[ ] | DEPRECATED |
 | cmd.by | User that commands me | ObjectId<COTUser\> | DEPRECATED |
 | cmd.status | `1`: _ids_ calculated; `2`: _by_ calculated; `3`: both | number | DEPRECATED |
 | cmd.visibility | My current state | boolean | DEPRECATED |
+| isActive | Used for hiding messages; replaced by `messages.isHidden` | boolean | DEPRECATED |
+| responses[index].\_id | Automatically generated internal system code | ObjectId | Not to be used |
+| readBy | Users that have read the message | ObjectId<COTUser\>[ ] | DEPRECATED |
+
 
 # Additional Resources {#resources}
 
