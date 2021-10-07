@@ -1,7 +1,7 @@
 ---
 title: Chat Message Action Menu
 description: New Feature! Reply, copy, and delete chat messages from the new message bubble menu.
-image: https://doc.cotalker.com/img/updates/update_chat-message-menu.png
+image: static/img/updates/update_chat-message-menu.png
 draft: false
 
 ---

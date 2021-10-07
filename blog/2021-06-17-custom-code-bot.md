@@ -1,7 +1,7 @@
 ---
 title: Custom-Code Stage-Bot
 description: New Feature! A new stage-bot that lets you run custom, sandboxed, Javascript code in your routines to extract, process, and return data.
-image: https://doc.cotalker.com/img/updates/update_custom_code_bot.png
+image: static/img/updates/update_custom_code_bot.png
 draft: false
 
 ---

@@ -1,6 +1,6 @@
 ---
 title: File Sharing Security Update
-image: https://doc.cotalker.com/img/updates/stockvault-digital-padlock-on-data-screen-web-and-data-security180399.jpg
+image: static/img/updates/stockvault-digital-padlock-on-data-screen-web-and-data-security180399.jpg
 draft: false
 description: New Feature! File Sharing Security Update
 ---

@@ -1,6 +1,6 @@
 ---
 title: Bot Versions
-image: https://doc.cotalker.com/img/updates/update_old_bot.jpg
+image: static/img/updates/update_old_bot.jpg
 draft: false
 description: New Feature! Bot versions for routine stage types.
 ---

@@ -1,6 +1,6 @@
 ---
 title: Task Menus within Channel
-image: https://doc.cotalker.com/img/update_tasks_popups_00.png
+image: static/img/update_tasks_popups_00.png
 draft: false
 description: New Feature! Access task menus within the channel.
 ---
