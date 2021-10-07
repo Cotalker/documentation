@@ -1,7 +1,7 @@
 ---
 title: Google Calendar Integration
 description: New Feature! Create Google Calendar events with Cotalker and invite whomever you want.
-image: static/img/updates/update_google_calendar.png
+image: img/updates/update_google_calendar.png
 draft: false
 
 ---

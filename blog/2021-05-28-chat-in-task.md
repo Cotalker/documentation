@@ -1,7 +1,7 @@
 ---
 title: Chat in Task Viewer
 description: New Feature! View a task's chat channel from the task viewer.
-image: static/img/updates/update_chat-in-task.png
+image: img/updates/update_chat-in-task.png
 draft: False
 
 ---

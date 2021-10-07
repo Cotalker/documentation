@@ -1,7 +1,7 @@
 ---
 title: Workflow State Change and Subtasks Permissions
 description: New Feature! Administrators can now define specific sets of permissions users will need to change a task's state or create a subtask.
-image: static/img/updates/update_workflow_state_permissions.jpg
+image: img/updates/update_workflow_state_permissions.jpg
 draft: false
 
 ---
