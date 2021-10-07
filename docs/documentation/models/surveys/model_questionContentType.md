@@ -15,14 +15,17 @@ Surveys are made up of _questions_ and each _question_ is represented by a [form
 	graph LR;
         S[COTSurvey] --> C1[COTSurveyChat #1]
         S --> C2[COTSurveyChat #2]
+        S --> C3[COTSurveryChat #3]
         C1 --> Q1T[COTQuestion - Field Label]
         C1 --> Q1I[COTQuestion - Input Settings]
         C2 --> Q2T[COTQuestion - Field Label]
         C2 --> Q2I[COTQuestion - Input Settings]
+        C3 --> Q3[COTQuestion - Label & Input]
         Q1T --> QC1[COTQuestionContentType]
         Q1I --> QC2[COTQuestionContentType]
         Q2T --> QC3[COTQuestionContentType]
         Q2I --> QC4[COTQuestionContentType]
+        Q3 --> QC5[COTQuestionContentType]
 `}/>
 
 ## Content Types {#content-types}
