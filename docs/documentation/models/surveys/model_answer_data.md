@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 The Answer-Data Data Model (COTAnswerData) is an object that corresponds to the `answers.data` array field found in the [Answers Data Model](/docs/documentation/models/surveys/model_answers) (COTAnswer). It contains all the data gathered through a survey form submitted by a _user_.
 
-Data objects go in pairs. The first represents the survey question's displayed field label. The second, the input data.
+Data objects usually go in pairs. The first represents the survey question's displayed field label. The second, the input data.
 
 ## JSON Sample {#json-sample}
 
