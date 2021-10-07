@@ -17,11 +17,13 @@ Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey)
 	graph LR;
         S[COTSurvey] --> C1[COTSurveyChat #1]
         S --> C2[COTSurveyChat #2]
+        S --> C3[COTSurveyChat]
         C1 --> Q1T[COTQuestion - Field Label]
         C1 --> Q1I[COTQuestion - Input Settings]
         C2 --> Q2T[COTQuestion - Field Label]
         C2 --> Q2I[COTQuestion - Input Settings]
         Q2I --> QE[COTQuestionExec]
+        C3 --> Q3[COTQuestion - Label & Input]
 `}/>
 
 ## JSON Sample {#json-sample}
