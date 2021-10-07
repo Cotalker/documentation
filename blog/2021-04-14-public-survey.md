@@ -1,6 +1,6 @@
 ---
 title: Public Surveys
-image: static/img/admin_survey_share_00.png
+image: img/admin_survey_share_00.png
 draft: false
 description: Public survey. Share Cotalker surveys anywhere and with anyone!
 ---

@@ -1,7 +1,7 @@
 ---
 title: Chat Message Action Menu
 description: New Feature! Reply, copy, and delete chat messages from the new message bubble menu.
-image: static/img/updates/update_chat-message-menu.png
+image: img/updates/update_chat-message-menu.png
 draft: false
 
 ---

@@ -1,6 +1,6 @@
 ---
 title: Additional Fields
-image: static/img/update_user_additional_00.png
+image: img/update_user_additional_00.png
 draft: false
 description: New Feature! Extra fields can now be added.
 ---

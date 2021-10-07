@@ -1,6 +1,6 @@
 ---
 title: QR Code & NFC Mobile Integration
-image: static/img/update_qr_nfc_00.png
+image: img/update_qr_nfc_00.png
 draft: false
 description: New Feature! Get help filling fields with element names.
 ---

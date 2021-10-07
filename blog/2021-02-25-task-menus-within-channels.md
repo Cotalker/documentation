@@ -1,6 +1,6 @@
 ---
 title: Task Menus within Channel
-image: static/img/update_tasks_popups_00.png
+image: img/update_tasks_popups_00.png
 draft: false
 description: New Feature! Access task menus within the channel.
 ---

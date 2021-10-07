@@ -1,6 +1,6 @@
 ---
 title: Survey Tree Selector
-image: static/img/admin_survey_tree_selector_01.png
+image: img/admin_survey_tree_selector_01.png
 draft: false
 description: New Feature! Survey Tree Selector for Multiple Choice Questions
 ---

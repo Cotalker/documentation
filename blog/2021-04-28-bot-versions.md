@@ -1,6 +1,6 @@
 ---
 title: Bot Versions
-image: static/img/updates/update_old_bot.jpg
+image: img/updates/update_old_bot.jpg
 draft: false
 description: New Feature! Bot versions for routine stage types.
 ---
