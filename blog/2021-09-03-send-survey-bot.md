@@ -1,7 +1,7 @@
 ---
 title: Submit Form Bot
 description: Surveys are essential for gathering data. That's why we've implemented a new version of the Submit Form Bot. Easily automate survey sending by sending them with prefilled fields. 
-image: static/img/updates/update_submit_form_bot.png
+image: /static/img/updates/update_submit_form_bot.png
 draft: false
 ---
 
