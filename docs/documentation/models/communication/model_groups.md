@@ -107,7 +107,7 @@ import TabItem from '@theme/TabItem';
 | link.tokenKey | | string | |
 | link.url | Complete web address link | string | URL |
 | modifiedAt | Last date and time the group was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| nameCode | The group's unique identification name | string | Maximum 60 characters; only lowecase letters, numbers, and underscore allowed; must be unique. |
+| nameCode | The group's unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique. |
 | nameDisplay | The group name users see on the platform  | string | |
 | parent | Indicates parent group | ObjectId<COTGroup\> | [Group Data Model](/docs/documentation/models/communication/model_groups) |
 | search | Array of automatically generated search keywords | string [ ] | |
