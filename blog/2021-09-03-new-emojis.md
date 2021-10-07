@@ -1,7 +1,7 @@
 ---
 title: New Emojis Added!
 description: An emoji is worth a thousand words. And since there's such a broad spectrum of human emotions, it's only fair that our developers have painstakingly added even more emojis so that you can react correspondingly to text messages in the channel workspace.
-image: https://doc.cotalker.com/img/updates/update_new_emojis.png
+image: static/img/updates/update_new_emojis.png
 draft: false
 ---
 
