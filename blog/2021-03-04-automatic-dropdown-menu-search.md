@@ -1,6 +1,6 @@
 ---
 title: Automatic Dropdown Menu Search
-image: https://doc.cotalker.com/img/update_dropdown_menu_00.png
+image: img/update_dropdown_menu_00.png
 draft: false
 description: New Feature! Get help filling fields with element names.
 ---

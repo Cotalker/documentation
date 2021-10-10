@@ -1,6 +1,6 @@
 ---
 title: Question Execution
-sidebar_label: COTQuestionsExec
+sidebar_label: COTQuestionExec
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -12,7 +12,7 @@ import Mermaid from '@theme/Mermaid';
 
 ## Description {#description}
 
-This model is a Javascript-automated question that runs within a [component lifecycle stage](/docs/documentation/automation/question_exec#component-lifecycle-stages). It can be found as part of a [COTQuestion](/docs/documentation/models/surveys/model_questions) within an `exec` field, i.e., `exec.onChange`, `exec.onDisplay`, `exec.preload`, `exec.presave`, `exec.postsave`, `exec.validate`. It specifies the [parameters or context variables](/docs/documentation/automation/question_exec#parameters-context-variables) and source code used in [Javascript-automated survey components](/docs/documentation/automation/question_exec). 
+The Question Execution Data Model (COTQuestionExec) is part of  [COTQuestion](/docs/documentation/models/surveys/model_questions) within an `exec` field, i.e., `exec.onChange`, `exec.onDisplay`, `exec.preload`, `exec.presave`, `exec.postsave`, `exec.validate`. This model holds data for a Javascript-automated question that runs within a [component lifecycle stage](/docs/documentation/automation/question_exec#component-lifecycle-stages). It specifies the [parameters or context variables](/docs/documentation/automation/question_exec#parameters-context-variables) and source code used in [Javascript-automated survey components](/docs/documentation/automation/question_exec). 
 
 <Mermaid chart={`
 	graph LR;

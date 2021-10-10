@@ -1,7 +1,7 @@
 ---
 title: New Administrative Panel Menu
 description: Things are growing fast in Cotalker! So our design experts reorganized the Administrative Panel to help users and administrators have a more intuitive and coherent menu, making it easier to find the tool or settings panel that they need.
-image: https://doc.cotalker.com/img/updates/update_new_admin_panel.png
+image: img/updates/update_new_admin_panel.png
 draft: false
 ---
 

@@ -14,11 +14,13 @@ _Questions_ make up survey forms; their wide variety allows different forms for 
 	graph LR;
         S[COTSurvey] --> C1[COTSurveyChat #1]
         S --> C2[COTSurveyChat #2]
+        S --> C3[COTSurveyChat #3]
         C1 --> Q1T[COTQuestion - Field Label]
         C1 --> Q1I[COTQuestion - Input Settings]
         C2 --> Q2T[COTQuestion - Field Label]
         C2 --> Q2I[COTQuestion - Input Settings]
         Q2I --> QE[COTQuestionExec]
+        C3 --> Q3[COTQuestion - Label & Input]
 `}/>
 
 ## JSON Sample {#json-sample}

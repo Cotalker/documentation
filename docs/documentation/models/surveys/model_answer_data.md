@@ -8,14 +8,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-The Answer-Data Data Model (COTAnswerData) an object that correspondes to the `answers.data` array field found in the [Answers Data Model](/docs/documentation/models/surveys/model_answers) (COTAnswer). It contains all the data gathered through a survey form submitted by a _user_.
+The Answer-Data Data Model (COTAnswerData) is an object that corresponds to the `answers.data` array field found in the [Answers Data Model](/docs/documentation/models/surveys/model_answers) (COTAnswer). It contains all the data gathered through a survey form submitted by a _user_.
 
-Data objects go in pairs. The first represents the survey question's displayed field label. The second, the input data.
+Data objects usually go in pairs. The first represents the survey question's displayed field label. The second, the input data.
 
 ## JSON Sample {#json-sample}
 
 ```json
 "data": [
+        // Survey question field label
         {
             "code": [],
             "display": [
@@ -30,6 +31,7 @@ Data objects go in pairs. The first represents the survey question's displayed f
             "identifier": "date_arrival_00_1631572528245",
             "diff": []
         },
+        // Input data: Date and Time
         {
             "code": [
                 "date",
@@ -52,6 +54,7 @@ Data objects go in pairs. The first represents the survey question's displayed f
             "identifier": "date_arrival_00",
             "diff": []
         },
+        // Survey question field label
         {
             "code": [],
             "display": [
@@ -66,6 +69,7 @@ Data objects go in pairs. The first represents the survey question's displayed f
             "identifier": "cities_00_1633346534779",
             "diff": []
         },
+        // Input data: Multiple Choice using Properties (Elements)
         {
             "code": [
                 "{\"allow\":\"propertyType\",\"value\":\"location\",\"filter\":\"*\"}"
@@ -100,20 +104,24 @@ Data objects go in pairs. The first represents the survey question's displayed f
 | ---- | ---- | ---- | ---- |
 | code | Displays code parameters according to the [content type](/docs/documentation/models/surveys/model_questionContentType). | [string] | |
 | contentType | Indicates the question's [content type](/docs/documentation/models/surveys/model_questionContentType). | string | |
-| diff | Each `diff` object indicates changes or modifications made to an _answer_ after the form was submitted. | object[ ] | |
-| diff[index].from | | string | |
+| diff | Each `diff` object indicates changes or modifications made to an _answer_ after the form was submitted. | object[ ] | The `diff` field follows [RFC6902](https://datatracker.ietf.org/doc/html/rfc6902) standards. |
+| diff[index].from | Indicates origin of moved or copied data. | string | Not present in all operations. |
 | diff[index].modifiedAt | Indicates when the modification took place.| ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | diff[index].op | Indicates the type of modification carried out. | string | `remove`, `replace`, `add` |
 | diff[index].path | Points to the `responses` or `code` path that was modified. | string | |
 | diff[index].value | Depending on the content type, shows the previous value that was modified. | string | |
 | display | Indicates the displayed field label in the survey. | [string] | Only present in objects that represent the survey field labels. |
-| group | | string | |
 | identifier | Indicates the question's unique identification name. | string | |
 | process | Shows the input data that will be processed. | [string] | |
 | question | References the asked survey question. | ObjectId<COTQuestion\> | [Questions Data Model](/docs/documentation/models/surveys/model_questions) |
 | responses | Shows the input data after being processed. | [string] | |
 | user | Indicates the _user_ that submitted the form. | ObjectId<COTUser\> | [Users Data Group](/docs/documentation/models/users/model_users) |
 
+## Deprecated {#deprecated}
+
+| Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
+| ---- | ---- | ---- | ---- |
+| group | | string | DEPRECATED |
 
 ## Additional Resources {#resources}
 

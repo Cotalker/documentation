@@ -1,6 +1,6 @@
 ---
 title: Mobile Database Editing Responsiveness
-image: https://doc.cotalker.com/img/update_database_mobile_save.png
+image: img/update_database_mobile_save.png
 draft: false
 description: New Feature! Database editing for mobile device.
 ---

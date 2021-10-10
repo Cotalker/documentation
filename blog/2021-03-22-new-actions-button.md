@@ -1,6 +1,6 @@
 ---
 title: New "Actions" Button
-image: https://doc.cotalker.com/img/updates_fab_march_2021.png
+image: img/updates_fab_march_2021.png
 draft: false
 description: New Feature! New "Actions" Button for easy tool access.
 ---

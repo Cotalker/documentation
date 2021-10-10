@@ -1,7 +1,7 @@
 ---
 title: Audit Logs
 description: Because people make mistakes, it's always a good idea to keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, deactivation, and activation of _user_ profiles and _access roles_. 
-image: https://doc.cotalker.com/img/updates/update_auditlog.png
+image: img/updates/update_auditlog.png
 draft: false
 ---
 

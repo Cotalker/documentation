@@ -1,7 +1,7 @@
 ---
 title: Emoji Reactions 😄
 description: New Feature! React to chat messages with emojis. 👍 👎 😄 🎉 😕 ❤️ 🚀 👀
-image: https://doc.cotalker.com/img/updates/update_emoji_react.png
+image: img/updates/update_emoji_react.png
 draft: false
 
 ---

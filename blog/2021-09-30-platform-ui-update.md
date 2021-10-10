@@ -1,7 +1,7 @@
 ---
 title: User-Interface Update
 description: For work to be productive, you need your tools to be correctly organized and know where everything is. That's why we changed a little our user-interface to include a tool bar which includes easy access to the search tool. The search tool has also been modified to make it even easier to search through your data.
-image: https://doc.cotalker.com/img/updates/update_new_tool_bar.png
+image: img/updates/update_new_tool_bar.png
 draft: false
 ---
 
