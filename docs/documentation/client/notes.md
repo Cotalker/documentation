@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-Easily create notes to share and edit in realtime among other users within the Cotalker environment. With _Notes_, users can collaborate with all sorts of information to build your company's knowledge base.
+Easily create notes to share and edit in real-time among other users within the Cotalker environment. With _Notes_, users can collaborate with all sorts of information to build your company's knowledge base.
 
 The _Notes_ tool uses [markdown syntax](#markdown) to help you focus on writing the text and forget about formatting. 
 
