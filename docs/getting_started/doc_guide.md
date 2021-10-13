@@ -13,12 +13,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Main Sections</span>
 
-- [**Getting Started**](/docs/getting_started/intro_overview): Meant for end-users, first-time admins, and partners.
+- [**Getting Started**](/docs/getting_started/intro_overview): Meant for end-users, first-time admins, and partners. Illustrates basic concepts, tools, and layouts.
 - [**What's New**](/blog): Latest features, improvements, and updates.
 - [**Admin Docs**](/docs/documentation/documentation_overview): Complete description of the administrative panel, setup details, and examples.
 - [**API**](/docs/documentation/api/overview_api): API reference guide for admins and developers, complete with descriptions and examples.
 - [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
-- [**Tutorials**](/docs/tutorials/tutorial_overview): Real-life examples.
+- [**Tutorials**](/docs/tutorials/tutorial_overview): Real-life examples used to help admins learn how to set up and implement workflow and automation tools.
 - [**Support & Help**](/docs/support/support_overview): Support directory and help links.
 
 :::tip

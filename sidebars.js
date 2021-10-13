@@ -33,7 +33,15 @@ module.exports = {
             'documentation/client/database',
             'documentation/client/dashboard',
             'documentation/client/reports',
-            'documentation/client/notes'
+            {
+              type: 'category',
+              label: 'Notes',
+              items: [
+                'documentation/client/notes',
+                'documentation/client/notes_markdown',
+              ],
+              collapsed: true,
+            },
           ],
           collapsed: true,
         },
