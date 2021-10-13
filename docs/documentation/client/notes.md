@@ -15,7 +15,7 @@ Easily create notes to share and edit in real-time among other users within the 
 
 The _Notes_ tool uses [markdown syntax](/docs/documentation/client/notes_markdown) to help you focus on writing the text and forget about formatting. 
 
-Notes can be shared through hyperlinks, the _Notes_ dashboard, [_tasks_](#task-notes), and even [_surveys_](/docs/documentation/admin/survey/components/attachment).
+Notes can be shared through hyperlinks, the _Notes_ [dashboard](/docs/documentation/client/notes#dashboard), [tasks](#task-notes), and even [surveys](#survey-notes).
 
 <div className="alert alert--secondary">
 
