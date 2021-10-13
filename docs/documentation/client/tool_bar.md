@@ -1,5 +1,5 @@
 ---
-title: Tool Bar
+title: Toolbar
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br/>
 
 ## Overview {#overview}
-Located in the upper side of the web platform layout, the **tool bar** is always present, giving you easy access to the search tool and contacts list.
+Located in the upper side of the web platform layout, the **toolbar** is always present, giving you easy access to the search tool and contacts list.
 
 <img alt="main menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/tool_bar_02.png')} />
 <br/>
