@@ -5,13 +5,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import TOCInline from '@theme/TOCInline';
 import Mermaid from '@theme/Mermaid';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/routines.svg')} />
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
 <br/>
 <br/>
 
 ## Overview  {#markdown}
 
-Editing _notes_ requires using _markdown_ – a simple syntax used for automatically formatting documents. It's easy to use. You just have to remember some of the character-syntax commands. Once you get the hang of it, you’ll end up liking markdown more than regular word processing, especially when you need to make quick notes and not worry much about formatting.
+Editing _notes_ requires using _markdown_ – a simple syntax used for automatically formatting documents. It's easy to use. You just have to remember some of the character-syntax commands. Once you get the hang of it, you'll end up liking markdown more than regular word processing, especially when you need to make quick notes and not worry much about formatting.
 
 To make things easier, the [**editor**](/docs/documentation/client/notes#editor) provides auto-complete hints for markdown. The [editor toolbar](/docs/documentation/client/notes#editor) also helps out by inserting the markdown syntax you need by clicking on the corresponding icon.
 

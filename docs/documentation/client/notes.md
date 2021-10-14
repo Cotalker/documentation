@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import TOCInline from '@theme/TOCInline';
 import Mermaid from '@theme/Mermaid';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/users.svg')} />
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Videocall.svg')} />
 <br/>
 <br/>
 
@@ -178,19 +178,19 @@ There are multiple ways to access a task note. Here are some examples:
 <br/>
 
 ## Adding Notes on a Survey Form {#survey-notes}
-Some survey forms will give you the option to attach a note. You can either create a new note or add an existing one by indicating its URL or Id.
+Some survey forms will give you the option to attach a note. You can either create a new note or add an existing one by indicating its URL or Id. Below are some examples.
 
-- Submit a new note:
+- _Submit a new note:_
 
-  <img alt="add survey note 1" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_15.png')} />
+  <img alt="add survey note 1" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_15.png')} />
   <br/>
 
-- Submit an existing note:
+- _Submit an existing note:_
 
-  <img alt="add note survey 2" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_16.png')} />
+  <img alt="add note survey 2" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_16.png')} />
   <br/>
 
 :::tip
-- To obtain an existing note's URL, click the copy icon in the the [Notes Toolbar](#main-notes-toolbar) or copy it from your browser's address bar.
+- To obtain an existing note's URL, click the copy icon in the [Notes Toolbar](#main-notes-toolbar) or copy it from your browser's address bar.
 - To obtain an existing note's Id, find it among the string in your browser's address bar.
 :::

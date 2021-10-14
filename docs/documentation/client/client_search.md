@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div className="alert alert--secondary">
 
-Search queries are carried out through different fields of the Cotalker environment, making it easier and more efficient to find and display results. Search fields include: _user_, _channel_, _action_, _properties_, _task names, _additional task information_, and _shared documents_.
+Search queries are carried out through different fields of the Cotalker environment, making it easier and more efficient to find and display results. Search fields include: _user_, _channel_, _action_, _properties_, _task names_, _additional task information_, and _shared documents_.
 
 
 There are two types of searches:
@@ -84,7 +84,7 @@ _Press the **SEE MORE** option to find more search query results in a specific f
 <br/>
 
 #### Shared documents {#shared-documents}
-_Shared document content is also searched through._
+_Shared file and [note](/docs/documentation/client/notes) content is also searched through._
 
 <img alt="search document" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_search_07.png')} /> 
 <br/>
