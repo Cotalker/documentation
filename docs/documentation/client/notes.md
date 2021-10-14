@@ -85,10 +85,17 @@ To create a note, follow these simple steps:
 <div className="alert alert--secondary">
 
 ## Notes Layout & Toolbar {#layout-toolbar}
-The Notes tool can appear either as a pop-up window or an individual tab. In both cases, its layout and tools are distributed the same. Below is an example and brief description of each
+The Notes tool can appear either as a pop-up window or an individual tab. In both cases, its layout and tools are distributed in the same manner. Below is an example and description of the layout.
 
+<div className="text-center">
 <img alt="notes layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_06.png')} />
+
+[1. Main Toolbar](#main-notes-toolbar) – [2. Network Tools](#network-toolbar) – [3. Editor](#editor) – [4. Document View](#doc-view)
+
+</div>
 <br/>
+
+---
 
 ### 1. Main Toolbar {#main-notes-toolbar}
 
