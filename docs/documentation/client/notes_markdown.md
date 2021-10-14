@@ -11,9 +11,9 @@ import Mermaid from '@theme/Mermaid';
 
 ## Overview  {#markdown}
 
-Editing _notes_ requires using _markdown_ – a simple syntax used for automatically formatting documents. It's easy to use. You just have to remember some of the character-syntax commands. Once you get the hang of it, you'll end up liking markdown more than regular word processing, especially when you need to make quick notes and not worry much about formatting.
+Editing [_notes_](/docs/documentation/client/notes) requires using _markdown_ – a simple syntax used for automatically formatting documents. It's easy to use. You just have to remember some of the character-syntax commands. With markdown, you can format text, insert images, add links, create diagrams, and much more. Once you get the hang of it, you'll end up liking markdown more than regular word processing, especially when you need to make quick notes and not worry much about formatting.
 
-To make things easier, the [**editor**](/docs/documentation/client/notes#editor) provides auto-complete hints for markdown. The [editor toolbar](/docs/documentation/client/notes#editor) also helps out by inserting the markdown syntax you need by clicking on the corresponding icon.
+To make things easier, the [**note editor**](/docs/documentation/client/notes#editor) provides auto-complete hints for markdown. The [editor toolbar](/docs/documentation/client/notes#editor) also helps out by inserting the markdown syntax you need by clicking on the corresponding icon.
 
 :::note
 For more information about markdown syntax, visit the free and open-source _Markdown Guide_: 
@@ -354,6 +354,20 @@ _Graphviz_
       BusinessManager->ITManager
       {rank=same;ITManager Teacher1 Teacher2} // Put them on the same level
     }
+    ```
+
+_Mermaid_
+    ```mermaid
+    gantt
+      title A Gantt Diagram
+    
+      section Section
+      A task: a1, 2014-01-01, 30d
+      Another task: after a1, 20d
+      
+      section Another
+      Task in sec: 2014-01-12, 12d
+      Another task: 24d
     ```
 
 :::
