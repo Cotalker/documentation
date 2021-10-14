@@ -1,6 +1,6 @@
 ---
-title: User-Interface Update
-description: For work to be productive, you need your tools to be correctly organized and know where everything is. That's why we changed a little our user-interface to include a tool bar which includes easy access to the search tool. The search tool has also been modified to make it even easier to search through your data.
+title: User-Interface & Search Update
+description: For work to be productive, you need your tools to be correctly organized and know where everything is. That's why we made some changes to our user interface, adding a toolbar to give you easy access to the search tool and contact list.  The search tool has also been enhanced to make it even easier to search through your data. Search queries can now even go through your shared documents and notes, allowing your company to make easier use of its growing knowledge base.
 image: img/updates/update_new_tool_bar.png
 draft: false
 ---
@@ -27,7 +27,9 @@ Organized + Easy to Search = More Productivity
 </div>
 <div className="card__body">
 
-🛠 For work to be productive, you need your tools to be correctly organized and know where everything is. That's why we changed a little our user-interface adding a tool bar to give you easy access to the search tool and contact list. The [search tool](/docs/documentation/client/client_search) has also been modified to make it even easier to search through your data.  🔎 
+🛠 For work to be productive, you need your tools to be correctly organized and know where everything is. That's why we made some changes to our user interface, adding a toolbar to give you easy access to the search tool and contact list. 
+
+The [**search tool**](/docs/documentation/client/client_search) has also been enhanced to make it even easier to search through your data. 🔎 Search queries can now even go through your shared documents and notes, allowing your company to make easier use of its growing knowledge base.
 
 </div>
 <div className="card__footer text-center align-padding-center">

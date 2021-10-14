@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import TOCInline from '@theme/TOCInline';
 import Mermaid from '@theme/Mermaid';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/users.svg')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/routines.svg')} />
 <br/>
 <br/>
 
@@ -24,7 +24,7 @@ For more information about markdown syntax, visit the free and open-source _Mark
 ## Basic Markdown Syntax {#basic-md}
 
 ### Title {#title-md}
-Add titles or headings to your note with a number sign `#`. Titles are automatically set as links, added to the sidebar navegation menu, and added to the note's table of contents.
+Add titles or headings to your note with a number sign `#`. Titles are automatically set as links, added to the sidebar navigation menu, and added to the note's table of contents.
 
 - `#` Heading level 1 
 - `##` Heading level 2
@@ -33,7 +33,7 @@ Add titles or headings to your note with a number sign `#`. Titles are automatic
 
 _Alternative Syntax:_
 - `===` The text above the line adopts Heading level 1
-- `---` The text above the line adpots Heading level 2
+- `---` The text above the line adopts Heading level 2
 
 ---
 
@@ -198,7 +198,7 @@ row 2 | item c | **item d**
 ---
 
 ### Task Lists {#task-lists-md}
-Make task lists or checklists that readers can mark or check when viewing the note in .
+Make task lists or checklists that readers can mark or check when viewing the note in _document view_.
 
 _Example:_
 
