@@ -11,11 +11,15 @@ import Mermaid from '@theme/Mermaid';
 
 ## Overview {#overview}
 
-Easily create notes to share and edit in real-time among other users within the Cotalker environment. With _Notes_, users can collaborate with all sorts of information to build your company's knowledge base.
+Easily create notes to share and edit in real-time among other users within the Cotalker environment. Thanks to our powerful [search tool](/docs/documentation/client/client_search#shared-documents), _task notes_ can be made accessible to all users, thus creating a dynamic knowledge base for your company that all users can help build.
 
 The _Notes_ tool uses [markdown syntax](/docs/documentation/client/notes_markdown) to help you focus on writing the text and forget about formatting. 
 
-Notes can be shared through hyperlinks, the _Notes_ [dashboard](/docs/documentation/client/notes#dashboard), [tasks](#task-notes), and even [surveys](#survey-notes).
+Notes can be shared and accessed through [tasks](#task-notes), hyperlinks, the _Notes_ [dashboard](/docs/documentation/client/notes#dashboard), and even [surveys](#survey-notes).
+
+:::info
+While _notes_ are fully available in _tasks_, the _Notes dashboard_ is still in its _alpha_ phase and is subject to change.
+:::
 
 <div className="alert alert--secondary">
 
@@ -31,6 +35,152 @@ Go to our [Markdown Syntax](/docs/documentation/client/notes_markdown) page for 
 
 </div>
 <br/>
+
+## Task Notes {#task-notes}
+_Task notes_ are a great way to register and share relevant information concerning your individual tasks. You can even create _tasks notes_ with the goal of collecting information and building your knowledge base. 
+
+All _task notes_ are indexed for [search queries](/docs/documentation/client/client_search#shared-documents), making it easier to find the information you need. 
+
+Create as many _notes_ as you want within your _tasks_.
+
+### Creating Task Notes {#create-task-note}
+To create a _task note_, go to the _task's details_, either from the [_channel workspace_](/docs/documentation/client/taskview#tasks-channel) or [_task view_](/docs/documentation/client/taskview#task-view). 
+
+Here are three ways to create a note within a task:
+
+- _the Channel Workspace's task panel_
+  
+  <img alt="associate note to task 1" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_11.png')} />
+  <br/>
+
+- _the Task View_
+  <img alt="associate note to task 2" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_12.png')} />
+  <br/>
+
+- _the Task View_
+  <img alt="associate note to task 3" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_13.png')} />
+  <br/>
+
+:::note
+Only new notes can be associated directly to a task. To associate existing notes to a task, use the API tools.
+:::
+
+### Accessing Task Notes {#accessing-task-notes}
+
+There are multiple ways to access a _task note_.
+
+From the _Task View_:
+
+<img alt="task notes 0" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_19.png')} />
+<br/>
+
+From _Task Details_:
+
+<img alt="task notes 1" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_17.png')} />
+<br/>
+<br/>
+
+From _Task Files_:
+
+<img alt="task notes 2" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_18.png')} />
+<br/>
+
+<div className="alert alert--secondary">
+
+## Notes Layout & Toolbar {#layout-toolbar}
+The Notes tool can appear either within the task view or as an individual web browser tab. In both cases, its layout and tools are distributed in a similar manner. Below is an example and description of the layout.
+
+<div className="text-center">
+<img alt="notes layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_06.png')} />
+
+[1. Main Toolbar](#main-notes-toolbar) – [2. Network Tools](#network-toolbar) – [3. Editor](#editor) – [4. Document View](#doc-view)
+
+</div>
+<br/>
+
+---
+
+### 1. Main Toolbar {#main-notes-toolbar}
+
+<img alt="main toolbar" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_07.png')} />
+<br/>
+
+<div className="padding-left--lg">
+
+1. **Edit**: See only the editor.
+2. **View**: See only the result.
+3. **Both**: See both in split view.
+4. **Copy**: Copy link to clipboard.
+5. **Pop-out**: Open note in new tab.
+
+</div>
+<br/>
+
+### 2. Network Tools {#network-toolbar}
+
+<img alt="secondary toolbar" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_09.png')} />
+<br/>
+
+<div className="padding-left--lg">
+
+1. **Menu**: See revision history.
+2. **Online**: See contributing online users.
+
+</div>
+<br/>
+
+### 3. Editor {#editor}
+
+<img alt="editor" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_08.png')} />
+<br/>
+
+<div className="padding-left--lg">
+
+1. **Toolbar**: Formatting tools that add [markdown syntax](/docs/documentation/client/notes_markdown) to text.
+2. **Write pad**: Text in [markdown syntax](/docs/documentation/client/notes_markdown) written here.
+3. **Status bar**: Note stats, Spell Checker, Night Mode, Indent, Editor, and other options.
+
+</div>
+<br/>
+
+### 4. Document View {#doc-view}
+
+<img alt="doc view" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_10.png')} />
+<br/>
+
+<div className="padding-left--lg">
+
+1. **History summary**: Last change and ownership
+2. **Navegation menu**: Automatically created with document # headings
+3. **Document**: Formatted output for users to read.
+
+</div>
+<br/>
+
+</div>
+<br/>
+
+## Adding Notes on a Survey Form {#survey-notes}
+Some survey forms will give you the option to attach a note. You can either create a new note or add an existing one by indicating its URL or Id. Below are some examples.
+
+- _Submit a new note:_
+
+  <img alt="add survey note 1" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_15.png')} />
+  <br/>
+
+- _Submit an existing note:_
+
+  <img alt="add note survey 2" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_16.png')} />
+  <br/>
+
+:::tip
+- To obtain an existing note's URL, click the copy icon in the [Notes Toolbar](#main-notes-toolbar) or copy it from your browser's address bar.
+- To obtain an existing note's Id, find it among the string in your browser's address bar.
+:::
+
+
+-----
+<span className="hero__subtitle">⚠️ The Notes Dashboard is still in its alpha phase.</span>
 
 ## Accessing Notes Dashboard {#dashboard}
 
@@ -71,7 +221,7 @@ On every **note card**, you have access to the following options:
 </div>
 <br/>
 
-## Creating Notes {#create-note}
+## Creating Notes from the Dashboard{#create-note}
 
 To create a note, follow these simple steps:
 
@@ -81,123 +231,3 @@ To create a note, follow these simple steps:
 1. From the [Notes Dashboard](#layout), press the <span className="badge badge--primary">+</span> icon in the lower-right corner.
 2. In the pop-up window, fill in the details for the new note.
 3. To add content to your new note, choose the note from the [Notes Dashboard](#layout).
-
-<div className="alert alert--secondary">
-
-## Notes Layout & Toolbar {#layout-toolbar}
-The Notes tool can appear either as a pop-up window or an individual tab. In both cases, its layout and tools are distributed in the same manner. Below is an example and description of the layout.
-
-<div className="text-center">
-<img alt="notes layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_06.png')} />
-
-[1. Main Toolbar](#main-notes-toolbar) – [2. Network Tools](#network-toolbar) – [3. Editor](#editor) – [4. Document View](#doc-view)
-
-</div>
-<br/>
-
----
-
-### 1. Main Toolbar {#main-notes-toolbar}
-
-<img alt="main toolbar" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_07.png')} />
-<br/>
-
-<div className="padding-left--lg">
-
-1. **Edit**: See only the editor.
-2. **View**: See only the result.
-3. **Both**: See both in split view.
-4. **Copy**: Copy link to clipboard.
-5. **Pop-out**: Open note in new tab.
-
-</div>
-<br/>
-
-### 2. Network Tools {#network-toolbar}
-
-<img alt="secondary toolbar" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_09.png')} />
-<br/>
-
-<div className="padding-left--lg">
-
-1. **Menu**: See revision history.
-2. **Online**: See online contributing users.
-
-</div>
-<br/>
-
-### 3. Editor {#editor}
-
-<img alt="editor" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_08.png')} />
-<br/>
-
-<div className="padding-left--lg">
-
-1. **Toolbar**: Formatting tools that add [markdown syntax](/docs/documentation/client/notes_markdown) to text.
-2. **Write pad**: Text in [markdown syntax](/docs/documentation/client/notes_markdown) written here.
-3. **Status bar**: Note stats, Spell Checker, Night Mode, Indent, Editor, and other options.
-
-</div>
-<br/>
-
-### 4. Document View {#doc-view}
-
-<img alt="doc view" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_10.png')} />
-<br/>
-
-<div className="padding-left--lg">
-
-1. **History summary**: Last change and ownership
-2. **Navegation menu**: Automatically created with document # headings
-3. **Document**: Formatted output for users to read.
-
-</div>
-<br/>
-
-</div>
-<br/>
-
-## Task Notes {#task-notes}
-You can associate _notes_ to your _tasks_ to keep and share relevant information. 
-
-:::tip
-[_Search queries_](/docs/documentation/client/client_search#shared-documents) can also search through _notes_ associated with _tasks_, thus creating a dynamic knowledge base that all users can access and help build.
-:::
-
-To associate a _note_ to a _task_, you must first create it within the _task_. There are three ways in which you can do this:
-
-- _the Channel Workspace's task panel_
-  
-  <img alt="associate note to task 1" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_11.png')} />
-  <br/>
-
-- _the task view_
-  <img alt="associate note to task 2" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_12.png')} />
-  <br/>
-
-- _the task view_
-  <img alt="associate note to task 3" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_13.png')} />
-  <br/>
-
-There are multiple ways to access a task note. Here are some examples:
-
-<img alt="task notes" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_14.gif')} />
-<br/>
-
-## Adding Notes on a Survey Form {#survey-notes}
-Some survey forms will give you the option to attach a note. You can either create a new note or add an existing one by indicating its URL or Id. Below are some examples.
-
-- _Submit a new note:_
-
-  <img alt="add survey note 1" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_15.png')} />
-  <br/>
-
-- _Submit an existing note:_
-
-  <img alt="add note survey 2" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/notes_16.png')} />
-  <br/>
-
-:::tip
-- To obtain an existing note's URL, click the copy icon in the [Notes Toolbar](#main-notes-toolbar) or copy it from your browser's address bar.
-- To obtain an existing note's Id, find it among the string in your browser's address bar.
-:::
