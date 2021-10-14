@@ -1,5 +1,5 @@
 ---
-title: Try out the New Notes Tool
+title: Try Out the New Notes Tool
 description: Easily create notes that you can share and edit in real-time with other users on the Cotalker platform. With Notes, users can collaborate with all sorts of information to build your company's knowledge base. The Notes tool uses markdown syntax to help you focus on writing the text and forget about formatting. Notes can be incorporated into tasks, shared through hyperlinks, managed in the Notes dashboard, and submitted through surveys. Furthermore, notes associated with tasks are included in search queries, making your shared knowledge accessible to all users within your company's Cotalker platform.
 image: img/updates/update_notes.png
 draft: false
