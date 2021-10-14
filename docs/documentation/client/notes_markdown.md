@@ -315,7 +315,47 @@ _Result:_
 `}/>
 
 :::note
-Apart from [Mermaid](https://mermaid-js.github.io/mermaid/#/?id=diagram-types), other diagram mardown syntaxes available with the Notes tool are: [sequence diagrams](https://bramp.github.io/js-sequence-diagrams/), [flow charts](https://flowchart.js.org/), [graphviz](https://www.tonyballantyne.com/graphs.html), 
+Apart from [Mermaid](https://mermaid-js.github.io/mermaid/#/?id=diagram-types), other diagram mardown syntaxes available with the Notes tool are: [sequence diagrams](https://bramp.github.io/js-sequence-diagrams/), [flow charts](https://flowchart.js.org/), [graphviz](https://www.tonyballantyne.com/graphs.html).
+
+**Try out these examples in your notes:**
+
+_Sequence Diagrams_
+    ```sequence
+    Alice->Bob: Hello Bob, how are you?
+    Note right of Bob: Bob thinks
+    Bob-->Alice: I am good thanks!
+    Note left of Alice: Alice responds
+    Alice->Bob: Where have you been?
+    ```  
+
+_Flow Charts_
+    ```flow
+    st=>start: Start
+    e=>end: End
+    op=>operation: My Operation
+    op2=>operation: lalala
+    cond=>condition: Yes or No?
+    
+    st->op->op2->cond
+    cond(yes)->e
+    cond(no)->op2
+    ```
+
+_Graphviz_
+    ```graphviz
+    digraph hierarchy {
+      nodesep=1.0 // Increases the separation between nodes
+    
+      node [color=Red,fontname=Courier,shape=box] // All nodes will this shape and colour
+      edge [color=Blue, style=dashed] // All the lines look like this
+    
+      Headteacher->{Deputy1 Deputy2 BusinessManager}
+      Deputy1->{Teacher1 Teacher2}
+      BusinessManager->ITManager
+      {rank=same;ITManager Teacher1 Teacher2} // Put them on the same level
+    }
+    ```
+
 :::
 ---
 
