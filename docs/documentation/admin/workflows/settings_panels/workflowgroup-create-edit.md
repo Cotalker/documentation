@@ -41,6 +41,7 @@ _Settings_:
 - [**C. Help**](#help-section)
 - [**D. Layout**](#layout-section)
 - [**E. Secondary actions**](#secondary-actions-section)
+- [**F. Settings**](#settings)
 
 </div>
 <br/>
@@ -251,6 +252,35 @@ Pressing this button opens up a **New action** pad. Press the pad to open the ne
 </div>
 <br/>
 
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### F. Settings {#settings}
+_Set display settings._
+
+<img alt="settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_06.png')} />
+<br/>
+
+<div className="container box">
+<div className="row table-row-2">
+<div className="col col--3"><b>Initial view:</b></div>
+<div className="col col--4">
+
+Set whether a _workflow group_ opens from the [group panel](/docs/documentation/client/groups#group-panel) in [task view](/docs/documentation/client/taskview#tasks-views) or it's [channel workspace](/docs/documentation/client/channels).
+
+</div>
+<div className="col col--5"><em>
+
+`Start with group view`: opens the workflow group's channel workspace.  
+`Start with task view`: opens the workflow group in task view.  
+
+</em></div>
+</div>
+
+</div>
+<br/>
 
 </div>
 <br/>

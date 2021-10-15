@@ -82,9 +82,9 @@ _Settings:_
 
 | Item | Description | Note |
 |----|----|----|
-| + Add Element | Lets you add an element to your channel. Some elements are automatically added in channels associated to a task. Add elements associated with a survey to make the survey available through the [actions button found in the channel's workspace](/docs/documentation/client/channels#task-menus-within-channel). | _After pressing the **+ Add Element** button, the collections and element fields will be displayed._ |
-| Collection |  | |
-| Elements |  |  |
+| + Add Element | Lets you add an element to your channel. Some elements are automatically added in channels associated with a task. Add elements associated with a survey to make the survey available through the [actions button found in the channel's workspace](/docs/documentation/client/channels#task-menus-within-channel). | _After pressing the **+ Add Element** button, the collections and element fields will be displayed._ |
+| Collection | Indicates which [collections](/docs/documentation/admin/admin_properties#collection) (property types) are associated with the channel. Used for classifying channels or making surveys availible, among others. | When a task is created through a survey form, collections corresponding to submitted answers are added automatically. |
+| Elements | Indicates the collection's [elements](/docs/documentation/admin/admin_properties#elements) (properties) which have been chosen for the channel. Used for classifying channels or making surveys availible, among others. | When a task is created through a survey form, elements corresponding to submitted answers are added automatically.  |
 
 </div>
 <br/>
@@ -98,9 +98,9 @@ _Settings:_
 
 | Item | Description | Note |
 |----|----|----|
-| Permissions for sending messages |  | |
-| First element overrides channel name |  |  |
-| Activate video call on this channel |  |  |
+| Permissions for sending messages | Indicates if users can write messages in the channel. | Options are `all` or `none`. |
+| First element overrides channel name | Indicates if the display name is overridden by the channel's first elements | If off, the manually added display name is used, otherwise the display name is overriden. |
+| Activate video call on this channel | Enables users to start video calls within the channel | A small video icon will appear in the upper-right corner of the channel workspace if active. |
 
 </div>
 <br/>
