@@ -116,7 +116,7 @@ import TabItem from '@theme/TabItem';
 | modifiedAt | Indicates the last time channel settings were modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | nameCode | The channel's unique identification name | string | Must be unique, max. 60 chars., Valid chars. [a-z0-9_] |
 | nameDisplay | The channel name users will see in the platform | string | |
-| overrideName | Indicates is the display name is overridden by the channel's first elements | boolean | False indicates the name has been overridden; true indicates that the manually added display name is being used |
+| overrideName | Indicates if the display name is overridden by the channel's first elements | boolean | False indicates the name has been overridden; true indicates that the manually added display name is being used |
 | pinned | Indicates if the channel is pinned to the group panel | ObjectId | An empty array indicates the channel is not pinned |
 | propertyIds | An array of element/property IDs associated with the channel | ObjectId<COTProperty\>[ ] | [Element Data Property](/docs/documentation/models/databases/model_properties) |
 | search | Array of keywords for search engine | string[ ] | Automatically generated |
