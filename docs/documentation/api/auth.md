@@ -9,15 +9,23 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction {#introduction}
 
-To use the API through a script or integration it is simple as calling an endpoint, e.g., getting users: GET /api/v3/users. These endpoints MUST be called with the corresponding authorization. 
+Using the API through a script or integration is as simple as calling an endpoint, e.g., getting users: `GET /api/v3/users`. These endpoints MUST be called with the corresponding authorization or access-token. 
 
-### Authentication {#authentication}
+## Authorization {#authorization}
 
-Authentication can be done by various methods as User/Password or Google Sign-in. Currently, only User/Password can be executed via API calls.
+Each network request to the API must include the HTTP-header: __"Authorization: Bearer \[access-token]"__  and may include the HTTP-header: __"Admin: true"__ to call the administrative version of the endpoint.
+
+To obtain an _Access-Token_, users must authenticate their credentials. [_Authentication_](#authentication) is explained below.
+
+Admins can also give external users an [API Token](/docs/documentation/admin/admin_token) that enables them to carry out some requests.
+
+## Authentication {#authentication}
+
+Authentication can be done by various methods as _User/Password_ or _Google Sign-in_. Currently, only _User/Password_ can be executed via API call.
 
 #### User/Password {#userpassword}
  
-This type of authentification is done with a [user](/docs/documentation/api/users/users) calling the POST /auth/local endpoint with the user's email and password. The obtained access-token has the same permissions as the user, and if the user is deactivated, downgraded, or upgraded so is the associated access-token. 
+This type of authentification is done with a [user](/docs/documentation/api/users/users) calling the `POST /auth/local` endpoint with the user's email and password. The obtained _Access-Token_ has the same permissions as the user, and if the user is deactivated, downgraded, or upgraded, so is the associated _Access-Token_. 
 
 |   Parameter    |  Value | 
 |-----------|-----------------|
@@ -26,11 +34,7 @@ This type of authentification is done with a [user](/docs/documentation/api/user
 | Headers   | Content-Type: application/json; charset=utf-8   |
 | Body      | { "email": "email@cotalker.com", "password": "secret-password" }  |
 
-### Authorization {#authorization}
-
-Each network request to the API must include the HTTP-header: __"Authorization: Bearer \[access-token]"__  and may include the HTTP-header: __"Admin: true"__ to call the administrative version of the endpoint.
-
-## Example {#example}
+### Example {#example}
 
 <Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
 <TabItem value="curl">
@@ -38,7 +42,7 @@ Each network request to the API must include the HTTP-header: __"Authorization: 
 ```bash
 curl -XPOST https://www.cotalker.com/auth/local \
 -H "Content-Type: application/json; charset=utf-8" \
--d '{ "email": "email@cotalker.com", "password": "secret-password" }'
+-d '{ "email": "email@company.com", "password": "secret-password" }'
 ``` 
 
 </TabItem>
@@ -69,3 +73,4 @@ Expected network result
 ```json
 { "token":" abcdefghijklmnopqurstuvwxyz01234567891234567890" }
 ```
+

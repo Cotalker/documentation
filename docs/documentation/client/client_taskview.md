@@ -10,23 +10,34 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#overview}
 
-<div className="alert alert--primary">
-
-A Cotalker **task** is basically _something_ that _someone_ has to do, but it is not limited to that. Every **task** represents an asset and has at least a _name_, _description_, _state_, and _assignee_. Other options are also available, e.g., _chat channels_, _users_, _start and end dates_, _SLAs_, and more. This amplitude of functions gives **tasks** great versatility that can adapt to each company's needs.
+A Cotalker [**task**](/docs/documentation/client/basic_concepts#tasks) is basically _something_ that _someone_ has to do, but it is not limited to that. Every **task** represents an asset and has at least a _name_, _description_, _state_, and _assignee_. Other options are also available, e.g., _chat channels_, _users_, _start and end dates_, _SLAs_, and more. This amplitude of functions gives **tasks** great versatility that can adapt to each company's needs.
 
 _Tasks_ are found within a [workflow group](/docs/documentation/client/groups). They can be created manually –either through the [tasks view](/docs/documentation/client/taskview#creating-and-modifying-tasks) or the [actions button](/docs/documentation/client/actions_button)– or automatically through internal or external [surveys](/docs/documentation/client/surveys). Our tools permit _tasks_ to be assigned, monitored, and updated.
 
-</div>
+:::info
+- To view or modify a task, users must be associated with the task and count with the corresponding permissions.
+- Admins can [set permissions](/docs/documentation/api/tasks/tasks#task-permissions-for-unassigned-users) that allow unassociated users to follow or edit tasks within a task group.
+:::
 
-## Tasks Views {#tasks-views}
-_Tasks views_ are an easy way to search for and manage tasks, along with getting a general idea of ​​the status of tasks in your company. Furthermore, it can also cover the visualization of other implemented solutions, such as a company client's statuses.
 
-Through the *task button* – found on top of the _group_ menu bar – you can access the _tasks view_. 
 
+
+
+## Accessing the Task View {#access-task-view}
+If you are not automatically taken to the _task view_ when you choose a task group (workflow group) from the _group panel_, you can access the _tasks view_ as shown below: 
+
+- Through the _task button_, found on top of the _group panel_:  
 <img alt="task button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_00.png')} />
 <br/>
 
-There are four different _task_ views: _list view_, _calendar view_, _kaban view_, and  _table view_. Each view permits different ways to visualize and handle the tasks.
+- By pressing the _kebab menu icon_ in the upper-right corner of the _channel workspace_:  
+<img alt="task button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_00a.png')} />
+<br/>
+
+## Tasks Views {#tasks-views}
+_Tasks views_ are an easy way to search for and manage tasks, along with getting a general idea of ​​the status of tasks in your company. Furthermore, it can also cover the visualization of other implemented solutions, such as the statuses of a company's client.
+
+There are four different _task views_: _list view_, _calendar view_, _kaban view_, and  _table view_. Each view permits different ways to visualize and handle the tasks.
 
 #### List View {#list-view}
 <img alt="list view" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_01.png')} />
@@ -43,7 +54,6 @@ There are four different _task_ views: _list view_, _calendar view_, _kaban view
 #### Table View {#kaban-view}
 <img alt="table button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_04.png')} />
 <br/>
-
 
 ## Menu Bar Icons {#menu-bar-icons}
 From the *button bar* on the top of the _tasks_ screen, you can access the different _tasks views_ as well as other tools, like _filters_ and the creation of _new tasks_.
@@ -104,25 +114,24 @@ _Creating tasks from the task view:_
 :::
 
 ## Modifying a Task {#modifying-tasks}
-If configured, you can change a task's state using the _actions button_ in its channel, as shown below.
+Only users with the appropriate permissions can modify a task's information or state.
+
+If configured, you can change a task's state using the _actions button_ in its channel workspace, as shown below:
 
 <img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_10.png')} />
 <br/>
+<br/>
 
-
-You can also modify an existing _task_ by opening its configuration side panel either by selecting it through the _task view_ or by pressing the _title bar_ in the task's channel.
+You can also modify a task by opening a side panel with its settings. Open the side panel either by selecting it through the _task view_ or by pressing the _title bar_ in the task's _channel workspace_.
 
 #### _Task view:_
 <img alt="edit task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_06.png')} />
 <br/>
 
-#### _Task's channel:_
+#### _Task's channel workspace:_
 <img alt="edit task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_11.png')} />
 <br/>
 
-
-
 :::note
-- In the _task view_, if the _task_ has a _channel_ associated with it, the _channel_ will open up first in the side panel. Press the channel's title bar, and the configuration side panel will then open up. 
 - If programmed by the administrator, a _State Start Form_ window might also appear when trying to modify the task.
 :::
