@@ -232,7 +232,7 @@ html[data-theme='dark'] {
 }
 
 .docusaurus-highlight-code-line {
-  background-color: #479dc9;
+  background-color: #2c2c2c;
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);

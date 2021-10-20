@@ -86,6 +86,9 @@ module.exports = {
         // },
       ],
     },
+    prism: {
+      theme: require('prism-react-renderer/themes/nightOwl'),
+    },
     footer: {
       style: 'dark',
       links: [

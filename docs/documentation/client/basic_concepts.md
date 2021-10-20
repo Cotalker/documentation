@@ -68,7 +68,7 @@ _Channel with task info side panel:_
 ## Collection {#collection}
 <span className="hero__subtitle">A collection is like a database table.</span>
 
-A collection – sometimes referred to as a _property type_ – is a set of [elements](#elements) (_properties_). Collections – and their elements – have vast possibilites and permit organizing and connecting everything in the Cotalker environment.
+A collection – sometimes referred to as a _property type_ – is a set of [elements](#elements) (_properties_). Collections – and their elements – have vast possibilities and permit organizing and connecting everything in the Cotalker environment.
 
 </div>
 <br/>
@@ -78,7 +78,7 @@ A collection – sometimes referred to as a _property type_ – is a set of [ele
 ## Element {#elements}
 <span className="hero__subtitle">Elements are like the rows of a database table, but much more.</span>
 
-Elements (or _properties_) are cotained within a collection. They are used to establish a relationship or define something. That's why you can use elements sometimes as a resource and others as an asset.
+Elements (or _properties_) are contained within a collection. They are used to establish a relationship or define something. That's why you can use elements sometimes as a resource and others as an asset.
 
 For example, you can send a specific text to all the users that have the "Special Message" element. Since each user is simply a collection, you can add elements to them.
 
@@ -98,6 +98,11 @@ As you can see, the versatility of elements is quite significant.
 [Tasks](#tasks) or assets assume and change states in the workflow process.
 
 [Workflow](#workflows) states are set up through the [elements](#elements) of a collection.
+
+:::note Further details for admins:
+- [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)
+- [Create/Edit State Settings Panel](/docs/documentation/admin/workflows/settings_panels/create_edit_state)
+:::
 
 </div>
 <br/>
@@ -125,6 +130,18 @@ _Workflow Start Form:_
 You can view, edit, create tasks, and change their [state](#state) and data. The tasks view allows filtering and grouping by states, assignments, users, among others.
 
 A task can only exist within a [workflow](#workflows). Before creating tasks, an appropriate workflow must be available.
+
+_Some examples of tasks and their possible states:_
+
+| Asset | States | 
+| ----- | ------ | 
+| Assignment | Open, Closed |
+| Job posting | Scouting, Interviews, Position Filled |
+| Client | Lead, First Meeting, Deal Closed |
+| Issue | Open, Verified, Fixed |
+| Contact | Pending, Responded |
+| Machine | Working, broken, At maintenance |
+| Store | Good, Average, Bad |
 
 -----
 

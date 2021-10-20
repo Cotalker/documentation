@@ -80,7 +80,7 @@ Filter used to sort tasks in the _task view_.
 </div>
 <div className="col col--4"><em>
 
-Options are determined by the [global filters](/docs/documentation/client/taskview) that have been created.
+Options are determined by the [global filters](/docs/documentation/client/taskview#create-a-filter) that have been created.
 
 </em></div>
 </div>
@@ -90,8 +90,18 @@ Options are determined by the [global filters](/docs/documentation/client/taskvi
 <div className="col col--4"><em>Closed tasks will remain in the workflows channel panel.</em></div>
 </div>
 <div className="row table-row-2">
+<div className="col col--3"><b>User bot name:</b></div>
+<div className="col col--5">Code name of automatically-created bot associated with the workflow group.</div>
+<div className="col col--4"><em>The name is automatically generated using the workflow group's code name as reference.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Access roles:</b></div>
+<div className="col col--5">Access roles that allow the bot to act upon the workflow.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
 <div className="col col--3"><b>Read Permissions:</b></div>
-<div className="col col--5">Permissions required to view the workflows.</div>
+<div className="col col--5">Permissions that allow users to view task settings.</div>
 <div className="col col--4"><em>
 
 [List of available Read Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
@@ -100,7 +110,7 @@ Options are determined by the [global filters](/docs/documentation/client/taskvi
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Write Permissions:</b></div>
-<div className="col col--5">Permissions required to edit the workflows.</div>
+<div className="col col--5">Permissions that allow users to edit task settings.</div>
 <div className="col col--4"><em>
 
 [List of available Write Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
