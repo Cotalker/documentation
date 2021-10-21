@@ -1,6 +1,6 @@
 ---
 title: Task Followers & Editors
-description: Better visibility of your tasks means improved efficiency and increased productivity. Configure your settings so that when you open your workflow groups, you can get a glance at all of your tasks. Create custom filters and choose which task view suits you best – List, Kanban, Calendar, Table.
+description: We make it easier to keep a bird's-eye view of what's going on in your company. With the new task followers and task editors option, supervisors and other stakeholders can follow or edit all the tasks within a task group. This new feature simplies configuring which users can participate in tasks without necesarrily having to add them one-by-one in the list of users assigned to the task. Stay close to your teams, but with enough distance to let them work freely. Ask your admin to configure this option through the API.
 image: img/updates/update_task_followers.png
 draft: false
 ---

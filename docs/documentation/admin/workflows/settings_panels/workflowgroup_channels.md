@@ -83,8 +83,8 @@ _Settings:_
 | Item | Description | Note |
 |----|----|----|
 | + Add Element | Lets you add an element to your channel. Some elements are automatically added in channels associated with a task. Add elements associated with a survey to make the survey available through the [actions button found in the channel's workspace](/docs/documentation/client/channels#task-menus-within-channel). | _After pressing the **+ Add Element** button, the collections and element fields will be displayed._ |
-| Collection | Indicates which [collections](/docs/documentation/admin/admin_properties#collection) (property types) are associated with the channel. Used for classifying channels or making surveys availible, among others. | When a task is created through a survey form, collections corresponding to submitted answers are added automatically. |
-| Elements | Indicates the collection's [elements](/docs/documentation/admin/admin_properties#elements) (properties) which have been chosen for the channel. Used for classifying channels or making surveys availible, among others. | When a task is created through a survey form, elements corresponding to submitted answers are added automatically.  |
+| Collection | Indicates which [collections](/docs/documentation/admin/admin_properties#collection) (property types) are associated with the channel. Used for classifying channels or making surveys available, among others. | When a task is created through a survey form, collections corresponding to submitted answers are added automatically. |
+| Elements | Indicates the collection's [elements](/docs/documentation/admin/admin_properties#elements) (properties) which have been chosen for the channel. Used for classifying channels or making surveys available, among others. | When a task is created through a survey form, elements corresponding to submitted answers are added automatically.  |
 
 </div>
 <br/>

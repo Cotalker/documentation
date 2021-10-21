@@ -27,7 +27,7 @@ _Access the **bots** section through the Administrative Panel:_
 
 In this section, you can find the entire list of _bots_ that have been created.
 
-Icon descriptions are availible in the [Overview section](/docs/documentation/admin/admin_overview).
+Icon descriptions are available in the [Overview section](/docs/documentation/admin/admin_overview).
 
 The information shown in the table is as follows:
 - **Bot Name**: Element visual name.
