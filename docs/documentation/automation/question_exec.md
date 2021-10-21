@@ -15,7 +15,7 @@ _Customize Survey Questions with JavaScript Code_
 ## Overview {#overview}
 Surveys are among Cotalker's main features. Their flexibility and customization ability allow them to adapt to each business's needs.
 
-This spec expands the notion of survey functionality by introducing _Question EXEC_, custom code execution for your survey questions.
+This spec expands the notion of survey functionality by introducing _QuestionExec_, custom code execution for your survey questions.
 
 :::info
 - Custom code must be written in **JavaScript**.
@@ -85,7 +85,7 @@ _The following context variables are available for use in the code but must be s
 - **channel#self**: Channel where the survey is located.
 - **user#me**: User that is answering the survey.
 - **responses#self**: Survey field answer stored as value.
-- **messages#self**: Message associated with the survey.
+- **message#self**: Message associated with the survey.
 
 :::note
 These _parameters_ or _context variables_ can be further specified in your code. Just look up the appropriate [models](/docs/documentation/models/overview_model) for each _parameter_. For example, if you wanted to use some specific channel properties, you could use the models to declare constants:

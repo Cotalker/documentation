@@ -23,3 +23,7 @@ _With Metabase, we can help you search and visualize your data._
 - The exact [**data model**](model) varies from company to company but is basically based on _users_, _surveys_, _channels_,  _collections_ (databases), _tasks_, and _sessions_.
 - For **enterprise plans**, it is possible to have direct access to the SQL Database from a third-party BI platform. _Contact your Cotalker sales representative for more information._
 :::
+
+:::warning
+Do not write directly to the database because **changes are not saved**. The data you see in the database is routinely refreshed and imported from our servers, where your data is kept safe. If you need to modify your database directly, consult your admin or sales representative.
+:::
