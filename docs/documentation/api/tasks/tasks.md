@@ -41,14 +41,14 @@ debug | | string | Optional | Option: `true`
 Header Name | Description | Required | Values
 --- | --- | --- | --- 
 Admin | User has admin privledges | Required | true | 
-Authorization | Access-Token | Required | Bearer [{ACCESS-TOKEN}](/docs/documentation/api/auth)
+Authorization | Access-Token | Required | Bearer [{ACCESS_TOKEN}](/docs/documentation/api/auth)
 
 #### Sample: {#get-task-groups-sample}
 
 ```bash
-curl --location --request GET 'https://www.cotalker.com/api/v2/tasks/group' \
+curl --location --request GET 'https://www.cotalker.com/api/v1/tasks/group' \
 --header 'Admin: true' \
---header 'Authorization: Bearer {ACCESS-TOKEN}'
+--header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
 #### Response: {#get-task-groups-response}
@@ -81,7 +81,7 @@ ObjectId<COTTaskGroup\> | The task group's ID | ObjectId | Required | [Task Grou
 Header Name | Description | Required | Values
 --- | --- | --- | --- 
 Admin | User has admin privledges | Required | true | 
-Authorization | Access-Token | Required | Bearer [{ACCESS-TOKEN}](/docs/documentation/api/auth)
+Authorization | Access-Token | Required | Bearer [{ACCESS_TOKEN}](/docs/documentation/api/auth)
 
 #### Request Body: {#body}
 
@@ -96,9 +96,13 @@ taskPropertyPermissions.follower | [Permissions](/docs/documentation/admin/admin
 #### Request Sample: {#permissions-sample}
 
 ```bash
-curl -XPATCH https://www.cotalker.com/api/v3/tasks/group/61700090de1525a97d9aeca4 \  
--H "Authorization: Bearer {ACCESS-TOKEN}" -H "Content-Type: application/json" \  
--d ' { "taskEditorPermissions": ["default", "app-access"]} '  
+curl -X PATCH 'https://www.cotalker.com/api/v1/tasks/group/61700090de1525a97d9aeca4' \
+--header 'Admin: true' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer $ACCESS-TOKEN' \
+--data-raw '{
+    "taskEditorPermissions": ["default", "app-access"]
+}'
 ```
 
 #### Response Sample: {#permissions-response}
