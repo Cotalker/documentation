@@ -87,10 +87,12 @@ Authorization | Access-Token | Required | Bearer [{ACCESS_TOKEN}](/docs/document
 
 Element | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-taskPropertyPermissions | Enables unassociated users to view or edit tasks when a task within the group is in a certain [state or status](/docs/documentation/client/basic_concepts#state), granted they have the proper [permissions](/docs/documentation/admin/admin_accessrole#default-permissions). | object[ ] | Optional |
-taskPropertyPermissions.property | Indicates the task state or status in which permitted unassociated users are enabled to view or edit tasks within the group. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | Optional | Available task statuses to choose from can be found in the task's `status{1,5}` fields as described in the [COTTask](/docs/documentation/models/tasks/model_tasks) data model.
-taskPropertyPermissions.editor | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to edit the task during the indicated state or status. | string[ ] | Optional | Users need at least one of the permissions in the array.
-taskPropertyPermissions.follower | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to view the task during the indicated state or status. | string[ ] | Optional | Users need at least one of the permissions in the array.
+| taskEditorPermissions | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to edit the tasks in the group. | string[ ] | optional | Users need at least one of the permissions in the array.
+| taskFollowerPermissions | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to view the tasks in the group.  | string[ ] | optional | Users need at least one of the permissions in the array.
+| taskPropertyPermissions | Enables unassociated users –with the proper [permissions](/docs/documentation/admin/admin_accessrole#default-permissions)– to view or edit tasks when a task within the group is in a certain [state](/docs/documentation/client/basic_concepts#state) or has a specific [status (additional field)](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | object[ ] | optional | Add an extra object for each state or status you wish to include as a permission filter.
+| taskPropertyPermissions.property | Indicates either the [additional field or status](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) that the task must have or the [state](/docs/documentation/client/basic_concepts#state) the task has to be in to enable unassociated users to view or edit them. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | optional | Available **task statuses** can be found in the task's `status{1,5}` fields as described in the [COTTask](/docs/documentation/models/tasks/model_tasks). <br/>Obtaining **task states'** objectIDs is [described here](/docs/documentation/admin/tips/find_property_objectID).
+| taskPropertyPermissions.editor | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to edit tasks with the previously indicated _status_ or _state_. | string[ ] | optional | Users need at least one of the permissions in the array.
+| taskPropertyPermissions.follower | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to view tasks with the previously indicated _status_ or _state_. | string[ ] | optional | Users need at least one of the permissions in the array.
 
 
 #### Request Sample: {#permissions-sample}
@@ -99,7 +101,7 @@ taskPropertyPermissions.follower | [Permissions](/docs/documentation/admin/admin
 curl -X PATCH 'https://www.cotalker.com/api/v1/tasks/group/61700090de1525a97d9aeca4' \
 --header 'Admin: true' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer $ACCESS-TOKEN' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
 --data-raw '{
     "taskEditorPermissions": ["default", "app-access"]
 }'

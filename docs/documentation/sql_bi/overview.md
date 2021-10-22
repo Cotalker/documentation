@@ -17,7 +17,7 @@ Cotalker integrates SQL and Business Intelligence (BI) tools to transform raw da
 <div className="text-center"><em>Using Metabase, we help you search and visualize your data.</em></div>
 <br/>
 
-Our software generates a **read-only SQL database** from the data stored in our servers and visualized using [Metabase](https://www.metabase.com/), a third-party BI platform. With Metabase, you can create customized searches and displays that will truly enhance what you can do with your data.
+Our software generates a **read-only SQL database** from the data stored in our servers and uses [Metabase](https://www.metabase.com/), a third-party BI platform, to visualize the information. With Metabase, you can create customized searches and displays that will truly enhance what you can do with your data.
 
 
 
