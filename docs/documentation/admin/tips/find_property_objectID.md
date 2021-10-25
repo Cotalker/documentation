@@ -21,19 +21,19 @@ Once you have the state names, you can search for their objectId in some of the 
 <div className="text-center"><em>Use the search tool to find the state and then open it to find all its details.</em></div>
 <br/>
 
-- Go to _Database_ tool in the **Main Menu Bar**:
+- View the _collection_ from the _Database_ tool:
 <img alt="database tool" className="img_sizing item shadow--tl" src={useBaseUrl('img/find_state_properties_02.png')} />
-<div className="text-center"><em>Once you find the element, you can find its objectID embedded in the browser's address bar.</em></div>
+<div className="text-center"><em>Once you find the element in the collection, you can find its objectID embedded in the browser's address bar.</em></div>
 <br/>
 
 
 - Enter the [database admin section](/docs/documentation/admin/admin_properties): 
 <img alt="admin section" className="img_sizing item shadow--tl" src={useBaseUrl('img/find_state_properties_03.png')} />
-<div className="text-center"><em>In the area within the dotted-line box you can find a list of the available states.</em></div>
+<div className="text-center"><em>Select the corresponding collection that hosts the elements that represent the available states.</em></div>
 <br/>
 
 - Use an [API request](/docs/documentation/api/tasks/statemachines) to get all the task states:  
-<span className="badge badge--success">GET</span> /tasks/&#123;groupid&#125;/sm/smstate/all
+<span className="badge badge--success">GET</span> /tasks/&#123;ObjectId&#60;COTTaskGroup&#62;&#125;/sm/smstate/all
 
 <img alt="api" className="img_sizing item shadow--tl" src={useBaseUrl('img/find_state_properties_04.png')} />
 <div className="text-center"><em>Find the property field to get each state's ObjectId&#60;COTProperty&#62;.</em></div>
