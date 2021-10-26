@@ -134,7 +134,11 @@ Options are: _unique_ or _generic_.
 <div className="row table-row-1">
 <div className="col col--3"><b>Additional field Nº:</b></div>
 <div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
-<div className="col col--4"><em>Tip: The added collections with their respective elements can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks/tasks#task-permissions-for-unassociated-users).</em></div>
+<div className="col col--4"><em>
+
+Tip: The added collections with their respective elements can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks/tasks#task-permissions-for-unassociated-users).
+
+</em></div>
 </div>
 </div>
 <br/>
