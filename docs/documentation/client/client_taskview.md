@@ -37,7 +37,7 @@ If you are not automatically taken to the _task view_ when you choose a task gro
 ## Tasks Views {#tasks-views}
 _Tasks views_ are an easy way to search for and manage tasks, along with getting a general idea of ​​the status of tasks in your company. Furthermore, it can also cover the visualization of other implemented solutions, such as the statuses of a company's client.
 
-There are four different _task views_: _list view_, _calendar view_, _kaban view_, and  _table view_. Each view permits different ways to visualize and handle the tasks.
+There are four different _task views_: _list view_, _calendar view_, _kanban view_, and  _table view_. Each view permits different ways to visualize and handle the tasks.
 
 #### List View {#list-view}
 <img alt="list view" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_01.png')} />
@@ -47,11 +47,11 @@ There are four different _task views_: _list view_, _calendar view_, _kaban view
 <img alt="calendar button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_02.png')} />
 <br/>
 
-#### Kaban View {#kaban-view}
-<img alt="kaban button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_03.png')} />
+#### Kanban View {#kanban-view}
+<img alt="kanban button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_03.png')} />
 <br/>
 
-#### Table View {#kaban-view}
+#### Table View {#table-view}
 <img alt="table button" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_04.png')} />
 <br/>
 

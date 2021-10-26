@@ -225,7 +225,7 @@ _Filters created with the **Public filter** activated will be visible to you and
 
 You can also adjust the _view type_. Let's practice using the _kanban view_ and see how the filtered tasks look like:
 
-<img alt="kaban view" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_taskview_results_01.png')} />
+<img alt="kanban view" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_taskview_results_01.png')} />
 <br/>
 <br/>
 
