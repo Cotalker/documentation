@@ -156,4 +156,4 @@ Below you will find the description and notes for each option in the <span class
 <br/>
 
 ---------
-Once the _collection_ is configured with the **Additional Fields** and saved, you can add _elements_ to it directly in ths <span class="badge badge--primary">Database</span> section or through specific modules, like <span class="badge badge--primary">Users</span>.
+Once the _collection_ is configured with the **Additional Fields** and saved, you can add _elements_ to it directly in the <span class="badge badge--primary">Database</span> section or through specific modules, like <span class="badge badge--primary">Users</span>.
