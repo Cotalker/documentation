@@ -145,7 +145,7 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
-| **channelType** | Refers to the [relationship]((/docs/documentation/admin/tips/chat_channels_workflows)) task's and their channels.<br/>Enum: ["bound", "unbound", "unbound-hierarchy"]<br/>SHOULD ALWAYS BE ON `BOUND`. | string[ ] | DEPRECATED 
+| **channelType** | Refers to the [relationship](/docs/documentation/admin/tips/chat_channels_workflows) task's and their channels.<br/>Enum: ["bound", "unbound", "unbound-hierarchy"]<br/>SHOULD ALWAYS BE ON `BOUND`. | string[ ] | DEPRECATED 
 | **color** | Changes color.<br/>Enum: ["none", "red", "blue", "green", "yellow"] | string | DEPRECATED
 | **formMessage** | | string[ ] | DEPRECATED
 | **insertAtEnd** | | boolean |
