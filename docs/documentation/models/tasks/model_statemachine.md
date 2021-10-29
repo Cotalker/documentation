@@ -4,8 +4,11 @@ sidebar_label: COTSMStateMachine
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+## Description {#description}
+
 _State machines_, also know as [_workflows_](/docs/documentation/client/basic_concepts#workflows), are definitions of how [tasks](/docs/documentation/client/basic_concepts#tasks) behave. They define a workflow's initial [state](/docs/documentation/client/basic_concepts#state), the other states they can change to, what [triggers](/docs/documentation/automation/triggers_and_contexts) are executed, if [reminders](/docs/documentation/automation/sla) are sent, and more. A [state machine's or workflow's settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit) are stored in the _COTSMStateMachine_ data model explained below.
 
+## JSON Sample {#json-sample}
 
 ```json
 {
@@ -145,7 +148,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
-| **taskChannelType** | Refers to the [relationship]((/docs/documentation/admin/tips/chat_channels_workflows/)) task's and their channels.<br/>Enum: ["bound", "unbound", "unbound-hierarchy"]<br/>SHOULD ALWAYS BE ON `BOUND` | string | DEPRECATED.
+| **taskChannelType** | Refers to the [relationship]((/docs/documentation/admin/tips/chat_channels_workflows)) task's and their channels.<br/>Enum: ["bound", "unbound", "unbound-hierarchy"]<br/>SHOULD ALWAYS BE ON `BOUND` | string | DEPRECATED.
 
 ## Additional Resources {#resources}
 
