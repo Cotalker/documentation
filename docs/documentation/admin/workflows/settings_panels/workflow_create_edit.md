@@ -69,18 +69,18 @@ _Settings:_
 <div className="row table-row-2">
 <div className="col col--3"><b>Code:</b></div>
 <div className="col col--5">Workflow identification name. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter.</div>
-<div className="col col--4"><em> The code cannot be edited once it is saved.</em></div>
+<div className="col col--4"><em>The code cannot be edited once it is saved.</em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Chat channels:</b></div>
 <div className="col col--5">
 
-Options are: _bound_, _unbound_, and _unbound-hierarchy_. Refers to the relationship between tasks and their chat channels.
+Refers to the [relationship](/docs/documentation/admin/tips/chat_channels_workflows) between tasks and their chat channels. 
 
 </div>
 <div className="col col--4"><em>
 
-[Click here for more details about the chat channel options.](/docs/documentation/admin/tips/chat_channels_workflows)
+SHOULD BE KEPT AT BOUND.
 
 </em></div>
 </div>

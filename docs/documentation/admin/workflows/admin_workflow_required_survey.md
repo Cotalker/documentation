@@ -228,7 +228,7 @@ If a _routine_ is afterwards added, the automatic change of _state_ is disabled 
 
 <div className="alert alert--secondary">
 
-4. If administrators desire an automatic response to occur when a change of _state_ is made, a _bot_ should be created through the <span className="badge badge--primary">Edit routine</span> button. Otherwise, it is not necessary to go through this step.
+4. If administrators desire an automatic response to occur when a _state_ change is made, a _routine_ should be created through the <span className="badge badge--primary">Edit routine</span> button. Otherwise, it is not necessary to go through this step. [Click here for more information on routines](/docs/documentation/automation/admin_routine).
 
 </div>
 <br/>
