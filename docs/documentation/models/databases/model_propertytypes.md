@@ -3,15 +3,55 @@ title: Collections (Property Types) Data Model
 sidebar_label: COTPropertyType
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Highlight from '@theme/Highlight';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
-Companies can have many databases where they can store all kind of data. Some are company assets, other might be describe states.
 
-For example "Store Locations", "Company Departments", "Products", "Clients", "Contacts", "Brands", "Task States" are Database examples.
+[_Property types_, also know as _collections_](/docs/documentation/admin/admin_properties#collection), are versatile databases that can be set up to carry out diverse functions in the Cotalker environment. _Property types_ can store company assets, describe workflow states, act as a filter, contain options for multiple-choice questions in surveys, grant permissions, and much more. Some common examples include "Store Locations", "Company Departments", "Products", "Clients", "Contacts", "Brands", "Task States", among others.
 
-Each Database may hay rows, elements or properties. Each property has at least a <Highlight text="Name" color="rgb(26, 188, 156)"/>  a <Highlight text="Code" color="rgb(46, 204, 113)"/> and a <Highlight text="Unique Id" color="rgb(52, 152, 219)"/>. Each database may have more columns, so that the properties can be more descriptive e.g., "Store Locations" might have an Address, number of employees, size of store, performance indicators, and any other. 
+_Property types_ contain [_properties_ or _elements_](/docs/documentation/admin/admin_properties#elements), which can be thought of as the rows in a table or better yet, as the documents in a MongoDB collection. Each _property_ has at least a "Name", a "Code" and a "Unique Id". Each collection may have more columns, i.e., additional fields, so that the _properties_ can be more descriptive, e.g., "Store Locations" might have an address, number of employees, store size, performance indicators, or any other information that needs to be associated with the _property_.
+
+```json
+{
+        "code": "string",
+        "company": "string",
+        "create": {
+          "active": true,
+          "requiredPermission": [
+            "string"
+          ]
+        },
+        "createdAt": "2021-10-28T09:53:52.837Z",
+        "display": "string",
+        "hierarchyLevel": 0,
+        "isActive": true,
+        "modifiedAt": "2021-10-28T09:53:52.837Z",
+        "newsLevel": 0,
+        "schemaNodes": [
+          {
+            "basicType": "string",
+            "default": {},
+            "description": "string",
+            "display": "string",
+            "isActive": true,
+            "isArray": true,
+            "key": "string",
+            "subType": "string",
+            "validators": {
+              "arrayMax": 0,
+              "arrayMin": 0,
+              "max": 0,
+              "min": 0,
+              "required": true,
+              "validator": "string"
+            },
+            "visualization": {
+              "displayAs": {}
+            },
+            "weight": 0
+          }
+        ],
+        "skipCodeValidation": true
+      }
+```
 
 ## Database Model {#database-model}
 
