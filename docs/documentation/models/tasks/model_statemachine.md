@@ -148,7 +148,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
-| **taskChannelType** | Refers to the [relationship]((/docs/documentation/admin/tips/chat_channels_workflows)) task's and their channels.<br/>Enum: ["bound", "unbound", "unbound-hierarchy"]<br/>SHOULD ALWAYS BE ON `BOUND` | string | DEPRECATED.
+| **taskChannelType** | Refers to the [relationship](/docs/documentation/admin/tips/chat_channels_workflows) task's and their channels.<br/>Enum: ["bound", "unbound", "unbound-hierarchy"]<br/>SHOULD ALWAYS BE ON `BOUND` | string | DEPRECATED.
 
 ## Additional Resources {#resources}
 
