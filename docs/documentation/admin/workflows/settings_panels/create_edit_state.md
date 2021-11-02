@@ -102,7 +102,7 @@ The state should already exist as an element in the collection selected previous
 <div className="col col--5">
 
 Creates an action button in the workflow's channel that indicates how a state change can be triggered. Options are: 
-- _None_: The action button is not created. Use this option to change states through other means, like: _survey trigger_ (mentioned below), [_task view_](/docs/documentation/client/taskview#task-view), a [routine stage-bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/tasks).
+- _None_: The action button is not created. Use this option to change states through other means, like: [_survey trigger_](/docs/documentation/admin/workflows/settings_panels/create_edit_state/#survey-trigger), [_task view_](/docs/documentation/client/taskview#task-view), a [routine stage-bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/tasks).
 - _Survey_: A survey is added as an option in the actions button. The **start form** field appears. There you can indicate which survey should be summoned.
 - _Manual_: Adds the state itself as an option in the actions button.
 
@@ -196,7 +196,7 @@ Users are assigned permissions through their [access roles](/docs/documentation/
 
 <div className="row table-row-1">
 <div className="col col--3"><b>+ Add Survey Trigger:</b></div>
-<div className="col col--5">A survey is used to change a workflow's state. Multiple survey triggers can be added. When pressed, new fields appear.</div>
+<div className="col col--5">A survey that accompanies a workflow's state change. Multiple survey triggers can be added. When pressed, new fields appear.</div>
 <div className="col col--4"><em>
 
 Go to [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) for setup information.

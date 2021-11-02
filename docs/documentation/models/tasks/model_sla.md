@@ -11,6 +11,8 @@ import Highlight from '@theme/Highlight';
 
 ## Description {#description}
 
+The COTSMSLA data model contains the settings of a [service-level agreement (SLAs)](/docs/documentation/automation/sla) within a workflow.
+
 ## JSON Sample {#json-sample}
 ```json
 {
@@ -52,7 +54,7 @@ import Highlight from '@theme/Highlight';
                     "content": {
                         "recipientName": "($CODE#users#_id#($OUTPUT#task_request#data|assignee))|name|names",
                         "recipientEmail": "",
-                        "companyName": "Ruanda",
+                        "companyName": "ACME",
                         "title": [
                             "Pending Task"
                         ],
@@ -100,4 +102,6 @@ import Highlight from '@theme/Highlight';
     "__v": 0
 }
 ```
+
+## Fields {#fields}
 
