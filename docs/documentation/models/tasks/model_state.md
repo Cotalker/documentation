@@ -15,60 +15,40 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ## JSON Sample {#json-sample}
 ```json
 {
-    "_id": "6034ee0deafb030009e2a003",
+    "__v": 3,
+    "_id": "61825dc53d5a23c4de1c5891",
+    "company": "61825e70d775394b54bc9801",  //COTCompany
+    "createdAt": "2021-02-23T11:59:09.774Z",
     "isActive": true,
-    "type": "new",
-    "stateMachine": "6034ed042719f80008d89f00",
-    "taskGroup": "6034ec90eafb030009e2998d",
-    "property": "5fbd2479bc66360009cdba2a",
-    "subtask": {
-        "target": null,
-        "triggers": []
-    },
+    "modifiedAt": "2021-10-29T18:07:56.959Z",
     "next": [
         {
             "canChange": [
                 "manual"
             ],
             "permissions": null,
-            "_id": "617c387c1f9fd10007e7df46",
-            "target": "6034ee295a63b70008afd365",
-            "triggers": [
-                {
-                    "_id": "617c387c1f9fd10007e7df47",
-                    "start": "test_workflow_state_change",
-                    "maxIterations": 1,
-                    "stages": [
-                        {
-                            "_id": "617c387c1f9fd10007e7df48",
-                            "key": "test_workflow_state_change",
-                            "name": "PBGiphy",
-                            "version": null,
-                            "data": {
-                                "search": [
-                                    "workflow"
-                                ],
-                                "channel": "6052c3f5f2970a8b35f91589"
-                            },
-                            "next": {
-                                "DEFAULT": ""
-                            },
-                            "customNetworkRequest": []
-                        }
-                    ],
-                    "version": "v3"
-                }
-            ],
-            "requiredSurvey": null
+            "_id": "61825e3c4f81079320a7f394",
+            "target": "61825e4d2e6213cc574404ed",  //COTSMState (Workflow)
+            "triggers": [],  //COTParametrizedBot (Routine)
+            "requiredSurvey": null  //COTSurvey (Survey)
         },
     ],
-    "surveyTriggers": [],
-    "company": "5f5a74a8fdf77a0008a6349a",
-    "createdAt": "2021-02-23T11:59:09.774Z",
-    "modifiedAt": "2021-10-29T18:07:56.959Z",
-    "__v": 3
+    "property": "61825e1fdf69d71cd50f28d5",  //COTProperty (Element)
+    "stateMachine": "61825e1288d560b8d79c4bd5",  //COTSMStateMachine (Workflow)
+    "subtask": {
+        "target": null,  //COTSMStateMachine (Workflow)
+        "triggers": []  //COTParametrizedBot (Routine)
+    },
+    "surveyTriggers": [
+        {
+            "surveyId": "618261e9b754d9b1132b5a15",  //COTSurvey (Survey)
+            "triggers": []  //COTParametrizedBot (Routine)
+        }
+    ],
+    "taskGroup": "61825e1ab0a7fb03de08bdc2",  //COTTaskGroup (Workflow Group)
+    "type": "new",
 }
- ```
+```
 
 ## Fields {#fields}
 
@@ -100,3 +80,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
 **icon** | | string | DEPRECATED
+
+## Additional Resources {#resources}
+
+- [Workflow State Configuration](/docs/documentation/admin/workflows/settings_panels/create_edit_state): Worflow configurations through the Administrative Panel
+- [Create Workflow Tutorial](/docs/tutorials/basic/create_state_machines): Basic tutorial on how to create a workflow
+- ["State Machines" REST API documentation](/docs/documentation/api/tasks/statemachines): basic "State Machines" API requests
+- [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
+- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+
+## Help {#help}
+
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum

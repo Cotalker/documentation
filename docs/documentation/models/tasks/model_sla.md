@@ -5,7 +5,7 @@ sidebar_label: COTSMSLA
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<span className="hero__subtitle"><em>COTSMSla</em></span>
+<span className="hero__subtitle"><em>COTSMSLA</em></span>
 <br/>
 <br/>
 
@@ -16,18 +16,18 @@ The COTSMSLA data model contains the settings of a [service-level agreement (SLA
 ## JSON Sample {#json-sample}
 ```json
 {
-    "_id": "605fa3ace2170f000818ac09",
+    "_id": "61827e0978b92cfb95ce66b6",
     "start": {
         "types": [],
         "states": [
-            "6034ee3ceafb030009e2a0ad"
+            "61827e102e8b30db66f7ef63"  //COTSMState (Workflow State)
         ]
     },
     "end": {
         "types": [],
         "states": [
-            "6034ee53a5dc970008680b2a",
-            "6034ee62a5dc970008680c19"
+            "61827e6ede16c588a66e3b42",  //COTSMState (Workflow State)
+            "61827e74fe6d5bde4134a1f1"  //COTSMState (Workflow State)
         ]
     },
     "data": {
@@ -38,65 +38,12 @@ The COTSMSLA data model contains the settings of a [service-level agreement (SLA
     "isActive": true,
     "reset": false,
     "repeat": true,
-    "stateMachine": "6034ed042719f80008d89f00",
-    "taskGroup": "6034ec90eafb030009e2998d",
+    "stateMachine": "61827e81855c63e18d38be7a",  //COTSMStateMachine (Workflow)
+    "taskGroup": "61827e87b9c09c7f7e121596",  //COTTaskGroup (Workflow Group)
     "code": "reminder_00",
     "display": "Reminder",
-    "pb": {  //COTParametrizedBot – Routine
-        "_id": "61794f1ab51dce00073daf64",
-        "stages": [
-            {
-                "_id": "6061d26ef3013a000816c964",
-                "key": "email",
-                "name": "PBEmail",
-                "data": {
-                    "subject": "Task Reminder",
-                    "content": {
-                        "recipientName": "($CODE#users#_id#($OUTPUT#task_request#data|assignee))|name|names",
-                        "recipientEmail": "",
-                        "companyName": "ACME",
-                        "title": [
-                            "Pending Task"
-                        ],
-                        "action": "",
-                        "code": "",
-                        "messageA": "$JOIN# #(Task number)#($OUTPUT#task_request#data|serial)#($OUTPUT#task_request#data|name)#is still pending.",
-                        "messageB": "Please complete the task or modify its end-date."
-                    },
-                    "targets": [
-                        "($CODE#users#_id#($OUTPUT#task_request#data|assignee))|email"
-                    ],
-                    "singleRecipient": true
-                },
-                "next": {
-                    "DEFAULT": ""
-                },
-                "customNetworkRequest": []
-            },
-            {
-                "_id": "605fb534e2170f000818d863",
-                "key": "task_request",
-                "name": "NWRequest",
-                "data": {
-                    "url": "$JOIN#/#($ENV#BASEURL)#api#tasks#($VALUE#taskGroupId)#task#($VALUE#taskId)",
-                    "method": "GET",
-                    "defaultAuth": true,
-                    "headers": {
-                        "admin": true
-                    }
-                },
-                "next": {
-                    "SUCCESS": "email",
-                    "ERROR": ""
-                },
-                "customNetworkRequest": []
-            }
-        ],
-        "start": "task_request",
-        "maxIterations": 10,
-        "version": "v3"
-    },
-    "company": "5f5a74a8fdf77a0008a6349a",
+    "pb": {},  //COTParametrizedBot (Routine)
+    "company": "61827e8fb10fe5e98e1438ef",  //COTCompany
     "createdAt": "2021-03-27T21:29:16.756Z",
     "modifiedAt": "2021-10-27T13:07:38.906Z",
     "__v": 0
@@ -105,3 +52,38 @@ The COTSMSLA data model contains the settings of a [service-level agreement (SLA
 
 ## Fields {#fields}
 
+| Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
+| --- | --- | --- | --- |
+| **code** | The SLA's code name | string | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
+| **company** | The ID of the company the SLA is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| *createdAt* | Date the SLA was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
+| **data** | Date and time configuration for the SLA. | object |
+| **data.baseDate** | Sets _static_ and _dynamic_ `time` reference. | string | Enum: ["endDate", "startDate", "resolutionDate", "default"]<br/>[Details availible here.](/docs/documentation/automation/sla#base-date)
+| **data.time** | Specifies the date or time that the task is supposed to go from its initial to final state. | string | [Details available here.](/docs/documentation/automation/sla#time)
+| **data.timeType** | Indicates how time is calculated. Options are `dynamic` or `static`. | string | [Details available here.](/docs/documentation/automation/sla#time-type)
+| **display** | The SLA's display name |string | 
+| **end** | Specifies when an SLA should be considered completed. | object | Either `states` or `types` can be used to specify SLA completion, but it is not recommended to use both.
+| **end.states** | Specifies the task states in which the SLA is completed. | [ObjectId<COTSMStates\>[ ]](/docs/documentation/models/tasks/model_state)
+| **end.types** | Specifies the task types in which the SLA is completed. | string[ ] | Enum: ["new", "in-progress", "closed"]
+| **isActive** | Indicates if the SLA is active or not. | boolean |
+| **modifiedAt** | Indicates the last time the SLA was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
+| **pb** | Contains the routine that sets off with the SLA. | [COTParametrizedBot](/docs/documentation/models/tasks/model_parametrizedbot) |
+| **repeat** | If "true", time will cycle infinitely until the condition is met. Therefore, the SLA routine will be executed as many times as necessary. Otherwise, the SLA will only run once. | boolean | Use with precaution to avoid undesired looping activity.
+| **reset** | If "true", time will start again when the task returns to `start.states` or `start.types`. | boolean |
+| **start** | Specifies when an SLA should initiate. | object | Either `states` or `types` can be used to specify SLA initiation, but it is not recommended to use both.
+| **start.states** | Specifies the task states in which the SLA is initialized. |[ObjectId<COTSMStates\>[ ]](/docs/documentation/models/tasks/model_state) |
+| **start.types** | Specifies the task types in which the SLA is initialized.| string[ ] | Enum: ["new", "in-progress", "closed"]
+| **stateMachine** | The _state machine_ or _workflow_ the state belongs to. | [ObjectId<COTSMStateMachine\>](/docs/documentation/models/tasks/model_statemachine) |
+| **taskGroup** | The _task group_ or _workflow group_ the state belongs to. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) |
+
+## Additional Resources {#resources}
+
+- [SLA Routine](/docs/documentation/automation/sla): How to add an SLA Routine to a workflow
+- ["State Machines" REST API documentation](/docs/documentation/api/tasks/statemachines): basic "State Machines" API requests
+- [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
+- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+
+## Help {#help}
+
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
