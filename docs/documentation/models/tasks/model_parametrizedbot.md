@@ -90,6 +90,17 @@ _Sample taken from an SLA Routine:_
 | **start** | Indicates the stage the routine initiates in. | string | Valid options include any routine `stages[index].key` value.
 | **version** | The routine's version number. | number | For internal use only. | This value specifies the engine version. NOTE: This should always be 'v3' or something like that.
 
+## Deprecated {#deprecated}
+
+ Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
+| --- | --- | --- | --- |
+| **stages[index].customNetworkRequest[index].body** | The customized network request's body. | object | DEPRECATED 
+| **stages[index].customNetworkRequest[index].endpoint** | The customized network request's endpoint. | string[ ] | DEPRECATED
+| **stages[index].customNetworkRequest[index].findOne** | | boolean | DEPRECATED
+| **stages[index].customNetworkRequest[index].keyOutput** | | string | DEPRECATED
+| **stages[index].customNetworkRequest[index].method** | Indicates the request method. | string | Enum: ["GET", "Post"] | DEPRECATED
+| **stages[index].customNetworkRequest[index].query** | | object | DEPRECATED
+
 
 ## Additional Resources {#resources}
 
