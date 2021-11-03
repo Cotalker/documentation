@@ -53,7 +53,7 @@ Below you will find the description and notes for each field in the Routine Buil
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
 | Initial State | Select the stage that initializes the routine. | The list shows the stages that have been created so far in this particular routine. You can fill in this field after you have added the stage or stages. |
-| Max Iterations | Specifies the number of stages iterated. | Make sure looping stages are taken into account when specifying the maximum number of iterations. |
+| Max Iterations | Specifies the maximum number of stages the routine can go through. | Make sure looping stages are taken into account when specifying the maximum number of iterations. |
 | Add Stage | Adds a stage to the routine. | The _code_ and _stage type_ must be specified. After that, the settings for the selected stage type will be displayed. |
 | Code | Stage identification name | This field only allows lowercase letters, underscores and should always start with a letter.  |
 | Type | Select the stage type. | The dropdown menu lists all the available _stage types_. Hover over the name for a brief explanation. [Click here](/docs/documentation/automation/existing_routines#stage-list) for more information. |

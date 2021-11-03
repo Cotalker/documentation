@@ -73,7 +73,11 @@ Use either _States_ or _State types_ fields to configure **START** and **END**. 
 </em></div>
 </div>
 <div className="row table-row-1">
-<div className="col col--2"><b>Time type:</b></div>
+<div className="col col--2"><b>
+
+#### Time type: {#time-type}
+
+</b></div>
 <div className="col col--7">
 
 Options are: 
@@ -85,7 +89,11 @@ Options are:
 <div className="col col--3"><em></em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--2"><b>Base date:</b></div>
+<div className="col col--2"><b>
+
+#### Base date: {#base-date}
+
+</b></div>
 <div className="col col--3">
 
 _Static_ and _Dynamic_ time are calculated in relation to a _Base date_. 
@@ -102,7 +110,11 @@ Options are:
 </div>
 </div>
 <div className="row table-row-1">
-<div className="col col--2"><b>Time:</b></div>
+<div className="col col--2"><b>
+
+#### Time: {#time}
+
+</b></div>
 <div className="col col--3">
 
 Specifies the date or time that the task is supposed to go from its initial to final state.
@@ -127,7 +139,7 @@ Dynamic type format:
 <div className="col col--2"><b>Reset:</b></div>
 <div className="col col--6">
 
-If active, _time_ will start again when the task returns to START state.
+If active, _time_ will start again when the task returns to START states or types.
 
 </div>
 <div className="col col--4"><em></em></div>
