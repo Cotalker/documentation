@@ -6,7 +6,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle"><em>COTSMState</em></span>
 <br/>
-<br/>
 
 ## Description {#description}
 [_States_](/docs/documentation/admin/workflows/settings_panels/create_edit_state) are different statuses or stages a task goes through in a workflow or state machine. The _COTSMState_ data model contains a state's settings which detail how it passes to a next _state_.
@@ -62,15 +61,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 | **next[index].canChange** | Indicates if and how a state change can occurr. | string[ ] | Enum: ["survey", "manual", "none"]<br/>[Option details.] (/docs/documentation/admin/workflows/settings_panels/create_edit_state/#state-changes)
 | **next[index].requiredSurvey** | Points to a survey used for changing a task's state. Option available only is `canChange` is set to _survey_. | [ObjectId<COTSurvey\>](/docs/documentation/models/surveys/model_surveys) | Setup information for [State Start Forms] (/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)
 | **next[index].target** | The state the task changes into. | ObjectId<COTSMState\> |
-| **next[index].triggers** | Configuration of the routine that accompanies the state change. | [COTParametrizedBot[ ]](/docs/documentation/models/tasks/model_parametrizedbot) | NOTE: If this routine is set, it is up to the routine to change the state.
+| **next[index].triggers** | Configuration of the routine that accompanies the state change. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) | NOTE: If this routine is set, it is up to the routine to change the state.
 | **property** | The state's _property_ or _element_ ID. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) |
 | **stateMachine** | The _state machine_ or _workflow_ the state belongs to. | [ObjectId<COTSMStateMachine\>](/docs/documentation/models/tasks/model_statemachine)
 | **subtask** | Represents an available subtask. | object | 
 | **subtask.target** | Points to a workflow used as a subtask. | ObjectId<COTSMStateMachine\> | 
-| **subtask.triggers** | Configuration of the routine that accompanies the subtask creation. | [COTParametrizedBot[ ]](/docs/documentation/models/tasks/model_parametrizedbot) |
+| **subtask.triggers** | Configuration of the routine that accompanies the subtask creation. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
 | **surveyTriggers** | Surveys that accompany a workflow's state change. | object[ ] |
 | **surveyTriggers[index].surveyId** | Survey ID | [ObjectId<COTSurvey\>](/docs/documentation/models/surveys/model_surveys) |
-| **surveyTriggers[index].triggers** | Configuration of the routine that accompanies the survey trigger. | [COTParametrizedBot[ ]](/docs/documentation/models/tasks/model_parametrizedbot) |
+| **surveyTriggers[index].triggers** | Configuration of the routine that accompanies the survey trigger. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
 | **taskGroup** | The _task group_ or _workflow group_ the state belongs to. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup)
 | **type** | Indicates the state type. | string | Enum: ["new", "in-progress", or "closed"]<br/>[Option details](/docs/documentation/admin/workflows/settings_panels/create_edit_state#create-state-general-information)
 
