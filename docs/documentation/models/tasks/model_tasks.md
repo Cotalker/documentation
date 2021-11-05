@@ -4,6 +4,9 @@ sidebar_label: COTTask
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<span className="hero__subtitle"><em>COTTask</em></span>
+<br/>
+
 ## Description
 
 Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/tasks/model_taskgroup) and carry out their lifecycle through a [workflow](/docs/documentation/admin/workflows/admin_workflow_overview). The task data model (COTTask) contains a task's settings information.
@@ -16,25 +19,23 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
     "__v": 9,
     "_id": "617928f1d50f83209fc4c9a2",
     "activeSlas": [
-        "61794f9d7e2207607dea305d"
+        "61794f9d7e2207607dea305d"  //COTAccessRole
     ],
     "answers": [
-        "61792e75437145ca48a1d5cd",
-        "61792e7c63bf434aabe08105",
-        "61792e8cc031f322c5090275"
+        "61792e75437145ca48a1d5cd",  //COTAnswer
+        "61792e7c63bf434aabe08105",  //COTAnswer
+        "61792e8cc031f322c5090275"  //COTAnswer
     ],
-    "assignee": "61792ea18b81afb8b9d02898",
-    "asset": "61792ea734f892fa71f1bea3",
-    "channel": "61792eb01011d273cdadd371",
+    "asset": "61792ea734f892fa71f1bea3",  //COTProperty
+    "assignee": "61792ea18b81afb8b9d02898",  //COTUser
+    "channel": "61792eb01011d273cdadd371",  //COTChannel
     "closedAt": null,
-    "color": "none",
-    "company": "61792eb79f70471601d5239c",
+    "company": "61792eb79f70471601d5239c",  //COTCompany
     "createdAt": "2021-06-23T18:52:43.650Z",
-    "createdBy": "61792ee1665f500dd0cbccb1",
+    "createdBy": "61792ea18b81afb8b9d02898",  //COTUser
     "editors": [
-        "61792ee1665f500dd0cbccb1",
-        "61792eed7e632ed745423227",
-        "61792ef89c0dc2f1f67c8ba6"
+        "61792ea18b81afb8b9d02898",  //COTUser
+        "61792eed7e632ed745423227"  //COTUser
     ],
     "endDate": "2021-08-31T04:00:00.000Z",
     "estimatedTime": 5,
@@ -43,8 +44,9 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
             "birthdate_00": "2021-10-01T03:00:00.000Z"
         }
     },
-    "followers": [],
-    "formMessage": [],
+    "followers": [
+        "61792ef89c0dc2f1f67c8ba6"  //COTUser
+    ],
     "image": {
         "small": "https://mysite.com/image_small.png",
         "square": "https://mysite.com/image_square.png",
@@ -53,19 +55,11 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
     "indentation": 0,
     "info": "Elaborate and distribute this month's sales report.",
     "isActive": true,
-    "isValid": false,
     "language": "english",
     "modifiedAt": "2021-10-07T10:33:34.350Z",
     "modifiedStateAt": "2021-09-21T18:25:56.787Z",
     "name": "Sales Report",
     "owner": "manual",
-    "projectCode": "6179356416fe68a459b1e171",
-    "public": {
-        "isActive": false,
-        "language": "english",
-        "title": "",
-        "response": ""
-    },
     "relativeWeight": 1,
     "serial": 28,
     "smState": "6179356dcb7a69311a26bb80",  //State settings (COTSMState)
@@ -77,16 +71,15 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
     "status3": "6179367ecb7ab1e467fe092f", //Additional field (COTProperty)
     "status4": null,
     "status5": null,
-    "taskGroup": "6179368883ddbe5b0ac30c2d",
+    "taskGroup": "6179368883ddbe5b0ac30c2d",  //COTTaskGroup
     "userList": [
-        "6179368e3c451169143f4243",
-        "61793699c58259d9f49fa74c",
-        "6179369f962aba673b818844",
-        "617936a6471c196d5f51b37e"
+        "61792ea18b81afb8b9d02898",  //COTUser
+        "61792eed7e632ed745423227",  //COTUser
+        "61792ef89c0dc2f1f67c8ba6",  //COTUser
+        "617936ae27e055c29d00d823"  //COTUser
     ],
-    "validators": [],
     "visibility": [
-        "617936ae27e055c29d00d823"
+        "617936ae27e055c29d00d823"  //COTUser
     ],
     "weight": 0,
 
@@ -105,7 +98,7 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
 | **channel** | The task's [channel workspace](/docs/documentation/client/channels) | [ObjectId<COTChannel\>](/docs/documentation/models/communication/model_channels) |
 | **child** | Array of child tasks. | ObjectId<COTTask\>[ ] | |
 | **closedAt** | Indicates the resolution date, i.e., when the task was closed. If not yet closed, the value is `null`. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
-| **company** | Indicates the company in which the task is found. | [ObjectId<COTCompany\>] (/docs/documentation/models/model_company) |
+| **company** | Indicates the company in which the task is found. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
 | **createdAt** | Date the task was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **createdBy** | The _user_ (human or bot) that created the task. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | By default, the creator is designated as the `assignee`, but can later be changed.
 | **editors** | Users tagged as `editors`. Allows reading and writting on all task fields and to participate in the chat. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | 
@@ -127,7 +120,7 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
 | **relativeWeight** | Temporal value used to determine _weight_ in relation to same-level nodes. | number | 
 | **resolutionDate** | Indicates when a task entered a closed state. | ISODate | 
 | **serial** | The task's _serial number_. Numbers are assigned in sequential order. | number |
-| **smState** | Points to the settings of the current workflow state (`task.status`). | ObjectId<COTSMState\> |
+| **smState** | Indicates de ID of the current workflow state. | [ObjectId<COTSMState\>](/docs/documentation/models/tasks/model_state) |
 | **smStateMachine** | Points to the [workflow settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#layout). | [ObjectId<COTSMStateMachine\>](/docs/documentation/models/tasks/model_statemachine) |
 | **startDate** | The date the task begins. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **status** | Indicates the ID of the _element_ that represents the current workflow state. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) |

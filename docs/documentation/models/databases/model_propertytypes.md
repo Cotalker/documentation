@@ -106,7 +106,7 @@ _Property types_ contain [_properties_ or _elements_](/docs/documentation/models
 ## Additional Resources {#resources}
 - [Collections (Property Types)](/docs/documentation/admin/admin_properties#collection): Details about collections (property types)
 - [Create Collection](/docs/tutorials/basic/create_database): Basic tutorial on how to create a collection (property type)
-- ["State Machines" REST API documentation](/docs/documentation/api/tasks/statemachines): basic "State Machines" API requests
+- ["Collections (Property Types)" API documentation](/docs/documentation/api/tasks/statemachines): basic "Property Types" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
 - [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
 - [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
