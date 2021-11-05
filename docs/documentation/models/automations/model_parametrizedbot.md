@@ -98,7 +98,7 @@ _Sample taken from an SLA Routine:_
 | **stages[index].customNetworkRequest[index].endpoint** | The customized network request's endpoint. | string[ ] | DEPRECATED
 | **stages[index].customNetworkRequest[index].findOne** | | boolean | DEPRECATED
 | **stages[index].customNetworkRequest[index].keyOutput** | | string | DEPRECATED
-| **stages[index].customNetworkRequest[index].method** | Indicates the request method. | string | Enum: ["GET", "Post"] | DEPRECATED
+| **stages[index].customNetworkRequest[index].method** | Indicates the request method. Enum: ["GET", "POST"] | string | DEPRECATED
 | **stages[index].customNetworkRequest[index].query** | | object | DEPRECATED
 
 

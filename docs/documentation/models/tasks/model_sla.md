@@ -67,7 +67,7 @@ The COTSMSLA data model contains the settings of a [service-level agreement (SLA
 | **end.types** | Specifies the task types in which the SLA is completed. | string[ ] | Enum: ["new", "in-progress", "closed"]
 | **isActive** | Indicates if the SLA is active or not. | boolean |
 | **modifiedAt** | Indicates the last time the SLA was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
-| **pb** | Contains the routine that sets off with the SLA. | [COTParametrizedBot](/docs/documentation/models/tasks/model_parametrizedbot) |
+| **pb** | Contains the routine that sets off with the SLA. | [COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot) |
 | **repeat** | If "true", time will cycle infinitely until the condition is met. Therefore, the SLA routine will be executed as many times as necessary. Otherwise, the SLA will only run once. | boolean | Use with precaution to avoid undesired looping activity.
 | **reset** | If "true", time will start again when the task returns to `start.states` or `start.types`. | boolean |
 | **start** | Specifies when an SLA should initiate. | object | Either `states` or `types` can be used to specify SLA initiation, but it is not recommended to use both.
