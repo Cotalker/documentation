@@ -8,48 +8,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 __Elements__ or __Properties__ of a database...
 
 ## JSON Sample
-```json
-    {
-        "_id": "611a8c80ab9abe000742fd23",
-        "subproperty": [],
-        "users": [],
-        "isActive": true,
-        "search": [
-            "jane",
-            "company",
-            "com",
-            "user",
-            "60c48a3db79c0f000867dfa2",
-            "611a8c80ab9abe000742fd23",
-            "janecompanycom",
-            "user60c48a3db79c0f000867dfa2611a8c80ab9abe000742fd23"
-        ],
-        "propertyType": "birthdays_00",
-        "name": {
-            "code": "user_60c48a3db79c0f000867dfa2_611a8c80ab9abe000742fd23",
-            "display": "jane@company.com"
-        },
-        "owner": {
-            "$ref": "users",
-            "$id": "60c48a3db79c0f000867dfa2",
-            "$db": ""
-        },
-        "schemaInstance": {
-            "birthdate_00": "1985-06-01T04:00:00.000Z"
-        },
-        "company": "5f5a74a8fdf77a0008a6349a",
-        "createdAt": "2021-08-16T16:04:16.843Z",
-        "modifiedAt": "2021-10-26T10:16:47.891Z",
-        "__v": 0
-    }
-```
-
+_Property with additional fields:_
 ```json
 {
-    "_id": "60afb8ba720e27000943d5d2",
+    "_id": "6185cfd61cdf6b755245e18d",
     "subproperty": [
-        "606b7a86da81640008a512c2",
-        "606b7a959862850008740dc5"
+        "6185cfe1ef46d0aee4c2b653",
+        "6185cfe8b420610501b280d8"
     ],
     "users": [],
     "isActive": true,
@@ -63,7 +28,7 @@ __Elements__ or __Properties__ of a database...
         "display": "Ford Mustang"
     },
     "propertyType": "car_model_00",
-    "company": "5f5a74a8fdf77a0008a6349a",
+    "company": "6185d0ddd7b7517c8e0fb40b",
     "createdAt": "2021-05-27T15:20:26.487Z",
     "modifiedAt": "2021-11-04T16:31:03.967Z",
     "__v": 0,
@@ -72,10 +37,49 @@ __Elements__ or __Properties__ of a database...
     },
     "schemaInstance": {
         "origin": "USA",
-        "car_picture": "6183ec2c9b5de11e225f3433"
+        "car_picture": "6185d0e7c6f325c5ecb1ce3d"
     }
 }
 ```
+
+_Property associated with user:_
+```json
+    {
+        "_id": "6185cbe62b21d41b5744e27e",
+        "subproperty": [],
+        "users": [],
+        "isActive": true,
+        "search": [
+            "jane",
+            "company",
+            "com",
+            "user",
+            "6185cbfc457214abaed8019f",
+            "6185cbe62b21d41b5744e27e",
+            "janecompanycom",
+            "user6185cbfc457214abaed8019f6185cbe62b21d41b5744e27e"
+        ],
+        "propertyType": "birthdays_00",
+        "name": {
+            "code": "user_6185cbfc457214abaed8019f_6185cbe62b21d41b5744e27e",
+            "display": "jane@company.com"
+        },
+        "owner": {
+            "$ref": "users",
+            "$id": "6185cbfc457214abaed8019f",
+            "$db": ""
+        },
+        "schemaInstance": {
+            "birthdate_00": "1985-06-01T04:00:00.000Z"
+        },
+        "company": "6185cdd32b0e783a0fbef35a",
+        "createdAt": "2021-08-16T16:04:16.843Z",
+        "modifiedAt": "2021-10-26T10:16:47.891Z",
+        "__v": 0
+    }
+```
+
+
 ## Fields {#fields}
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
