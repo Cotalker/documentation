@@ -1,40 +1,48 @@
 ---
-title: Elements (Properties) Data Model
+title: Properties (Elements) Data Model
 sidebar_label: COTProperty
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
+<span className="hero__subtitle"><em>COTProperty</em></span>
+<br/>
 
-__Elements__ or __Properties__ of a database...
+## Description {#description}
+
+[_Properties_ (_also known as _elements_)](/docs/documentation/admin/admin_properties#elements) are like the rows of a database table, but much more. Properties are contained within [_property types_ (_collections_)](/docs/documentation/models/databases/model_propertytypes). 
+
+They are used to establish a relationship or define something. That's why you can use _properties_ sometimes as a resource and others as an asset. For example, you can send a specific text to all the users that have the "Special Message" _property_. Since each _user_ is simply a _collection or property type_, you can add _properties_ to them.
+
+Additionally, [workflows use _properties_ to define their states](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields).
+
+As you can see, the versatility of _properties_ is quite significant.
+
+_Properties_ can also contain extra information through [additional fields](/docs/documentation/admin/admin_properties#additional-fields) set by their _property type_.
 
 ## JSON Sample
 _Property with additional fields:_
 ```json
 {
+    "__v": 0,
     "_id": "6185cfd61cdf6b755245e18d",
-    "subproperty": [
-        "6185cfe1ef46d0aee4c2b653",
-        "6185cfe8b420610501b280d8"
-    ],
-    "users": [],
+    "company": "6185d0ddd7b7517c8e0fb40b",
+    "createdAt": "2021-05-27T15:20:26.487Z",
     "isActive": true,
-    "search": [
-        "ford",
-        "00",
-        "ford00"
-    ],
+    "modifiedAt": "2021-11-04T16:31:03.967Z",
     "name": {
         "code": "ford_mustang",
         "display": "Ford Mustang"
     },
     "propertyType": "car_model_00",
-    "company": "6185d0ddd7b7517c8e0fb40b",
-    "createdAt": "2021-05-27T15:20:26.487Z",
-    "modifiedAt": "2021-11-04T16:31:03.967Z",
-    "__v": 0,
-    "extra": {
-        "In_Stock": "true"
-    },
+    "subproperty": [
+        "6185cfe1ef46d0aee4c2b653",
+        "6185cfe8b420610501b280d8"
+    ],
+    "search": [
+        "ford",
+        "00",
+        "ford00"
+    ],
     "schemaInstance": {
         "origin": "USA",
         "car_picture": "6185d0e7c6f325c5ecb1ce3d"
@@ -42,13 +50,25 @@ _Property with additional fields:_
 }
 ```
 
-_Property associated with user:_
+_Property associated with a user:_
 ```json
     {
+        "__v": 0,
         "_id": "6185cbe62b21d41b5744e27e",
-        "subproperty": [],
-        "users": [],
+        "company": "6185cdd32b0e783a0fbef35a",
+        "createdAt": "2021-08-16T16:04:16.843Z",
         "isActive": true,
+        "modifiedAt": "2021-10-26T10:16:47.891Z",
+        "name": {
+            "code": "user_6185cbfc457214abaed8019f_6185cbe62b21d41b5744e27e",
+            "display": "jane@company.com"
+        },
+        "owner": {
+            "$ref": "users",
+            "$id": "6185cbfc457214abaed8019f",
+            "$db": ""
+        },
+        "propertyType": "birthdays_00",
         "search": [
             "jane",
             "company",
@@ -59,23 +79,10 @@ _Property associated with user:_
             "janecompanycom",
             "user6185cbfc457214abaed8019f6185cbe62b21d41b5744e27e"
         ],
-        "propertyType": "birthdays_00",
-        "name": {
-            "code": "user_6185cbfc457214abaed8019f_6185cbe62b21d41b5744e27e",
-            "display": "jane@company.com"
-        },
-        "owner": {
-            "$ref": "users",
-            "$id": "6185cbfc457214abaed8019f",
-            "$db": ""
-        },
         "schemaInstance": {
             "birthdate_00": "1985-06-01T04:00:00.000Z"
         },
-        "company": "6185cdd32b0e783a0fbef35a",
-        "createdAt": "2021-08-16T16:04:16.843Z",
-        "modifiedAt": "2021-10-26T10:16:47.891Z",
-        "__v": 0
+        "subproperty": [],
     }
 ```
 
@@ -96,7 +103,7 @@ _Property associated with user:_
 | **owner.$id** | Contains the ObjectId of the referenced owner, i.e., _task_ or _user_. | ObjectId | For example,[ObjectId<COTTask\>](/docs/documentation/models/tasks/model_tasks) or [ObjectId<COTUser\>](/docs/documentation/models/users/model_users), accordingly.
 | **owner.$ref** | Contains the reference type. | string | For example, `"users"` when a _user_ is associated with the element. If the _property_ is related to a _task_, a generated string is used, e.g., `"task-{COTCompany.subdomain}-{COTTaskGroup.collectionName}"`
 | **propertyType** | The `code` of the [COTPropertyType](/docs/documentation/models/databases/model_propertytypes) associated with the property. | string |
-| **schemaInstance** | Contains additional field data. | object | The general format is `property.schemaInstance = { [field]: data-type }`.<br/>COTPropertyType's `schemaNodes[x].key` defines the _field_ and `schemaNodes[x].basicType` defines the _data type_.
+| **schemaInstance** | Contains [additional field](/docs/documentation/admin/admin_properties#additional-fields) data. | object | The general format is `property.schemaInstance = { [field]: data-type }`.<br/>COTPropertyType's `schemaNodes[x].key` defines the _field_ and `schemaNodes[x].basicType` defines the _data type_.
 | **search** | System search keywords. | string[ ] | Do not modify. 
 | **subproperty** | Contains child elements. | string[ ] | 
 | **superProperty** | Displays parent _property_ data model. | COTProperty |
@@ -123,6 +130,7 @@ _Property associated with user:_
 | **name.subDisplay** | Subtitle | string | DEPRECATED
 | **sextra** | | string | DEPRECATED
 | **skipCodeValidation** | **WARNING**: Do not set, disables many features. Deprecated, but still in use with some legacy settings. | boolean | DEPRECATED
+| **users** | | string[ ] | DEPRECATED
 
 ## Additional Resources {#resources}
 - [Elements (Properties)](/docs/documentation/admin/admin_properties#elements): Details about elements (properties)
