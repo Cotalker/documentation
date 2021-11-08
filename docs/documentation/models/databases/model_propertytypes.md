@@ -7,9 +7,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__subtitle"><em>COTPropertyType</em></span>
 <br/>
 
+## Description {#description}
+
 [_Property types_, also know as _collections_](/docs/documentation/admin/admin_properties#collection), are versatile databases that can be set up to carry out diverse functions in the Cotalker environment. _Property types_ can store company assets, describe workflow states, act as a filter, contain options for multiple-choice questions in surveys, grant permissions, and much more. Some common examples include "Store Locations", "Company Departments", "Products", "Clients", "Contacts", "Brands", "Task States", among others.
 
-_Property types_ contain [_properties_ or _elements_](/docs/documentation/models/databases/model_properties), which can be thought of as the rows in a table or better yet, as the documents in a MongoDB collection. Each _property_ has at least a "Name", a "Code" and a "Unique Id". Each collection may have more columns, i.e., additional fields, so that the _properties_ can be more descriptive, e.g., "Store Locations" might have an address, number of employees, store size, performance indicators, or any other information that needs to be associated with the _property_.
+_Property types_ contain [_properties_ or _elements_](/docs/documentation/models/databases/model_properties), which can be thought of as the rows in a table or better yet, as the documents in a MongoDB collection. Each _property_ has at least a "Name", a "Code" and a "Unique Id". These fields are the basic columns of the table. But each _collection_ may have more columns by [adding fields](/docs/documentation/admin/admin_properties#additional-fields), making _properties_ more descriptive. For example, a _collection_ that holds "store locales" can have _additional fields_ that contain address, employee number, store size, performance indicators, or any other information that needs to be associated with the collection's _properties_.
 
 ## JSON Sample {#json-sample}
 ```json
