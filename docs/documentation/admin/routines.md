@@ -36,7 +36,7 @@ Create or edit a routine from the **Routines** settings panel:
 <img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_00a.png')} />
 <br/>
 
-_Press:_
+_Press either:_  
 1. Create a new routine
 2. Edit an existing routine
 

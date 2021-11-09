@@ -383,6 +383,7 @@ module.exports = {
     'documentation/models/automations/model_parametrizedbot',
     'documentation/models/automations/model_bots',
     'documentation/models/automations/model_scheduler',
+    'documentation/models/automations/model_pbscripts',
   ],
   support: [
     'support/support_overview',
