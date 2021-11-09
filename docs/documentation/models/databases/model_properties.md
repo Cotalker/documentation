@@ -45,6 +45,8 @@ _Property with additional fields:_
     ],
     "schemaInstance": {
         "origin": "USA",
+        "year": "1969",
+        "color": "black",
         "car_picture": "6185d0e7c6f325c5ecb1ce3d"
     }
 }
@@ -91,6 +93,7 @@ _Property associated with a user:_
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
+| **\_id** | System generated property ID. | ObjectId<COTProperty\> |
 | **company** | The ID of the company the property is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
 | **createdAt** | Indicates when the property was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **isActive** | Indicates if the property is active or not. | boolean |
@@ -114,8 +117,8 @@ _Property associated with a user:_
 ## Deprecated {#deprecated}
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
-| **extra** | Additional attributes that consist of any _name_ and _value_.  | object | Format: `{"name":"value"}` | DEPRECATED
-| **geo** | Localization attributes. | object | | DEPRECATED 
+| **extra** | Additional attributes that consist of any _name_ and _value_. Format: `{"name":"value"}` | object | DEPRECATED
+| **geo** | Localization attributes. | object | DEPRECATED 
 | **geo.geometry** | | object | DEPRECATED
 | **geo.properties** | | object | DEPRECATED
 | **geo.properties.address** | | string | DEPRECATED

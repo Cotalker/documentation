@@ -64,6 +64,7 @@ _Property types_ contain [_properties_ or _elements_](/docs/documentation/models
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
+| **\_id** | System generated property type ID. | ObjectId<COTPropertyType\> |
 | **code** | The property type's unique identification name. | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
 | **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
 | **createdAt** | Date the property type was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ

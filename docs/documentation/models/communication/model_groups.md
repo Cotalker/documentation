@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 ## JSON Sample {#json-sample}
 ```json
 {
-    "_id": "515a37c6c74111fafb4ac372",
+    "_id": "618a9a1c881d93046349c820",
     "actions": [
         {
             "auth": false,
@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
         }
     ],
     "color": "#ffffff",
-    "company": "5140e94a660a82d819e48fc5",
+    "company": "618a9a23a1e8b667232eda73",
     "createChannels": {
         "active": true,
         "requiredPermission": [],
