@@ -187,6 +187,14 @@ module.exports = {
       ],
       collapsed: true,
     },
+    {
+      type: 'category',
+      label: 'Special Configurations',
+      items: [
+        'documentation/admin/special_configurations/azure_config',
+      ],
+      collapsed: true,
+    },
     // {
     //   type: 'category',
     //   label: 'Extensions (FAAS)',
