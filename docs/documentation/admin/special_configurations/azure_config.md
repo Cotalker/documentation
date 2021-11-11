@@ -135,9 +135,11 @@ Do NOT select any of the _implicit_ or _hybrid flow_ checkboxes.
 
 <div className="alert alert--secondary">
 
-15. Also, Cotalker requires two values from the previously created app. These values are found under the **Overview** option in the previously created app view (Azure Active Directory > App registrations > Cotalker): 
+15. Finally, Cotalker requires two values from the previously created app. These values are found under the **Overview** option in the previously created app view (Azure Active Directory > App registrations > Cotalker): 
     1. **Application (client) ID**
     2. **Directory (tenant) ID**
+
+    Once you have these values, please send them to your Cotalker Sales Representative or [Support Team](/docs/support/commercial).
 
 <img alt="overview" className="img_sizing item shadow--tl" src={useBaseUrl('img/azure_config_09.png')} />
 <br/>
