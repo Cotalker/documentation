@@ -1,6 +1,6 @@
 ---
 title: Microsoft Work Account Sign-In
-description: In a busy and fast-moving workplace, remembering credentials to sign into an app can sometimes be a hassle. Use your company's Mircosoft Work accounts to simplify user sign-in while adding an extra layer of security. Easily configure Microsoft Azure Active Directory to enable this feature for users in your organization.
+description: In a busy and fast-moving workplace, remembering credentials to sign in to an app can sometimes be a hassle. Use your company's Mircosoft Work accounts to simplify user sign-in while adding an extra layer of security. Easily configure Microsoft Azure Active Directory to enable this feature for users in your organization.
 image: img/updates/update_microsoft-sign-in.png
 draft: false
 ---
@@ -21,13 +21,13 @@ Work flows, and so do you.
 </div>
 <div className="card__image">
 
-<img alt="feature image" className="img_card item shadow--lw" src={useBaseUrl('img/updates/update_microsoft-sign-in.png')} />
+<img alt="feature image" className="img_card item shadow--tl" src={useBaseUrl('img/updates/update_microsoft-sign-in.png')} />
 <br/>
 
 </div>
 <div className="card__body">
 
-In a busy and fast-moving workplace, remembering credentials to sign into an app can sometimes be a hassle. Use your company's Mircosoft Work accounts to simplify user sign-in while adding an extra layer of security. Easily configure Microsoft Azure Active Directory to enable this feature for users in your organization.
+In a busy and fast-moving workplace, remembering credentials to sign in to an app can sometimes be a hassle. Use your company's Mircosoft Work accounts to simplify user sign-in while adding an extra layer of security. Easily configure Microsoft Azure Active Directory to enable this feature for users in your organization.
 
 </div>
 <div className="card__footer text-center align-padding-center">
