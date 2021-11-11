@@ -30,17 +30,25 @@ _Each platform offers a similar experience through its design so that users can 
 
   This platform permits the most versatile use. Because it runs through a web browser, it can be perfectly used in any operating system and without major hardware requirements. Although mainly used for desktops, the web app adapts itself to mobile devices through its responsive design. All of this permits users to log into Cotalker from any computer or device without needing to install an app.
   
-  NOTE: *The latest version of Chrome is recommended for best performance.*
+  :::note
+  *The latest version of Chrome is recommended for best performance.*
+  :::
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-2. You will be asked to log in with your credentials. If you don't have a registered email and password, please consult with your company admin.
+2. You will be asked to sign in with your credentials. You can also easily and securely log in using a Google or Microsoft account associated with your company.
 
   <img alt="log in" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_00a.png')} />
   <br/>
+  <br/>
+
+  :::note
+  If you don't have a registered email and password or can't log in with your Google or Microsoft account, please consult with your company admin.
+  :::
+
 
 </div>
 <br/>
@@ -51,8 +59,11 @@ _Each platform offers a similar experience through its design so that users can 
 
   <img alt="personal info" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_00b.png')} />
   <br/>
+  <br/>
 
-  NOTE: _In some configurations, you might find some onboarding information before reaching this section._
+  :::note
+  _In some configurations, you might find some onboarding information before reaching this section._
+  :::
 
 </div>
 <br/>

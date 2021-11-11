@@ -1,6 +1,6 @@
 ---
 title: Task Followers & Editors
-description: We make it easier to keep a bird's-eye view of what's going on in your company. With the new task followers and task editors option, supervisors and other stakeholders can follow or edit all the tasks within a task group. This new feature simplies configuring which users can participate in tasks without necesarrily having to add them one-by-one in the list of users assigned to the task. Stay close to your teams, but with enough distance to let them work freely. Ask your admin to configure this option through the API.
+description: We make it easier to keep a bird's-eye view of what's going on in your company. With the new task followers and task editors option, supervisors and other stakeholders can follow or edit all the tasks within a task group. This new feature simplifies configuring which users can participate in tasks without necessarily having to add them one by one in the list of users assigned to the task. Stay close to your teams, but with enough distance to let them work freely. Ask your admin to configure this option through the API.
 image: img/updates/update_task_followers.png
 draft: false
 ---
@@ -27,7 +27,7 @@ Supervise workflows to make work flow.
 </div>
 <div className="card__body">
 
-We make it easier to keep a bird's-eye view of what's going on in your company. With the new **task followers** and **task editors** option, supervisors and other stakeholders can follow or edit all the tasks within a task group. This new feature simplies configuring which users can participate in tasks without necesarrily having to add them one-by-one in the list of users assigned to the task. 
+We make it easier to keep a bird's-eye view of what's going on in your company. With the new **task followers** and **task editors** option, supervisors and other stakeholders can follow or edit all the tasks within a task group. This new feature simplifies configuring which users can participate in tasks without necessarily having to add them one by one in the list of users assigned to the task. 
 
 Stay close to your teams, but with enough distance to let them work freely. Ask your admin to configure this option through the API.
 </div>
