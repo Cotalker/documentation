@@ -229,10 +229,10 @@ This is an advanced feature that requires programming skills.
 <img alt="list of items" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_00.png')} />
 <br/>
 
-- **Source**: The options are *external URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path, otherwise an absolute address.
-- **Method**: The options are *POST* or *GET*. It's POST by default.
-- **Path**: Field that receives the external URL or the relative path.
-- **Identifiers**: The values ​​of the form that you want to pass to the API.
+- **Source**: The options are *External URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path, otherwise an absolute address is required.
+- **Method**: *POST* is the only value available.
+- **Path**: Field that indicates the external URL or the relative path of the _Source_.
+- **Identifiers**: Other survey values that you want to pass to the API.
 
 </div>
 <br/>
