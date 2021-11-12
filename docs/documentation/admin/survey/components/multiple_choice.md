@@ -273,7 +273,7 @@ This is an advanced feature that requires programming skills.
 
 4. **SEARCH**:
 
-    From the UI, when answering an _API type multiple choice survey question_, a search window appears:
+    From the UI, when answering an _API-type multiple-choice survey question_, a search window appears:
 
     <img alt="list of items" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_01.png')} />
     <br/>
