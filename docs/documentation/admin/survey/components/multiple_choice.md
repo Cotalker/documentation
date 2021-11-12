@@ -215,7 +215,7 @@ _The settings panel should look something like this:_
 <br/>
 
 ## 4. API Type {#api-type}
-Multiple choice surveys can also search for answers through an API request. Each time a user carries out a search when trying to respond the survey question, an API request is sent to the end-point with the search value. 
+Multiple choice surveys can also search for answers through an API request. Each time a user carries out a search when trying to respond the survey question, an API request is sent to the endpoint with the search value. 
 
 :::info
 This is an advanced feature that requires programming skills.
@@ -229,7 +229,7 @@ This is an advanced feature that requires programming skills.
 <img alt="list of items" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_00.png')} />
 <br/>
 
-- **Source**: The options are *External URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path, otherwise an absolute address is required.
+- **Source**: The options are *External URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path, otherwise, an absolute address is required.
 - **Method**: *POST* is the only value available.
 - **Path**: Field that indicates the external URL or the relative path of the _Source_.
 - **Identifiers**: Other survey values that you want to pass to the API.
@@ -243,10 +243,10 @@ This is an advanced feature that requires programming skills.
 
 1. **OPTIONAL**: Create a custom new **lambda function** using any server.
 
-2. **END-POINT**: Create an endpoint that responds to **POST /{end-point}**.
+2. **ENDPOINT**: Create an endpoint that responds to **POST /{endpoint}**.
 
 3. **PACKAGE FORMAT:**  
-    _The data at the end-point must have the following structure:_
+    _The data at the endpoint must have the following structure:_
     ```json
     { 
       "data": [ 
