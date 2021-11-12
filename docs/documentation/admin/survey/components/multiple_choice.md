@@ -290,7 +290,7 @@ This is an advanced feature that requires programming skills.
           "identifier_a": [question-responses],
           "identifier_b": [question-responses],
           ...,
-          "identifier_n": [question-responses],
+          "identifier_n": [question-responses]
         }
     }"
     ```
