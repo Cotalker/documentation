@@ -215,11 +215,93 @@ _The settings panel should look something like this:_
 <br/>
 
 ## 4. API Type {#api-type}
+Multiple choice surveys can also search for answers through an API request. Each time a user carries out a search when trying to respond the survey question, an API request is sent to the end-point with the search value. 
 
+:::info
+This is an advanced feature that requires programming skills.
+:::
+
+<br/>
+<div className="alert alert--secondary">
+
+### Template
+
+<img alt="list of items" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_00.png')} />
+<br/>
 
 - **Source**: The options are *external URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path, otherwise an absolute address.
 - **Method**: The options are *POST* or *GET*. It's POST by default.
-- **Path**: Field that receives the external url or the relative path.
+- **Path**: Field that receives the external URL or the relative path.
 - **Identifiers**: The values ​​of the form that you want to pass to the API.
 
+</div>
+<br/>
 
+<div className="alert alert--secondary">
+
+### How to implement
+
+1. **OPTIONAL**: Create a custom new **lambda function** using any server.
+
+2. **END-POINT**: Create an endpoint that responds to **POST /{end-point}**.
+
+3. **PACKAGE FORMAT:**  
+    _The data at the end-point must have the following structure:_
+    ```json
+    { 
+      "data": [ 
+          { 
+              "_id": "string", 
+              "display": "string", 
+              "code": "string"
+          }
+      ]
+    }
+    ```
+    _Here's an example:_
+    ```json
+    { 
+      "data": [ 
+          { "_id": "1234", "display": "Main Reactor", "code": "main_reactor" },
+          { "_id": "5678", "display": "South Reactor", "code": "south_reactor" },
+          { "_id": "9012", "display": "East Reactor", "code": "east_reactor" },
+          { "_id": "3456", "display": "North Reactor", "code": "north_reactor" },
+          { "_id": "7890", "display": "West Reactor", "code": "west_reactor" },
+      ]
+    }
+    ```
+
+4. **SEARCH**:
+
+    From the UI, when answering an _API type multiple choice survey question_, a search window appears:
+
+    <img alt="list of items" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_01.png')} />
+    <br/>
+
+    Each time a _search_ is done within the search window, Cotalker sends a POST request with a JSON body as shown below: 
+
+    **SAMPLE REQUEST:**
+    ```bash
+    curl -X POST https://apitest.com/test \
+    -H "Authorization: Bearer $ACCESS_TOKEN" \
+    -d "{ 
+        "search": "search-string", 
+        "data": { 
+          "identifier_a": [question-responses],
+          "identifier_b": [question-responses],
+          ...,
+          "identifier_n": [question-responses],
+        }
+    }"
+    ```
+
+    The `search` value in the _JSON body_ filters the results shown in the UI.
+
+5. **USAGE**:
+
+    The options the user selects from the _search window_ are stored in a [COTAnswer](/docs/documentation/models/surveys/model_answers) data model, i.e., [`answer.data[x].process: [string]`](/docs/documentation/models/surveys/model_answer_data). 
+    
+    Following the _package format_ example given above, if a user selected "South Reactor" and "North Reactor", the result would be stored something like this: `answer.data[0].process: ['south_reactor', 'north_reactor']`.
+
+</div>
+<br/>
