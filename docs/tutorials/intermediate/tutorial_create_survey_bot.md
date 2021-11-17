@@ -87,7 +87,7 @@ _So far, your screen should look something like this:_
     2. Add the first stage by pressing the <span class="badge badge--primary">+ Add stage</span> button, and set the following:
         - **Code**: `property_request`
         - **Type**: `Network Request` 
-        - **URL** : `$JOIN#/#($ENV#BASEURL)#api#properties#($VALUE#data|[find=>identifier=department]|process|0) <br/>`
+        - **URL** : `$JOIN#/#($ENV#BASEURL)#api#properties#($VALUE#data|[find=>identifier=department]|process|0)`
         :::note 
         The [Cotlang](/docs/documentation/automation/admin_cotlang) string in the URL field gets the department's URL address.
         :::
