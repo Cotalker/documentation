@@ -1,6 +1,6 @@
 ---
 title: Questions Data Model
-sidebar_label: COTQuestions
+sidebar_label: COTQuestion
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';

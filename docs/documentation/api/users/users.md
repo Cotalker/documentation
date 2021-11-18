@@ -5,49 +5,136 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-A __User__ represents a person or bot that can perform actions within a company and execute client-side actions as sending messages and getting channels. Their access roles will determine which (administrative) endpoint they may use. 
+## Overview {#overview}
 
-:::info
-Click here for [data model descriptions](/docs/documentation/models/users/model_users)
+A _user_ represents a person or bot that can perform actions within a _company_ and execute client-side actions such as participating in _tasks_, entering _channels_, answering _surveys_, and sending _messages_.
 
-Click here for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
-:::
+The _users_ endpoint can be used to search for users, retrieve information, or group them by filtering their data. All this allows using _user_ information for further automations.
 
-## API {#api}
+## View All Users {#view-all-users}
+_Returns data from all users in the company._
 
-The user API has a _client_ and _admin_ version. The former allows us to perform actions and gather data as a regular user (e.g., using the mobile app to change their password), the latter allows company-wide as disabling multiple users.  
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /users</span>
 
-The main features of the API are:
+#### Endpoint URL {#get-all-url}
+`GET https://www.coltaker.com/api/v2/users`
 
-### Client User-API {#client-user-api}
-*  Get self-user data
-*  Modify self
+#### Headers {#get-all-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
-### Admin User-API {#admin-user-api}
-*  Get any user data
-*  Modify users 
-*  Create users
-*  Disable users
-*  Set user access-roles
+#### Query Parameters {#query-get-all}
 
-NOTE: To use the Admin User-API the HTTP-header __Admin: true__ must be sent in the request.
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | ---- | ----
+**search** | Returns endpoints that match the keywords in the [`users.search`](/docs/documentation/models/users/model_users) array. | string | Optional |
+**limit** | Limits the amount of _users_ returned in the response. | number | Optional | 
+**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
+**count** | Adds the `users.counter` field with the total amount of users. | boolean | Optional | 
+**orderBy** | Orders the _users_ by ascendeing or descending order according to the [`users.modifiedAt`](/docs/documentation/models/users/model_users) field. | string | Optional | Options: `asc`, `desc`
+**sortBy** | For the _user_ endpoint, the response is sorted only by its default, i.e., the [`users.modifiedAt`](/docs/documentation/models/users/model_users) field. | string | Optional |
+**isActive** | Returns _users_ according to their [_users.isActive_](/docs/documentation/models/users/model_users) status. | string | Optional | Options are: `all`, `true`, `false`
+**email** | Returns _users_ with the _emails_ contained in the array. | string[ ] | Optional |
+**bot** | Returns _users_ with the indicated [COTBot](/docs/documentation/models/automations/model_bots) ObjectIds in their `users.bot` field. | [ObjectId<COTBot\>[ ]](/docs/documentation/models/users/model_users) | Optional |
+**\_id** | Returns _users_ with the indicated ObjectIds in their `users._id` field. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | Optional |
+**relatedUser** | Returns _users_ related to the indicated _user_ according the `users.companies.hierarchy` field. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Optional |
+**property** | Returns _users_ associated with the indicated _property_: `users.properties`. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | Optional |
+**accessRole** | Returns _users_ with the indicated _access role_: `users.accessRoles`. | [ObjectID<COTAccessRole\>](/docs/documentation/models/users/model_accessroles) | Optional |
+**job** | Returns _users_ associated with the indicated _job title_: `users.job`. | [ObjectId<COTJobTitle\>](/docs/documentation/models/users/model_jobtitles) | Optional |
+**modified** | Returns _users_ with the indicated modification date: [`users.modifiedAt`](/docs/documentation/models/users/model_users) | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gt** | Returns _users_ modified after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gte** | Returns _users_ with a [`users.modifiedAt`](/docs/documentation/models/users/model_users) equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created** | Returns _users_ with the indicated creation date: [`users.createdAt`](/docs/documentation/models/users/model_users) | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_gt** | Returns _users_ created after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_gte** | Returns _users_ with a [`users.createdAt`](/docs/documentation/models/users/model_users) equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_lt** | Returns _users_ created before the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_lte** | Returns _users_ with a [`users.createdAt`](/docs/documentation/models/users/model_users) equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
-For all endpoints and parameters please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f)
+#### Request Samples {#get-all-request-sample}
 
-## Examples {#examples}
+<Tabs defaultValue="curl-get-all" values={[ {label: 'cURL (default)', value: 'curl-get-all'}, {label: 'cURL (id)', value: 'curl-id'}, {label: 'cURL (query)', value: 'curl-email'}, {label: 'Typescript (query)', value: 'typescript'} ]}>
+<TabItem value="curl-get-all">
 
-### Client-API GET /users/me {#client-api-get-usersme}
- 
-A frequent action is to get the current user data, so we can use their parameters for other actions such as sending messages. 
+```bash
+#This default request gets all the user data in the company.
+curl --location --request GET 'https://www.cotalker.com/api/v2/users' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' 
+```
 
-[A valid access-token is required to perform the request.](/docs/documentation/api/auth)
+</TabItem>
+<TabItem value="curl-id">
 
-<Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
+```bash
+#Use ObjectId<COTUser> in the endpoint path to get a specific user's data.
+curl --location --request GET 'https://www.cotalker.com/api/v2/users/6194f0345923b62967d7ba46' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' 
+```
+
+</TabItem>
+<TabItem value="curl-email">
+
+```bash
+#This example uses the email query parameter to get matching users.
+curl --location --request GET 'https://www.cotalker.com/api/v2/users?email=nick%40wuxi.com&email=yanxiang%40wuxi.com' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' 
+```
+
+</TabItem>
+<TabItem value="typescript" example="api_user_admin.ts">
+
+```typescript
+// This example uses the email query parameter to get matching users.
+// $ACCESS_TOKEN stored in .env file.
+
+import { Configuration, UserGetCollectionUsers, V2UsersApi } from "@cotalker/cotalker-api";
+
+const api = new V2UsersApi(new Configuration({
+    basePath: 'https://www.cotalker.com/api',
+    accessToken: process.env.ACCESS_TOKEN,
+    apiKey: 'true',
+}));
+
+async function getUsersByEmail(): Promise<UserGetCollectionUsers[] | undefined> {
+    const response = await api.getV2Users({ email: ["nick@wuxi.com", "yanxiang@wuxi.com"] });  //query parameters used here
+    return response.data?.data?.users;
+}
+
+getUsersByEmail().then(users => console.log(users)).catch(e=>console.log(e))
+
+``` 
+
+</TabItem>
+</Tabs>
+
+
+#### Response Sample {#get-all-response-sample}
+Responses follow the [COTUser](/docs/documentation/models/users/model_users#sample-json) data model.
+
+---
+
+## View Current User {#get-me}
+_Returns the current user data._
+
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /users/me</span>
+
+#### Endpoint URL {#get-me-url}
+`GET https://www.coltaker.com/api/v2/users/me`
+
+#### Headers {#get-me-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+
+#### Request Sample {#get-me-request}
+
+<Tabs defaultValue="curl" values={[ {label: 'cURL', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
 <TabItem value="curl">
 
 ```bash
-curl -XGET https://www.cotalker.com/api/v3/users/me \
--H "Authorization: Bearer TOKEN" 
+curl --location --request GET 'https://www.cotalker.com/api/v2/users/me' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
 ``` 
 
 </TabItem>
@@ -74,123 +161,198 @@ getMe().then(user => console.log(user)).catch(e=>console.log(e))
 </TabItem>
 </Tabs>
 
-Expected network result 
-<!-- response=api_user.json -->
-```json
-{
-  "data": {
-    "_id": "5fb589b607ae0d8647792ec0",
-    "email": "john.doe@example.com",
-    "jobTitle": "full-stack developer",
-    "isActive": true,
-    "accessRoles": ["5fb58a84444beecfca50a2b4"],
-    "name": {
-      "names": "John",
-      "lastName": "Doe"
-    },
-    "modifiedAt": "2020-10-26T14:08:48.220Z",
-    "createdAt": "2019-04-26T22:00:31.263Z"
-  }
-}
-```
-<!-- end-response -->
+#### Response Sample {#get-all-users-response-sample}
+Response follows the [COTUser](/docs/documentation/models/users/model_users#sample-json) data model.
 
+---
 
+## Create a New User {#createpost-user}
+_Creates a new user in the company following the COTUser data model._
 
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /users</span>
 
+#### Endpoint URL {#post-user-url}
+`https://www.cotalker.com/api/v2/users`
 
+#### Headers {#post-user-headers}
 
-### Admin-API GET /users/:id {#admin-api-get-usersid}
- 
-A frequent action is to get the current user data, so we can use their parameters for other actions as sending messages. 
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to create a _user_. | Required | Must be set to `true`. 
 
-[A valid access-token is required to perform the request.](/docs/documentation/api/auth)
+#### Query Parameters {#post-user-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**notifyEmail** | Sends an email notification to the newly created user. | string | Optional | Option: `true`
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
-<Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
-<TabItem value="curl">
+#### Request Body {#post-user-body}
+_Only required fields are listed below. For a complete schema description, please go to the [COTUser data model](/docs/documentation/models/users/model_users). Unrequired fields that are not submitted are either filled in automatically or left blank._
 
+Element | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+| **accessRoles** | The [access roles](/docs/documentation/admin/admin_accessrole) the user has been designated. | [ObjectID<COTAccessRole\>[ ]]((/docs/documentation/models/users/model_accessroles)) | Required |
+| **email** | The user's email. | string | Required | The email cannot be changed. |
+| **name** | User's full name. | object | |
+| **name.displayName** | Displayed name on channel. | string | Required |
+| **name.names** | The user's first and second names.  | string | Required |
+| **name.lastName** | The user's surname. | string | Required |
+| **name.secondLastName** | The user's second surname. | string | Required |
+
+#### Request Sample {#post-user-request}
+_User created with minimum fields required:_
 ```bash
-curl -XGET https://www.cotalker.com/api/v3/users/581118cf1dabccc92616be4f \
--H "Admin: true"
--H "Authorization: Bearer [ACCESS-TOKEN]" 
-``` 
+curl --location --request POST 'https://www.cotalker.com/api/v2/users?debug=true' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": {
+        "displayName": "Ma Tianbo",
+        "names": "Tianbo",
+        "lastName": "Ma",
+        "secondLastName": ""
+    },
+    "email": "apple@jingmen.com",
+    "accessRoles": [
+        "619538262eebe7f03bde3db0",
+        "6195382e7fde7e397f8b1f88",
+        "61953833306b4481a5f5a34b"
+    ]
+}'
+```
 
-</TabItem>
-<TabItem value="typescript" example="api_user_admin.ts">
-
-```typescript
-import { Configuration, UserGetCollectionUsers, V2UsersApi } from "@cotalker/cotalker-api";
-
-const api = new V2UsersApi(new Configuration({
-    basePath: 'https://www.cotalker.com/api',
-    accessToken: process.env.ACCESS_TOKEN,
-    apiKey: 'true',
-}));
-    
-
-async function getUsersByEmail(): Promise<UserGetCollectionUsers[] | undefined> {
-    const response = await api.getV2Users({ email: ["edward@cotalker.com", "guillermo@cotalker.com"] });
-    return response.data?.data?.users;
-}
-
-getUsersByEmail().then(users => console.log(users));
-
-
-``` 
-
-</TabItem>
-</Tabs>
-
-Expected network result (fields were removed) 
-<!-- response=api_user_admin.json -->
+#### Response Sample {#post-user-response}
 ```json
 {
-  "data": {
-    "users": [
-      {
-        "_id": "5fb589b607ae0d8647792ec0",
-        "email": "john.doe@example.com",
-        "jobTitle": "full-stack developer",
-        "isActive": true,
-        "accessRoles": ["5fb58a84444beecfca50a2b4"],
-        "name": {
-          "names": "John",
-          "lastName": "Doe"
-        },
-        "modifiedAt": "2020-10-26T14:08:48.220Z",
-        "createdAt": "2019-04-26T22:00:31.263Z"
-      },
-      {
-        "_id": "5fb58a5c0175468479dacaa5",
-        "email": "william.tell@example.com",
-        "jobTitle": "front-end developer",
-        "isActive": true,
-        "accessRoles": ["5fb58a933fb872b7b7c28faa"],
-        "name": {
-          "names": "William",
-          "lastName": "Tell"
-        },
-        "modifiedAt": "2020-10-26T14:08:48.220Z",
-        "createdAt": "2019-04-26T22:00:31.263Z"
-      }
-    ]
-  }
+    "_id": "61953bf9bdc3558a4966e54d",  // automatically generated ObjectId
+    "name": {
+        "displayName": "",
+        "names": "Tianbo",
+        "lastName": "Ma",
+        "secondLastName": ""
+    },
+    "properties": [],
+    "accessRoles": [  // ObjectId<COTAccessRole>[ ]
+        "619538262eebe7f03bde3db0",
+        "6195382e7fde7e397f8b1f88",
+        "61953833306b4481a5f5a34b"
+    ],
+    "isActive": true,
+    "termsConditions": false,
+    "search": [  // automatically generated keywords
+        "tianbo",
+        "ma",
+        "apple",
+        "jingmen",
+        "com",
+        "applejingmencom"
+    ],
+    "isOnline": false,
+    "email": "apple@jingmen.com",
+    "companies": [
+        {
+            "hierarchy": {
+                "boss": [],
+                "peers": [],
+                "subordinate": []
+            },
+            "_id": "61953bd8a1dd11a1943c28be",  // automatically generated ObjectId
+            "companyId": "61953bd2155295659c76859c"  // ObjectId<COTCompany>
+        }
+    ],
+    "lastRequestDate": "2021-11-17T15:34:42.171Z",
+    "createdAt": "2021-11-17T15:34:42.171Z",
+    "modifiedAt": "2021-11-17T15:34:42.206Z",
+    "extensions": {}
 }
 ```
-<!-- end-response -->
+---
 
+## Update a User by ID {#patch-user}
+_Adds, updates, or edits an existing user's information._
 
+<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /users/&#123;id&#125;</span>
 
+#### Endpoint URL {#patch-user-url}
+`https://www.cotalker.com/api/v2/users/{id}`
 
+#### Path Parameters {#patch-user-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**id** | The ObjectId of the _user_ that is to be modified. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Required |
 
-## Permissions {#permissions}
+#### Headers {#patch-user-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to modify a _user_. | Required | Must be set to `true`. 
 
-Administrative users can view and perform changes, depending on their permissions.
+#### Query Parameters {#patch-user-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
-| API Version | Permission | Description |
-|-------------|------------|-------------|
-| client   | none | Allows to view self | 
-| admin    | __admin-user-read__ or __admin-*-read__ | Allows to view all users |
-| admin    | __admin-user-write__ | Allows modify all fields, except access-roles |
-| admin    | __admin-accesscontrol-write__ | Allow to modify user access-roles |
-| admin    | __admin-*-write__ | Allows modify all user fields |
+#### Request Body {#patch-user-body}
+_It is only required to put into the body the fields that are being updated or added. For a complete schema description, please go to the [COTUser data model](/docs/documentation/models/users/model_users)._
+
+#### Request Sample {#patch-user-request}
+_Updating a user's phone number:_
+```bash
+curl --location --request PATCH 'https://www.cotalker.com/api/v2/users/61953bf9bdc3558a4966e54d' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "phone": "8675309"
+}'
+```
+
+#### Response Sample {#patch-user-response}
+```json
+{
+    "_id": "61953bf9bdc3558a4966e54d",  // automatically generated ObjectId
+    "name": {
+        "displayName": "",
+        "names": "Tianbo",
+        "lastName": "Ma",
+        "secondLastName": ""
+    },
+    "properties": [],
+    "accessRoles": [  // ObjectId<COTAccessRole>[ ]
+        "619538262eebe7f03bde3db0",
+        "6195382e7fde7e397f8b1f88",
+        "61953833306b4481a5f5a34b"
+    ],
+    "isActive": true,
+    "termsConditions": false,
+    "search": [  // automatically generated keywords
+        "tianbo",
+        "ma",
+        "apple",
+        "jingmen",
+        "com",
+        "applejingmencom"
+    ],
+    "isOnline": false,
+    "email": "apple@jingmen.com",
+    "companies": [
+        {
+            "hierarchy": {
+                "boss": [],
+                "peers": [],
+                "subordinate": []
+            },
+            "_id": "61953bd8a1dd11a1943c28be",  // automatically generated ObjectId
+            "companyId": "61953bd2155295659c76859c"  // ObjectId<COTCompany>
+        }
+    ],
+    "lastRequestDate": "2021-11-17T15:34:42.171Z",
+    "createdAt": "2021-11-17T15:34:42.171Z",
+    "modifiedAt": "2021-11-17T15:34:42.206Z",
+    "phone": "8675309",
+    "extensions": {}
+}
+```
+---

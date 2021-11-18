@@ -1,76 +1,71 @@
 ---
-title: Auth
-sidebar_label: Auth
+title: Authorization
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Introduction {#introduction}
+## Overview {#overview}
 
-Using the API through a script or integration is as simple as calling an endpoint, e.g., getting users: `GET /api/v3/users`. These endpoints MUST be called with the corresponding authorization or access-token. 
+To call an endpoint, users must provide an _API Token_ or _Access Token_ in the **authorization header** (except when requesting an access token: `POST /auth/local`). 
 
-## Authorization {#authorization}
+The **admin header** is required for viewing some endpoints and must be present for modifying any endpoint.
 
-Each network request to the API must include the HTTP-header: __"Authorization: Bearer \[access-token]"__  and may include the HTTP-header: __"Admin: true"__ to call the administrative version of the endpoint.
+Additionally, your [_access roles_](/docs/documentation/admin/admin_accessrole) will also determine which endpoints you may view and modify.
 
-To obtain an _Access-Token_, users must authenticate their credentials. [_Authentication_](#authentication) is explained below.
+## Authorization & Admin Headers {#authorization-and-admin-headers}
 
-Admins can also give external users an [API Token](/docs/documentation/admin/admin_token) that enables them to carry out some requests.
+_Remember to keep these headers in mind when making any API request:_
 
-## Authentication {#authentication}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _Access Token_ to make an API request.<br/>[**How to obtain an _Access Token_ is explained below.**](#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to view and modify an endpoint. | Depends on the endpoint | Must be set to `true`. 
 
-Authentication can be done by various methods as _User/Password_ or _Google Sign-in_. Currently, only _User/Password_ can be executed via API call.
+<br/>
 
-#### User/Password {#userpassword}
- 
-This type of authentification is done with a [user](/docs/documentation/api/users/users) calling the `POST /auth/local` endpoint with the user's email and password. The obtained _Access-Token_ has the same permissions as the user, and if the user is deactivated, downgraded, or upgraded, so is the associated _Access-Token_. 
 
-|   Parameter    |  Value | 
-|-----------|-----------------|
-| URL       | /auth/local     | 
-| Method    | POST            |
-| Headers   | Content-Type: application/json; charset=utf-8   |
-| Body      | { "email": "email@cotalker.com", "password": "secret-password" }  |
+## How to Obtain an Access Token {#how-to}
+- Any Cotalker _user_ can obtain an _Access Token_ by calling the [_authentication method_](#auth): `POST /auth/local` (explained below).
+- Additionally, admins can give external users an [API Token](/docs/documentation/admin/admin_token) that enables them to make some requests.
 
-### Example {#example}
+## Authentication Method {#auth}
+This method obtains a user's _access token_. You must include the user's email and password in the body, add the corresponding headers, and then copy the _access token_ from the response.
 
-<Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
-<TabItem value="curl">
+<span className="hero__subtitle"><span className="badge badge--warning">POST</span> /auth/local</span>
+<br/>
+
+#### Endpoint URL: 
+`POST https://www.cotalker.com/auth/local`
+
+#### Headers {#headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Content-Type** | Sets the body's content type. | Required | application/json
+**Accept-Charset** | Character set of the sent content. | Required | utf-8
+
+#### Request Body {#body}
+Field | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**email** | The email of the user who's access token is requested. | string | Required | The email must be registered in Cotalker.
+**password** | The user's registered password. | string | Required | 
+
+#### Request Sample {#request-sample}
 
 ```bash
-curl -XPOST https://www.cotalker.com/auth/local \
--H "Content-Type: application/json; charset=utf-8" \
--d '{ "email": "email@company.com", "password": "secret-password" }'
-``` 
-
-</TabItem>
-<TabItem value="typescript">
-
-```typescript
-import { ConfigurationParameters, CotalkerApi, Configuration } from "./index";
-
-const config: ConfigurationParameters = {
-    // TODO MISSING KEYS
-    basePath: 'https://www.cotalker.com/api/v3',
-};
-
-const api = new CotalkerApi(new Configuration(config));
-
-(async () => {
-    const user = 'email@cotalker.com';
-    const password = 'secret-password';
-    const response = await api.login(email, password);
-    console.log(response);
-})();
-``` 
-
-</TabItem>
-</Tabs>
-
-Expected network result 
-```json
-{ "token":" abcdefghijklmnopqurstuvwxyz01234567891234567890" }
+curl --location --request POST 'https://www.cotalker.com/auth/local' \
+--header 'Content-Type: application/json' \
+--header 'Accept-Charset: utf-8' \
+--data-raw '{
+    "email": "name@company.com",
+    "password": "thisIsMyPassword!"
+}'
 ```
 
+#### Response Sample
+```bash
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuYXV0aDAuY29tLyIsImF1ZCI6Imh0dHBzOi8vYXBpLmV4YW1wbGUuY29tL2NhbGFuZGFyL3YxLyIsInN1YiI6InVzcl8xMjMiLCJpYXQiOjE0NTg3ODU3OTYsImV4cCI6MTQ1ODg3MjE5Nn0.CA7eaHjIHz5NxeIJoFK9krqaeZrPLwmMmgI_XiQiIkQ"
+}
+```

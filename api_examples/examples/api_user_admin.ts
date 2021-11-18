@@ -1,3 +1,6 @@
+// search done using `/user` request parameters
+// available parameters and their formats are found in: api_examples/node_modules/@cotalker/cotalker-api/dist/apis/v2-users-api.d.ts
+
 import { Configuration, UserGetCollectionUsers, V2UsersApi } from "@cotalker/cotalker-api";
 
 const api = new V2UsersApi(new Configuration({
@@ -8,7 +11,7 @@ const api = new V2UsersApi(new Configuration({
     
 
 async function getUsersByEmail(): Promise<UserGetCollectionUsers[] | undefined> {
-    const response = await api.getV2Users({ email: ["edward@cotalker.com", "guillermo@cotalker.com"] });
+    const response = await api.getV2Users({ email: ["nick@wuxi.com", "yanxiang@wuxi.com"] });
     return response.data?.data?.users;
 }
 

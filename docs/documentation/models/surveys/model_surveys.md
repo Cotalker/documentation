@@ -11,7 +11,7 @@ import Mermaid from '@theme/Mermaid';
 <span className="hero__subtitle">COTSurvey</span>
 
 ## Description {#description}
-Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey) is the main information of a survey and consilidates its other parts: [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats), [COTQuestion](/docs/documentation/models/surveys/model_questions), [COTAnswer](/docs/documentation/models/surveys/model_answers) .
+Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey) is the main information of a survey and consolidates its other parts: [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats), [COTQuestion](/docs/documentation/models/surveys/model_questions), [COTAnswer](/docs/documentation/models/surveys/model_answers) .
 
 <Mermaid chart={`
 	graph LR;
