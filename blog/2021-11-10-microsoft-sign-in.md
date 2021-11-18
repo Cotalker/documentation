@@ -29,6 +29,8 @@ Work flows, and so do you.
 
 In a busy and fast-moving workplace, remembering credentials to sign in to an app can sometimes be a hassle. Use your company's Mircosoft Work accounts to simplify user sign-in while adding an extra layer of security. Easily configure Microsoft Azure Active Directory to enable this feature for users in your organization.
 
+_* Available on Enterprise Editions_
+
 </div>
 <div className="card__footer text-center align-padding-center">
 
