@@ -11,7 +11,7 @@ import Mermaid from '@theme/Mermaid';
 <span className="hero__subtitle">COTSurveyChat</span>
 
 ## Description {#description}
-Each Survey Chat data model (COTSurveyChat) represents a single question on a survey form. Usually, through the `contentArray` field, two [COTQuestion](/docs/documentation/models/surveys/model_questions) ObjectIds are paired together. One pertains to the question's _title_ or displayed text, the other to the area for data input.
+Each Survey Chat data model (COTSurveyChat) represents a [component](/docs/documentation/admin/survey/survey_overview#form-components) on a survey form. Usually, through the `contentArray` field, two [COTQuestion](/docs/documentation/models/surveys/model_questions) ObjectIds are paired together. One pertains to the component's _title_ or displayed text, the other to the area for data input.
 
 <Mermaid chart={`
 	graph LR;
@@ -55,7 +55,7 @@ Each Survey Chat data model (COTSurveyChat) represents a single question on a su
 | \_id | The Survey Chat data model's ID code | ObjectId<COTSurveyChat\> |
 | __v | Version number | number | For internal system use only. |
 | content | This field stays empty | string | |
-| contentArray | Pairs the two parts of a _question_: one corresponds to the _question_ title, the other to data input configuration | ObjectId<COTQuestion\>[ ] | [Question data model](/docs/documentation/models/surveys/model_questions)
+| contentArray | Pairs the two parts of a survey _component_ or _question_: one corresponds to the _question_ title, the other to data input configuration | ObjectId<COTQuestion\>[ ] | [Question data model](/docs/documentation/models/surveys/model_questions)
 | contentType | Indicates the content type | string | Default value: `application/vnd.cotalker.survey` 
 | isActive | Indicates if it is available for use | boolean | 
 | isSystemModel | If true, it cannot be changed, even by admins | boolean 

@@ -24,42 +24,42 @@ _Lists the tasks groups in the company._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/group/</span>
 
-#### Query Parameters: {#get-task-groups-parameters}
+#### Endpoint URL {#get-taskgroups-url}
+`https://www.cotalker.com/api/v1/tasks/group`
 
+#### Query Parameters {#get-task-groups-parameters}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-Limit | | number | Optional | 
-page | | number | Optional | 
-count | | boolean | Optional | 
-orderBy | | string | Optional | Options: `asc`, `desc`
-sortBy | | string | Optional | Options: <br/>`createdAt`, `modifiedAt`, `collectionName`
-isActive | | string | Optional | `all`, `true`, `false`
-debug | | string | Optional | Option: `true`
+**Limit** | | number | Optional | 
+**page** | | number | Optional | 
+**count** | | boolean | Optional | 
+**orderBy** | | string | Optional | Options: `asc`, `desc`
+**sortBy** | | string | Optional | Options: <br/>`createdAt`, `modifiedAt`, `collectionName`
+**isActive** | | string | Optional | `all`, `true`, `false`
+**debug** | | string | Optional | Option: `true`
 
-#### Headers: {#get-task-groups-headers}
+#### Headers {#get-task-groups-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to view _tasks_. | Required | Must be set to `true`. 
 
-Header Name | Description | Required | Values
---- | --- | --- | --- 
-Admin | User has admin privledges | Required | true | 
-Authorization | Access-Token | Required | Bearer [{ACCESS_TOKEN}](/docs/documentation/api/auth)
 
-#### Sample: {#get-task-groups-sample}
-
+#### Request Sample {#get-task-groups-sample}
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v1/tasks/group' \
 --header 'Admin: true' \
 --header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
-#### Response: {#get-task-groups-response}
-
+#### Response Sample {#get-task-groups-response}
 [**COTTaskGroup**](/docs/documentation/models/tasks/model_taskgroup): Response sample and complete description of data model.
 
 ---
 
 <span className="hero__subtitle">⚠️ The following feature is still in BETA stage.</span>
 
-## Task Permissions for Unassociated Users
+## Task Permissions for Unassociated Users {#patch-taskgroup-permissions}
 _Users can be given permission to follow or edit the tasks within a group without being associated to any of them._
 
 :::note
@@ -67,35 +67,35 @@ _Users can be given permission to follow or edit the tasks within a group withou
 - Users that are not associated to the task but have _following_ or _editing_ permissions will not recieve push notifications when messages are sent to the channels within the task group. 
 :::
 
-<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /tasks/group/&#123;ObjectId&lt;COTTaskGroup&gt;&#125;</span>
+<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /tasks/group/&#123;id&#125;</span>
 
-#### Path Parameters: {#permissions-parameters}
+#### Endpoint URL {#patch-taskgroup-permissions-url}
+`https://www.cotalker.com/api/v1/tasks/{id}`
 
+#### Path Parameters {#permissions-parameters}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-ObjectId<COTTaskGroup\> | The task group's ID | ObjectId | Required | [Task Group Data Model (COTTaskGroup)](/docs/documentation/models/tasks/model_taskgroup)
+**id** | The task group's ID | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
 
+#### Headers {#permissions-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to edit _tasks_. | Required | Must be set to `true`. 
 
-#### Headers: {#permissions-headers}
-
-Header Name | Description | Required | Values
---- | --- | --- | --- 
-Admin | User has admin privledges | Required | true | 
-Authorization | Access-Token | Required | Bearer [{ACCESS_TOKEN}](/docs/documentation/api/auth)
-
-#### Request Body: {#body}
+#### Request Body {#permissions-body}
 
 Element | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-| taskEditorPermissions | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to edit the tasks in the group. | string[ ] | optional | Users need at least one of the permissions in the array.
-| taskFollowerPermissions | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to view the tasks in the group.  | string[ ] | optional | Users need at least one of the permissions in the array.
-| taskPropertyPermissions | Enables unassociated users –with the proper [permissions](/docs/documentation/admin/admin_accessrole#default-permissions)– to view or edit tasks when a task within the group is in a certain [state](/docs/documentation/client/basic_concepts#state) or has a specific [status (additional field)](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | object[ ] | optional | Add an extra object for each state or status you wish to include as a permission filter.
-| taskPropertyPermissions.property | Indicates either the [additional field or status](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) that the task must have or the [state](/docs/documentation/client/basic_concepts#state) the task has to be in to enable unassociated users to view or edit them. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | optional | Available **task statuses** can be found in the task's `status{1,5}` fields as described in the [COTTask](/docs/documentation/models/tasks/model_tasks). <br/>Obtaining **task states'** objectIDs is [described here](/docs/documentation/admin/tips/find_property_objectID).
-| taskPropertyPermissions.editor | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to edit tasks with the previously indicated _status_ or _state_. | string[ ] | optional | Users need at least one of the permissions in the array.
-| taskPropertyPermissions.follower | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to view tasks with the previously indicated _status_ or _state_. | string[ ] | optional | Users need at least one of the permissions in the array.
+| **taskEditorPermissions** | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to edit the tasks in the group. | string[ ] | optional | Users need at least one of the permissions in the array.
+| **taskFollowerPermissions** | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to view the tasks in the group.  | string[ ] | optional | Users need at least one of the permissions in the array.
+| **taskPropertyPermissions** | Enables unassociated users –with the proper [permissions](/docs/documentation/admin/admin_accessrole#default-permissions)– to view or edit tasks when a task within the group is in a certain [state](/docs/documentation/client/basic_concepts#state) or has a specific [status (additional field)](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | object[ ] | optional | Add an extra object for each state or status you wish to include as a permission filter.
+| **taskPropertyPermissions.property** | Indicates either the [additional field or status](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) that the task must have or the [state](/docs/documentation/client/basic_concepts#state) the task has to be in to enable unassociated users to view or edit them. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | optional | Available **task statuses** can be found in the task's `status{1,5}` fields as described in the [COTTask](/docs/documentation/models/tasks/model_tasks). <br/>Obtaining **task states'** objectIDs is [described here](/docs/documentation/admin/tips/find_property_objectID).
+| **taskPropertyPermissions.editor** | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to edit tasks with the previously indicated _status_ or _state_. | string[ ] | optional | Users need at least one of the permissions in the array.
+| **taskPropertyPermissions.follower** | [Permissions](/docs/documentation/admin/admin_accessrole#default-permissions) that allow unassociated users to view tasks with the previously indicated _status_ or _state_. | string[ ] | optional | Users need at least one of the permissions in the array.
 
 
-#### Request Sample: {#permissions-sample}
+#### Request Sample {#permissions-sample}
 
 ```bash
 curl -X PATCH 'https://www.cotalker.com/api/v1/tasks/group/61700090de1525a97d9aeca4' \
@@ -107,7 +107,7 @@ curl -X PATCH 'https://www.cotalker.com/api/v1/tasks/group/61700090de1525a97d9ae
 }'
 ```
 
-#### Response Sample: {#permissions-response}
+#### Response Sample {#permissions-response}
 
 ```json {5-12,28-39}
 {

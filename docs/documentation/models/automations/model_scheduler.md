@@ -1,5 +1,5 @@
 ---
-title: Scheduler Data Model
+title: Schedules Data Model
 sidebar_label: COTSchedule
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br/>
 
 ## Description {#description}
-The [Scheduler](/docs/documentation/admin/admin_scheduler) creates automated _scheduled routines_, and their settings are stored in the _COTSchedule_ data model.  Scheduled routines can be programmed to run once or recurrently. For example, you can check if everybody has completed their tasks at the end of each week.
+The [Scheduler](/docs/documentation/admin/admin_scheduler) creates _schedules_ or automated _scheduled routines_, and their settings are stored in the _COTSchedule_ data model.  Scheduled routines can be programmed to run once or recurrently. For example, you can check if everybody has completed their tasks at the end of each week.
 
 ## JSON Sample {#json-sample}
 ```json
