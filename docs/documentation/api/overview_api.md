@@ -53,6 +53,7 @@ Endpoint | Description | Data Model(s)
 [/auth/local](/docs/documentation/api/auth) | authentication token | N/A
 [/companies](/docs/documentation/api/company) | company configuration and settings | [COTCompany](/docs/documentation/models/model_company)
 [/users](/docs/documentation/api/users/users) | users in your company, both humans and bots | [COTUser](/docs/documentation/models/users/model_users)
+[/accessroles](/docs/documentation/api/users/accessroles) | set of permissions granted to users | [COTAccessRole](/docs/documentation/models/users/model_accessroles)
 [/jobtitles](/docs/documentation/api/users/jobtitles) | job titles can group users and give them special attributes | [COTJobTitle](/docs/documentation/models/users/model_jobtitles)
 [/groups](/docs/documentation/api/communication/groups) | groups hold together tasks and channels or act as links to URLs | [COTGroup](/docs/documentation/models/communication/model_groups)
 [/channels](/docs/documentation/api/communication/channels) | workspace channels where users can view task information, answer surveys, or chat with other users associated with the channel | [COTChannel](/docs/documentation/models/communication/model_channels)
