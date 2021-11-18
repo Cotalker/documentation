@@ -9,7 +9,7 @@ import Mermaid from '@theme/Mermaid';
 
 ## Introduction {#introduction}
 
-**Data models** or **Contexts** are the backbone of the Cotalker environment. Almost everything in Cotalker sustains itself inside a _data model_. 
+**Data models** are the backbone of the Cotalker environment. Almost everything in Cotalker sustains itself inside a _data model_. 
 
 Model settings allow building custom workflows. Knowing _data model_ structures is especially important for admins and developers when using [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
 
@@ -40,9 +40,9 @@ Data Model (Context) | Description | Endpoint
 [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType) | The question's or survey component's content type. | N/A
 [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) | Javascript automation that runs within the survey and is found in COTQuestion | N/A
 [COTSchedule](/docs/documentation/models/automations/model_scheduler) | schedules are automated scheduled routines | /schedules
-[COTSMSLA](/docs/documentation/models/tasks/model_sla) | automated SLA routines associated to State Machines (workflow groups) | /tasks/{ObjectId<COTTaskGroup\>}/sla/{ObjectId<COTSMSLA\>}
-[COTSMState](/docs/documentation/models/tasks/model_state) | the state of workflow or task | /tasks/{ObjectId<COTTaskGroup\>}/sm/smstate
-[COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) | a state machine is the workflow process a task goes through | /tasks/{ObjectId<COTTaskGroup\>}/sm/smstatemachine
+[COTSMSLA](/docs/documentation/models/tasks/model_sla) | automated SLA routines associated to State Machines (workflow groups) | /tasks/{id}/sla/{id}
+[COTSMState](/docs/documentation/models/tasks/model_state) | the state of workflow or task | /tasks/{id}/sm/smstate
+[COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) | a state machine is the workflow process a task goes through | /tasks/{id}/sm/smstatemachine
 [COTSurvey](/docs/documentation/models/surveys/model_surveys) | surveys gather different types of input from users | /surveys
 [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) | each survey chat holds _questions_ that correspond to a survey [_component_](/docs/documentation/admin/survey/survey_overview#form-components) | /surveychats
 [COTTask](/docs/documentation/models/tasks/model_tasks) | a task is the representation of an asset and its state | /tasks
