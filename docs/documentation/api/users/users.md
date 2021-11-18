@@ -192,7 +192,7 @@ _Only required fields are listed below. For a complete schema description, pleas
 
 Element | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-| **accessRoles** | The [access roles](/docs/documentation/admin/admin_accessrole) the user has been designated. | [ObjectID<COTAccessRole\>[ ]]((/docs/documentation/models/users/model_accessroles)) | Required |
+| **accessRoles** | The [access roles](/docs/documentation/admin/admin_accessrole) the user has been designated. | [ObjectID<COTAccessRole\>[ ]](/docs/documentation/models/users/model_accessroles) | Required |
 | **email** | The user's email. | string | Required | The email cannot be changed. |
 | **name** | User's full name. | object | |
 | **name.displayName** | Displayed name on channel. | string | Required |
