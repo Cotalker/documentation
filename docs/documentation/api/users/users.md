@@ -11,7 +11,7 @@ A _user_ represents a person or bot that can perform actions within a _company_ 
 
 The _users_ endpoint can be used to search for users, retrieve information, or group them by filtering their data. All this allows using _user_ information for further automations.
 
-## View All Users {#view-all-users}
+## Get Users {#view-all-users}
 _Returns data from all users in the company._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users</span>
@@ -22,7 +22,7 @@ _Returns data from all users in the company._
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
 #### Query Parameters {#query-get-all}
 
@@ -31,13 +31,13 @@ Parameter | Description | Type | Required | Notes
 **search** | Returns endpoints that match the keywords in the [`users.search`](/docs/documentation/models/users/model_users) array. | string | Optional |
 **limit** | Limits the amount of _users_ returned in the response. | number | Optional | 
 **page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
-**count** | Adds the `users.counter` field with the total amount of users. | boolean | Optional | 
+**count** | Adds the `counter` field with the total amount of users. | boolean | Optional | 
 **orderBy** | Orders the _users_ by ascendeing or descending order according to the [`users.modifiedAt`](/docs/documentation/models/users/model_users) field. | string | Optional | Options: `asc`, `desc`
 **sortBy** | For the _user_ endpoint, the response is sorted only by its default, i.e., the [`users.modifiedAt`](/docs/documentation/models/users/model_users) field. | string | Optional |
 **isActive** | Returns _users_ according to their [_users.isActive_](/docs/documentation/models/users/model_users) status. | string | Optional | Options are: `all`, `true`, `false`
 **email** | Returns _users_ with the _emails_ contained in the array. | string[ ] | Optional |
 **bot** | Returns _users_ with the indicated [COTBot](/docs/documentation/models/automations/model_bots) ObjectIds in their `users.bot` field. | [ObjectId<COTBot\>[ ]](/docs/documentation/models/users/model_users) | Optional |
-**\_id** | Returns _users_ with the indicated ObjectIds in their `users._id` field. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | Optional |
+**id** | Returns _users_ with the indicated ObjectIds in their `users._id` field. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | Optional |
 **relatedUser** | Returns _users_ related to the indicated _user_ according the `users.companies.hierarchy` field. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Optional |
 **property** | Returns _users_ associated with the indicated _property_: `users.properties`. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | Optional |
 **accessRole** | Returns _users_ with the indicated _access role_: `users.accessRoles`. | [ObjectID<COTAccessRole\>](/docs/documentation/models/users/model_accessroles) | Optional |
@@ -54,29 +54,20 @@ Parameter | Description | Type | Required | Notes
 
 #### Request Samples {#get-all-request-sample}
 
-<Tabs defaultValue="curl-get-all" values={[ {label: 'cURL (default)', value: 'curl-get-all'}, {label: 'cURL (id)', value: 'curl-id'}, {label: 'cURL (query)', value: 'curl-email'}, {label: 'Typescript (query)', value: 'typescript'} ]}>
+<Tabs defaultValue="curl-get-all" values={[ {label: 'cURL (default)', value: 'curl-get-all'}, {label: 'cURL (query)', value: 'curl-email'}, {label: 'Typescript (query)', value: 'typescript'} ]}>
 <TabItem value="curl-get-all">
 
+_This default request gets all the user data in the company._
 ```bash
-#This default request gets all the user data in the company.
 curl --location --request GET 'https://www.cotalker.com/api/v2/users' \
---header 'Authorization: Bearer $ACCESS_TOKEN' 
-```
-
-</TabItem>
-<TabItem value="curl-id">
-
-```bash
-#Use ObjectId<COTUser> in the endpoint path to get a specific user's data.
-curl --location --request GET 'https://www.cotalker.com/api/v2/users/6194f0345923b62967d7ba46' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' 
 ```
 
 </TabItem>
 <TabItem value="curl-email">
 
+_This example uses the email query parameter to get matching users._
 ```bash
-#This example uses the email query parameter to get matching users.
 curl --location --request GET 'https://www.cotalker.com/api/v2/users?email=nick%40wuxi.com&email=yanxiang%40wuxi.com' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' 
 ```
@@ -84,8 +75,8 @@ curl --location --request GET 'https://www.cotalker.com/api/v2/users?email=nick%
 </TabItem>
 <TabItem value="typescript" example="api_user_admin.ts">
 
+_This example uses the email query parameter to get matching users._
 ```typescript
-// This example uses the email query parameter to get matching users.
 // $ACCESS_TOKEN stored in .env file.
 
 import { Configuration, UserGetCollectionUsers, V2UsersApi } from "@cotalker/cotalker-api";
@@ -114,7 +105,7 @@ Responses follow the [COTUser](/docs/documentation/models/users/model_users#samp
 
 ---
 
-## View Current User {#get-me}
+## Get Current User {#get-me}
 _Returns the current user data._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users/me</span>
@@ -125,7 +116,7 @@ _Returns the current user data._
 #### Headers {#get-me-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
 #### Request Sample {#get-me-request}
 
@@ -166,7 +157,36 @@ Response follows the [COTUser](/docs/documentation/models/users/model_users#samp
 
 ---
 
-## Create a New User {#createpost-user}
+## Get User by Id {#get-user-id}
+_Returns the user indicated by the Id._
+
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /users/&#123;id&#125;</span>
+
+#### Endpoint URL {#get-user-id-url}
+`GET https://www.coltaker.com/api/v2/users/{id}`
+
+#### Path Parameters {#patch-user-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**id** | The ObjectId of the _user_ that is to be returned. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Required |
+
+#### Headers {#get-user-id-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+
+#### Request Sample {#get-user-id-request}
+```bash
+curl --location --request GET 'https://www.cotalker.com/api/v2/users/6194f0345923b62967d7ba46' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' 
+```
+
+#### Response Sample {#get-user-id}
+Response follows the [COTUser](/docs/documentation/models/users/model_users#sample-json) data model.
+
+---
+
+## Create a New User {#post-user}
 _Creates a new user in the company following the COTUser data model._
 
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /users</span>
@@ -178,8 +198,8 @@ _Creates a new user in the company following the COTUser data model._
 
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
-**Admin** | Grants administrative access to create a _user_. | Required | Must be set to `true`. 
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to create a _user_. | Required | true 
 
 #### Query Parameters {#post-user-query}
 Parameter | Description | Type | Required | Notes
@@ -224,6 +244,7 @@ curl --location --request POST 'https://www.cotalker.com/api/v2/users?debug=true
 ```
 
 #### Response Sample {#post-user-response}
+Go to [COTUser](/docs/documentation/models/users/model_users#sample-json) for a complete description of the response.
 ```json
 {
     "_id": "61953bf9bdc3558a4966e54d",  // automatically generated ObjectId
@@ -270,7 +291,7 @@ curl --location --request POST 'https://www.cotalker.com/api/v2/users?debug=true
 ```
 ---
 
-## Update a User by ID {#patch-user}
+## Update a User {#patch-user}
 _Adds, updates, or edits an existing user's information._
 
 <span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /users/&#123;id&#125;</span>
@@ -286,8 +307,8 @@ Parameter | Description | Type | Required | Notes
 #### Headers {#patch-user-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
-**Admin** | Grants administrative access to modify a _user_. | Required | Must be set to `true`. 
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to modify a _user_. | Required | true 
 
 #### Query Parameters {#patch-user-query}
 Parameter | Description | Type | Required | Notes
@@ -295,7 +316,7 @@ Parameter | Description | Type | Required | Notes
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Body {#patch-user-body}
-_It is only required to put into the body the fields that are being updated or added. For a complete schema description, please go to the [COTUser data model](/docs/documentation/models/users/model_users)._
+_Only the fields that are being updated or added are required to put into the body. For a complete schema description, please go to the [COTUser data model](/docs/documentation/models/users/model_users)._
 
 #### Request Sample {#patch-user-request}
 _Updating a user's phone number:_
@@ -310,6 +331,7 @@ curl --location --request PATCH 'https://www.cotalker.com/api/v2/users/61953bf9b
 ```
 
 #### Response Sample {#patch-user-response}
+Go to [COTUser](/docs/documentation/models/users/model_users#sample-json) for a complete description of the response.
 ```json
 {
     "_id": "61953bf9bdc3558a4966e54d",  // automatically generated ObjectId

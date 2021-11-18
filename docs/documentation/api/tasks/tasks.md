@@ -41,8 +41,8 @@ Parameter | Description | Type | Required | Notes
 #### Headers {#get-task-groups-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
-**Admin** | Grants administrative access to view _tasks_. | Required | Must be set to `true`. 
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to view _tasks_. | Required | true
 
 
 #### Request Sample {#get-task-groups-sample}
@@ -53,7 +53,7 @@ curl --location --request GET 'https://www.cotalker.com/api/v1/tasks/group' \
 ```
 
 #### Response Sample {#get-task-groups-response}
-[**COTTaskGroup**](/docs/documentation/models/tasks/model_taskgroup): Response sample and complete description of data model.
+Responses follow the [**COTTaskGroup**](/docs/documentation/models/tasks/model_taskgroup) data model.
 
 ---
 
@@ -80,8 +80,8 @@ Parameter | Description | Type | Required | Notes
 #### Headers {#permissions-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to se how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
-**Admin** | Grants administrative access to edit _tasks_. | Required | Must be set to `true`. 
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to edit _tasks_. | Required | true
 
 #### Request Body {#permissions-body}
 
@@ -108,7 +108,7 @@ curl -X PATCH 'https://www.cotalker.com/api/v1/tasks/group/61700090de1525a97d9ae
 ```
 
 #### Response Sample {#permissions-response}
-
+Go to [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) for a complete description of the response.
 ```json {5-12,28-39}
 {
     "_id": "61700090de1525a97d9aeca4",

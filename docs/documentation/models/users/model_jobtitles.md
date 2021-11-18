@@ -24,7 +24,7 @@ _Job titles_ can group _users_ in "pools" and give them special attributes accor
         "writer"
     ],
     "display": "technical writer",
-    "code": "technical writer",
+    "code": "technical_writer",
     "company": "6192275ef9531df898ac73b5",
     "createdAt": "2021-07-19T16:42:02.513Z",
     "modifiedAt": "2021-11-15T09:17:50.391Z"
@@ -40,7 +40,7 @@ _Job titles_ can group _users_ in "pools" and give them special attributes accor
 | allowedExtensions | Attributes or additional fields added that will be associated with users that have the job title. | [ObjectId<COTPropertyType\>[ ]](/docs/documentation/models/databases/model_propertytypes) |
 | search | System-generated search keys. | string[ ] | Do not modify.
 | display | The job title's display name. | string |
-| code | The job title's unique ID name | string |
+| code | The job title's unique ID name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
 | company | The company the job titles belong in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
 | createdAt | Date the job title was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | modifiedAt | Indicates the last time the job title was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
