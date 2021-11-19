@@ -19,7 +19,7 @@ _Returns data from all access roles._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /accessroles</span>
 
 #### Endpoint URL {#get-all-url}
-`GET https://www.coltaker.com/api/v2/accessroles`
+`https://www.coltaker.com/api/v2/accessroles`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -76,7 +76,7 @@ _Returns the access role indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /accessroles/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-accessrole-id-url}
-`GET https://www.coltaker.com/api/v2/accessroles/{id}`
+`https://www.coltaker.com/api/v2/accessroles/{id}`
 
 #### Path Parameters {#patch-accessrole-path}
 Parameter | Description | Type | Required | Notes
@@ -202,7 +202,7 @@ curl --location --request PATCH 'https://www.cotalker.com/api/v2/accessroles/619
 
 #### Response Sample {#patch-accessrole-response}
 Go to [COTAccessRole](/docs/documentation/models/users/model_accessroles) for a complete description of the response.
-```json
+```json {3-6,11}
 {
     "active": true,
     "permissions": [

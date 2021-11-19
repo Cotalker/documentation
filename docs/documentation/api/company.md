@@ -15,7 +15,7 @@ _Returns the data of the company the user is associated with._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /companies</span>
 
 #### Endpoint URL {#get-all-url}
-`GET https://www.coltaker.com/api/v1/companies`
+`https://www.coltaker.com/api/v1/companies`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -32,10 +32,10 @@ Parameter | Description | Type | Required | Notes
 
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v1/companies' \
---header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
-#### Response Sample {#get-jobtitle-id-response}
+#### Response Sample {#get-company-id-response}
 The response follows the [COTCompany](/docs/documentation/models/model_company) data model.
 
 ---
@@ -46,7 +46,7 @@ _Returns the company indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /companies/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-company-id-url}
-`GET https://www.coltaker.com/api/v1/companies/{id}`
+`https://www.coltaker.com/api/v1/companies/{id}`
 
 #### Path Parameters {#patch-company-path}
 Parameter | Description | Type | Required | Notes
@@ -109,7 +109,7 @@ curl --location --request PATCH 'https://staging.cotalker.com/api/v1/companies/6
 
 #### Response Sample {#patch-company-response}
 Go to [COTCompany](/docs/documentation/models/model_company) for a complete description of the response.
-```json
+```json {11-12}
 {
     "__v" : 14,
     "_id" : "6136968b580aaf2b0e49d844",
@@ -124,7 +124,7 @@ Go to [COTCompany](/docs/documentation/models/model_company) for a complete desc
     "defaultLanguage" : "en",
     "displayName" : "ACME",
     "emailDomains" : [ 
-        "cotalker.com"
+        "company.com"
     ],
     "help" : "6136969de063469044d87926",
     "hideSummary": false,

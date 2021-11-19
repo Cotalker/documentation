@@ -17,7 +17,7 @@ _Returns data from all users in the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users</span>
 
 #### Endpoint URL {#get-all-url}
-`GET https://www.coltaker.com/api/v2/users`
+`https://www.coltaker.com/api/v2/users`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -111,7 +111,7 @@ _Returns the current user data._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users/me</span>
 
 #### Endpoint URL {#get-me-url}
-`GET https://www.coltaker.com/api/v2/users/me`
+`https://www.coltaker.com/api/v2/users/me`
 
 #### Headers {#get-me-headers}
 Header | Description | Required | Values
@@ -163,7 +163,7 @@ _Returns the user indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-user-id-url}
-`GET https://www.coltaker.com/api/v2/users/{id}`
+`https://www.coltaker.com/api/v2/users/{id}`
 
 #### Path Parameters {#patch-user-path}
 Parameter | Description | Type | Required | Notes
@@ -332,7 +332,7 @@ curl --location --request PATCH 'https://www.cotalker.com/api/v2/users/61953bf9b
 
 #### Response Sample {#patch-user-response}
 Go to [COTUser](/docs/documentation/models/users/model_users#sample-json) for a complete description of the response.
-```json
+```json {41}
 {
     "_id": "61953bf9bdc3558a4966e54d",  // automatically generated ObjectId
     "name": {

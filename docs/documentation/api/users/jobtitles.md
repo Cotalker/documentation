@@ -15,7 +15,7 @@ _Returns all job titles within the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /jobtitles</span>
 
 #### Endpoint URL {#get-all-url}
-`GET https://www.coltaker.com/api/v2/jobtitles`
+`https://www.coltaker.com/api/v2/jobtitles`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -71,7 +71,7 @@ _Returns the job title indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /jobtitles/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-jobtitle-id-url}
-`GET https://www.coltaker.com/api/v2/jobtitles/{id}`
+`https://www.coltaker.com/api/v2/jobtitles/{id}`
 
 #### Path Parameters {#patch-jobtitle-path}
 Parameter | Description | Type | Required | Notes
@@ -203,7 +203,7 @@ curl --location --request PATCH 'https://www.cotalker.com/api/v2/jobtitles/61965
 
 #### Response Sample {#patch-jobtitle-response}
 Go to [COTJobTitle](/docs/documentation/models/users/model_jobtitles) for a complete description of the response.
-```json
+```json {4-7}
 {
     "_id": "61966da4ac5644318a6c77c6",
     "isActive": true,
