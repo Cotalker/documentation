@@ -69,3 +69,83 @@ The response follows the [COTCompany](/docs/documentation/models/model_company) 
 
 ---
 
+## Update a Company {#patch-company}
+_Updates or edits an existing job title._
+
+<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /companies/&#123;id&#125;</span>
+
+#### Endpoint URL {#patch-company-url}
+`https://www.cotalker.com/api/v1/companies/{id}`
+
+#### Path Parameters {#patch-company-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**id** | The ObjectId of the _company_ that is to be modified. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | Required |
+
+#### Headers {#patch-company-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to modify the _job title_. | Required | true 
+
+#### Query Parameters {#patch-company-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+
+#### Request Body {#patch-company-body}
+_Only the fields that are being updated or added are required to put into the body. For a complete schema description, please go to the [COTJobTitle data model](/docs/documentation/models/users/model_jobtitles)._
+
+#### Request Sample {#patch-company-request}
+```bash
+curl --location --request PATCH 'https://staging.cotalker.com/api/v1/companies/600ac7d8df5461626aac89c0' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "defaultCountry": "US",
+    "defaultLanguage": "en"
+}'
+```
+
+#### Response Sample {#patch-company-response}
+Go to [COTCompany](/docs/documentation/models/model_company) for a complete description of the response.
+```json
+{
+    "__v" : 14,
+    "_id" : "6136968b580aaf2b0e49d844",
+    "admin" : [ 
+        "6136969432d0379f7490cdf3"
+    ],
+    "appContacts" : true,
+    "contactMode" : "default",
+    "conversationGroup": "6197b98d6b60e7b6db7a61cf",
+    "createdAt" : "2018-10-19T15:06:35.726Z",
+    "defaultCountry" : "US",
+    "defaultLanguage" : "en",
+    "displayName" : "ACME",
+    "emailDomains" : [ 
+        "cotalker.com"
+    ],
+    "help" : "6136969de063469044d87926",
+    "hideSummary": false,
+    "isActive" : true,
+    "legalName" : "ACME INC.",
+    "legalIdentifierCode": "EIN",
+    "legalIdentifier": "123-45-6789",
+    "modifiedAt" : "2021-08-20T19:35:11.648Z",
+    "offline" : {
+        "isActive" : false,
+        "maxSyncTimeMs" : 0
+    },
+    "permissions" : {
+        "receiveNotifications" : true,
+        "readLocation" : true,
+        "showTos" : {
+            "value" : true
+        }
+    },
+    "subdomain" : "acme",
+    "system" : "613696a4a43cf12cb25c7de5"
+}
+```
+---

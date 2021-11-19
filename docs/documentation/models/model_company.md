@@ -21,6 +21,7 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
     ],
     "appContacts" : true,
     "contactMode" : "default",
+    "conversationGroup": "6197b98d6b60e7b6db7a61cf",
     "createdAt" : "2018-10-19T15:06:35.726Z",
     "defaultCountry" : "US",
     "defaultLanguage" : "en",
@@ -53,12 +54,13 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 
 ## Fields {#fields}
 
-| Field | Type | Description | Notes |
+| Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
 |  \_id | System generated company ID number. | ObjectId<COTCompany\> | Only lowercase letters are accepted. |
 | admin | List of admin users' ID number | ObjectId<COTUser\>[ ] | [User Data Model](/docs/documentation/models/users/model_users) |
 | appContacts | Displays contact button in the main menu bar | boolean | [View Main Menu Bar](/docs/documentation/client/main_menu) |
 | contactMode | This option will limit users' ability to see other users in their contact lists and other places, like surveys where user lists are used as options for answering survey questions. | string | Valid options are:`default` and `local` (allows users to view only contacts in their current channels); `all` (permits viewing all company users) |
+| conversationGroup | Group that holds quick access to important company channels | ObjectId<COTGroup\> | [Group Data Model](/docs/documentation/models/communication/model_groups)
 | createdAt | Creation date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | displayName | Company Name as viewed by users | string | |
 | defaultCountry | Country where the company resides. | string | Use ISO 3166-1 alpha-2 country codes, e.g., `US`, `CL`.  |
