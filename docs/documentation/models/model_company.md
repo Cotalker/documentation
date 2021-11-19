@@ -27,7 +27,7 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
     "defaultLanguage" : "en",
     "displayName" : "ACME",
     "emailDomains" : [ 
-        "cotalker.com"
+        "company.com"
     ],
     "help" : "6136969de063469044d87926",
     "hideSummary": false,
