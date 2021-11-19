@@ -36,7 +36,7 @@ Using the web API through a script or integration is as simple as calling an end
 All endpoints MUST be called with the corresponding [authorization or access-token](/docs/documentation/api/auth).
 
 ## URLs {#urls}
-URLs are used based on the endpoint that is called. The section for each endpoint indicates the appropriate URL.  
+URLs are used based on the endpoint that is called. The documentation for each endpoint indicates the appropriate URL.  
 
 _Available URLs:_
 - `https://www.cotalker.com/api/v1`

@@ -130,9 +130,8 @@ _Job title created with the minimum required fields:_
 ```bash
 curl --location --request POST 'https://www.cotalker.com/api/v2/jobtitles?debug=true' \
 --header 'Admin: true' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM0OGEzZGI3OWMwZjAwMDg2N2RmYTIiLCJyb2xlIjoidXNlciIsImNvbXBhbnkiOiI1ZjVhNzRhOGZkZjc3YTAwMDhhNjM0OWEiLCJkYXRlIjoxNjI2NzkyMDYyMTYwLCJpYXQiOjE2MjY3OTIwNjJ9.7g9BAw3lilU7LBXT7xtVfV_tRpQHzTh38P1_kwxVKPc' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
 --header 'Content-Type: application/json' \
---header 'Cookie: APISESSION=4f3bba697d57b4e57126d1fdd2f15ea9' \
 --data-raw '{
     "code": "senior_technical_writer",
     "display": "senior technical writer"

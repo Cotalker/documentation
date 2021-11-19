@@ -39,3 +39,33 @@ curl --location --request GET 'https://www.cotalker.com/api/v1/companies' \
 The response follows the [COTCompany](/docs/documentation/models/model_company) data model.
 
 ---
+
+## Get a Company by Id {#get-company-id}
+_Returns the company indicated by the Id._
+
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /companies/&#123;id&#125;</span>
+
+#### Endpoint URL {#get-company-id-url}
+`GET https://www.coltaker.com/api/v1/companies/{id}`
+
+#### Path Parameters {#patch-company-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**id** | The ObjectId of the _company_ that is to be returned. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | Required |
+
+#### Headers {#get-company-id-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+
+#### Request Sample {#get-company-id-request}
+```bash
+curl --location --request GET 'https://www.cotalker.com/api/v1/companies/61976ce4a1f102deb014a0c3' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
+```
+
+#### Response Sample {#get-company-id-response}
+The response follows the [COTCompany](/docs/documentation/models/model_company) data model.
+
+---
+
