@@ -73,7 +73,7 @@ _Property types_ contain [_properties_ or _elements_](/docs/documentation/models
 | **modifiedAt** | Indicates the last time the property type was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **schemaNodes** | Additional fields for all of the collection's elements. | object[ ] |
 | **schemaNodes[index].basicType** | Indicates the additional field's input type. | string | Enum: ["string", "number", "date", "boolean", "link", "file", "COTProperty", "COTUser"]
-| **schemaNodes[index].default** | Specifies the additional field's default value. | Type according to `basicType`. |
+| **schemaNodes[index].default** | Specifies the additional field's default value. | Type according to `basicType`. | Not yet implemented.
 | **schemaNodes[index].description** | Brief description of the additional field. | string |
 | **schemaNodes[index].display** | The additional field's displayed name. | string |
 | **schemaNodes[index].isActive** | Indicates if the the additional field is active or not. | boolean |
@@ -86,7 +86,7 @@ _Property types_ contain [_properties_ or _elements_](/docs/documentation/models
 | **schemaNodes[index].validators.max** | Maximum value of input type. Depending on `basicType`, values can represent characters, dates, numbers. | number |
 | **schemaNodes[index].validators.min** | Minimum value of input type. Depending on `basicType`, values can represent characters, dates, numbers. | number |
 | **schemaNodes[index].validators.required** | Indicates whether the additional field is required or not. | boolean
-| **schemaNodes[index].validators.validator** | | string[ ] |
+| **schemaNodes[index].validators.validator** | Custom validations. | string[ ] | Not yet implemented.
 | **schemaNodes[index].visualization** | Special input visualization settings. | object |
 | **schemaNodes[index].visualization.displayAs** | Appears when `basicType` is set to "link". | object | Enum: ["Embedded", "External", "Internal"]
 | **schemaNodes[index].weight** | Indicates the order the additional field are listed in. Starts at "1". | number |

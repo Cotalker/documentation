@@ -6,28 +6,107 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-A __channel__ is a space where users and bots can communicate through messages.
+## Overview {#overview}
+_Channels_ are workspaces where _users_ can get _task_ information, change _task_ states, submit _surveys_, summon _bots_, chat with other _users_, and share files. 
 
-:::info
-Click here for [data model descriptions](/docs/documentation/models/communication/model_channels)
+_Channels_ exist within either [_regular or workflow groups_](/docs/documentation/client/groups).
 
-Click here for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
-:::
+## Get Channels {#get-all-channels}
+_Returns all channels within the company._
 
-## API {#api}
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /channels</span>
 
-The main features of the API are:
+#### Endpoint URL {#get-all-url}
+`https://www.coltaker.com/api/v2/channels`
 
-### Client Channel-API {#client-channel-api}
-* Get list of all channels
-* Get data of specific channel
+#### Headers {#get-all-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
-## Examples {#examples}
+#### Query Parameters {#query-get-all}
 
-### Client-API GET /channels {#client-api-get-channels}
-Listing all channels and their properties.
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | ---- | ----
+**search** | Returns endpoints that match the keywords in the [`channels.search`](/docs/documentation/models/communication/model_channels) array. | string | Optional |
+**limit** | Limits the amount of _channels_ returned in the response. | number | Optional | 
+**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
+**count** | Adds the `counter` field with the total amount of _channels_ within the company. | boolean | Optional | 
+**orderBy** | Orders the _channels_ by ascendeing or descending order according to the [`channels.modifiedAt`](/docs/documentation/models/users/model_users) field. | string | Optional | Options: `asc`, `desc`
+**sortBy** | Sorts _channels_ in the response according to the chosen field: `nameCode`, `modifiedAt`, or `createdAt`. | string | Optional | Details about the [Channel Data Model](/docs/documentation/models/communication/model_channels)
+**group** | Returns all _channels_ found within a _group_. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups)
+**isActive** | Returns _users_ according to their [_users.isActive_](/docs/documentation/models/users/model_users) status. | string | Optional | Options are: `all`, `true`, `false`
+**user** | | ObjectId<COTUser\> | Optional |
+**userIsAdmin** | | boolean | Optional |
+**directChannels** | | | Optional | Options are: `all`, `true`, `false`
+**modified** | Returns _channels_ with the indicated modification date: [`channels.modifiedAt`](/docs/documentation/models/communication/model_channels) | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gt** | Returns _channels_ modified after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gte** | Returns _channels_ with a [`channels.modifiedAt`](/docs/documentation/models/communication/model_channels) equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created** | Returns _channels_ with the indicated creation date: [`channels.createdAt`](/docs/documentation/models/communication/model_channels) | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_gt** | Returns _channels_ created after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_gte** | Returns _channels_ with a [`channels.createdAt`](/docs/documentation/models/communication/model_channels) equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_lt** | Returns _channels_ created before the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_lte** | Returns _channels_ with a [`channels.createdAt`](/docs/documentation/models/communication/model_channels) equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
-[A valid access-token is required to perform the request.](/docs/documentation/api/auth)
+#### Request Samples {#get-all-request-sample}
+
+<Tabs defaultValue="curl-get-all" values={[ {label: 'cURL (default)', value: 'curl-get-all'}, {label: 'cURL (query)', value: 'curl-group'}, {label: 'Typescript (default)', value: 'typescript'} ]}>
+<TabItem value="curl-get-all">
+
+_This default request gets all the channels in the company._
+```bash
+curl --location --request GET 'https://www.cotalker.com/api/v2/channels' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
+```
+
+</TabItem>
+<TabItem value="curl-group">
+
+_This example uses the group query parameter to get channels within a group._
+```bash
+curl --location --request GET 'https://www.cotalker.com/api/v2/channels?group=61984c6f68a78ccc932d67f8' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
+```
+
+</TabItem>
+<TabItem value="typescript" example="api_channel.ts">
+
+_This example gets all channels in the company._
+```typescript
+// $ACCESS_TOKEN stored in .env file.
+
+import { ChannelGetCollection, Configuration, V2ChannelsApi} from "@cotalker/cotalker-api";
+
+const api = new V2ChannelsApi(new Configuration({
+    basePath: 'https://www.cotalker.com/api',
+    accessToken: process.env.ACCESS_TOKEN,
+    apiKey: 'true',
+}));
+
+async function getChannels(): Promise<ChannelGetCollection | undefined> {
+    const response = await api.getV2Channels();
+    return response.data?.data;
+}
+
+getChannels().then(channels => console.log(channels)).catch(e=>console.log(e))
+
+``` 
+</TabItem>
+</Tabs>
+
+#### Response Sample {#get-all-response-sample}
+Responses follow the [COTChannel](/docs/documentation/models/communication/model_channels) data model.
+
+---
+
+
+
+
+
+
+
+
 
 <Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
 <TabItem value="curl">
