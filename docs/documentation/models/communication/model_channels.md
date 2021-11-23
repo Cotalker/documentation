@@ -94,62 +94,63 @@ import TabItem from '@theme/TabItem';
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
-| _id | Channel ID number | ObjectId<COTChannel\> | |
-| __v | Document version | number | Cannot be modified and should never be used. |
-| bots | Array with the IDs of the bots assigned to the channel | ObjectId<COTBot\>[ ] | [Bot Data Model](/docs/documentation/models/automations/model_bots) |
-| company | Company ID number | ObjectId<COTCompany\> | [Channel Data Model](/docs/documentation/models/model_company) |
-| createdAt | Channel creation date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| group | The channel's group ID number | ObjectId<COTGroup\> | [Group Data Model](/docs/documentation/models/communication/model_groups) |
-| groupOwnerIds | Array of user ID numbers, including creator and initial users | ObjectId<COTUser\>[ ] | [User Data Model](/docs/documentation/models/users/model_users) |
-| image | Channel avatar | object | |
-| image.small | Small image size | string | URL |
-| image.square | Square shaped avatar | string | URL |
-| image.original | Original image size | string | URL |
-| isActive | Indicates if the channel is still active or if it has been deactivated | boolean | |
-| isDirect | | boolean | |
-| isPrivate | | boolean | |
-| lastMessage | Displays the last message sent in the channel | object | |
-| lastMessage.content | Message text | string | |
-| lastMessage.date | The date the message was sent | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| lastMessage.sender | The user ID of the message sender | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
-| lastMessage.contentType | Content types include text, survey or multimedia files | string | |
-| modifiedAt | Indicates the last time channel settings were modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| nameCode | The channel's unique identification name | string | Must be unique, max. 60 chars., Valid chars. [a-z0-9_] |
-| nameDisplay | The channel name users will see in the platform | string | |
-| overrideName | Indicates if the display name is overridden by the channel's first elements | boolean | False indicates the name has been overridden; true indicates that the manually added display name is being used |
-| pinned | Indicates if the channel is pinned to the group panel | ObjectId | An empty array indicates the channel is not pinned |
-| propertyIds | An array of element/property IDs associated with the channel | ObjectId<COTProperty\>[ ] | [Element Data Property](/docs/documentation/models/databases/model_properties) |
-| search | Array of keywords for search engine | string[ ] | Automatically generated |
-| settings |  | object | |
-| settings.write | Indicates if users can write messages in the channel | string | Options are `all` or `none` |
-| userIds | Array of the IDs of the users in the channel | ObjectId<COTUser\>[ ] | |
-| videoCall | Enables users to start video calls within the channel | object | |
-| videoCall.start | Indicates if permissions are required to initiate a video call | object | |
-| videoCall.start.any | Indicates if any user within the channel can initiate a video call | boolean | If `true`, no permissions are needed |
-| videoCall.start.permissions | Array of permissions needed to initiate a video call | string[ ] | If video.start.any is `false`, permissions must be indicated |
-| videoCall.isActive | Indicates if the video calls can be initiated within the channel | boolean | If `true`, calls are permitted |
-| videoCall.publishVideo | Indicates permissions needed to use the video | string[ ] | |
-| videoCall.publishAudio | Indicates permissions needed to use the audio | string[ ] | |
+| **_id** | Channel ID number | ObjectId<COTChannel\> | |
+| **__v** | Document version | number | Cannot be modified and should never be used. |
+| **bots** | Array with the IDs of the bots assigned to the channel | ObjectId<COTBot\>[ ] | [Bot Data Model](/docs/documentation/models/automations/model_bots) |
+| **company** | Company ID number | ObjectId<COTCompany\> | [Channel Data Model](/docs/documentation/models/model_company) |
+| **createdAt** | Channel creation date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **group** | The channel's group ID number | ObjectId<COTGroup\> | [Group Data Model](/docs/documentation/models/communication/model_groups) |
+| **groupOwnerIds** | Array of user ID numbers, including creator and initial users | ObjectId<COTUser\>[ ] | [User Data Model](/docs/documentation/models/users/model_users) |
+| **image** | Channel avatar | object | |
+| **image.small** | Small image size | string | URL |
+| **image.square** | Square shaped avatar | string | URL |
+| **image.original** | Original image size | string | URL |
+| **isActive** | Indicates if the channel is still active or if it has been deactivated | boolean | |
+| **isDirect** | | boolean | |
+| **isPrivate** | | boolean | |
+| **lastMessage** | Displays the last message sent in the channel | object | |
+| **lastMessage.content** | Message text | string | |
+| **lastMessage.date** | The date the message was sent | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **lastMessage.sender** | The user ID of the message sender | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
+| **lastMessage.contentType** | Content types include text, survey or multimedia files | string | |
+| **modifiedAt** | Indicates the last time channel settings were modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **nameCode** | The channel's unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique. |
+| **nameDisplay** | The channel name users will see in the platform | string | |
+| **overrideName** | Indicates if the display name is overridden by the channel's first elements | boolean | False indicates the name has been overridden; true indicates that the manually added display name is being used |
+| **pinned** | Indicates if the channel is pinned to the group panel | ObjectId | An empty array indicates the channel is not pinned |
+| **propertyIds** | An array of element/property IDs associated with the channel | ObjectId<COTProperty\>[ ] | [Element Data Property](/docs/documentation/models/databases/model_properties) |
+| **search** | Array of keywords for search engine | string[ ] | Automatically generated |
+| **settings** |  | object | |
+| **settings.write** | Indicates if users can write messages in the channel | string | Options are `all` or `none` |
+| **userIds** | Array of the IDs of the users in the channel | ObjectId<COTUser\>[ ] | |
+| **videoCall** | Enables users to start video calls within the channel | object | |
+| **videoCall.start** | Indicates if permissions are required to initiate a video call | object | |
+| **videoCall.start.any** | Indicates if any user within the channel can initiate a video call | boolean | If `true`, no permissions are needed |
+| **videoCall.start.permissions** | Array of permissions needed to initiate a video call | string[ ] | If video.start.any is `false`, permissions must be indicated |
+| **videoCall.isActive** | Indicates if the video calls can be initiated within the channel | boolean | If `true`, calls are permitted |
+| **videoCall.publishVideo** | Indicates permissions needed to use the video | string[ ] | |
+| **videoCall.publishAudio** | Indicates permissions needed to use the audio | string[ ] | |
 
 ## Deprecated Elements {#deprecated}
 _The following deprecated items might still be found in the model:_
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | ---- | ----------- | ----  |
-| actionButton | Adds a button with links to the channel workspace | array |  DEPRECATED |
-| archive | Indicates if a channel has been archived | string[ ] | DEPRECATED |
-| autocomplete | Autocompletes type input; for system use only | object[ ] | DEPRECATED |
-| groupNumber | | | DEPRECATED |
-| info | | object | DEPRECATED |
-| lightProperty | | [ ] | DEPRECATED |
-| settings.display | | string | DEPRECATED |
-| settings.read | | string | DEPRECATED |
-| settings.readUserIds | | ObjectId[ ] | DEPRECATED |
-| systemPinned | | boolean | DEPRECATED |
-| videoCall.duration | Array of allowed times for video calls | number[ ] | DEPRECATED |
-| visibility | | object | DEPRECATED |
+| **actionButton** | Adds a button with links to the channel workspace | array |  DEPRECATED |
+| **archive** | Indicates if a channel has been archived | string[ ] | DEPRECATED |
+| **autocomplete** | Autocompletes type input; for system use only | object[ ] | DEPRECATED |
+| **groupNumber** | | | DEPRECATED |
+| **info** | | object | DEPRECATED |
+| **lightProperty** | | [ ] | DEPRECATED |
+| **settings.display** | | string | DEPRECATED |
+| **settings.read** | | string | DEPRECATED |
+| **settings.readUserIds** | | ObjectId[ ] | DEPRECATED |
+| **systemPinned** | | boolean | DEPRECATED |
+| **videoCall.duration** | Array of allowed times for video calls | number[ ] | DEPRECATED |
+| **visibility** | | object | DEPRECATED |
 
 ## Additional Resources {#resources}
+- [Channel Settings Panel](/docs/documentation/admin/admin_group#channels): Channel settings in the Administrative Panel
 - ["Channel" REST API documentation](/docs/documentation/api/communication/channels): basic "Channel" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
 - [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines

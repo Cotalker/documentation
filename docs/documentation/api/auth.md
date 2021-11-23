@@ -42,7 +42,7 @@ This method obtains a user's _access token_. You must include the user's email a
 #### Headers {#headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Content-Type** | Sets the body's content type. | Required | application/json
+**Content-Type** | Sets the body's format. | Required | application/json
 **Accept-Charset** | Character set of the sent content. | Required | utf-8
 
 #### Request Body {#body}
