@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__subtitle">COTMessageContentType</span>
 
 ## Description {#description}
-Message content types are part of the [COTMessage](/docs/documentation/models/communication/model_messages) data model: `messages.contentType`. The field's value is in string format. The following contains a list of the possible values and examples. Along with `messages.contentType`, `messages.content` contains the text or file data.
+Message content types are part of the [COTMessage](/docs/documentation/models/communication/model_messages) data model: `messages.contentType`. The field's value is in string format. The following contains a list of the possible values and examples. Along with `messages.contentType`, `messages.content` contains the text or file data. In case the message is a survey, `messages.contentArray` is used.
 
 ## FileObject Sample
 
@@ -134,6 +134,17 @@ wordprocessingml.document",
 { 
 "contentType" : "application/pdf",
 "content" : '{"url":"https://mysite.com/file.pdf","name":"file.pdf","createdBy":"618a9cde78e1a2ce394d162c","contentType":"application/pdf","screenshots":["https://mysite.com/file.png"]}', 
+}
+```
+### Cotalker Answered Survey
+`application/vnd.cotalker.survey`
+```json
+{
+    "contentType": "application/vnd.cotalker.survey",
+    "contentArray": [
+        "613fd0e14a8541000782ed5c",
+        "613fd0e14a8541000782ed5d"
+    ]
 }
 ```
 

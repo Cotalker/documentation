@@ -8,7 +8,7 @@ const api = new V2ChannelsApi(new Configuration({
 
 // { id: "5fb4324f2d8a0df350d08b85" } is fictional example.
 async function getChannel(): Promise<ChannelGetCollectionChannels | undefined> {
-    const response = await api.getV2ChannelsId( { id: "5fb4324f2d8a0df350d08b85" } );
+    const response = await api.getV2ChannelsId( { id:"619b847aa07ea3000776c220" } );
     return response.data?.data;
 }
 

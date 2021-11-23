@@ -27,7 +27,7 @@ Header | Description | Required | Values
 
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
-**limit** | Limits the amount of _job titles_ returned in the response. | number | Optional | 
+**limit** | Limits the amount of _job titles_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
 **page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
 **count** | Adds the `counter` field with the total amount of job titles. | boolean | Optional | 
 **isActive** | Returns _job titles_ according to their [_jobtitles.active_](/docs/documentation/models/users/model_jobtitles) status. | string | Optional | Options are: `all`, `true`, `false`
@@ -84,6 +84,11 @@ Header | Description | Required | Values
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 **Admin** | Grants administrative access to view the _job title_. | Required | true
 
+#### Query Parameters {#get-channel-id}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | true
+
 #### Request Sample {#get-jobtitle-id-request}
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v2/jobtitles/619648a6f27b4eb1a9e319ba' \
@@ -111,6 +116,7 @@ Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 **Admin** | Grants administrative access to create a _job title_. | Required | true 
+**Content-Type** | Sets the body's format. | Required | application/json
 
 #### Query Parameters {#post-jobtitle-query}
 Parameter | Description | Type | Required | Notes
@@ -178,6 +184,7 @@ Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 **Admin** | Grants administrative access to modify the _job title_. | Required | true 
+**Content-Type** | Sets the body's format. | Required | application/json
 
 #### Query Parameters {#patch-jobtitle-query}
 Parameter | Description | Type | Required | Notes
@@ -185,7 +192,7 @@ Parameter | Description | Type | Required | Notes
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Body {#patch-jobtitle-body}
-_Only the fields that are being updated or added are required to put into the body. For a complete schema description, please go to the [COTJobTitle data model](/docs/documentation/models/users/model_jobtitles)._
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTJobTitle data model](/docs/documentation/models/users/model_jobtitles)._
 
 #### Request Sample {#patch-jobtitle-request}
 ```bash

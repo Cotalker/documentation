@@ -29,7 +29,7 @@ Header | Description | Required | Values
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
 **search** | Returns endpoints that match the keywords in the [`users.search`](/docs/documentation/models/users/model_users) array. | string | Optional |
-**limit** | Limits the amount of _users_ returned in the response. | number | Optional | 
+**limit** | Limits the amount of _users_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
 **page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
 **count** | Adds the `counter` field with the total amount of users. | boolean | Optional | 
 **orderBy** | Orders the _users_ by ascendeing or descending order according to the [`users.modifiedAt`](/docs/documentation/models/users/model_users) field. | string | Optional | Options: `asc`, `desc`
@@ -175,6 +175,11 @@ Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
+#### Query Parameters {#get-channel-id}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | true
+
 #### Request Sample {#get-user-id-request}
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v2/users/6194f0345923b62967d7ba46' \
@@ -200,6 +205,7 @@ Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 **Admin** | Grants administrative access to create a _user_. | Required | true 
+**Content-Type** | Sets the body's format. | Required | application/json
 
 #### Query Parameters {#post-user-query}
 Parameter | Description | Type | Required | Notes
@@ -309,6 +315,7 @@ Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 **Admin** | Grants administrative access to modify a _user_. | Required | true 
+**Content-Type** | Sets the body's format. | Required | application/json
 
 #### Query Parameters {#patch-user-query}
 Parameter | Description | Type | Required | Notes
@@ -316,7 +323,7 @@ Parameter | Description | Type | Required | Notes
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Body {#patch-user-body}
-_Only the fields that are being updated or added are required to put into the body. For a complete schema description, please go to the [COTUser data model](/docs/documentation/models/users/model_users)._
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTUser data model](/docs/documentation/models/users/model_users)._
 
 #### Request Sample {#patch-user-request}
 _Updating a user's phone number:_

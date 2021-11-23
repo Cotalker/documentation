@@ -30,7 +30,7 @@ _Lists the tasks groups in the company._
 #### Query Parameters {#get-task-groups-parameters}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**Limit** | | number | Optional | 
+**limit** | | number | Optional | By default, the _limit_ is set to 10.
 **page** | | number | Optional | 
 **count** | | boolean | Optional | 
 **orderBy** | | string | Optional | Options: `asc`, `desc`
@@ -82,6 +82,7 @@ Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 **Admin** | Grants administrative access to edit _tasks_. | Required | true
+**Content-Type** | Sets the body's format. | Required | application/json
 
 #### Request Body {#permissions-body}
 

@@ -33,7 +33,7 @@ Permissions grant access to read or write in the [administrative panel](/docs/do
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----  | -------- | ---- | ---- |
-| _id | Access role's unique ID number | ObjectId<COTAccessRole\> | |
+| _id | The access role's unique ID number | ObjectId<COTAccessRole\> | |
 | active | Indicates if the access role is active or not | boolean | |
 | permissions | Set of permissions available in the accessrole | string[ ] | [List of default permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
 | name  | Display name | string | |
@@ -43,6 +43,7 @@ Permissions grant access to read or write in the [administrative panel](/docs/do
 
 ## Additional Resources {#resources}
 
+- [Access Roles Settings Panel](/docs/documentation/admin/admin_accessrole): Access Roles settings in Administrative Panel
 - ["Access Role" REST API documentation](/docs/documentation/api/users/accessroles): basic "Access Roles" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
 - [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
