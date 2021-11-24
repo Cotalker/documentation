@@ -4,6 +4,11 @@ title: Microsoft Azure AD Sign-in Configuration
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
+Microsoft Work sign-in is available on Enterprise editions.
+
+<img alt="microsoft sign-in" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_microsoft.png')} />
+<br/>
+
 To enable users to sign in with Microsoft Work accounts, some configuration is required. Contact your Cotalker sales representative to obtain a _Redirect URI_ before commencing the configuration.
 
 _Follow these simple steps:_
