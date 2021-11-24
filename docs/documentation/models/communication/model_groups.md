@@ -120,14 +120,14 @@ import TabItem from '@theme/TabItem';
 | Fields | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ----- | ----- | ----- | ----- |
 | __v | Version number | number | Not to be modified |
-| defaultChannel | | object | DEPRECATED |
-| defaultOpenBehavior | | string | `channel`, `link` or `task` | DEPRECATED |
-| filters | Array | object[ ] | DEPRECATED |
 | apperance | | object | DEPRECATED |
 | canViewChannelsConfig | | object | DEPRECATED |
 | channels | Array of channels found in the group | ObjectId<COTChannel\>[ ] | DEPRECATED |
 | createChannels.allowedContentTypes | Array | string[ ] | DEPRECATED |
 | createChannels.openChannel | | boolean | DEPRECATED |
+| defaultChannel | | object | DEPRECATED |
+| defaultOpenBehavior | | string | `channel`, `link` or `task` | DEPRECATED |
+| filters | Array | object[ ] | DEPRECATED |
 | groupNumber | | number | DEPRECATED |
 | groupOwnerIds | Array | [ ] | DEPRECATED |
 | help.image | | string | DEPRECATED |
