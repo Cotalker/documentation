@@ -28,7 +28,7 @@ Header | Description | Required | Values
 
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
-**search** | Returns endpoints that match the keywords in the [`users.search`](/docs/documentation/models/users/model_users) array. | string | Optional |
+**search** | Returns _users_ that match the keywords in the [`users.search`](/docs/documentation/models/users/model_users) array. | string | Optional |
 **limit** | Limits the amount of _users_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
 **page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
 **count** | Adds the `counter` field with the total amount of users. | boolean | Optional | 

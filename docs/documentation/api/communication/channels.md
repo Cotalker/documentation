@@ -28,7 +28,7 @@ Header | Description | Required | Values
 
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
-**search** | Returns endpoints that match the keywords in the array in the channel's `search` field. | string | Optional |
+**search** | Returns channels that match the keywords in the `search` field array. | string | Optional |
 **limit** | Limits the amount of _channels_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
 **page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
 **count** | Adds the `counter` field with the total amount of _channels_ within the company. | boolean | Optional | 
@@ -188,7 +188,7 @@ _Only required fields are listed below. For a complete schema description, pleas
 
 Element | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**nameDisplay** | The _channel_ name _users_ will see in the platform. | string | Required |
+**nameDisplay** | The _channel_ name _users_ will see on the platform. | string | Required |
 **nameCode** | The _channel's_ unique identification name. | string | Required | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
 
 #### Request Sample {#post-channel-request}
@@ -265,7 +265,7 @@ Parameter | Description | Type | Required | Notes
 Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
-**Admin** | Grants administrative access to modify a _user_. | Required | true 
+**Admin** | Grants administrative access to modify a _channel_. | Required | true 
 **Content-Type** | Sets the body's format. | Required | application/json
 
 #### Query Parameters {#patch-channel-query}
@@ -277,7 +277,7 @@ Parameter | Description | Type | Required | Notes
 _Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTChannel data model](/docs/documentation/models/communication/model_channels)._
 
 #### Request Sample {#patch-channel-request}
-_Updating a user's phone number:_
+_Updating a channel's display name:_
 ```bash
 curl --location --request PATCH 'https://www.cotalker.com/api/v2/channels/619b8cf2107bbec0876cddf2?debug=true' \
 --header 'Admin: true' \
