@@ -126,7 +126,7 @@ Header | Description | Required | Values
 #### Request Sample {#get-by-id-request}
 
 ```bash
-curl --location --request GET 'https://www.cotalker.com/api/v2/groups/6127d4d58ae12fc65e0a1ee0' \
+curl --location --request GET 'https://www.cotalker.com/api/v2/groups/618a9a1c881d93046349c820' \
 --header 'Admin: true' \
 --header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
@@ -210,10 +210,10 @@ Go to [COTGroup](/docs/documentation/models/communication/model_groups) for a co
     "groupSortDirection": "asc",
     "innerSort": "lastMessage",
     "innerSortDirection": "desc",
-    "_id": "619e480e9c4af80007fe1b5f",
+    "_id": "619e51fee8b60a63b678aa94",
     "nameDisplay": "The Best Group Ever!",
     "nameCode": "best_group",
-    "company": "5f5a74a8fdf77a0008a6349a",
+    "company": "619e51f3e7e198f18fe56a01",
     "createdAt": "2021-11-24T14:11:26.195Z",
     "actions": [],
     "modifiedAt": "2021-11-24T14:11:26.199Z",
@@ -254,7 +254,7 @@ _Only the fields that are being updated or added are required to be put into the
 #### Request Sample {#patch-update-request}
 _Updating a group's channel creation settings:_
 ```bash
-curl --location --request PATCH 'https://www.cotalker.com/api/v2/groups/619e480e9c4af80007fe1b5f' \
+curl --location --request PATCH 'https://www.cotalker.com/api/v2/groups/619e51fee8b60a63b678aa94' \
 --header 'Admin: true' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' \
 --header 'Content-Type: application/json' \
@@ -270,7 +270,7 @@ curl --location --request PATCH 'https://www.cotalker.com/api/v2/groups/619e480e
 
 #### Response Sample {#patch-update-response}
 Go to [COTGroup](/docs/documentation/models/communication/model_groups) for a complete description of the response.
-```json {8-15}
+```json {8-14}
 {
     "apperance": {
         "textColor": "#ffffff"
@@ -283,7 +283,6 @@ Go to [COTGroup](/docs/documentation/models/communication/model_groups) for a co
         "requiredPermissionsV2": [
             "admin-groups-write"
         ],
-        "allowedContentTypes": [],
         "active": true
     },
     "link": {
@@ -304,10 +303,10 @@ Go to [COTGroup](/docs/documentation/models/communication/model_groups) for a co
     "groupSortDirection": "asc",
     "innerSort": "lastMessage",
     "innerSortDirection": "desc",
-    "_id": "619e480e9c4af80007fe1b5f",
+    "_id": "619e51fee8b60a63b678aa94",
     "nameDisplay": "The Best Group Ever!",
     "nameCode": "best_group",
-    "company": "5f5a74a8fdf77a0008a6349a",
+    "company": "619e51f3e7e198f18fe56a01",
     "createdAt": "2021-11-24T14:11:26.195Z",
     "actions": [],
     "modifiedAt": "2021-11-24T14:11:26.199Z",
