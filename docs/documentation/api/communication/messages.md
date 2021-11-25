@@ -68,6 +68,7 @@ Element | Description | Type | Required | Notes
 | **contentArray** | Array of answered survey _questions_ | [ObjectId<COTQuestion\>[ ]](/docs/documentation/models/surveys/model_questions) | Required<br/>(if sending a survey) |
 **contentType** | Indicates content type, for example: `text/plain` (user text input), `application/vnd.cotalker.survey` (answered survey), `application/pdf` (pdf file), `image/gif` (uploaded gif image) | string | Required | For a complete list of content types, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent).
 **isSaved** | Used to indicate the message state. `2` is used for sending a regular message; `8` is used for sending unanswered surveys; `16` is used to indicate a message has already been delivered. | number | Required | Use with precaution; consult the [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions) for further details. 
+**sentBy** | ID of the _user_ that sends the message. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Required |
 
 #### Request Sample {#post-channel-request}
 _Message sent with the minimum required fields:_
