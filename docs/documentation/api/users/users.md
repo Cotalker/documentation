@@ -176,9 +176,9 @@ Header | Description | Required | Values
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
 #### Query Parameters {#get-channel-id}
-Header | Description | Required | Values
---- | --- | --- | ---
-**debug** | Adds the `debug` field with error notifications. | string | Optional | true
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Sample {#get-user-id-request}
 ```bash

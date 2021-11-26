@@ -106,7 +106,7 @@ import TabItem from '@theme/TabItem';
 | **image.square** | Square shaped avatar | string | URL |
 | **image.original** | Original image size | string | URL |
 | **isActive** | Indicates if the channel is still active or if it has been deactivated | boolean | |
-| **isDirect** | | boolean | |
+| **isDirect** | Indicates if the channel is a chat of direct messages between two users. | boolean | |
 | **isPrivate** | | boolean | |
 | **lastMessage** | Displays the last message sent in the channel | object | |
 | **lastMessage.content** | Message text | string | |

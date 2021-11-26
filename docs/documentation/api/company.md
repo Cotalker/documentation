@@ -26,10 +26,9 @@ Header | Description | Required | Values
 
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
-**populate** | | string | Optional |
+**populate** | Fills the indicated fields containing ObjectIds with the data model they represent, e.g., the `admin` field would be filled with the COTUser it represents. This query parameter accepts a comma-separated field string. | string | Optional | Syntax example: `GET /companies?populate=admin, help, conversationGroup`
 
 #### Request Sample {#get-all-request}
-
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v1/companies' \
 --header 'Authorization: Bearer $ACCESS_TOKEN'
