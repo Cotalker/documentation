@@ -13,11 +13,17 @@ Users can easily share files through channels and surveys. But administrators sh
 <div className="alert alert--primary">
 
 ### Security Features
+<div className="margin-left--lg">
+
 For security reasons, uploaded files are digitally signed. Only verified users from the same _company_ can access the uploaded files and are required to provide the digitally signed file URL each time they wish to access a file.
 
 By default, _users_ on the platform have a maximum of 15-minute access to files. Once that time passes, the file must be signed again. Through the API request, access time can be set between 1 to 15 minutes.
 
+</div>
+
 ### File Specifications
+
+<div className="margin-left--lg">
 
 **Compatible file formats include:**
 
@@ -27,8 +33,16 @@ By default, _users_ on the platform have a maximum of 15-minute access to files.
 
 **Maximum file size:** 25 MB
 
+</div>
+
 ### File Destination
+
+<div className="margin-left--lg">
+
+
 Files are uploaded to our servers and stored in company folders according to their content type, i.e., video, image, document. Files are also processed according to their content type, e.g., image files are processed and stored in different folders with their original and thumbnail files, respectively.
+
+</div>
 
 </div>
 <br/>
@@ -102,7 +116,7 @@ const signedUrl = await api.signUrl(uploadedFile.url);
 </TabItem>
 </Tabs>
 
-### Response Sample {#post-new-response}
+#### Response Sample {#post-new-response}
 _The new instance of a COTFile (file object) is returned._
 
 ```json
@@ -129,23 +143,16 @@ _application/json_
 
 | Field | Description | Type | Notes |
 | --- | --- | --- | --- |
-| **company** | The ID of the company the file is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |  |
-| **contentType** | Indicates the category the file belongs to. | string | Options are: _image_, _video_, _document_ | |
-| **context** | | object | |
+| **company** | The ID of the company the file is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | |
+| **contentType** | Indicates the category the file belongs to. | string | Options are: _image_, _video_, _document_ | DEPRECATED |
 | **createdAt** | Date and time the file was uploaded. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| **data** | | object | |
-| **debug** | | object | |
-| **extension** | string | | |
 | **fileName** | Indicates the file's name and extension. | string | |
 | **key** | Indicates the relative path of the file. | string | The _key_ is needed to get the signed file URL. |
 | **mimeType** | Indicates the file's type and format, e.g., `image/jpeg`, `video/mp4`, `application/pdf`. | string | [Click here](/docs/documentation/models/communication/model_messageContent) for more details about content types. |
 | **modifiedAt** | Last time the file was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| **public** | boolean | | |
 | **size** | Indicates the byte size of the file. | number | |
 | **status** | Indicates the files current status in the server. | string | Possible answers: _pending_, _processing_, _uploaded_, _deleted_, _error_ |
-| **totalSize** | | number | |
-| **user** | User that sent the file. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | |
-| **url** | | string | |
+| **user** | User that sent the file. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | DEPRECATED |
 
 
 ## Obtain Signed File URL {#post-get}

@@ -85,9 +85,9 @@ Header | Description | Required | Values
 **Admin** | Grants administrative access to view the _job title_. | Required | true
 
 #### Query Parameters {#get-channel-id}
-Header | Description | Required | Values
---- | --- | --- | ---
-**debug** | Adds the `debug` field with error notifications. | string | Optional | true
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Sample {#get-jobtitle-id-request}
 ```bash

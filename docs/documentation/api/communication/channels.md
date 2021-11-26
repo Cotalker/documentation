@@ -38,7 +38,7 @@ Parameter | Description | Type | Required | Notes
 **isActive** | Returns _channels_ according to their `isActive` status. | string | Optional | Options are: `all`, `true`, `false`
 **user** | Returns _channels_ in which the indicated _user_ and the current _user_ are found in. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Optional |
 **userIsAdmin** | Returns _channels_ in which the indicated _user_ is found in the `groupOwnerIds` | boolean | Optional | Must be used in conjunction with the _user query parameter_.
-**directChannels** | Returns _channels_ according to the setting of their `isDirect` field and in which the current _user_ or any indicated _user_ are found in. | string | Optional | Options are: `all`, `true`, `false`.<br/>Can be used with the _user query parameter_ to include other _users_ in the search. 
+**directChannels** | Returns _channels_ according to their `isDirect` field which indicates whether a channel represents direct messages between two users or not. | string | Optional | Options are: `all`, `true`, `false`.
 **modified** | Returns _channels_ with the indicated modification date in the `modifiedAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **modified_gt** | Returns _channels_ modified after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **modified_gte** | Returns _channels_ with a value in the `modifiedAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
@@ -119,9 +119,9 @@ Header | Description | Required | Values
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
 #### Query Parameters {#get-channel-id}
-Header | Description | Required | Values
---- | --- | --- | ---
-**debug** | Adds the `debug` field with error notifications. | string | Optional | true
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Sample {#get-channel-id-request}
 
