@@ -8,12 +8,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Overview {#overview}
-Users can easily share files through channels and surveys. But administrators should take into consideration the file sharing aspects explained below to take full advantage of the possibilities the API tools can grant.
+Users can easily share files through channels and surveys. But administrators should take into consideration the file-sharing aspects explained below to take full advantage of the possibilities the API tools can grant.
 
 <div className="alert alert--primary">
 
 ### Security Features
-For security reasons, uploaded files are digitally signed. Only verified users from the same _company_ can access the uploaded files and are required to provide the digitally signed file URL each time they access a file.
+For security reasons, uploaded files are digitally signed. Only verified users from the same _company_ can access the uploaded files and are required to provide the digitally signed file URL each time they wish to access a file.
 
 By default, _users_ on the platform have a maximum of 15-minute access to files. Once that time passes, the file must be signed again. Through the API request, access time can be set between 1 to 15 minutes.
 
@@ -28,7 +28,7 @@ By default, _users_ on the platform have a maximum of 15-minute access to files.
 **Maximum file size:** 25 MB
 
 ### File Destination
-Files are uploaded to our servers and stored in company folders according to their content type, i.e., video, image, document. Files are also processed according to their content type, e.g., image files are processed and stored in different folders with their original and thumbnail files respectively.
+Files are uploaded to our servers and stored in company folders according to their content type, i.e., video, image, document. Files are also processed according to their content type, e.g., image files are processed and stored in different folders with their original and thumbnail files, respectively.
 
 </div>
 <br/>
@@ -66,7 +66,7 @@ Key | Description | Type | Required | Example
 
 
 #### Request Sample {#post-new-request}
-<Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
+<Tabs defaultValue="curl" values={[ {label: 'cURL', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
 
 <TabItem value="curl">
 
