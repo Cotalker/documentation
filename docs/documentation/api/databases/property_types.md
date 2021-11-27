@@ -62,7 +62,7 @@ curl --location --request GET 'https://www.cotalker.com/api/v2/propertyTypes' \
 </TabItem>
 <TabItem value="curl-group">
 
-_This requests gets property types by their code names._
+_This request gets property types by their code names._
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v2/propertyTypes?codes=mammals_00&codes=sea_mammals&codes=land_mammals_00&debug=true&count=true' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' \
@@ -71,7 +71,7 @@ curl --location --request GET 'https://www.cotalker.com/api/v2/propertyTypes?cod
 </TabItem>
 <TabItem value="typescript" example="api_channel.ts">
 
-_This example gets all groups in the company._
+_This example gets all the property types in the company._
 ```typescript
 // $ACCESS_TOKEN stored in .env file.
 import { PropertyTypeGetCollection, Configuration, V2PropertyTypesApi} from "@cotalker/cotalker-api";

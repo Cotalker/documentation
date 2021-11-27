@@ -109,8 +109,6 @@ _Property associated with a user:_
 | **schemaInstance** | Contains [additional field](/docs/documentation/admin/admin_properties#additional-fields) data. | object | The general format is `property.schemaInstance = { [field]: data-type }`.<br/>COTPropertyType's `schemaNodes[x].key` defines the _field_ and `schemaNodes[x].basicType` defines the _data type_.
 | **search** | System search keywords. | string[ ] | Do not modify. 
 | **subproperty** | Contains child elements. | string[ ] | 
-| **superProperty** | Displays parent _property_ data model. | COTProperty |
-| **superProperties** | Displays list of parent _property_ data models. | COTProperty[ ] |
 
 
 
@@ -133,6 +131,8 @@ _Property associated with a user:_
 | **name.subDisplay** | Subtitle | string | DEPRECATED
 | **sextra** | | string | DEPRECATED
 | **skipCodeValidation** | **WARNING**: Do not set, disables many features. Deprecated, but still in use with some legacy settings. | boolean | DEPRECATED
+| **superProperty** | Displays parent _property_ data model. | COTProperty | DEPRECATED
+| **superProperties** | Displays list of parent _property_ data models. | COTProperty[ ] | DEPRECATED
 | **users** | | string[ ] | DEPRECATED
 
 ## Additional Resources {#resources}
