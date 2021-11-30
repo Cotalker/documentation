@@ -83,37 +83,37 @@ _Questions_ make up survey forms; their wide variety allows different forms for 
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
-| code | Depends on the `contentType` | string[ ] |
-| command | [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings | object |
-| command.commands | Indicates which questions are commanded or depend on this question, i.e. questions using the `command.isCommanded` field.  | string[ ] | The strings in the array corresponde to the questions `identifier`.
-| commmand.isCommanded | Indicates if the question has [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings. | string | The string correspondes to the commanding question's `identifier`. |
-| command.restItentifiers | string[ ] | 
-| command.values | Sets the expected answers to activate the hidden question. | object[ ] |
-| command.values.op | Select the comparison criteria, i.e., the operator of the conditional. | string | Options are: `=`, `eq`: Is equal to; `gte`: Greater than or equal; `lte`: Less than or equal; `regex`: Regular expression.
-| command.values.target | Write the `identifier` related to the commanding answer. | string | For multiple answers, use the following syntax: *(example1)\|(example2)*
-| company | Company identification code | ObjectId<COTCompany\> |
-| contentType | Indicates COTQuestionContentType, i.e. [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) | string | [List of question content types](/docs/documentation/models/surveys/model_questionContentType)
-| display | Displayed question title or _field label_ | string[ ] | Its contents depend on the `contentType` and whether the data model corresponds to the _title_ section of the question.
-| exec | [Javascript-automated questions (QuestionExec)](/docs/documentation/automation/question_exec) | object | 
-| exec.filter | Currently not in use. | object<COTQuestionExecFilter\> |
-| exec.onChange | Code runs after _validate_, but not after initial value is set. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
-| exec.onDisplay | Code executes when a survey is in editing mode, i.e., when a user opens the survey from the channel, and it is displayed for answering. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
-| exec.preload | The code executes when the survey is created. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
-| exec.presave | Run code just before sending. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
-| exec.postsave |  If custom and internal validations are passed, the code executes after the survey is sent. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
-| exec.validate | Code executes before internal validations and before sending the survey. This permits adding additional levels of validation (business guidelines, protocols, etc.). | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
-| identifier | Unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
-| isActive | Indicates if whether the question is active or not | boolean |
-| isReadOnly | Users cannot enter or fill out a respone | boolean | 
-| isSystemModel | If true, it cannot be changed, even by admins | boolean |
-| max | Depending on the type of question, it could represent the maximum number of components or characters permitted | number | 
-| min | Depending on the type of question, it could represent the minimum number of components or characters permitted | number |
-| modifiedAt | Indicates when the question was last modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
-| required | Users must answer the question in order to submit the form | boolean |
-| responses | Contains submitted data | string[ ] | Appended to model only in some contexts |
-| skipCodeValidation | Internal flag for legacy surveys | boolean | |
-| subtype | Indicates the component's input type. | string | Options depend on the [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) or `contentType` |
-| textAlign | Indicates alignment for displayed text | string |
+| **code** | Depends on the `contentType` | string[ ] | Go to [API docs to configure QR scan & NFC](/docs/documentation/api/surveys/questions#qr-code--nfc-function).
+| **command** | [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings | object |
+| **command.commands** | Indicates which questions are commanded or depend on this question, i.e. questions using the `command.isCommanded` field.  | string[ ] | The strings in the array corresponde to the questions `identifier`.
+| **commmand.isCommanded** | Indicates if the question has [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings. | string | The string correspondes to the commanding question's `identifier`. |
+| **command.restItentifiers** | string[ ] | 
+| **command.values** | Sets the expected answers to activate the hidden question. | object[ ] |
+| **command.values.op** | Select the comparison criteria, i.e., the operator of the conditional. | string | Options are: `=`, `eq`: Is equal to; `gte`: Greater than or equal; `lte`: Less than or equal; `regex`: Regular expression.
+| **command.values.target** | Write the `identifier` related to the commanding answer. | string | For multiple answers, use the following syntax: *(example1)\|(example2)*
+| **company** | Company identification code | ObjectId<COTCompany\> |
+| **contentType** | Indicates COTQuestionContentType, i.e. [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) | string | [List of question content types](/docs/documentation/models/surveys/model_questionContentType)
+| **display** | Displayed question title or _field label_ | string[ ] | Its contents depend on the `contentType` and whether the data model corresponds to the _title_ section of the question.
+| **exec** | [Javascript-automated questions (QuestionExec)](/docs/documentation/automation/question_exec) | object | 
+| **exec.filter** | Currently not in use. | object<COTQuestionExecFilter\> |
+| **exec.onChange** | Code runs after _validate_, but not after initial value is set. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
+| **exec.onDisplay** | Code executes when a survey is in editing mode, i.e., when a user opens the survey from the channel, and it is displayed for answering. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
+| **exec.preload** | The code executes when the survey is created. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
+| **exec.presave** | Run code just before sending. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
+| **exec.postsave** |  If custom and internal validations are passed, the code executes after the survey is sent. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
+| **exec.validate** | Code executes before internal validations and before sending the survey. This permits adding additional levels of validation (business guidelines, protocols, etc.). | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
+| **identifier** | Unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
+| **isActive** | Indicates if whether the question is active or not | boolean |
+| **isReadOnly** | Users cannot enter or fill out a respone | boolean | 
+| **isSystemModel** | If true, it cannot be changed, even by admins | boolean |
+| **max** | Depending on the type of question, it could represent the maximum number of components or characters permitted | number | 
+| **min** | Depending on the type of question, it could represent the minimum number of components or characters permitted | number |
+| **modifiedAt** | Indicates when the question was last modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
+| **required** | Users must answer the question in order to submit the form | boolean |
+| **responses** | Contains submitted data | string[ ] | Appended to model only in some contexts |
+| **skipCodeValidation** | Internal flag for legacy surveys | boolean | |
+| **subtype** | Indicates the component's input type. | string | Options depend on the [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) or `contentType` |
+| **textAlign** | Indicates alignment for displayed text | string |
 
 
 ## Deprecated {#deprecated}

@@ -57,7 +57,7 @@ curl --location --request GET 'https://www.cotalker.com/api/v2/surveychats' \
 _This request gets the survey chats related to the indicated survey._
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v2/surveychats?survey=61a56d18d4ffd1354af8f4cd' \
---header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
 </TabItem>
@@ -89,7 +89,7 @@ Responses follow the [COTSurveyChat](/docs/documentation/models/surveys/model_su
 
 ---
 
-## Get a Survey by Id {#get-by-id}
+## Get a Survey Chat by Id {#get-by-id}
 _Returns the survey chat indicated by the Id._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /surveychats/&#123;id&#125;</span>
