@@ -157,11 +157,10 @@ Element | Description | Type | Required | Notes
 #### Request Sample {#post-new-request}
 _Survey created with the minimum required fields:_
 ```bash
-curl --location --request POST 'https://www.cotalker.com/api/v2/surveys?debug=true' \
+curl --location --request POST 'https://www.cotalker.com/api/v2/surveys' \
 --header 'Admin: true' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' \
 --header 'Content-Type: application/json' \
---header 'Cookie: APISESSION=b57bff89da46e4cf1592fc9f6ca9d013' \
 --data-raw '{
     "name": "Work Order",
     "code": "work_order_survey",
@@ -226,7 +225,7 @@ _Only the fields that are being updated or added are required to be put into the
 _This sample adds an access role objectId to the permissions field:_
 
 ```bash
-curl --location --request PATCH 'https://www.cotalker.com/api/v2/surveys/61a50f928843af3e1332c67f?debug=true' \
+curl --location --request PATCH 'https://www.cotalker.com/api/v2/surveys/61a50f928843af3e1332c67f' \
 --header 'Admin: true' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' \
 --header 'Content-Type: application/json' \
@@ -236,7 +235,7 @@ curl --location --request PATCH 'https://www.cotalker.com/api/v2/surveys/61a50f9
 ```
 
 #### Response Sample {#patch-update-response}
-Go to [COTProperty](/docs/documentation/api/databases/properties) for a complete description of the response.
+Go to [COTSurvey](/docs/documentation/models/surveys/model_surveys) for a complete description of the response.
 ```json {2-4}
 {
     "permissions": [

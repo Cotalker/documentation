@@ -122,3 +122,136 @@ curl --location --request GET 'https://www.cotalker.com/api/v2/surveychats/61a5e
 The response follows the [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) data model.
 
 ---
+
+## Create a New Survey Chat {#post-new}
+_Creates a new survey chat within a survey._
+
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /surveychats</span>
+
+#### Endpoint URL {#post-new-url}
+`https://www.cotalker.com/api/v2/surveychats`
+
+#### Headers {#post-new-headers}
+
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Admin** | Grants administrative access to create a new _survey chat_. | Required | true 
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Content-Type** | Indicates the body's format. | Required | application/json
+
+#### Query Parameters {#post-new-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+
+#### Request Body {#post-new-body}
+_Only required fields are listed below. For a complete schema description, please go to the [COTSurvey data model](/docs/documentation/models/surveys/model_surveys). Unrequired fields that are not submitted are either filled in automatically or left blank._
+
+Element | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**contentType** | Indicates the content type | string | Required | Default value: `application/vnd.cotalker.survey` 
+**order** | Indicates the represented _question's_ place on the survey form | number | Required | Lower numbers are higher on top
+**sender** | Indicates origin | string | Required | Options: `#system`, `#user`
+**survey** | Indicates the survey the question corresponds to | ObjectId<COTSurvey\> | [Survey data model](/docs/documentation/models/surveys/model_surveys) | Required |
+
+
+#### Request Sample {#post-new-request}
+_Survey chat created with the minimum required fields:_
+```bash
+curl --location --request POST 'https://www.cotalker.com/api/v2/surveychats' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "survey": "61a50f928843af3e1332c67f",
+    "sender": "#user",
+    "order": 10,
+    "contentType": "application/vnd.cotalker.survey"
+}'
+```
+
+#### Response Sample {#post-new-response}
+Go to [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) for a complete description of the response.
+```json {7-10}
+{
+    "content": "",
+    "contentArray": [],
+    "isActive": true,
+    "isSystemModel": false,
+    "_id": "61a5f3b86b2d27160918dc37",
+    "survey": "61a50f928843af3e1332c67f",
+    "sender": "#user",
+    "order": 10,
+    "contentType": "application/vnd.cotalker.survey",
+    "modifiedAt": "2021-11-30T09:43:07.667Z",
+    "__v": 0
+}
+```
+---
+
+## Update a Survey Chat {#patch-update}
+_Updates or edits an existing survey chat._
+
+<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /surveychats/&#123;id&#125;</span>
+
+#### Endpoint URL {#patch-update-url}
+`https://www.cotalker.com/api/v2/surveychats/{id}`
+
+#### Path Parameters {#patch-update-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**id** | The ObjectId of the _survey chat_ that is to be modified. | [ObjectId<COTSurveyChat\>](/docs/documentation/models/surveys/model_surveychats) | Required |
+
+#### Headers {#patch-update-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Admin** | Grants administrative access to modify a _survey chat_. | Required | true 
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Content-Type** | Sets the body's format. | Required | application/json
+
+#### Query Parameters {#patch-update-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+
+#### Request Body {#patch-update-body}
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTSurveyChat data model](/docs/documentation/models/surveys/model_surveychats)._
+
+#### Request Sample {#patch-update-request}
+_This sample adds two questions into the contentArray field:_
+
+```bash
+curl --location --request PATCH 'https://www.cotalker.com/api/v2/surveychats/61a5f3b86b2d27160918dc37?debug=true' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "contentArray" : [ 
+        "61436eb4dd1e5af41302eab6", 
+        "61436eb4dd1e5a1e8302eab7"
+    ]
+}'
+```
+
+#### Response Sample {#patch-update-response}
+Go to [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) for a complete description of the response.
+```json {3-6}
+{
+    "content": "",
+    "contentArray": [
+        "61436eb4dd1e5af41302eab6",
+        "61436eb4dd1e5a1e8302eab7"
+    ],
+    "isActive": true,
+    "isSystemModel": false,
+    "_id": "61a5f3b86b2d27160918dc37",
+    "survey": "61a50f928843af3e1332c67f",
+    "sender": "#user",
+    "order": 10,
+    "contentType": "application/vnd.cotalker.survey",
+    "modifiedAt": "2021-11-30T09:53:38.142Z",
+    "__v": 1
+}
+```
+---
+
