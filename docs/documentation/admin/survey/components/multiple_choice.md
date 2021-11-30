@@ -215,7 +215,7 @@ _The settings panel should look something like this:_
 <br/>
 
 ## 4. API Type {#api-type}
-Multiple choice surveys can also search for answers through an API request. Each time a user carries out a search when trying to respond the survey question, an API request is sent to the endpoint with the search value. 
+Multiple choice surveys can also search for answers through an API request. When trying to respond this type of survey question, each time the user enters a value in the search dialog box, an API request is sent to the endpoint with the search value. 
 
 :::info
 This is an advanced feature that requires programming skills.
@@ -229,7 +229,7 @@ This is an advanced feature that requires programming skills.
 <img alt="list of items" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_00.png')} />
 <br/>
 
-- **Source**: The options are *External URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path, otherwise, an absolute address is required.
+- **Source**: The options are *External URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path; otherwise, an absolute address is required.
 - **Method**: *POST* is the only value available.
 - **Path**: Field that indicates the external URL or the relative path of the _Source_.
 - **Identifiers**: Other survey values that you want to pass to the API.
@@ -296,12 +296,19 @@ This is an advanced feature that requires programming skills.
     ```
 
     The `search` value in the _JSON body_ filters the results shown in the UI.
+    **Body Schema**
+    - _search_: The search query string entered in the dialog box.
+    - _data.identifier\_x_: Names of the question _identifiers_ that are defined in the _survey component_ settings. Their value type, i.e., text, number, date, etc., will depend on the original question type.
 
 5. **USAGE**:
 
     The options the user selects from the _search window_ are stored in a [COTAnswer](/docs/documentation/models/surveys/model_answers) data model, i.e., [`answer.data[x].process: [string]`](/docs/documentation/models/surveys/model_answer_data). 
     
-    Following the _package format_ example given above, if a user selected "South Reactor" and "North Reactor", the result would be stored something like this: `answer.data[0].process: ['south_reactor', 'north_reactor']`.
+    Following the _package format_ example given above, if a user selected "South Reactor" and "North Reactor", the result would be stored something like this:  
+    
+    `answer.data[0].process: ['south_reactor', 'north_reactor']`.
+
+    The _answer_ would also include the data gathered from the selected _identifiers_.
 
 </div>
 <br/>
