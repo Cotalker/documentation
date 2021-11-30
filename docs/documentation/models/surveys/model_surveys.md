@@ -11,7 +11,7 @@ import Mermaid from '@theme/Mermaid';
 <span className="hero__subtitle">COTSurvey</span>
 
 ## Description {#description}
-Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey) is the main information of a survey and consolidates its other parts: [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats), [COTQuestion](/docs/documentation/models/surveys/model_questions), [COTAnswer](/docs/documentation/models/surveys/model_answers) .
+Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey) is the main information of a survey and consolidates its other parts: [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats), [COTQuestion](/docs/documentation/models/surveys/model_questions), [COTAnswer](/docs/documentation/models/surveys/model_answers).
 
 <Mermaid chart={`
 	graph LR;
@@ -62,27 +62,27 @@ Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey)
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
-| id | The survey's unique identification code | ObjectId<COTSurvey\> | | 
-| __v | Version number | number | For internal system use only |
-| code | The survey's unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique. |
-| company | Indicates the company the survey is found in | ObjectId<COTCompany\> | |
-| createdAt | Date the survey was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| groupPermission | Limits the use of the survey to specific group | ObjectId<COTGroup\> | Soon to be deprecated and replaced by `groupPermissionsV2`. |
-| groupPermissionsV2 | List of groups where the survey may be used. If empty, the survey can be used in any group. | string[ ] | |
-| isActive | Indicates if the survey is available for use | boolean | |
-| isSystemModel | If true, the survey cannot be changed, even by admins | boolean | |
-| modifiedAt | Indicates the last time the survey was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| name | The survey's displayed name in the administrative panel | string | |
-| onlySubSurvey | If set as true, survey can _only_ be used within another survey, i.e., [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType) `survey+survey` | boolean | [Survey Component](/docs/documentation/admin/survey/components/survey) |
-| permissions | Users with at least one of the [access roles](/docs/documentation/models/users/model_accessroles) listed can answer the survey | ObjectId<COTAccessRole\>[ ] | Soon to be deprecated and replaced by `permissionsV2`. |
-| permissionsV2 | Users with at least one of the permissions listed can access the survey | string[ ] | [List of default permissions](/docs/documentation/admin/admin_accessrole#default-permissions) |
-| propertiesChannel | List of collection codes; used along with `propertiesLimit` to show the survey only on the channels that have the same collections and elements assigned. | string[ ] | |
-| propertiesLimit | List of element codes; used along with `propertiesChannel` to show the survey only on the channels that have the same collections and elements assigned. | string[ ] | |
-| responders | Designates which users can answer the survey | object[ ] | |
-| responders[index].filter | Indicates the category or filter by which users will be selected | string | Options: `job`, `email`, `accessrole` |
-| responders[index].value | List of filter values | string[ ] | |
-| skipCodeValidation | Internal flag for legacy surveys | boolean | |
-| version | Indicates the survey version and determines what fields should be used; `1` uses fields prior to January 2019; `2` uses fields created after January 2019 | number | Fields prior to January 2019: `permissions`, `group`, `groupPermissions`. Fields created after January 2019: `permissionsV2`, `groupPermissionsV2`, `onlySubSurvey`. |
+| **id** | The survey's unique identification code | ObjectId<COTSurvey\> | | 
+| **__v** | Version number | number | For internal system use only |
+| **code** | The survey's unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique. |
+| **company** | Indicates the company the survey is found in | ObjectId<COTCompany\> | |
+| **createdAt** | Date the survey was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **groupPermission** | Limits the use of the survey to specific group | ObjectId<COTGroup\> | Soon to be deprecated and replaced by `groupPermissionsV2`. |
+| **groupPermissionsV2** | List of groups where the survey may be used. If empty, the survey can be used in any group. | string[ ] | |
+| **isActive** | Indicates if the survey is available for use | boolean | |
+| **isSystemModel** | If true, the survey cannot be changed, even by admins | boolean | |
+| **modifiedAt** | Indicates the last time the survey was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **name** | The survey's displayed name in the administrative panel | string | |
+| **onlySubSurvey** | If set as true, survey can _only_ be used within another survey, i.e., [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType) `survey+survey` | boolean | [Survey Component](/docs/documentation/admin/survey/components/survey) |
+| **permissions** | Users with at least one of the [access roles](/docs/documentation/models/users/model_accessroles) listed can answer the survey | ObjectId<COTAccessRole\>[ ] | Soon to be deprecated and replaced by `permissionsV2`. |
+| **permissionsV2** | Users with at least one of the permissions listed can access the survey | string[ ] | [List of default permissions](/docs/documentation/admin/admin_accessrole#default-permissions) |
+| **propertiesChannel** | List of collection codes; used along with `propertiesLimit` to show the survey only on the channels that have the same collections and elements assigned. | string[ ] | |
+| **propertiesLimit** | List of element codes; used along with `propertiesChannel` to show the survey only on the channels that have the same collections and elements assigned. | string[ ] | |
+| **responders** | Designates which users can answer the survey | object[ ] | |
+| **responders[index].filter** | Indicates the category or filter by which users will be selected | string | Options: `job`, `email`, `accessrole` |
+| **responders[index].value** | List of filter values | string[ ] | |
+| **skipCodeValidation** | Internal flag for legacy surveys | boolean | |
+| **version** | Indicates the survey version and determines what fields should be used; `1` uses fields prior to January 2019; `2` uses fields created after January 2019 | number | Fields prior to January 2019: `permissions`, `group`, `groupPermissions`. Fields created after January 2019: `permissionsV2`, `groupPermissionsV2`, `onlySubSurvey`. |
 
 
 ## Deprecated {#deprecated}

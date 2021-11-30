@@ -52,17 +52,17 @@ Each Survey Chat data model (COTSurveyChat) represents a [component](/docs/docum
 ## Fields {#fields}
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
-| \_id | The Survey Chat data model's ID code | ObjectId<COTSurveyChat\> |
-| __v | Version number | number | For internal system use only. |
-| content | This field stays empty | string | |
-| contentArray | Pairs the two parts of a survey _component_ or _question_: one corresponds to the _question_ title, the other to data input configuration | ObjectId<COTQuestion\>[ ] | [Question data model](/docs/documentation/models/surveys/model_questions)
-| contentType | Indicates the content type | string | Default value: `application/vnd.cotalker.survey` 
-| isActive | Indicates if it is available for use | boolean | 
-| isSystemModel | If true, it cannot be changed, even by admins | boolean 
-| modifiedAt | Indicates the last time it was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
-| order | Indicates the represented _question's_ place on the survey form | number | Lower numbers are higher on top
-| sender | Indicates origin | string | Options: `#system`, `#user`
-| survey | Indicates the survey the question corresponds to | ObjectId<COTSurvey\> | [Survey data model](/docs/documentation/models/surveys/model_surveys)
+| **\_id** | The Survey Chat data model's ID code | ObjectId<COTSurveyChat\> |
+| **__v** | Version number | number | For internal system use only. |
+| **content** | This field stays empty | string | |
+| **contentArray** | Pairs the two parts of a survey _component_ or _question_: one corresponds to the _question_ title, the other to data input configuration | ObjectId<COTQuestion\>[ ] | [Question data model](/docs/documentation/models/surveys/model_questions)
+| **contentType** | Indicates the content type | string | Default value: `application/vnd.cotalker.survey` 
+| **isActive** | Indicates if it is available for use | boolean | 
+| **isSystemModel** | If true, it cannot be changed, even by admins | boolean 
+| **modifiedAt** | Indicates the last time it was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
+| **order** | Indicates the represented _question's_ place on the survey form | number | Lower numbers are higher on top
+| **sender** | Indicates origin | string | Options: `#system`, `#user`
+| **survey** | Indicates the survey the question corresponds to | ObjectId<COTSurvey\> | [Survey data model](/docs/documentation/models/surveys/model_surveys)
 
 ## Additional Resources {#resources}
 

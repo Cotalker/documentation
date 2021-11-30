@@ -41,6 +41,8 @@ Parameter | Description | Type | Required | Notes
 **modified** | Returns _property types_ with the indicated modification date in the `modifiedAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **modified_gt** | Returns _property types_ modified after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **modified_gte** | Returns _property types_ with a value in the `modifiedAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_lt** | Returns _property types_ modified before the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_lte** | Returns _property types_ with a value in the `modifiedAt` field equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created** | Returns _property types_ with the indicated creation date in the `createdAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created_gt** | Returns _property types_ created after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created_gte** | Returns _property types_ with a value in the `createdAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
@@ -126,7 +128,7 @@ Parameter | Description | Type | Required | Notes
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v2/propertyTypes/61a0cd6dc8f28f266b614d60' \
 --header 'Admin: true' \
---header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
 #### Response Sample {#get-by-id-response}
