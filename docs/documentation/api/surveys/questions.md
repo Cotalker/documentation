@@ -241,10 +241,24 @@ Field | Description | Type | Required | Notes
 **contentType** | Indicates how the system should interpret the data. | string | Required | Must be set to: `application/vnd.cotalker.survey+text`
 
 #### Request Sample
-
 ```bash
-"code": ["{ \"scan\": {\"enabled\": true,\"source\": [ \"qr\", \"nfc\" ], \"force\": true }}"]
+curl --location --request POST 'https://www.cotalker.com/api/v2/questions?debug=true' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "code": [
+        "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
+    ],
+    "display": [
+        "Input 4"
+    ],
+    "contentType": "application/vnd.cotalker.survey+text",
+    "identifier": "qr_nfc_input"
+}'
 ```
+
+#### Response Sample
 
 
 
