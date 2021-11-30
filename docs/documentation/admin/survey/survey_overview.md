@@ -11,7 +11,7 @@ import Highlight from '@theme/Highlight';
 <div className="shadow--tl alert alert--secondary">
 
 ## Summary {#survey-overview}
-A _survey_ is a way of capturing information for a _workflow_, _channel_ or _bot_. 
+A _survey_ is a way of capturing information from users through _workflows_, _channels_, _bots_, or even [_public surveys_ outside the Cotalker environment](/docs/documentation/admin/workflows/admin_workflow_public_survey). 
 
 Configure survey questions to receive information from different **input sources** and **formats**, e.g., _text, dates, GPS, signatures, QR codes, NFC, digital cameras, file attachments, collections, and elements_. See the [Form Components](#form-components) section for more information.
 

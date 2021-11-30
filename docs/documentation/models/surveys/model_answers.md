@@ -123,7 +123,7 @@ Each time a _survey_ is submitted, a unique _answer_ is created to store the gat
 
 - [Surveys Overview](/docs/documentation/admin/survey/survey_overview): complete description about surveys
 - [Reports](/docs/documentation/client/reports): view submitted survey answers 
-- ["Answers" REST API documentation](docs/documentation/api/surveys/answers): basic "Answers" API requests
+- ["Answers" REST API documentation](/docs/documentation/api/surveys/answers): basic "Answers" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
 - [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
 - [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines

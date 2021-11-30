@@ -109,8 +109,6 @@ _Property associated with a user:_
 | **schemaInstance** | Contains [additional field](/docs/documentation/admin/admin_properties#additional-fields) data. | object | The general format is `property.schemaInstance = { [field]: data-type }`.<br/>COTPropertyType's `schemaNodes[x].key` defines the _field_ and `schemaNodes[x].basicType` defines the _data type_.
 | **search** | System search keywords. | string[ ] | Do not modify. 
 | **subproperty** | Contains child elements. | string[ ] | 
-| **superProperty** | Displays parent _property_ data model. | COTProperty |
-| **superProperties** | Displays list of parent _property_ data models. | COTProperty[ ] |
 
 
 
@@ -133,12 +131,14 @@ _Property associated with a user:_
 | **name.subDisplay** | Subtitle | string | DEPRECATED
 | **sextra** | | string | DEPRECATED
 | **skipCodeValidation** | **WARNING**: Do not set, disables many features. Deprecated, but still in use with some legacy settings. | boolean | DEPRECATED
+| **superProperty** | Displays parent _property_ data model. | COTProperty | DEPRECATED
+| **superProperties** | Displays list of parent _property_ data models. | COTProperty[ ] | DEPRECATED
 | **users** | | string[ ] | DEPRECATED
 
 ## Additional Resources {#resources}
 - [Elements (Properties)](/docs/documentation/admin/admin_properties#elements): Details about elements (properties)
-- [Create Collection](/docs/tutorials/basic/create_database): Basic tutorial on how to create a collection (property type)
-- ["Elements (Properties)" API documentation](/docs/documentation/api/databases/properties): basic "Properties" API requests
+- [Create Collection](/docs/tutorials/basic/create_database): Basic tutorial on how to create a collection (property type) with elements (properties)
+- ["Properties (Elements)" API documentation](/docs/documentation/api/databases/properties): basic "Properties" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
 - [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
 - [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
