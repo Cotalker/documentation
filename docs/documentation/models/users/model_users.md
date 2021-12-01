@@ -115,6 +115,7 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 | name.names | User's first and second names | string | |
 | name.lastName | User's surname | string | |
 | name.secondLastName | User's second surname | string | |
+| password | Indicates the user's login password | string |
 | permissionsV2 | Permissions the user has been granted | string[ ] | [List of default permissions](/docs/documentation/admin/admin_accessrole#default-permissions) |
 | phone | The user's registered phone number | string | |
 | properties | [Properties (elements)](/docs/documentation/client/basic_concepts#elements) assigned to the user | ObjectID<COTProperty\>[ ] | [Property(Elements) Model](/docs/documentation/models/databases/model_properties) |

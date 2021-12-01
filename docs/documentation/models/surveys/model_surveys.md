@@ -94,6 +94,7 @@ Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey)
 | etls | | [ ] | DEPRECATED |
 | group | Replaced by `groupPermissionV2` | ObjectId<COTGroup\> | DEPRECATED |
 | identifiersNeeded | | string[ ] | DEPRECATED |
+| onlyChannelCreation | Limits where the survey can be summoned from. | boolean | DEPRECATED |
 | post | Specifies changes that occur _after_ a survey-instance is saved or modified | object | DEPRECATED |
 | post.changeNotice | `default` or `null` (send notification to channel about change); `none` (do not send modification notice) | string | DEPRECATED |
 | propagateSql | | boolean | DEPRECATED |
