@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-Each time a _survey_ is submitted, a unique _answer_ is created to store the gathered data. Meaning that one _survey_ can have has many _answers_ as times it has been filled out and submitted. When submitted surveys are edited or modified, the changes are stored over the original _answer_.
+Each time a _survey_ is submitted, a unique _answer_ is created to store the gathered data. Meaning that one _survey_ can have as many _answers_ as times it has been filled out and submitted. When submitted surveys are edited or modified, the changes are stored over the original _answer_.
 
 ## JSON Sample {#json-sample}
 ```json

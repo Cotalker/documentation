@@ -210,7 +210,7 @@ Header | Description | Required | Values
 #### Query Parameters {#post-user-query}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**notifyEmail** | Sends an email notification to the newly created user. | string | Optional | Option: `true`
+**notifyEmail** | Sends an email notification to the newly created user. Only works when no password has been set. | string | Optional | Option: `true`
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Body {#post-user-body}

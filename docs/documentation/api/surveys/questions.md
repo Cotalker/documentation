@@ -238,7 +238,8 @@ Field | Description | Type | Required | Notes
 **code[index].scan.enabled** | `true` activates the feature. | boolean | Required |
 **code[index].scan.source** | Indicates the input source. | string[ ] | Required | Valid options: `qr` and/or `nfc`.
 **code[index].scan.force** | `true` allows only QR Code or NFC input. `false` permits manual text input, also. | boolean | Required |
-**contentType** | Indicates how the system should interpret the data. | string | Required | Must be set to: `application/vnd.cotalker.survey+text`
+**contentType** | Indicates how the system should interpret the data. | string | Required | Must be set to: `application/vnd.cotalker.survey+textinput`
+**identifier** | Unique identification name | string | Required | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
 
 #### Request Sample
 ```bash
@@ -251,15 +252,39 @@ curl --location --request POST 'https://www.cotalker.com/api/v2/questions?debug=
         "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
     ],
     "display": [
-        "Input 4"
+        "input 3"
     ],
-    "contentType": "application/vnd.cotalker.survey+text",
-    "identifier": "qr_nfc_input"
+    "identifier": "qr_nfc_input",
+    "contentType": "application/vnd.cotalker.survey+textinput"
 }'
 ```
 
 #### Response Sample
+Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a complete description of the response.
 
+```json {8-13,16-17}
+{
+    "_id": "61a78c177f130200079de9d3",
+    "command": {
+        "commands": [],
+        "resetIdentifiers": [],
+        "values": []
+    },
+    "display": [
+        "input 3"
+    ],
+    "code": [
+        "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
+    ],
+    "isActive": true,
+    "isSystemModel": false,
+    "identifier": "qr_test",
+    "contentType": "application/vnd.cotalker.survey+textinput",
+    "company": "5f5a74a8fdf77a0008a6349a",
+    "modifiedAt": "2021-12-01T14:52:07.636Z",
+    "__v": 0
+}
+```
 
 
 ## Update a Question {#patch-update}
