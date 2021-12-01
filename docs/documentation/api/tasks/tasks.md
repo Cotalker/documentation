@@ -6,9 +6,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::tip Swagger
-Go to our Swagger page for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
-:::
 
 ## Overview {#overview}
 A [_task_](/docs/documentation/client/basic_concepts#tasks) is the representation of an asset and its state. In other words, a task is created within a workflow group and can follow a workflow process, passing from one state to another.
@@ -19,7 +16,7 @@ A _task group model_ ([COTTaskGroup](/docs/documentation/models/tasks/model_task
 
 ---
 
-## List Task Groups {#list-task-groups}
+## Get Task Groups {#list-task-groups}
 _Lists the tasks groups in the company._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/group/</span>
@@ -59,6 +56,34 @@ Responses follow the [**COTTaskGroup**](/docs/documentation/models/tasks/model_t
 
 <span className="hero__subtitle">⚠️ The following feature is still in BETA stage.</span>
 
+## Get Tasks for User within Task Group
+`GET /v1/tasks/{groupId}/task`
+
+## Get All Tasks within Task Group
+`POST /v1/tasks/{groupId}/task/all`
+
+## Get Specific Task
+`GET /v1/tasks/{groupId}/task/{taskId}`
+
+## Create Task
+`POST /v1/tasks/{groupId}/task/create`
+
+## Get SLA
+`GET /v1/tasks/{groupId}/sla/{slaId}`
+**Note** Requires `slaId`. There's no way of getting all SLAs.
+
+## Get All State Machines within Group
+`GET /v1/tasks/{groupId}/sm/smstatemachine`
+
+## Get All States within Group
+`GET /v1/tasks/{groupId}/sm/smstate`
+
+## Get All States within Company
+`GET /v1/tasks/{groupId}/sm/smstate/all`
+
+## Edit Task Group
+`PATCH /v1/tasks/{groupId}`
+
 ## Task Permissions for Unassociated Users {#patch-taskgroup-permissions}
 _Users can be given permission to follow or edit the tasks within a group without being associated to any of them._
 
@@ -70,12 +95,12 @@ _Users can be given permission to follow or edit the tasks within a group withou
 <span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /tasks/group/&#123;id&#125;</span>
 
 #### Endpoint URL {#patch-taskgroup-permissions-url}
-`https://www.cotalker.com/api/v1/tasks/{id}`
+`https://www.cotalker.com/api/v1/tasks/{groupId}`
 
 #### Path Parameters {#permissions-parameters}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**id** | The task group's ID | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
+**groupId** | The task group's ID | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
 
 #### Headers {#permissions-headers}
 Header | Description | Required | Values
