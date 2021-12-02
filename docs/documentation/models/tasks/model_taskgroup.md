@@ -1,5 +1,5 @@
 ---
-title: Task Group
+title: Task Group Data Model
 sidebar_label: COTTaskGroup
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -50,7 +50,7 @@ A _task group_ stores a [workflow group's configuration](/docs/documentation/adm
 | collectionName | The workflow group's _code_ name: [`groups.nameCode`](/docs/documentation/models/communication/model_groups) | string | For internal use only. Do not modify. |
 | company | The _company_ the task is found in | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | For internal use only. Do not modify.
 | createdAt | Date and time the group was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
-| defaultFilter | [Filter](/docs/documentation/client/taskview#create-a-filter) used to sort tasks in the task view. | string | 
+| defaultFilter | [Filter](/docs/documentation/client/taskview#create-a-filter) used to sort tasks in the task view. | ObjectId | 
 | defaultView | Indicates the default view in the [_task view_](/docs/documentation/client/taskview#tasks-views) section. | string | Options: `list`, `kanban`, `calendar`, `gantt`, `grid`
 | flowType | Determines how tasks transition from one state to another.  | string | `state-machine`: state transitions must be predetermined in the setup. <br/>`free`: freely change from one state to another.
 | group | Indicates the workflow group the task belongs to. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | For internal use only. Do not modify.

@@ -117,7 +117,7 @@ Header | Description | Required | Values
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
-**isActive** | Returns the _question_ if it coincides with the selected `isActive` status. | string | Optional | Options are: `all`, `true`, `false`.<br/>Requires the "Admin" header.
+**isActive** | Returns the _question_ if it coincides with the selected `isActive` status. | string | Optional | Options are: `all`, `true`, `false`.<br/>Requires the "Admin" header to funcion properly.
 
 #### Request Sample {#get-by-id-request}
 ```bash
@@ -200,92 +200,6 @@ Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a co
 }
 ```
 ---
-
-
-
-## QR Code & NFC function {#qr-code--nfc-function}
-_Gather information for your surveys through QR code scan and NFC by adding the corresponding values in the question's `code` field._
-
-:::note
-- Only functional on mobile devices.
-- Configurable only through API requests.
-:::
-
-<span className="hero__subtitle"><span className="badge badge--info">POST</span> /questions</span>
-
-#### Endpoint URL {#post-new-url}
-`https://www.cotalker.com/api/v2/questions`
-
-#### Headers {#post-new-headers}
-
-Header | Description | Required | Values
---- | --- | --- | ---
-**Admin** | Grants administrative access to create a new _question_. | Required | true 
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
-**Content-Type** | Indicates the body's format. | Required | application/json
-
-#### Query Parameters {#post-new-query}
-Parameter | Description | Type | Required | Notes
---- | --- | --- | --- | ---
-**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
-
-#### Request Body {#post-new-body}
-
-Field | Description | Type | Required | Notes
---- | --- | --- |--- | ---
-**code** | Code depends on the content type. Below is the code for scanning QR & NFC in surveys. | string[ ] | Required | Objects within the array must be written in string format.
-**code[index].scan** | | object | Required |
-**code[index].scan.enabled** | `true` activates the feature. | boolean | Required |
-**code[index].scan.source** | Indicates the input source. | string[ ] | Required | Valid options: `qr` and/or `nfc`.
-**code[index].scan.force** | `true` allows only QR Code or NFC input. `false` permits manual text input, also. | boolean | Required |
-**contentType** | Indicates how the system should interpret the data. | string | Required | Must be set to: `application/vnd.cotalker.survey+textinput`
-**identifier** | Unique identification name | string | Required | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
-
-#### Request Sample
-```bash
-curl --location --request POST 'https://www.cotalker.com/api/v2/questions?debug=true' \
---header 'Admin: true' \
---header 'Authorization: Bearer $ACCESS_TOKEN' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "code": [
-        "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
-    ],
-    "display": [
-        "input 3"
-    ],
-    "identifier": "qr_nfc_input",
-    "contentType": "application/vnd.cotalker.survey+textinput"
-}'
-```
-
-#### Response Sample
-Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a complete description of the response.
-
-```json {8-13,16-17}
-{
-    "_id": "61a78c177f130200079de9d3",
-    "command": {
-        "commands": [],
-        "resetIdentifiers": [],
-        "values": []
-    },
-    "display": [
-        "input 3"
-    ],
-    "code": [
-        "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
-    ],
-    "isActive": true,
-    "isSystemModel": false,
-    "identifier": "qr_test",
-    "contentType": "application/vnd.cotalker.survey+textinput",
-    "company": "5f5a74a8fdf77a0008a6349a",
-    "modifiedAt": "2021-12-01T14:52:07.636Z",
-    "__v": 0
-}
-```
-
 
 ## Update a Question {#patch-update}
 _Updates or edits an existing question._
@@ -372,4 +286,87 @@ Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a co
 }
 ```
 ---
+
+## QR Code & NFC function {#qr-code--nfc-function}
+_Gather information for your surveys through QR code scan and NFC by adding the corresponding values in the question's `code` field._
+
+:::note
+- Only functional on mobile devices.
+- Configurable only through API requests.
+:::
+
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /questions</span>
+
+#### Endpoint URL {#post-new-url}
+`https://www.cotalker.com/api/v2/questions`
+
+#### Headers {#post-new-headers}
+
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Admin** | Grants administrative access to create a new _question_. | Required | true 
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Content-Type** | Indicates the body's format. | Required | application/json
+
+#### Query Parameters {#post-new-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+
+#### Request Body {#post-new-body}
+
+Field | Description | Type | Required | Notes
+--- | --- | --- |--- | ---
+**code** | Code depends on the content type. Below is the code for scanning QR & NFC in surveys. | string[ ] | Required | Objects within the array must be written in string format.
+**code[index].scan** | | object | Required |
+**code[index].scan.enabled** | `true` activates the feature. | boolean | Required |
+**code[index].scan.source** | Indicates the input source. | string[ ] | Required | Valid options: `qr` and/or `nfc`.
+**code[index].scan.force** | `true` allows only QR Code or NFC input. `false` permits manual text input, also. | boolean | Required |
+**contentType** | Indicates how the system should interpret the data. | string | Required | Must be set to: `application/vnd.cotalker.survey+textinput`
+**identifier** | Unique identification name | string | Required | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
+
+#### Request Sample
+```bash
+curl --location --request POST 'https://www.cotalker.com/api/v2/questions?debug=true' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "code": [
+        "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
+    ],
+    "display": [
+        "input 3"
+    ],
+    "identifier": "qr_nfc_input",
+    "contentType": "application/vnd.cotalker.survey+textinput"
+}'
+```
+
+#### Response Sample
+Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a complete description of the response.
+
+```json {8-13,16-17}
+{
+    "_id": "61a78c177f130200079de9d3",
+    "command": {
+        "commands": [],
+        "resetIdentifiers": [],
+        "values": []
+    },
+    "display": [
+        "input 3"
+    ],
+    "code": [
+        "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
+    ],
+    "isActive": true,
+    "isSystemModel": false,
+    "identifier": "qr_test",
+    "contentType": "application/vnd.cotalker.survey+textinput",
+    "company": "5f5a74a8fdf77a0008a6349a",
+    "modifiedAt": "2021-12-01T14:52:07.636Z",
+    "__v": 0
+}
+```
 
