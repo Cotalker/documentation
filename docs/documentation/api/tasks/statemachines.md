@@ -6,24 +6,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 State machines are definitions of how tasks behave. They define the initial state, to what state they can change, what triggers are executed, send reminders, and more.
 
-## State Machine {#state-machine}
+## Get All SLAs in State Machine {#get-all-slas}
+`GET /v1/tasks/{groupId}/sla/smstatemachine/{stateMachineId}`
 
-:::info
-Click here for [data model descriptions](/docs/documentation/models/tasks/model_statemachine#state-machine-model)
+## Get SLA by Id {#get-sla-by-id}
+`GET /v1/tasks/{groupId}/sla/{slaId}`  
 
-Click here for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
-:::
+## Get All State Machines within Group
+`GET /v1/tasks/{groupId}/sm/smstatemachine`
 
-## State {#state}
-:::info
-Click here for [data model descriptions](/docs/documentation/models/tasks/model_statemachine#state-model)
+## Get All States within Group
+`GET /v1/tasks/{groupId}/sm/smstate`
 
-Click here for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
-:::
-
-## SLA {#sla}
-:::info
-Click here for [data model descriptions](/docs/documentation/models/tasks/model_statemachine#sla-model)
-
-Click here for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
-:::
+## Get All States within Company
+`GET /v1/tasks/{groupId}/sm/smstate/all`
