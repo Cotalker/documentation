@@ -77,7 +77,7 @@ Parameter | Description | Type | Required | Notes
 #### Request Sample {#get-taskgroup-by-id-request}
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v1/tasks/group/61a8b233685ed3562e7cfdeb' \
---header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
 #### Response Sample {#get-taskgroup-by-id-response}
@@ -285,7 +285,7 @@ Element | Description | Type | Required | Notes
 
 #### Request Sample {#create-task-request}
 ```bash
-curl --location --request POST 'https://www.cotalker.com/api/v1/tasks/6034ec90eafb030009e2998d/task/create' \
+curl --location --request POST 'https://www.cotalker.com/api/v1/tasks/616eafbda973cd46d72fb841/task/create' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' \
 --header 'Content-Type: application/json' \
 --data-raw '{

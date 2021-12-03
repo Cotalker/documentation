@@ -56,12 +56,12 @@ The COTSMSLA data model contains the settings of a [service-level agreement (SLA
 | --- | --- | --- | --- |
 | **code** | The SLA's code name | string | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
 | **company** | The ID of the company the SLA is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
-| *createdAt* | Date the SLA was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
+| **createdAt** | Date the SLA was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **data** | Date and time configuration for the SLA. | object |
 | **data.baseDate** | Sets _static_ and _dynamic_ `time` reference. | string | Enum: ["endDate", "startDate", "resolutionDate", "default"]<br/>[Details availible here.](/docs/documentation/automation/sla#base-date)
 | **data.time** | Specifies the date or time that the task is supposed to go from its initial to final state. | string | [Details available here.](/docs/documentation/automation/sla#time)
 | **data.timeType** | Indicates how time is calculated. Options are `dynamic` or `static`. | string | [Details available here.](/docs/documentation/automation/sla#time-type)
-| **display** | The SLA's display name |string | 
+| **display** | The SLA's display name | string | 
 | **end** | Specifies when an SLA should be considered completed. | object | Either `states` or `types` can be used to specify SLA completion, but it is not recommended to use both.
 | **end.states** | Specifies the task states in which the SLA is completed. | [ObjectId<COTSMStates\>[ ]](/docs/documentation/models/tasks/model_state)
 | **end.types** | Specifies the task types in which the SLA is completed. | string[ ] | Enum: ["new", "in-progress", "closed"]
