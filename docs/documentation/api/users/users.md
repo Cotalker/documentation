@@ -11,6 +11,10 @@ A _user_ represents a person or bot that can perform actions within a _company_ 
 
 The _users_ endpoint can be used to search for users, retrieve information, or group them by filtering their data. All this allows using _user_ information for further automations.
 
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
+
 ## Get Users {#view-all-users}
 _Returns data from all users in the company._
 

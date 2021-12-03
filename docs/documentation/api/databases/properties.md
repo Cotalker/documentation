@@ -16,6 +16,10 @@ Additionally, [workflows use _properties_ to define their states](/docs/document
 
 As you can see, the versatility of _properties_ is quite significant.
 
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
+
 ## Get Properties {#get-all}
 _Returns all properties within the company._
 

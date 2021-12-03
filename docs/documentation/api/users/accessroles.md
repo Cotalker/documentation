@@ -13,6 +13,7 @@ import TabItem from '@theme/TabItem';
 
 They limit users' read and write access on endpoints.
 
+
 ## Get Access Roles {#get-accessroles}
 _Returns data from all access roles._
 
