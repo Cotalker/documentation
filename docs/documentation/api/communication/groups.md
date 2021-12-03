@@ -14,6 +14,7 @@ Group types:
 - _Workflow or Task groups_, like regular groups, have communication channels but are associated with workflow tasks and their states. 
 - _Link groups_ direct you to anywhere within or outside the Cotalker environment.
 
+
 ## Get Groups {#get-all-groups}
 _Returns all channels within the company._
 

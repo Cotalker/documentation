@@ -8,14 +8,12 @@ import Mermaid from '@theme/Mermaid';
 
 Bots represent actions that trigger based on their configuration.
 
-:::info
-Click here for [data model descriptions](/docs/documentation/models/automations/model_bots)
-
-Click here for complete [API and model specifications](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f).
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
 :::
 
 
-<!--
+
 ## Parametrized Bots {#parametrized-bots}
 <img alt="Docusaurus with Keytar" src={useBaseUrl('img/bot_flow.png')} />
 
@@ -56,4 +54,3 @@ Parametrized bots is programming language for Cotalker that allows
 |  FCSleep| Flow Control: Wait N seconds before continuing |
 |  NWRequest| Perform custom network request |
 |  COTScript | Cotalker custom script |
- -->

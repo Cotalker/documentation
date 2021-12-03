@@ -11,6 +11,10 @@ _Channels_ are workspaces where _users_ can get _task_ information, change _task
 
 _Channels_ exist within either [_regular or workflow groups_](/docs/documentation/client/groups).
 
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
+
 ## Get Channels {#get-all-channels}
 _Returns all channels within the company._
 

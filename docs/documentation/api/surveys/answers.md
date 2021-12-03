@@ -9,6 +9,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ## Overview {#overview}
 An answer is the representation of a submitted survey. It contains the latest version of the survey data.
 
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
 
 ## Get Answers {#get-all}
 _Returns answers within the specified criteria. To get _answers_ you must provide either an _answer uuid_, a _survey id_, or _property id_ in the query parameters. You can also use the query parameters to filter and find _answers_ according to _users_ or _modified date_.

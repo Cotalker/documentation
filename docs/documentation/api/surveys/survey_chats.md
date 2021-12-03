@@ -10,6 +10,10 @@ import TabItem from '@theme/TabItem';
 
 _Survey chats_ represent a [survey's _components_](/docs/documentation/admin/survey/survey_overview#form-components) and hold together the [_questions_](/docs/documentation/models/surveys/model_questions) that make up each specific _component_ in a _survey_.
 
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
+
 ## Get Survey Chats {#get-all}
 _Returns all survey chats within the company._
 

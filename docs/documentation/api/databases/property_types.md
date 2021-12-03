@@ -11,6 +11,10 @@ import TabItem from '@theme/TabItem';
 
 _Property types_ contain [_properties_ or _elements_](/docs/documentation/models/databases/model_properties), which can be thought of as the rows in a table or better yet, as the documents in a MongoDB collection. Each _property_ has at least a "Name", a "Code" and a "Unique Id". These fields are the basic columns of the table. But each _collection_ may have more columns by [adding fields](/docs/documentation/admin/admin_properties#additional-fields), making _properties_ more descriptive. For example, a _collection_ that holds "store locales" can have _additional fields_ that contain address, employee number, store size, performance indicators, or any other information that needs to be associated with the collection's _properties_.
 
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
+
 ## Get Property Types {#get-all}
 _Returns all property types within the company._
 
@@ -207,7 +211,7 @@ _Updates or edits an existing property type's data._
 #### Path Parameters {#patch-update-path}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**id** | The ObjectId of the _property type_ that is to be modified. | [ObjectId<COTPropertyType\>](/docs/documentation/api/databases/property_types) | Required |
+**id** | The ObjectId of the _property type_ that is to be modified. | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) | Required |
 
 #### Headers {#patch-update-headers}
 Header | Description | Required | Values
@@ -222,7 +226,7 @@ Parameter | Description | Type | Required | Notes
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Body {#patch-update-body}
-_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTPropertyType data model](/docs/documentation/api/databases/property_types)._
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTPropertyType data model](/docs/documentation/models/databases/model_propertytypes)._
 
 #### Request Sample {#patch-update-request}
 _This sample adds a viewing permission to a property type:_
@@ -238,7 +242,7 @@ curl --location --request PATCH 'https://www.cotalker.com/api/v2/propertyTypes/6
 ```
 
 #### Response Sample {#patch-update-response}
-Go to [COTPropertyType](/docs/documentation/api/databases/property_types) for a complete description of the response.
+Go to [COTPropertyType](/docs/documentation/models/databases/model_propertytypes) for a complete description of the response.
 ```json {3-5}
 {
     "isActive": true,

@@ -12,7 +12,10 @@ A [_task_](/docs/documentation/client/basic_concepts#tasks) is the representatio
 
 A [_Task group_](/docs/documentation/models/tasks/model_taskgroup) contains the [_tasks_](/docs/documentation/models/tasks/model_tasks) that are processed through a specific _workflow group_. _Task group_ and _workflow group_ are sometimes used synonymously. Users can access _task groups_ through the [_group panel_](/docs/documentation/client/groups#group-panel).
 
----
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
+
 
 ## Get Task Groups {#get-task-groups}
 _Lists the tasks groups in the company._
