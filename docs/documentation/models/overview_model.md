@@ -40,12 +40,12 @@ Data Model (Context) | Description | Endpoint
 [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType) | The question's or survey component's content type. | N/A
 [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) | Javascript automation that runs within the survey and is found in COTQuestion | N/A
 [COTSchedule](/docs/documentation/models/automations/model_scheduler) | schedules are automated scheduled routines | /schedules
-[COTSMSLA](/docs/documentation/models/tasks/model_sla) | automated SLA routines associated to State Machines (workflow groups) | /tasks/{id}/sla/{id}
+[COTSMSLA](/docs/documentation/models/tasks/model_sla) | automated SLA routines associated to State Machines (workflow groups) | /tasks/{id}/sla
 [COTSMState](/docs/documentation/models/tasks/model_state) | the state of workflow or task | /tasks/{id}/sm/smstate
 [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) | a state machine is the workflow process a task goes through | /tasks/{id}/sm/smstatemachine
 [COTSurvey](/docs/documentation/models/surveys/model_surveys) | surveys gather different types of input from users | /surveys
 [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) | each survey chat holds _questions_ that correspond to a survey [_component_](/docs/documentation/admin/survey/survey_overview#form-components) | /surveychats
-[COTTask](/docs/documentation/models/tasks/model_tasks) | a task is the representation of an asset and its state | /tasks
+[COTTask](/docs/documentation/models/tasks/model_tasks) | a task is the representation of an asset and its state | /tasks/{id}/task
 [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) | a task group contains the tasks of the same workflow group | /tasks/group
 [COTUser](/docs/documentation/models/users/model_users) | users in your company, both humans and bots | /users
 
