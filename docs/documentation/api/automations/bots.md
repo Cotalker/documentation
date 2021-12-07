@@ -38,7 +38,7 @@ Responses follow the [**COTBots**](/docs/documentation/models/automations/model_
 
 ---
 
-## Get Bot Id {#get-by-id}
+## Get Bot by Id {#get-by-id}
 _Returns the bot indicated by its Id._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /bots/&#123;id&#125;</span>

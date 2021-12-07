@@ -70,6 +70,7 @@ Parameter | Description | Type | Required | Notes
 #### Headers {#get-taskgroup-by-id-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
+**Admin** | Gives administrative access to the endpoint. | Optional | true
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
 #### Query Parameters {#get-taskgroup-by-id}
@@ -89,6 +90,72 @@ The response follows the [COTTaskGroup](/docs/documentation/models/tasks/model_t
 ---
 
 
+## Create New Task Group {#post-taskgroup}
+_Create a new state machine within a task group._
+
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/group</span>
+
+#### Endpoint URL {#create-taskgroup-url}
+`https://www.coltaker.com/api/v1/tasks/group`
+
+#### Headers {#create-taskgroup-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Content-Type** | Indicates the body's format. | Required | application/json
+
+#### Request Body {#create-taskgroup-body}
+_Only required fields are listed below. For a complete schema description, please go to the [COTTaskGroup data model](/docs/documentation/models/tasks/model_taskgroup). Unrequired fields that are not submitted are either filled in automatically or left blank._
+
+Element | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+| **group** | Indicates the workflow group the task belongs to. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | Required | The _group_ must be exclusively assigned to the _task group_.
+
+
+
+#### Request Sample {#create-taskgroup-request}
+```bash
+curl --location --request POST 'https://www.cotalker.com/api/v1/tasks/group' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "group": "61ae5eb11f130a35a73e2e06"
+}'
+```
+
+#### Response Sample {#create-taskgroup-response}
+Go to [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) for a complete description of the response.
+```json {20}
+{
+    "isActive": true,
+    "readonly": false,
+    "taskEditorPermissions": [],
+    "taskFollowerPermissions": [],
+    "writePermissions": [],
+    "readPermissions": [],
+    "flowType": "free",
+    "hideClosedAfterDays": 30,
+    "defaultView": "list",
+    "levelConfig": [
+        20,
+        20,
+        10
+    ],
+    "availableViews": [
+        "list"
+    ],
+    "_id": "61ae5f2ebb6c6f1869625b90",
+    "group": "61ae5eb11f130a35a73e2e06",
+    "company": "613eafd572343ecb53cc8ccc",
+    "createdAt": "2021-12-06T19:03:39.932Z",
+    "taskPropertyPermissions": [],
+    "collectionName": "task_manager",
+    "modifiedAt": "2021-12-06T19:03:39.943Z",
+    "__v": 0
+}
+```
+
+---
 
 ## Update Task Group {#post-task-group}
 _Updates or edits the indicated task group._
