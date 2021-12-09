@@ -61,7 +61,7 @@ The [Scheduler](/docs/documentation/admin/admin_scheduler) creates _schedules_ o
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
-| **\_id** | System generated scheduler ID. | ObjectId<COTScheduler\>
+| **\_id** | System generated scheduler ID. | ObjectId<COTSchedule\>
 | **body** | Contains the scheduled routine. | [COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot) | 
 | **code** | The _schedule's_ name code. | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
 | **company** | The ID of the company the schedule is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | 

@@ -317,6 +317,7 @@ module.exports = {
     'documentation/models/automations/model_bots',
     'documentation/models/communication/model_channels',
     'documentation/models/model_company',
+    'documentation/models/communication/file',
     'documentation/models/communication/model_groups',
     'documentation/models/users/model_jobtitles',
     'documentation/models/communication/model_messages',

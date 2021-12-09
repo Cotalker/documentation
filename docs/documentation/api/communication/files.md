@@ -74,9 +74,9 @@ _multipart/form-data_
 
 Key | Description | Type | Required | Example
 --- | --- | --- | --- | ---
-| **uploadInput** | Posts a value in a response field | object | Optional | `{ "public": true }` |
-| **context** | | object | Optional |
-| **file** | The path of the file you want to upload to the server. | string($binary) | Required | `@"/folder/image.png"` |
+**uploadInput** | Posts a value in a response field. | object | Optional | `{ "public": true }` |
+**context** | Indicates the data models related to the file. | object | Optional |
+**file** | The path of the file you want to upload to the server. | string($binary) | Required | `@"/folder/image.png"` |
 
 
 #### Request Sample {#post-new-request}
@@ -89,7 +89,7 @@ _Uploads an image file:_
 curl --location --request POST 'https://www.cotalker.com/api/v3/media/file/upload' \
 --header 'Content-Type: multipart/form-data' \
 --form 'file=@"images/0_g05f8USWpxeQ4fkU.jpeg"' \
---form 'uploadInput="{ \"public\": true }"'
+--form 'uploadInput="{ \"fileName\": \"new_image.jpeg\" }"'
 ```
 
 </TabItem>
@@ -117,43 +117,7 @@ const signedUrl = await api.signUrl(uploadedFile.url);
 </Tabs>
 
 #### Response Sample {#post-new-response}
-_The new instance of a COTFile (file object) is returned._
-
-```json
-{
-    "_id": "619f94139b5de187825f4b94",
-    "status": "pending",
-    "public": true,
-    "company": "6136968b580aaf2b0e49d844",
-    "size": 46671,
-    "fileName": "0_g05f8USWpxeQ4fkU.jpeg",
-    "mimeType": "image/jpeg",
-    "key": "acme_inc/image/v4_619f94139b5de187825f4b94/original/0-g05f8uswpxeq4fku.jpeg",
-    "extension": ".jpeg",
-    "contentType": "image",
-    "user": "60c48a3db79c0f000867dfa2",
-    "createdAt": "2021-11-25T13:48:03.226Z",
-    "modifiedAt": "2021-11-25T13:48:03.226Z",
-    "__v": 0
-}
-```
-
-#### Response Data Model {#post-new-schema}
-_application/json_
-
-| Field | Description | Type | Notes |
-| --- | --- | --- | --- |
-| **company** | The ID of the company the file is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | |
-| **contentType** | Indicates the category the file belongs to. | string | Options are: _image_, _video_, _document_ | DEPRECATED |
-| **createdAt** | Date and time the file was uploaded. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| **fileName** | Indicates the file's name and extension. | string | |
-| **key** | Indicates the relative path of the file. | string | The _key_ is needed to get the signed file URL. |
-| **mimeType** | Indicates the file's type and format, e.g., `image/jpeg`, `video/mp4`, `application/pdf`. | string | [Click here](/docs/documentation/models/communication/model_messageContent) for more details about content types. |
-| **modifiedAt** | Last time the file was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
-| **size** | Indicates the byte size of the file. | number | |
-| **status** | Indicates the files current status in the server. | string | Possible answers: _pending_, _processing_, _uploaded_, _deleted_, _error_ |
-| **user** | User that sent the file. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | DEPRECATED |
-
+The response follows the [COTFile](/docs/documentation/models/communication/file) data model.
 
 ## Obtain Signed File URL {#post-get}
 _Requests a signed file URL that grants the user time-limited access to the file._
@@ -175,13 +139,13 @@ _application/json_
 
 Element | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**key** | Indicates the relative path of the file. | string | Required | Obtained through the `POST /media/file/upload` response.
+**key** | Indicates the relative path of the file. | string | Required | Obtained through the `POST /media/file/upload` or `GET /media/file` response.
 **expires** | Indicates the number of seconds the file is available to the user before needing to get another signed URL. | number | Required | Minimum: 60 (1 minute)<br/>Maximum: 900 (15 minutes)
 **disposition** | | string | Optional | Set to "inline".
 **fileName** | Gives the file a new name. | string | Optional | Should include the proper extenstion.
 
 #### Request Sample {#post-get-request}
-_Requests a signed file URL for a jpeg image.
+_Requests a signed file URL for a jpeg image._
 ```bash
 curl --location --request POST 'https://www.cotalker.com/api/v3/media/signature' \
 --header 'Content-Type: application/json' \
@@ -200,3 +164,33 @@ _Signed URL that lasts 15 minutes:_
 ```
 "https://cotalker-us-files.s3.amazonaws.com/acme_inc/image/v4_619e70899b5de1914b5f4ad4/square/d3y9um697me01.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJ27XMZVIFCIAPLHA%2F20211125%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211125T172501Z&X-Amz-Expires=900&X-Amz-Signature=a9f0bf2f4769811b58dffa93799535c027b6c66395eb237d95793ce9269d0caf&X-Amz-SignedHeaders=host&response-content-disposition=inline%3B%20filename%3Dnew-name.jpeg"
 ```
+
+## Get Files Uploaded in a Channel {#get-all-files}
+_Returns all the files uploaded to a channel according to their content type._
+
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /media/file</span>
+
+#### Endpoint URL {#get-files-url}
+`https://www.coltaker.com/api/v3/media/file`
+
+#### Query Parameters {#get-files-path}
+Parameter | Description | Type | Required | Values
+--- | --- | --- | --- | ---
+**contentType** | Indicates the category of files to return. | string | Required | Options: _image_, _video_, or _document_.
+**channel** | Indicates the _channel_ to search through. | [ObjectId<COTChannel\>](/docs/documentation/models/communication/model_channels) | Required |
+
+#### Headers {#get-files-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+
+#### Request Samples {#get-files-request-sample}
+```bash
+curl --location --request GET 'https://www.cotalker.com/api/v3/media/file?contentType=image&channel=6052c3f5f2970a8b35f91589' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
+```
+
+#### Response Sample {#get-files-response-sample}
+The response follows the [COTFile](/docs/documentation/models/communication/file) data model.
+
+---

@@ -34,13 +34,13 @@ Header | Description | Required | Values
 #### Query Parameters {#get-task-groups-parameters}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**limit** | | number | Optional | By default, the _limit_ is set to 10.
-**page** | | number | Optional | 
-**count** | | boolean | Optional | 
-**orderBy** | | string | Optional | Options: `asc`, `desc`
-**sortBy** | | string | Optional | Options: <br/>`createdAt`, `modifiedAt`, `collectionName`
-**isActive** | | string | Optional | `all`, `true`, `false`
-**debug** | | string | Optional | Option: `true`
+**limit** | Limits the amount of _tasks_ that are returned in the response. | number | Optional | By default, the _limit_ is set to 10.
+**page** | Makes the response display data from the indicated page number. | number | Optional | 
+**count** | Adds the `counter` field with the total amount of _tasks_.| boolean | Optional | 
+**orderBy** | Orders the _tasks_ by ascending or descending order according to the value of the `sortBy` field. | string | Optional | Options: `asc`, `desc`
+**sortBy** | Sorts the _tasks_ by the indicated value. | string | Optional | Options: <br/>`createdAt`, `modifiedAt`, `collectionName`
+**isActive** | Returns _tasks_ that are active according to their _isActive_ field. | string | Optional | `all`, `true`, `false`
+**debug** | Adds the `debug` field with error notificaciones. | string | Optional | Option: `true`
 
 #### Request Sample {#get-task-groups-sample}
 ```bash
@@ -157,7 +157,7 @@ Go to [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) for a com
 
 ---
 
-## Update Task Group {#post-task-group}
+## Update Task Group {#patch-task-group}
 _Updates or edits the indicated task group._
 
 <span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /tasks/group/&#123;groupId&#125;</span>

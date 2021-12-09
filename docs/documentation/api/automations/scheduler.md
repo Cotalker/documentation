@@ -1,6 +1,5 @@
 ---
-title: Scheduler
-sidebar_label: Scheduler
+title: Schedules
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -29,9 +28,10 @@ Header | Description | Required | Values
 #### Query Parameters {#query-get-all}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
-**limit** | Limits the amount of _users_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
+**limit** | Limits the amount of _schedules_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
 **page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
-**count** | Adds the `counter` field with the total amount of users. | boolean | Optional | 
+**count** | Adds the `counter` field with the total amount of _schedules_. | boolean | Optional | 
+**code** | Returns the _schedule_ with the indicated `code` name. | string | Optional | The schedule's code is found in the [COTSchedule](/docs/documentation/models/automations/model_scheduler) data model.
 
 #### Request Sample {#get-all-request}
 ```bash

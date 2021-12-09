@@ -91,7 +91,7 @@ import Highlight from '@theme/Highlight';
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
-| **code** | The routine's unique code name. | number | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
+| **code** | The routine's unique code name. | string | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
 | **company** | The ID of the company the routine is found in. | [ObjectID<COTCompany\>](/docs/documentation/models/model_company) |
 | **createdAt** | The date the routine was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **documentation** | Contains the structure and descriptions of the various fields used to set up the routine.  | object | WIP
