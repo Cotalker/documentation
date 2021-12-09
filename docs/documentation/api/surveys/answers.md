@@ -20,7 +20,7 @@ _
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /answers</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/questions`
+`https://www.coltaker.com/api/v2/answers`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -40,9 +40,9 @@ Parameter | Description | Type | Required | Notes
 **answerUuids** | Returns answers with the specified _answer uuids_. | [ObjectId<COTAnswer\>[ ]](http://localhost:3000/docs/documentation/models/surveys/model_answers) | Required if neither `survey`, `surveyIds`, or `properties` query parameters are being used. | 
 **modifiedAtGte** | Returns _answers_ with a value in the `modifiedAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **modifiedAtLte** | Returns _answers_ with a value in the `modifiedAt` field equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
-**fullMatchProperties** | | boolean | Optional |
+**fullMatchProperties** | Returns _answers_ that contain all the properties searched for through the query parameters. | boolean | Optional | Must be used in conjunction with the `properties` query parameter.
 **limit** | Limits the amount of _answers_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
-**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
+**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the `limit` parameter.
 **count** | Adds the `counter` field with the total amount of _questions_ within the company. | boolean | Optional | 
 **orderBy** | Returns _answers_ in ascending or descending order. | string | Optional | Must be used in conjunction with the `sortBy` query parameter.
 **sortBy** | Sorts _answers_ by date created. | string | Optional | Must be used in conjunction with the `orderBy` query parameter.
@@ -54,7 +54,6 @@ _This request gets all the answers submitted by a specific user on the indicated
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v2/answers?survey=61a50f928843af3e1332c67f&user=61953bf9bdc3558a4966e54d' \
 --header 'Admin: true' \
---header 'Accept: application/json' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' \
 ```
 
