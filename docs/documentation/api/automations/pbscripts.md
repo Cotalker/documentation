@@ -7,6 +7,10 @@ import Highlight from '@theme/Highlight';
 ## Overview {#overview}
 A _PBScript_ (parametrized bot script) is a [routine](/docs/documentation/admin/routines/) that can be created and saved for later use as a stage in any [routine builder](/docs/documentation/automation/admin_routine).
 
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
+
 ## Get PBScripts {#get-pbscripts}
 _Lists the PBScripts in the company._
 
