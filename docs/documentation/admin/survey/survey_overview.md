@@ -90,6 +90,17 @@ More information in the [Form Components](#form-components) section.
 ### Form Components {#form-components}
 Form components are different input types that can be used and configured to make your survey questions. 
 
+#### Icon Descriptions: {#icon-descriptions}
+The following icons are used in most of the form components for setup and configuration options.
+
+| Action Name | Image | Description |
+| ---- | ----- | ----------- |
+| Drag | <img alt="" src={useBaseUrl('img/icon_drag.png')} /> | Hold click to drag component |
+| Required | <img alt="" src={useBaseUrl('img/icon_required.png')} /> | Click to force user response on the component. |
+| Writing not permitted | <img alt="" src={useBaseUrl('img/icon_idw.png')} /> | Users cannot answer the question but will still be visible in the survey. |
+| Duplicate | <img alt="" src={useBaseUrl('img/icon_duplicate.png')} /> | Duplicate the component. It will not duplicate the identifier. |
+| Delete | <img alt="" src={useBaseUrl('img/icon_delete.png')} /> | Delete the component |
+
 <div className="alert alert--secondary">
 
 #### Available Form Components: {#form-components-list}
@@ -142,16 +153,6 @@ From the **General** tab, configure basic _component_ settings. Each component w
 
 <img alt="general tab" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_04.png')} />
 <br/>
-
-#### General Icon Descriptions: {#icon-descriptions}
-
-| Action Name | Image | Description |
-| ---- | ----- | ----------- |
-| Drag | <img alt="" src={useBaseUrl('img/icon_drag.png')} /> | Hold click to drag component |
-| Required | <img alt="" src={useBaseUrl('img/icon_required.png')} /> | Click to force user response on the component. |
-| Writing not permitted | <img alt="" src={useBaseUrl('img/icon_idw.png')} /> | Users cannot answer the question but will still be visible in the survey. |
-| Duplicate | <img alt="" src={useBaseUrl('img/icon_duplicate.png')} /> | Duplicate the component. It will not duplicate the identifier. |
-| Delete | <img alt="" src={useBaseUrl('img/icon_delete.png')} /> | Delete the component |
 
 #### General Field Descriptions: {#field-descriptions}
 
@@ -238,4 +239,21 @@ For multiple answers, use the following syntax: `(example1)|(example2)`
 From the **automation** tab, you can add Javascript code to customize your surveys even more. For complete information and examples, go to the [QuestionExec](/docs/documentation/automation/question_exec) section.
 
 <img alt="automation tab" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_06.png')} />
+<br/>
 
+---
+
+## Best Practices {#best-practices}
+### State Change Survey Trigger {#state-change-survey-trigger}
+If you need a _survey_ to determine the next _state_ of a _task_, use [_survey triggers_](/docs/documentation/admin/workflows/settings_panels/create_edit_state#survey-trigger) that can be configured from the [create/edit state settings panel](/docs/documentation/admin/workflows/settings_panels/create_edit_state). For example, if a user is asked to validate a job through a _survey_, whether it gets validated or not will affect the status of the task.
+
+### Survey Triggered Routines {#survey-triggered-routines}
+_Survey-triggered routines_ unassociated with _task states_ should be initiated through [_global bots_](/docs/documentation/admin/admin_bots#functions). If, for example, you wish to plan a Cotalker video call meeting, use a bot to schedule it since there are no state changes involved.
+
+### Surveys Associated to Task States {#survey-task-states}
+If a survey is to be made available only within a specific task state, the element that represents the state must be associated with the survey. In case the survey has to be available in more than one task state, a collection with elements that are to be required to view the survey should be created.
+
+For example, you can use an element to make a survey available in a channel at a specific moment. First, create the element and associate it manually to the survey. Then you can associate the element to the desired channel through a routine.  Afterward, when the state has changed, the associated element can be taken off the channel through another routine to make the survey no longer visible.
+
+### Required Fields {#required-fields}
+When a _survey_ gathers information used by a [bot](/docs/documentation/admin/admin_bots#functions), the fields that provide the data for the _routine_ should be set to _required_. Fields are set to as _required_ by pressing the _required_ icon found in the [form component tabs](/docs/documentation/admin/survey/survey_overview#icon-descriptions).

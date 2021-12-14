@@ -1,5 +1,4 @@
 ---
-id: admin_properties
 title: Database Section
 sidebar_label: Database
 ---
@@ -48,7 +47,7 @@ Pressing the <span class="badge badge--primary">+</span> icon will create a new 
 <br />
 <br />
 
-_Below you will find the description and notes for each field in the **Create collection** settings panel shown above._
+_Below, you will find the description and notes for each field in the **Create collection** settings panel shown above._
 
 | Field | Description | Notes |
 | ---- | ----------- | ----- |
@@ -67,9 +66,9 @@ From the _collections list_, by clicking on an individual _collection_, this set
 <br/>
 
 _The information shown in the table shown above is as follows:_
-- **Name**: Element visual name.
-- **Code**: Element code
-- **Number of subelements**: How many son element, the element has.
+- **Name**: Element's display name.
+- **Code**: Element's code name.
+- **Number of sub-elements**: Element's amount of child elements.
 - **Last modified**: Last time the element was edited.
 
 :::note
@@ -155,5 +154,12 @@ Below you will find the description and notes for each option in the <span class
 </div>
 <br/>
 
----------
+---
+
 Once the _collection_ is configured with the **Additional Fields** and saved, you can add _elements_ to it directly in the <span class="badge badge--primary">Database</span> section or through specific modules, like <span class="badge badge--primary">Users</span>.
+
+---
+
+## Best Practices {#best-practices}
+### Adding Extra Information to Elements {#adding-fields-globally}
+When additional information needs to be added to elements, the [**additional fields**](#additional-fields) feature should be used. Avoid using the **additional attributes** option to add information on elements. **Additional attributes** on elements are only used on legacy systems.

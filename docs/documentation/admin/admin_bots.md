@@ -25,7 +25,7 @@ _Access the **bots** section through the Administrative Panel:_
 <img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_bots_00.png')} />
 <br/>
 
-In this section, you can find the entire list of _bots_ that have been created.
+In this section, you can find the entire list of _bots_ created.
 
 Icon descriptions are available in the [Overview section](/docs/documentation/admin/admin_overview).
 
@@ -48,7 +48,11 @@ The description of the general information fields is as follows:
 
 <div className="container box">
 
-<div className="row table-row-title"><b>General Information</b></div>
+<div className="row table-row-title"><b>
+
+#### General Information {#general-info}
+
+</b></div>
 
 <div className="row table-row-1">
 <div className="col col--3"><b>Name:</b></div>
@@ -73,7 +77,11 @@ The _user bot name_ is the name of the _user_ and email address that is automati
 </div>
 
 <div className="row table-row-title">
-<div className="col col--12"><b>Access</b></div>
+<div className="col col--12"><b>
+
+#### Access {#access-roles}
+
+</b></div>
 </div>
 
 <div className="row table-row-2">
@@ -87,7 +95,11 @@ The access roles define what the bot's _user_ can do in the routine.
 </div>
 
 <div className="row table-row-title">
-<div className="col col--12"><b>Functions</b></div>
+<div className="col col--12"><b>
+
+#### Functions {#functions}
+
+</b></div>
 </div>
 
 <div className="row table-row-1">
@@ -143,7 +155,11 @@ For example, `/giphy` to search for a gif.
 </div>
 
 <div className="row table-row-title">
-<div className="col col--12"><b>Routine builder</b></div>
+<div className="col col--12"><b>
+
+#### Routine builder {#routine-builder}
+
+</b></div>
 </div>
 
 <div className="row table-row-2">
@@ -158,3 +174,12 @@ For more information, go to the [Routine builder](/docs/documentation/automation
 
 </div>
 <br/>
+
+---
+
+## Best Practices {#best-practices}
+### Survey Triggered Routines {#survey-triggered-routines}
+Survey-triggered routines unassociated with task states should be initiated through [global bots](/docs/documentation/admin/admin_bots#functions). If, for example, you wish to plan a Cotalker video call meeting, use a bot to schedule it since there are no state changes involved.
+
+### Required Fields {#required-fields}
+When a _survey_ gathers information used by a [bot](/docs/documentation/admin/admin_bots#functions), the fields that provide the data for the _routine_ should be set to _required_. Fields are set to as _required_ by pressing the _required_ icon found in the [form component tabs](/docs/documentation/admin/survey/survey_overview#icon-descriptions).

@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Settings Panel Guide</span>
 
-_Settings panel for creating and editing a workflow. Edit an existing workflow to configure settings not initially available when creating it. From this panel, modify and add states, rountines, subtasks, start forms, and SLAs. Make your Start Forms public._
+_Settings panel for creating and editing a workflow. Edit an existing workflow to configure settings not initially available when creating it. From this panel, modify and add states, routines, subtasks, start forms, and SLAs. Make your Start Forms public._
 
 ## Create a Workflow {#create-workflow}
 You can create a new workflow by pressing the <span className="badge badge--secondary">+</span> icon found in the upper right-hand corner of the [Workflows Settings Panel](/docs/documentation/admin/workflows/settings_panels/workflows-setup).
@@ -80,7 +80,8 @@ Refers to the [relationship](/docs/documentation/admin/tips/chat_channels_workfl
 </div>
 <div className="col col--4"><em>
 
-SHOULD BE KEPT AT BOUND.
+SHOULD BE KEPT AT BOUND.  
+_Other options for legacy use only._
 
 </em></div>
 </div>
@@ -272,6 +273,14 @@ _For information on how to **add an SLA routine** to your workflow, go to the [S
 
 </div>
 <br/>
+
+---
+
+## Best Practices {#best-practices}
+### Associating Tasks from Different Workflows {#tasks-different-workflows}
+If needed, you can associate tasks that belong to different workflows. To do this, go to the [**Asset** section in the **Create/Edit Workflow** settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#asset). Set the **type** of each workflow to _unique_. The elements selected as **assets** for each workflow must be associated to a common element representing a shared asset among the tasks to be associated.
+
+---
 
 ## Related Topics {#related-topics}
 - [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)
