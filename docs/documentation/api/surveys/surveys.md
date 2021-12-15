@@ -37,7 +37,7 @@ Parameter | Description | Type | Required | Notes
 **page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
 **count** | Adds the `counter` field with the total amount of _surveys_ within the company. | boolean | Optional | 
 **answer** | Returns the ObjectId of the _survey_ associated with the indicated _answer_. | string[ ] | Optional | _Answers_ are identified by the [ObjectId in their `uuid` field](/docs/documentation/models/surveys/model_answers).
-**select** | Surveys are returned showing only the indicated fields. | string[ ] | Optional |
+**select** | Surveys are returned showing only the indicated fields. | string[ ] | Optional | For example, `GET /surveys?select=code`, returns surveys displaying only the `code` field.
 **isActive** | Returns _surveys_ according to their `isActive` status. | string | Optional | Options are: `all`, `true`, `false`
 **search** | Returns _surveys_ with field values that begin with the search query. | string | Optional |
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
