@@ -278,7 +278,11 @@ _For information on how to **add an SLA routine** to your workflow, go to the [S
 
 ## Best Practices {#best-practices}
 ### Associating Tasks from Different Workflows {#tasks-different-workflows}
-If needed, you can associate tasks that belong to different workflows. To do this, go to the [**Asset** section in the **Create/Edit Workflow** settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#asset). Set the **type** of each workflow to _unique_. The elements selected as **assets** for each workflow must be associated to a common element representing a shared asset among the tasks to be associated.
+If needed, you can associate tasks that belong to different workflows. To do this, go to the [**Asset** section in the **Create/Edit Workflow** settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#asset). Set the **type** of each workflow to _unique_. The [_id_ of the **task**](/docs/documentation/models/tasks/model_tasks) that is to be associated must be included as an [additional field](/docs/documentation/admin/admin_properties#additional-fields) of the **asset** (element) of the other task's workflow.
+
+For example, if _Task 1_ from _Workflow A_ is to be associated with _Task 5_ of _Workflow B_, the _element_ set as the **asset** of _Workflow A_ must include the Id of _Task 5_ in its additional fields. This will permit a [routine](/docs/documentation/automation/admin_routine) to communicate with _Task 5_ from _Task 1_, which would be the case if a [Network Request](/docs/documentation/automation/bots/nwrequest-2.0.0) is used to call the **asset** of _Workflow A_ to obtain the Id of its associated task, i.e., _Task 5_, and hence, being able to [automatically send a message](/docs/documentation/automation/bots/pbmessage-2.0.0) to _Task 5_'s channel or performing [any other automated action](/docs/documentation/automation/existing_routines) in the channel.
+
+The same can be done using [subproperties](/docs/documentation/admin/admin_properties#elements) instead of additional fields with task Id's.
 
 ---
 
