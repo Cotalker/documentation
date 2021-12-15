@@ -33,11 +33,11 @@ Header | Description | Required | Values
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
 **extra** | Adds extra information in the response regarding associated objects. | string[ ] | Optional | Options are: "channels", "properties", "users", "surveys", "questions", and "surveychats". More than one `extra` query parameter can be user per request.
-**user** | Returns answers submitted by the _user_ in regards to the specified criteria, i.e., surveys, answer uuids, or properties. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | Optional |
+**user** | Returns answers submitted by the indicated _user_ in regards to the specified criteria in one of the following query parameters: _surveys_, _answer uuids_, or _properties_. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | Optional |
 **survey** | Returns answers from the specified _survey_. | [ObjectId<COTSurvey\>](/docs/documentation/models/surveys/model_surveys) | Required if neither `surveyIds`, `properties`, nor `answerUuids` query parameters are being used. | 
 **surveyIds** | Returns answers from the specified _surveys_. | [ObjectId<COTSurvey\>[ ]](/docs/documentation/models/surveys/model_surveys) | Required if neither `survey`, `properties`, nor `answerUuids` query parameters are being used. | 
 **properties** | Returns answers with the specified _properties_. | [ObjectId<Property\>[ ]](/docs/documentation/models/databases/model_properties) | Required if neither `survey`, `surveyIds`, nor `answerUuids` query parameters are being used. | 
-**answerUuids** | Returns answers with the specified _answer uuids_. | [ObjectId<COTAnswer\>[ ]](http://localhost:3000/docs/documentation/models/surveys/model_answers) | Required if neither `survey`, `surveyIds`, or `properties` query parameters are being used. | 
+**answerUuids** | Returns answers with the specified _answer uuids_. | [ObjectId<COTAnswer\>[ ]](http://localhost:3000/docs/documentation/models/surveys/model_answers) | Required if neither `survey`, `surveyIds`, nor `properties` query parameters are being used. | 
 **modifiedAtGte** | Returns _answers_ with a value in the `modifiedAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **modifiedAtLte** | Returns _answers_ with a value in the `modifiedAt` field equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **fullMatchProperties** | Returns _answers_ that contain all the properties searched for through the query parameters. | boolean | Optional | Must be used in conjunction with the `properties` query parameter.
