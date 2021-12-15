@@ -137,7 +137,16 @@ Options are: _unique_ or _generic_.
 <div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>
 
-Tip: The added collections with their respective elements can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks/tasks#task-permissions-for-unassociated-users).
+Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/admin_properties#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks/tasks#task-permissions-for-unassociated-users).
+
+</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Additional fields:</b></div>
+<div className="col col--5">Adds multiple collections that are used to filter, group, or sort the tasks in the task view.</div>
+<div className="col col--4"><em>
+
+Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/admin_properties#additional-fields) can indicate things like task priority, corresponding company department, etc. The collections added here are not stored the same as the first five additional fields. See the COTPropertyType data model for more information.
 
 </em></div>
 </div>
@@ -284,7 +293,17 @@ For example, if _Task 1_ from _Workflow A_ is to be associated with _Task 5_ of 
 
 The same can be done using [subproperties](/docs/documentation/admin/admin_properties#elements) instead of additional fields with task Id's.
 
----
+### Using Additional Fields in Workflows. {#workflow-additional-fields}
+When using **additional fields** in your workflows, you will find two types of **additional fields**. 
+
+_Two types of additional fields for workflows:_
+<img alt="additional fields in workflows" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_create_edit_bestpractices_00.png')} />
+<br/>
+
+In the workflow's data model ([COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine)), the first five **additional field** slots (A) correspond to the `dynamicPropertyTypes` field. The **additional fields** slot found at the bottom of the section (B) can contain multiple collections and are stored in the `allowedExtensions` field of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine).
+
+As best practice, it is recommended to use the first five **additional field** slots (A) because their structure permits greater consistency between the elements.
+
 
 ## Related Topics {#related-topics}
 - [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)

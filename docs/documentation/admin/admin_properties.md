@@ -154,7 +154,6 @@ Below you will find the description and notes for each option in the <span class
 </div>
 <br/>
 
----
 
 Once the _collection_ is configured with the **Additional Fields** and saved, you can add _elements_ to it directly in the <span class="badge badge--primary">Database</span> section or through specific modules, like <span class="badge badge--primary">Users</span>.
 
@@ -162,4 +161,9 @@ Once the _collection_ is configured with the **Additional Fields** and saved, yo
 
 ## Best Practices {#best-practices}
 ### Adding Extra Information to Elements {#adding-fields-globally}
-When additional information needs to be added to elements, the [**additional fields**](#additional-fields) feature should be used. Avoid using the **additional attributes** option to add information on elements. **Additional attributes** on elements are only used on legacy systems.
+When additional information needs to be added to _elements_, the [**additional fields**](/docs/documentation/admin/admin_properties#additional-fields) feature should be used. **Additional fields** serve as columns of database tables, which allows your information to be well organized and makes it easier to search through.
+
+Avoid using the **additional attributes** option to add information on _elements_. **Additional attributes** for _elements_ are only used on legacy systems. The **additional attributes** that are added affect only individual _elements_, unlike **additional fields**, which create the fields in all the _elements_ in the _collection_.
+
+_Prefer **Additional fields**(A) over **Additional attributes**(B):_
+<img alt="element settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_properties_bestpractices_00.png')} />
