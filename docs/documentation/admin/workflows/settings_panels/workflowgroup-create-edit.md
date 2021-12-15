@@ -26,7 +26,7 @@ From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/wo
 <div className="alert alert--secondary">
 
 ## Settings Panel Layout {#panel-layout}
-After choosing to create a new workflow group, the following settings panel opens up:
+After choosing to create or edit a workflow group, the following settings panel opens up:
 
 <img alt="settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00.png')} />
 <br/>
@@ -177,7 +177,7 @@ _Configures how channels are displayed in a workflow group._
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Collection:</b></div>
-<div className="col col--5">Channels will be sorted by the selected property type. The default option is to sort related channels by property.</div>
+<div className="col col--5">Channels will be sorted by the elements (properties) contained within the selected collection (property type).</div>
 <div className="col col--4"><em>If the channels are not related to the selected property type, they will not be sorted.</em></div>
 </div>
 <div className="row table-row-1">
@@ -284,6 +284,13 @@ Set whether a _workflow group_ opens from the [group panel](/docs/documentation/
 
 </div>
 <br/>
+
+## Best Practices {#best-practices}
+### Sorting Tasks {#sorting-tasks}
+It is recommended to sort tasks in the group panel by _states_ so that users can visually identify the state their tasks are found in. Task (workflow) states are represented by the elements (properties) found in the collection (property types) associated with the workflow.
+
+Sorting tasks by states can be set in the [layout section of the settings panel](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit#layout-section) by choosing the _collection_ where the workflow states are found in.
+
 
 ## Related Topics {#related-topics}
 - [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)

@@ -102,7 +102,7 @@ The state should already exist as an element in the collection selected previous
 <div className="col col--5">
 
 Creates an action button in the workflow's channel that indicates how a state change can be triggered. Options are: 
-- _None_: The action button is not created. Use this option to change states through other means, like: [_survey trigger_](/docs/documentation/admin/workflows/settings_panels/create_edit_state/#survey-trigger), [_task view_](/docs/documentation/client/taskview#task-view), a [routine stage-bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/tasks).
+- _None_: The action button is not created. Use this option to change states through other means, like: [_survey trigger_](/docs/documentation/admin/workflows/settings_panels/create_edit_state/#survey-trigger), [_task view_](/docs/documentation/client/taskview#task-view), a [routine-stage bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/tasks).
 - _Survey_: A survey is added as an option in the actions button. The **start form** field appears. There you can indicate which survey should be summoned.
 - _Manual_: Adds the state itself as an option in the actions button.
 
@@ -227,8 +227,27 @@ Go to [State Start Form](/docs/documentation/admin/workflows/admin_workflow_requ
 </div>
 <br/>
 
+---
 
+## Best Practices {#best-practices}
+### Task State Names {#task-state-organization}
+State names should begin with a number or individual letter corresponding to their order in the group panel and task view. For example: "1. Backlog", "2. Doing", "3. Finished", "4. Unable to Complete". Since _states_ are _elements_ within _collections_, their names are configured and edited from the settings panel in the [Database section](/docs/documentation/admin/admin_properties#edit--create-element).
 
+### Routines associated with state changes. {#routines-state-change}
+A task can change from one state to another through different means, e.g., a _state start form_, a _survey trigger_, the _task view_, a _routine-stage bot_, the _action button_, or an API request. If a _routine_ is to be associated with the state change, it is highly recommended to add the _routine_ in the [**State Change**](/docs/documentation/admin/workflows/settings_panels/create_edit_state#state-changes) and not through other means, like a _survey_ or a _routine-stage bot_.
+
+### State Change Notification {#state-change-notification}
+When a state change occurs, a notification should be sent in the task's chat channel to notify users of the change. The notification can be programmed to appear through the _routines_ associated with state changes. It is recommended that notifications should include a _title_, referencing the action taken, and a _body_ indicating what can be done in the new state. 
+
+### State Change Survey Trigger {#state-change-survey-trigger}
+Use _survey triggers_ when the answer to a survey question determines the next state. For example, if a user is asked to validate a job, whether it gets validated or not will affect the status of the task.
+
+### Surveys Associated to Task States {#survey-task-states}
+If a [_survey_](/docs/documentation/admin/survey/survey_overview) is to be made available only within a specific _task state_, the _element_ that represents the _state_ must be associated with the _survey_. In case the _survey_ has to be available in more than one _task state_, a _collection_ with _elements_ that are to be required to view the _survey_ should be created.
+
+For example, you can use an element to make a survey available in a channel at a specific moment. First, create the element and associate it manually to the survey. Then you can associate the element to the desired channel through a routine.  Afterward, when the state has changed, the associated element can be taken off the channel through another routine to make the survey no longer visible.
+
+---
 
 ## More About Subtask States {#about-subtasks}
 - Subtask states are intertwined with their parent workflow. Since a workflow can have diverse subtasks depending on its state, a workflow's state affects subtasks, i.e., it defines its subtasks.

@@ -95,7 +95,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 
 ## Additional Resources {#resources}
 
-- [Workflow Configuration](/docs/documentation/client/basic_concepts#tasks): Worflow configurations through the Administrative Panel
+- [Workflow Configuration](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit): Worflow configurations through the Administrative Panel
 - [Create Workflow Tutorial](/docs/tutorials/basic/create_state_machines): Basic tutorial on how to create a workflow
 - ["State Machines" REST API documentation](/docs/documentation/api/tasks/statemachines): basic "State Machines" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)

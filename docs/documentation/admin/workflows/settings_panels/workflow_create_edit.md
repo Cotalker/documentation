@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Settings Panel Guide</span>
 
-_Settings panel for creating and editing a workflow. Edit an existing workflow to configure settings not initially available when creating it. From this panel, modify and add states, rountines, subtasks, start forms, and SLAs. Make your Start Forms public._
+_Settings panel for creating and editing a workflow. Edit an existing workflow to configure settings not initially available when creating it. From this panel, modify and add states, routines, subtasks, start forms, and SLAs. Make your Start Forms public._
 
 ## Create a Workflow {#create-workflow}
 You can create a new workflow by pressing the <span className="badge badge--secondary">+</span> icon found in the upper right-hand corner of the [Workflows Settings Panel](/docs/documentation/admin/workflows/settings_panels/workflows-setup).
@@ -80,7 +80,8 @@ Refers to the [relationship](/docs/documentation/admin/tips/chat_channels_workfl
 </div>
 <div className="col col--4"><em>
 
-SHOULD BE KEPT AT BOUND.
+SHOULD BE KEPT AT BOUND.  
+_Other options for legacy use only._
 
 </em></div>
 </div>
@@ -136,7 +137,16 @@ Options are: _unique_ or _generic_.
 <div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>
 
-Tip: The added collections with their respective elements can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks/tasks#task-permissions-for-unassociated-users).
+Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/admin_properties#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks/tasks#task-permissions-for-unassociated-users).
+
+</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Additional fields:</b></div>
+<div className="col col--5">Adds multiple collections that are used to filter, group, or sort the tasks in the task view.</div>
+<div className="col col--4"><em>
+
+Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/admin_properties#additional-fields) can indicate things like task priority, corresponding company department, etc. The collections added here are not stored the same as the first five additional fields. See the COTPropertyType data model for more information.
 
 </em></div>
 </div>
@@ -272,6 +282,28 @@ _For information on how to **add an SLA routine** to your workflow, go to the [S
 
 </div>
 <br/>
+
+---
+
+## Best Practices {#best-practices}
+### Associating Tasks from Different Workflows {#tasks-different-workflows}
+If needed, you can associate tasks that belong to different workflows. To do this, go to the [**Asset** section in the **Create/Edit Workflow** settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#asset). Set the **type** of each workflow to _unique_. The [_id_ of the **task**](/docs/documentation/models/tasks/model_tasks) that is to be associated must be included as an [additional field](/docs/documentation/admin/admin_properties#additional-fields) of the **asset** (element) of the other task's workflow.
+
+For example, if _Task 1_ from _Workflow A_ is to be associated with _Task 5_ of _Workflow B_, the _element_ set as the **asset** of _Workflow A_ must include the Id of _Task 5_ in its additional fields. This will permit a [routine](/docs/documentation/automation/admin_routine) to communicate with _Task 5_ from _Task 1_, which would be the case if a [Network Request](/docs/documentation/automation/bots/nwrequest-2.0.0) is used to call the **asset** of _Workflow A_ to obtain the Id of its associated task, i.e., _Task 5_, and hence, being able to [automatically send a message](/docs/documentation/automation/bots/pbmessage-2.0.0) to _Task 5_'s channel or performing [any other automated action](/docs/documentation/automation/existing_routines) in the channel.
+
+The same can be done using [subproperties](/docs/documentation/admin/admin_properties#elements) instead of additional fields with task Id's.
+
+### Using Additional Fields in Workflows. {#workflow-additional-fields}
+When using **additional fields** in your workflows, you will find two types of **additional fields**. 
+
+_Two types of additional fields for workflows:_
+<img alt="additional fields in workflows" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_create_edit_bestpractices_00.png')} />
+<br/>
+
+In the workflow's data model ([COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine)), the first five **additional field** slots (A) correspond to the `dynamicPropertyTypes` field. The **additional fields** slot found at the bottom of the section (B) can contain multiple collections and are stored in the `allowedExtensions` field of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine).
+
+As best practice, it is recommended to use the first five **additional field** slots (A) because their structure permits greater consistency between the elements.
+
 
 ## Related Topics {#related-topics}
 - [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)
