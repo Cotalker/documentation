@@ -146,7 +146,7 @@ Tip: The added [collections with their respective addtional fields](/docs/docume
 <div className="col col--5">Adds multiple collections that are used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>
 
-Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/admin_properties#additional-fields) can indicate things like task priority, corresponding company department, etc. The collections added here are not stored the same as the first five additional fields. See the COTPropertyType data model for more information.
+Tip: The added [collections with their respective additional fields](/docs/documentation/admin/admin_properties#additional-fields) can indicate things like task priority, corresponding company department, etc. The collections added here are not stored the same as the first five additional fields. See the COTPropertyType data model for more information.
 
 </em></div>
 </div>
