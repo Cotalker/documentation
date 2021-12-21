@@ -9,9 +9,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-[_Property types_, also know as _collections_](/docs/documentation/admin/admin_properties#collection), are versatile databases that can be set up to carry out diverse functions in the Cotalker environment. _Property types_ can store company assets, describe workflow states, act as a filter, contain options for multiple-choice questions in surveys, grant permissions, and much more. Some common examples include "Store Locations", "Company Departments", "Products", "Clients", "Contacts", "Brands", "Task States", among others.
+[_Property types_, also know as _collections_](/docs/documentation/admin/database/admin_collections), are versatile databases that can be set up to carry out diverse functions in the Cotalker environment. _Property types_ can store company assets, describe workflow states, act as a filter, contain options for multiple-choice questions in surveys, grant permissions, and much more. Some common examples include "Store Locations", "Company Departments", "Products", "Clients", "Contacts", "Brands", "Task States", among others.
 
-_Property types_ contain [_properties_ or _elements_](/docs/documentation/models/databases/model_properties), which can be thought of as the rows in a table or better yet, as the documents in a MongoDB collection. Each _property_ has at least a "Name", a "Code" and a "Unique Id". These fields are the basic columns of the table. But each _collection_ may have more columns by [adding fields](/docs/documentation/admin/admin_properties#additional-fields), making _properties_ more descriptive. For example, a _collection_ that holds "store locales" can have _additional fields_ that contain address, employee number, store size, performance indicators, or any other information that needs to be associated with the collection's _properties_.
+_Property types_ contain [_properties_ or _elements_](/docs/documentation/models/databases/model_properties), which can be thought of as the rows in a table or better yet, as the documents in a MongoDB collection. Each _property_ has at least a "Name", a "Code" and a "Unique Id". These fields are the basic columns of the table. But each _collection_ may have more columns by [adding fields](/docs/documentation/admin/database/admin_collections#additional-fields), making _properties_ more descriptive. For example, a _collection_ that holds "store locales" can have _additional fields_ that contain address, employee number, store size, performance indicators, or any other information that needs to be associated with the collection's _properties_.
 
 ## JSON Sample {#json-sample}
 ```json
@@ -107,7 +107,7 @@ _Property types_ contain [_properties_ or _elements_](/docs/documentation/models
 | **visualization.schemaNodesGroups** | | Object[] | DEPRECATED |
 
 ## Additional Resources {#resources}
-- [Collections (Property Types)](/docs/documentation/admin/admin_properties#collection): Details about collections (property types)
+- [Collections (Property Types)](/docs/documentation/admin/database/admin_collections): Details about collections (property types)
 - [Create Collection](/docs/tutorials/basic/create_database): Basic tutorial on how to create a collection (property type)
 - ["Property Types (Collections)" API documentation](/docs/documentation/api/databases/property_types): basic "Property Types" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)

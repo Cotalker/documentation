@@ -9,15 +9,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-[_Properties_ (_also known as _elements_)](/docs/documentation/admin/admin_properties#elements) are like the rows of a database table, but much more. Properties are contained within [_property types_ (_collections_)](/docs/documentation/models/databases/model_propertytypes). 
+[_Properties_ (_also known as _elements_)](/docs/documentation/admin/database/admin_elements) are like the rows of a database table, but much more. Properties are contained within [_property types_ (_collections_)](/docs/documentation/admin/database/admin_collections). 
 
-They are used to establish a relationship or define something. That's why you can use _properties_ sometimes as a resource and others as an asset. For example, you can send a specific text to all the users that have the "Special Message" _property_. Since each _user_ is simply a _collection or property type_, you can add _properties_ to them.
+_Properties_ are used to establish a relationship or define something. That's why you can use them sometimes as a resource and others as an asset. For example, you can send a specific text to all the users that have the "Special Message" _property_. Since each _user_ is simply a _collection or property type_, you can add _properties_ to them.
 
 Additionally, [workflows use _properties_ to define their states](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields).
 
 As you can see, the versatility of _properties_ is quite significant.
 
-_Properties_ can also contain extra information through [additional fields](/docs/documentation/admin/admin_properties#additional-fields) set by their _property type_.
+_Properties_ can also contain extra information through [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) set by their _property type_.
 
 ## JSON Sample
 _Property with additional fields:_
@@ -106,7 +106,7 @@ _Property associated with a user:_
 | **owner.$id** | Contains the ObjectId of the referenced owner, i.e., _task_ or _user_. | ObjectId | For example,[ObjectId<COTTask\>](/docs/documentation/models/tasks/model_tasks) or [ObjectId<COTUser\>](/docs/documentation/models/users/model_users), accordingly.
 | **owner.$ref** | Contains the reference type. | string | For example, `"users"` when a _user_ is associated with the element. If the _property_ is related to a _task_, a generated string is used, e.g., `"task-{COTCompany.subdomain}-{COTTaskGroup.collectionName}"`
 | **propertyType** | The `code` of the [COTPropertyType](/docs/documentation/models/databases/model_propertytypes) associated with the property. | string |
-| **schemaInstance** | Contains [additional field](/docs/documentation/admin/admin_properties#additional-fields) data. | object | The general format is `property.schemaInstance = { [field]: data-type }`.<br/>COTPropertyType's `schemaNodes[x].key` defines the _field_ and `schemaNodes[x].basicType` defines the _data type_.
+| **schemaInstance** | Contains [additional field](/docs/documentation/admin/database/admin_collections#additional-fields) data. | object | The general format is `property.schemaInstance = { [field]: data-type }`.<br/>COTPropertyType's `schemaNodes[x].key` defines the _field_ and `schemaNodes[x].basicType` defines the _data type_.
 | **search** | System search keywords. | string[ ] | Do not modify. 
 | **subproperty** | Contains child elements. | string[ ] | 
 
@@ -136,7 +136,7 @@ _Property associated with a user:_
 | **users** | | string[ ] | DEPRECATED
 
 ## Additional Resources {#resources}
-- [Elements (Properties)](/docs/documentation/admin/admin_properties#elements): Details about elements (properties)
+- [Elements (Properties)](/docs/documentation/admin/database/admin_elements): Details about elements (properties)
 - [Create Collection](/docs/tutorials/basic/create_database): Basic tutorial on how to create a collection (property type) with elements (properties)
 - ["Properties (Elements)" API documentation](/docs/documentation/api/databases/properties): basic "Properties" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
