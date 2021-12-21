@@ -135,7 +135,7 @@ modifiedat_unixms:   bigint
 __DYNAMIC__:         __DYNAMIC__
 ```
 
-**NOTE**: DYNAMIC Columns are schema nodes, i.e., a sub-table or collection that stores extra data. They can be manually created in the Admin as [**additional fields**](/docs/documentation/admin/admin_properties#additional-fields) of a collection.
+**NOTE**: DYNAMIC Columns are schema nodes, i.e., a sub-table or collection that stores extra data. They can be manually created in the Admin as [**additional fields**](/docs/documentation/admin/database/admin_collections#additional-fields) of a collection.
 
 
 ------

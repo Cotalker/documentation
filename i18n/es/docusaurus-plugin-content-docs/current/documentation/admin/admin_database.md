@@ -168,7 +168,7 @@ Below you will find the description and notes for each option in the <span class
     <div class="col col--4">It is not required to add a description.</div>
   </div>
   <div class="row table-row-2">
-    <div class="col col--4"><strong>Array</strong> Toogle Bar</div>
+    <div class="col col--4"><strong>Array</strong> Toggle Bar</div>
     <div class="col col--4">This button sets the Additional Field into an array.</div>
     <div class="col col--4">By switching it on, you can set the minimum and maximum number of elements in the array.</div>
   </div>

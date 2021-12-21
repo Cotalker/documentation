@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview {#overview}
 
-[_Properties_ (_also known as _elements_)](/docs/documentation/admin/admin_properties#elements) are like the rows of a database table, but much more. Properties are contained within [_property types_ (_collections_)](/docs/documentation/models/databases/model_propertytypes). 
+[_Properties_ (_also known as _elements_)](/docs/documentation/admin/database/admin_elements) are like the rows of a database table, but much more. Properties are contained within [_property types_ (_collections_)](/docs/documentation/admin/database/admin_collections). 
 
 They are used to establish a relationship or define something. That's why you can use _properties_ sometimes as a resource and others as an asset. For example, you can send a specific text to all the users that have the "Special Message" _property_. Since each _user_ is simply a _collection or property type_, you can add _properties_ to them.
 

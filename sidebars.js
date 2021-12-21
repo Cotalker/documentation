@@ -102,7 +102,16 @@ module.exports = {
           type: 'category',
           label: 'Data',
           items: [
-            'documentation/admin/admin_properties',
+            {
+              type: 'category',
+              label: 'Database',
+              items: [
+                'documentation/admin/database/admin_database_overview',
+                'documentation/admin/database/admin_collections',
+                'documentation/admin/database/admin_elements',
+              ],
+              collapsed: true,
+            },
             {
               type: 'category',
               label: 'Surveys',

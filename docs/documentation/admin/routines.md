@@ -130,7 +130,7 @@ Go to the [Data Models](/docs/documentation/models/overview_model) section for m
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Required:</b></div>
-<div className="col col--5">The toogle switch indicates whether it is a required field or not.</div>
+<div className="col col--5">The toggle switch indicates whether it is a required field or not.</div>
 <div className="col col--4"><em>Required fields must be filled out.</em></div>
 </div>
 <div className="row table-row-2">
