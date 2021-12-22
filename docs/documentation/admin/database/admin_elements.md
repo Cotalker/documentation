@@ -13,7 +13,7 @@ _List of elements within a collection; create and edit elements._
 To access the elements panel:
 
 
-1. To access the the **Elements Panel**:
+1. To access the **Elements Panel**:
 
 <img alt="elements panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_00.png')} />
 <br/>
@@ -48,13 +48,13 @@ _Table and Options:_
 <br/>
 
 ## Create an Element {#create-element}
-From within the _Elements Panel_ you can create a new _element_ by pressing the <span class="badge badge--secondary">+</span> icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can create a single _element_.
+From within the _Elements Panel_, you can create a new _element_ by pressing the <span class="badge badge--secondary">+</span> icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can create a single _element_.
 
 <img alt="create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_02.png')} />
 
 
 ## Edit an Element {#edit-element}
-From within the _Elements Panel_ you can edit an existing _element_ by pressing the corresponding _pen_ icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can edit the _element_.
+From within the _Elements Panel_, you can edit an existing _element_ by pressing the corresponding _pen_ icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can edit the _element_.
 
 <img alt="edit element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_03.png')} />
 <br/>

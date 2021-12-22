@@ -165,8 +165,8 @@ _Signed URL that lasts 15 minutes:_
 "https://cotalker-us-files.s3.amazonaws.com/acme_inc/image/v4_619e70899b5de1914b5f4ad4/square/d3y9um697me01.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJ27XMZVIFCIAPLHA%2F20211125%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211125T172501Z&X-Amz-Expires=900&X-Amz-Signature=a9f0bf2f4769811b58dffa93799535c027b6c66395eb237d95793ce9269d0caf&X-Amz-SignedHeaders=host&response-content-disposition=inline%3B%20filename%3Dnew-name.jpeg"
 ```
 
-## Get Files Uploaded in a Channel {#get-all-files}
-_Returns all the files uploaded to a channel according to their content type._
+## Get Files Shared on a Channel {#get-all-files}
+_Returns all the files shared on a channel according to their content type._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /media/file</span>
 

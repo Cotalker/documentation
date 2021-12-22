@@ -27,7 +27,7 @@ The areas within the company are:
 - human resources
 - IT
 
-A reliable way to separate each area is by using [**collections**](../../documentation/admin/admin_properties) because they allow you to arrange interdependencies.
+A reliable way to separate each area is by using [**collections**](../../documentation/admin/database/admin_database_overview) because they allow you to arrange interdependencies.
 
 ## Pre-Requistes {#pre-requistes}
 #### Access Role {#access-role}
@@ -35,11 +35,11 @@ A reliable way to separate each area is by using [**collections**](../../documen
 * _User_ with the `admin-properties-write` and `admin-users-write` permissions to create and modify _access roles_ and _users_. 
 
 :::tip Vocabulary note:
-- _**Property** and **element** are equivilant terms used to refer to the objects of a Collection._
+- _**Property** and **element** are equivalent terms used to refer to the objects of a Collection._
 :::
-* Or`admin-*-write` permission which allows all of the above. 
+* Or `admin-*-write` permission which allows all of the above. 
 * _User_ with the `web-admin-write` and `web-admin-read` permissions to set up the admin.
-* User with the `read admin` access role .
+* User with the `read admin` access role.
 
 ## Steps {#steps}
 ### I. Create Collection {#i-create-collection}

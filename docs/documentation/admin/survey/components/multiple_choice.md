@@ -32,7 +32,7 @@ Depending on what _type_ is chosen, new fields will be displayed in the settings
 
 ## 1. Collection Type {#collection-type}
 This option lets you choose the collection that contains the elements to be displayed as options. 
-You must have the _collection_ with its _elements_ previously created in the [_Database_](/docs/documentation/admin/admin_properties) section of the _Administrator_. 
+You must have the _collection_ with its _elements_ previously created in the [_Database_](/docs/documentation/admin/database/admin_database_overview) panel of the _Administrator_. 
 
 <div className="alert alert--primary">
 
