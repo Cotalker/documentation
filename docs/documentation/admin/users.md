@@ -409,32 +409,37 @@ Go to the [**Additional Fields**](#additional-fields) section for setup informat
 When creating or modifying a _user_, it may be desirable to add extra information depending on the company's needs. Since this information can be multiple and varied, a special arrangement has been developed in order to associate a _user_ to a _collection_ created to host the extra user-data requirements. The **additional fields** can include information in _string_, _number_, _date_, _boolean_, and _URL_ format. They can also host files, other _elements_, or even _users_.
 
 :::note
-_Attributes_ assigned to a user's [_job title_](/docs/documentation/admin/admin_jobtitles) are automatically assigned as **additional fields** and cannot be removed.
+- **Additional Fields** must be previously created within a _Collection_ in the _Database_ section.
+- Information on how to set up an **Additional Fields Collection** can be found in the [Database Admin Section](/docs/documentation/admin/database/admin_collections#additional-fields).
+- All the user data input into the additional fields is stored in the collection.
+- _Attributes_ assigned to a user's [_job title_](/docs/documentation/admin/admin_jobtitles) are automatically assigned as **additional fields** and cannot be removed from the _User Settings Panel_.
 :::
 
 _In order to activate **Additional Fields**, press the button in the upper-right corner:_
 
-<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_00.png')} />
+<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_05.png')} />
 <br/>
 <br/>
 
 _From the following dialog box, choose the **Collection containing the Additional Fields** that you want to associate with the **user**._
 
-<img alt="choose additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_01.png')} />
+<img alt="choose additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_06.png')} />
 <br/>
 <br/>
 
-_Once the **Additional Fields** have been selected, **Additional Field Tabs** will appear at the bottom of the **user** settings panel._
+_You can also conduct a search for the **collection** you are looking for._
 
-<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_02.png')} />
+<img alt="choose additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_07.png')} />
+<br/>
 <br/>
 
-:::note
-- **Additional Fields** must be previously created within a _Collection_ in the _Database_ section.
-- Information on how to set up an **Additional Fields Collection** can be found in the [Database Admin Section](/docs/documentation/admin/database/admin_collections#additional-fields).
-- All the user data input into the additional fields is stored in the collection.
-:::
 
+_Once the **Collection** has been selected, a new tab will appear in the **user** settings panel with the name of the **collection** containing the additional fields._
+
+<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_08.png')} />
+<br/>
+
+---
 
 <br/>
 
