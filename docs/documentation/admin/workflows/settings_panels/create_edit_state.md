@@ -231,7 +231,7 @@ Go to [State Start Form](/docs/documentation/admin/workflows/admin_workflow_requ
 
 ## Best Practices {#best-practices}
 ### Task State Names {#task-state-organization}
-State names should begin with a number or individual letter corresponding to their order in the group panel and task view. For example: "1. Backlog", "2. Doing", "3. Finished", "4. Unable to Complete". Since _states_ are _elements_ within _collections_, their names are configured and edited from the settings panel in the [Database section](/docs/documentation/admin/admin_properties#edit--create-element).
+State names should begin with a number or individual letter corresponding to their order in the group panel and task view. For example: "1. Backlog", "2. Doing", "3. Finished", "4. Unable to Complete". Since _states_ are _elements_ within _collections_, their names are configured and edited from the settings panel in the [Database panel](/docs/documentation/admin/database/admin_elements).
 
 ### Routines associated with state changes. {#routines-state-change}
 A task can change from one state to another through different means, e.g., a _state start form_, a _survey trigger_, the _task view_, a _routine-stage bot_, the _action button_, or an API request. If a _routine_ is to be associated with the state change, it is highly recommended to add the _routine_ in the [**State Change**](/docs/documentation/admin/workflows/settings_panels/create_edit_state#state-changes) and not through other means, like a _survey_ or a _routine-stage bot_.

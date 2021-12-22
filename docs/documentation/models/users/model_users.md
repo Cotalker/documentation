@@ -156,6 +156,7 @@ _The following deprecated items might still be found in the model:_
 
 ## Additional Resources {#resources}
 
+- [Users Admin Documentation](/docs/documentation/admin/users): User basics
 - ["Users" REST API documentation](/docs/documentation/api/users/users): basic "Users" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
 - [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines

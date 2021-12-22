@@ -54,7 +54,7 @@ _From the administrative panel, you can access the following:_
 
 <span className="hero__subtitle">DATA</span>
 
-  4. [**Database**](/docs/documentation/admin/admin_properties): Manage collections and elements.
+  4. [**Database**](/docs/documentation/admin/database/admin_database_overview): Manage collections and elements.
   5. [**Surveys**](/docs/documentation/admin/survey/survey_overview): Create and modify surveys used to gather information from users or configure workflows.
 
 <span className="hero__subtitle">COMPANY</span>

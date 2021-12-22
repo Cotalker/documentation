@@ -165,7 +165,8 @@ To create _additional fields_, create a new _collection_ or choose the one that 
 <br/>
 
 :::note
-The **additional field** components can be dragged and dropped to sort them in the order you wish them to appear in the "element" settings.
+- See the [Fields section in the Collection Settings Panel](#fields) for additional field settings.
+- The **additional field** components can be dragged and dropped to sort them in the order you wish them to appear in the "element" settings.
 :::
 
 </div>

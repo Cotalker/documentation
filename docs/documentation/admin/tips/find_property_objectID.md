@@ -21,13 +21,13 @@ Once you have the state names, you can search for their objectId in some of the 
 <div className="text-center"><em>Use the search tool to find the state and then open it to find all its details.</em></div>
 <br/>
 
-- View the _collection_ from the _Database_ tool:
+- View the _collection_ from the _Database_ section:
 <img alt="database tool" className="img_sizing item shadow--tl" src={useBaseUrl('img/find_state_properties_02.png')} />
 <div className="text-center"><em>Once you find the element in the collection, you can find its objectID embedded in the browser's address bar.</em></div>
 <br/>
 
 
-- Enter the [database admin section](/docs/documentation/admin/admin_properties): 
+- Enter the [database admin section](/docs/documentation/admin/database/admin_database_overview): 
 <img alt="admin section" className="img_sizing item shadow--tl" src={useBaseUrl('img/find_state_properties_03.png')} />
 <div className="text-center"><em>Select the corresponding collection that hosts the elements that represent the available states.</em></div>
 <br/>

@@ -1,105 +1,408 @@
 ---
-title: Users Section
+title: Users Panel
 sidebar_label: Users
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/users.svg')} />
+<img alt="users" class="img_title" src={useBaseUrl('img/design/users.svg')} />
 
-## Introduction {#introduction}
+## Overview {#overview}
 
-<img alt="user section" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_00.png')} />
+_Users_ are the basic unit of the Cotalker platform. They can log into their company's Cotalker environment and perform various actions. According to their [access roles](/docs/documentation/admin/admin_accessrole), they can view company data, create tasks following a workflow process, send messages to other users, submit information through surveys, interact with bots, initiate automated processes, and much more.
+
+
+_Users_ can represent real people (team members, clients, associates, supervisors, platform administrators, etc.) or even non-people, such as robots. For example, a _user_ may be the company's Chief Operating Officer or a _bot_ who reminds you of pending tasks. 
+
+_Users_ can also view and perform changes in the **Administrative Panel**, depending on the _permissions_ included in their _access roles_.
+
+## Accessing the Users Panel {#accessing-users-panel}
+To access the <span className="badge badge--primary">Users</span> panel:
+
+<img alt="user panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_00.png')} />
 <br/>
 
-_Users_ are the basic unit of a company. They may log in and perform actions within the company, such as sending messages.
+1. Press the <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
+2. Select <span className="badge badge--primary">Users</span> from the **Administrative Panel**.
+3. The [**Users Panel**](#users-panel-layout) will open up.
 
-_Users_ can represent real people (team members, clients, associates, testers) or even non-people, such as robots. For example, a _user_ may be the company's Chief Operating Officer (COO) or a _bot_ who reminds you of pending tasks. 
+<div className="alert alert--secondary">
 
-This section is divided into two parts: the **User list** to search, review, and download company user-related data; and the **Create/Edit User** where _users_ are created or modified.
-
-## User list {#user-list}
-
-In this section, you can find the complete list of _users_ that have been created.
+## Users Panel Layout {#users-panel-layout}
+In this section, you can find the complete list of _users_ that have been created within the company.
   
-<img alt="user list" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_list.png')} />
+<img alt="user panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_01.png')} />
 <br/>
 
-:::note
-Descriptions of each toolbar-button are found in the [Admin Overview](admin_overview).
-:::
+_Actions:_
+- **1. Create user**: [Create a new user](#create-user) within the company.
+- **2. Find user**: Searches for users within the company.
+- **3. More options**: Allows viewing users that have been disabled and system users, i.e., bots created automatically by the platform.
 
-The information shown in the _user list_ corresponds to:
+_Table and Options:_
+- **A. Checkbox**: Selects users in order to activate or deactivate them. When selected, the _Deactivate/Activate_ button will appear on the upper part of the layout.
+- **B. Icon**: Displays the user's avatar.
+- **C. Name**: Displays the user's full name.
+- **D. User**: Indicates the user's identification code. The user's email is used in case of human users. For bots, a string with an email format is automatically generated.
+- **E. Job title**: Indicates the [job title](/docs/documentation/admin/admin_jobtitles) associated with the user.
+- **F. Access roles**: Displays the user's [access roles](/docs/documentation/admin/admin_accessrole).
+- **G. Edit**: Opens the [user settings panel](#edit-user) for editing. 
 
-| column | meaning | 
-|--------|---------|
-|   Name  |   User first and last name    |
-|   User  |  User email |
-|  Job title |  User job | 
-| Access Role | List of access-roles names |
+</div>
+<br/>
+
+## Create User {#create-user}
+Create a new _user_ by pressing the <span className="badge badge--secondary">+</span> icon in the upper right corner of the **Users Panel**. The [**User Settings Panel**](#user-settings-panel) will open up.
+
+<img alt="create user" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_03.png')} />
+<br/>
+
+## Edit User {#edit-user}
+From the **Users Panel**, edit an existing _user_ by pressing the _pen_ icon on its row. The [**User Settings Panel**](#user-settings-panel) will open up.
+
+<img alt="create user" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_04.png')} />
+<br/>
+
+
+
+<div className="alert alert--secondary">
+
+## User Settings Panel {#user-settings-panel}
+Whether creating or editing a _user_, the following _user settings panel_ opens up. The **Channels** and **Surveys answered** sections are available only when editing a _user_. The **Additional fields** vary from _user_ to _user_ and according to the _collections_ used.
+  
+<img alt="user settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02.png')} />
+<br/>
+
+_Actions:_
+- **1. + Additional fields**: Associates a collection's additional fields to a user. [Details on Additional fields](#additional-fields).
+- **2. Deactivate/Activate**: Deactivates or activates the user.
+- **3. Save**: Saves the user with the current settings.
+
+_Configuration:_
+- [**A. General information**](#general-information): Basic user information.
+- [**B. Access**](#access): User's access roles, i.e., sets of permissions.
+- [**C. Settings**](#settings): Sets the visiblity of platform shortcuts for the user.
+- [**D. Additional attributes**](#additional-attributes): Adds attributes to the user (deprecated).
+- [**E. Elements**](#elements): Associates elements to the user.
+- [**F. Related users**](#related-users): Indicates users that are direct superiors and subordinates.
+- [**G. Channels**](#channels): Displays a list of the channels the user has access to.
+- [**H. Surveys answered**](#surveys-answered): Displays a list of the surveys the user has submitted.
+- [**I. Additional fields...**](#additional-fields-tab): Additional fields vary in name, type, and order of appearance according to the user's settings and the associated collection.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### A. General information {#general-information}
+
+<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02a.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>Names</strong>:</div>
+<div className="col col--5">The user's first and middle names.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Surname</strong>:</div>
+<div className="col col--5">The user's surname (last or family name)</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Email</strong>:</div>
+<div className="col col--5">The user's email address.</div>
+<div className="col col--4"><em>It will be used as the user's identification code. Hence, it cannot be changed once saved and cannot be used more than once.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Phone</strong>:</div>
+<div className="col col--5">The user's phone number.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Job title</strong>:</div>
+<div className="col col--5">The user's job title or responsibility within the company.</div>
+<div className="col col--4"><em>
+
+[Job titles](/docs/documentation/admin/admin_jobtitles) can be used to create pools of users, as well as granting them special attributes.
+
+</em></div>
+</div>
+</div>
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### B. Access {#access}
+
+<img alt="access" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02b.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>Access roles</strong>:</div>
+<div className="col col--3">
+
+The [access roles](/docs/documentation/admin/admin_accessrole) assigned to the user.  
 
 <br/>
 
-### Download User List {#download-user-list}
+For security reasons, it is **EXTREMELY IMPORTANT** to assign _access roles_ with full knowledge of what their _permissions_ allow _users_ to do.
 
-You can only download _user lists_ in CSV format.  
-The available encoding field options are `Windows`, `Macintosh` and `UTF-8`.  
+</div>
+<div className="col col--6">
 
-<img alt="download list" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_download.png')} />
+⚠️ – _Keep access roles with the __admin-accesscontrol-write__ and __admin-*-write__ permissions limited to key users because they can assign access roles to all other users. Furthermore, they can access and change every configuration in the entire company._  
+⚠️ – _Beware of changing or removing assigned user access roles or elements. This could affect workflow or automation behavior, but adding new ones will generally not have any side effects._
+
+</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Password</strong>:</div>
+<div className="col col--3">Enter new password here.</div>
+<div className="col col--6"><em>The field initially appears empty even if there is an existing password.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Repeat password</strong>:</div>
+<div className="col col--3">Confirm the new password by rewriting it here.</div>
+<div className="col col--6"><em></em></div>
+</div>
+</div>
+</div>
 <br/>
 
-  
-## Create/Edit User {#createedit-user}
-In this section, you can create or edit a single user.
-  
-<img alt="" src={useBaseUrl('img/admin_user_create_1.png')}  />
+<div className="alert alert--secondary">
 
-<img alt="" src={useBaseUrl('img/admin_user_create_2.png')}  />
-<br/>
+### C. Settings {#settings}
+
+<img alt="settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02c.png')} />
 <br/>
 
-  
-The following table describes each field shown above.
-  
-  
-| Field | Description | Notes | 
-| ---- | ----------- | ----- | 
-| Names | User's first name | The second name is optional |
-| Surname | User's last name | |
-| Email | User's email | It has to be unique. This email is used to log in. |
-| Phone | User's phone number | |
-| Job title | User's job | Learn how to [create job titles](/docs/documentation/admin/admin_jobtitles).  |
-| Access Roles | Assigned user access roles | You can only choose from existing access roles.|
-| Password | Create or change password | This field starts empty; the password can be changed in this field.|
-| Repeat Password | Create or change password | Required to validate secret password creation or change |
-| Add additional Attributes | Custom additional field | Add a name and value for the new field |
-| Add Element | Element/Property additional field | Add the collection and element. Useful when setting up a routine or survey associated with a particular element. |
-| Bosses | User supervisor | You can choose from existing users |
+<div className="container box">
 
-:::note
-- Additional, read-only, "relational" sections will appear, for example, where channels and tasks include the _user_.
-- Descriptions of each toolbar-button are found in the [Admin Overview](admin_overview).
-:::
+<div className="row table-row-1">
+<div className="col col--3"><strong>Hide Summary</strong>:</div>
+<div className="col col--5">
 
-:::caution
-- An administrator can change all the fields, except the email.
-- Keep the __admin-accesscontrol-write__ and __admin-*-write__ permissions limited to key _users_ because they can assign _access-roles_. Therefore, they access and change every configuration in the entire company. 
-:::
+When this toggle bar is on, the _home_ icon in the [**Main Menu Bar**](/docs/documentation/client/main_menu#main-menu-bar-layout) disapears, hiding access to all recent conversations.
 
-:::warning
-- Beware of changing or removing assigned _user_ access-roles or elements. This could affect worklow or automation behavior, but adding new ones will generally not have any side effects.
-:::
+</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Hide Contacts</strong>:</div>
+<div className="col col--5">
 
-## Permissions {#permissions}
+When this toggle bar is on, the _contacts_ icon disappears, hiding access to a complete list of all users in the company.
 
-_Administrative users_ can view and perform changes, depending on their _permissions_.
+</div>
+<div className="col col--4"><em>
 
-| Permission | Description |
-|------------|-------------|
-| __admin-user-read__ or __admin-*-read__ | Allows to view all users |
-| __admin-user-write__ | Allows modifying all fields, except access-roles |
-| __admin-accesscontrol-write__ | Allows modifying user access-roles |
-| __admin-*-write__ | Allows modifying all user fields |
+Found in the [upper toolbar on desktop versions](/docs/documentation/client/tool_bar#contact) or [the main menu in mobile versions](/docs/documentation/client/main_menu#main-menu-mobile).
+
+</em></div>
+</div>
+</div>
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### D. Additional Attributes {#additional-attributes}
+
+<img alt="additional attributes" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02d.png')} />
+<br/>
+
+_Additional attributes have been deprecated and used only on legacy systems. Prefer [additional fields](#additional-fields) instead._
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>+ Add Additional Attributes</strong>:</div>
+<div className="col col--5">Opens the settings box for an additional attribute.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Name</strong>:</div>
+<div className="col col--5">The attribute's name.</div>
+<div className="col col--4"><em>
+
+Appears when the **+ Add Additional Attribute** button is pressed.
+
+</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Value</strong>:</div>
+<div className="col col--5">The value given to the attribute.</div>
+<div className="col col--4"><em>
+
+Appears when the **+ Add Additional Attribute** button is pressed.
+
+</em></div>
+</div>
+</div>
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### E. Elements {#elements}
+
+<img alt="elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02e.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>+ Add Element</strong>:</div>
+<div className="col col--5">Opens the settings box to choose a collection and its elements.</div>
+<div className="col col--4"><em>Useful when setting up a routine or survey associated with a particular element.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Collection</strong>:</div>
+<div className="col col--5">Indicates a collection from where to choose elements to be associated with the user.</div>
+<div className="col col--4"><em>
+
+Appears when the **+ Add Element** button is pressed.
+
+</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Elements</strong>:</div>
+<div className="col col--5">Indicates the elements in the collection chosen to be associated with the user.</div>
+<div className="col col--4"><em>
+
+Appears when the **+ Add Element** button is pressed.
+
+</em></div>
+</div>
+</div>
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### F. Related users {#related-users}
+
+<img alt="related users" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02f.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>Bosses</strong>:</div>
+<div className="col col--5">Indicates the users that are direct supervisors, i.e., those that have the user set as their "subordinate".</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Subordinates</strong>:</div>
+<div className="col col--5">Lists the users that the present user supervises.</div>
+<div className="col col--4"><em></em></div>
+</div>
+</div>
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### G. Channels {#channels}
+
+<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02g.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>Icon</strong>:</div>
+<div className="col col--5">Displays the avatar of the channel the user is associted with.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Channel name</strong>:</div>
+<div className="col col--5">Indicates the name of the channel the user is associated with.</div>
+<div className="col col--4"><em>Channels could correspond to tasks as well.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Group</strong>:</div>
+<div className="col col--5">Indicates the group the channel belongs to.</div>
+<div className="col col--4"><em>The group can be either a regular or workflow (task) group.</em></div>
+</div>
+</div>
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### H. Surveys answered {#surveys-answered}
+
+<img alt="Surveys answered" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02h.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>1, 2, 3... Survey name</strong>:</div>
+<div className="col col--5">Surveys the user has filled out. The survey containers hold the forms or answered surveys.</div>
+<div className="col col--4"><em>"Survey" refers to the empty template with questions for users to fill out. A "form" refers to the submitted survey with its answers.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>A. Form</strong>:</div>
+<div className="col col--5">Lists the forms submitted by the users, i.e., each time the user filled out a survey and sent it.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>B. Eye icon</strong>:</div>
+<div className="col col--5">
+
+Click to view the corresponding form in the [Reports](/docs/documentation/client/reports) section.
+
+</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>C. Last modified</strong>:</div>
+<div className="col col--5">Indicates the date and time the form was submitted.</div>
+<div className="col col--4"><em></em></div>
+</div>
+
+</div>
+
+</div>
+<br/>
+
+
+<div className="alert alert--secondary">
+
+### i. Additional fields... {#additional-fields-tab}
+
+<img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02i.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--12">
+
+_An additional field's name, input type, and order of apperance is customizable and depends on its collection. The image shown above is just an example._
+
+</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--12">
+
+Go to the [**Additional Fields**](#additional-fields) section for setup information and more details.
+
+</div>
+</div>
+
+</div>
+
+</div>
+<br/>
 
 ## Additional Fields {#additional-fields}
 
@@ -115,7 +418,7 @@ _In order to activate **Additional Fields**, press the button in the upper-right
 <br/>
 <br/>
 
-_From the following dialog box, choose the **Additional Fields** you want to associate with the **user**._
+_From the following dialog box, choose the **Collection containing the Additional Fields** that you want to associate with the **user**._
 
 <img alt="choose additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_01.png')} />
 <br/>
@@ -126,13 +429,17 @@ _Once the **Additional Fields** have been selected, **Additional Field Tabs** wi
 <img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_02.png')} />
 <br/>
 
-:::note Setup information
-- **Additional Fields** must be previously created as _Collections_ in the _Database_ section.
-- Information on how to set up an **Additional Fields Collection** can be found in the [Database Section](admin_properties#additional-fields).
+:::note
+- **Additional Fields** must be previously created within a _Collection_ in the _Database_ section.
+- Information on how to set up an **Additional Fields Collection** can be found in the [Database Admin Section](/docs/documentation/admin/database/admin_collections#additional-fields).
+- All the user data input into the additional fields is stored in the collection.
 :::
 
 
 <br/>
-<br/>
 
-[Please report any bugs, problems, or issues you may have found here.](/docs/support/bug_report)
+## Related Topics {#related-topics}
+
+- [How to Create a User Tutorial](/docs/tutorials/basic/create_user)
+- [User data model](/docs/documentation/models/users/model_users)
+- [User API Requests](/docs/documentation/models/users/model_users)

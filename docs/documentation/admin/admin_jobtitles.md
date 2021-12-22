@@ -45,5 +45,5 @@ After chosing either to create or edit a **job title**, you will find the follow
 
 :::note
 - The _attributes_ added to the **job title** act like [_additional fields_](/docs/documentation/admin/users#additional-fields) and are assigned to all users belonging to that **job title** along with the ones they already have.
-- Just like _additional fields_, _attributes_ are selected from existing collections in the database. Go to the [Database](/docs/documentation/admin/admin_properties#creating-an-additional-fields-collection) section for more setup information.
+- Just like _additional fields_, _attributes_ are selected from existing collections in the database. Go to the [Database](/docs/documentation/admin/database/admin_collections#additional-fields) panel for more setup information.
 :::

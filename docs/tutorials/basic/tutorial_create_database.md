@@ -27,7 +27,7 @@ The areas within the company are:
 - human resources
 - IT
 
-A reliable way to separate each area is by using [**collections**](../../documentation/admin/admin_properties) because they allow you to arrange interdependencies.
+A reliable way to separate each area is by using [**collections**](../../documentation/admin/database/admin_collections) because they allow you to arrange interdependencies.
 
 ## Pre-Requistes {#pre-requistes}
 #### Access Role {#access-role}
