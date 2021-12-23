@@ -447,4 +447,4 @@ _Once the **Collection** has been selected, a new tab will appear in the **user*
 
 - [How to Create a User Tutorial](/docs/tutorials/basic/create_user)
 - [User data model](/docs/documentation/models/users/model_users)
-- [User API Requests](/docs/documentation/models/users/model_users)
+- [User API Requests](/docs/documentation/api/users/users)
