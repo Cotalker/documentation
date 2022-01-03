@@ -1,53 +1,118 @@
 ---
-id: admin_links
 title: Link Groups Section
 sidebar_label: Link Groups
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
 
 
 # Overview {#group-overview}
-<br />
-<img alt="" src={useBaseUrl('img/admin_linkgroup.png')} width= "20%" height= "20%" align="left"/>
-The links group is as a hyperlink, which when you click on it redirects you to the specific link. For example, when you click on the documentation group, you are redirected to this web page. https://doc.cotalker.com/docs/intro_overview. <br/> In this section of the admin you can creat, search, check and downloads the groups of the company. <br clear="left" />
-<br/> <br/>
-The following image shows how it looks in the application.
-<br/><br/>
-<img alt="" src={useBaseUrl('img/admin_groups_link.png')} /> 
-<br/><br/>
-The hyperlink is this documentation. An other option is to open a new tab. 
 
-# All Links Groups {#all-links-groups}
-In this part, you can find the entire list of groups that have been created.
-<img alt="" src={useBaseUrl('img/admin_linksgroup.png')} /> 
-<br/><br/>
+_Link groups_ are hyperlink icons that are displayed like _groups_, making them available in the **Main Menu Bar** or **Group Panel** for easy access. Link groups can be configured to redirect users to external sites or specific components in the Cotalker environment, such as channels or tasks.
 
-The description of the icons are in the [Overview section](admin_overview).
+_Below is an example of Link Groups found in a group panel:_
+<img alt="link group in group panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_01.png')} />
+<br/>
 
-The information shown in the list are:
-- Icon: Group figure
-- Name: Group visual name.
-- Last Modified: Last time the group was edited.
+URL destinations can be embedded within the Cotalker platform, shown in a pop-up window, or opened up on a new tab in your internet browser.
 
-# Edit / Create Single Group {#edit--create-single-group}
-In this section you can edit or creat a single group.
-<br />
-<img alt="" src={useBaseUrl('img/admin_group_link.png')} /> 
-<br/><br/>
-The description of the general information fields is as follows:
-<br/><br/>
+_The following image shows an example of an external URL being displayed in a pop-up window:_
+<img alt="link group pop-up window" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_02.png')} />
+<br/>
+
+---
+
+## Accessing the Link Groups Section {#access-link-section}
+To access the the Link Groups Section:
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_00.png')} />
+<br/>
+
+1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
+2. Select <span className="badge badge--primary">Link groups</span> from the **Administrative Panel**.
+3. The [**Link Groups Panel**](#link-groups-panel) will open up.
+
+<div className="alert alert--secondary">
+
+## Link Groups Panel Layout {#link-groups-panel}
+From the _Link Groups Panel_, a list of all the _link groups_ within the _company_ is displayed. This panel also permits you to create and edit _link groups_.
+
+<img alt="link group panel layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_03.png')} />
+<br/>
+
+_Actions:_
+- **1. Create New Link Group**: Opens a [settings panel to create a new link group](#create-link).
+
+_Table and Options:_
+- **A. Icon**: The icon that represents the link.
+- **B. Name**: The link group's display name.
+- **C. Last modified**: Indicates the last time the link group was modified.
+- **D. Edit**: The _pen_ icon opens a [settings panel for editting the corresponding link group](#edit-link).
+
+</div>
+
+## Create a New Link Group {#create-link}
+Press the <span className="badge badge--secondary">+</span> icon in the **link groups panel** to create a new link group. The [link group settings panel](##edit--create-single-group) will open up.
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_03a.png')} />
+<br/>
+
+
+## Edit a Link Group {#edit-link}
+To edit an existing link group, press the corresponding _pen_ icon in the table of the **link groups panel**. The [link group settings panel](##edit--create-single-group) will open up.
+
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_03b.png')} />
+<br/>
+
+<div className="alert alert--secondary">
+
+## Link Group Settings Panel Layout {#edit--create-single-group}
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_04.png')} />
+<br/>
+
+_Actions:_
+- 1.
+- 2.
+
+_Options:_
+- A.
+- B.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### A. General information {#general-information}
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_05.png')} />
+<br/>
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### B. Icon {#icon}
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_06.png')} />
+<br/>
+
+</div>
+<br/>
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
-| Name | The visual name of the group | It dosen't have to be unique. |
-| Code | The identifier of the group | It only accept lowercase, number and underscore and start with the letters. Once you create and save the code, you cannot change it.|
+| Name | The visual name of the group | It doesn't have to be unique. |
+| Code | The identifier of the group | It only accepts lowercase, number and underscore and start with the letters. Once you create and save the code, you cannot change it.|
 | Weight | A relative number that positions the group on the main bar. A small number accommodates the group at the beginning, therefore a large one at the end. | If you don't type a number, the system will assign one. |
 | Parent Group | You can choose a group to position itself within it. | The group you choose must already be created |
 | URL | The url as a hyperlink |  |
-| Open Link in a new tab | If it is active it will open the URL in a new browser tab, otherwise it will open in the app. |  |
+| Open Link in a new tab | If it is active, it will open the URL in a new browser tab; otherwise, it will open in the app. |  |
 
 <br/>
 To illustrate the parent group, the following image is shown:
