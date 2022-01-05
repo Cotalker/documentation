@@ -10,10 +10,7 @@ import Highlight from '@theme/Highlight';
 _List of elements within a collection; create and edit elements._
 
 ## Accessing the Elements Panel {#accessing-elements-panel}
-To access the elements panel:
-
-
-1. To access the **Elements Panel**:
+To access the **Elements Panel**:
 
 <img alt="elements panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_00.png')} />
 <br/>

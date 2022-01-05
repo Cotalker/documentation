@@ -6,43 +6,11 @@ sidebar_label: Groups
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Groups.svg')} />
+<img alt="design" class="img_title src={useBaseUrl('img/design/Groups.svg')} />
 
 ## Overview {#group-overview}
 
-<br/>
-<img alt="" src={useBaseUrl('img/admin_groupstype.png')} width= "25%" height= "25%" align="left"/>
 
-The Cotalker environment revolves around _groups_. _Groups_ are divided into three sections: [_workflows_](/docs/documentation/admin/workflows/admin_workflow_overview), [_links_](admin_links), and [_regular_](#regular-groups). From this part of the _administrative panel_, you can create, search, check, and download the company's _groups_.
-
-<br/>
-
-In the following image, you can see that each group's name and icon appear in the main menu bar. Clicking on them redirects you to the chosen group or link.
-
-<br/>
-<img alt="" src={useBaseUrl('img/admin_group_overview.png')} width= "40%" height= "40%" align=""/>
-
-<br/>
-
-## Regular Groups {#regular-groups}
-Here we will deal with _regular groups_ specifically. We will see the other two groups – [workflows](/docs/documentation/admin/workflows/admin_workflow_overview) and [links](admin_links) – separately.
-The _regular group_ refers to a group where users chat with each other or answer _surveys_ to capture information.
-<br />
-The following image shows how it looks in the application:
-<br /><br />
-<img alt="" src={useBaseUrl('img/admin_groups_channel.png')} />
-<br />
-The channel list is on the left, and the channel displayed is the one you're chatting on.
-
-## Create/Edit Single Regular Group {#createedit-single-regular-group}
-In this section you can create or edit a single group.
-
-The description of each icon found in the _Create/Edit Group_ settings panel can be found in the [Overview section](/docs/documentation/admin/admin_overview#icons).
-
-<img alt="" src={useBaseUrl('img/admin_group_create_1.png')} />
-<img alt="" src={useBaseUrl('img/admin_group_create_2.png')} />
-<img alt="" src={useBaseUrl('img/admin_group_create_3.png')} />
-<br/><br/>
 
 ### General Information Section {#general-information-section}
 The description of the general information fields is as follows:
