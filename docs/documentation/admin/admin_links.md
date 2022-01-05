@@ -75,12 +75,12 @@ To edit an existing link group, press the corresponding _pen_ icon in the table 
 <br/>
 
 _Actions:_
-- 1.
-- 2.
+- **1. Deactivate**: Makes the link group unavailable. 
+- **2. Save**: Saves changes made to the link group.
 
 _Options:_
-- A.
-- B.
+- **A. General information**: The link group's basic configuration settings.
+- **B. Icon**: Permits customizing the icon that represents the link group.
 
 </div>
 <br/>
@@ -92,6 +92,18 @@ _Options:_
 <img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_05.png')} />
 <br/>
 
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>Name</strong></div>
+<div className="col col--4">The link group's displayed name.</div>
+<div className="col col--5><em></em>
+
+
+</div>
+
+</div>
+
 </div>
 <br/>
 
@@ -101,6 +113,7 @@ _Options:_
 
 <img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_06.png')} />
 <br/>
+
 
 </div>
 <br/>
