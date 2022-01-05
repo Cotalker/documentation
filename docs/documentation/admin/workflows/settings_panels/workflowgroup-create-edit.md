@@ -89,7 +89,7 @@ _Basic setup and display options._
 <div className="alert alert--secondary">
 
 ### B. Icon Fields {#icon-section}
-_Configures the group symbol shown on the Main Menu Bar._
+_Configures the group icon shown on the Main Menu Bar or Group Panel._
 
 <img alt="icon" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_02.png')} />
 <br/>
