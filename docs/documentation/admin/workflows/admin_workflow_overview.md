@@ -1,5 +1,6 @@
 ---
-title: Introduction
+title: Workflows
+sidebar_label: Introduction
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

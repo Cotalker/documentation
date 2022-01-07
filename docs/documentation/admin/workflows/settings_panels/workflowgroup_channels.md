@@ -34,10 +34,10 @@ _Options:_
 2. Save: saves the current configuration.
 
 _Settings:_
-- [**A. General information**](#general-information)
-- [**B. Participants**](#participants)
-- [**C. Elements**](#elements)
-- [**D. Options**](#options)
+- [**A. General information**](#general-information): Basic channel setup information.
+- [**B. Participants**](#participants): Sets the users that can participate in the channel.
+- [**C. Elements**](#elements): Indicates elements associated with the channel.
+- [**D. Options**](#options): Configures special channel options.
 
 </div>
 <br/>
@@ -45,15 +45,33 @@ _Settings:_
 <div className="alert alert--secondary">
 
 ### A. General information {#general-information}
+_Basic channel setup information._
 
 <img alt="general info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_03.png')} />
 <br/>
 
-| Item | Description | Note |
-|----|----|----|
-| Name | Indicates the channel's displayed name. | |
-| Code | Indicates the channel's unique code. | Task channels automatically assign the code. |
-| Group | Indicates the workflow group the channels belongs to. | Users will be able to access the channel through the [group's panel](/docs/documentation/client/groups). |
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><strong>Name</strong>:</div>
+<div className="col col--4">Indicates the channel's displayed name.</div>
+<div className="col col--5"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Code</strong>:</div>
+<div className="col col--4">The channel's unique identification name.</div>
+<div className="col col--5"><em>Task channel codes are automatically assigned.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Group</strong>:</div>
+<div className="col col--4">Indicates the workflow group the channel belongs to.</div>
+<div className="col col--5"><em>
+
+Users will be able to access the channel through the [group's panel](/docs/documentation/client/groups).
+
+</em></div>
+</div>
+</div>
+<br/>
 
 </div>
 <br/>
@@ -61,14 +79,28 @@ _Settings:_
 <div className="alert alert--secondary">
 
 ### B. Participants {#participants}
+_Sets the users that can participate in the channel._
 
 <img alt="participants" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_04.png')} />
 <br/>
 
-| Item | Description | Note |
-|----|----|----|
-| Users | Indicates the users that have access to the channel. | |
-| Bots | Indicates bots that have permission to run in the channel. Only needed if the bot does not have global access. | _See [this tutorial](/docs/tutorials/intermediate/create_survey_bot) on how to make a bot that works within the channel._ |
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><strong>Users</strong>:</div>
+<div className="col col--4">Indicates the users that have access to the channel.</div>
+<div className="col col--5"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Bots</strong>:</div>
+<div className="col col--4">Indicates bots that have permission to run in the channel. Only needed if the bot does not have global access.</div>
+<div className="col col--5"><em>
+
+See [this tutorial](/docs/tutorials/intermediate/create_survey_bot) on how to make a bot that works within the channel.
+
+</em></div>
+</div>
+</div>
+<br/>
 
 </div>
 <br/>
@@ -76,15 +108,37 @@ _Settings:_
 <div className="alert alert--secondary">
 
 ### C. Elements {#elements}
+_Lets you add an element to your channel. Some elements are automatically added in channels associated with a task. You can, for example, add elements associated with a survey to make the survey available through the [actions button found in the channel's workspace](/docs/documentation/client/channels#task-menus-within-channel)._
 
 <img alt="elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_05.png')} />
 <br/>
 
-| Item | Description | Note |
-|----|----|----|
-| + Add Element | Lets you add an element to your channel. Some elements are automatically added in channels associated with a task. Add elements associated with a survey to make the survey available through the [actions button found in the channel's workspace](/docs/documentation/client/channels#task-menus-within-channel). | _After pressing the **+ Add Element** button, the collections and element fields will be displayed._ |
-| Collection | Indicates which [collections](/docs/documentation/admin/database/admin_collections) (property types) are associated with the channel. Used for classifying channels or making surveys available, among others. | When a task is created through a survey form, collections corresponding to submitted answers are added automatically. |
-| Elements | Indicates the collection's [elements](/docs/documentation/admin/database/admin_elements) (properties) which have been chosen for the channel. Used for classifying channels or making surveys available, among others. | When a task is created through a survey form, elements corresponding to submitted answers are added automatically.  |
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><strong>+ Add Element</strong>:</div>
+<div className="col col--5">Opens up a settings panel that permits you to select the elements and their corresponding collections.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Collection</strong>:</div>
+<div className="col col--5">
+
+Indicates which [collections](/docs/documentation/admin/database/admin_collections) (property types) are associated with the channel. Used for classifying channels or making surveys available, among others.
+
+</div>
+<div className="col col--4"><em>When a task is created through a survey form, collections corresponding to submitted answers are added automatically.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Elements</strong>:</div>
+<div className="col col--5">
+
+Indicates the collection's [elements](/docs/documentation/admin/database/admin_elements) (properties) which have been chosen for the channel. Used for classifying channels or making surveys available, among others.
+
+</div>
+<div className="col col--4"><em>When a task is created through a survey form, elements corresponding to submitted answers are added automatically.</em></div>
+</div>
+</div>
+<br/>
 
 </div>
 <br/>
@@ -92,15 +146,29 @@ _Settings:_
 <div className="alert alert--secondary">
 
 ### D. Options {#options}
+_Configures special channel options._
 
 <img alt="general info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_06.png')} />
 <br/>
 
-| Item | Description | Note |
-|----|----|----|
-| Permissions for sending messages | Indicates if users can write messages in the channel. | Options are `all` or `none`. |
-| First element overrides channel name | Indicates if the display name is overridden by the channel's first elements | If off, the manually added display name is used; otherwise, the display name is overridden. |
-| Activate video call on this channel | Enables users to start video calls within the channel | A small video icon will appear in the upper-right corner of the channel workspace if active. |
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><strong>Permissions for sending messages</strong>:</div>
+<div className="col col--4">Indicates if users can write messages in the channel.</div>
+<div className="col col--5"><em>Options are `all` or `none`.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>First element overrides channel name</strong>:</div>
+<div className="col col--4">Indicates if the display name is overridden by the channel's first elements</div>
+<div className="col col--5"><em>If off, the manually added display name is used; otherwise, the display name is overridden.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Activate video call on this channel</strong>:</div>
+<div className="col col--4">Enables users to start video calls within the channel.</div>
+<div className="col col--5"><em>A small video icon will appear in the upper-right corner of the channel workspace if active.</em></div>
+</div>
+</div>
+<br/>
 
 </div>
 <br/>

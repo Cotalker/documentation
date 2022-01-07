@@ -94,7 +94,16 @@ module.exports = {
               collapsed: true,
             },
             'documentation/admin/admin_links',
-            'documentation/admin/admin_group',
+            {
+              type: 'category',
+              label: 'Groups',
+              items: [
+                'documentation/admin/groups/overview_groups',
+                'documentation/admin/groups/admin_groups',
+                'documentation/admin/groups/admin_channels',
+              ],
+              collapsed: true,
+            },
           ],
           collapsed: false,
         },

@@ -38,7 +38,7 @@ _Below is an example of a submitted survey displayed in the task's channel. The 
 <img alt="survey in channel" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/client_survey_01.png')} />
 <br/>
 
-All _users_ associated with the task can see in the channel the data submitted through the survey for reference. This allows them to communicate with each other through the channel to add more context, ask for more specifications, or anything relevant to the task.
+In the channel, all _users_ associated with the task can reference the data submitted through the survey. _Users_ can continue to communicate with each other through the channel to ask for specifications, add more context, share updates, or anything else relevant to the task.
 
 </div>
 <br/>

@@ -10,16 +10,13 @@ import Highlight from '@theme/Highlight';
 _List of elements within a collection; create and edit elements._
 
 ## Accessing the Elements Panel {#accessing-elements-panel}
-To access the elements panel:
+To access the **Elements Panel**:
 
-
-1. To access the **Elements Panel**:
-
-<img alt="elements panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_00.png')} />
+<img alt="elements panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_00.png')} />
 <br/>
 
 1. Go to the [**Database Panel**](/docs/documentation/admin/database/admin_database_overview#accessing).
-2. Select select the _list icon_ of the _collection_ containing the _elements_ you wish to view.
+2. Select the _list icon_ of the _collection_ containing the _elements_ you wish to view.
 3. The [**Elements Panel**](#elements-panel-layout) will open up displaying all the _elements_ within the _collection_.
 
 <div className="alert alert--secondary">
@@ -28,7 +25,7 @@ To access the elements panel:
 Once the **Elements Panel** opens up, you will see a list of all the _elements_ within the _collection_. From here, you can view, create, and edit _elements_.
 
 _Example of a collection of cities:_
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_01.png')} />
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_01.png')} />
 <br/>
 <br/>
 
@@ -48,7 +45,7 @@ _Table and Options:_
 <br/>
 
 ## Create an Element {#create-element}
-From within the _Elements Panel_, you can create a new _element_ by pressing the <span class="badge badge--secondary">+</span> icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can create a single _element_.
+From within the _Elements Panel_, you can create a new _element_ by pressing the <span className="badge badge--secondary">+</span> icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can create a single _element_.
 
 <img alt="create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_02.png')} />
 
@@ -64,7 +61,7 @@ From within the _Elements Panel_, you can edit an existing _element_ by pressing
 ## Element Settings Panel Layout {#edit--create-element}
 The following settings panel appears either if you choose to create or edit an element.
 
-<img alt="edit/create element" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04.png')} />
+<img alt="edit/create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04.png')} />
 <br/>
 
 _NOTE: When creating a new element, only the **General information** and **Additional fields** tabs are available for configuration._

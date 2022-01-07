@@ -1,68 +1,178 @@
 ---
-id: admin_links
 title: Link Groups Section
 sidebar_label: Link Groups
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
 
 
 # Overview {#group-overview}
-<br />
-<img alt="" src={useBaseUrl('img/admin_linkgroup.png')} width= "20%" height= "20%" align="left"/>
-The links group is as a hyperlink, which when you click on it redirects you to the specific link. For example, when you click on the documentation group, you are redirected to this web page. https://doc.cotalker.com/docs/intro_overview. <br/> In this section of the admin you can creat, search, check and downloads the groups of the company. <br clear="left" />
-<br/> <br/>
-The following image shows how it looks in the application.
-<br/><br/>
-<img alt="" src={useBaseUrl('img/admin_groups_link.png')} /> 
-<br/><br/>
-The hyperlink is this documentation. An other option is to open a new tab. 
 
-# All Links Groups {#all-links-groups}
-In this part, you can find the entire list of groups that have been created.
-<img alt="" src={useBaseUrl('img/admin_linksgroup.png')} /> 
-<br/><br/>
+_Link groups_ are hyperlink icons that are displayed like _groups_, making them available in the **Main Menu Bar** or **Group Panel** for easy access. Link groups can be configured to redirect users to external sites or specific components in the Cotalker environment, such as channels or tasks.
 
-The description of the icons are in the [Overview section](admin_overview).
-
-The information shown in the list are:
-- Icon: Group figure
-- Name: Group visual name.
-- Last Modified: Last time the group was edited.
-
-# Edit / Create Single Group {#edit--create-single-group}
-In this section you can edit or creat a single group.
-<br />
-<img alt="" src={useBaseUrl('img/admin_group_link.png')} /> 
-<br/><br/>
-The description of the general information fields is as follows:
-<br/><br/>
-
-| Field | Description | Notes | 
-| ---- | ----------- | ----- | 
-| Name | The visual name of the group | It dosen't have to be unique. |
-| Code | The identifier of the group | It only accept lowercase, number and underscore and start with the letters. Once you create and save the code, you cannot change it.|
-| Weight | A relative number that positions the group on the main bar. A small number accommodates the group at the beginning, therefore a large one at the end. | If you don't type a number, the system will assign one. |
-| Parent Group | You can choose a group to position itself within it. | The group you choose must already be created |
-| URL | The url as a hyperlink |  |
-| Open Link in a new tab | If it is active it will open the URL in a new browser tab, otherwise it will open in the app. |  |
-
+_Below is an example of Link Groups found in a group panel:_
+<img alt="link group in group panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_01.png')} />
 <br/>
-To illustrate the parent group, the following image is shown:
-<img alt="" src={useBaseUrl('img/admin_group_parent.png')} />
-As you can see I+D is the parent group shown in the main bar. Once you are there, you can see the subgroups. 
 
-<br/><br/>
-The icon section configures the group symbol shown on the main bar. The description of the icon fields is as follows:
-<br/><br/>
+URL destinations can be embedded within the Cotalker platform, shown in a pop-up window, or opened up on a new tab in your internet browser.
 
-| Field | Description | Notes | 
-| ---- | ----------- | ----- | 
-| Select icon | You can choose between personalized or once of the premade |  |
-| Color | You can choose from the list of colors that is shown |  |
-| Path | It's populated with Scalable Vector Graphics. If the icon is personalized, it must be completed manually, otherwise it will be completed automatically |  |
+_The following image shows an example of an external URL being displayed in a pop-up window:_
+<img alt="link group pop-up window" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_02.png')} />
+<br/>
+
+---
+
+## Accessing the Link Groups Section {#access-link-section}
+To access the the Link Groups Section:
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_00.png')} />
+<br/>
+
+1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
+2. Select <span className="badge badge--primary">Link groups</span> from the **Administrative Panel**.
+3. The [**Link Groups Panel**](#link-groups-panel) will open up.
+
+<div className="alert alert--secondary">
+
+## Link Groups Panel Layout {#link-groups-panel}
+From the _Link Groups Panel_, a list of all the _link groups_ within the _company_ is displayed. This panel also permits you to create and edit _link groups_.
+
+<img alt="link group panel layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_03.png')} />
+<br/>
+
+_Actions:_
+- **1. Create New Link Group**: Opens a [settings panel to create a new link group](#create-link).
+
+_Table and Options:_
+- **A. Icon**: The icon that represents the link.
+- **B. Name**: The link group's display name.
+- **C. Last modified**: Indicates the last time the link group was modified.
+- **D. Edit**: The _pen_ icon opens a [settings panel for editting the corresponding link group](#edit-link).
+
+</div>
+
+## Create a New Link Group {#create-link}
+Press the <span className="badge badge--secondary">+</span> icon in the **link groups panel** to create a new link group. The [link group settings panel](##edit--create-single-group) will open up.
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_03a.png')} />
+<br/>
 
 
-The description of each button on the page where the group is created can be found in the [Overview section](admin_overview).
+## Edit a Link Group {#edit-link}
+To edit an existing link group, press the corresponding _pen_ icon in the table of the **link groups panel**. The [link group settings panel](##edit--create-single-group) will open up.
+
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_03b.png')} />
+<br/>
+
+<div className="alert alert--secondary">
+
+## Link Group Settings Panel Layout {#edit--create-single-group}
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_04.png')} />
+<br/>
+
+_Actions:_
+- **1. Deactivate**: Makes the link group unavailable. 
+- **2. Save**: Saves changes made to the link group.
+
+_Options:_
+- **A. General information**: The link group's basic configuration settings.
+- **B. Icon**: Permits customizing the icon that represents the link group.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### A. General information {#general-information}
+_The link group's basic configuration settings._
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_05.png')} />
+<br/>
+
+<div className="container box">
+
+<div className="row table-row-1">
+<div className="col col--3"><strong>Name</strong>:</div>
+<div className="col col--4">The link group's displayed name on the Main Menu Bar or Group Panel.</div>
+<div className="col col--5"><em>It doesn't have to be unique and any characters can be used.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Code</strong>:</div>
+<div className="col col--4">The link group's identification code. Once it is saved, it cannot be changed.</div>
+<div className="col col--5"><em>Only lowercase letters, numbers, and underscores are permitted.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Weight</strong>:</div>
+<div className="col col--4">A relative number that positions the link 
+group on the Main Menu Bar or Group Panel list. Smaller numbers accommodate the group near the top, larger numbers towards the end.</div>
+<div className="col col--5"><em>If you don't type a number, the system will assign one.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Parent group</strong>:</div>
+<div className="col col--4">Displays a link group as a sub-group within the indicated parent group.</div>
+<div className="col col--5"><em>If left blank, the link group appears in the Main Menu Bar.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Use authentication</strong>:</div>
+<div className="col col--4">If active, user authentication data is sent.</div>
+<div className="col col--5"><em>Used for some URLs that require user authentication.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Open link in new tab</strong>:</div>
+<div className="col col--4">If active, the linked webpage is opened in a new web browser tab.</div>
+<div className="col col--5"><em>By default, the linked webpage opens in a pop-up window that hover over the platform.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Open link embedded</strong>:</div>
+<div className="col col--4">If active, the linked webpage is displayed embedded within the Cotalker platform.</div>
+<div className="col col--5"><em>By default, the linked webpage opens in a pop-up window that hover over the platform.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>URL</strong>:</div>
+<div className="col col--4">Indicates the URL of the webpage that the link group opens.</div>
+<div className="col col--5"><em></em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Access roles</strong>:</div>
+<div className="col col--4">Indicates access roles users must have to view the link group.</div>
+<div className="col col--5"><em>Users must have at least one of the access roles.</em></div>
+</div>
+</div>
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### B. Icon {#icon}
+_Permits customizing the icon that represents the link group._
+
+<img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_06.png')} />
+<br/>
+
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><b>Select icon:</b></div>
+<div className="col col--5">Choose personalized or pre-designed icon from the menu.</div>
+<div className="col col--4"><em>Personalized icons are configured in the "Path" field.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Color:</b></div>
+<div className="col col--5">Choose from the menu the icon's color.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Path:</b></div>
+<div className="col col--5">Must be filled with Scalable Vector Graphics (SVG) code.</div>
+<div className="col col--4"><em>The path is completed automatically when a pre-designed icon is chosen. For personalized icons, SVG code must be inserted manually.</em></div>
+</div>
+</div>
+<br/>
+
+
+
+</div>
+<br/>
