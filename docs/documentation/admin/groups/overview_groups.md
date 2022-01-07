@@ -1,6 +1,6 @@
 ---
-title: Regular Groups Section
-sidebar_label: Groups
+title: Regular Groups Section Overview
+sidebar_label: Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
@@ -8,9 +8,9 @@ import Highlight from '@theme/Highlight';
 <img alt="design" class="img_title" src={useBaseUrl('img/design/Groups.svg')} />
 <br/>
 
-## Overview {#overview}
+## Introduction {#introduction}
 
-_Regular Groups_, commonly referred to as simply _"groups"_, are to be differentiated from _workflow (task) groups_ and _link groups_. As the other group types, _regular groups_ can be accessed through the **Main Menu Bar** or in the **Group Panel** as sub-groups of other groups. _Regular groups_ are mainly used for communication purposes. Users can be added as participants in the group, allowing them to use the group panel's _actions button_, access _sub-groups_, open _link groups_, access the group's _channels_, and other resources that can be added to a group and its channels. 
+[_Regular Groups_](/docs/documentation/client/groups#regular-groups), simply referred to as _"groups"_, are to be differentiated from _workflow (task) groups_ and _link groups_. As the other group types, _regular groups_ can be accessed through the **Main Menu Bar** or in the **Group Panel** as sub-groups of other groups. _Regular groups_ are mainly used for communication purposes. Users can be added as participants in the group, allowing them to use the group panel's _actions button_, access _sub-groups_, open _link groups_, access the group's _channels_, and other resources that can be added to a group and its channels. 
 
 Through _Channel Workspaces_ within _Regular Groups_, users associated to a  channel can send messages, share files, answer surveys, and view other users participating in the channel.
 
@@ -33,17 +33,25 @@ _The Groups section consists of a table displaying all the regular groups that e
 <br/>
 
 _Actions:_
-- **1. Create group**: Press the <span className="badge badge----primary">+</span> icon to open a [group settings panel](/docs/documentation/admin/groups/admin_groups#group-settings-panel-layout) to create a new group.
-- **2. More actions**: Shows options for displaying deactivated groups.
+- **1. Create group**: Press the <span className="badge badge--primary">+</span> icon to open a [group settings panel](/docs/documentation/admin/groups/admin_groups#group-settings-panel-layout) to create a new group.
+- **2. More actions**: Shows option for displaying disabled groups.
 
 _Settings and Options:_
-- **A. Icon**: Displays the icon the represents the group in the **Main Menu Bar** or **Group Panel**.
+- **A. Icon**: Displays the icon that represents the group in the **Main Menu Bar** or **Group Panel**.
 - **B. Name**: Indicates the group's display name.
 - **C. Channel creation**: Indicates if channels can be created in the group.
 - **D. Last modified**: Indicates the last time the group was edited.
-- **Channels | Edit**: The respective icons permit either [viewing all the channels within the group](/docs/documentation/admin/groups/admin_channels#channels-panel-layout) or ([editing the group](/docs/documentation/admin/admin_groups#group-settings-panel-layout).
+- **E. Channels | Edit**: The respective icons permit either [viewing all the channels within the group](/docs/documentation/admin/groups/admin_channels#channels-panel-layout) or [editing the group](/docs/documentation/admin/groups/admin_groups#group-settings-panel-layout).
 
 
 </div>
 <br/>
 
+---
+## Related Topics {#related-topics}
+- [Group Basics](/docs/documentation/client/groups)
+- [Channel Workspace Basics](/docs/documentation/client/channels)
+- [Group Data Model (COTGroup)](/docs/documentation/models/communication/model_groups)
+- [Channel Data Model (COTChannel)](/docs/documentation/models/communication/model_channels)
+- [Group API Requests](/docs/documentation/api/communication/groups)
+- [Channel API Requests](/docs/documentation/api/communication/channels)

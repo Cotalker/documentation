@@ -117,6 +117,10 @@
       --ifm-button-border-color: var(--ifm-color-secondary-dark);
     }
 
+.badge--secondary {
+  color: var(--secondary-custom)
+}
+
 html[data-theme='light'] {
   --ifm-link-color: #5784b1;
   --ifm-font-color-base: #113355;
@@ -162,11 +166,11 @@ html[data-theme='dark'] {
   --ifm-heading-color: #ffffff;
   --ifm-button-color: var(--ifm-font-color-base-inverse);
   --note-title-color: #ffffff;
-  --row-1-color: #202020;
-  --row-2-color: #1c1e21;
-  --row-title-color: #000000;
+  --row-1-color: #3f3b52;
+  --row-2-color: #352d46;
+  --row-title-color: #221c38;
   --box-color: #606770;
-  --ifm-color-secondary: #232526;
+  --ifm-color-secondary: #373542;
   --secondary-custom: #ffffff;
   --ra-color-text-dark:  #5ca0ff;
   --button-card: #717171;

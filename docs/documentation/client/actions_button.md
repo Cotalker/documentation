@@ -25,14 +25,13 @@ Click anywhere in the darkened area to exit the _actions button menu_.
 
 ---
 
-### Channel Workspace Actions Button {#task-menus-within-channel}
+## Channel Workspace Actions Button {#task-menus-within-channel}
 The _Actions button_ is found near the bottom of the [_channel workspace_](/docs/documentation/client/channels).
-In channels associated with a task, you can change a _task's_ state from the channel's _actions button_.
+You can change a _task's_ state from its _channel workspace_ by using the _actions button_.
 If configured, you can also answer any survey associated with the channel by pressing the _actions button_.
 
 _The Channel Workspace's **actions button** will look something like the image below:_
+
 <img alt="task change state menu" class="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_actions_00.png')} />
 <br/>
 
-</div>
-<br/>
