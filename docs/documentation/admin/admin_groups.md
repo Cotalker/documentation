@@ -397,7 +397,7 @@ From within the [_Channels Panel_](#channels), you can edit an existing _channel
 
 <div className="alert alert--secondary">
 
-## Channel Settings Panel Layout {##edit--create-single-channel}
+## Channel Settings Panel Layout {#edit--create-single-channel}
 Whether creating or editing a _channel_, the following settings panel will appear.
 
 <img alt="group settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_group_channels_01.png')} />
