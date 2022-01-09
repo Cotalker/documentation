@@ -23,39 +23,39 @@ Ruanda really liked what you did with the Task Manager. But they are worried tha
 
 ## Steps {#steps}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-1. Access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Workflows</span>.
+1. Access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Workflows</span>.
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 2. Press the **Task Manager** workflow-group and then the **Task Manager Flow** workflow.
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-3. Scroll down the settings panel and in the <span class="badge badge--primary">SLAs</span> section, press the <span class="badge badge--primary">+</span> icon to create a new SLA. 
+3. Scroll down the settings panel and in the <span className="badge badge--primary">SLAs</span> section, press the <span className="badge badge--primary">+</span> icon to create a new SLA. 
 
-<img alt="create sla" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_intermediate_sla_01.png')} />
+<img alt="create sla" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_intermediate_sla_01.png')} />
 <br/>
 
 _A new settings panel will open up._
 
-<img alt="create sla" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_intermediate_sla_01a.png')} />
+<img alt="create sla" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_intermediate_sla_01a.png')} />
 <br/>
 
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-4. Set up  <span class="badge badge--primary">General information</span>:
+4. Set up  <span className="badge badge--primary">General information</span>:
     - **Name**: `Reminder`
     - **Code**: `reminder_00`
     ----
@@ -77,11 +77,11 @@ _A new settings panel will open up._
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-5. Set up the <span class="badge badge--primary">Routine builder</span>:
+5. Set up the <span className="badge badge--primary">Routine builder</span>:
     
-    1. Press the <span class="badge badge--primary">+ Add Stage</span> button. New fields appear. Set the following:
+    1. Press the <span className="badge badge--primary">+ Add Stage</span> button. New fields appear. Set the following:
         - **code**: `email`
         - **type**: `Send email` 
         ----
@@ -89,7 +89,7 @@ _A new settings panel will open up._
         ----
         - **Data**: `{"recipientName":"($CODE#users#_id#($OUTPUT#task_request#data|assignee))|name|names","recipientEmail":"","companyName":"Ruanda","title":["Pending Task"],"action":"","code":"","messageA":"$JOIN# #(Task number)#($OUTPUT#task_request#data|serial)#($OUTPUT#task_request#data|name)#is still pending.","messageB":"Please complete the task or modify its end-date."}`
         ----
-        - In the **To** section, press <span class="badge badge--primary">+ Add Item</span>and set the following:
+        - In the **To** section, press <span className="badge badge--primary">+ Add Item</span>and set the following:
             - **Item**: `($CODE#users#_id#($OUTPUT#task_request#data|assignee))|email`
         ----
         * Activate the **Individual send** button.
@@ -104,7 +104,7 @@ _A new settings panel will open up._
 
     ----
     
-    2. Scroll back up and press <span class="badge badge--primary">+ Add Stage</span> again. Set the following:
+    2. Scroll back up and press <span className="badge badge--primary">+ Add Stage</span> again. Set the following:
         - **code**: `task_request`
         - **type**: `Network Request` 
 
@@ -149,24 +149,24 @@ _A new settings panel will open up._
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 6. Save the _SLA_.
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 7. Save the _workflow_.
 
 </div>
 <br/>
 
-<div class="hero shadow--lw">
-<div class="container">
-<h1 class="hero__title">Ta-da! All done!</h1>
-<p class="hero__subtitle">
+<div className="hero shadow--lw">
+<div className="container">
+<h1 className="hero__title">Ta-da! All done!</h1>
+<p className="hero__subtitle">
 
 Now go and create or edit a task. Set the end-date to today's date, and set its state to _Doing_. In a matter of minutes, you should be receiving an email reminding you to finish the task.
 
@@ -179,10 +179,10 @@ Now go and create or edit a task. Set the end-date to today's date, and set its 
 
 ## Result {#result}
 The SLA will be saved in the **SLAs** section of the _workflow_ configuration:
-<img alt="sla in workflow config" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_sla.png')} />
+<img alt="sla in workflow config" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_sla.png')} />
 <br/>
 <br/>
 
 The task reminder email will look something like this : 
 
-<img alt="email" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_sla_email.png')} />
+<img alt="email" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_sla_email.png')} />

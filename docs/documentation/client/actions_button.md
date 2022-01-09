@@ -16,7 +16,7 @@ The _Actions button_ is a green button floating near the bottom of the [group pa
 - In all groups, there can be links to any URL.
 
 _The Group Panel's **actions button** will look something like the image below:_
-<img alt="fab" class="img_sizing item shadow--lw" src={useBaseUrl('img/client_actionsbutton_01.png')} />
+<img alt="fab" className="img_sizing item shadow--lw" src={useBaseUrl('img/client_actionsbutton_01.png')} />
 <br/>
 
 :::tip
@@ -32,6 +32,6 @@ If configured, you can also answer any survey associated with the channel by pre
 
 _The Channel Workspace's **actions button** will look something like the image below:_
 
-<img alt="task change state menu" class="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_actions_00.png')} />
+<img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_actions_00.png')} />
 <br/>
 

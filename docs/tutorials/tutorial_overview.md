@@ -9,7 +9,7 @@ tags: [sitemap, examples, tutorial]
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<img alt="title image" class="img_title" src={useBaseUrl('img/design/title_pages/Tutorial4.svg')} />
+<img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/Tutorial4.svg')} />
 <br/>
 
 ## Introduction {#introduction}

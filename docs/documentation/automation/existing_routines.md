@@ -6,7 +6,7 @@ sidebar_label: Routine Stage Types
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Platforms.svg')} />
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Platforms.svg')} />
 
 
 ## Overview {#overview}

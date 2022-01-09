@@ -28,7 +28,7 @@ This token can be used to call the API
 ```
 curl https://www.cotalker.com/api/v1/users/me -H "Authorization: Bearer secret-token"
 ```
-And this call returns a [User Object.](/docs/documentation/api/users/users)
+And this call returns a [User Object.](/docs/documentation/api/users/)
 
 <img alt="" src={useBaseUrl('img/admin_swagger_1.png')} />
 
