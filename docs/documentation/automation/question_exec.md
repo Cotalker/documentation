@@ -6,7 +6,7 @@ sidebar_label: Question Exec
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<span class="hero__subtitle">
+<span className="hero__subtitle">
 
 _Customize Survey Questions with JavaScript Code_
 
@@ -28,7 +28,7 @@ To add your custom code, choose any survey component and select the **Automation
 
 _See the image below:_
 
-<img alt="automation tab" class="img_sizing_narrow item shadow--md" src={useBaseUrl('img/automation_question_exec_00.png')} />
+<img alt="automation tab" className="img_sizing_narrow item shadow--md" src={useBaseUrl('img/automation_question_exec_00.png')} />
 <br/>
 <br/>
 
@@ -36,7 +36,7 @@ You can add custom code in any one of the four _stages_ of a _survey component's
 
 _See the image below:_
 
-<img alt="automation tab" class="img_sizing_narrow item shadow--md" src={useBaseUrl('img/automation_question_exec_01.png')} />
+<img alt="automation tab" className="img_sizing_narrow item shadow--md" src={useBaseUrl('img/automation_question_exec_01.png')} />
 <br/>
 
 ## Component Lifecycle Stages {#component-lifecycle-stages}
@@ -128,7 +128,7 @@ function run(){
 ```
 _Your settings panel should look something like this:_
 
-<img alt="preload user and channel" class="img_sizing_narrow item shadow--lt" src={useBaseUrl('img/automation_question_exec_02.png')} />
+<img alt="preload user and channel" className="img_sizing_narrow item shadow--lt" src={useBaseUrl('img/automation_question_exec_02.png')} />
 <br/>
 
 
@@ -178,7 +178,7 @@ function run(){
 
 _Your settings panel should look something like this:_
 
-<img alt="validate value" class="img_sizing_narrow item shadow--lt" src={useBaseUrl('img/automation_question_exec_03.png')} />
+<img alt="validate value" className="img_sizing_narrow item shadow--lt" src={useBaseUrl('img/automation_question_exec_03.png')} />
 <br/>
 
 ### Example 3: Validate Email Address {#validate-email-address}

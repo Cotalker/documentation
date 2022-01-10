@@ -8,12 +8,12 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#overview}
 
-<div class="container">
-  <div class="row">
-    <div class="col col--8">
-    <img alt="Schedule screenshot" class="img_sizing" src={useBaseUrl('img/admin_scheduler_01.png')} align=""/>
+<div className="container">
+  <div className="row">
+    <div className="col col--8">
+    <img alt="Schedule screenshot" className="img_sizing" src={useBaseUrl('img/admin_scheduler_01.png')} align=""/>
     </div>
-    <div class="col col--4">
+    <div className="col col--4">
       <p>The <em>scheduler</em> is used to configure a routine that runs periodically. For example, a regular company routine might be to send users to-do tasks for the week every Monday.
       In this section of the _administrative panel_ you can create, search, and check the company's schedules.
       </p>
@@ -30,7 +30,7 @@ import Highlight from '@theme/Highlight';
 ## All Schedules {#all-schedules}
 In this part, you can find the entire **list of schedules** that have been created.
 
-<img alt="scheduler list" class="" src={useBaseUrl('img/admin_scheduler_list.png')} />
+<img alt="scheduler list" className="" src={useBaseUrl('img/admin_scheduler_list.png')} />
 <br/><br/>
 
 ### _Types of Schedules:_ {#_types-of-schedules_}
@@ -65,26 +65,26 @@ In this section you can edit or create a single group.
 
 ### _Description of General Information Fields_ {#_description-of-general-information-fields_}
 
-<div class="container">
-  <div class="row table-row-1">
-    <div class="col col--4"><strong>Code</strong></div>
-    <div class="col col--4"><em>Description</em>: The identifier of the scheduler </div>
-    <div class="col col--4"><em>Notes</em>: It only accepts lowercase letters, numbers, underscores, and must start with a letter. Once you create and save the code, you cannot change it.</div>
+<div className="container">
+  <div className="row table-row-1">
+    <div className="col col--4"><strong>Code</strong></div>
+    <div className="col col--4"><em>Description</em>: The identifier of the scheduler </div>
+    <div className="col col--4"><em>Notes</em>: It only accepts lowercase letters, numbers, underscores, and must start with a letter. Once you create and save the code, you cannot change it.</div>
   </div>
-    <div class="row table-row-2">
-    <div class="col col--4"><strong>Start Date</strong></div>
-    <div class="col col--4"><em>Description</em>: The start date to run the scheduler</div>
-    <div class="col col--4"><em>Notes</em>:</div>
+    <div className="row table-row-2">
+    <div className="col col--4"><strong>Start Date</strong></div>
+    <div className="col col--4"><em>Description</em>: The start date to run the scheduler</div>
+    <div className="col col--4"><em>Notes</em>:</div>
   </div>
-    <div class="row table-row-1">
-    <div class="col col--4"><strong>Time Zone</strong></div>
-    <div class="col col--4"><em>Description</em>: The default time zone of the company.</div>
-    <div class="col col--4"><em>Notes</em>: This item is unchangeable.</div>
+    <div className="row table-row-1">
+    <div className="col col--4"><strong>Time Zone</strong></div>
+    <div className="col col--4"><em>Description</em>: The default time zone of the company.</div>
+    <div className="col col--4"><em>Notes</em>: This item is unchangeable.</div>
   </div>
-    <div class="row table-row-2">
-    <div class="col col--4"><strong>Recurrence</strong></div>
-    <div class="col col--4"><em>Description</em>: Add the recurrence to the scheduler. End time and recurrence must be specified.</div>
-    <div class="col col--4"><em>Notes</em>:</div>
+    <div className="row table-row-2">
+    <div className="col col--4"><strong>Recurrence</strong></div>
+    <div className="col col--4"><em>Description</em>: Add the recurrence to the scheduler. End time and recurrence must be specified.</div>
+    <div className="col col--4"><em>Notes</em>:</div>
   </div>
 </div>
 

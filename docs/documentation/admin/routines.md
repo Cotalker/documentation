@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
-<img alt="design" class="img_title" src={useBaseUrl('img/design/routines.svg')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/routines.svg')} />
 <br/>
 
 ## Overview {#overview}
@@ -20,7 +20,7 @@ For example, let's say that in many of your workflows you need to send a system 
 
 To access the <span className="badge badge--primary">Routines</span> section:
 
-<img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_00.png')} />
+<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_00.png')} />
 <br/>
 
 1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
@@ -33,7 +33,7 @@ To access the <span className="badge badge--primary">Routines</span> section:
 
 Create or edit a routine from the **Routines** settings panel:
 
-<img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_00a.png')} />
+<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_00a.png')} />
 <br/>
 
 _Press either:_  
@@ -42,7 +42,7 @@ _Press either:_
 
 After choosing an option, the following settings panel opens up:
 
-<img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_01.png')} />
+<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_01.png')} />
 <br/>
 
 1. **Save**: Saves the current configuration
@@ -57,7 +57,7 @@ After choosing an option, the following settings panel opens up:
 
 ### A. General {#general}
 
-<img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_02.png')} />
+<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_02.png')} />
 <br/>
 
 <div className="container box">
@@ -96,7 +96,7 @@ Options are: `Flowcontrol`, `Network`, or `Normal`
 
 ### B. Inputs {#inputs}
 
-<img alt="access" class="img_sizing" src={useBaseUrl('img/admin_routines_03.png')} />
+<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_03.png')} />
 <br/>
 
 <div className="container box">

@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 import Mermaid from '@theme/Mermaid';
 
-<img alt="design" class="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
 <br/>
 
 ## Introduction {#introduction}
@@ -52,7 +52,7 @@ Endpoint | Description | Data Model(s)
 --- | --- | ---
 [/auth/local](/docs/documentation/api/auth) | authentication token | N/A
 [/companies](/docs/documentation/api/company) | company configuration and settings | [COTCompany](/docs/documentation/models/model_company)
-[/users](/docs/documentation/api/users/users) | users in your company, both humans and bots | [COTUser](/docs/documentation/models/users/model_users)
+[/users](/docs/documentation/api/users/) | users in your company, both humans and bots | [COTUser](/docs/documentation/models/users/model_users)
 [/accessroles](/docs/documentation/api/users/accessroles) | set of permissions granted to users | [COTAccessRole](/docs/documentation/models/users/model_accessroles)
 [/jobtitles](/docs/documentation/api/users/jobtitles) | job titles can group users and give them special attributes | [COTJobTitle](/docs/documentation/models/users/model_jobtitles)
 [/groups](/docs/documentation/api/communication/groups) | groups hold together tasks and channels or act as links to URLs | [COTGroup](/docs/documentation/models/communication/model_groups)
@@ -61,11 +61,11 @@ Endpoint | Description | Data Model(s)
 [/properties](/docs/documentation/api/databases/properties) | properties (elements) make up the property types and can be used to act as assets or even states | [COTProperty](/docs/documentation/models/databases/model_properties)
 [/messages](/docs/documentation/api/communication/messages) | messages correspond to chat messages users send to each in channels, responses submitted in a survey, or system-generated messages | [COTMessage](/docs/documentation/models/communication/model_messages), [COTMessageContentType](/docs/documentation/models/communication/model_messageContent)
 [/media/file](/docs/documentation/api/communication/files) | upload and retrieve files |
-[/surveys](/docs/documentation/api/surveys/surveys) | surveys gather different types of input from users | [COTSurvey](/docs/documentation/models/surveys/model_surveys)
+[/surveys](/docs/documentation/api/surveys/) | surveys gather different types of input from users | [COTSurvey](/docs/documentation/models/surveys/model_surveys)
 [/surveychats](/docs/documentation/api/surveys/survey_chats) | each survey chat holds _questions_ that correspond to a survey[_component_](/docs/documentation/admin/survey/survey_overview#form-components) | [COTSurveyChat](/docs/documentation/models/surveys/model_surveychats)
 [/questions](/docs/documentation/api/surveys/questions) | questions form part of survey [components](/docs/documentation/admin/survey/survey_overview#form-components) | [COTQuestion](/docs/documentation/models/surveys/model_questions), [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType), [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec)
 [/answers](/docs/documentation/api/surveys/answers) | answers represent the input submitted through surveys | [COTAnswer](/docs/documentation/models/surveys/model_answers), [COTAnswerData](/docs/documentation/models/surveys/model_answer_data)
-[/tasks](/docs/documentation/api/tasks/tasks) | this endpoint holds together everything related to tasks: _tasks_, _task groups_, _state machines_, _states_, and _SLAs_ | [COTTask](/docs/documentation/models/tasks/model_tasks), [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup), [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine), [COTSMState](/docs/documentation/models/tasks/model_state), [COTSMSLA](/docs/documentation/models/tasks/model_sla)
+[/tasks](/docs/documentation/api/tasks/) | this endpoint holds together everything related to tasks: _tasks_, _task groups_, _state machines_, _states_, and _SLAs_ | [COTTask](/docs/documentation/models/tasks/model_tasks), [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup), [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine), [COTSMState](/docs/documentation/models/tasks/model_state), [COTSMSLA](/docs/documentation/models/tasks/model_sla)
 [/bots](/docs/documentation/api/automations/bots) | bots carry out diverse programmable routines | [COTBot](/docs/documentation/models/automations/model_bots), [COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot)
 [/schedules](/docs/documentation/api/automations/scheduler) | schedules are automated scheduled routines | [COTSchedule](/docs/documentation/models/automations/model_scheduler), [COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot)
 [/pbscripts](/docs/documentation/api/automations/pbscripts) | corresponds to saved routine stages that can be later incorporated to any routine | [COTPBScript](/docs/documentation/models/automations/model_pbscripts), [COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot)

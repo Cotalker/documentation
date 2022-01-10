@@ -20,7 +20,6 @@ module.exports = {
   ],
   themeConfig: {
     disableDark: 'light',
-    sidebarCollapsible: true,
     navbar: {
       title: '',
       logo: {
@@ -131,6 +130,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/Cotalker/documentation/tree/main/',
+          sidebarCollapsible: true,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

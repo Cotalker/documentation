@@ -5,7 +5,7 @@ title: Introduction
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_title" src={useBaseUrl('img/design/Platforms.svg')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/Platforms.svg')} />
 <br/>
 
 The _administrative panel_ is the admin's main workplace. From here, they can configure and monitor the entire Cotalker environment.
@@ -16,7 +16,7 @@ Access and use of the administrative panel is limited by the user's [access role
 
 ## Accessing the Administrative Panel {#access-administrative-panel}
 
-<img alt="access" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_00.png')} />
+<img alt="access" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_00.png')} />
 <br/>
 
 1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
@@ -41,7 +41,7 @@ _From the administrative panel, you can access the following:_
 </div>
 <div className="row">
 <div className="col col--6">
-<img alt="access" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_01.png')} />
+<img alt="access" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_01.png')} />
 <br/>
 </div>
 <div className="col col--6">

@@ -9,7 +9,7 @@ import Highlight from '@theme/Highlight';
 
 ## Database Overview {#database-overview}
 
-<img alt="Database" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_00.png')} />
+<img alt="Database" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_00.png')} />
 <br/>
 <br/>
 
@@ -26,9 +26,9 @@ As you can see, the versatility of _elements_ is quite significant.
 ## Collection {#collection}
 
 ### Collections List {#collections-list}
-Once inside the <span class="badge badge--primary">Database</span> option in the _Administrative Panel_, you can find the entire list of _collections_ that have been created.
+Once inside the <span className="badge badge--primary">Database</span> option in the _Administrative Panel_, you can find the entire list of _collections_ that have been created.
 
-<img alt="collections list" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collection.png')} />
+<img alt="collections list" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collection.png')} />
 <br/><br/>
 
 _The information shown in the table columns of the image above is as follows:_
@@ -41,9 +41,9 @@ The descriptions of the icons are in the [Overview section](admin_overview).
 :::
 
 ### Edit / Create Collection {#edit--create-collection}
-Pressing the <span class="badge badge--primary">+</span> icon will create a new _collection_ and bring you to the following settings panel, where you can edit or create a single _collection_.
+Pressing the <span className="badge badge--primary">+</span> icon will create a new _collection_ and bring you to the following settings panel, where you can edit or create a single _collection_.
 
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collection_create.png')} />
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collection_create.png')} />
 <br />
 <br />
 
@@ -61,7 +61,7 @@ _Below you will find the description and notes for each field in the **Create co
 ### Elements List {#elements-list}
 From the _collections list_, by clicking on an individual _collection_, this settings panel opens up, where you can find the list of that collection's _elements_.
 
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element.png')} />
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element.png')} />
 <br/>
 <br/>
 
@@ -76,9 +76,9 @@ The descriptions of the icons are in the [Overview section](admin_overview).
 :::
 
 ### Edit / Create Element {#edit--create-element}
-From within a _collection's_ settings panel you can create a new _element_ by pressing the <span class="badge badge--primary">+</span> icon. This will open up the following section, where you can edit or create a single _element_.
+From within a _collection's_ settings panel you can create a new _element_ by pressing the <span className="badge badge--primary">+</span> icon. This will open up the following section, where you can edit or create a single _element_.
 
-<img alt="edit/create element" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_create.png')} />
+<img alt="edit/create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_create.png')} />
 <br/><br/>
 
 _Below you will find the description and notes for each field of the **Create element** settings panel shown above._
@@ -98,7 +98,7 @@ _Below you will find the description and notes for each field of the **Create el
 You can download the _elements_ of a _collection_ only in CSV format. The encoding field options are _Windows_, _Macintosh_ and _UTF-8_.
 
 <br />
-<img alt="download collection" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_download.png')} />
+<img alt="download collection" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_download.png')} />
 <br />
 <br />
 
@@ -115,7 +115,7 @@ You can download the _elements_ of a _collection_ only in CSV format. The encodi
 
 You can import an _element_ list to a _collection_ in CSV format. The encoding field options are _Windows_, _Macintosh_ and _UTF-8_.
 
-<img alt="import collection" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_import.png')} />
+<img alt="import collection" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_element_import.png')} />
 <br />
 <br />
 
@@ -135,55 +135,55 @@ Here you can find [instructions](users#additional-fields) on using **Additional 
 
 ### Creating an Additional Fields Collection {#creating-an-additional-fields-collection}
 
-To create a _collection_ that will host the additional fields, go to the <span class="badge badge--primary">Create/edit Collection</span> settings panel. Under the <span class="badge badge--primary">Fields</span> tab, press the <span class="badge badge--primary">+ Add Field</span>.
+To create a _collection_ that will host the additional fields, go to the <span className="badge badge--primary">Create/edit Collection</span> settings panel. Under the <span className="badge badge--primary">Fields</span> tab, press the <span className="badge badge--primary">+ Add Field</span>.
 
-<img alt="add additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_additional_00.png')} />
+<img alt="add additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_additional_00.png')} />
 <br/>
 <br/>
 
-A <span class="badge badge--info">Field</span> mat will show up. Pressing it will open up the following settings panel:
+A <span className="badge badge--info">Field</span> mat will show up. Pressing it will open up the following settings panel:
 
-<img alt="add additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_additional_01.png')} />
+<img alt="add additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_additional_01.png')} />
 <br/>
 <br/>
 
 ### Field Descriptions {#field-descriptions}
 
-Below you will find the description and notes for each option in the <span class="badge badge--info">Field</span> settings panel:
+Below you will find the description and notes for each option in the <span className="badge badge--info">Field</span> settings panel:
 
-<div class="container">
-  <div class="row table-row-1">
-  <div class="col col--4"><strong>Code</strong></div>
-    <div class="col col--4">This is the unique code that identifies the Additional Field.</div>
-    <div class="col col--4">Only lowercase letters, numbers, and underscores are permitted.</div>
+<div className="container">
+  <div className="row table-row-1">
+  <div className="col col--4"><strong>Code</strong></div>
+    <div className="col col--4">This is the unique code that identifies the Additional Field.</div>
+    <div className="col col--4">Only lowercase letters, numbers, and underscores are permitted.</div>
   </div>
-  <div class="row table-row-2">
-    <div class="col col--4"><strong>Name</strong></div>
-    <div class="col col--4">The Additional Field's name that will be visible to users.</div>
-    <div class="col col--4">The default is set to "Field". It doesn't have to be unique and can use any characters.</div>
+  <div className="row table-row-2">
+    <div className="col col--4"><strong>Name</strong></div>
+    <div className="col col--4">The Additional Field's name that will be visible to users.</div>
+    <div className="col col--4">The default is set to "Field". It doesn't have to be unique and can use any characters.</div>
   </div>
-  <div class="row table-row-1">
-    <div class="col col--4"><strong>Description</strong></div>
-    <div class="col col--4">Describes the Additional Field. For internal use only.</div>
-    <div class="col col--4">It is not required to add a description.</div>
+  <div className="row table-row-1">
+    <div className="col col--4"><strong>Description</strong></div>
+    <div className="col col--4">Describes the Additional Field. For internal use only.</div>
+    <div className="col col--4">It is not required to add a description.</div>
   </div>
-  <div class="row table-row-2">
-    <div class="col col--4"><strong>Array</strong> Toggle Bar</div>
-    <div class="col col--4">This button sets the Additional Field into an array.</div>
-    <div class="col col--4">By switching it on, you can set the minimum and maximum number of elements in the array.</div>
+  <div className="row table-row-2">
+    <div className="col col--4"><strong>Array</strong> Toggle Bar</div>
+    <div className="col col--4">This button sets the Additional Field into an array.</div>
+    <div className="col col--4">By switching it on, you can set the minimum and maximum number of elements in the array.</div>
   </div>
-  <div class="row table-row-1">
-    <div class="col col--4"><strong>Type*</strong></div>
-    <div class="col col--4">Designates the type or format of the data that will be inserted in the Additional Field. Options include: string, number, date, boolean, link, file, element, and user. </div>
-    <div class="col col--4">The "file" option has a subtype which can be set to "video", "picture", or "file". The "element" option can be set to any collection stored in the database. If the collections are not seen in the subtype dropdown menu, you can start typing the name of the collection and it will shortly display itself along with any other similarly named collections. The "link" option will request to specify how the URL will be displayed: embedded, internal or external.</div>
+  <div className="row table-row-1">
+    <div className="col col--4"><strong>Type*</strong></div>
+    <div className="col col--4">Designates the type or format of the data that will be inserted in the Additional Field. Options include: string, number, date, boolean, link, file, element, and user. </div>
+    <div className="col col--4">The "file" option has a subtype which can be set to "video", "picture", or "file". The "element" option can be set to any collection stored in the database. If the collections are not seen in the subtype dropdown menu, you can start typing the name of the collection and it will shortly display itself along with any other similarly named collections. The "link" option will request to specify how the URL will be displayed: embedded, internal or external.</div>
   </div>
-  <div class="row table-row-2">
-    <div class="col col--4"><strong>Required</strong> Toggle Bar</div>
-    <div class="col col--4">Makes it mandatory to fill in the Additional Field.</div>
-    <div class="col col--4">If unmarked, the Additional Field is left optional.</div>
+  <div className="row table-row-2">
+    <div className="col col--4"><strong>Required</strong> Toggle Bar</div>
+    <div className="col col--4">Makes it mandatory to fill in the Additional Field.</div>
+    <div className="col col--4">If unmarked, the Additional Field is left optional.</div>
   </div>
 </div>
 <br/>
 
 ---------
-Once the _collection_ is configured with the **Additional Fields** and saved, you can add _elements_ to it directly in the <span class="badge badge--primary">Database</span> section or through specific modules, like <span class="badge badge--primary">Users</span>.
+Once the _collection_ is configured with the **Additional Fields** and saved, you can add _elements_ to it directly in the <span className="badge badge--primary">Database</span> section or through specific modules, like <span className="badge badge--primary">Users</span>.

@@ -10,7 +10,7 @@ _Basic workflow group settings_
 
 ## Create a Workflow Group {#create-workflow-group}
 
-From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press <span className="badge badge--secondary">+</span>.
+From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press <span className="badge badge--primary">+</span>.
 
 <img alt="create new workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00a.png')} />
 <br/>

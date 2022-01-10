@@ -10,8 +10,8 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div class="card">
-<div class="card__header">
+<div className="card">
+<div className="card__header">
 
 <span className="hero__subtitle"><em>
 
@@ -20,13 +20,13 @@ Don't have time to fill out a survey? Let the bots do it!
 </em></span>
 
 </div>
-<div class="card__image">
+<div className="card__image">
 
-<img alt="fab" class="img_card" src={useBaseUrl('img/updates/update_submit_form_bot.png')} />
+<img alt="fab" className="img_card" src={useBaseUrl('img/updates/update_submit_form_bot.png')} />
 <br/>
 
 </div>
-<div class="card__body">
+<div className="card__body">
 
 Forms are essential for gathering and sharing data. That's why we've implemented a new version of the _Submit Form Bot_. Gather all types of data with our flexible and programable surveys, and now with the power of automation! Easily automate form submissions by making the bots fill them out with the information they gather from your database. 🤖
 

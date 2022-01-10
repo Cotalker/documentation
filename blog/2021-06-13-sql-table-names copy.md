@@ -11,8 +11,8 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div class="card">
-<div class="card__header">
+<div className="card">
+<div className="card__header">
 
 <span className="hero__subtitle"><em>
 
@@ -21,13 +21,13 @@ No more `#$<>~{#}`
 </em></span>
 
 </div>
-<div class="card__image">
+<div className="card__image">
 
-<img alt="fab" class="img_card" src={useBaseUrl('img/updates/update_sql_table_names.png')} />
+<img alt="fab" className="img_card" src={useBaseUrl('img/updates/update_sql_table_names.png')} />
 <br/>
 
 </div>
-<div class="card__body">
+<div className="card__body">
 
 While doing some housework on our BI & SQL database service, we removed the clutter and **re-wrote the table names**. With our newly instated naming convention, it is now visually easier to understand the content of your SQL database tables. Find out more about the new table name structure and our BI & SQL service in the documentation. 
 

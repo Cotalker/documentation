@@ -43,34 +43,34 @@ A reliable way to separate each area is by using [**collections**](../../documen
 
 ## Steps {#steps}
 ### I. Create Collection {#i-create-collection}
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Database</span>.
+1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Database</span>.
 
   _The following settings panel will open up:_
 
-<img alt="collection panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_00.png')} />
+<img alt="collection panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_00.png')} />
 <br/>
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-2. Press the <span class="badge badge--primary">+</span> icon to create a new _Collection_.
+2. Press the <span className="badge badge--primary">+</span> icon to create a new _Collection_.
 
-<img alt="create collection icon" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_00a.png')} /> 
+<img alt="create collection icon" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_00a.png')} /> 
 <br/>
 
 _The following settings panel will open up:_
 
-<img alt="create collection panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_01.png')} /> 
+<img alt="create collection panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_01.png')} /> 
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 3. From the settings panel, set the following:
 
@@ -84,19 +84,19 @@ _The following settings panel will open up:_
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 4. Select the option **Don't show this collection in the database section**.
 
-<img alt="option" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_02.png')} /> 
+<img alt="option" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_02.png')} /> 
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-5. Press <span class="badge badge--primary">Save</span>.
+5. Press <span className="badge badge--primary">Save</span>.
 
 :::note
 - Once you press **Save**, you will be then taken to the _Department_ collection's settings panel.
@@ -107,23 +107,23 @@ _The following settings panel will open up:_
 
 ### II. Create Elements {#ii-create-elements}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-6. From the **Department** collection's settings panel, press the <span class="badge badge--primary">+</span> icon to create a new _Element_, as shown in the next image:
+6. From the **Department** collection's settings panel, press the <span className="badge badge--primary">+</span> icon to create a new _Element_, as shown in the next image:
 
-<img alt="create element icon" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_03.png')} />
+<img alt="create element icon" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_collection_step_03.png')} />
 <br/>
 <br/>
 
 _The following settings panel will open up:_
 
-<img alt="element settings panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_element_step.png')} /> 
+<img alt="element settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_element_step.png')} /> 
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 7. From the **Create element** panel, set the following: 
 
@@ -133,14 +133,14 @@ _The following settings panel will open up:_
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-8. Press <span class="badge badge--primary">Save</span>.
+8. Press <span className="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 9. Repeat steps 6, 7, and 8 for each area of the company.<br/>
 
@@ -154,5 +154,5 @@ _The following settings panel will open up:_
 ## Result {#result}
 The list of all _elements_ inside the _collection_ will look like this:
 
-<img alt="element list" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_elements.png')} /> 
+<img alt="element list" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_elements.png')} /> 
 <br/>

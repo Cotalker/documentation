@@ -6,7 +6,7 @@ sidebar_label: Routine Builder
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
 
 ## Overview {#routine-overview}
 

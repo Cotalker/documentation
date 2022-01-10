@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 _States are the different moments or statuses through which a task could pass by in its lifecycle within the workflow._
 
 ## How to Create a State {#how-to-create-a-state}
-To create a new state, press the <span className="badge badge--secondary">+</span> icon (circled in red in the image below) in the [**states** section of the create/edit workflow settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#states).
+To create a new state, press the <span className="badge badge--primary">+</span> icon (circled in red in the image below) in the [**states** section of the create/edit workflow settings panel](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#states).
 
 <img alt="create state" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_state_00.png')} />
 <br/>
@@ -102,7 +102,7 @@ The state should already exist as an element in the collection selected previous
 <div className="col col--5">
 
 Creates an action button in the workflow's channel that indicates how a state change can be triggered. Options are: 
-- _None_: The action button is not created. Use this option to change states through other means, like: [_survey trigger_](/docs/documentation/admin/workflows/settings_panels/create_edit_state/#survey-trigger), [_task view_](/docs/documentation/client/taskview#task-view), a [routine-stage bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/tasks).
+- _None_: The action button is not created. Use this option to change states through other means, like: [_survey trigger_](/docs/documentation/admin/workflows/settings_panels/create_edit_state/#survey-trigger), [_task view_](/docs/documentation/client/taskview#task-view), a [routine-stage bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/).
 - _Survey_: A survey is added as an option in the actions button. The **start form** field appears. There you can indicate which survey should be summoned.
 - _Manual_: Adds the state itself as an option in the actions button.
 

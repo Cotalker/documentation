@@ -5,7 +5,7 @@ sidebar_label: Users
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="users" class="img_title" src={useBaseUrl('img/design/users.svg')} />
+<img alt="users" className="img_title" src={useBaseUrl('img/design/users.svg')} />
 
 ## Overview {#overview}
 
@@ -19,7 +19,7 @@ _Users_ can also view and perform changes in the **Administrative Panel**, depen
 ## Accessing the Users Panel {#accessing-users-panel}
 To access the <span className="badge badge--primary">Users</span> panel:
 
-<img alt="user panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_00.png')} />
+<img alt="user panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_00.png')} />
 <br/>
 
 1. Press the <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
@@ -31,7 +31,7 @@ To access the <span className="badge badge--primary">Users</span> panel:
 ## Users Panel Layout {#users-panel-layout}
 In this section, you can find the complete list of _users_ that have been created within the company.
   
-<img alt="user panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_01.png')} />
+<img alt="user panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_01.png')} />
 <br/>
 
 _Actions:_
@@ -52,7 +52,7 @@ _Table and Options:_
 <br/>
 
 ## Create User {#create-user}
-Create a new _user_ by pressing the <span className="badge badge--secondary">+</span> icon in the upper right corner of the **Users Panel**. The [**User Settings Panel**](#user-settings-panel) will open up.
+Create a new _user_ by pressing the <span className="badge badge--primary">+</span> icon in the upper right corner of the **Users Panel**. The [**User Settings Panel**](#user-settings-panel) will open up.
 
 <img alt="create user" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_03.png')} />
 <br/>
@@ -417,26 +417,26 @@ When creating or modifying a _user_, it may be desirable to add extra informatio
 
 _In order to activate **Additional Fields**, press the button in the upper-right corner:_
 
-<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_05.png')} />
+<img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_05.png')} />
 <br/>
 <br/>
 
 _From the following dialog box, choose the **Collection containing the Additional Fields** that you want to associate with the **user**._
 
-<img alt="choose additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_06.png')} />
+<img alt="choose additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_06.png')} />
 <br/>
 <br/>
 
 _You can also conduct a search for the **collection** you are looking for._
 
-<img alt="choose additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_07.png')} />
+<img alt="choose additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_07.png')} />
 <br/>
 <br/>
 
 
 _Once the **Collection** has been selected, a new tab will appear in the **user** settings panel with the name of the **collection** containing the additional fields._
 
-<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_08.png')} />
+<img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_08.png')} />
 <br/>
 
 ---
@@ -447,4 +447,4 @@ _Once the **Collection** has been selected, a new tab will appear in the **user*
 
 - [How to Create a User Tutorial](/docs/tutorials/basic/create_user)
 - [User data model](/docs/documentation/models/users/model_users)
-- [User API Requests](/docs/documentation/api/users/users)
+- [User API Requests](/docs/documentation/api/users/)

@@ -7,7 +7,7 @@ import Highlight from '@theme/Highlight';
 
 ## Introduction {#introduction}
 
-<img alt="user section" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_00.png')} />
+<img alt="user section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_00.png')} />
 <br/>
 
 _Users_ are the basic unit of a company. They may log in and perform actions within the company, such as sending messages.
@@ -20,7 +20,7 @@ This section is divided into two parts: the **User list** to search, review, and
 
 In this section, you can find the complete list of _users_ that have been created.
   
-<img alt="user list" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_list.png')} />
+<img alt="user list" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_list.png')} />
 <br/>
 
 :::note
@@ -43,7 +43,7 @@ The information shown in the _user list_ corresponds to:
 You can only download _user lists_ in CSV format.  
 The available encoding field options are `Windows`, `Macintosh` and `UTF-8`.  
 
-<img alt="download list" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_download.png')} />
+<img alt="download list" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_download.png')} />
 <br/>
 
   
@@ -105,19 +105,19 @@ When creating or modifying a _user_, it may be desirable to add extra informatio
 
 _In order to activate **Additional Fields**, press the button in the upper-right corner:_
 
-<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_00.png')} />
+<img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_00.png')} />
 <br/>
 <br/>
 
 _From the following dialog box, choose the **Additional Fields** you want to associate with the **user**._
 
-<img alt="choose additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_01.png')} />
+<img alt="choose additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_01.png')} />
 <br/>
 <br/>
 
 _Once the **Additional Fields** have been selected, **Additional Field Tabs** will appear at the bottom of the **user** settings panel._
 
-<img alt="additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_02.png')} />
+<img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_user_additional_02.png')} />
 <br/>
 
 :::note Setup information

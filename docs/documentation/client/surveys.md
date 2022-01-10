@@ -5,7 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Mermaid from '@theme/Mermaid';
 
 
-<img alt="design" class="img_title" src={useBaseUrl('img/design/Videocall.svg')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/Videocall.svg')} />
 
 <br/>
 

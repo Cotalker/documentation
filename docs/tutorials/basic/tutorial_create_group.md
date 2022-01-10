@@ -50,35 +50,35 @@ The company's departments or areas and their respective links are as follow:
 ## Steps {#steps}
 ### I. Create New Regular Group {#i-create-new-regular-group}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Groups</span>.
+1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Groups</span>.
 
-<img alt="groups" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_00a.png')} />
+<img alt="groups" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_00a.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-2. Press the <span class="badge badge--primary">+</span> icon to create a new _Group_.
+2. Press the <span className="badge badge--primary">+</span> icon to create a new _Group_.
 
-<img alt="groups" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_00.png')} />
+<img alt="groups" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_00.png')} />
 <br/>
 <br/>
 
   _The following settings panel will open up:_
 
-<img alt="groups" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_01.png')} />
+<img alt="groups" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_01.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-3. Under the <span class="badge badge--primary">General information</span>, set the following:
+3. Under the <span className="badge badge--primary">General information</span>, set the following:
 
     - **Name**: `Cybersecurity`
     - **Code**: `cybersecuritygroup_1`
@@ -86,9 +86,9 @@ The company's departments or areas and their respective links are as follow:
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-4. Under the <span class="badge badge--primary">Icon</span> tab, set the following:
+4. Under the <span className="badge badge--primary">Icon</span> tab, set the following:
 
     - **Select Icon**: `Robot`
     - **Color**: `Green`
@@ -96,22 +96,22 @@ The company's departments or areas and their respective links are as follow:
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-5. Under the <span class="badge badge--primary">Channel creation</span> tab, set the following:
+5. Under the <span className="badge badge--primary">Channel creation</span> tab, set the following:
 
     - Activate the **Allow channel creation** option.
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-6. Press <span class="badge badge--primary">Save</span>.
+6. Press <span className="badge badge--primary">Save</span>.
 
   _Your screen should look something like this before saving:_
 
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_02.png')} />
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_02.png')} />
 <br/>
 
 </div>
@@ -119,40 +119,40 @@ The company's departments or areas and their respective links are as follow:
 
 ### II. Channel Set Up {#ii-channel-set-up}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-7. From within the <span class="badge badge--primary">Groups</span> section, click on the **Cybersecurity** group.
+7. From within the <span className="badge badge--primary">Groups</span> section, click on the **Cybersecurity** group.
 
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_03.png')} />
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_03.png')} />
 
 <br/>
 <br/>
 
   _The following settings panel will open up:_
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_04.png')} />
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_04.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-8. From the **Cybersecurity** group's settings panel, press the <span class="badge badge--primary">+</span> icon to create a new _Channel_, as shown below:
+8. From the **Cybersecurity** group's settings panel, press the <span className="badge badge--primary">+</span> icon to create a new _Channel_, as shown below:
 
-<img alt="create icon" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_04a.png')} />
+<img alt="create icon" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_04a.png')} />
 <br/>
 
   _The following settings panel will open up:_
 
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_05.png')} />
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_05.png')} />
 <br/>
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-9. Under the <span class="badge badge--primary">General information</span> tab, set the following:
+9. Under the <span className="badge badge--primary">General information</span> tab, set the following:
 
     - **Name**: `Cybersecurity Inquiries`
     - **Code**: `cybersecurityinquiries_1`
@@ -160,68 +160,68 @@ The company's departments or areas and their respective links are as follow:
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-10. Under the <span class="badge badge--primary">Participants</span> tab, set the following: 
+10. Under the <span className="badge badge--primary">Participants</span> tab, set the following: 
 
     - **Users**: _Search for and add each employee of the company._
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-11. Under the <span class="badge badge--primary">Options</span> tab, make sure all options are turned on.
+11. Under the <span className="badge badge--primary">Options</span> tab, make sure all options are turned on.
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-12. Press <span class="badge badge--primary">Save</span>.
+12. Press <span className="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 13. Repeat the last five steps to create a private **Cybersecurity** channel only with department personnel.
 
   _Upon completion, your **Cybersecurity** group's settings panel should look something like this:_
 
-<img alt="" class="img_sizing" src={useBaseUrl('img/tutorial_group_06.png')} />
+<img alt="" className="img_sizing" src={useBaseUrl('img/tutorial_group_06.png')} />
 
 </div>
 <br/>
 
 ### III. Link Group Set Up {#iii-link-group-set-up}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-14. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Link groups</span>.
+14. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Link groups</span>.
 
     _The **Links groups** panel will open up and your screen should look something like this:_
 
-<img alt="link groups" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_07.png')} />
+<img alt="link groups" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_07.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-15. Press the <span class="badge badge--primary">+</span> icon to create a new _Group_.
+15. Press the <span className="badge badge--primary">+</span> icon to create a new _Group_.
 
   _The following settings panel will open up:_
 
-<img alt="new group" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_08.png')} />
+<img alt="new group" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_08.png')} />
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-18. Under the <span class="badge badge--primary">General information</span> tab, set the following:
+18. Under the <span className="badge badge--primary">General information</span> tab, set the following:
 
     - **Name**: `Cybersecurity Folder`
     - **Code**: `cybersecurityfolder_1`
@@ -237,9 +237,9 @@ The company's departments or areas and their respective links are as follow:
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-19. Under the <span class="badge badge--primary">Icon</span> tab, set the following:
+19. Under the <span className="badge badge--primary">Icon</span> tab, set the following:
 
     - **Select Icon**: `Folder`
     - **Color**: `Cyan`
@@ -247,14 +247,14 @@ The company's departments or areas and their respective links are as follow:
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-20. Press <span class="badge badge--primary">Save</span>.
+20. Press <span className="badge badge--primary">Save</span>.
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 26. Repeat the steps above for the rest of the departments. 
 
@@ -267,7 +267,7 @@ For this tutorial, it's enough to create just one more _group link_.
 
 ## Result {#result}
 The *Cybersecurity* group will look something like this:
-<img alt="group channel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_final.png')} />
+<img alt="group channel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_group_final.png')} />
 <br/>
 <br/>
 
