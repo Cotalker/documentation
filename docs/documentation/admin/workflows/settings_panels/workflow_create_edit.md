@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 _Settings panel for creating and editing a workflow. Edit an existing workflow to configure settings not initially available when creating it. From this panel, modify and add states, routines, subtasks, start forms, and SLAs. Make your Start Forms public._
 
 ## Create a Workflow {#create-workflow}
-You can create a new workflow by pressing the <span className="badge badge--secondary">+</span> icon found in the upper right-hand corner of the [Workflows Settings Panel](/docs/documentation/admin/workflows/settings_panels/workflows-setup).
+You can create a new workflow by pressing the <span className="badge badge--primary">+</span> icon found in the upper right-hand corner of the [Workflows Settings Panel](/docs/documentation/admin/workflows/settings_panels/workflows-setup).
 
 <img alt="create workflow" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_create_00.png')} />
 <br/>
@@ -137,7 +137,7 @@ Options are: _unique_ or _generic_.
 <div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>
 
-Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks/tasks#task-permissions-for-unassociated-users).
+Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
 
 </em></div>
 </div>
@@ -239,7 +239,7 @@ Press this icon to hide or display the workflow diagram.
 <div className="col col--3"><b>8. Create state icon</b>:</div>
 <div className="col col--5">
 
-After pressing the <span className="badge badge--secondary">+</span> icon to create new states in the workflow, the [**Create State settings panel**](/docs/documentation/admin/workflows/settings_panels/create_edit_state) will open up.
+After pressing the <span className="badge badge--primary">+</span> icon to create new states in the workflow, the [**Create State settings panel**](/docs/documentation/admin/workflows/settings_panels/create_edit_state) will open up.
 
 </div>
 <div className="col col--4"><em></em></div>

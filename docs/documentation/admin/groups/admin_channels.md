@@ -43,7 +43,7 @@ _Settings and Options:_
 <br/>
 
 ## Create Channel within a Group {#create-channel}
-From within the [_Channels Panel_](#channels-panel-layout), you can create a new _channel_ by pressing the <span className="badge badge--secondary">+</span> icon. This will open up the [Channel Settings Panel](#channel-settings-panel-layout), where you can configure and save a new _channel_.
+From within the [_Channels Panel_](#channels-panel-layout), you can create a new _channel_ by pressing the <span className="badge badge--primary">+</span> icon. This will open up the [Channel Settings Panel](#channel-settings-panel-layout), where you can configure and save a new _channel_.
 
 <img alt="create channel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_group_channels_00b.png')} />
 <br/>

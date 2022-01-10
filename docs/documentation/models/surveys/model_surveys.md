@@ -104,7 +104,7 @@ Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey)
 ## Additional Resources {#resources}
 
 - [Surveys Overview](/docs/documentation/admin/survey/survey_overview): Complete description about surveys
-- ["Survey" REST API documentation](/docs/documentation/api/surveys/surveys): basic "Survey" API requests
+- ["Survey" REST API documentation](/docs/documentation/api/surveys/): basic "Survey" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
 - [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
 - [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines

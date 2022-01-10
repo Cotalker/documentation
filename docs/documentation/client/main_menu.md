@@ -3,7 +3,7 @@ title: Main Menu Bar
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />
 <br/>
 <br/>
 

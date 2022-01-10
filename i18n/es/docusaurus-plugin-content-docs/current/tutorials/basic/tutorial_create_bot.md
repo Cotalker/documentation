@@ -32,41 +32,41 @@ The email message will contain the sender's name and the _channel_ where the _bo
 
 ## Steps {#steps}
 ### I. Create "Email" Stage {#i-create-email-stage}
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Bot</span>.
+1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Bot</span>.
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-2. Press the <span class="badge badge--primary">+</span> button to create a new _Bot_, as shown below:
+2. Press the <span className="badge badge--primary">+</span> button to create a new _Bot_, as shown below:
 
-<img alt="create new bot" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_00.png')}/>
+<img alt="create new bot" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_00.png')}/>
 <br/>
 
 _The following settings panel will open up:_
 
-<img alt="create new bot" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_01.png')}/>
+<img alt="create new bot" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_01.png')}/>
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 3. In the settings panel, set up the following information:
 
-  I. Under the <span class="badge badge--primary">General Information</span> section, fill in the following fields:
+  I. Under the <span className="badge badge--primary">General Information</span> section, fill in the following fields:
     * **Name**: `Email Bomb`
     * **User bot name**: `emailbomb`
     * **Description**: `Contact the person through email.`
 
-  II. Under the <span class="badge badge--primary">Access</span> tab, enter the following information:
+  II. Under the <span className="badge badge--primary">Access</span> tab, enter the following information:
     * **Access Roles**: `default`
 
-  III. Under the <span class="badge badge--primary">Functions</span> tab, set the following options:
+  III. Under the <span className="badge badge--primary">Functions</span> tab, set the following options:
     * **Global**: _activated_
     * **It's a survey command**: _deactivated_
     * **It's a slash command**: _activated_
@@ -74,29 +74,29 @@ _The following settings panel will open up:_
 
 _Your screen should look something like the following image:_
 
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_01a.png')}/>
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_01a.png')}/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-4. In the settings panel, open the <span class="badge badge--primary">Routine Builder</span> tab and press the <span class="badge badge--primary">+ Add Routine</span> button.
+4. In the settings panel, open the <span className="badge badge--primary">Routine Builder</span> tab and press the <span className="badge badge--primary">+ Add Routine</span> button.
 
   _The following settings panel will open up:_
 
-<img alt="routine builder" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_02.png')}/>
+<img alt="routine builder" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_02.png')}/>
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-5. Press <span class="badge badge--primary">+ Add Stage</span> to create the first stage of the _routine_. The following panel will open up:
+5. Press <span className="badge badge--primary">+ Add Stage</span> to create the first stage of the _routine_. The following panel will open up:
 
 <br/>
-<img alt="create new bot" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_03.png')}/>
+<img alt="create new bot" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_03.png')}/>
 <br/>
 
   - Set the following fields:
@@ -106,14 +106,14 @@ _Your screen should look something like the following image:_
 
   _Once the stage **Type** is defined, the **Options** fields will be displayed below, where you must specify the settings. It will look as follows:_
 
-<img alt="email settings" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_04.png')}/>
+<img alt="email settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_04.png')}/>
 <br/>
 
 - Fill the fields with the following information:
 
   * **Subject**: `Hey! We need to talk to you.`
   * **Data**: `{"recipientName":"","recipientEmail":"","companyName":"Ruanda","title":["Your team is looking for you."],"action":"","code":"","messageA":"$JOIN# #Your presence is requested in the channel:#($VALUE#channel|nameDisplay)#","messageB":""}`
-  * In the **To** section, press <span class="badge badge--primary">+ Add Item</span>
+  * In the **To** section, press <span className="badge badge--primary">+ Add Item</span>
   * Then, in the **Item** field, type `$VALUE#cmdArgs`
 
 :::note Technical Notes:
@@ -127,19 +127,19 @@ _Your screen should look something like the following image:_
 
 ### II. Create "Message" Stage {#ii-create-message-stage}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-6. Scroll up to the top of the <span class="badge badge--primary">Routine Builder</span> section and press <span class="badge badge--primary">+ Add Stage</span> to create the second stage, which will generate the automated message sent to the chat once the email has been sent.
+6. Scroll up to the top of the <span className="badge badge--primary">Routine Builder</span> section and press <span className="badge badge--primary">+ Add Stage</span> to create the second stage, which will generate the automated message sent to the chat once the email has been sent.
 
   _The screen should look like this:_
 
-<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_05.png')}/>
+<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_05.png')}/>
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 7. In the options that opened up, set the following:
 
@@ -153,9 +153,9 @@ _Your screen should look something like the following image:_
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-8. Scroll back up to the top of the <span class="badge badge--primary">Routine Builder</span> and fill in the **Max. Iterations** field with `2`. Then, make sure that the **Initial Stage** is set to `email`.
+8. Scroll back up to the top of the <span className="badge badge--primary">Routine Builder</span> and fill in the **Max. Iterations** field with `2`. Then, make sure that the **Initial Stage** is set to `email`.
 
 :::note Important:
 - _Each iteration is the execution of a stage. Therefore, you need as many iterations as you have stages. If any stage loops, you will have to count each loop as an iteration._
@@ -164,29 +164,29 @@ _Your screen should look something like the following image:_
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 9. Select the **email** stage as shown below:
 
-<img alt="go to email stage" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_06.png')}/>
+<img alt="go to email stage" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_06.png')}/>
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 10. Next, scroll down to the bottom of the **email** stage and in the **Outputs** option select `message`.
 
-<img alt="outputs option" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_07.png')}/>
+<img alt="outputs option" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_07.png')}/>
 <br/>
 
 </div>
 <br/>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-11. Scroll up to the top of the page and press <span class="badge badge--primary">Save</span>.
+11. Scroll up to the top of the page and press <span className="badge badge--primary">Save</span>.
 
 </div>
 <br/>
@@ -202,14 +202,14 @@ If you direct yourself to a _channel_ and type `/emailbomb name@example.com`, th
 _The screen should look something like this:_
 
 
-<img alt="send email" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_08.png')}/>
+<img alt="send email" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_08.png')}/>
 
 <br/>
 <br/>
 
 _The recipient will receive an email similar to this one:_
 
-<img alt="sent email" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_09.png')} />
+<img alt="sent email" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_09.png')} />
 
 <br/>
 

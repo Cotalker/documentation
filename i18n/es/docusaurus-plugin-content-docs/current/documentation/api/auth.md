@@ -17,7 +17,7 @@ Authentication can be done by various methods as User/Password or Google Sign-in
 
 #### User/Password {#userpassword}
  
-This type of authentification is done with a [user](/docs/documentation/api/users/users) calling the POST /auth/local endpoint with the user's email and password. The obtained access-token has the same permissions as the user, and if the user is deactivated, downgraded, or upgraded so is the associated access-token. 
+This type of authentification is done with a [user](/docs/documentation/api/users/) calling the POST /auth/local endpoint with the user's email and password. The obtained access-token has the same permissions as the user, and if the user is deactivated, downgraded, or upgraded so is the associated access-token. 
 
 |   Parameter    |  Value | 
 |-----------|-----------------|

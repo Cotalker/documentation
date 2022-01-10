@@ -112,14 +112,14 @@ Below are the descriptions of the fields found in this section:
 
 _If activated, users will be able to create new channels through the Actions button seen below:_
 
-<img alt="fab" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_communication_group.png')} />
+<img alt="fab" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_communication_group.png')} />
 <br/>
 
 ### Secondary Actions {#secondary-actions}
 Through the _Actions_ button – a green floating button that appears at the bottom of the group panel – users can access URLs, which can be configured to open external websites, go to different sections of the app, and answer surveys.
 
 _The Actions button and its corresponding Actions Menu will look something like the image below:_
-<img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
+<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
 <br/>
 
 :::note
@@ -130,12 +130,12 @@ New channels can also be created through the _Actions_ button. That option is ac
 
 Descriptions of the fields and options in the _secondary actions_ section are explained below:
 
-The <span class="badge badge--secondary">+ ADD NEW ACTION</span>: creates an _action_ that can be accessed through the _Actions_ button.
-<img alt="add new action" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_00.png')} />
+The <span className="badge badge--secondary">+ ADD NEW ACTION</span>: creates an _action_ that can be accessed through the _Actions_ button.
+<img alt="add new action" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_00.png')} />
 <br/>
 
-Pressing this button opens up a <span class="badge badge--secondary">New action #1</span> pad. Press the pad to open the new action's settings panel.
-<img alt="add new action" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_01.png')} />
+Pressing this button opens up a <span className="badge badge--secondary">New action #1</span> pad. Press the pad to open the new action's settings panel.
+<img alt="add new action" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_secondary_actions_01.png')} />
 <br/>
 
 The action's settings panel fields are described below:

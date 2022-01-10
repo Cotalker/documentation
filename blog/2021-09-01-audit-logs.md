@@ -10,8 +10,8 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div class="card">
-<div class="card__header">
+<div className="card">
+<div className="card__header">
 
 <span className="hero__subtitle"><em>
 
@@ -20,13 +20,13 @@ Who, what, when?!
 </em></span>
 
 </div>
-<div class="card__image">
+<div className="card__image">
 
-<img alt="fab" class="img_card" src={useBaseUrl('img/updates/update_auditlog.png')} />
+<img alt="fab" className="img_card" src={useBaseUrl('img/updates/update_auditlog.png')} />
 <br/>
 
 </div>
-<div class="card__body">
+<div className="card__body">
 
 Keep track of who did what and when. With this new audit log, admins can monitor the creation, modification, deactivation, and activation of _user_ profiles and _access roles_. See also who, what, and when something was added or modified. The log comes complete with IP address tracker and links to the items in question. Use display filters to easily find the events you need to track.
 

@@ -49,13 +49,13 @@ As mentioned in the [Overview](../tutorial_overview), we will be working with a 
 * _User_ with the `read admin` access role.
 
 ## Steps {#steps}
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Company</span>.
+1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Company</span>.
 
   _The company's settings panel will open up as shown below:_
 
-<img class="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_configure_company_01.png')} /> 
+<img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_configure_company_01.png')} /> 
 <br/>
 <br/>
 
@@ -66,9 +66,9 @@ As mentioned in the [Overview](../tutorial_overview), we will be working with a 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-2. Under the <span class="badge badge--primary">Features</span> tab, in the _Job categories_ field, add the desired job titles:
+2. Under the <span className="badge badge--primary">Features</span> tab, in the _Job categories_ field, add the desired job titles:
     - CEO
     - head of financial control
     - financial controller
@@ -85,7 +85,7 @@ As mentioned in the [Overview](../tutorial_overview), we will be working with a 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 3. Set up their _terms of service_ URL:
     - Activate the ***Show terms of service*** option.
@@ -94,16 +94,16 @@ As mentioned in the [Overview](../tutorial_overview), we will be working with a 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-4. Under the <span class="badge badge--primary">Apperance</span> tab, set the default language to _Spanish_.
+4. Under the <span className="badge badge--primary">Apperance</span> tab, set the default language to _Spanish_.
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-5. Press <span class="badge badge--primary">Save</span>.
+5. Press <span className="badge badge--primary">Save</span>.
 
 :::note 
 - _The **Save** button is on the upper right-hand corner._
@@ -116,4 +116,4 @@ As mentioned in the [Overview](../tutorial_overview), we will be working with a 
 ## Result {#result}
 After completing all the steps, your settings panel should look something like this:
 
-<img alt="result" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_create_company_02.png')} />
+<img alt="result" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_create_company_02.png')} />

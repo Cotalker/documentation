@@ -27,34 +27,34 @@ The company wants only bosses and the CEO to be able to see the company's report
 
 #### I. Create the Access Role: {#i-create-the-access-role}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Acesss roles</span>.
+1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Acesss roles</span>.
 
   _The following settings panel will open up:_
 
-<img alt="access role panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_access_00.png')} />
+<img alt="access role panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_access_00.png')} />
 <br/>
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-2. Press the <span class="badge badge--primary">+</span> icon shown below to create a new *Access Role*:
+2. Press the <span className="badge badge--primary">+</span> icon shown below to create a new *Access Role*:
 
-<img class="img_sizing item shadow--tl" alt="create access role icon" src={useBaseUrl('img/tutorial_access_01.png')} />
+<img className="img_sizing item shadow--tl" alt="create access role icon" src={useBaseUrl('img/tutorial_access_01.png')} />
 <br/>
 
 _The following settings panel will then open up:_
 
-<img class="img_sizing item shadow--tl" alt="create access role panel" src={useBaseUrl('img/tutorial_access_02.png')} />
+<img className="img_sizing item shadow--tl" alt="create access role panel" src={useBaseUrl('img/tutorial_access_02.png')} />
 <br/>
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 3. Set the following: 
 
@@ -68,9 +68,9 @@ _The following settings panel will then open up:_
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-4. Press <span class="badge badge--primary">Save</span>.
+4. Press <span className="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
@@ -79,20 +79,20 @@ _The following settings panel will then open up:_
 
 #### II. Assign the access role to each boss and CEO: {#ii-assign-the-access-role-to-each-boss-and-ceo}
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-5. Access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Users</span>.
+5. Access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Users</span>.
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 6. Search for the boss of cybersecurity, *Mario Casas*. Click on the *user* to edit their properties.
 
   _Your **Users** panel should look something like this:_
 
-<img class="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_access_03.png')} />
+<img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_access_03.png')} />
 <br/>
 
 _Once you click on the **user** you want to edit, the **Edit user** settings panel will open up, as shown in the next step._
@@ -100,13 +100,13 @@ _Once you click on the **user** you want to edit, the **Edit user** settings pan
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-7. In the **Edit users** settings panel, under the <span class="badge badge--primary">Access</span> tab, set the following:
+7. In the **Edit users** settings panel, under the <span className="badge badge--primary">Access</span> tab, set the following:
 
     - **Access Roles**: `Report Access`.
 
-<img class="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_access_04.png')} />
+<img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_access_04.png')} />
 <br/>
 <br/>
 
@@ -118,14 +118,14 @@ _Once you click on the **user** you want to edit, the **Edit user** settings pan
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
-8. Press <span class="badge badge--primary">Save</span>.
+8. Press <span className="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
 
-<div class="alert alert--secondary">
+<div className="alert alert--secondary">
 
 9. Repeat the last three steps with each boss and the CEO.
 
@@ -136,9 +136,9 @@ _Once you click on the **user** you want to edit, the **Edit user** settings pan
 ## Result {#result}
 After creating the _access role_, you should be able to see it in the **Access Role** panel, as shown below:
 
-<img class="img_sizing item shadow--tl" alt="access role result" src={useBaseUrl('img/tutorial_access_result_01.png')} />
+<img className="img_sizing item shadow--tl" alt="access role result" src={useBaseUrl('img/tutorial_access_result_01.png')} />
 <br/>
 
 After designating a _user_ with the newly created _access role_, the user's settings panel should look something like this:
 
-<img class="img_sizing item shadow--tl" alt="user result" src={useBaseUrl('img/tutorial_access_result_02.png')} />
+<img className="img_sizing item shadow--tl" alt="user result" src={useBaseUrl('img/tutorial_access_result_02.png')} />
