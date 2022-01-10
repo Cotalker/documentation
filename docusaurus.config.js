@@ -20,7 +20,6 @@ module.exports = {
   ],
   themeConfig: {
     disableDark: 'light',
-    // sidebarCollapsible: true,
     navbar: {
       title: '',
       logo: {
@@ -36,8 +35,6 @@ module.exports = {
           position: 'left',
         },
         {
-          // to: 'docs/updates/new_features',
-          // activeBasePath: 'docs',
           to: 'blog',
           label: `What's New`,
           position: 'left',
