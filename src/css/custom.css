@@ -274,13 +274,13 @@ p, td, th {
 
 
 /*---- Admonition ----*/
-.admonition-important h5 {
+/* .admonition-important h5 {
   color: white!important;
 }
 
 .admonition-important p {
   color: white!important;
-}
+} */
 
 /* .admonition-note h5 {
   color: #113355!important;
