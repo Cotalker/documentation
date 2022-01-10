@@ -19,7 +19,7 @@
     "@docusaurus/preset-classic": "^2.0.0-beta.14",
     "@docusaurus/theme-live-codeblock": "^2.0.0-beta.14",
     "@docusaurus/theme-translations": "^2.0.0-beta.14",
-    "axios": "^0.21.1",
+    "axios": "^0.24.0",
     "classnames": "^2.2.6",
     "mermaid": "^8.4.8",
     "react": "^16.8.4",
@@ -39,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "cssnano": "^4.1.10",
+    "cssnano": "^5.0.15",
     "husky": "^5.0.0-beta.0",
     "postcss": "^8.2.8",
     "postcss-cli": "^8.3.1"
