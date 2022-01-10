@@ -1,6 +1,6 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/Dashboards.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Dashboards.svg')} />
 
 ## Overview {#overview}
 

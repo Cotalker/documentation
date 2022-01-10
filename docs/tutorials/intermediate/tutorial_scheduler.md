@@ -42,7 +42,7 @@ To make it even more fun, have the company's mascot send the message.
 
 ### I. Create a Collection
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 1. Create the _birthdays_ collection.
 
@@ -60,7 +60,7 @@ To make it even more fun, have the company's mascot send the message.
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 2. Add **Elements** to add person and birthdate. 
 
@@ -69,72 +69,72 @@ To make it even more fun, have the company's mascot send the message.
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 3. Use the following data for this exercise:
 
 <!-- This was taken from the former version, for use with (soon to be deprecated Attributes) -->
 
-<div className="container">
-<div className="row table-row-1">
-<div className="col col--4">Name:</div>
-<div className="col col--4">Code:</div>
-<div className="col col--4">Display:</div>
+<div class="container">
+<div class="row table-row-1">
+<div class="col col--4">Name:</div>
+<div class="col col--4">Code:</div>
+<div class="col col--4">Display:</div>
 </div>
-<div className="row table-row-2">
-<div className="col col--4">January</div>
-<div className="col col--4">month_01</div>
-<div className="col col--4">Andrew [2], Sergio [3], Ariel [12], Gwen [20] and Julie [23]</div>
+<div class="row table-row-2">
+<div class="col col--4">January</div>
+<div class="col col--4">month_01</div>
+<div class="col col--4">Andrew [2], Sergio [3], Ariel [12], Gwen [20] and Julie [23]</div>
 </div>
-<div className="row table-row-1">
-<div className="col col--4">February</div>
-<div className="col col--4">month_02</div>
-<div className="col col--4">Mario [2] and Will Smith [12]</div>
+<div class="row table-row-1">
+<div class="col col--4">February</div>
+<div class="col col--4">month_02</div>
+<div class="col col--4">Mario [2] and Will Smith [12]</div>
 </div>
-<div className="row table-row-2">
-<div className="col col--4">March</div>
-<div className="col col--4">month_03</div>
-<div className="col col--4">Valentina [15] and Aron Piper [22]</div>
+<div class="row table-row-2">
+<div class="col col--4">March</div>
+<div class="col col--4">month_03</div>
+<div class="col col--4">Valentina [15] and Aron Piper [22]</div>
 </div>
-<div className="row table-row-1">
-<div className="col col--4">May</div>
-<div className="col col--4">month_05</div>
-<div className="col col--4">Javiera [16] and Christian[15]</div>
+<div class="row table-row-1">
+<div class="col col--4">May</div>
+<div class="col col--4">month_05</div>
+<div class="col col--4">Javiera [16] and Christian[15]</div>
 </div>
-<div className="row table-row-2">
-<div className="col col--4">June</div>
-<div className="col col--4">month_06</div>
-<div className="col col--4">Tom Holland [18]</div>
+<div class="row table-row-2">
+<div class="col col--4">June</div>
+<div class="col col--4">month_06</div>
+<div class="col col--4">Tom Holland [18]</div>
 </div>
-<div className="row table-row-1">
-<div className="col col--4">July</div>
-<div className="col col--4">month_07</div>
-<div className="col col--4">Joaquin [30]</div>
+<div class="row table-row-1">
+<div class="col col--4">July</div>
+<div class="col col--4">month_07</div>
+<div class="col col--4">Joaquin [30]</div>
 </div>
-<div className="row table-row-2">
-<div className="col col--4">August</div>
-<div className="col col--4">month_08</div>
-<div className="col col--4">Robert [13]</div>
+<div class="row table-row-2">
+<div class="col col--4">August</div>
+<div class="col col--4">month_08</div>
+<div class="col col--4">Robert [13]</div>
 </div>
-<div className="row table-row-1">
-<div className="col col--4">September</div>
-<div className="col col--4">month_09</div>
-<div className="col col--4">Zac Efron [7]</div>
+<div class="row table-row-1">
+<div class="col col--4">September</div>
+<div class="col col--4">month_09</div>
+<div class="col col--4">Zac Efron [7]</div>
 </div>
-<div className="row table-row-2">
-<div className="col col--4">October</div>
-<div className="col col--4">month_10</div>
-<div className="col col--4">Lily Collins [3]</div>
+<div class="row table-row-2">
+<div class="col col--4">October</div>
+<div class="col col--4">month_10</div>
+<div class="col col--4">Lily Collins [3]</div>
 </div>
-<div className="row table-row-1">
-<div className="col col--4">November</div>
-<div className="col col--4">month_11</div>
-<div className="col col--4">Tom Cruise [5]</div>
+<div class="row table-row-1">
+<div class="col col--4">November</div>
+<div class="col col--4">month_11</div>
+<div class="col col--4">Tom Cruise [5]</div>
 </div>
-<div className="row table-row-2">
-<div className="col col--4">December</div>
-<div className="col col--4">month_12</div>
-<div className="col col--4">Harry Styles [20] and LeBron James [30]</div>
+<div class="row table-row-2">
+<div class="col col--4">December</div>
+<div class="col col--4">month_12</div>
+<div class="col col--4">Harry Styles [20] and LeBron James [30]</div>
 </div>
 </div>
 <br/>
@@ -146,23 +146,23 @@ To make it even more fun, have the company's mascot send the message.
 
 <!-- This has to be redone and adapted to Scheme Nodes. -->
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-4. Access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Schedules</span>.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-5. Press <span className="badge badge--primary">+</span> button to create a new scheduler.
+4. Access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Schedules</span>.
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-6. Set up the <span className="badge badge--primary">General information</span> section:
+5. Press <span class="badge badge--primary">+</span> button to create a new scheduler.
+
+</div>
+<br/>
+
+<div class="alert alert--secondary">
+
+6. Set up the <span class="badge badge--primary">General information</span> section:
     - **Code**: `birthday_reminder`
     - Activate the **Recurrence** button.
     - Select the **Monthly** option
@@ -174,18 +174,18 @@ To make it even more fun, have the company's mascot send the message.
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-7. Set up the <span className="badge badge--primary">Routine builder</span> and set the following:
+7. Set up the <span class="badge badge--primary">Routine builder</span> and set the following:
 
-    1. Press <span className="badge badge--primary">+ Add Stage</span>
+    1. Press <span class="badge badge--primary">+ Add Stage</span>
         - **Code**: `get_date`
         - **Type**: `Network Request` 
         - **URL**: `http://worldtimeapi.org/api/timezone/America/Santiago`
         * **Method**: `GET`
     ----
 
-    2. Press <span className="badge badge--primary">+ Add Stage</span> and set the following:
+    2. Press <span class="badge badge--primary">+ Add Stage</span> and set the following:
         - **Code**: `property`
         - **Type**: `Network Request` 
         - **URL**: `$JOIN#/#($ENV#BASEURL)#api#properties#findByCode#($JOIN##month_#($OUTPUT#get_date#data|datetime|[date=>format=MM]))`
@@ -196,7 +196,7 @@ To make it even more fun, have the company's mascot send the message.
         :::
     ----
 
-    3. Press <span className="badge badge--primary">+ Add Stage</span> and set the following:
+    3. Press <span class="badge badge--primary">+ Add Stage</span> and set the following:
         - **Code**: `message`
         - **Type**: `Send Message` 
         - **Content**: `$JOIN##(🎈 This month we celebrate the following birthdays! 🎈)#($OUTPUT#property#data|extra|display)`
@@ -208,7 +208,7 @@ To make it even more fun, have the company's mascot send the message.
         *_Remember to use the mascot's and channel's id as explained [above](#pre-requisites)._
     ----
     
-    4. Press <span className="badge badge--primary">+ Add Stage</span> and set the following:
+    4. Press <span class="badge badge--primary">+ Add Stage</span> and set the following:
         - **Code**: `empty_condition`
         - **Type**: `Conditional`
         - **Left side**: `$OUTPUT#property#data`
@@ -233,9 +233,9 @@ To make it even more fun, have the company's mascot send the message.
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-8. Press <span className="badge badge--primary">Save</span>.
+8. Press <span class="badge badge--primary">Save</span>.
 
 </div>
 <br/>

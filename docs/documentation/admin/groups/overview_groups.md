@@ -5,7 +5,7 @@ sidebar_label: Overview
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/Groups.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Groups.svg')} />
 <br/>
 
 ## Introduction {#introduction}

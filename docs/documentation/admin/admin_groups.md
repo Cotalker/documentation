@@ -309,7 +309,7 @@ In _regular groups_, through the [_actions button_](/docs/documentation/client/a
 
 _The **actions button** and its corresponding **actions menu** will look something like the image below:_
 
-<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/client_actionsbutton_01.png')} />
+<img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/client_actionsbutton_01.png')} />
 <br/>
 
 "Actions" in the _actions button menu_ are usually used as links to important tools or information, either within the Cotalker platform or on the web.
@@ -383,7 +383,7 @@ _Settings and Options:_
 <br/>
 
 ## Create Channel within a Group {#create-channel}
-From within the [_Channels Panel_](#channels), you can create a new _channel_ by pressing the <span className="badge badge--primary">+</span> icon. This will open up the [Channel Settings Panel](##edit--create-single-channel), where you can configure and save a new _channel_.
+From within the [_Channels Panel_](#channels), you can create a new _channel_ by pressing the <span className="badge badge--secondary">+</span> icon. This will open up the [Channel Settings Panel](##edit--create-single-channel), where you can configure and save a new _channel_.
 
 <img alt="create channel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_group_channels_00b.png')} />
 <br/>

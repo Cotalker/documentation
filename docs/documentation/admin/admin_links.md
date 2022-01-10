@@ -5,7 +5,7 @@ sidebar_label: Link Groups
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
 
 
 # Overview {#group-overview}
@@ -54,7 +54,7 @@ _Table and Options:_
 </div>
 
 ## Create a New Link Group {#create-link}
-Press the <span className="badge badge--primary">+</span> icon in the **link groups panel** to create a new link group. The [link group settings panel](##edit--create-single-group) will open up.
+Press the <span className="badge badge--secondary">+</span> icon in the **link groups panel** to create a new link group. The [link group settings panel](##edit--create-single-group) will open up.
 
 <img alt="link group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_links_03a.png')} />
 <br/>

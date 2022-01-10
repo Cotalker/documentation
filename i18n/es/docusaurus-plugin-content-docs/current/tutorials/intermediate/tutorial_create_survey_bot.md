@@ -36,55 +36,55 @@ In this example, `pet@cotalker.com` is the email of the created pet/fictional _u
 
 ### I. Create the Bot {#i-create-the-bot}
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-1. Access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Bots</span>.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-2. Press <span className="badge badge--primary">+</span> icon to create a new _bot_.
+1. Access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Bots</span>.
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
+
+2. Press <span class="badge badge--primary">+</span> icon to create a new _bot_.
+
+</div>
+<br/>
+
+<div class="alert alert--secondary">
 
 3. Set up the following:
 
-    1. In the <span className="badge badge--primary">General information</span> section, set:
+    1. In the <span class="badge badge--primary">General information</span> section, set:
         - **Name**: `New pal bot`
         - **Code**: `newpalbot_1`
         - **Description**: `Welcomes new members to the company.`
 
-    2. In the <span className="badge badge--primary">Access</span> section, set:
+    2. In the <span class="badge badge--primary">Access</span> section, set:
         - **Access Roles**: `default`
 
-    3. In the <span className="badge badge--primary">Functions</span> section, set:
+    3. In the <span class="badge badge--primary">Functions</span> section, set:
         - **It's a survey command**: _activate option_
         - **Form**: `New pal`
 
 _So far, your screen should look something like this:_
 
-<img alt="settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_00.png')} />
+<img alt="settings" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_00.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 4. Build the routine:
 
-    1. In the <span className="badge badge--primary">Routine builder</span> section:
-        - Press the <span className="badge badge--primary">+ Add Routine</span> button.
+    1. In the <span class="badge badge--primary">Routine builder</span> section:
+        - Press the <span class="badge badge--primary">+ Add Routine</span> button.
         - New settings will appear.
        _You should see something like this:_
        ![Routine builder](/img/tutorial_inter_survey_bot_01.png)
     --------
-    2. Add the first stage by pressing the <span className="badge badge--primary">+ Add stage</span> button, and set the following:
+    2. Add the first stage by pressing the <span class="badge badge--primary">+ Add stage</span> button, and set the following:
         - **Code**: `property_request`
         - **Type**: `Solicitud de red` 
         - **URL** : `$JOIN#/#($ENV#BASEURL)#api#properties#($VALUE#data|[find=>identifier=department]|process|0) <br/>`
@@ -94,7 +94,7 @@ _So far, your screen should look something like this:_
         - **Método**: *GET*
         - **Autenticación Predeterminada**: _activate option_
     --------
-    3. Scroll back up the <span className="badge badge--primary">Routine builder</span> section to add the second stage by pressing the <span className="badge badge--primary">+ Add Stage</span> button again. Set the following:
+    3. Scroll back up the <span class="badge badge--primary">Routine builder</span> section to add the second stage by pressing the <span class="badge badge--primary">+ Add Stage</span> button again. Set the following:
         - **Code**: `message`
         - **Type**: `Enviar mensaje` 
         - **Contenido**: `$JOIN# #Welcome#($VALUE#data|[find=>identifier=nickname]|process|0)#! I wish you all the best of luck in this new journey in the company! Hey team, say hi to our new pal from the#($OUTPUT#property_request#data|name|display)#area.`
@@ -108,10 +108,10 @@ _So far, your screen should look something like this:_
         The context being accessed is _COTanswer_.
         :::
     --------
-    4. Scroll back up and press <span className="badge badge--primary">+ Add Stage</span> to add the third stage. Set the following:
+    4. Scroll back up and press <span class="badge badge--primary">+ Add Stage</span> to add the third stage. Set the following:
         - **Code**: `gif`
         - **Type**: `Enviar Gif`
-        - In <span className="badge badge--primary">Búsqueda</span>, press the <span className="badge badge--primary">+ Add item</span>, and set:
+        - In <span class="badge badge--primary">Búsqueda</span>, press the <span class="badge badge--primary">+ Add item</span>, and set:
             - **Item**: `Welcome Pal`
         - **Canal**: `$VALUE#channel`
         - **Usuario**: `($CODE#user#email#pet@cotalker.com)|_id`
@@ -120,36 +120,36 @@ _So far, your screen should look something like this:_
         - **Max. Iterations**: `10`
         - **Initial Stage**: `property_request`
     --------
-    6. Select the <span className="badge badge--primary">property_request</span> stage. Then, scroll to the bottom of the section and configure the following:
+    6. Select the <span class="badge badge--primary">property_request</span> stage. Then, scroll to the bottom of the section and configure the following:
         - Under **Outputs**, in the **Exito** field: `message` 
     
     _The stages can be selected from this menu bar:_
     ![stages menu bar](/img/tutorial_inter_survey_bot_02.png)
 
     --------
-    7. Select the <span className="badge badge--primary">message</span> stage. Scroll to the bottom of the section and configure the following:
+    7. Select the <span class="badge badge--primary">message</span> stage. Scroll to the bottom of the section and configure the following:
         - Under **Outputs**, in the **Por defecto** field: `gif`
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-5. Press <span className="badge badge--primary">Save</span>.
+5. Press <span class="badge badge--primary">Save</span>.
 
 </div>
 <br/>
 
 ### II. Configure the Channel {#ii-configure-the-channel}
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-6. Access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Groups</span>.
+6. Access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Groups</span>.
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 7. Press the _group_ that has the channel with the whole team.
     :::note
@@ -159,42 +159,42 @@ _So far, your screen should look something like this:_
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 8. Press the _channel_ where the whole team is found.
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-9. Configure the <span className="badge badge--primary">Participants</span> section:
+9. Configure the <span class="badge badge--primary">Participants</span> section:
     - **Bots**: `New pal bot` 
 
 _Your screen should look something like this:_
 
-<img alt="edit channel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_03.png')} />
+<img alt="edit channel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_03.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-10. Press <span className="badge badge--primary">Save</span>.
+10. Press <span class="badge badge--primary">Save</span>.
 
 </div>
 <br/>
 
 
-<div className="hero shadow--lw">
-<div className="container">
-<h1 className="hero__title">Congratulations!</h1>
-<p className="hero__subtitle">
+<div class="hero shadow--lw">
+<div class="container">
+<h1 class="hero__title">Congratulations!</h1>
+<p class="hero__subtitle">
 
 Now that you finished, go to the team channel and try to send the _New Pal_ survey.</p>
 
-<img alt="team channel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_04.png')} />
+<img alt="team channel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_04.png')} />
 <br/>
 <div>
 </div>
@@ -206,5 +206,5 @@ Now that you finished, go to the team channel and try to send the _New Pal_ surv
 
 After submitting the survey, you should see a message like the following in the channel chat window :
 
-<img alt="team channel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_05.png')} />
+<img alt="team channel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_inter_survey_bot_05.png')} />
 <br/>

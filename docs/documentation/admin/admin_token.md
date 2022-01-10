@@ -6,7 +6,7 @@ sidebar_label: API Tokens
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="title image" className="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
+<img alt="title image" class="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
 <br/>
 
 ## Overview {#overview}

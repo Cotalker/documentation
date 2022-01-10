@@ -5,7 +5,7 @@ sidebar_label: Overview
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Surveys.svg')} />
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Surveys.svg')} />
 <br/>
 
 <div className="shadow--tl alert alert--secondary">
@@ -34,7 +34,7 @@ To create or edit surveys, go to _survey_ section in the _administrative panel_,
 <br/>
 <br/>
 
-From the _Forms_ settings panel, by pressing the <span className="badge badge--primary">+</span> icon or choosing an existing _survey_/_form_, you can open the _Create form_ settings panel to create or edit a _survey_, respectively.
+From the _Forms_ settings panel, by pressing the <span className="badge badge--secondary">+</span> icon or choosing an existing _survey_/_form_, you can open the _Create form_ settings panel to create or edit a _survey_, respectively.
 
 <img alt="survey section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_01.png')} />
 <br/>

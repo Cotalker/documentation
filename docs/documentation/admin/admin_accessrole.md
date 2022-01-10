@@ -5,7 +5,7 @@ sidebar_label: Access Roles
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Access_Roles.svg')} />
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Access_Roles.svg')} />
 
 
 ## Overview {#overview}

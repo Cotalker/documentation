@@ -44,18 +44,18 @@ When there are multiple _channels_ in a group, it is recommended to use the *sea
 From within the respective _channel_, you can change a _task's_ state. Simply hover over the task in the group's channel list and left-click over the icon that appears to the right.
 
 _The following image shows how to open the pop-up menu:_
-<img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_popup_00.png')} />
+<img alt="task change state menu" class="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_popup_00.png')} />
 <br/>
 
 You can also open up a side panel with all the task info by clicking on the task number found on the top of the screen.
 
 _The following image shows how to open the side panel:_
-<img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_sidepanel_00.png')} />
+<img alt="task change state menu" class="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_sidepanel_00.png')} />
 <br/>
 
 ### Floating Action Button (FAB) {#floating-action-button-fab}
 Within a group panel, you might see a green button floating near the bottom. This is a floating action button (FAB) that can be configured for a group's specfic needs. This button can let you create a new channel, answer a survey, create a task, redirect to another URL, among others.
 
 _The FAB and the enabled actions will look something like the image below:_
-<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
+<img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
 <br/>

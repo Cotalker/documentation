@@ -51,38 +51,38 @@ They want to capture the following data from the _users_:
 
 ### I. Create Survey/Form {#i-create-surveyform}
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Survey</span>.
+1. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Survey</span>.
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-2. Press the <span className="badge badge--primary">+</span> button to create a new _Survey/Form_.
+2. Press the <span class="badge badge--primary">+</span> button to create a new _Survey/Form_.
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_surveys_00.png')} />
+<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_surveys_00.png')} />
 <br/>
 
   _The following settings panel will show up:_
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_surveys_01.png')} />
+<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_surveys_01.png')} />
 <br/>
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-3. Under <span className="badge badge--primary">General Information</span> set the following:
+3. Under <span class="badge badge--primary">General Information</span> set the following:
     * **Name**: `New pal`
     * **Code**: `newpal_1`
 
-  Under the <span className="badge badge--primary">Access</span> tab, set the following:
+  Under the <span class="badge badge--primary">Access</span> tab, set the following:
     * **Group permission**: _Select a previously created Channel Group_.
     * **Access Role**: *default*
-    * Press the <span className="badge badge--primary">+ Add Element</span> button:
+    * Press the <span class="badge badge--primary">+ Add Element</span> button:
         * **Collection**: `New Pal Form`
         * **Elements**: `Welcome Form`
 
@@ -93,12 +93,12 @@ They want to capture the following data from the _users_:
 
 _So far, your screen should look something like this:_
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_create1.png')}/>
+<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_create1.png')}/>
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 4. Set up the **Form**:
 
@@ -106,7 +106,7 @@ _So far, your screen should look something like this:_
 
   _Under the **Form Template** section, do the following:_
 
-  A. Drag and drop from the _Components_ column the <span className="badge badge--warning">Written Answer</span> component to the _form template_ and fill the fields with the following:
+  A. Drag and drop from the _Components_ column the <span class="badge badge--warning">Written Answer</span> component to the _form template_ and fill the fields with the following:
     * **Field Label**: `Nickname`
     * **Identifier**: `nickname`
     * **Maximum** : `50`
@@ -115,7 +115,7 @@ _So far, your screen should look something like this:_
   _The identifiers are used in a routine to reference them and get a survey response._
   :::
   
-  B. Drag and drop the <span className="badge badge--warning">Date and Time</span> component to the _form template_.
+  B. Drag and drop the <span class="badge badge--warning">Date and Time</span> component to the _form template_.
     * **Field Label** : `Birthday`
     * **Identifier**: `birthday`
     * **Type**: `Date`
@@ -123,7 +123,7 @@ _So far, your screen should look something like this:_
     
   C. Repeat _Step A_ with the `Where are you from?` question in the **Field Label** and with `natalplace` in **Identifier**.
     
-  D. Drag and drop the <span className="badge badge--warning">Multiple Choice</span> component to the _form template_.
+  D. Drag and drop the <span class="badge badge--warning">Multiple Choice</span> component to the _form template_.
     * **Field Label** : `Departament`
     * **Identifier** : `departament`
     * **Type**: `Collection`
@@ -138,41 +138,41 @@ _So far, your screen should look something like this:_
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-5. Press <span className="badge badge--primary">Save</span>.
+5. Press <span class="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
 
 ### II. Edit the Channel. {#ii-edit-the-channel}
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-6. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Group</span>.
+6. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Group</span>.
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 7. Press the _group_ which has the _channel_ of the whole team.
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 8. Press the _channel_ where the whole team is included.
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 9. Edit the _channel_:
 
-    Under the <span className="badge badge--primary">Elements</span> tab, press the   <span className="badge badge--primary">+ Add Element</span> button, and fill the following fields:
+    Under the <span class="badge badge--primary">Elements</span> tab, press the   <span class="badge badge--primary">+ Add Element</span> button, and fill the following fields:
       * **Collection**: `New Pal Form`
       * **Element**: `Welcome Form`
 
@@ -182,14 +182,14 @@ _So far, your screen should look something like this:_
 
 _Your screen should look something like this:_
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_create3.png')}/>
+<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_create3.png')}/>
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-10. Press <span className="badge badge--primary">Save</span>.
+10. Press <span class="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
@@ -199,22 +199,22 @@ _Your screen should look something like this:_
 
 
 
-The <span className="badge badge--success">survey</span> can be answered in the assigned _channel_:
+The <span class="badge badge--success">survey</span> can be answered in the assigned _channel_:
 
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_00.png')}/>
+<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_00.png')}/>
 <br/>
 <br/>
 
-Here you can see how the <span className="badge badge--success">survey</span> looks like when you are going to answer it:
+Here you can see how the <span class="badge badge--success">survey</span> looks like when you are going to answer it:
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_01.png')}/>
+<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_01.png')}/>
 <br/>
 <br/>
 
 
-Here's what the _channel_ looks like when the <span className="badge badge--success">survey</span> is sent:
+Here's what the _channel_ looks like when the <span class="badge badge--success">survey</span> is sent:
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_02.png')}/>
+<img alt="" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_02.png')}/>
 <br/>
 <br/>

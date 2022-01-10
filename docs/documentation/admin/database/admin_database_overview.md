@@ -5,7 +5,7 @@ sidebar_label: Overview
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Database.svg')} />
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Database.svg')} />
 <br/>
 
 ## Overview {#database-overview}
@@ -37,7 +37,7 @@ At the backend level of Cotalker, _collections_ are called [property types](/doc
 ## Accessing the Database Panel {#accessing}
 To access the the <span className="badge badge--primary">Database</span> panel:
 
-<img alt="Database" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_section_00.png')} />
+<img alt="Database" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_section_00.png')} />
 <br/>
 
 1. Press the <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
@@ -49,9 +49,9 @@ To access the the <span className="badge badge--primary">Database</span> panel:
 <div className="alert alert--secondary">
 
 ## Database Panel Layout {#database-panel-layout}
-Once inside the <span className="badge badge--primary">Database</span> panel in the **Administrative Panel**, you can find the entire list of _collections_ that have been created in the _company_. From this panel, you can also create and edit _collections_.
+Once inside the <span class="badge badge--primary">Database</span> panel in the **Administrative Panel**, you can find the entire list of _collections_ that have been created in the _company_. From this panel, you can also create and edit _collections_.
 
-<img alt="collections list" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_00.png')} />
+<img alt="collections list" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_00.png')} />
 <br/>
 <br/>
 

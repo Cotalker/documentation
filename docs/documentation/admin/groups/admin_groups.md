@@ -271,7 +271,7 @@ In _regular groups_, through the [_actions button_](/docs/documentation/client/a
 
 _The **actions button** and its corresponding **actions menu** will look something like the image below:_
 
-<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/client_actionsbutton_01.png')} />
+<img alt="fab secondary actions" class="img_sizing item shadow--lw" src={useBaseUrl('img/client_actionsbutton_01.png')} />
 <br/>
 
 "Actions" in the _actions button menu_ are usually used as links to important tools or information, either within the Cotalker platform or on the web.

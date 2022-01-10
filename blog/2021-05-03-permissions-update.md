@@ -10,15 +10,15 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div className="card">
-<div className="card__header">
+<div class="card">
+<div class="card__header">
 
 </div>
-<div className="card__image">
-<img alt="fab" className="img_card" src={useBaseUrl('img/updates/update_permission.jpg')} />
+<div class="card__image">
+<img alt="fab" class="img_card" src={useBaseUrl('img/updates/update_permission.jpg')} />
 <br/>
 </div>
-<div className="card__body">
+<div class="card__body">
 
 Giving permission has always been a problematic task. For this reason, we have re-arranged our default _permissions_ by categories and hierarchy, making it simpler to assign them in _access roles_ while intensifying security at the same time. Check out our _new permissions_, read their _descriptions_, look at the new _permissions tree_, and discover which ones will be _deprecated_.
 

@@ -11,19 +11,19 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div className="card">
-<div className="card__header">
+<div class="card">
+<div class="card__header">
 
 <span className="hero__subtitle"><em>Debugging got easier.</em></span>
 
 </div>
-<div className="card__image">
+<div class="card__image">
 
-<img alt="fab" className="img_card item shadow--tl" src={useBaseUrl('img/updates/update_automation_log_01.png')} />
+<img alt="fab" class="img_card item shadow--tl" src={useBaseUrl('img/updates/update_automation_log_01.png')} />
 <br/>
 
 </div>
-<div className="card__body">
+<div class="card__body">
 
 With our new _automation log_ you can find everything you need to know about your routines. It's a perfect tool for helping implementors test, create, manage, and debug routines in workflows, bots, schedules, and SLAs. Logs are accessible through the _Administrative Panel_ and are also present anywhere a _routine builder_ can be found.
 

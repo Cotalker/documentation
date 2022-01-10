@@ -74,14 +74,14 @@ For example, if you have a collection that is associated with two other collecti
 
 _In the following example, a collection of mammals has two elements: land and sea mammals. The collection is also associated with two other collections of mammal species for its subproperties. The survey will let users choose either land or sea mammals, and depending on their answer, choose a corresponding mammal species from the two different collections._
 
-<img alt="subproperties survey example" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_00.png')} />
+<img alt="subproperties survey example" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_00.png')} />
 <br/>
 
 <span className="hero__subtitle">Setup</span>
 
 1. First, add a **multiple choice** component with the following settings:
 
-<img alt="subproperties survey example" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_01.png')} />
+<img alt="subproperties survey example" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_01.png')} />
 <br/>
 
   - **Type**: `Collection`
@@ -94,7 +94,7 @@ _In the following example, a collection of mammals has two elements: land and se
 
 2. Next, add another **multiple choice** component with the following settings:
 
-<img alt="subproperties survey example" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_02.png')} />
+<img alt="subproperties survey example" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_02.png')} />
 <br/>
 
   - **Type**: `Collection`
@@ -105,7 +105,7 @@ _In the following example, a collection of mammals has two elements: land and se
 
 3. _Optional step_: Add another **multiple choice** component with the following settings:
 
-<img alt="subproperties survey example" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_03.png')} />
+<img alt="subproperties survey example" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_subproperty_03.png')} />
 <br/>
 
   - **Type**: `Collection`
@@ -142,7 +142,7 @@ This is particularly useful since a _channel_ can have many properties assigned 
 
 Creates dynamic surveys, i.e., users' choice in one question will determine the options available in the following question. When selected, concatenating _collection_ trees with their respective elements can be set up as answers. This means that each answer takes you to more specific options, like choosing a _country_, then a _region_, and finally a _city_.
 
-<img alt="Survey Tree Selector" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_survey_tree_selector_01.png')} />
+<img alt="Survey Tree Selector" class="img_sizing item shadow--lw" src={useBaseUrl('img/admin_survey_tree_selector_01.png')} />
 <br/>
 
 <div className="alert alert--secondary">
@@ -160,7 +160,7 @@ First, you must create the collections and have them associated with each other 
 - Set **Collection** to the first and most general collection. 
 - Set **Target collection** to the last and most specific of the collections. 
 
-<img alt="Survey Tree Selector" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_tree_selector_00.png')} />
+<img alt="Survey Tree Selector" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_tree_selector_00.png')} />
 <br/>
 <br/>
 
@@ -194,7 +194,7 @@ Company job categories can be selected to act as filters. For information on how
 Easily create a list of items or options to choose from. 
 
 _Example of how a user will see the list of items in a survey:_
-<img alt="list of items" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_list_00.png')} />
+<img alt="list of items" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_list_00.png')} />
 <br/>
 
 <div className="alert alert--secondary">
@@ -208,7 +208,7 @@ From the settings panel, press the <span className="badge badge--primary">+ Add 
 
 _The settings panel should look something like this:_
 
-<img alt="list of items" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_list_01.png')} />
+<img alt="list of items" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_list_01.png')} />
 <br/>
 
 </div>
@@ -226,7 +226,7 @@ This is an advanced feature that requires programming skills.
 
 ### Template
 
-<img alt="list of items" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_00.png')} />
+<img alt="list of items" class="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_00.png')} />
 <br/>
 
 - **Source**: The options are *External URL* or *Cotalker*. Choosing *Cotalker* adds a relative Cotalker path; otherwise, an absolute address is required.
@@ -275,7 +275,7 @@ This is an advanced feature that requires programming skills.
 
     From the UI, when answering an _API-type multiple-choice survey question_, a search window appears:
 
-    <img alt="list of items" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_01.png')} />
+    <img alt="list of items" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_api_01.png')} />
     <br/>
 
     Each time a _search_ is done within the search window, Cotalker sends a POST request with a JSON body as shown below: 

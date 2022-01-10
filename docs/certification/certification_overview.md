@@ -7,15 +7,15 @@ import Highlight from '@theme/Highlight';
 
 
 
-<img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/Certification.svg')} />
-<img alt="cotalker university logo" className="logo" src={useBaseUrl('img/cotalker_university.png')} />
+<img alt="title image" class="img_title" src={useBaseUrl('img/design/title_pages/Certification.svg')} />
+<img alt="cotalker university logo" class="logo" src={useBaseUrl('img/cotalker_university.png')} />
 <br/><br/>
 
 ## Introduction {#introduction}
 
 Cotalker University offers the official training for admins, consultants and partners. <br/><br/>
 
-<img alt="certification levels chart" className="img_title" src={useBaseUrl('img/certification_levels_chart.svg')} />
+<img alt="certification levels chart" class="img_title" src={useBaseUrl('img/certification_levels_chart.svg')} />
 <br/><br/>
   
 

@@ -6,7 +6,7 @@ sidebar_label: Bots
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Bots.svg')} />
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Bots.svg')} />
 <br/>
 
 :::tip

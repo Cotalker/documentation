@@ -11,19 +11,19 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div className="card">
-<div className="card__header">
+<div class="card">
+<div class="card__header">
 
 <span className="hero__subtitle">Let your processes have emotions 😄</span>
 
 </div>
-<div className="card__image">
+<div class="card__image">
 
-<img alt="fab" className="img_card" src={useBaseUrl('img/updates/update_emoji_react.png')} />
+<img alt="fab" class="img_card" src={useBaseUrl('img/updates/update_emoji_react.png')} />
 <br/>
 
 </div>
-<div className="card__body">
+<div class="card__body">
 
 To help make your conversations in chat channels more fluent and participative, you can now react to chat messages with an emoji! Simply right-click on a message bubble and choose **react** from the menu options. Go to the documentation for more information about this feature and the other chat message menu options.
 

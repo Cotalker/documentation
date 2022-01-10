@@ -10,20 +10,20 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div className="card">
-<div className="card__header">
+<div class="card">
+<div class="card__header">
 
 </div>
-<div className="card__image">
-<img alt="qr_nfc_update" className="img_card item shadow--tl" src={useBaseUrl('img/update_database_mobile_save.png')} />
+<div class="card__image">
+<img alt="qr_nfc_update" class="img_card item shadow--tl" src={useBaseUrl('img/update_database_mobile_save.png')} />
 <br/>
 </div>
-<div className="card__body">
+<div class="card__body">
 
 Customizing your _Database_ is an ongoing project. And because you're also always on the go, we've now improved our mobile app's design. A new _save_ button has been added to the _Database_ section so that you can save changes from your mobile device.
 
 </div>
-<div className="card__footer">
+<div class="card__footer">
 
 </div>
 </div>

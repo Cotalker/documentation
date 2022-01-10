@@ -6,7 +6,7 @@ sidebar_label: Configuration
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Company.svg')} />
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Company.svg')} />
 
 ## Overview {#company-overview}
 From the <span className="badge badge--primary">Configuration</span> section in the **Administration Panel**, you can edit [general](#general-information) and [billing](#billing-information) company information, and even change some [appearance](#apperance) values in the Cotalker environment.

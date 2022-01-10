@@ -6,7 +6,7 @@ sidebar_label: Tasks
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Tasks.svg')} />
+<img alt="design" class="img_sizing" src={useBaseUrl('img/design/Tasks.svg')} />
 
 ## Overview {#overview}
 
@@ -27,7 +27,7 @@ Tasks can be created either manually or automatically:
 
 :::info
 - To view or modify a task, users must be associated with the task and count with the corresponding permissions.
-- Admins can [set permissions](/docs/documentation/api/tasks/#task-permissions-for-unassigned-users) that allow unassociated users to follow or edit tasks within a task group.
+- Admins can [set permissions](/docs/documentation/api/tasks/tasks#task-permissions-for-unassigned-users) that allow unassociated users to follow or edit tasks within a task group.
 :::
 
 <br/>
@@ -125,7 +125,7 @@ If configured, you can create tasks from the _actions button_ either in the chan
 <br/>
 <br/>
 
-You can also manually **create a task** from within the [_task views_](/docs/documentation/client/taskview#tasks-views) by pressing the <span className="badge badge--primary">+</span> icon in the menu bar. A new task will appear in the list where you can name the task, and a side panel will open up with all the options needed to assign it to someone, establish its status and deadline, among other options.
+You can also manually **create a task** from within the [_task views_](/docs/documentation/client/taskview#tasks-views) by pressing the <span className="badge badge--secondary">+</span> icon in the menu bar. A new task will appear in the list where you can name the task, and a side panel will open up with all the options needed to assign it to someone, establish its status and deadline, among other options.
 
 - _Creating tasks from the task view:_
 

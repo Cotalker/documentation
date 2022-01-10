@@ -4,7 +4,7 @@ title: Admin Basics
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
 <br/>
 
 _Brief introduction to Cotalker concepts for admins._

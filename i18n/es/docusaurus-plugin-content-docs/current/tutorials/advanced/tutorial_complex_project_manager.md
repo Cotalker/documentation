@@ -357,7 +357,7 @@ Automatic project status update
 
 ## Result {#result}
 
-<iframe src="https://giphy.com/embed/dWy2WwcB3wvX8QA1Iu" width="480" height="298" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/dWy2WwcB3wvX8QA1Iu" width="480" height="298" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 Eva assigns a task to John, and he responds through the chat
 

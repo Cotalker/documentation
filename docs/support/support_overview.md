@@ -4,7 +4,7 @@ title: Support
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/Support_and_help.svg')} />
+<img alt="title image" class="img_title" src={useBaseUrl('img/design/title_pages/Support_and_help.svg')} />
 <br/>
 
 ## We’re here to help {#were-here-to-help}

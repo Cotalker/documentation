@@ -4,7 +4,7 @@ title: Job Titles
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img alt="design" className="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
+<img alt="design" class="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
 <br/>
 
 

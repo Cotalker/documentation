@@ -40,34 +40,34 @@ Our mock company, Ruanda, wants to add all their employees (about 40 people) to 
 
 ## Steps {#steps}
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Users</span>.
+1. From the **Main Menu Bar**, access the <span class="badge badge--primary">Administrator</span> and open <span class="badge badge--primary">Users</span>.
 
   _The following settings panel will open up:_
 
-<img alt="user settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_user_00.png')} />
+<img alt="user settings panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_user_00.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-2. In the settings panel, press the <span className="badge badge--primary">+</span> button to create a new user.
+2. In the settings panel, press the <span class="badge badge--primary">+</span> button to create a new user.
 
-<img className="img_sizing item shadow--tl" alt="create user" src={useBaseUrl('img/tutorial_user_01.png')} /> 
+<img class="img_sizing item shadow--tl" alt="create user" src={useBaseUrl('img/tutorial_user_01.png')} /> 
 <br/>
 
 _The following panel will then open up:_
 
- <img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/blog_simple_task_user.png')} />
+ <img class="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/blog_simple_task_user.png')} />
 <br/>
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 3. Create the boss, by setting the following fields:
     * **Name**: *Mario*
@@ -85,14 +85,14 @@ _The following panel will then open up:_
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-4. Press <span className="badge badge--primary">Save</span>.
+4. Press <span class="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 5. Create the developer by setting the following fields:
     * **Names**: *Valentina*
@@ -108,14 +108,14 @@ _The following panel will then open up:_
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
-6. Press <span className="badge badge--primary">Save</span>.
+6. Press <span class="badge badge--primary">Save</span>.
 
 </div>
 <br></br>
 
-<div className="alert alert--secondary">
+<div class="alert alert--secondary">
 
 7. Repeat the same steps for the rest of the employees. 
 
@@ -130,4 +130,4 @@ _The following panel will then open up:_
 ## Result {#result}
 You should now be able to see all the _users_ you created listed in the _Users_ settings panel, somewhat like in the following image:
 
-<img alt="user list" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_user_result.png')} />
+<img alt="user list" class="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_user_result.png')} />

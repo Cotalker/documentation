@@ -22,7 +22,7 @@ From this settings panel, you will be able to create and edit SLA routines integ
 
 ## Create/Edit an SLA {#create-edit-sla}
 
-To create an SLA routine, press the <span className="badge badge--primary">+</span> icon in the SLA section. To edit an existing SLA routine, choose it from the list in the SLA section. After choosing to create or edit an SLA routine, the _Create SLA_ settings panel opens up. 
+To create an SLA routine, press the <span className="badge badge--secondary">+</span> icon in the SLA section. To edit an existing SLA routine, choose it from the list in the SLA section. After choosing to create or edit an SLA routine, the _Create SLA_ settings panel opens up. 
 
 _SLA settings panel:_
 

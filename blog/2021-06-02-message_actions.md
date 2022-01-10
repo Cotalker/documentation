@@ -11,19 +11,19 @@ import Highlight from '@theme/Highlight';
 
 
 <div className="align-center">
-<div className="card">
-<div className="card__header">
+<div class="card">
+<div class="card__header">
 
 <span className="hero__subtitle"><em>Improved chatting experience</em></span>
 
 </div>
-<div className="card__image">
+<div class="card__image">
 
-<img alt="fab" className="img_card" src={useBaseUrl('img/updates/update_chat-message-menu.png')} />
+<img alt="fab" class="img_card" src={useBaseUrl('img/updates/update_chat-message-menu.png')} />
 <br/>
 
 </div>
-<div className="card__body">
+<div class="card__body">
 
 We've added more functions when you click on a **chat message bubble**. Now, not only can you **delete** a chat message, but also give a **reply** or even **copy** its text to your clipboard. Message replies embed the original message (attached files and media included), which helps maintain the context in long, diverse, or overpopulated conversations.
 

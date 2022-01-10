@@ -10,15 +10,15 @@ import Highlight from '@theme/Highlight';
 _Basic collection settings_
 
 ## Create a Collection {#create-collection}
-From the [Database Panel](/docs/documentation/admin/database/admin_database_overview), press the <span className="badge badge--primary">+</span> icon to create a new _collection_. The new collection's [settings panel](#edit--create-collection) will open up.
+From the [Database Panel](/docs/documentation/admin/database/admin_database_overview), press the <span class="badge badge--primary">+</span> icon to create a new _collection_. The new collection's [settings panel](#edit--create-collection) will open up.
 
-<img alt="create collection" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_01.png')} />
+<img alt="create collection" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_01.png')} />
 <br/>
 
 ## Edit a Collection {#edit-collection}
 From the [Database Panel](/docs/documentation/admin/database/admin_database_overview), press the corresponding _pen_ icon. The collection's [settings panel](#edit--create-collection) will open up.
 
-<img alt="create collection" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_02.png')} />
+<img alt="create collection" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_02.png')} />
 <br/>
 
 <div className="alert alert--secondary">
@@ -26,7 +26,7 @@ From the [Database Panel](/docs/documentation/admin/database/admin_database_over
 ## Collection Settings Panel Layout {#edit--create-collection}
 When creating or editing a collection, you will see this settings panel:
 
-<img alt="collestion settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_03.png')} />
+<img alt="collestion settings panel" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_03.png')} />
 <br/>
 
 _Actions:_
@@ -154,13 +154,13 @@ To create _additional fields_, create a new _collection_ or choose the one that 
 <br/>
 <br/>
 
-1. Under the **Fields** tab, press the <span className="badge badge--primary">+ Add Field</span> button.
+1. Under the **Fields** tab, press the <span class="badge badge--primary">+ Add Field</span> button.
 2. A **Field** component will appear. Pressing it will open up a settings panel.
 3. Configure the [settings](/docs/documentation/admin/database/admin_collections#fields).
-4. If more fields are required, press the <span className="badge badge--primary">+ Add Field</span> button again and complete the configuration.
+4. If more fields are required, press the <span class="badge badge--primary">+ Add Field</span> button again and complete the configuration.
 5. Save.
 
-<img alt="create additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_additional_fields_00.png')} />
+<img alt="create additional fields" class="img_sizing item shadow--tl" src={useBaseUrl('img/admin_additional_fields_00.png')} />
 <br/>
 <br/>
 

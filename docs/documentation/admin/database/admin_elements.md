@@ -45,7 +45,7 @@ _Table and Options:_
 <br/>
 
 ## Create an Element {#create-element}
-From within the _Elements Panel_, you can create a new _element_ by pressing the <span className="badge badge--primary">+</span> icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can create a single _element_.
+From within the _Elements Panel_, you can create a new _element_ by pressing the <span className="badge badge--secondary">+</span> icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can create a single _element_.
 
 <img alt="create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_02.png')} />
 
