@@ -92,6 +92,12 @@
   color: var(--note-title-color);
 } */
 
+.alert--secondary .alert--secondary{
+  border-width: 0px;
+  box-shadow: none;
+
+}
+
 .alert--secondary h2 {
   font-size: 28px;
 }
@@ -166,9 +172,9 @@ html[data-theme='dark'] {
   --ifm-heading-color: #ffffff;
   --ifm-button-color: var(--ifm-font-color-base-inverse);
   --note-title-color: #ffffff;
-  --row-1-color: #3f3b52;
-  --row-2-color: #352d46;
-  --row-title-color: #221c38;
+  --row-1-color: #313131;
+  --row-2-color: #242424;
+  --row-title-color: #161616;
   --box-color: #606770;
   --ifm-color-secondary: #373542;
   --secondary-custom: #ffffff;
