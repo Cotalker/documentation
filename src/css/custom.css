@@ -98,6 +98,18 @@
 
 }
 
+.alert--secondary .alert--success{
+  border-width: 0px;
+  box-shadow: none;
+
+}
+
+.alert--secondary .alert--warning{
+  border-width: 0px;
+  box-shadow: none;
+
+}
+
 .alert--secondary h2 {
   font-size: 28px;
 }
