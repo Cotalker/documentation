@@ -177,6 +177,15 @@ B. Your _Job titles_ section should be similar to the image below.
 
 <img className="img_sizing item shadow--tl" alt="check job titles" src={useBaseUrl('img/tutorials/tutorial_basic_company_08.png')} /> 
 <br/>
+<br/>
+
+<div className="align-center">
+
+<iframe src="https://giphy.com/embed/kzs7srxbKNqjbI62U4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+<p><a href="https://giphy.com/gifs/abcnetwork-kzs7srxbKNqjbI62U4">via GIPHY</a></p>
+
+</div>
 
 ---
 
