@@ -87,11 +87,12 @@ _The newly created access role's settings should look like this:_
 - Nonetheless, users can be edited later and have new access roles assigned to them.
 :::
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;">
-<iframe src="https://giphy.com/embed/3oz8xCsYTaeGxtF1W8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen>
-</iframe>
+<div className="align-center">
+
+<iframe src="https://giphy.com/embed/3oz8xCsYTaeGxtF1W8" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gotham-fox-mad-city-3oz8xCsYTaeGxtF1W8">via GIPHY</a></p>
+
 </div>
-<p><a href="https://giphy.com/gifs/gotham-fox-mad-city-3oz8xCsYTaeGxtF1W8">via GIPHY</a></p>
+<br/>
 
 ---
 
