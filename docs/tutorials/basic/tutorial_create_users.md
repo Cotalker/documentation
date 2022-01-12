@@ -18,8 +18,8 @@ Our mock company, Ruanda, wants to add all their employees (about 40 people) to 
 For the tutorial, we will be creating the _user_ accounts for at least two employees. One of them is Jennifer Fritz, a developer in the cybersecurity division. Her email is `jennifer@ruanda.cl` and her phone number is `202-555-0477`. The second one is her boss, Mario Casas, and his email is `mario.casas@ruanda.cl`.
 
 ## Tutorial Objectives {#tutorial-objectives}
-- [A. Create a user account for a lower level employee.](#low-level-user)
-- B. Create a user account for a high level employee.
+- [A. Create a user account for a lower level employee.](#create-low-level-user)
+- [B. Create a user account for a high level employee.](#create-high-level-user)
 
 :::tip Advanced tip
 _Users_ can also be created through an API request. For example, you could use [Postman](https://www.postman.com/) to automatically create users with spreadsheet data and the [Create New User API request](/docs/documentation/api/users/#post-user).
@@ -40,7 +40,7 @@ You should have completed the following tutorials:
 
 ## Steps {#steps}
 
-### A. Create a user account for a lower level employee. {#low-level-user}
+### A. Create a user account for a lower level employee. {#create-low-level-user}
 
 <div className="alert alert--secondary">
 
@@ -125,7 +125,7 @@ Press <span className="badge badge--primary">Save</span> button in the upper rig
 </div>
 <br></br>
 
-### B. Create a user account for a high level employee.
+### B. Create a user account for a high level employee. {#create-high-level-user}
 
 <div className="alert alert--secondary">
 
@@ -180,6 +180,8 @@ From the **Create user** settings panel, in the **Access** tab, add the followin
 <br></br>
 
 <div className="alert alert--secondary">
+
+***IV. Associate subordinate users.**
 
 <img alt="Related users" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_04.png')} />
 <br/>
