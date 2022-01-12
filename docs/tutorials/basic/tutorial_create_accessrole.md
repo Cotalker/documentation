@@ -9,136 +9,94 @@ Tutorial on how to create _access roles_.
 Time: 7 minutes
 
 :::tip Vocabulary Note
-An _Access Role_ is a preset of _permissions_ that can be assigned to a _user_ to allow them to have different levels of reading and writing access in the app.
+An [_Access Role_](/docs/documentation/admin/admin_accessrole) is a preset of [_permissions_](/docs/documentation/admin/admin_accessrole#default-permissions) that can be assigned to a _user_ to allow them to have different levels of reading and writing access in the Cotalker platform.
 :::
 
 ## Company Requirements {#company-requirements}
-#### Tutorial Objectives {#tutorial-objectives}
-The company wants only bosses and the CEO to be able to see the company's reports. Privacy is vital, so there must be no possibility that lower-ranking employees could have access to that information.
+The company wants only managers and the CEO to be able to see the company's reports. Privacy is vital, so there must be no possibility that lower-ranking employees could have access to that information.
+
+## Tutorial Objectives {#tutorial-objectives}
+- [Create an _access role_ with the specified requirements.](#create-an-access-role)
 
 ## Pre-Requisites {#pre-requisites}
 #### Access Role {#access-role}
-* User with the `admin-accesscontrol-write` permission to create and modify access roles. 
-* Or`admin-*-write` which allows all of the above. 
-* User with the `web-admin-write` and `web-admin-read` permissions to set up the admin.
-* User with the `read admin` access role.
+Your _user_ profile's _access role_ **must** have at least the following [permissions](/docs/documentation/admin/admin_accessrole#default-permissions): 
+- `admin-access` (permission to access the Administrative Panel)
+- `admin-accesscontrol-write` (permission to create and edit _access roles_)
 
 ## Steps {#steps}
-
-#### I. Create the Access Role: {#i-create-the-access-role}
+#### Create an Access Role: {#create-an-access-role}
 
 <div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Acesss roles</span>.
+**I. Go to the Access Roles section.**
 
-  _The following settings panel will open up:_
-
-<img alt="access role panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_access_00.png')} />
+<img alt="access role section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_accessroles_00.png')} />
 <br/>
+
+1. From the **Main Menu Bar**, press the <span className="badge badge--primary">Administrator</span> button to access the **Administrative Panel**.
+2. Select <span className="badge badge--primary">Acesss roles</span>.
+3. The **Access Roles** section opens up.
 
 </div>
 <br></br>
 
 <div className="alert alert--secondary">
 
-2. Press the <span className="badge badge--primary">+</span> icon shown below to create a new *Access Role*:
+**II. Open a settings panel to create a new access role.**
 
-<img className="img_sizing item shadow--tl" alt="create access role icon" src={useBaseUrl('img/tutorial_access_01.png')} />
+<img alt="access role panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_accessroles_01.png')} />
 <br/>
 
-_The following settings panel will then open up:_
-
-<img className="img_sizing item shadow--tl" alt="create access role panel" src={useBaseUrl('img/tutorial_access_02.png')} />
-<br/>
+- Press the <span className="badge badge--primary">+</span> icon in the upper right-hand corner to open an Access Role Settings Panel.
 
 </div>
 <br></br>
 
 <div className="alert alert--secondary">
 
-3. Set the following: 
+**III. Set up the new access role.**
 
-    - **Name**: `Report Access`.
-    - **Permissions**: `report-surveys-read`
+<img alt="access role settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_accessroles_02.png')} />
+<br/>
 
-:::note
-- Optionally, you can add something to the **description** of the access role.
+_In the settings panel, set the following: _
+1. **Name**: _Report Access_
+2. **Description**: _Grants users access to read reports._
+3. **Permissions**: `report-surveys-read`
+4. Press <span className="badge badge--primary">Save</span>
+
+</div>
+<br></br>
+
+## Expected Result {#result}
+
+_In the **Access Roles** section, the newly created access role should be found on the table._
+
+<img alt="result access role section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_accessroles_04.png')} />
+<br/>
+
+_The newly created access role's settings should look like this:_
+
+<img alt="result settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_accessroles_03.png')} />
+<br/>
+
+:::tip Useful information
+- _Access roles_ must be assigned to users when they are created. 
+- It is useful to have access roles ready before creating users. 
+- Nonetheless, users can be edited later and have new access roles assigned to them.
 :::
 
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;">
+<iframe src="https://giphy.com/embed/3oz8xCsYTaeGxtF1W8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
 </div>
-<br></br>
+<p><a href="https://giphy.com/gifs/gotham-fox-mad-city-3oz8xCsYTaeGxtF1W8">via GIPHY</a></p>
 
-<div className="alert alert--secondary">
+---
 
-4. Press <span className="badge badge--primary">Save</span>.
+## Related Topics {#related-topics}
+- [**Access Roles Section**](/docs/documentation/admin/admin_accessrole): Administrative Panel documentation
+- [**COTAccessRoles**](/docs/documentation/models/users/model_accessroles): Access Role data model
+- [**Access Role API**](/docs/documentation/api/users/accessroles): API documentation
 
-</div>
-<br></br>
-
-<br/>
-
-#### II. Assign the access role to each boss and CEO: {#ii-assign-the-access-role-to-each-boss-and-ceo}
-
-<div className="alert alert--secondary">
-
-5. Access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Users</span>.
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-6. Search for the boss of cybersecurity, *Mario Casas*. Click on the *user* to edit their properties.
-
-  _Your **Users** panel should look something like this:_
-
-<img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_access_03.png')} />
-<br/>
-
-_Once you click on the **user** you want to edit, the **Edit user** settings panel will open up, as shown in the next step._
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-7. In the **Edit users** settings panel, under the <span className="badge badge--primary">Access</span> tab, set the following:
-
-    - **Access Roles**: `Report Access`.
-
-<img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_access_04.png')} />
-<br/>
-<br/>
-
-:::note 
-- _As you type in the access role, you may select the option from the dialog box._
-- _Access roles are case sensitive._
-:::
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-8. Press <span className="badge badge--primary">Save</span>.
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-9. Repeat the last three steps with each boss and the CEO.
-
-</div>
-<br></br>
-
-
-## Result {#result}
-After creating the _access role_, you should be able to see it in the **Access Role** panel, as shown below:
-
-<img className="img_sizing item shadow--tl" alt="access role result" src={useBaseUrl('img/tutorial_access_result_01.png')} />
-<br/>
-
-After designating a _user_ with the newly created _access role_, the user's settings panel should look something like this:
-
-<img className="img_sizing item shadow--tl" alt="user result" src={useBaseUrl('img/tutorial_access_result_02.png')} />
