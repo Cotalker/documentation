@@ -250,8 +250,8 @@ module.exports = {
       label: 'Basic',
       items: [
         'tutorials/basic/configure_company',
-        'tutorials/basic/create_user',
         'tutorials/basic/create_accessroles',
+        'tutorials/basic/create_user',
         'tutorials/basic/create_database',
         'tutorials/basic/create_group',
         'tutorials/basic/create_channel',

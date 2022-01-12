@@ -9,7 +9,7 @@ Tutorial on how to create a _user_.
 Time: 10 minutes
 
 :::tip Vocabulary Note
-In Cotalker, a _user_ is a [data model](/docs/documentation/models/users/model_users) that represents either a real person or a bot. A _user_, whether human or not, can access and interact with the Cotalker platform. The _user_ contains profile data, such as name, email, phone number, password, and other con. _Users_ can also be configured to have different level access roles.
+In Cotalker, a _user_ is a [data model](/docs/documentation/models/users/model_users) that represents either a real person or a bot. A _user_, whether human or not, can access and interact with the Cotalker platform. The _user_ contains profile data, such as name, email, phone number, password, and other additional information. _Users_ can also be configured to have different level access roles.
 :::
 
 ## Company Requirements {#company-requirements}
@@ -18,15 +18,15 @@ Our mock company, Ruanda, wants to add all their employees (about 40 people) to 
 For the tutorial, we will be creating the _user_ accounts for at least two employees. One of them is Jennifer Fritz, a developer in the cybersecurity division. Her email is `jennifer@ruanda.cl` and her phone number is `202-555-0477`. The second one is her boss, Mario Casas, and his email is `mario.casas@ruanda.cl`.
 
 ## Tutorial Objectives {#tutorial-objectives}
-1. Create a user account for a high level employee.
-2. Create a user account for a lower level employee.
+- [A. Create a user account for a lower level employee.](#low-level-user)
+- B. Create a user account for a high level employee.
 
-:::tip
+:::tip Advanced tip
 _Users_ can also be created through an API request. For example, you could use [Postman](https://www.postman.com/) to automatically create users with spreadsheet data and the [Create New User API request](/docs/documentation/api/users/#post-user).
 :::
 
 ## Pre-Requisites {#pre-requisites}
-**Access Role**
+**Access Roles**
 Your _user_ profile's _access role_ **must** have at least the following [permissions](/docs/documentation/admin/admin_accessrole#default-permissions): 
 - `admin-access` (permission to access the Administrative Panel)
 - `admin-user-write` (permission to create and edit users)
@@ -40,96 +40,196 @@ You should have completed the following tutorials:
 
 ## Steps {#steps}
 
-### I. Create a user account for a high level employee. {#high-level-user}
+### A. Create a user account for a lower level employee. {#low-level-user}
 
 <div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Users</span>.
+**I. Go to the Users section.**
 
-  _The following settings panel will open up:_
-
-<img alt="user settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_user_00.png')} />
+<img alt="users section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_00.png')} />
 <br/>
 
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-2. In the settings panel, press the <span className="badge badge--primary">+</span> button to create a new user.
-
-<img className="img_sizing item shadow--tl" alt="create user" src={useBaseUrl('img/tutorial_user_01.png')} /> 
-<br/>
-
-_The following panel will then open up:_
-
- <img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/blog_simple_task_user.png')} />
-<br/>
+1. From the **Main Menu Bar**, press the <span className="badge badge--primary">Administrator</span> button to open the **Administrative Panel**.
+2. In the **Administrative Panel**, select <span className="badge badge--primary">Users</span>.
+3. The **Users** section opens.
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-3. Create the boss, by setting the following fields:
-    * **Name**: *Mario*
-    * **Surname**: *Casas*
-    * **Email**:  `mario@ruanda.cl`
-    * **Job Title**: *chief of cyber security*
-    * **Access Role**: *default*
-    * Set a **Password**
-    * Optionally set **extras**.
-    
-    :::note 
-    _Email addresses must be unique, even across companies._
-    :::
+**II. Open a _Create user_ settings panel.**
+
+<img alt="create user" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_01.png')} />
+<br/>
+
+Press the <span className="badge badge--primary">+</span> icon in the upper right-hand corner to open the **Create user** settings panel.
 
 </div>
-<br></br>
+<br/>
 
 <div className="alert alert--secondary">
 
-4. Press <span className="badge badge--primary">Save</span>.
+** III. Set up general user information.**
 
-</div>
-<br></br>
+<img alt="users section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_02.png')} />
+<br/>
 
-<div className="alert alert--secondary">
+From the **Create user** settings panel, in the **General information** tab, set up the first employee with the following information:
 
-5. Create the developer by setting the following fields:
-    * **Names**: *Valentina*
-    * **Surname**: *Martínez*
-    * **Email**:  `vm@ruanda.cl`
-    * **Phone**: +56 9 5555 8888
-    * **Job Title**: *developer*
-    * **Access Role**: *default*
-    * Set a **Password**
-    * **Bosses**: *Mario Casas*
-    * Optionally set **extras**.
+1. **Names**: _Jennifer_
+2. **Surname**: _Fritz_
+3. **Email**: _jennifer@ruanda\.cl_
+4. **Phone**: _2025550477_
+5. **Job title**: _Developer_
+6. Add a profile picture if you like.
 
-</div>
-<br></br>
 
-<div className="alert alert--secondary">
+:::note 
+- The _email_ serves as the user's identification code. Hence, once it is saved it cannot be chagned or edited.
+:::
 
-6. Press <span className="badge badge--primary">Save</span>.
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-7. Repeat the same steps for the rest of the employees. 
-
-:::note
-- Four more users will be enough for the tutorial.
+:::tip
+- _Email addresses_ must be unique, even across companies.
+- Try using a different made-up email address for this tutorial to avoid using an email already registered in the Cotalker environment.
 :::
 
 </div>
+<br></br>
+
+<div className="alert alert--secondary">
+
+**IV. Set up access information.**
+
+<img alt="access roles" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_03.png')} />
+<br/>
+
+From the **Create user** settings panel, in the **Access** tab, add the following user information:
+
+1. **Access roles**: _default_
+2. **Password**: Create a password for the user.
+3. **Repeat password**: Retype the password for confirmation.
+
+</div>
+<br></br>
+
+<div className="alert alert--secondary">
+
+**V. Save settings.**
+
+<img alt="users section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_03a.png')} />
+<br/>
+
+Press <span className="badge badge--primary">Save</span> button in the upper right-hand corner to create the new user.
+
+</div>
+<br></br>
+
+### B. Create a user account for a high level employee.
+
+<div className="alert alert--secondary">
+
+**I. Open a _Create user_ settings panel.**
+
+<img alt="create user" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_01.png')} />
+<br/>
+
+Once again, press the <span className="badge badge--primary">+</span> icon in the upper right-hand corner to open the **Create user** settings panel.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+** II. Set up general user information.**
+
+<img alt="users section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_02.png')} />
+<br/>
+
+From the **Create user** settings panel, in the **General information** tab, set up the second employee with the following information:
+
+1. **Names**: _Mario_
+2. **Surname**: _Casas_
+3. **Email**: _mario.casas@ruanda\.cl_
+4. **Phone**: left blank
+5. **Job title**: _Chief of Cybersecurity_
+6. Add a profile picture if you like.
+
+:::tip Remember
+- _Email addresses_ must be unique, even across companies.
+- Try using a different made-up email address for this tutorial to avoid using an email already registered in the Cotalker environment.
+:::
+
+</div>
+<br></br>
+
+<div className="alert alert--secondary">
+
+**III. Set up access information.**
+
+<img alt="access roles" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_03.png')} />
+<br/>
+
+From the **Create user** settings panel, in the **Access** tab, add the following user information:
+
+1. **Access roles**: _default_, _Report Access_
+2. **Password**: Create a password for the user.
+3. **Repeat password**: Retype the password for confirmation.
+
+</div>
+<br></br>
+
+<div className="alert alert--secondary">
+
+<img alt="Related users" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_04.png')} />
+<br/>
+
+Under the **Related users** tab, fill in the field:
+1. **Subordinates**: _Jennifer Fritz_
+
+</div>
+<br></br>
+
+<div className="alert alert--secondary">
+
+**V. Save settings.**
+
+<img alt="users section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_03a.png')} />
+<br/>
+
+Press <span className="badge badge--primary">Save</span> button in the upper right-hand corner to create the new user.
+
+</div>
+<br></br>
 
 
 
-## Result {#result}
-You should now be able to see all the _users_ you created listed in the _Users_ settings panel, somewhat like in the following image:
+## Expected Results {#result}
+You should now be able to see all the _users_ you created listed in the _Users_ section, somewhat like in the following image:
 
-<img alt="user list" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_user_result.png')} />
+<img alt="user list" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_07.png')} />
+<br/>
+
+_The first created user's settings should look like this:_
+
+<img alt="first user" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_05.png')} />
+<br/>
+
+_The higer level user's settings should look like this:_
+
+<img alt="user list" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_users_06.png')} />
+<br/>
+
+<div className="align-center">
+
+<iframe src="https://giphy.com/embed/l0Iyl55kTeh71nTXy" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/quizizz-l0Iyl55kTeh71nTXy">via GIPHY</a></p>
+
+</div>
+<br/>
+
+----
+
+## Related Topics {#related-topics}
+- [Users section](/docs/documentation/admin/users): Administrive Panel documentation
+- [COTUser](/docs/documentation/models/users/model_users): User Data model
+- [User API Requests](/docs/documentation/api/users/): API documentation
