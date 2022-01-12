@@ -9,36 +9,38 @@ Tutorial on how to create a _user_.
 Time: 10 minutes
 
 :::tip Vocabulary Note
-A _user_, as in most applications, permits a person to access and interact with the software. The _user_ contains the person's profile data, such as name, email, password, etc. Different level access permissions are also configured through the _user_.
+In Cotalker, a _user_ is a [data model](/docs/documentation/models/users/model_users) that represents either a real person or a bot. A _user_, whether human or not, can access and interact with the Cotalker platform. The _user_ contains profile data, such as name, email, phone number, password, and other con. _Users_ can also be configured to have different level access roles.
 :::
 
 ## Company Requirements {#company-requirements}
-#### Tutorial Objectives {#tutorial-objectives}
+Our mock company, Ruanda, wants to add all their employees (about 40 people) to the Cotalker platform. The company has sent all the employee details in [this spreadsheet](https://docs.google.com/spreadsheets/d/1Vt5QKS8ggV9Rw45Rjz7sCZ-bdjGzUVy0xyaqWB3yoe4/edit?usp=sharing). 
 
-Our mock company, Ruanda, wants to add all their employees (about 40 people) to the app. 
+For the tutorial, we will be creating the _user_ accounts for at least two employees. One of them is Jennifer Fritz, a developer in the cybersecurity division. Her email is `jennifer@ruanda.cl` and her phone number is `202-555-0477`. The second one is her boss, Mario Casas, and his email is `mario.casas@ruanda.cl`.
 
-+ The company has sent all the employee details in [this document](https://docs.google.com/spreadsheets/d/1UC_W706m5_8TYogK29y8HU7_HqA_Jx2slZQJC5bBWS4/edit?usp=sharing). 
- 
+## Tutorial Objectives {#tutorial-objectives}
+1. Create a user account for a high level employee.
+2. Create a user account for a lower level employee.
 
-+ One of the employees is Valentina Martínez, a developer in the cybersecurity division. Her email is `vm@ruanda.cl` and her phone is +56 9 5555 8888.
-+ Her boss is Mario Casas and his email is `mario@ruanda.cl`.
+:::tip
+_Users_ can also be created through an API request. For example, you could use [Postman](https://www.postman.com/) to automatically create users with spreadsheet data and the [Create New User API request](/docs/documentation/api/users/#post-user).
+:::
 
 ## Pre-Requisites {#pre-requisites}
 **Access Role**
-* User with the `admin-user-write` permission to edit/create users.
-* User with the `admin-accesscontrol-write` permission to set access roles.
-* Or`admin-*-write` permission which allows all of the above.
-* User with the `web-admin-write` and `web-admin-read` permissions to set up the _admin_.
-* User with the access role `read admin`.
+Your _user_ profile's _access role_ **must** have at least the following [permissions](/docs/documentation/admin/admin_accessrole#default-permissions): 
+- `admin-access` (permission to access the Administrative Panel)
+- `admin-user-write` (permission to create and edit users)
+- `admin-accesscontrol-write` (permission to grant the user _access roles_)
+- `admin-jobtitles-write` or `admin-company-write` (permission to give the user a _job title_)
 
-**Company**
-* Having completed the [Configure Company Tutorial](/docs/tutorials/basic/configure_company).
-
-***Optional***
-* Access Role created in the [Access Role section](/docs/documentation/admin/admin_accessrole)
-* Having completed the [Database Tutorial](/docs/tutorials/basic/create_database).
+**Completed Tutorials**
+You should have completed the following tutorials:
+1. [Configure Company Basics Tutorial](/docs/tutorials/basic/configure_company).
+2. [Create Access Roles Tutorial](/docs/tutorials/basic/create_accessroles)
 
 ## Steps {#steps}
+
+### I. Create a user account for a high level employee. {#high-level-user}
 
 <div className="alert alert--secondary">
 

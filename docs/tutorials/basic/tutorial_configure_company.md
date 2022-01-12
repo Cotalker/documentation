@@ -16,14 +16,15 @@ Time: 7 minutes
 :::
 
 ## Company Requirements {#company-requirements}
-#### Tutorial Objectives {#tutorial-objectives}
 
 As mentioned in the [Overview](../tutorial_overview), we will be working with a make-believe company called _Ruanda_ for this tutorial. The company's first requirements are described below:
 
-[**A. Change basic company settings**](#change-company-settings): The company resides in Chile, but they work oversees, so its language preference should be set to English.
+- The company resides in Chile, but they work oversees, so its language preference should be set to English.
 
-[**B. Create _job titles_**](#create-job-titles): They have the following job positions that need to be integrated:
+- They have the following job positions that need to be integrated to the platform:
   - CEO
+  - chief of cybersecurity
+  - developer
   - finance manager
   - project manager
   - customer success manager
@@ -34,6 +35,9 @@ As mentioned in the [Overview](../tutorial_overview), we will be working with a 
   - human resources manager
   - IT manager
 
+## Tutorial Objectives {#tutorial-objectives}
+- [**A. Change basic company settings**](#change-company-settings)
+- [**B. Create _job titles_**](#create-job-titles)
 
 ## Pre-Requisites {#pre-requisites}
 For simplicity's sake, use a [_User_](/docs/documentation/admin/users) account with an [_access role_](/docs/documentation/admin/admin_accessrole) containing the `admin-*-write` permission.  
