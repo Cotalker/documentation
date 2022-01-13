@@ -6,7 +6,11 @@ author: Edward Alvarado & Valentina Martinez
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight'; 
 
-Tutorial on how to set up basic _company_ settings. 
+<span className="hero__subtitle">
+
+Tutorial on how to edit _company_ settings and create _job titles_. 
+
+</span>
 
 Time: 7 minutes
 
@@ -40,16 +44,19 @@ As mentioned in the [Overview](../tutorial_overview), we will be working with a 
 - [**B. Create _job titles_**](#create-job-titles)
 
 ## Pre-Requisites {#pre-requisites}
-For simplicity's sake, use a [_User_](/docs/documentation/admin/users) account with an [_access role_](/docs/documentation/admin/admin_accessrole) containing the `admin-*-write` permission.  
+#### Access Role {#access-role}
+- For simplicity's sake, use a [_User_](/docs/documentation/admin/users) account with an [_access role_](/docs/documentation/admin/admin_accessrole) containing the `admin-*-write` permission.  
+
 :::caution  
 The `admin-*-write` permission enables writing in the entire **Administrative Panel**. Use with caution.  
 :::  
 :::tip
 - If you do not have this permission, ask your admin for help.
-- Below, you can see (1) an image of a [user's settings](/docs/documentation/admin/users#user-settings-panel) highlighting their access roles, then (2) an image of the [access role's   settings](/docs/documentation/admin/admin_accessrole#edit--create-single-access-role) indicating the permissions associated with it.
+- Below, you can see (1) an image of a [user's settings](/docs/documentation/admin/users#user-settings-panel) highlighting their access roles. If you click on the _access role_ in the _user_ settings panel, the (2) [access role's settings](/docs/documentation/admin/admin_accessrole#edit--create-single-access-role) opens up. There you will see the permissions associated with the access role, i.e., the permissions the user has been granted.  
 
 <img alt="permissions" className="img_sizing item shadow--tl"   src={useBaseUrl('img/tutorials/tutorial_basic_company_00.png')  } />
 <br/>
+
 :::
 
 ## Steps {#steps}

@@ -4,7 +4,11 @@ title: Create User
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-Tutorial on how to create a _user_.
+<span className="hero__subtitle">
+
+Tutorial on how to create and configure _user_ accounts.
+
+</span>
 
 Time: 10 minutes
 
@@ -26,7 +30,7 @@ _Users_ can also be created through an API request. For example, you could use [
 :::
 
 ## Pre-Requisites {#pre-requisites}
-**Access Roles**
+#### Access Role {#access-role}
 Your _user_ profile's _access role_ **must** have at least the following [permissions](/docs/documentation/admin/admin_accessrole#default-permissions): 
 - `admin-access` (permission to access the Administrative Panel)
 - `admin-user-write` (permission to create and edit users)

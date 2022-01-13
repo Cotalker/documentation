@@ -53,7 +53,7 @@ A _task group_ stores a [workflow group's configuration](/docs/documentation/adm
 | **defaultFilter** | [Filter](/docs/documentation/client/taskview#create-a-filter) used to sort tasks in the task view. | ObjectId | 
 | **defaultView** | Indicates the default view in the [_task view_](/docs/documentation/client/taskview#tasks-views) section. | string | Options: `list`, `kanban`, `calendar`, `gantt`, `grid`
 | **flowType** | Determines how tasks transition from one state to another.  | string | `state-machine`: state transitions must be predetermined in the setup. <br/>`free`: freely change from one state to another.
-| **group** | Indicates the workflow group the task belongs to. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | For internal use only. Do not modify.
+| **group** | Indicates the workflow group associated with the task group. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | For internal use only. Do not modify.
 | **hideClosedAfterDays** | Closed tasks will disappear from the _task view_ after the amount of days indicated. | number |
 | **initialStateMachine** | Indicates which workflow the group initiates in. | [ObjectID<COTSMStateMachine\>](/docs/documentation/models/tasks/model_statemachine) | 
 | **isActive** | Indicates whether the task group is active or not. | boolean |
