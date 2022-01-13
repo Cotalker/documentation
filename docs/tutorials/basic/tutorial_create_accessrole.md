@@ -4,7 +4,11 @@ title: Create Access Roles
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-Tutorial on how to create _access roles_.
+<span className="hero__subtitle">
+
+Tutorial on how to grant permissions through _access roles_.
+
+</span>
 
 Time: 7 minutes
 
@@ -16,7 +20,11 @@ An [_Access Role_](/docs/documentation/admin/admin_accessrole) is a preset of [_
 The company wants only managers and the CEO to be able to see the company's reports. Privacy is vital, so there must be no possibility that lower-ranking employees could have access to that information.
 
 ## Tutorial Objectives {#tutorial-objectives}
-- [Create an _access role_ with the specified requirements.](#create-an-access-role)
+- [Create an _access role_ with the specified permissions.](#create-an-access-role)
+
+:::info Further Information
+[Click here to see a complete list of available permissions.](/docs/documentation/admin/admin_accessrole#default-permissions)
+:::
 
 ## Pre-Requisites {#pre-requisites}
 #### Access Role {#access-role}

@@ -91,7 +91,7 @@ The response follows the [COTTaskGroup](/docs/documentation/models/tasks/model_t
 
 
 ## Create New Task Group {#post-taskgroup}
-_Create a new state machine within a task group._
+_Create a new a task group._
 
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/group</span>
 
@@ -109,7 +109,7 @@ _Only required fields are listed below. For a complete schema description, pleas
 
 Element | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-| **group** | Indicates the workflow group the task belongs to. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | Required | The _group_ must be exclusively assigned to the _task group_.
+| **group** | Indicates the workflow group associated with the task group. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | Required | The _group_ must be exclusively assigned to the _task group_.
 
 
 
