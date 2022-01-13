@@ -49,7 +49,7 @@ If you don't have your Cotalker Partner Account. Please contact us at partners@c
 ### Company Edition {#company-edition}
 1. Create two Job Titles in the company: `Manager` and `Operator`.
 
-[View this tutorial for more information on company edition](/docs/tutorials/basic/create_company) 
+[View this tutorial for more information on company edition](/docs/tutorials/basic/configure_company) 
 
 
 ### Create Access Roles {#create-access-roles}
@@ -215,7 +215,7 @@ Initial Stage: __notify__
   properties __PM Control__ @ __Create Project__  
   First property overrides channel name __off__
 
-[View this tutorial for more information on Create Channel](/docs/tutorials/basic/create_channel)
+[View this tutorial for more information on Create Channel](/docs/tutorials/basic/create_group)
 
 ### Create Bots {#create-bots}
 

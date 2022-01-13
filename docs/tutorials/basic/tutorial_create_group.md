@@ -1,10 +1,14 @@
 ---
 id: create_group
-title: Create Groups & Channels
+title: Create Group
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-Tutorial on how to create _groups_ and _channels_.
+<span className="hero__subtitle">
+
+Tutorial on how to create _groups_ for communicating and sharing information.
+
+</span>
 
 Time: 15 minutes
 
