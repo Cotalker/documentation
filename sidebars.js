@@ -254,7 +254,6 @@ module.exports = {
         'tutorials/basic/create_user',
         'tutorials/basic/create_database',
         'tutorials/basic/create_group',
-        'tutorials/basic/create_channel',
         'tutorials/basic/create_survey',
         'tutorials/basic/create_bot',
         'tutorials/basic/create_state_machines',

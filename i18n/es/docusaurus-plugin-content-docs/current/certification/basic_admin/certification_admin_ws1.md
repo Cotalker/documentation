@@ -44,7 +44,7 @@ For more details, go to the [admin's access role section](/docs/documentation/ad
 ### What to build {#what-to-build}
 In this workshop we will simulate that we are working with a client of a financial company. <br/>
 Redirect to the [Documentation Tutorial](/docs/tutorials/tutorial_overview) and do the follows basic tutorial:
-* [Create Company](/docs/tutorials/basic/create_company)
+* [Create Company](/docs/tutorials/basic/configure_company)
 * [Create User](/docs/tutorials/basic/create_user)
 * [Create Access Role](/docs/tutorials/basic/create_accessroles)
 
