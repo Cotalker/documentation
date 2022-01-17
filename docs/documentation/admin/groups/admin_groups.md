@@ -7,7 +7,7 @@ import Highlight from '@theme/Highlight';
 
 <span className="hero__subtitle">Settings Panel Guide</span>
 
-_View, create and edit regular groups._
+_View, create and edit standard groups._
 
 ## Create a Group {#create-group}
 From the [Groups Section](/docs/documentation/admin/groups/overview_groups#layout), press the <span className="badge badge--primary">+</span> icon to create a new group. The [**group settings panel**](#group-settings-panel-layout) opens up to configure and save the new group.
@@ -267,7 +267,7 @@ _Configures the [actions button in the group panel](/docs/documentation/client/a
 
 ## About the Actions Button {#actions-button}
 ### Overview {#actions-button-overview}
-In _regular groups_, through the [_actions button_](/docs/documentation/client/actions_button#group-panel) –a green floating button that appears at the bottom of the group panel– users can create new channels and choose from a list of links to external or internal URLs. 
+In _standard groups_, through the [_actions button_](/docs/documentation/client/actions_button#group-panel) –a green floating button that appears at the bottom of the group panel– users can create new channels and choose from a list of links to external or internal URLs. 
 
 _The **actions button** and its corresponding **actions menu** will look something like the image below:_
 
@@ -276,7 +276,7 @@ _The **actions button** and its corresponding **actions menu** will look somethi
 
 "Actions" in the _actions button menu_ are usually used as links to important tools or information, either within the Cotalker platform or on the web.
 
-Only in _regular groups_ can users create new channels.
+Only in _standard groups_ can users create new channels.
 
 <div className="alert alert--secondary">
 

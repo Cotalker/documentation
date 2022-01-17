@@ -41,7 +41,7 @@ A reliable way to implement this requirement would be to create a _collection_ c
 #### Access Role {#access-role}
 Your _user_ profile's _access role_ **must** have at least the following [permissions](/docs/documentation/admin/admin_accessrole#default-permissions): 
 - `admin-access` (permission to access the Administrative Panel)
-- `admin-properties-write` (permission to create and edit _collections_)
+- `admin-properties-write` (permission to create _collections_ and _elements_)
 
 :::tip Vocabulary note:
 In backend vocabulary, _elements_ are referred to as _properties_ and _collections_ as _property types_.

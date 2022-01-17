@@ -50,7 +50,7 @@ _From the administrative panel, you can access the following:_
 
   1. [**Workflows**](/docs/documentation/admin/workflows/admin_workflow_overview): Create and configure workflow groups and workflows.
   2. [**Link Groups**](/docs/documentation/admin/admin_links): Create links that appear on the _Main Menu Bar_ or within a _group_.
-  3. [**Groups**](/docs/documentation/admin/admin_group): Create _regular groups_ for communicating with other users and sharing information.
+  3. [**Groups**](/docs/documentation/admin/admin_group): Create _standard groups_ for communicating with other users and sharing information.
 
 <span className="hero__subtitle">DATA</span>
 

@@ -10,8 +10,8 @@ import TabItem from '@theme/TabItem';
 [Groups](/docs/documentation/client/groups) are the standard form of interacting within the Cotalker environment and are primarily accessed through the Main Menu Bar and Group Panel. 
 
 Group types: 
-- _Regular groups_ contain channels used for communicating with other users. 
-- _Workflow or Task groups_, like regular groups, have communication channels but are associated with workflow tasks and their states. 
+- _Standard groups_ contain channels used for communicating with other users. 
+- _Workflow or Task groups_, like standard groups, have communication channels but are associated with workflow tasks and their states. 
 - _Link groups_ direct you to anywhere within or outside the Cotalker environment.
 
 
@@ -49,7 +49,7 @@ Parameter | Description | Type | Required | Notes
 **created_lte** | Returns _groups_ with a value in the `createdAt` field equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **isLink** | Returns all _link groups_ found in the company. | boolean | Optional |
 **isTaskGroup** | Returns all _task groups_ found in the company. | boolean | Optional |
-**groupType** | Returns groups specified by type. | string | Optional | Available values: `link` (link groups), `task` (workflow or task groups), and `channel` (regular groups)
+**groupType** | Returns groups specified by type. | string | Optional | Available values: `link` (link groups), `task` (workflow or task groups), and `channel` (standard groups)
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Samples {#get-all-request-sample}
