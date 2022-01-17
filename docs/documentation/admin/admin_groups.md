@@ -10,7 +10,7 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#group-overview}
 
-[_Regular Groups_](/docs/documentation/client/groups#regular-groups), simply referred to as _"groups"_, are to be differentiated from _workflow (task) groups_ and _link groups_. As the other group types, _regular groups_ can be accessed through the **Main Menu Bar** or in the **Group Panel** as sub-groups of other groups. _Regular groups_ are mainly used for communication purposes. Users can be added as participants in the group, allowing them to use the group panel's _actions button_, access _sub-groups_, open _link groups_, access the group's _channels_, and other resources that can be added to a group and its channels. 
+[_Regular Groups_](/docs/documentation/client/groups#regular-groups), simply referred to as _"groups"_, are to be differentiated from _workflow (task) groups_ and _link groups_. As the other group types, _standard groups_ can be accessed through the **Main Menu Bar** or in the **Group Panel** as sub-groups of other groups. _Standard groups_ are mainly used for communication purposes. Users can be added as participants in the group, allowing them to use the group panel's _actions button_, access _sub-groups_, open _link groups_, access the group's _channels_, and other resources that can be added to a group and its channels. 
 
 Through _Channel Workspaces_ within _Regular Groups_, users associated to a  channel can send messages, share files, answer surveys, and view other users participating in the channel.
 
@@ -27,7 +27,7 @@ To access the <span className="badge badge--primary">Groups</span> section:
 <div className="alert alert--secondary">
 
 ## Groups Section Layout {#group-section-layout}
-_The Groups section consists of a table displaying all the regular groups that exist within the company._
+_The Groups section consists of a table displaying all the standard groups that exist within the company._
 
 <img alt="accessing groups" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_group_01.png')} />
 <br/>
@@ -305,7 +305,7 @@ _Configures the [actions button in the group panel](/docs/documentation/client/a
 
 ## About the Actions Button {#actions-button}
 ### Overview {#actions-button-overview}
-In _regular groups_, through the [_actions button_](/docs/documentation/client/actions_button#group-panel) –a green floating button that appears at the bottom of the group panel– users can create new channels and choose from a list of links to external or internal URLs. 
+In _standard groups_, through the [_actions button_](/docs/documentation/client/actions_button#group-panel) –a green floating button that appears at the bottom of the group panel– users can create new channels and choose from a list of links to external or internal URLs. 
 
 _The **actions button** and its corresponding **actions menu** will look something like the image below:_
 
@@ -314,7 +314,7 @@ _The **actions button** and its corresponding **actions menu** will look somethi
 
 "Actions" in the _actions button menu_ are usually used as links to important tools or information, either within the Cotalker platform or on the web.
 
-Only in _regular groups_ can users create new channels.
+Only in _standard groups_ can users create new channels.
 
 <div className="alert alert--secondary">
 

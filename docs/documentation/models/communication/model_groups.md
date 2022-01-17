@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 ## Description {#description}
 
-[Groups](/docs/documentation/client/groups) are the standard form of interacting within the Cotalker environment and are primarily accessed through the Main Menu Bar and Group Panel. There are three types of groups. _Regular groups_ contain channels used for communicating with other users. _Workflow groups_, like regular groups, have communication channels but are associated with workflow tasks and their states. _Link groups_ direct you to anywhere within or outside the Cotalker environment.
+[Groups](/docs/documentation/client/groups) are the standard form of interacting within the Cotalker environment and are primarily accessed through the Main Menu Bar and Group Panel. There are three types of groups. _Standard groups_ contain channels used for communicating with other users. _Workflow groups_, like standard groups, have communication channels but are associated with workflow tasks and their states. _Link groups_ direct you to anywhere within or outside the Cotalker environment.
 
 ## JSON Sample {#json-sample}
 ```json
