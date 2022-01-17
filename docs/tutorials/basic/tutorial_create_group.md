@@ -268,8 +268,8 @@ The 'Cybersecurity' _group_ with its _channels_ and _group link_ should look som
 <br/>
 
 :::note
-- Notice that since the _group link_ is set as subgroup within the _group panel_, its icon is set by default to a _folder icon_ and not the icon we chose in its settings.
 - If you don't see the new _group_ icons in the **Main Menu Bar**, try refreshing the page.
+- Notice that since the _group link_ is set as a subgroup within the _group panel_, its icon is set by default to a _folder icon_ and not the icon we chose in its settings.
 :::
 
 ---
