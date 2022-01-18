@@ -171,7 +171,7 @@ From the _Job Titles settings panel_,
 Repeat the procedure with the remaining job titles until done.
 
 :::tip
-Feel free to add more or less job titles.
+Feel free to add more or less job titles than those indicated in the [company requirements](#company-requirements).
 :::
 
 </div>
