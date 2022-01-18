@@ -4,217 +4,237 @@ title: Create Survey
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-Tutorial on how to create a survey.
+<span className="hero__subtitle">
+
+Tutorial on how to create a survey to gather data from users and share it on a channel .
+
+</span>
 
 Time: 12 minutes
 
 :::tip Vocabulary Note:
-A _survey_ is a customized form to gather information from _users_ through _channels_.
+- A _survey_ is a customized form used to gather information from _users_. They are usually used through _channel workspaces_, but can also be used to initiate a task from the group panel. Furthermore, _surveys_ can be made public, i.e., available for users not registered in the company's Cotalker ecosystem.
+- Sometimes the terms _survey_ and _form_ are used interchangeably. Others, a _survey_ will be the blank template and a _form_ an answered _survey_.
 :::
 
 ## Company Requirements {#company-requirements}
-Human Resources has a good idea for welcoming new people to the team. 
-New employees are sent a survey with questions to get to know them better. The information is then displayed in the team's _group_ so that everyone can warmly welcome new participants.
+The company's human resources department has a good idea for welcoming new people to the team. 
+New employees are asked to fill out a survey with questions for the team to get to know them better. The information is then displayed in the team's _channel workspace_ so that everyone can warmly welcome new participants.
 
-They want to capture the following data from the _users_:
+They want to capture the following data from _users_:
 - Nickname
 - Birthday
 - Where are they from?
 - Departament
 - A fun fact about them.
 
-## Pre-Requisites {#pre-requisites}
-#### Users & Access Role {#users--access-role}
-* _User_ with the `admin-surveys-write`, `admin-properties-write`, and `admin-groups-write` permissions to create and modify surveys, databases and groups. 
-* Or the `admin-*-write` permission which allows all of the above. 
-* _User_ with the `web-admin-write` and `web-admin-read` permissions to set up the _Admin_.
-* _User_ with the `read admin` access role.
-* A _user_ for each employee of the company.
+## Tutorial Objectives {#tutorial-objectives}
+- Create a Survey.
 
-#### Group {#group}
-* Having completed the [_Create Groups & Channels Tutorial_](create_group).
-* Have a previously made _group_ with a _channel_.
-* The _channel_ must include all employees.
+## Pre-Requisites {#pre-requisites}
+#### Access Role {#users--access-role}
+- Due to the extension of a survey's capabilities, it is best if your _user_ profile's [_access role_](/docs/documentation/admin/admin_accessrole) counts with the `admin-*-write` permission that grants access to the entire **Administrative Panel**.
 
 #### Database {#database}
-* Having completed the [_Create Collection Tutorial_](create_database).
-* Have a previously made _collection_ with the following characteristics:
-    * Name: `New Pal Form` 
-    * Must contain an _element_ named `Welcome Form`
+- Before creating the _survey_, you must have a _collection_ with an _element_ that will serve to associate the _survey_ with the corresponding _channels_.
 
+:::tip Tutorial Advice
+- For this tutorial, we recommend creating a **collection** called _New Employees_ with an **element** called _New Pal Form_.
+
+_The collection's element list would look something like this:_
+
+<img alt="element" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_00a.png')} />
+<br/>
+
+_For help on creating a colleciton with its corresponding element, please refer to the [Create Database](/docs/tutorials/basic/create_database) tutorial._
+
+:::
+
+#### Group {#group}
+- Before creating the _survey_ and after creating the previously mentioned _collection_ and _element_, you will need a _group_ and _channel_ where the survey will be filled out and shared.
+- The _channel_ must be associated to the _element_ that will also be associated with the _survey_.
+
+:::tip Tutorial Advice
+- For this tutorial, we suggest creating a **group** called _Company Chat_ with a **channel** called _Welcome!_.
+- The channel contains all existing **users** as participants.
+- The channel is associated with the _New Pal Form_ **element** belonging to the _New Employees_ **collection**.
+
+_The channel's settings should look something like this:_
+
+<img alt="channel" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_00b.png')} />
+<br/>
+
+_For help on creating a group with its respective channel, go to the [Create Group](/docs/tutorials/basic/create_group) tutorial._
+
+:::
 
 ## Steps {#steps}
 
-:::tip Vocabulary Note:
-- _"Survey" and "Form" are used synonymously._
-:::
-
-### I. Create Survey/Form {#i-create-surveyform}
+#### Create a Survey: {#create-survey}
 
 <div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Survey</span>.
+### I. Go to the Forms section. {#forms-section}
+
+<img alt="survey section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_01.png')} />
+<br/>
+
+1. From the **Main Menu Bar**, press the <span className="badge badge--primary">Administrator</span> button.
+2. Select <span className="badge badge--primary">Surveys</span>.
+3. The **Forms** section opens up.
 
 </div>
 <br></br>
 
 <div className="alert alert--secondary">
 
-2. Press the <span className="badge badge--primary">+</span> button to create a new _Survey/Form_.
+### II. Open the Create Form settings panel. {#open-create-form}
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_surveys_00.png')} />
+<img alt="create survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_02.png')} />
 <br/>
 
-  _The following settings panel will show up:_
+- Press the <span className="badge badge--primary">+</span> icon to open the **Create form** settings panel.
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_surveys_01.png')} />
-<br/>
 
 </div>
 <br></br>
 
 <div className="alert alert--secondary">
 
-3. Under <span className="badge badge--primary">General Information</span> set the following:
-    * **Name**: `New pal`
-    * **Code**: `newpal_1`
+### III. Set up basic form settings. {#basic-settings}
 
-  Under the <span className="badge badge--primary">Access</span> tab, set the following:
-    * **Group permission**: _Select a previously created Channel Group_.
-    * **Access Role**: *default*
-    * Press the <span className="badge badge--primary">+ Add Element</span> button:
-        * **Collection**: `New Pal Form`
-        * **Elements**: `Welcome Form`
+<img alt="survey settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_03.png')} />
+<br/>
+
+1. **Name**: _New pal_
+2. **Code**: _new\_pal\_00_
+3. **Group permission**: _Company Chat_
+4. **Access Role**:_default_
+5. Press the <span className="badge badge--primary">+ Add Element</span> button. _Collection_ and _Elements_ fields appear.
+6. **Collection**: _New Employees_
+7. **Elements**: _New Pal Form_
 
 :::note 
-- _The **element** will be used to show the **survey** only on the **channel** that has the same **element** assigned._
-- _In this case, only the **users** with the **default** access role will be able to respond the **survey**. If your **user** account doesn't have the **default** access role, you may add whatever **access role** you have in order to test the **survey**._
+- _In this example, the survey will only be available to users with the `default` access role. If your user account doesn't have the `default` access role, you may add whatever **access role** you have in order to test the **survey**._
+- _Make sure the **element** is the same one chosen for the **channel** in the [pre-requisites](#group) section. The **survey** will only be available on **channels** associated with the same **element**._
+
 :::
 
-_So far, your screen should look something like this:_
-
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_create1.png')}/>
-
 </div>
 <br></br>
 
 <div className="alert alert--secondary">
 
-4. Set up the **Form**:
+### IV. Set up the Form Template. {#form-template}
 
-  ![survey](/img/tutorial_survey_create2.png)
-
-  _Under the **Form Template** section, do the following:_
-
-  A. Drag and drop from the _Components_ column the <span className="badge badge--warning">Written Answer</span> component to the _form template_ and fill the fields with the following:
-    * **Field Label**: `Nickname`
-    * **Identifier**: `nickname`
-    * **Maximum** : `50`
-  
-  :::note Technical note:
-  _The identifiers are used in a routine to reference them and get a survey response._
-  :::
-  
-  B. Drag and drop the <span className="badge badge--warning">Date and Time</span> component to the _form template_.
-    * **Field Label** : `Birthday`
-    * **Identifier**: `birthday`
-    * **Type**: `Date`
-    * **Max/Min Type**: `Disable`
-    
-  C. Repeat _Step A_ with the `Where are you from?` question in the **Field Label** and with `natalplace` in **Identifier**.
-    
-  D. Drag and drop the <span className="badge badge--warning">Multiple Choice</span> component to the _form template_.
-    * **Field Label** : `Departament`
-    * **Identifier** : `departament`
-    * **Type**: `Collection`
-    * **Collection**: `Department`
-
-  :::note Tip
-  _Using **collection** as the **type** will be useful to group the **task** in the **task view** and also on the dashboard._
-  :::
-
-  E. Repeat _Step A_ with the `Fun fact` question in the **Field Label** and `funfact` as the **Identifier**. 
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-5. Press <span className="badge badge--primary">Save</span>.
-
-</div>
-<br></br>
-
-### II. Edit the Channel. {#ii-edit-the-channel}
-
-<div className="alert alert--secondary">
-
-6. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Group</span>.
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-7. Press the _group_ which has the _channel_ of the whole team.
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-8. Press the _channel_ where the whole team is included.
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-9. Edit the _channel_:
-
-    Under the <span className="badge badge--primary">Elements</span> tab, press the   <span className="badge badge--primary">+ Add Element</span> button, and fill the following fields:
-      * **Collection**: `New Pal Form`
-      * **Element**: `Welcome Form`
-
-    :::note 
-    - _The assigned element is the same as the one in the survey._
-    :::
-
-_Your screen should look something like this:_
-
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_create3.png')}/>
-
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-10. Press <span className="badge badge--primary">Save</span>.
-
-</div>
-<br></br>
-
-
-## Result {#result}
-
-
-
-The <span className="badge badge--success">survey</span> can be answered in the assigned _channel_:
-
-
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_00.png')}/>
-<br/>
+<img alt="form template" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_04.png')} />
 <br/>
 
-Here you can see how the <span className="badge badge--success">survey</span> looks like when you are going to answer it:
+_Drag & drop and set up the following **components** into the **Form template** area:_
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_01.png')}/>
+#### i. **Text** {#text}
+
+<img alt="text" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_05.png')} />
 <br/>
+
+1. **Identifier**: _welcome_
+2. **Text area**: _Welcome to Ruanda! Please fill out the following survey so the rest of the team can get to know you._
+
+---
+
+#### ii. Written answer {#written-answer-nickname}
+
+<img alt="written answer" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_06.png')} />
+<br/>
+
+1. **Field Label**: _Nickname_
+2. **Identifier**: _nickname_
+3. **Maximum** : _50_
+
+:::note Technical Tip:
+_**Identifiers** are important because they can be used in a [routine](/docs/documentation/automation/admin_routine) to reference the component and retrieve the response given to the survey question._
+:::
+
+---
+
+#### iii. Date and time {#date-and-time}
+
+<img alt="date and time" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_07.png')} />
+<br/>
+
+1. **Field Label** : _Birthday_
+2. **Identifier**: _birthday_
+3. **Type**: _Date_
+
+---
+
+#### iv. Written answer {#written-answer-origin}
+
+<img alt="written answer" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_08.png')} />
+<br/>
+
+1. **Field label**: _Where are you from?_
+2. **Identifier**: _hometown_
+
+---
+
+#### v. Multiple choice {#multiple-choice}
+
+<img alt="text" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_09.png')} />
+<br/>
+
+1. **Field label** : _Area or Departament_
+2. **Identifier** : _area\_departament_
+3. **Type**: _Collection_
+4. **Collection**: _General Department_
+
+---
+
+#### vi. Written Answer {#written-answer-fun-fact}
+
+<img alt="text" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_10.png')} />
+<br/>
+
+1. **Field Label**: _Tell us a fun fact about yourself._
+2. **Identifier**: _fun\_fact_
+
+</div>
+<br></br>
+
+<div className="alert alert--secondary">
+
+### V. Save {#save}
+
+<img alt="save" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_101.png')} />
+<br/>
+
+- Once finished, press <span className="badge badge--primary">Save</span>. You will be taken back to the **Survey** section.
+
+</div>
+<br></br>
+
+## Expected Result {#result}
+
+After completing the setup, the survey can be accessed through the _Welcome_ channel's [action button](/docs/documentation/client/actions_button#task-menus-within-channel):
+
+<img alt="channel action button" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_11.png')} />
+<br/>
+
+Once the action button is pressed, the survey appears in the channel workspace:
+
+<img alt="survey channel workspace" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_12.png')} />
 <br/>
 
 
-Here's what the _channel_ looks like when the <span className="badge badge--success">survey</span> is sent:
+After submitting the form, it is published in the channel workspace, where other channel participants can react and respond to the shared information:
 
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_survey_result_02.png')}/>
+<img alt="text" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_13.png')} />
 <br/>
-<br/>
+
+---
+
+## Related Topics {#related-topics}
+
+- [Survey Overview](/docs/documentation/admin/survey/survey_overview): Administrative Panel documentation
+- [COTSurvey](/docs/documentation/models/surveys/model_surveys): Survey data model
+- [Survey API](/docs/documentation/api/surveys/): REST API documentation
