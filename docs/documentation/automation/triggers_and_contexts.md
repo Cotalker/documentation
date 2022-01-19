@@ -17,7 +17,18 @@ import Highlight from '@theme/Highlight';
 
 ## Overview
 
-The [table](#contexts-table) below contains the data to which different _sources_ or _triggers_ have access. For example, you can use [COTLang](/docs/documentation/automation/admin_cotlang) in a [_state survey trigger_](#sm-survey-trigger) (i.e., [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)) routine to get direct access to the task's data.
+Each time an _automation_ is triggered, a snapshot is taken of its _context_, i.e., the relative data that surrounds the _trigger_. 
+
+For example, if a user executes a slash command, i.e., a special written message in a channel workspace that triggers a bot to carry out a _routine_, the _context_ of that _trigger_ is stored. The data _context_ of the automation executed by the slash command will include:
+- the channel data in which the slash command was executed,
+- the message data that was sent in the channel and triggered the bot,
+- and finally, a string of any special command arguments added to the slash command sent in the message.
+
+Contexts are stored in JSON format and follow the Cotalker data model schemas. The example explained above is known as the [Slash Command Trigger](#channel-message-trigger), which gets its data _context_ from the [COTChannel](/docs/documentation/models/communication/model_channels) and [COTMessage](/docs/documentation/models/communication/model_messages) data models.
+
+The [table](#contexts-table) below indicates the different _sources_ or _triggers_ and their corresponding _contexts_. 
+
+You can use [COTLang](/docs/documentation/automation/admin_cotlang) to extract data from the triggered event _contexts_ in order carry out further automations. For example, in a [_state survey trigger_](#sm-survey-trigger) (i.e., [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)) routine, you can get direct access to the task's data which can be used in other stages of the routine.
 
 :::tip
 See the [Context Language Description](#context-language) section for a brief explanation of the values shown in the table below.

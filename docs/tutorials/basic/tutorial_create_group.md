@@ -272,6 +272,15 @@ The 'Cybersecurity' _group_ with its _channels_ and _group link_ should look som
 - Notice that since the _group link_ is set as a subgroup within the _group panel_, its icon is set by default to a _folder icon_ and not the icon we chose in its settings.
 :::
 
+<div className="align-center">
+
+<iframe src="https://giphy.com/embed/XreQmk7ETCak0" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+<p><a href="https://giphy.com/gifs/retro-thumbs-up-XreQmk7ETCak0">via GIPHY</a></p>
+
+</div>
+<br/>
+
 ---
 
 ## Related Topics {#related-topics}
