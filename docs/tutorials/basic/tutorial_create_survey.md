@@ -32,7 +32,7 @@ They want to capture the following data from _users_:
 - Create a Survey.
 
 ## Pre-Requisites {#pre-requisites}
-#### Access Role {#users--access-role}
+#### Access Role {#access-role}
 - Due to the extension of a survey's capabilities, it is best if your _user_ profile's [_access role_](/docs/documentation/admin/admin_accessrole) counts with the `admin-*-write` permission that grants access to the entire **Administrative Panel**.
 
 #### Database {#database}
@@ -225,12 +225,19 @@ Once the action button is pressed, the survey appears in the channel workspace:
 <img alt="survey channel workspace" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_12.png')} />
 <br/>
 
-
 After submitting the form, it is published in the channel workspace, where other channel participants can react and respond to the shared information:
 
 <img alt="text" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_survey_13.png')} />
 <br/>
 
+<div className="align-center">
+
+<span className="hero__subtitle">Well done!</span>
+
+<iframe src="https://giphy.com/embed/l3q2XhfQ8oCkm1Ts4" width="480" height="343" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/oscars-academy-awards-oscars1990-l3q2XhfQ8oCkm1Ts4">via GIPHY</a></p>
+
+</div>
+<br/>
 ---
 
 ## Related Topics {#related-topics}

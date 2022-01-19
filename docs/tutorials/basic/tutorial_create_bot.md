@@ -9,156 +9,98 @@ Tutorial on how to create a _bot_.
 Time: 20 minutes
 
 :::tip Vocabulary Note:
-A _bot_ is an automation that can be created within Cotalker. It can help companies with automating tasks and commands.
+A _bot_ is an automation triggered either by a _slash command_ or a _survey_. Every time a _bot_ is triggered, it executes a [_routine_](/docs/documentation/automation/admin_routine) with various stages. Choose from a wide range of [_routine stage types_](/docs/documentation/automation/existing_routines) to give your bots all kinds of tools to gather data and carry out diverse automations.
 :::
 
 ## Company Requirements {#company-requirements}
-#### Tutorial Objectives {#tutorial-objectives}
+The company has a problem: not all employees are regularly connected to the app. But we know that their email notifications are always active. To address this situation, we propose using a _bot_ that will contact the person through an email message whenever a _user_ in the _channel_ types `/emailbomb` along with the recipient's email address.
 
-The company has a small problem: not all employees are regularly connected to the app, but we know that their email notifications are always active. To address this situation, we propose using a _bot_ that will contact the person through an email message whenever a _user_ in the _channel_ types `/emailbomb` along with the recipient's email address.
+The email will contain a message mentioning the _channel_ in which the person's pressence is required. Additionally, a system message will appear in the channel workspace indicating that the email was sent successfully.
 
-The email message will contain the sender's name and the _channel_ where the _bot_ was used.
+## Tutorial Objectives {#tutorial-objectives}
+- [A. Set up basic bot settings.](#basic-bot-settings)
+- [B. Set the first routine stage ("Send email").](#first-stage)
+- [C. Set the second routine stage ("Send message")](#second-stage)
 
 ## Pre-Requisites {#pre-requisites}
-
-**Access Role**
-* _User_ with the `admin-groups-write`, `admin-properties-write`,  and `admin-bots-write` permissions to create and modify groups, databases and bots. 
-* Or`admin-*-write` which allows all of the above. 
-* _User_ with the `web-admin-write` and `web-admin-read` permissions to set up the _Admin_.
-* _User_ with the `read admin` access role.
-
-**User**
-* Having completed the [Create User Tutorial](create_user)
+#### Access Role {#access-role}
+- Due to the wide range of actions a bot can undertake, it is best if your _user_ profile's [_access role_](/docs/documentation/admin/admin_accessrole) counts with the `admin-*-write` permission that grants access to the entire **Administrative Panel**.
 
 ## Steps {#steps}
-### I. Create "Email" Stage {#i-create-email-stage}
+### A. Set Up Basic Bot Settings {#basic-bot-settings}
+
 <div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Bot</span>.
+**I. Go to the Bots section.**
+
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_00.png')} />
+<br/>
+
+1. From the **Main Menu Bar**, press the <span className="badge badge--primary">Administrator</span> button.
+2. In the **Administrative Panel**, select <span className="badge badge--primary">Bots</span>.
+3. The **Bots** section opens up.
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-2. Press the <span className="badge badge--primary">+</span> button to create a new _Bot_, as shown below:
+**II. Open the Create Bot settings panel.**
 
-<img alt="create new bot" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_00.png')}/>
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_00a.png')} />
 <br/>
 
-_The following settings panel will open up:_
-
-<img alt="create new bot" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_01.png')}/>
-<br/>
+- Press the <span className="badge badge--primary">+</span> icon to open the **Create bot** settings panel.
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-3. In the settings panel, set up the following information:
+**III. Set basic settings.**
 
-  I. Under the <span className="badge badge--primary">General Information</span> section, fill in the following fields:
-    * **Name**: `Email Bomb`
-    * **User bot name**: `emailbomb`
-    * **Description**: `Contact the person through email.`
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_01.png')} />
+<br/>
 
-  II. Under the <span className="badge badge--primary">Access</span> tab, enter the following information:
-    * **Access Roles**: `default`
-
-  III. Under the <span className="badge badge--primary">Functions</span> tab, set the following options:
-    * **Global**: _activated_
-    * **It's a survey command**: _deactivated_
-    * **It's a slash command**: _activated_
-    * **Slash command**: `emailbomb`
-
-_Your screen should look something like the following image:_
-
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_01a.png')}/>
+1. **Name**: _Email Bomb_
+2. **User bot name**: _email\_bomb\_bot_
+3. **Description**: _Send an automatically generated email to a user._
+4. **Access Roles**: _default_
+5. **Global**: Toggle on.
+6. **It's a slash command**: Toggle on.
+7. **Slash command**: _emailbomb_
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-4. In the settings panel, open the <span className="badge badge--primary">Routine Builder</span> tab and press the <span className="badge badge--primary">+ Add Routine</span> button.
+**IV. Open the routine builder.**
 
-  _The following settings panel will open up:_
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_02.png')} />
+<br/>
 
-<img alt="routine builder" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_02.png')}/>
+- At the bottom of the **Create bot** settings panel, under the **Routine Builder** tab and press the <span className="badge badge--primary">+ Add Routine</span> button to open the _Routine builder_ settings panel.
+
 <br/>
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
-
-5. Press <span className="badge badge--primary">+ Add Stage</span> to create the first stage of the _routine_. The following panel will open up:
-
-<br/>
-<img alt="create new bot" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_03.png')}/>
-<br/>
-
-  - Set the following fields:
-
-    - In **Code**, type `email`.
-    - In **Type**, select `Send email`
-
-  _Once the stage **Type** is defined, the **Options** fields will be displayed below, where you must specify the settings. It will look as follows:_
-
-<img alt="email settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_04.png')}/>
-<br/>
-
-- Fill the fields with the following information:
-
-  * **Subject**: `Hey! We need to talk to you.`
-  * **Data**: `{"recipientName":"","recipientEmail":"","companyName":"Ruanda","title":["Your team is looking for you."],"action":"","code":"","messageA":"$JOIN# #Your presence is requested in the #($VALUE#channel|nameDisplay)# channel.","messageB":""}`
-  * In the **To** section, press <span className="badge badge--primary">+ Add Item</span>
-  * Then, in the **Item** field, type `$VALUE#cmdArgs`
-
-:::note Technical Notes:
-- The **Data** field is written in _JSON_ format. It specifies the content of the email. In this case, _company name_, _email title_, and _message_ are written directly into the JSON object.
-- The [_Cotlang_](/docs/documentation/automation/admin_cotlang) `VALUE#channel|nameDisplay` script in the **Data** field is used to refer to the channel that the _user_ was called in.
-- The _Cotlang_ `$VALUE#cmdArgs` script in the **Item** field is used to get the email address that is next to the command. For example, if a _user_ types `/emailbomb vm@ruanda.cl` in the chat it will get `vm@ruanda.cl`.
-:::
-
-</div>
-<br/>
-
-### II. Create "Message" Stage {#ii-create-message-stage}
+### B. Set First Routine Stage (Send Email) {#first-stage}
 
 <div className="alert alert--secondary">
 
-6. Scroll up to the top of the <span className="badge badge--primary">Routine Builder</span> section and press <span className="badge badge--primary">+ Add Stage</span> to create the second stage, which will generate the automated message sent to the chat once the email has been sent.
+**I. Open Routine Stage settings.**
 
-  _The screen should look like this:_
-
-<img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_05.png')}/>
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_03.png')} />
 <br/>
 
-</div>
-<br/>
+- A. From the **Routine builder** settings panel, press the<span className="badge badge--primary">+ Add Stage</span> button.
+- B. A _New stage_ settings panel opens up.
 
-<div className="alert alert--secondary">
-
-7. In the options that opened up, set the following:
-
-    - In the **Code** field, type: `message` 
-    - In the **Type** field, select `Send Message` 
-    - In **Content**, write the message that will be generated: `📩 Email sent ✅`.
-    - In the **Content Type** field, write `text/system`.
-    - In the **User** field, type `$VALUE#user|_id`.
-    - In the **Channels** section, select **Advanced mode** and type `$VALUE#channel|_id`.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-8. Scroll back up to the top of the <span className="badge badge--primary">Routine Builder</span> and fill in the **Max. Iterations** field with `2`. Then, make sure that the **Initial Stage** is set to `email`.
-
-:::note Important:
-- _Each iteration is the execution of a stage. Therefore, you need as many iterations as you have stages. If any stage loops, you will have to count each loop as an iteration._
+:::note Attention
+_Once you set the stage **Type** in the next step, more fields will open up according to the selected stage type._
 :::
 
 </div>
@@ -166,50 +108,108 @@ _Your screen should look something like the following image:_
 
 <div className="alert alert--secondary">
 
-9. Select the **email** stage as shown below:
+**II. Set up the stage.**
 
-<img alt="go to email stage" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_06.png')}/>
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_04.png')} />
 <br/>
+
+1. **Code**: _email\_bot_
+2. **Type**: _Send email_
+3. **Subject**: _Hey! We need to talk with you._
+4. **Company Name**: _Ruanda_
+5. **Title**: _Your team is looking for you._
+6. **Message A**: _I hope you're not too busy._
+7. **Message B**: `$JOIN# #Your presence is requested in the #($VALUE#channel|nameDisplay)# channel.`
+8. **Action**: Add a blank space or character since this is a required field.
+9. **Code**: Add a blank space or character since this is a required field.
+10. **Advanced mode**: Toggle on the _Advanced mode_ switch in the **To** field.
+11. **To**: `$VALUE#cmdArgs`
+12. Press <span className="badge badge--primary">+ Add Stage</span> and go to the following step.
+
+:::note Cotlang Scripting Notes:
+- In the **Message B** (7) and **To** (11) fields, we use some [_Cotlang_](/docs/documentation/automation/admin_cotlang) scripts to gather data from the [context](/docs/documentation/automation/triggers_and_contexts), i.e., the contextual data relative to the bot. The [data context of the slash command bot](/docs/documentation/automation/triggers_and_contexts#global-message-trigger) we are working with comes from the slash command that is sent as a message in a channel. More specifically, the context is the message itself, any extra arguments added to the slash command (in our case, the email address), and the channel the message was sent in.
+- For example, in **Message B**, we use `$VALUE#channel|nameDisplay` command to get the channel name from the _channel_ context. And, to add the result to a string, we use `$JOIN#` command.
+- In **To**, `$VALUE#cmdArgs` retreives data from the command arguments context, in this case, the email address. For example, if I execute the slash command typing _/emailbomb jane.doe@ruanda.com_, the command argument context would be `jane.doe@ruanda.com`.
+:::
+
+</div>
+<br/>
+
+### C. Set Second Routine Stage (Send Message) {#second-stage}
+
+<div className="alert alert--secondary">
+
+**I. Set up stage.**
+
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_05.png')} />
+<br/>
+
+_After pressing the <span className="badge badge--primary">+ Add Stage</span> button, set up the second stage with the following:_
+1. **Code**: _message\_bot_
+2. **Type**: _Send message_
+3. **Content**: _📩  Email sent ✅_
+4. **Content Type**: _text/system_
+5. **User**: `$VALUE#message|sentBy`
+6. **Channels**: Press the <span className="badge badge--primary">+ Add Item</span> button.
+7. **Item**: `$VALUE#channel|_id`
+
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
 
-10. Next, scroll down to the bottom of the **email** stage and in the **Outputs** option select `message`.
+**II. Complete Routine setup.**
 
-<img alt="outputs option" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_07.png')}/>
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_06.png')} />
 <br/>
+
+1. **Initial stage**: _email\_bot_
+2. **Max. iterations**: _2_
+3. **Success**: _message\_bot_ (Make sure you are on the **email\_bot** tab.)
+4. Press <span className="badge badge--primary">Save</span>. You will be taken back to the **Bots** section.
+
+:::note
+_Each execution of a stage is an iteration. Therefore, you need as many iterations as you have stages. If any stage loops, you will have to count each loop as an iteration._
+:::
 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
 
-11. Scroll up to the top of the page and press <span className="badge badge--primary">Save</span>.
 
-</div>
-<br/>
-
-## Result {#result}
+## Expected Result {#result}
 
 Now the _bot_ is available on all _channels_.
 
-If you direct yourself to a _channel_ and type `/emailbomb name@example.com`, the system will send an email to the indicated address and an automated message gets generated in the chat.
+If you direct yourself to a _channel_ and type `/emailbomb name@example.com`, the system will send an email to the indicated address and an automated system message gets generated in the chat area.
 
 <br/>
 
-_The screen should look something like this:_
-
-
-<img alt="send email" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_08.png')}/>
-
-<br/>
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_07.png')} />
 <br/>
 
-_The recipient will receive an email similar to this one:_
+_The recipient will receive an email similar to the one below:_
 
-<img alt="sent email" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_bot_09.png')} />
+<img alt="bot section" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_bots_08.png')} />
+<br/>
 
 <br/>
 
+<div className="align-center">
+
+<iframe src="https://giphy.com/embed/OcZp0maz6ALok" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+<p><a href="https://giphy.com/gifs/30-rock-liz-lemon-i-love-this-show-OcZp0maz6ALok">via GIPHY</a></p>
+
+</div>
+<br/>
+
+---
+
+## Related Topics {#related-topics}
+- [Bots Section](/docs/documentation/admin/admin_bots): Administrative Panel documentation
+- [Routine Builder](/docs/documentation/automation/admin_routine): Automation Tools documentation
+- [Routine Stage Types](/docs/documentation/automation/existing_routines): Automation Tools documentation
+- [COTBot](/docs/documentation/models/automations/model_bots): Bots data model
+- [Bots API](/docs/documentation/api/automations/bots): REST API documentation
