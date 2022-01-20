@@ -234,7 +234,7 @@ After submitting the form, it is published in the channel workspace, where other
 
 <span className="hero__subtitle">Well done!</span>
 
-<iframe src="https://giphy.com/embed/l3q2XhfQ8oCkm1Ts4" width="480" height="343" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/oscars-academy-awards-oscars1990-l3q2XhfQ8oCkm1Ts4">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/l3q2XhfQ8oCkm1Ts4" width="90%" height="90%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/oscars-academy-awards-oscars1990-l3q2XhfQ8oCkm1Ts4">via GIPHY</a></p>
 
 </div>
 <br/>
