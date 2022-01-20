@@ -235,8 +235,10 @@ From the **Create workflow** settings panel, go to the **Workflow states** secti
 
 **V. Complete state changes for the remaining states.**
 
+_Repeat the last two steps for other four remaining states._
+
 :::tip Tutorial Advice
-You must repeat the last two steps with the remaining states, but you will need to add more than one state change in most of them. Feel free to make changes between states more complex or simple.
+You will need to add more than one state change in most of the remaining states. Feel free to make changes between states more complex or simple.
 
 Here is a suggestion for state changes:
 - 1\. Backlog => 2. Doing (Previous step)
@@ -253,7 +255,7 @@ Here is a suggestion for state changes:
 <img alt="workflow" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_workflow_09.png')} />
 <br/>
 
-1. Confirm that state changes displayed in the diagram reflect the workflow process you desire.
+1. Once you have finished setting all state changes in all states, confirm that state changes displayed in the diagram reflect the workflow process you desire.
 2. Press <span className="badge badge--primary">Save</span>. You are sent back to the **Workflows** settings panel, where _workflows_ belonging to a _workflow group_ are displayed.
 
 </div>
