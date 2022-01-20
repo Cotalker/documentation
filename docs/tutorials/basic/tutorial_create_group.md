@@ -274,7 +274,7 @@ The 'Cybersecurity' _group_ with its _channels_ and _group link_ should look som
 
 <div className="align-center">
 
-<iframe src="https://giphy.com/embed/XreQmk7ETCak0" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/XreQmk7ETCak0" width="90%" height="90%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 <p><a href="https://giphy.com/gifs/retro-thumbs-up-XreQmk7ETCak0">via GIPHY</a></p>
 

@@ -183,7 +183,7 @@ _Within the **Department** collection, you should see all the elements you have 
 
 <div className="align-center">
 
-<iframe src="https://giphy.com/embed/qanrUMM3x50mA" width="480" height="311" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/chuck-norris-qanrUMM3x50mA">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/qanrUMM3x50mA" width="90%" height="90%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/chuck-norris-qanrUMM3x50mA">via GIPHY</a></p>
 
 </div>
 <br/>

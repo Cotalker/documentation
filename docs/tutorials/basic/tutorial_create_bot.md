@@ -4,16 +4,20 @@ title: Create a Bot
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-Tutorial on how to create a _bot_.
+<span className="hero__subtitle">
+
+Tutorial on how to create a _bot_ summoned by a slash command sent as a message in a chat area.
+
+</span>
 
 Time: 20 minutes
 
 :::tip Vocabulary Note:
-A _bot_ is an automation triggered either by a _slash command_ or a _survey_. Every time a _bot_ is triggered, it executes a [_routine_](/docs/documentation/automation/admin_routine) with various stages. Choose from a wide range of [_routine stage types_](/docs/documentation/automation/existing_routines) to give your bots all kinds of tools to gather data and carry out diverse automations.
+A _bot_ is an automation triggered either by a _slash command_ or a _survey_. Every time a _bot_ is triggered, it executes a [_routine_](/docs/documentation/automation/admin_routine) with various stages. Choose from a variety of [_routine stage types_](/docs/documentation/automation/existing_routines) to give your bots all kinds of tools to gather data and carry out diverse automations.
 :::
 
 ## Company Requirements {#company-requirements}
-The company has a problem: not all employees are regularly connected to the app. But we know that their email notifications are always active. To address this situation, we propose using a _bot_ that will contact the person through an email message whenever a _user_ in the _channel_ types `/emailbomb` along with the recipient's email address.
+The company has a problem: not all employees are regularly connected to the app. But we know that their email notifications are always active. To address this situation, we propose using a _bot_ that will contact the person through an email message whenever a _user_ types `/emailbomb` along with the recipient's email address in a [chat area](/docs/documentation/client/channels#channel-workspace-layout).
 
 The email will contain a message mentioning the _channel_ in which the person's pressence is required. Additionally, a system message will appear in the channel workspace indicating that the email was sent successfully.
 
@@ -198,7 +202,7 @@ _The recipient will receive an email similar to the one below:_
 
 <div className="align-center">
 
-<iframe src="https://giphy.com/embed/OcZp0maz6ALok" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/OcZp0maz6ALok" width="90%" height="90%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 <p><a href="https://giphy.com/gifs/30-rock-liz-lemon-i-love-this-show-OcZp0maz6ALok">via GIPHY</a></p>
 
