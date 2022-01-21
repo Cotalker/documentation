@@ -52,6 +52,7 @@ _These characteristics will be represented through collections and their respect
 ## Pre-Requisites {#pre-requisites}
 #### Access Role {#access-role}
 - Due to the scope of interactions needed to create a workflow, it is best if your _user_ profile's [_access role_](/docs/documentation/admin/admin_accessrole) counts with the `admin-*-write` permission that grants access to the entire **Administrative Panel**.
+- You will later need to set the permissions users must have to view and edit workflow tasks. In this tutorial, we will suggest using the `admin-access` permission for both reading and writing in the workflow group. We recommend you add this permission to your access role, as well, in order to test your workflow.
 
 #### Database {#database}
 - If you completed the [Create Collection Tutorial](/docs/tutorials/basic/create_database), then you already have the _collection_ that represents company departments. If not, we suggest completing the the tutorial.
@@ -280,8 +281,9 @@ Here is a suggestion for state changes:
 8. Press <span className="badge badge--primary">Save</span>. 
 
 :::note Note on Permissions
-- Make sure the desired _users_ have the mentioned permissions (6 & 7) in their [access roles](/docs/documentation/admin/users#access). Only those with the indicated [permissions](/docs/documentation/admin/admin_accessrole#default-permissions) will be able to see and edit the tasks respectively.
-- If you are currently using an access role with the `admin-*-write` permission, by default, you have all permissions.
+- Make sure you and the desired _users_ have the specified permissions (6 & 7) in your [access roles](/docs/documentation/admin/users#access). Only those with the indicated [permissions](/docs/documentation/admin/admin_accessrole#default-permissions) will be able to see and edit the tasks respectively.
+- Go to the [Create Access Role](/docs/tutorials/basic/create_accessroles) tutorial on how to add permissions to an access role.
+- Go to the [Create User](/docs/tutorials/basic/create_user) tutorial to see how to add an access role to a user.
 :::
 
 </div>

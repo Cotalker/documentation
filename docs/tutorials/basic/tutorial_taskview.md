@@ -5,17 +5,20 @@ sidebar_label: Task View
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-Tutorial on how to configure the _task view_.
+<span className="hero__subtitle">
+
+Tutorial on configuring _tasks_ and on how to use filters to organize _tasks_ in the _task view_.
+
+</span>
 
 Time: 15 minutes
 
 :::tip Vocabulary Note:
-The _task view_ is a tool to visualize the state of workflows. The view can be modified by filters to organize and arrange the tasks as needed.
+The [_task view_](/docs/documentation/client/taskview) is a tool used to display and organize tasks within a workflow. Tasks can be arranged using customized filters, allowing you to view at a glance the state of tasks according to your needs. Filters can also be shared globally so that all company members can have use the same criteria for organizing tasks.
 :::
 
 ## Company Requirements {#company-requirements}
-#### Tutorial Objectives {#tutorial-objectives}
-In our last tutorial, the Ruanda company requested a task manager. Now they want to see how to create, view and arrange tasks. They just want to see a demo, so we'll go to Cotalker's best and easiest way to manage tasks: _Task View_.
+In our last tutorial, Ruanda requested a task manager. Now they want to see how to configure, view, and arrange tasks. They just want to see a demo, so we'll go to Cotalker's best and easiest way to manage tasks: _Task View_.
 
 For this demo, we will create three _filters_ to sort _tasks_ according to the following criteria:
 * _Status_: tasks grouped by status
@@ -24,22 +27,30 @@ For this demo, we will create three _filters_ to sort _tasks_ according to the f
 
 We will use three built-in criteria to demonstate how to sort and arrange tasks. Plus, we will make the first two filters visible to the rest of the team. The third one will be visible only to the _user_.
 
-## Pre-Requisites {#pre-requisites}
-#### Group {#group}
-* Having completed the [Create a Workflow Tutorial](create_state_machines).
+## Tutorial Objectives {#tutorial-objectives}
+- [A. Configure task specifications](#configure-tasks)
+- [B. Create first filter: status](#status-filter)
+- [C. Create second filter: critical tasks by department](#department-filter)
+- [D. Create third filter: my tasks](#personal-filter)
 
+## Pre-Requisites {#pre-requisites}
 #### User {#user}
-* A _user_ with access to the **Task Manager Workflow-Group**.
+- A _user_ with access to the **Task Manager Workflow-Group**. To have access, users must have the _permissions_ specified in the workflow group configuration.
+
+#### Workflow {#workflow}
+- It will be very convenient to have created about four or more tasks to work with during this tutorial.
+- It will also be useful if you created at least one of those tasks with one of the mock users we created [previously](/docs/tutorials/basic/create_user). Remember to add the necessary permissions to the user's access role.
 
 ## Steps {#steps}
-### I. Create Tasks {#i-create-tasks}
+### A. Configure Task Specifications {#configure-tasks}
 
 <div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Task Manager</span> group.
+**I. Go to the Task Manager Workflow Group.**
 
-<img alt="Main menu bar" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_taskview_00.png')} />
-<br/>
+
+
+1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Task Manager</span> group.
 
 </div>
 <br/>
