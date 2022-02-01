@@ -118,9 +118,6 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Cotalker`,
     },
-    googleAnalytics: {
-      trackingID: 'G-BP7YHW5W2P',
-    }
   },
   presets: [
     [
@@ -142,6 +139,9 @@ module.exports = {
             type: 'all',
           },
         },
+        googleAnalytics: {
+          trackingID: 'G-BP7YHW5W2P',
+        }
       },
     ],
   ],
