@@ -18,11 +18,11 @@ Tutorial on how to create a workflow that can process tasks through five differe
 Time: 30 minutes
 
 :::tip Vocabulary Notes:
-- **Tasks** can represent anything which has to be done. They exist within _workflows_.
+- **Tasks** can represent anything that has to be done. They exist within _workflows_.
 - A **workflow** is the process through which _tasks_ go through.
 - Each step of a workflow process is called a **state**. _Users_ can be given access to see and modify the current _state_ of a _task_ in a _workflow_. 
 - _Workflows_ are part of **workflow groups**. A workflow group can have various workflows which can be interrelated.
-- Each _task_ has its own _channel_ for messageing and sharing files. They can also include _notes_ or even be programmed with _SLAs_.
+- Each _task_ has its own _channel_ for messaging and sharing files. They can also include _notes_ or even be programmed with _SLAs_.
 :::
 
 ## Company Requirements {#company-requirements}
@@ -52,9 +52,10 @@ _These characteristics will be represented through collections and their respect
 ## Pre-Requisites {#pre-requisites}
 #### Access Role {#access-role}
 - Due to the scope of interactions needed to create a workflow, it is best if your _user_ profile's [_access role_](/docs/documentation/admin/admin_accessrole) counts with the `admin-*-write` permission that grants access to the entire **Administrative Panel**.
+- You will later need to set the permissions users must have to view and edit workflow tasks. In this tutorial, we will suggest using the `admin-access` permission for both reading and writing in the workflow group. We recommend you add this permission to your access role, as well, in order to test your workflow.
 
 #### Database {#database}
-- If you completed the [Create Collection Tutorial](/docs/tutorials/basic/create_database), then you already have the _collection_ that represents company departments. If not, we suggest completing the the tutorial.
+- If you completed the [Create Collection Tutorial](/docs/tutorials/basic/create_database), then you already have the _collection_ that represents company departments. If not, we suggest completing the tutorial.
 - You will also need to have previously created the _collections_, and their respective _elements_, that will represent the task states, task importance, and tasks as assets. Below, in the _Tutorial Tip_, is an example of how the collections should look like.
 
 :::tip Tutorial Tip
@@ -175,7 +176,7 @@ _The three collections that need to be created: **Task-Asset**, **Task-Importanc
 <img alt="workflow" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_workflow_05.png')} />
 <br/>
 
-_An automatically generated list of task states appears in the pop-up settings panel. Make sure the state **type** is correct for each corresponding element._
+_An automatically-generated list of task states appears in the pop-up settings panel. Make sure the state **type** is correct for each corresponding element._
 
 1. **Backlog**: _NEW_
 2. **Doing**: _IN-PROGRESS_
@@ -185,7 +186,7 @@ _An automatically generated list of task states appears in the pop-up settings p
 6. Press <span className="badge badge--primary">Save</span>. You will be taken back to the **Create workflow** settings panel.
 
 :::caution
-Be careful to indicate the correct state **types** for each element representing a state because they cannot be changed afterwards.
+Be careful to indicate the correct state **types** for each element representing a state because they cannot be changed afterward.
 :::
 
 </div>
@@ -280,8 +281,9 @@ Here is a suggestion for state changes:
 8. Press <span className="badge badge--primary">Save</span>. 
 
 :::note Note on Permissions
-- Make sure the desired _users_ have the mentioned permissions (6 & 7) in their [access roles](/docs/documentation/admin/users#access). Only those with the indicated [permissions](/docs/documentation/admin/admin_accessrole#default-permissions) will be able to see and edit the tasks respectively.
-- If you are currently using an access role with the `admin-*-write` permission, by default, you have all permissions.
+- Make sure you and the desired _users_ have the specified permissions (6 & 7) in your [access roles](/docs/documentation/admin/users#access). Only those with the indicated [permissions](/docs/documentation/admin/admin_accessrole#default-permissions) will be able to see and edit the tasks respectively.
+- Go to the [Create Access Role](/docs/tutorials/basic/create_accessroles) tutorial on how to add permissions to an access role.
+- Go to the [Create User](/docs/tutorials/basic/create_user) tutorial to see how to add an access role to a user.
 :::
 
 </div>
@@ -324,7 +326,7 @@ In the _task view_, you will see your newly created task with its corresponding 
 <br/>
 
 :::tip Tutorial Advice
-- In our [next tutorial](/docs/tutorials/basic/tutorial_taskview) we'll see how to view and arrange _tasks_.
+- In our [next tutorial](/docs/tutorials/basic/tutorial_taskview), we'll see how to view and arrange _tasks_.
 - For now, feel free to create more tasks and to change their states by pressing the [actions button in the channel workspace](/docs/documentation/client/channels#task-menus-within-channel).
 :::
 

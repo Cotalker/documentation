@@ -102,6 +102,13 @@ _The newly created access role's settings should look like this:_
 </div>
 <br/>
 
+
+:::info Bonus Track!
+- Create a new access role called _Default_ that contains the `admin-access` permission.
+- If the access role already exists, make sure it has the `admin-access` permission. 
+- Keep it in mind, we will make use of it along the way.
+:::
+
 ---
 
 ## Related Topics {#related-topics}
