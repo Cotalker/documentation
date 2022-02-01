@@ -23,7 +23,7 @@ Now it's easier to add extra information that can be associated with _user_ prof
 
 </div>
 <div className="card__footer">
-<a class ="button button--secondary button--block" href='/docs/documentation/admin/users/#additional-fields'>See Documentation</a>
+<a class ="button button--secondary button--block" href='/docs/documentation/admin/users#additional-fields'>See Documentation</a>
 </div>
 </div>
 </div>

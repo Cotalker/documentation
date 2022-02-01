@@ -30,7 +30,7 @@ Just when you thought the _task viewer_ couldn't get any better, our engineers c
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/client/taskview/#chat-in-task">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/client/taskview#chat-in-task">See Documentation</a>
 <br/>
 
 </div>
