@@ -25,7 +25,7 @@ In our ongoing effort to improve our GUI to make your life a little bit simpler,
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/admin/admin_group#channel-creation-section">See Groups Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/admin_group/#channel-creation-section">See Groups Documentation</a>
 <br/>
 
 </div>

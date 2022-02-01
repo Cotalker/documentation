@@ -30,7 +30,7 @@ Admins can now further define _users'_ faculties over a task's lifecycle in a wo
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/admin/workflows/settings_panels/create_edit_state#state-changes">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/workflows/settings_panels/create_edit_state/#state-changes">See Documentation</a>
 <br/>
 
 </div>
