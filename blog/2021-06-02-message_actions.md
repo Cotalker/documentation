@@ -30,7 +30,7 @@ We've added more functions when you click on a **chat message bubble**. Now, not
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/client/channels#chat-message-options">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/client/channels/#chat-message-options">See Documentation</a>
 <br/>
 
 </div>

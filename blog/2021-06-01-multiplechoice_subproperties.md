@@ -30,7 +30,7 @@ With the **subproperty filter**, you can easily customize multiple-choice survey
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/admin/survey/components/multiple_choice#subproperty-example">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/survey/components/multiple_choice/#subproperty-example">See Documentation</a>
 <br/>
 
 </div>

@@ -25,7 +25,7 @@ Giving permission has always been a problematic task. For this reason, we have r
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/admin/admin_accessrole#default-permissions">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/admin_accessrole/#default-permissions">See Documentation</a>
 <br/>
 
 </div>

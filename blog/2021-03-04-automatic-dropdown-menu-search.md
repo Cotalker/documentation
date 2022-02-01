@@ -17,7 +17,7 @@ import Highlight from '@theme/Highlight';
 <small className="avatar__subtitle">March 4, 2021</small>
 </div>
 <div className="card__image">
-<img alt="qr_nfc_update" className="img_card item shadow--tl" src={useBaseUrl('img/update_dropdown_menu_00.png')} />
+<img alt="dropdown menu" className="img_card item shadow--tl" src={useBaseUrl('img/update_dropdown_menu_00.png')} />
 <br/>
 </div>
 <div className="card__body">

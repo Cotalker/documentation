@@ -33,7 +33,7 @@ Stay close to your teams, but with enough distance to let them work freely. Ask 
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/api/tasks#patch-taskgroup-permissions">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/api/tasks/#patch-taskgroup-permissions">See Documentation</a>
 <br/>
 
 </div>
