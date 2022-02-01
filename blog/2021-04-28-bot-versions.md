@@ -25,7 +25,7 @@ It's always good to have an old friend around. That's why we have now implemente
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/automation/existing_routines/#stage-type-versions">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/existing_routines#stage-type-versions">See Documentation</a>
 <br/>
 
 </div>

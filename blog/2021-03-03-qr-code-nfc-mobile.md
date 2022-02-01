@@ -23,7 +23,7 @@ Time and mobility are essential concerns for "Cotalkers" everywhere. That's why 
 
 </div>
 <div className="card__footer">
-<a class ="button button--secondary button--block" href="/docs/documentation/api/surveys/questions/#qr-code--nfc-function">See documentation</a>
+<a class ="button button--secondary button--block" href="/docs/documentation/api/surveys/questions#qr-code--nfc-function">See documentation</a>
 </div>
 </div>
 </div>
