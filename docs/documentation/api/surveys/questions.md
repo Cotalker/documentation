@@ -281,7 +281,7 @@ Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a co
     "isSystemModel": false,
     "_id": "61a66fdc9e7c38b758a0b93d",
     "contentType": "application/vnd.cotalker.survey+text",
-    "company": "5f5a74a8fdf77a0008a6349a",
+    "company": "6136968b580aaf2b0e49d844",
     "identifier": "1638287705330orcsk",
     "modifiedAt": "2021-11-30T18:21:24.335Z",
     "textAlign": "left",
@@ -368,7 +368,7 @@ Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a co
     "isSystemModel": false,
     "identifier": "qr_test",
     "contentType": "application/vnd.cotalker.survey+textinput",
-    "company": "5f5a74a8fdf77a0008a6349a",
+    "company": "6136968b580aaf2b0e49d844",
     "modifiedAt": "2021-12-01T14:52:07.636Z",
     "__v": 0
 }
