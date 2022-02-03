@@ -252,7 +252,7 @@ Go to [COTPropertyType](/docs/documentation/models/databases/model_propertytypes
     "_id": "61a0cb3a2c62a400076efa0f",
     "display": "Warehouse Supplies",
     "code": "warehouse_supplies_00",
-    "company": "5f5a74a8fdf77a0008a6349a",
+    "company": "6136968b580aaf2b0e49d844",
     "createdAt": "2021-11-26T11:55:38.190Z",
     "modifiedAt": "2021-11-26T11:55:38.190Z",
     "schemaNodes": [],
