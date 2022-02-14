@@ -21,7 +21,7 @@ _Returns all channels within the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /groups</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/groups`
+`https://www.cotalker.com/api/v2/groups`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -106,7 +106,7 @@ _Returns the group indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /groups/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-by-id-url}
-`https://www.coltaker.com/api/v2/groups/{id}`
+`https://www.cotalker.com/api/v2/groups/{id}`
 
 #### Path Parameters {#get-by-path}
 Parameter | Description | Type | Required | Notes

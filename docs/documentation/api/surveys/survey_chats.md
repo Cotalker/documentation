@@ -20,7 +20,7 @@ _Returns all survey chats within the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /surveychats</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/surveychats`
+`https://www.cotalker.com/api/v2/surveychats`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -99,7 +99,7 @@ _Returns the survey chat indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /surveychats/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-by-id-url}
-`https://www.coltaker.com/api/v2/surveychats/{id}`
+`https://www.cotalker.com/api/v2/surveychats/{id}`
 
 #### Path Parameters {#get-by-path}
 Parameter | Description | Type | Required | Notes

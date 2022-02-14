@@ -21,7 +21,7 @@ _Returns data from all users in the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/users`
+`https://www.cotalker.com/api/v2/users`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -115,7 +115,7 @@ _Returns the current user data._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users/me</span>
 
 #### Endpoint URL {#get-me-url}
-`https://www.coltaker.com/api/v2/users/me`
+`https://www.cotalker.com/api/v2/users/me`
 
 #### Headers {#get-me-headers}
 Header | Description | Required | Values
@@ -167,7 +167,7 @@ _Returns the user indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /users/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-user-id-url}
-`https://www.coltaker.com/api/v2/users/{id}`
+`https://www.cotalker.com/api/v2/users/{id}`
 
 #### Path Parameters {#patch-user-path}
 Parameter | Description | Type | Required | Notes

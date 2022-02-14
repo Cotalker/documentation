@@ -171,7 +171,7 @@ _Returns all the files shared on a channel according to their content type._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /media/file</span>
 
 #### Endpoint URL {#get-files-url}
-`https://www.coltaker.com/api/v3/media/file`
+`https://www.cotalker.com/api/v3/media/file`
 
 #### Query Parameters {#get-files-path}
 Parameter | Description | Type | Required | Values

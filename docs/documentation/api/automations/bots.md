@@ -44,7 +44,7 @@ _Returns the bot indicated by its Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /bots/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-by-id-url}
-`https://www.coltaker.com/api/v1/bots/{id}`
+`https://www.cotalker.com/api/v1/bots/{id}`
 
 #### Path Parameters {#get-by-id-path}
 Parameter | Description | Type | Required | Notes
@@ -73,7 +73,7 @@ _Creates a new bot within the company._
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /bots</span>
 
 #### Endpoint URL {#create-statemachine-url}
-`https://www.coltaker.com/api/v1/bots`
+`https://www.cotalker.com/api/v1/bots`
 
 #### Headers {#create-statemachine-headers}
 Header | Description | Required | Values

@@ -21,7 +21,7 @@ _Returns all property types within the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /propertyTypes</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/propertyTypes`
+`https://www.cotalker.com/api/v2/propertyTypes`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -109,7 +109,7 @@ _Returns the property type indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /propertyTypes/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-by-id-url}
-`https://www.coltaker.com/api/v2/propertyTypes/{id}`
+`https://www.cotalker.com/api/v2/propertyTypes/{id}`
 
 #### Path Parameters {#get-by-path}
 Parameter | Description | Type | Required | Notes

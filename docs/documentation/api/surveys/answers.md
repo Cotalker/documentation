@@ -20,7 +20,7 @@ _
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /answers</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/answers`
+`https://www.cotalker.com/api/v2/answers`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -69,7 +69,7 @@ _Returns the answer indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /answers/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-by-id-url}
-`https://www.coltaker.com/api/v2/answers/{id}`
+`https://www.cotalker.com/api/v2/answers/{id}`
 
 #### Path Parameters {#get-by-path}
 Parameter | Description | Type | Required | Notes

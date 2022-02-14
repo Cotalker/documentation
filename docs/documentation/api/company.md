@@ -15,7 +15,7 @@ _Returns the data of the company the user is associated with._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /companies</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v1/companies`
+`https://www.cotalker.com/api/v1/companies`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -45,7 +45,7 @@ _Returns the company indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /companies/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-company-id-url}
-`https://www.coltaker.com/api/v1/companies/{id}`
+`https://www.cotalker.com/api/v1/companies/{id}`
 
 #### Path Parameters {#patch-company-path}
 Parameter | Description | Type | Required | Notes

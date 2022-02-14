@@ -22,7 +22,7 @@ _Returns all properties within the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /surveys</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/surveys`
+`https://www.cotalker.com/api/v2/surveys`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -97,7 +97,7 @@ _Returns the survey indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /surveys/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-by-id-url}
-`https://www.coltaker.com/api/v2/surveys/{id}`
+`https://www.cotalker.com/api/v2/surveys/{id}`
 
 #### Path Parameters {#get-by-path}
 Parameter | Description | Type | Required | Notes

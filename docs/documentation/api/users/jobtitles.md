@@ -15,7 +15,7 @@ _Returns all job titles within the company._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /jobtitles</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/jobtitles`
+`https://www.cotalker.com/api/v2/jobtitles`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -71,7 +71,7 @@ _Returns the job title indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /jobtitles/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-jobtitle-id-url}
-`https://www.coltaker.com/api/v2/jobtitles/{id}`
+`https://www.cotalker.com/api/v2/jobtitles/{id}`
 
 #### Path Parameters {#patch-jobtitle-path}
 Parameter | Description | Type | Required | Notes

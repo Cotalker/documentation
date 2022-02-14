@@ -20,7 +20,7 @@ _Returns data from all access roles._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /accessroles</span>
 
 #### Endpoint URL {#get-all-url}
-`https://www.coltaker.com/api/v2/accessroles`
+`https://www.cotalker.com/api/v2/accessroles`
 
 #### Headers {#get-all-headers}
 Header | Description | Required | Values
@@ -77,7 +77,7 @@ _Returns the access role indicated by the Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /accessroles/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-accessrole-id-url}
-`https://www.coltaker.com/api/v2/accessroles/{id}`
+`https://www.cotalker.com/api/v2/accessroles/{id}`
 
 #### Path Parameters {#patch-accessrole-path}
 Parameter | Description | Type | Required | Notes

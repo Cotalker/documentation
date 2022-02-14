@@ -47,7 +47,7 @@ _Returns the state machine indicated by its Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/&#123;groupId&#125;/sm/smstatemachine/&#123;stateMachineId&#125;</span>
 
 #### Endpoint URL {#get-tstatemachine-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/sm/smstatemachine/{stateMachineId}`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/sm/smstatemachine/{stateMachineId}`
 
 #### Path Parameters {#get-statemachine-path}
 Parameter | Description | Type | Required | Notes
@@ -78,7 +78,7 @@ _Create a new state machine within a task group._
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/&#123;groupId&#125;/sm/smstatemachine</span>
 
 #### Endpoint URL {#create-statemachine-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/sm/smstatemachine`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/sm/smstatemachine`
 
 #### Path Parameters {#create-statemachine-path}
 Parameter | Description | Type | Required | Notes
@@ -312,7 +312,7 @@ _Returns the state indicated by its Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/&#123;groupId&#125;/sm/smstate/&#123;stateId&#125;</span>
 
 #### Endpoint URL {#get-stateid-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/sm/smstate/{stateId}`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/sm/smstate/{stateId}`
 
 #### Path Parameters {#get-stateid-path}
 Parameter | Description | Type | Required | Notes
@@ -342,7 +342,7 @@ _Create a new state within a state machine._
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/&#123;groupId&#125;/sm/smstate</span>
 
 #### Endpoint URL {#create-state-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/sm/smstate`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/sm/smstate`
 
 #### Path Parameters {#create-state-path}
 Parameter | Description | Type | Required | Notes
@@ -464,7 +464,7 @@ _Returns all SLAs found in the indicated state machine._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/&#123;groupId&#125;/sla/smstatemachine/&#123;stateMachineId&#125;</span>
 
 #### Endpoint URL {#get-taskgroup-by-id-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/sla/smstatemachine/{stateMachineId}`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/sla/smstatemachine/{stateMachineId}`
 
 #### Path Parameters {#get-taskgroup-by-id-path}
 Parameter | Description | Type | Required | Notes
@@ -494,7 +494,7 @@ _Returns the SLA indicated by its Id._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/&#123;groupId&#125;/sla/&#123;slaId&#125;</span>
 
 #### Endpoint URL {#get-taskgroup-by-id-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/sla/smstatemachine/{stateMachineId}`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/sla/smstatemachine/{stateMachineId}`
 
 #### Path Parameters {#get-taskgroup-by-id-path}
 Parameter | Description | Type | Required | Notes
@@ -524,7 +524,7 @@ _Create a new SLA within a state machine._
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/&#123;groupId&#125;/sla</span>
 
 #### Endpoint URL {#create-task-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/sla`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/sla`
 
 #### Path Parameters {#create-task-path}
 Parameter | Description | Type | Required | Notes

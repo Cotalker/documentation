@@ -21,7 +21,7 @@ _Get all the messages in a channel modified after the indicated date and time.._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /messages/channel/&#123;id&#125;/modified/&#123;modified&#125;</span>
 
 #### Endpoint URL {#get-messages-modified-url}
-`https://www.coltaker.com/api/v1/messages/channel/{id}/modified/{modified}`
+`https://www.cotalker.com/api/v1/messages/channel/{id}/modified/{modified}`
 
 #### Path Parameters {#get-messages-modified-path}
 Parameter | Description | Type | Required | Values

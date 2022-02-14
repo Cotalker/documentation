@@ -54,7 +54,7 @@ _Returns the inidicated routines._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /pbscripts/&#123;id&#125;</span>
 
 #### Endpoint URL {#get-pbscript-by-id-url}
-`https://www.coltaker.com/api/v2/pbscripts/{id}`
+`https://www.cotalker.com/api/v2/pbscripts/{id}`
 
 #### Path Parameters {#get-taskgroup-by-id-path}
 Parameter | Description | Type | Required | Notes
@@ -90,7 +90,7 @@ _Create a new routine within the company._
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /pbscripts</span>
 
 #### Endpoint URL {#post-url}
-`https://www.coltaker.com/api/v2/pbscripts`
+`https://www.cotalker.com/api/v2/pbscripts`
 
 #### Headers {#post-headers}
 Header | Description | Required | Values
