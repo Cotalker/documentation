@@ -60,7 +60,7 @@ _Returns the inidicated task group._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/group/&#123;groupId&#125;</span>
 
 #### Endpoint URL {#get-taskgroup-by-id-url}
-`https://www.coltaker.com/api/v1/tasks/group/{groupId}`
+`https://www.cotalker.com/api/v1/tasks/group/{groupId}`
 
 #### Path Parameters {#get-taskgroup-by-id-path}
 Parameter | Description | Type | Required | Notes
@@ -96,7 +96,7 @@ _Create a new a task group._
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/group</span>
 
 #### Endpoint URL {#create-taskgroup-url}
-`https://www.coltaker.com/api/v1/tasks/group`
+`https://www.cotalker.com/api/v1/tasks/group`
 
 #### Headers {#create-taskgroup-headers}
 Header | Description | Required | Values
@@ -230,7 +230,7 @@ _Returns all active tasks the user can view within the specified task group._
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/&#123;groupId&#125;/task</span>
 
 #### Endpoint URL {#get-tasks-for-user-url}
-`https://www.coltaker.com/api/v1/tasks/{groupId}/task`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/task`
 
 #### Path Parameters {#get-tasks-for-user-path}
 Parameter | Description | Type | Required | Notes
