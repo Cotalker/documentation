@@ -137,7 +137,7 @@ Options are: _unique_ or _generic_.
 <div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>
 
-Tip: The added [collections with their respective addtional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
+**Note**: The added [collections with their respective addtional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
 
 </em></div>
 </div>
@@ -146,7 +146,7 @@ Tip: The added [collections with their respective addtional fields](/docs/docume
 <div className="col col--5">Adds multiple collections that are used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>
 
-Tip: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. The collections added here are not stored the same as the first five additional fields. See the COTPropertyType data model for more information.
+**Note**: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. The collections added here are not stored the same as the first five additional fields. [See "best practices" below for more information](#workflow-additional-fields).
 
 </em></div>
 </div>
