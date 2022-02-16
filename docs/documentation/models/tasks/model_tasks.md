@@ -39,7 +39,7 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
     ],
     "endDate": "2021-08-31T04:00:00.000Z",
     "estimatedTime": 5,
-    "extensions": {
+    "extensions": {  //Additional fields
         "birthdays_00": {
             "birthdate_00": "2021-10-01T03:00:00.000Z"
         }
@@ -66,11 +66,11 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
     "smStateMachine": "61793577a8d46e736bdcd129",  // Workflow settings (COTSMStateMachine)
     "startDate": "2021-07-01T04:00:00.000Z",
     "status": "6179366b1361882699b18e27",  //Current state (COTProperty)
-    "status1": "61793672a2bd931f8838cd5a",  //Additional fields (COTProperty)
-    "status2": "61793678aebac07bfb11d587",  //Additional fields
-    "status3": "6179367ecb7ab1e467fe092f", //Additional field (COTProperty)
-    "status4": null,
-    "status5": null,
+    "status1": "61793672a2bd931f8838cd5a",  //Additional field nº1 (COTProperty)
+    "status2": "61793678aebac07bfb11d587",  //Additional fields nº2 (COTProperty)
+    "status3": "6179367ecb7ab1e467fe092f", //Additional field nº3 (COTProperty)
+    "status4": null, //Additional field nº4 (COTProperty)
+    "status5": null, //Additioanl field nº5 (COTProperty)
     "taskGroup": "6179368883ddbe5b0ac30c2d",  //COTTaskGroup
     "userList": [
         "61792ea18b81afb8b9d02898",  //COTUser
@@ -104,6 +104,7 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
 | **editors** | Users tagged as `editors`. Allows reading and writting on all task fields and to participate in the chat. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | 
 | **endDate** | Indicates the task's deadline. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **estimatedTime** | Indicates the estimated number of days to finish the task. | number |
+| **extensions** | Displays collections set as additional fields and their values. | object | The difference between the additional fields displayed here and the ones that appear as `task.status{1,5}` is explained in the [administrative panel documentation](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#workflow-additional-fields).
 | **followers** | Users tagged as `followers`. Followers can read task fields and participate in the chat, but cannot modify task states or details. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) |
 | **image** | Contains URLs to uploaded images used as the task's avatar. | object |
 | **image.small** | Small-sized avatar | URL |
