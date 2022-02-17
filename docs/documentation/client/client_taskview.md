@@ -101,6 +101,15 @@ Once you are done adjusting the filters in the dialog box, it's possible to *sav
 
 Filters can be saved for personal use or shared globally with the rest of the company by selecting the _Public filter_ option.
 
+_Below is an example of a filter grouping tasks together by their state machine and ordering them by name alphabetically._
+
+<img alt="task filters" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_name_filter.gif')} />
+<br/>
+
+:::tip
+See the [Task View Tutorial](/docs/tutorials/basic/tutorial_taskview) for more examples on using filters to organize tasks in the _task view_.
+:::
+
 ### Chat in Task View {#chat-in-task}
 
 Chat channels are also viewable from _task views_. By simply pressing the task's information box, the task's chat channel will appear on a side panel.
