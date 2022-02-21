@@ -364,6 +364,53 @@ module.exports = {
     // 'support/feature_request',
     // 'support/report_abuse',
   ],
-
+  products: [
+    'products/products_overview',
+    {
+      type: 'category',
+      label: 'Maintenance',
+      items: [
+        'products/maintenance/overview',
+        {
+          type: 'category',
+          label: 'Corrective Maintenance',
+          items: [
+            'products/maintenance/corrective_maintenance/overview',
+            'products/maintenance/corrective_maintenance/workflow',
+            'products/maintenance/corrective_maintenance/configuration',
+            'products/maintenance/corrective_maintenance/users',
+            'products/maintenance/corrective_maintenance/surveys',
+            'products/maintenance/corrective_maintenance/integrations',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Preventive Maintenance',
+          items: [
+            'products/maintenance/preventive_maintenance/overview'
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Work Orders',
+          items: [
+            'products/maintenance/work_orders/overview'
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Budget Management',
+          items: [
+            'products/maintenance/budget_management/overview'
+          ],
+          collapsed: true,
+        },
+      ],
+      collapsed: true,
+    },
+  ],
 }
 

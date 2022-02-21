@@ -29,6 +29,12 @@ module.exports = {
       },
       items: [
         {
+          to: 'docs/products/products_overview',
+          activeBasePath: 'docs',
+          label: 'Products',
+          position: 'left',
+        },
+        {
           to: 'docs/getting_started/intro_overview',
           activeBasePath: 'docs',
           label: 'Getting Started',
