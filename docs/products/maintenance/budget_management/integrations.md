@@ -1,5 +1,5 @@
 ---
-title: Corrective Maintenance
+title: Maintenance
 sidebar_label: Integrations
 ---
 
