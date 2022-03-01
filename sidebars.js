@@ -366,45 +366,46 @@ module.exports = {
   ],
   products: [
     'products/products_overview',
+    'products/corrective_maintenance/cm_overview',
     {
       type: 'category',
-      label: 'Maintenance',
+      label: 'Product-Related Workflows',
       items: [
-        'products/maintenance/overview',
         {
           type: 'category',
-          label: 'Notifications',
+          label: 'Notifications Workflow',
           items: [
-            'products/maintenance/notifications/overview',
-            'products/maintenance/notifications/workflow',
-            'products/maintenance/notifications/configuration',
-            'products/maintenance/notifications/users',
-            'products/maintenance/notifications/surveys',
-            'products/maintenance/notifications/integrations',
+            'products/workflows/notifications/overview',
+            'products/workflows/notifications/workflow',
+            'products/workflows/notifications/users',
+            'products/workflows/notifications/master_data',
+            'products/workflows/notifications/surveys',
+            'products/workflows/notifications/integrations',
+            'products/workflows/notifications/customization',
           ],
           collapsed: true,
         },
         {
           type: 'category',
-          label: 'Preventive Maintenance',
+          label: 'Preventive Plans Workflow',
           items: [
-            'products/maintenance/preventive_maintenance/overview'
+            'products/workflows/preventive_plans/overview'
           ],
           collapsed: true,
         },
         {
           type: 'category',
-          label: 'Work Orders',
+          label: 'Work Orders Workflow',
           items: [
-            'products/maintenance/work_orders/overview'
+            'products/workflows/work_orders/overview'
           ],
           collapsed: true,
         },
         {
           type: 'category',
-          label: 'Budget Management',
+          label: 'Budget Management Workflow',
           items: [
-            'products/maintenance/budget_management/overview'
+            'products/workflows/budget_management/overview'
           ],
           collapsed: true,
         },
