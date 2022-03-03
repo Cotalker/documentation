@@ -367,9 +367,12 @@ module.exports = {
   products: [
     'products/products_overview',
     'products/corrective_maintenance/cm_overview',
+    'products/preventive_maintenance/pm_overview',
+    'products/work_order_product/wo_overview',
+    'products/purchase_order_product/po_overview',
     {
       type: 'category',
-      label: 'Product-Related Workflows',
+      label: 'Product-Related Tools',
       items: [
         {
           type: 'category',
@@ -377,19 +380,8 @@ module.exports = {
           items: [
             'products/workflows/notifications/overview',
             'products/workflows/notifications/workflow',
-            'products/workflows/notifications/users',
-            'products/workflows/notifications/master_data',
             'products/workflows/notifications/surveys',
-            'products/workflows/notifications/integrations',
             'products/workflows/notifications/customization',
-          ],
-          collapsed: true,
-        },
-        {
-          type: 'category',
-          label: 'Preventive Plans Workflow',
-          items: [
-            'products/workflows/preventive_plans/overview'
           ],
           collapsed: true,
         },
@@ -403,12 +395,23 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Budget Management Workflow',
+          label: 'Purchase Orders Workflow',
           items: [
             'products/workflows/budget_management/overview'
           ],
           collapsed: true,
         },
+        {
+          type: 'category',
+          label: 'Preventive Plans Workflow',
+          items: [
+            'products/workflows/preventive_plans/overview'
+          ],
+          collapsed: true,
+        },
+        'products/users',
+        'products/master_data',
+        'products/integrations',
       ],
       collapsed: true,
     },

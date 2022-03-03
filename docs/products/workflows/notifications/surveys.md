@@ -1,5 +1,5 @@
 ---
-title: Product-Related Workflows
+title: Product-Related Tools
 sidebar_label: Surveys
 ---
 
