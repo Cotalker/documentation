@@ -7,6 +7,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__title">Users and Access Roles</span>
 
+<img alt="user example" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_user_00a.png')} />
+<br/>
+
 ## Overview {#overview}
 Create _user accounts_ for all those involved in your operational processes. Depending on their _access roles_, _users_ can login into the Cotalker platform to interact with other _users_, read notifications, submit forms, share information, manage workflows, and edit configurations.
 
@@ -32,7 +35,7 @@ Ahmed is a field service manager. He's manages a group of employees while they w
 - _elements_ are also associated with his account, in this case, with the department he belongs to: Field Service 1;
 - _related users_ indicates the users that are in his team and under his command.
 
-His user profile doesn't only store his personal data, but it can be used within automated workflows [routines](/docs/documentation/automation/admin_routine) and gathering information for use in [survey forms](/docs/documentation/client/surveys).
+His user profile doesn't only store his personal data, but it can be used within automated workflows [routines](/docs/documentation/automation/admin_routine) and for gathering information used in [survey forms](/docs/documentation/client/surveys).
 
 </div>
 <div className="col col--6">

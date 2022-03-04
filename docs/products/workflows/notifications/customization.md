@@ -7,9 +7,12 @@ sidebar_label: Customizations
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <span className="hero__title">Notifications: Customization</span>
-<br/>
 
 **Available on:** <span className="badge badge--danger">Professional Plans</span> <span className="badge badge--info">Enterprise Plans</span> <span className="badge badge--warning">Unlimited Plans</span>
+<br/>
+
+
+<img alt="customization" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_notifications_customization.png')} />
 <br/>
 
 You can easily re-configure the **Notification workflow** to adapt it to your company's needs. Below you will see how to access the _administrative panel_ and edit the workflow's settings.

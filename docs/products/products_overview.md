@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="align-center text-center hero__subtitle">Cotalker products are the solution to your organization's operational needs.</span>
 <br/>
 
-<img alt="product overview" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_00.png')} />
+<img alt="product overview" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_overview.png')} />
 <br/>
 
 ## Introduction {#intro}

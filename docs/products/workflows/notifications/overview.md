@@ -7,28 +7,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__title">Notifications Overview</span>
 <br/>
-
-
-<div className="container">
-<div className="row">
-<div className="col col--6">
-
-<img alt="notifications" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_notifications_00.png')} />
 <br/>
 
-</div>
-<div className="col col--6">
+
+<img alt="product overview" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_00.png')} />
+<br/>
 
 In a **corrective maintenance** process, the first step is probably the most important. With the **notifications** workflow, field workers can easily and instantly inform of any malfunctions or failures.
 
 To report a failure, field workers submit a pre-designed form through the Cotalker platform. On the form, users can write a brief description of the problem, choose the damaged equipment from a list, indicate the location, and even add a photo to help evaluate the situation.
 
-Once the form is submitted, the workflow is initiated. A supervisor will be notified through the app. A service-level agreement (SLA) routine is also included in the workflow to ensure deadlines are met.
+Once the form is submitted, the workflow is initiated. A supervisor will be notified through the app. A service-level agreement (SLA) routine is also included in the workflow to ensure the issue is dealt with soon.
 
-</div>
-</div>
-</div>
-<br/>
 
 ## Glossary {#vocabulary}
 
