@@ -364,6 +364,57 @@ module.exports = {
     // 'support/feature_request',
     // 'support/report_abuse',
   ],
-
+  products: [
+    'products/products_overview',
+    'products/corrective_maintenance/cm_overview',
+    // 'products/preventive_maintenance/pm_overview',
+    'products/work_order_product/wo_overview',
+    // 'products/purchase_order_product/po_overview',
+    {
+      type: 'category',
+      label: 'In-depth View of Tools',
+      items: [
+        {
+          type: 'category',
+          label: 'Notifications Workflow',
+          items: [
+            'products/workflows/notifications/overview',
+            'products/workflows/notifications/workflow',
+            'products/workflows/notifications/surveys',
+            'products/workflows/notifications/customization',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Work Orders Workflow',
+          items: [
+            'products/workflows/work_orders/overview'
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Quotes Workflow',
+          items: [
+            'products/workflows/budget_management/overview'
+          ],
+          collapsed: true,
+        },
+        // {
+        //   type: 'category',
+        //   label: 'Preventive Plans Workflow',
+        //   items: [
+        //     'products/workflows/preventive_plans/overview'
+        //   ],
+        //   collapsed: true,
+        // },
+        'products/users',
+        'products/master_data',
+        'products/integrations',
+      ],
+      collapsed: true,
+    },
+  ],
 }
 

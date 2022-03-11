@@ -1,0 +1,8 @@
+---
+title: Product-Related Tools
+sidebar_label: Integrations
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
+
+<span className="hero__title">Integrations</span>

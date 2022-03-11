@@ -29,16 +29,17 @@ module.exports = {
       },
       items: [
         {
+          to: 'docs/products/products_overview',
+          activeBasePath: 'docs',
+          label: 'Products',
+          position: 'left',
+        },
+        {
           to: 'docs/getting_started/intro_overview',
           activeBasePath: 'docs',
           label: 'Getting Started',
           position: 'left',
-        },
-        {
-          to: 'blog',
-          label: `What's New`,
-          position: 'left',
-        },
+        },      
         {
           to: 'docs/documentation/documentation_overview',
           activeBasePath: 'docs',
@@ -61,6 +62,11 @@ module.exports = {
           to: 'docs/tutorials/tutorial_overview',
           activeBasePath: 'docs',
           label: 'Tutorials',
+          position: 'left',
+        },
+        {
+          to: 'blog',
+          label: `What's New`,
           position: 'left',
         },
         // {
