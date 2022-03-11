@@ -1,11 +1,11 @@
 ---
 title: Product-Related Tools
-sidebar_label: Surveys
+sidebar_label: Reporting and Validating Forms
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Notification Surveys</span>
+<span className="hero__title">Reporting and Validating Forms</span>
 
 ## Overview {#overview}
 
@@ -19,9 +19,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 <div className="col col--6">
 
-Notification survey forms make it easy to report and validate incidents on the field. Survey forms are integrated with master data, allowing users to choose assets, failure types, and incident locations from database lists.
+The _Notifications'_ survey forms make it easy to report and validate maintenance issues. Survey forms are integrated with master data, allowing users to choose assets, failure types, and incident locations from database lists.
 
-Once a _notification survey form_ is submitted, the _notification_ or _alert_ is created, and the [_notification workflow_](/docs/products/workflows/notifications/workflow) is initiated. A supervisor will then have to fill out the [validate incident notification](#validate) form. Afterwards, they will be able to create [work orders](/docs/products/workflows/work_orders/overview) to summon technical personnel to fix the issue.
+Once a _Report New Incident_ form is submitted, the _notification_ or _alert_ is created, and the [_notification workflow_](/docs/products/workflows/notifications/workflow) is initiated. A supervisor will then have to fill out the [Validate Incident Notification](#validate) form. Afterward, they will be able to create [work orders](/docs/products/workflows/work_orders/overview) to summon technical personnel to fix the issue.
 
 </div>
 </div>
