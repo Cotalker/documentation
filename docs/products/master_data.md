@@ -7,6 +7,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__title">Database Setup</span>
 <br/>
+<br/>
+
+<img alt="database" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_database_00.png')} />
+<br/>
 
 ## Overview {#overview}
 Adding your master data on Cotalker's platform permits you to use and update asset information automatically. For example, when field workers use the [_notification survey form_](/docs/products/workflows/notifications/surveys) to report an incident, the form accesses a collection of assets that include information about equipment, models, failure types, and location. Similarly, using the _close work order_ form, maintenance personnel can choose warehouse materials used in the operation, which is automatically subtracted from the warehouse stock database.

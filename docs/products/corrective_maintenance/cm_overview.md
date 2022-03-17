@@ -20,16 +20,20 @@ Cotalker's **Corrective Maintenance** product offers a mobile solution to fieldw
 
 ## How does Corrective Maintenance work? {#how}
 
-**Corrective Maintenance** consists of three integrated workflows that connect stakeholders to maintenance issues, allowing them to report incidents, share information, and request validation to pass to the next stage in the process.
+**Corrective Maintenance** consists of three integrated workflows that connect stakeholders to maintenance issues, allowing them to report incidents, share information, and request validation to pass to the next stage in the process. 
+
+Supervisors, field workers, maintenance personnel, and budget managers can participate during the whole process.
 
 <img alt="design" className="img_sizing_small" src={useBaseUrl('img/products/products_corrective_maintenance_00.png')} />
 
-_Corrective Maintenance workflows:_
+
+:::info
+_For in-depth information, view the workflows that make up the Corrective Maintenance:_
   - [Notifications](/docs/products/workflows/notifications/overview): Field workers notify failures by filling out a form. This initiates the corrective maintenance workflow and alerts corresponding stakeholders. Immediately, a supervisor is notified and has the option to either validate or reject the new incident report.
   - [Work Orders](/docs/products/workflows/work_orders/overview): Once the notification is validated, supervisors can create fill out a dynamic work order form that initiates a new workflow. The work order is then sent to technical personnel, who can accept or reject the work order. If accepted, technical personnel evaluate the situation and fill out a quote form for review. Once the job is complete, technical personnel send the _close work order_ form. A supervisor can then either accept to close the work order or give more indications if not satisfied.
   - [Quotes](/docs/products/workflows/budget_management/overview): Contractors automatically send quotes to budget managers when filling out the quote form in the _work orders workflow_. Managers must see if they accept the quote or not.
+:::
 
-  Supervisors, field workers, technical teams, and budget managers can participate during the whole process.
 
 ## Examples {#examples}
 ### Service Station Maintenance {#service-station}
