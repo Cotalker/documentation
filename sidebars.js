@@ -372,7 +372,7 @@ module.exports = {
     // 'products/purchase_order_product/po_overview',
     {
       type: 'category',
-      label: 'In-depth View of Tools',
+      label: 'Produted-Related Tools',
       items: [
         {
           type: 'category',
@@ -381,7 +381,6 @@ module.exports = {
             'products/workflows/notifications/overview',
             'products/workflows/notifications/workflow',
             'products/workflows/notifications/surveys',
-            'products/workflows/notifications/customization',
           ],
           collapsed: true,
         },
@@ -389,7 +388,10 @@ module.exports = {
           type: 'category',
           label: 'Work Orders Workflow',
           items: [
-            'products/workflows/work_orders/overview'
+            'products/workflows/work_orders/overview',
+            'products/workflows/work_orders/workflow',
+            'products/workflows/work_orders/surveys',
+
           ],
           collapsed: true,
         },
@@ -412,6 +414,7 @@ module.exports = {
         'products/users',
         'products/master_data',
         'products/integrations',
+        'products/customization',
       ],
       collapsed: true,
     },

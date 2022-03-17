@@ -1,11 +1,11 @@
 ---
 title: Product-Related Tools
-sidebar_label: Reporting and Validating Forms
+sidebar_label: Report and Validate Forms
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Reporting and Validating Forms</span>
+<span className="hero__title">Report and Validate Forms</span>
 
 ## Overview {#overview}
 

@@ -22,7 +22,7 @@ With the **Work Orders** product, your _work orders_ are transformed into workfl
 
 ## How does it work? {#how}
 
-The **Work Orders** product makes getting things done a lot easier. As stated above, **Work Orders** can be used independantly or in conjunction with other maintenance products.
+The **Work Orders** product makes getting things done a lot easier. As stated above, **Work Orders** can be used independently or in conjunction with other maintenance products. 
 
 <img alt="corrective maintenance" className="img_sizing" src={useBaseUrl('img/products/products_work_orders_00.png')} />
 <br/>
@@ -40,5 +40,7 @@ _Whether used separately or with other products, the procedure is as follows:_
 - After closing, supervisors can send an evaluation form that the maintenance team will also be able to see.
 - If used in conjunction with other products, their respective workflows can also be closed.
 
-
+:::info
+For more in-depth information, view the [**Work Orders Workflow**](/docs/products/workflows/work_orders/overview).
+:::
 
