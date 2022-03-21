@@ -13,7 +13,7 @@ const features = [
     imageUrl: styles.featureImageWorkflow,
     description: (
       <Translate>
-        Workflows are a central piece in the automation of your company. Create a simple Project Manager (.git)
+        Workflows are a central piece in the automation of your company. Follow the tutorial to build a simple Project Manager.
       </Translate>
     ),
   },
@@ -22,7 +22,7 @@ const features = [
     imageUrl: styles.featureImageTools,
     description: (
       <Translate>
-        Learn how to create users as state machines using Cotalker's UI or through the API.
+        Learn how to create and manage users, workflows, survey forms, access roles, database elements, and more using Cotalker's UI or through the API.
       </Translate>
     ),
   },
@@ -31,7 +31,7 @@ const features = [
     imageUrl: styles.featureImageAdmin,
     description: (
       <Translate>
-        Learn to setup and extend Cotalker, and get certified as an Administrator.
+        Learn to configure and extend Cotalker's capacities. Get certified as an Administrator.
       </Translate>
     ),
   },
