@@ -384,16 +384,16 @@ module.exports = {
         },
         {
           'Work Orders Workflow': [
-            'products/workflows/work_orders/wo_wf_overview',
-            'products/workflows/work_orders/wo_wf_description',
+            'products/workflows/work_orders/overview',
+            'products/workflows/work_orders/workflow',
             {
               'Survey Forms': [
-                'products/workflows/work_orders/wo_wf_surveys_overview',
-                'products/workflows/work_orders/wo_wf_cm_create_form',
-                'products/workflows/work_orders/wo_wf_accept_form',
-                'products/workflows/work_orders/wo_wf_close_form',
-                'products/workflows/work_orders/wo_wf_acceptance_form',
-                'products/workflows/work_orders/wo_wf_feedback_form'
+                'products/workflows/work_orders/surveys',
+                'products/workflows/work_orders/surveys-create-wo-cm',
+                'products/workflows/work_orders/surveys-accept-wo',
+                'products/workflows/work_orders/surveys-close-wo',
+                'products/workflows/work_orders/surveys-acceptance',
+                'products/workflows/work_orders/surveys-feedback'
               ]
             }
           ]
@@ -403,7 +403,7 @@ module.exports = {
             'products/workflows/budget_management/overview',
             'products/workflows/budget_management/surveys',
             'products/workflows/budget_management/approval',
-          ],
+          ],      
         },
       ],
     },
@@ -412,16 +412,16 @@ module.exports = {
         'products/work_order_product/wo_overview',
         {
           'Work Orders Workflow': [
-            'products/workflows/work_orders/wo_wf_overview',
-            'products/workflows/work_orders/wo_wf_description',
+            'products/workflows/work_orders/overview',
+            'products/workflows/work_orders/workflow',
             {
               'Survey Forms': [
-                'products/workflows/work_orders/wo_wf_surveys_overview',
-                'products/workflows/work_orders/wo_wf_wo_create_form',
-                'products/workflows/work_orders/wo_wf_accept_form',
-                'products/workflows/work_orders/wo_wf_close_form',
-                'products/workflows/work_orders/wo_wf_acceptance_form',
-                'products/workflows/work_orders/wo_wf_feedback_form'
+                'products/workflows/work_orders/surveys',
+                'products/workflows/work_orders/surveys-create-wo-wo',
+                'products/workflows/work_orders/surveys-accept-wo',
+                'products/workflows/work_orders/surveys-close-wo',
+                'products/workflows/work_orders/surveys-acceptance',
+                'products/workflows/work_orders/surveys-feedback'
               ]
             }
           ]
