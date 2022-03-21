@@ -1,11 +1,11 @@
 ---
 title: Work Orders
-sidebar_label: Work Orders
+sidebar_label: Overview
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Product Overview</span>
+<span className="hero__title">Overview</span>
 <br/>
 <br/>
 

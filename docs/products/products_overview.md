@@ -20,24 +20,20 @@ Cotalker _products_ are ready-to-use solutions that address specific organizatio
 
 _Products_ described in this documentation include:
 - [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview): Control corrective maintenance processes. Includes _incident report notifications_, _work orders_, _quotes_, and _supervisor validations_.
-- **Preventive Maintenance**
-- **Work Orders**
+- **Preventive Maintenance**: Scheduled maintenance according to time or other asset metrics, e.g. milleage.
+- [**Work Orders**](/docs/products/work_order_product/wo_overview): Process that starts with the creation of a work order and ends with the validation of its closure.
 
 :::info Contact us
-_Please consult with a [Cotalker commercial representative](/docs/support/commercial) to:_
+_Please consult with a [Cotalker sales representative](/docs/support/commercial) to:_
 - learn about these and other products;
 - discover our different plans and customization options.
 :::
 
-## Product-Related Tools: {#product-related-workflows}
-Products include a wide range of interacting workflows, survey forms, master data, and other settings to meet solution requirements. We include a brief description of these tools so that you can get an idea of how they work and how they can be adapted to your organization.  
+## Setup {#product-related-workflows}
+Products include a wide range of interacting workflows, survey forms, master data, and other settings to meet solution requirements. We include a brief description of these tools so that you can get an idea of how they work and can be customized.
 
-_Tools_ used within _products_ are described in the following sections:
-
-- [**Notifications Workflow**](/docs/products/workflows/notifications/overview): Used within the _Corrective Maintenance_ product. Notifies and reports maintenance issues to stakeholders using dynamic survey forms.
-- [**Preventive Plans Workflow**](/docs/products/workflows/preventive_plans/overview): Used within the _Preventive Maintenance_ product. Schedules maintenance operations.
-- [**Work Orders Workflow**](/docs/products/workflows/work_orders/overview): Creates and closes work orders. Used within the _corrective_ and _preventive maintenance_ products. It can also be used independently.
-- [**Quotes Workflow**](/docs/products/workflows/budget_management/overview): Used in conjunction with the _work orders workflow_. Manages quotes sent by work orders.
-- [**Database**](/docs/products/master_data): Manages master data that can be used in workflows and automations.
-- [**Users and Access Roles**](/docs/products/users): Create user accounts and grant access with role-specific permissions.
+- [**Master Data**](/docs/products/master_data): Manage master data that can be used in workflows, surveys, and automations.
+- [**Users and Access Roles**](/docs/products/users): Create user accounts and grant access with 
+role-specific permissions.
+- [**Customizations**](/docs/products/customization): Customize products depending on your purchased plan. Contact a [Cotalker sales representative](/docs/support/commercial) for more information.
 - [**Integrations**](/docs/products/integrations): Integrate with other systems, like ERP, using our REST API tools.

@@ -1,6 +1,6 @@
 ---
 title: Corrective Maintenance
-sidebar_label: Corrective Maintenance
+sidebar_label: Overview
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -29,9 +29,9 @@ Supervisors, field workers, maintenance personnel, and budget managers can parti
 
 :::info
 _For in-depth information, view the workflows that make up the Corrective Maintenance:_
-  - [Notifications](/docs/products/workflows/notifications/overview): Field workers notify failures by filling out a form. This initiates the corrective maintenance workflow and alerts corresponding stakeholders. Immediately, a supervisor is notified and has the option to either validate or reject the new incident report.
-  - [Work Orders](/docs/products/workflows/work_orders/overview): Once the notification is validated, supervisors can create fill out a dynamic work order form that initiates a new workflow. The work order is then sent to technical personnel, who can accept or reject the work order. If accepted, technical personnel evaluate the situation and fill out a quote form for review. Once the job is complete, technical personnel send the _close work order_ form. A supervisor can then either accept to close the work order or give more indications if not satisfied.
-  - [Quotes](/docs/products/workflows/budget_management/overview): Contractors automatically send quotes to budget managers when filling out the quote form in the _work orders workflow_. Managers must see if they accept the quote or not.
+  - [**Notifications**](/docs/products/workflows/notifications/overview): Field workers notify failures by filling out a form. This initiates the _Notifications_ workflow and alerts corresponding stakeholders. Supervisors then can either validate or reject the _new incident report_.
+  - [**Work Orders**](/docs/products/workflows/work_orders/overview): Once the notification is validated, supervisors can fill out a dynamic work order form that initiates a new workflow. The work order is then sent to technical personnel for their approval. If accepted, technical personnel evaluate the situation and fill out a quote form for review. Once the job is complete, technical personnel send the _close work order_ form. A supervisor can then either accept to close the work order or give more indications if not satisfied.
+  - [**Quotes**](/docs/products/workflows/budget_management/overview): Contractors automatically send quotes to budget managers when filling out the quote form in the _work orders workflow_. Managers must see if they accept the quote or not.
 :::
 
 
@@ -50,7 +50,7 @@ The notified contractors can accept or decline the work order. If they accept, t
 <img alt="design" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_cm_02.png')} />
 <br/>
 
-After the contractors consider they have finished their job, they close the work order by submitting another form. The supervisor can then approve or reject the job. Once approved, the work order is closed.
+After the contractors consider they have finished their job, they request to close the work order through a corresponding form. The supervisor can then review the job and decide to approve it or not. Once approved, the work order is closed.
 
 It's that simple!
 
