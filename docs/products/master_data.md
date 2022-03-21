@@ -1,5 +1,5 @@
 ---
-title: Product-Related Tools
+title: Setup
 sidebar_label: Database
 ---
 

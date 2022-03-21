@@ -366,21 +366,27 @@ module.exports = {
   ],
   products: [
     'products/products_overview',
-    'products/corrective_maintenance/cm_overview',
-    // 'products/preventive_maintenance/pm_overview',
-    'products/work_order_product/wo_overview',
-    // 'products/purchase_order_product/po_overview',
     {
       type: 'category',
-      label: 'Produted-Related Tools',
+      label: 'Corrective Maintenance',
       items: [
+        'products/corrective_maintenance/cm_overview',
         {
           type: 'category',
           label: 'Notifications Workflow',
           items: [
             'products/workflows/notifications/overview',
             'products/workflows/notifications/workflow',
-            'products/workflows/notifications/surveys',
+            {
+              type: 'category',
+              label: 'Survey Forms',
+              items: [
+                'products/workflows/notifications/surveys',
+                'products/workflows/notifications/surveys-report',
+                'products/workflows/notifications/surveys-validate',
+              ],
+              collapsed: true,
+            },
           ],
           collapsed: true,
         },
@@ -390,7 +396,59 @@ module.exports = {
           items: [
             'products/workflows/work_orders/overview',
             'products/workflows/work_orders/workflow',
-            'products/workflows/work_orders/surveys',
+            {
+              type: 'category',
+              label: 'Survey Forms',
+              items: [
+                'products/workflows/work_orders/surveys',
+                'products/workflows/work_orders/surveys-create-wo-cm',
+                'products/workflows/work_orders/surveys-accept-wo',
+                'products/workflows/work_orders/surveys-close-wo',
+                'products/workflows/work_orders/surveys-acceptance',
+                'products/workflows/work_orders/surveys-feedback',
+              ],
+              collapsed: false,
+            },
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Quotes Workflow',
+          items: [
+            'products/workflows/budget_management/overview',
+            'products/workflows/budget_management/surveys',
+            'products/workflows/budget_management/approval',
+          ],
+          collapsed: false,
+        },
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Work Orders',
+      items: [
+        'products/work_order_product/wo_overview',
+        {
+          type: 'category',
+          label: 'Work Orders Workflow',
+          items: [
+            'products/workflows/work_orders/overview',
+            'products/workflows/work_orders/workflow',
+            {
+              type: 'category',
+              label: 'Survey Forms',
+              items: [
+                'products/workflows/work_orders/surveys',
+                'products/workflows/work_orders/surveys-create-wo-wo',
+                'products/workflows/work_orders/surveys-accept-wo',
+                'products/workflows/work_orders/surveys-close-wo',
+                'products/workflows/work_orders/surveys-acceptance',
+                'products/workflows/work_orders/surveys-feedback',
+              ],
+              // collapsed: true,
+            },
 
           ],
           collapsed: true,
@@ -399,22 +457,23 @@ module.exports = {
           type: 'category',
           label: 'Quotes Workflow',
           items: [
-            'products/workflows/budget_management/overview'
+            'products/workflows/budget_management/overview',
+            'products/workflows/budget_management/surveys',
+            'products/workflows/budget_management/approval',
           ],
           collapsed: true,
         },
-        // {
-        //   type: 'category',
-        //   label: 'Preventive Plans Workflow',
-        //   items: [
-        //     'products/workflows/preventive_plans/overview'
-        //   ],
-        //   collapsed: true,
-        // },
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
+      label: 'Setup',
+      items: [
         'products/users',
         'products/master_data',
-        'products/integrations',
         'products/customization',
+        'products/integrations',
       ],
       collapsed: true,
     },

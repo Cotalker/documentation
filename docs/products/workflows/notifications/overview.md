@@ -1,11 +1,11 @@
 ---
-title: Product-Related Tools
+title: Notifications Workflow
 sidebar_label: Overview
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Notifications Workflow</span>
+<span className="hero__title">Overview</span>
 <br/>
 <br/>
 
@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <img alt="product overview" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_00.png')} />
 <br/>
 
-## Overview {#overview}
+## Introduction {#intro}
 
 In a _corrective maintenance_ process, the first step is probably the most important. That's why our [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview) product comes equipped with the **notifications** workflow. Through this workflow, field workers can easily and instantly inform of any malfunctions or failures.
 
@@ -26,6 +26,8 @@ Further details are given in the following sections.
 ## Example {#example}
 
 ### Water Leak Notification {#water-leak}
+
+<div className="alert alert--primary">
 
 _Watch how Azam sends a notification to report a maintenance issue in 30 seconds:_
 
@@ -48,7 +50,12 @@ _Detail of Azam's notification process explained step-by-step:_
 12. Finally, he presses the _Send_ button on the form to notify Layla, the maintenance supervisor.
 13. This commences the _Notification_ workflow. In the next step of the process, Layla will have to _validate the report_. Once validated, she can then create a _work order_, starting a new workflow that will include the contractor assigned to fix the leak (more on this later).
 
+</div>
+<br/>
+
 ### Water Leak Report Validation {#validation}
+
+<div className="alert alert--primary">
 
 <img alt="validation example" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/video_validate_notification.gif')} />
 <br/>
@@ -60,11 +67,14 @@ _Details of how Layla validated Azam's report:_
 3. Then, she scrolls up the channel to look at the details of the report.
 4. In the channel workspace, she presses the green button labeled _Validate Incident_.
 5. The _Validate Incident Notification_ form pops up.
-6. She chooses to validate, and adds a note before submitting the form.
-7. Once the incident is validated, from the same workspace, Layla can send contractors a _work order_ requesting their services. This will commence the [work order workflow](/docs/products/workflows/work_orders/overview).
-8. To be continued...
+6. She chooses to validate and adds a note before submitting the form.
+7. Once the incident is validated, from the same workspace, Layla can send contractors a _work order_ requesting their services, thus initiating the [work order workflow](/docs/products/workflows/work_orders/overview).
+
+</div>
+<br/>
 
 
+----
 
 ## Glossary {#vocabulary}
 
@@ -75,5 +85,5 @@ _Details of how Layla validated Azam's report:_
 - **Service-level agreement (SLA)**: A routine added to the workflow to remind users of deadlines until the task is complete. 
 
 
-## Related Resources {#resources}
+## Related Topics {#topics}
 [Corrective Maintenance Solution](https://www.cotalker.com/en/solutions/mobility)

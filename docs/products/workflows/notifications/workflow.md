@@ -1,11 +1,11 @@
 ---
-title: Product-Related Tools
+title: Notifications Workflow
 sidebar_label: Workflow Description
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<span className="hero__title">Notifications: Workflow Description</span>
+<span className="hero__title">Workflow Description</span>
 <br/>
 <br/>
 
