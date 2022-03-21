@@ -1,6 +1,7 @@
 ---
 title: Work Orders Workflow
 sidebar_label: Workflow Description
+id: wo_wf_description
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

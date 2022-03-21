@@ -367,115 +367,81 @@ module.exports = {
   products: [
     'products/products_overview',
     {
-      type: 'category',
-      label: 'Corrective Maintenance',
-      items: [
+      'Corrective Maintenance': [
         'products/corrective_maintenance/cm_overview',
         {
-          type: 'category',
-          label: 'Notifications Workflow',
-          items: [
+          'Notifications Workflow': [
             'products/workflows/notifications/overview',
             'products/workflows/notifications/workflow',
             {
-              type: 'category',
-              label: 'Survey Forms',
-              items: [
+              'Survey Forms': [
                 'products/workflows/notifications/surveys',
                 'products/workflows/notifications/surveys-report',
                 'products/workflows/notifications/surveys-validate',
-              ],
-              collapsed: true,
-            },
+              ]
+            }
           ],
-          collapsed: true,
         },
         {
-          type: 'category',
-          label: 'Work Orders Workflow',
-          items: [
-            'products/workflows/work_orders/overview',
-            'products/workflows/work_orders/workflow',
+          'Work Orders Workflow': [
+            'products/workflows/work_orders/wo_wf_overview',
+            'products/workflows/work_orders/wo_wf_description',
             {
-              type: 'category',
-              label: 'Survey Forms',
-              items: [
-                'products/workflows/work_orders/surveys',
-                'products/workflows/work_orders/surveys-create-wo-cm',
-                'products/workflows/work_orders/surveys-accept-wo',
-                'products/workflows/work_orders/surveys-close-wo',
-                'products/workflows/work_orders/surveys-acceptance',
-                'products/workflows/work_orders/surveys-feedback',
-              ],
-              collapsed: false,
-            },
-          ],
-          collapsed: true,
+              'Survey Forms': [
+                'products/workflows/work_orders/wo_wf_surveys_overview',
+                'products/workflows/work_orders/wo_wf_cm_create_form',
+                'products/workflows/work_orders/wo_wf_accept_form',
+                'products/workflows/work_orders/wo_wf_close_form',
+                'products/workflows/work_orders/wo_wf_acceptance_form',
+                'products/workflows/work_orders/wo_wf_feedback_form'
+              ]
+            }
+          ]
         },
         {
-          type: 'category',
-          label: 'Quotes Workflow',
-          items: [
+          'Quotes Workflow': [
             'products/workflows/budget_management/overview',
             'products/workflows/budget_management/surveys',
             'products/workflows/budget_management/approval',
           ],
-          collapsed: false,
         },
       ],
-      collapsed: true,
     },
     {
-      type: 'category',
-      label: 'Work Orders',
-      items: [
+     'Work Orders': [
         'products/work_order_product/wo_overview',
         {
-          type: 'category',
-          label: 'Work Orders Workflow',
-          items: [
-            'products/workflows/work_orders/overview',
-            'products/workflows/work_orders/workflow',
+          'Work Orders Workflow': [
+            'products/workflows/work_orders/wo_wf_overview',
+            'products/workflows/work_orders/wo_wf_description',
             {
-              type: 'category',
-              label: 'Survey Forms',
-              items: [
-                'products/workflows/work_orders/surveys',
-                'products/workflows/work_orders/surveys-create-wo-wo',
-                'products/workflows/work_orders/surveys-accept-wo',
-                'products/workflows/work_orders/surveys-close-wo',
-                'products/workflows/work_orders/surveys-acceptance',
-                'products/workflows/work_orders/surveys-feedback',
-              ],
-              // collapsed: true,
-            },
-
-          ],
-          collapsed: true,
+              'Survey Forms': [
+                'products/workflows/work_orders/wo_wf_surveys_overview',
+                'products/workflows/work_orders/wo_wf_wo_create_form',
+                'products/workflows/work_orders/wo_wf_accept_form',
+                'products/workflows/work_orders/wo_wf_close_form',
+                'products/workflows/work_orders/wo_wf_acceptance_form',
+                'products/workflows/work_orders/wo_wf_feedback_form'
+              ]
+            }
+          ]
         },
         {
-          type: 'category',
-          label: 'Quotes Workflow',
-          items: [
+          'Quotes Workflow': [
             'products/workflows/budget_management/overview',
             'products/workflows/budget_management/surveys',
             'products/workflows/budget_management/approval',
           ],
-          collapsed: true,
         },
       ],
-      collapsed: true,
     },
     {
-      type: 'category',
-      label: 'Setup',
-      items: [
+      'Setup': [
         'products/users',
         'products/master_data',
         'products/customization',
         'products/integrations',
       ],
-      collapsed: true,
     },
   ],
 }
