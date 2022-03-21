@@ -1,7 +1,6 @@
 ---
 title: Work Orders Workflow
 sidebar_label: Create WO Form
-id: wo_wf_wo_create_form
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

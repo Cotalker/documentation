@@ -1,7 +1,6 @@
 ---
 title: Work Orders Workflow
 sidebar_label: Close WO Form
-id: wo_wf_close_form
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

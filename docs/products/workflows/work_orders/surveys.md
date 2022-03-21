@@ -1,7 +1,6 @@
 ---
 title: Work Orders Workflow
 sidebar_label: Introduction
-id: wo_wf_surveys_overview
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
