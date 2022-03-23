@@ -112,7 +112,6 @@ When using a Workflow Start Form and some input error prevents a task from being
 </div>
 <br/>
 
-
 <div className="alert alert--secondary">
 
 7. New fields –based on the the _Create Task_ bot– will appear. In the **Name** field, press the <span className="badge badge--primary">Add item</span> button, and include a [COTLang Script command](/docs/documentation/automation/admin_cotlang) like the following: 
@@ -151,16 +150,7 @@ When using a Workflow Start Form and some input error prevents a task from being
 
 <div className="alert alert--secondary">
 
-11. If the task being created is a sub-task within a **parent task**, the following must be indicated: 
-
-  `$VALUE#meta|parentTask`
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-12. The _Workflow Start Form_ must be associated as an _answer_ to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **Answers** field: 
+11. The _Workflow Start Form_ must be associated as an _answer_ to the _task_. In order to do this, the _answer's_ universally unique identifier (UUID) must be included in the **Answers** field: 
 
     ```$VALUE#answer|uuid```
 
@@ -169,12 +159,22 @@ When using a Workflow Start Form and some input error prevents a task from being
 
 <div className="alert alert--secondary">
 
-13. The **assignee** value is optional. By default, the _user_ creating the task is set as the _assignee_, but this value can be changed: 
+12. The **assignee** value is optional. By default, the _user_ creating the task is set as the _assignee_, but this value can be changed: 
 
     ```$VALUE#answer|user```
 
 </div>
 <br/>
+
+<div className="alert alert--secondary">
+
+13. (ONLY FOR SUB-TASKS) If the task being created is a sub-task within a **parent task**, the following must be indicated: 
+
+  `$VALUE#meta|parentTask`
+
+</div>
+<br/>
+
 
 ## State Start Form {#required-survey-for-modifying-task-states}
 
