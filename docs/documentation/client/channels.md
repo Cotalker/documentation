@@ -99,3 +99,82 @@ From the task configuration panel:
 :::tip
 Changing task states or configurations require appropriate access roles. Ask your admin for more details in case you need access to these options.
 :::
+
+<div className="alert alert--secondary">
+
+### Enriched Messages {#enriched-messages}
+
+Enriched messages contain extra information that pops over certain words when the mouse cursor hovers over them, i.e., links, keywords, contacts, and tasks.
+
+When _users_ send a URL link (with the _http://_ or _https://_ prefix included) in a message, it is automatically converted to the enriched format. See example below:
+
+<img alt="url enriched" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_message_00.gif')} />
+<br/>
+
+---
+
+:::info
+The following enriched message types can be viewed in any channel but can **only** be sent by [posting an API request to the message endpoint](/docs/documentation/api/communication/messages).
+:::
+
+_Example of an enriched message sent by a system bot:_
+
+<img alt="url enriched" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_message_01.gif')} />
+<br/>
+
+#### Enriched Task Message Type
+
+<img alt="url enriched" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_message_02.png')} />
+<br/>
+
+<div className="margin-left--lg">
+
+- **A. Highlighted text**: Task information pops up when hovering over the text. Click on the text to go to the task workspace.
+- **B. Go to task**: Press this button to go to the task's workspace.
+- **C. Chat icon**: Press the icon to send a direct message to the task assignee.
+
+</div>
+<br/>
+
+#### Enriched Contact Message Type
+
+<img alt="url enriched" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_message_03.png')} />
+<br/>
+
+<div className="margin-left--lg">
+
+- **A. Highlighted text**: Contact information pops up when hovering over the text. Click the text to send a direct message to the contact.
+- **B. Direct message**: Press this button to send a message to the contact.
+- **C. Copy icon**: Press the icon to copy the contact's email to the clipboard.
+
+</div>
+<br/>
+
+#### Enriched Hover Message Type
+
+<img alt="url enriched" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_message_04.png')} />
+<br/>
+
+<div className="margin-left--lg">
+
+- **A. Highlighted text**: Special information concerning the highlighted word pops up when hovering over the text. 
+- **B. Card**: The card contains images and text. A scroll bar is included for longer texts.
+
+</div>
+<br/>
+
+#### Enriched Link Message Type
+
+<img alt="url enriched" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_message_05.png')} />
+<br/>
+
+<div className="margin-left--lg">
+
+- **A. Highlighted text**: Web page information appears when hovering over the text. Click the text to open the link.
+- **B. Go to site**: Press the button to open the link in a new tab.
+
+</div>
+<br/>
+
+</div>
+<br/>

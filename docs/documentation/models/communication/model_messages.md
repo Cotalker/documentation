@@ -83,6 +83,17 @@ When displaying a form, i.e., a submitted survey, there is a _message_ for each 
 | **channel** | The channel the message is sent in | ObjectId<COTChannel\> | [Channel Model](/docs/documentation/models/communication/model_channels) |
 | **content** | Displayed data; could be user text input, system message, or file object. | string | For details about the type of content allowed, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent). |
 | **contentArray** | Array of answered survey _questions_ | COTQuestion[ ] | [Questions Model](/docs/documentation/models/surveys/model_questions) |
+| **contentParts** | Indicates the format and content to use in each part of an enriched message. Required with `text/enriched` content types. | Object[ ] | [See samples](/docs/documentation/models/communication/model_messageContent#enriched-message).
+| **contentParts[x].type** | Content part types include: `text`, `link`, `hover`, and `task`. | string | Required with `text/enriched` content types. |
+| **contentParts[x].content** | The text displayed in the message. In case of `link`, `hover`, and `task` types, the text is linked to the respective `payload` data. | string | Required with `text/enriched` content types. |
+| **contentParts[x].payload** | The data linked to the text in `contentParts.content`. Each `contentParts.type` has a specific `payload` object. | object | Required with `text/enriched` content types.
+| **contentParts[x].payload.url** | Indicates the linked URL when using the `link` type. | string | Required when using the `link` enriched message type. |
+| **contentParts[x].payload.card** | The data displayed when hovering over `hover` type content. | object | Required when using the `hover` enriched message type. |
+| **contentParts[x].payload.card.image** | URL of the image that is displayed on the pop-up card. | string | Required when using the `hover` enriched message type. | 
+| **contentParts[x].payload.card.text** | The text that is displayed on the pop-up card. | string | Required when using the `hover` enriched message type. |
+| **contentParts[x].payload.company** | ObjectId of the company in which the message is sent. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | Required when using the `task` enriched message type. | 
+| **contentParts[x].payload.task** | ObjectId of the task that is linked to the `contentParts.content` text. | [ObjectId<COTTask\>](/docs/documentation/models/tasks/model_tasks) | Required when using the `task` enriched message type. |
+| **contentParts[x].payload.taskGroup** | ObjectId of the task group in which the task is found. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required when using the `task` enriched message type.
 | **contentType** | Indicates content type, for example: `text/plain` (user text input), `application/vnd.cotalker.survey` (answered survey), `application/pdf` (pdf file), `image/gif` (uploaded gif image) | string | For a complete list of content types, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent). |
 | **createdAt** | The date and time the message was created | number | Unix epoch time format |
 | **extendsAnswer** | Extra information added to a survey question's answer through another survey | string | Superseded by [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType#survey) `survey+survey` available through `messages.contentArray`. |
@@ -97,8 +108,8 @@ When displaying a form, i.e., a submitted survey, there is a _message_ for each 
 | **modifiedAt** | Date and time last modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ  |
 | **modifiedLocal** | Date and time last modified | number | Unix epoch time format |
 | **responses** | Responses refer to an answered survey question. Sometimes, responses come in pairs, the first response object contains the field label, the second, the submitted data. | object[ ] | Check `messages.form` for the forms identification data | 
-| **responses[index].cdata** | Contains the responses submitted to a given survey question | string[ ] | |
-| **responses[index].cref** | References the question | ObjectId<COTQuestion\> | [Question Model](/docs/documentation/models/surveys/model_questions) |
+| **responses[x].cdata** | Contains the responses submitted to a given survey question | string[ ] | |
+| **responses[x].cref** | References the question | ObjectId<COTQuestion\> | [Question Model](/docs/documentation/models/surveys/model_questions) |
 | **reactions** | Emoji reactions to message | object | Emojis used on message appear as object keys, e.g., `reactions.laugh`, `reactions.rocket` |
 | **sentBy** | Indicates the ID number of the user that sent the message | ObjectId<COTUser\> | [User Model](/docs/documentation/models/users/model_users) |
 
@@ -111,7 +122,7 @@ When displaying a form, i.e., a submitted survey, there is a _message_ for each 
 | **cmd.status** | `1`: _ids_ calculated; `2`: _by_ calculated; `3`: both | number | DEPRECATED |
 | **cmd.visibility** | My current state | boolean | DEPRECATED |
 | **isActive** | Used for hiding messages; replaced by `messages.isHidden` | boolean | DEPRECATED |
-| **responses[index].\_id** | Automatically generated internal system code | ObjectId | Not to be used |
+| **responses[x].\_id** | Automatically generated internal system code | ObjectId | Not to be used |
 | **readBy** | Users that have read the message | ObjectId<COTUser\>[ ] | DEPRECATED |
 
 
