@@ -70,7 +70,7 @@ Element | Description | Type | Required | Notes
 **channel** | The channel the message is sent in. | [ObjectId<COTChannel\>](/docs/documentation/models/communication/model_channels) | Required |
 **content** | Displayed data; could be user text input, system message, or file object. | string | Required<br/>(for all messages that are not surveys) | For details about the type of content allowed, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent).
 | **contentArray** | Array of answered survey _questions_ | [ObjectId<COTQuestion\>[ ]](/docs/documentation/models/surveys/model_questions) | Required<br/>(if sending a survey) |
-**contentType** | Indicates content type, for example: `text/plain` (user text input), `application/vnd.cotalker.survey` (answered survey), `application/pdf` (pdf file), `image/gif` (uploaded gif image) | string | Required | For a complete list of content types, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent).
+**contentType** | Indicates content type, for example: `text/plain` (user text input), `application/vnd.cotalker.survey` (answered survey), `application/pdf` (pdf file), `image/gif` (uploaded gif image) | string | Required | For a complete list of content types, go to [COTMessageContentType](/docs/documentation/models/communication/model_messageContent). See below for [enriched messages](#enriched-message).
 **isSaved** | Used to indicate the message state. `2` is used for sending a regular message; `8` is used for sending unanswered surveys; `16` is used to indicate a message has already been delivered. | number | Required | Use with precaution; consult the [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions) for further details. 
 **sentBy** | ID of the _user_ that sends the message. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Required |
 
@@ -221,4 +221,202 @@ Go to [COTMessage](/docs/documentation/models/communication/model_messages) for 
 :::note
 To revert the removal of a message from the channel, [edit the message](#patch-message) and change the value of the `isHidden` field to _false_.
 :::
+
 ---
+
+## Send an Enriched Message {#enriched-message}
+_Special syntax for sending enriched messages._
+
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /messages</span>
+
+#### Endpoint URL {#post-channel-url}
+`https://www.cotalker.com/api/v1/messages`
+
+#### Headers {#post-channel-headers}
+
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Content-Type** | Indicates the body's format. | Required | application/json
+
+#### Request Body {#post-channel-body}
+_Only required fields are listed below. For a complete schema description, please go to the [COTChannel data model](/docs/documentation/models/communication/model_channels). Unrequired fields that are not submitted are either filled in automatically or left blank._
+
+Element | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**channel** | The channel the message is sent in. | [ObjectId<COTChannel\>](/docs/documentation/models/communication/model_channels) | Required |
+**contentType** | Use the `text/enriched` option to send enriched messeages. | string | Required | Notes
+**contentParts** | Indicates the format and content to use in each part of the sent message. | Object[ ] | Required | [See samples](/docs/documentation/models/communication/model_messageContent#enriched-message).
+**contentParts[x].type** | Content part types include: `text`, `link`, `hover`, and `task`. | string | Required |
+**contentParts[x].content** | The text displayed in the message. In case of `link`, `hover`, and `task` types, the text is linked to the respective `payload` data. | string | Required |
+**contentParts[x].payload** | The data linked to the text in `contentParts.content`. Each `contentParts.type` has a specific `payload` object. | object | Required |
+**contentParts[x].payload.url** | Indicates the linked URL when using the `link` type. | string | Required when using the `link` type. |
+**contentParts[x].payload.card** | The data displayed when hovering over `hover` type content. | object | Required when using the `hover` type. |
+**contentParts[x].payload.card.image** | URL of the image that is displayed on the pop-up card. | string | Required when using the `hover` type. | 
+**contentParts[x].payload.card.text** | The text that is displayed on the pop-up card. | string | Required when using the `hover` type. |
+**contentParts[x].payload.company** | ObjectId of the company in which the message is sent. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | Required when using the `task` type. | 
+**contentParts[x].payload.task** | ObjectId of the task that is linked to the `contentParts.content` text. | [ObjectId<COTTask\>](/docs/documentation/models/tasks/model_tasks) | Required when using the `task` type. |
+**contentParts[x].payload.taskGroup** | ObjectId of the task group in which the task is found. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required when using the `task` type.
+**isSaved** | This field must be set to `2` to send the message. | number | Required |
+**sentBy** | ID of the _user_ that sends the message. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Required |
+
+
+#### Request Sample {#post-channel-request}
+_Message sent with the minimum required fields:_
+```bash
+curl --location --request POST 'https://dev.cotalker.com/api/v1/messages' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjJhYjE2MzVhODcwMjAwMDdjMjA1MzMiLCJyb2xlIjoidXNlciIsImNvbXBhbnkiOiI2MjJhYjE0ZjcxYjEyZDdkNDExMjhkOGUiLCJkYXRlIjoxNjQ3NTIyNjc5ODk2LCJpcnQiOnRydWUsImlhdCI6MTY0NzUyMjY3OSwiZXhwIjoxNjUwMTE0Njc5fQ.qsQbBk8-4lqEcvmTv-D34x0N6gXjwAp_EWC2QbBFITQ' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "channel": "623b136680753a589460c368",
+    "contentType": "text/enriched",
+    "isSaved": 2,
+    "sentBy": "623b137046abafdd25f1e88c",
+    "contentParts": [
+        {
+            "type": "text",
+            "content": "This is an automatically-generated message regarding the"
+        },
+        {
+            "type": "task",
+            "content": "Fix Pipes Work Order.",
+            "payload": {
+                "company": "623b1332d6bf5d4380821b7d",
+                "task": "623b137c3f85e5110df8cd59",
+                "taskGroup": "623b138279d4089a60cf2984"
+            }
+        },
+        {
+            "type": "user",
+            "content": "@Thomas Gardner",
+            "payload": {
+                "user": "623b138df83745aa22ba6462",
+                "company": "623b1332d6bf5d4380821b7d"
+            }
+        },
+        {
+            "type": "text",
+            "content": "has requested to"
+        },
+        {
+            "type": "hover",
+            "content": "close the work order.",
+            "payload": {
+                "card": {
+                    "image": "https://doc.cotalker.com/img/products/products_work_orders_workflow_forms_10.png",
+                    "text": "When contractors request to close a work order, supervisors receive a copy of the Close Work Order form. They must then inspect the completed job and fill out the Acceptance of Work form, where they indicate whether the job can be accepted. If accepted, the job is officially completed and the work order is closed."
+                }
+            }
+        },
+        {
+            "type": "text",
+            "content": "Please fill out the Acceptance of Work form."
+        },
+        {
+            "type": "link",
+            "content": "Click here for more information.",
+            "payload": {
+                "url": "https://doc.cotalker.com/docs/products/workflows/work_orders/surveys-acceptance"
+            }
+        }
+    ]
+}'
+```
+
+#### Response Sample {#post-channel-response}
+Go to [COTMessage](/docs/documentation/models/communication/model_messages) for a complete description of the response.
+```json {13-17,19,21,24,26-30,34,36-39,43,45,48,50-54,59,61,64,66-68}
+{
+    "form": {
+        "modifiedAt": []
+    },
+    "cmd": {
+        "ids": []
+    },
+    "content": "This is an automatically-generated message regarding the Fix Pipes Work Order. @Thomas Gardner has requested to close the work order. Please fill out the Acceptance of Work form. Click here for more information.",
+    "contentArray": [],
+    "isActive": true,
+    "reply": [],
+    "_id": "623b16340a0e75cc2a6d5819",
+    "channel": "623b136680753a589460c368",
+    "contentType": "text/enriched",
+    "isSaved": 16,
+    "sentBy": "623b137046abafdd25f1e88c",
+    "contentParts": [
+        {
+            "type": "text",
+            "_id": "623b16af2baa9c957d5ce07c",
+            "content": "This is an automatically-generated message regarding the"
+        },
+        {
+            "type": "task",
+            "_id": "623b16ba766ca92429381bb6",
+            "content": "Fix Pipes Work Order.",
+            "payload": {
+                "company": "623b1332d6bf5d4380821b7d",
+                "task": "623b137c3f85e5110df8cd59",
+                "taskGroup": "623b138279d4089a60cf2984"
+            }
+        },
+        {
+            "type": "user",
+            "_id": "623b16c0e8bbb2e9750816c4",
+            "content": "@Thomas Gardner",
+            "payload": {
+                "user": "623b138df83745aa22ba6462",
+                "company": "623b1332d6bf5d4380821b7d"
+            }
+        },
+        {
+            "type": "text",
+            "_id": "623b16c838100f2362b52363",
+            "content": "has requested to"
+        },
+        {
+            "type": "hover",
+            "_id": "623b16d18a9b122102c770f6",
+            "content": "close the work order.",
+            "payload": {
+                "card": {
+                    "image": "https://doc.cotalker.com/img/products/products_work_orders_workflow_forms_10.png",
+                    "text": "When contractors request to close a work order, supervisors receive a copy of the Close Work Order form. They must then inspect the completed job and fill out the Acceptance of Work form, where they indicate whether the job can be accepted. If accepted, the job is officially completed and the work order is closed."
+                }
+            }
+        },
+        {
+            "type": "text",
+            "_id": "623b16d80cd4f139d3c70aee",
+            "content": "Please fill out the Acceptance of Work form."
+        },
+        {
+            "type": "link",
+            "_id": "623b16df08635dfb42c8c57b",
+            "content": "Click here for more information.",
+            "payload": {
+                "url": "https://dev.cotalker.com/api/redirect/r/623a065fc6bed20007066384",
+                "ogMetadata": {
+                    "title": "Work Orders Workflow | Partner & Technical Consultants Documentation",
+                    "image": "https://doc.cotalker.com/img/products/products_work_orders_workflow_forms_11.png",
+                    "url": "https://doc.cotalker.com/docs/products/workflows/work_orders/surveys-acceptance",
+                    "description": "Survey Forms",
+                    "video": null,
+                    "audio": null,
+                    "logo": null,
+                    "publisher": null,
+                    "author": null,
+                    "date": null
+                }
+            }
+        }
+    ],
+    "createdAt": 1648038890202,
+    "responses": [],
+    "readBy": [],
+    "modifiedAt": "2022-03-23T12:34:50.714Z"
+}
+```
+
+:::tip
+[See how enriched messages are displayed on channel workspaces.](/docs/documentation/client/channels#enriched-messages)
+:::
