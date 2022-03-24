@@ -17,25 +17,33 @@ Channels allow quick and transparent communication between people working on a _
 - In [workflow groups](/docs/documentation/client/groups#workflow-groups), new channels are created along with [tasks](/docs/documentation/client/taskview).
 :::
 
-## How to access a Channel
-_From the [group panel](/docs/documentation/client/groups#group-panel), select a channel from the list, the channel's workspace will then open up:_
+## Accessing Channels {#access}
+_To access a channel:_
 
 <img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_00a.png')} />
 <br/>
+
+1. Go the [**Main Menu Bar**](/docs/documentation/client/main_menu), select the _group_ the channel is found in to open the [_group panel_](/docs/documentation/client/groups#group-panel).
+2. From the **group panel**, select a _channel_ from the list.
+3. The channel's workspace will then open up. The layout is explained below.
+
 <br/>
+
 
 <div className="alert alert--secondary">
 
-## Channel Workspace Layout
+## Channel Workspace Layout {#layout}
 
 <img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_00.png')} />
 <br/>
 
-1. **Title Bar**: Displays channel name and users. If a task is associated with a channel, press the title bar to slide open the task's configuration panel. If the channel is part of a standard group, press the title bar to contact other users directly or view shared media and files.
+1. **Title Bar**: Displays channel name and users. Press the title bar to slide open the settings panel.
 2. **Chat Area**: Displays messages, files, images, emojis, task state updates, bot interactions, and more. [Click here for more details.](#chat-message-options)
 3. **Attachment Icon**: Press to add files you wish to share. Or you can simply drag and drop files in the chat area.
 4. **Actions Button**: Direct access to actions allowed in the channel. Actions can be filling out a survey or changing a task's state. [Click here for more details.](#task-menus-within-channel)
 5. **Text Input Area**: Send text messages to chat; emojis can be added. HTML code can also be used to format text. Some channels can be configured to accept slash commands, e.g., `/command` can be programmed to summon a bot that will carry out a preconfigured automated routine.
+6. **General information**: Appears on the settings panel. Lists users on the channel and permits changing the workspace's avatar. The settings panel is accessed by clicking the workspace's _title bar_.
+7. **Images, Videos, Files**: Access files, images, and videos shared on the channel.
 
 </div>
 <br/>
@@ -82,16 +90,16 @@ _The actions button is found near the bottom of the channel workspace:_
 
 <div className="alert alert--secondary">
 
-### Task Side Panel {#task-side-panel}
-In channels associated with tasks, click anywhere on the title bar found on the top of the channel workspace to slide open the task configuration panel.
+### Settings Side Panel {#task-side-panel}
+Click anywhere on the title bar found on the top of the channel workspace to slide open the settings panel.
 
 _The following image shows how to open the side panel:_
 <img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_taskpanel_00.png')} />
 <br/>
 
-From the task configuration panel: 
-- view and edit task settings
-- view shared media and files 
+From the settings panel: 
+- View and edit task and channel settings.
+- View shared media and files.
 
 </div>
 <br/>
