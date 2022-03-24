@@ -1,5 +1,5 @@
 ---
-title: Enriched Messages
+title: Enriched Messages (Beta)
 description: Messages have just been enhanced to simplify automated messaging. The new enriched message format includes URL preview cards, hover-over data, contact information, and task summaries. Send enriched messages through API requests that can be added to bot routines. Do more with less!
 image: img/updates/update_enriched_messages.png
 draft: false
