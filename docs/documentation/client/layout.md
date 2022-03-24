@@ -1,5 +1,5 @@
 ---
-title: Platform Layout
+title: User-Interface Layout
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';

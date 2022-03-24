@@ -29,9 +29,9 @@ For more in-depth information for administrators, please refer to the [Admin Doc
 
 - [**Basic Concepts / Glossary**](/docs/documentation/client/basic_concepts): introductory notes on the fundamental concepts you will encounter in the Cotalker environment
 
-- **Platform Basics**
+- **User-Interface Basics**
   - [First Steps](/docs/documentation/client/first_steps): accessing and logging in to the different platform versions
-  - [Platform Layout](/docs/documentation/client/layout): overview of platform seccions: Main Menu, Tool Bar, Groups Panel, and Channel Workspace
+  - [User-Interface Layout](/docs/documentation/client/layout): overview of platform seccions: Main Menu, Tool Bar, Groups Panel, and Channel Workspace
   - [Main Menu Bar](/docs/documentation/client/main_menu): general description of the options available on the main menu
   - [Tool Bar](/docs/documentation/client/tool_bar): overview of search tool and contact button
   - [Groups](/docs/documentation/client/groups): explanation of groups, group types, and the tools found in group panel.

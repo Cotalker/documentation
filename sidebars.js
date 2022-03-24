@@ -10,7 +10,7 @@ module.exports = {
         'documentation/client/basic_concepts',
         {
           type: 'category',
-          label: 'Platform Basics',
+          label: 'User-Interface Basics',
           items: [
             'documentation/client/first_steps',
             'documentation/client/layout',
