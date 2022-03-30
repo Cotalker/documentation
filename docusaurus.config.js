@@ -134,6 +134,7 @@ module.exports = {
           editUrl:
             'https://github.com/Cotalker/documentation/tree/main/',
           sidebarCollapsible: true,
+          breadcrumbs: false,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

@@ -365,84 +365,138 @@ module.exports = {
     // 'support/report_abuse',
   ],
   products: [
-    'products/products_overview',
     {
-      'Corrective Maintenance': [
+      type: 'category',
+      label: 'Products Overview',
+      link: {
+        type: 'doc',
+        id: 'products/products_overview'
+      },
+      items: [
         'products/corrective_maintenance/cm_overview',
-        {
-          'Notifications Workflow': [
-            'products/workflows/notifications/overview',
-            'products/workflows/notifications/workflow',
-            {
-              'Survey Forms': [
-                'products/workflows/notifications/surveys',
-                'products/workflows/notifications/surveys-report',
-                'products/workflows/notifications/surveys-validate',
-              ]
-            }
-          ],
-        },
-        {
-          'Work Orders Workflow': [
-            'products/workflows/work_orders/overview',
-            'products/workflows/work_orders/workflow',
-            {
-              'Survey Forms': [
-                'products/workflows/work_orders/surveys',
-                'products/workflows/work_orders/surveys-create-wo-cm',
-                'products/workflows/work_orders/surveys-accept-wo',
-                'products/workflows/work_orders/surveys-close-wo',
-                'products/workflows/work_orders/surveys-acceptance',
-                'products/workflows/work_orders/surveys-feedback'
-              ]
-            }
-          ]
-        },
-        {
-          'Quotes Workflow': [
-            'products/workflows/budget_management/overview',
-            'products/workflows/budget_management/surveys',
-            'products/workflows/budget_management/approval',
-          ],      
-        },
-      ],
-    },
-    {
-     'Work Orders': [
+        'products/preventive_maintenance/pm_overview',
         'products/work_order_product/wo_overview',
         {
-          'Work Orders Workflow': [
-            'products/workflows/work_orders/overview',
-            'products/workflows/work_orders/workflow',
-            {
-              'Survey Forms': [
-                'products/workflows/work_orders/surveys',
-                'products/workflows/work_orders/surveys-create-wo-wo',
-                'products/workflows/work_orders/surveys-accept-wo',
-                'products/workflows/work_orders/surveys-close-wo',
-                'products/workflows/work_orders/surveys-acceptance',
-                'products/workflows/work_orders/surveys-feedback'
-              ]
-            }
-          ]
-        },
-        {
-          'Quotes Workflow': [
-            'products/workflows/budget_management/overview',
-            'products/workflows/budget_management/surveys',
-            'products/workflows/budget_management/approval',
-          ],
-        },
+          type: 'doc',
+          label: 'Setup',
+          id: 'products/setup/setup_overview',
+
+        }
       ],
+      collapsed: false,
+      collapsible: false
+    },
+  ],
+  workflow_notifications: [
+    {
+      type: 'doc',
+      id: 'products/products_overview',
+      label: 'Back to Products...'
     },
     {
-      'Setup': [
-        'products/users',
-        'products/master_data',
-        'products/customization',
-        'products/integrations',
+      type: 'category',
+      label: 'Notifications Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/notifications/overview',
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/notifications/examples',
+        'products/workflows/notifications/workflow',
+        {
+          type: 'category',
+          label: 'Survey Forms',
+          link: {
+            type: 'doc',
+            id: 'products/workflows/notifications/surveys',
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/workflows/notifications/surveys-report',
+            'products/workflows/notifications/surveys-validate',
+          ]
+        }
       ],
+    }
+  ],
+  'workflow_workorders': [
+    {
+      type: 'doc',
+      id: 'products/products_overview',
+      label: 'Back to Products...'
+    },
+    {
+      type: 'category',
+      label: 'Work Orders Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/work_orders/overview_intro',
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/work_orders/examples',
+        'products/workflows/work_orders/workflow',
+        {
+          type: 'category',
+          label: 'Survey Forms',
+          link: {
+            type: 'doc',
+            id: 'products/workflows/work_orders/surveys'
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/workflows/work_orders/surveys-create-wo',
+            'products/workflows/work_orders/surveys-accept-wo',
+            'products/workflows/work_orders/surveys-close-wo',
+            'products/workflows/work_orders/surveys-acceptance',
+            'products/workflows/work_orders/surveys-feedback'
+          ]
+        },
+      ]
+    },
+  ],
+  'workflow_quotes': [
+    {
+      type: 'doc',
+      id: 'products/products_overview',
+      label: 'Back to Products...'
+    },
+    {
+      type: 'category',
+      label: 'Quotes Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/budget_management/overview'
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/budget_management/surveys',
+        'products/workflows/budget_management/approval',
+      ],
+    }
+  ],
+  'Setup': [
+    {
+      type: 'category',
+      label: 'Back to Setup Overview...',
+      link: {
+        type: 'doc',
+        id: 'products/setup/setup_overview',
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/setup/users',
+        'products/setup/master_data',
+        'products/setup/customization',
+        'products/setup/integrations',
+      ]
     },
   ],
 }
-

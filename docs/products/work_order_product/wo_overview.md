@@ -1,6 +1,6 @@
 ---
 title: Work Orders
-sidebar_label: Overview
+displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -16,9 +16,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 With the **Work Orders** product, your _work orders_ are transformed into workflows, allowing you to have complete control over the whole process. In summary, you can submit work order forms, contact service teams or contractors, communicate with each other during the operation, evaluate jobs, and close work orders all in one place.
 
-**Work Orders** can be used either as a stand-alone product or in conjunction with the [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview) or **Preventive Maintenance** products. Its use with other maintenance products allows field workers, supervisors, and teams to be connected from the beginning to the end of the process.
+**Work Orders**, as a stand-alone product, is composed of the [Work Orders Workflow](/docs/products/workflows/work_orders/overview_intro) and the [Quotes Workflow](/docs/products/workflows/budget_management/overview). 
 
-
+:::note
+The [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview) and[ **Preventive Maintenance**](/docs/products/preventive_maintenance/pm_overview) products include the **Work Orders** product in their process.
+:::
 
 ## How does it work? {#how}
 
@@ -40,7 +42,33 @@ _Whether used separately or with other products, the procedure is as follows:_
 - After closing, supervisors can send an evaluation form that the maintenance team will also be able to see.
 - If used in conjunction with other products, their respective workflows can also be closed.
 
-:::info
-For more in-depth information, view the [**Work Orders Workflow**](/docs/products/workflows/work_orders/overview).
-:::
+
+_For more in-depth information, view the workflows that make up the Work Order product:_
+
+<div className="container">
+<div className="row">
+
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/overview_intro">
+
+<span className="hero__subtitle"><b>🧾 Work Orders Workflow</b></span> 
+
+Supervisors initiate by sending contractors a _work order_, allowing them to review details and decide whether to accept the job or not. Contractors can then submit a _quote_ form that is shared with stakeholders for review. Contractors send the _close work order_ form upon job completion for the supervisor's approval.
+
+</a>
+</div>
+
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/overview">
+
+<span className="hero__subtitle"><b>💲 Quotes Workflow</b></span> 
+
+Contractors automatically send quotes to stakeholders when filling out the quote form in the _work orders workflow_. Stakeholders can review the quote and approve or reject it.
+
+</a>
+</div>
+
+</div>
+</div>
+<br/>
 
