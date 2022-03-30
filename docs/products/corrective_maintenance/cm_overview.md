@@ -1,6 +1,6 @@
 ---
 title: Corrective Maintenance
-sidebar_label: Overview
+displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -25,38 +25,46 @@ Cotalker's **Corrective Maintenance** product offers a mobile solution to fieldw
 Supervisors, field workers, maintenance personnel, and budget managers can participate during the whole process.
 
 <img alt="design" className="img_sizing_small" src={useBaseUrl('img/products/products_corrective_maintenance_00.png')} />
+<br/>
 
-
-:::info
 _For in-depth information, view the workflows that make up the Corrective Maintenance:_
-  - [**Notifications**](/docs/products/workflows/notifications/overview): Field workers notify failures by filling out a form. This initiates the _Notifications_ workflow and alerts corresponding stakeholders. Supervisors then can either validate or reject the _new incident report_.
-  - [**Work Orders**](/docs/products/workflows/work_orders/overview): Once the notification is validated, supervisors can fill out a dynamic work order form that initiates a new workflow. The work order is then sent to technical personnel for their approval. If accepted, technical personnel evaluate the situation and fill out a quote form for review. Once the job is complete, technical personnel send the _close work order_ form. A supervisor can then either accept to close the work order or give more indications if not satisfied.
-  - [**Quotes**](/docs/products/workflows/budget_management/overview): Contractors automatically send quotes to budget managers when filling out the quote form in the _work orders workflow_. Managers must see if they accept the quote or not.
-:::
 
+<div className="container">
+<div className="row">
 
-## Examples {#examples}
-### Service Station Maintenance {#service-station}
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/notifications/overview">
 
-Let's say a service station worker discovers a problem with a gas pump. How do they communicate this and get it fixed? Easy. They just have to open the Cotalker app on their smartphone to report the failure. They can even add a photo of the maintenance issue to help the team evaluate the problem.
+<span className="hero__subtitle"><b>🔔 Notifications Workflow</b></span> 
 
-<img alt="design" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_cm_01.png')} />
+Field workers notify failures by filling out a form. This initiates the _Notifications_ workflow and alerts corresponding stakeholders. Supervisors then can either validate or reject the _new incident report_.
+
+</a>
+</div>
+
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/overview_intro">
+
+<span className="hero__subtitle"><b>🧾 Work Orders Workflow</b></span> 
+
+Once the notification is validated, supervisors can send contractors a _work order_, allowing them to review details and decide whether to accept the job or not. Contractors can then submit a _quote_ form that is shared with stakeholders for review. Contractors send the _close work order_ form upon job completion for the supervisor's approval.
+
+</a>
+</div>
+
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/overview">
+
+<span className="hero__subtitle"><b>💲 Quotes Workflow</b></span> 
+
+Contractors automatically send quotes to stakeholders when filling out the quote form in the _work orders workflow_. Stakeholders can review the quote and approve or reject it.
+
+</a>
+</div>
+
+</div>
+</div>
 <br/>
 
-Once the report is submitted, the zone supervisor gets automatically notified on their Cotalker app. The supervisor reviews the submitted information and has the option of either disregarding the incident or validating it. After validating, the supervisor can submit a work order that is sent to available contractors, who are also connected through the Cotalker platform. 
 
-The notified contractors can accept or decline the work order. If they accept, they are added to the workflow process. Once they are on terrain and evaluate the incident for themselves, they can send a quote by submitting a form from the task workspace. The quote is automatically shared with the budget manager.
 
-<img alt="design" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_cm_02.png')} />
-<br/>
-
-After the contractors consider they have finished their job, they request to close the work order through a corresponding form. The supervisor can then review the job and decide to approve it or not. Once approved, the work order is closed.
-
-It's that simple!
-
-## Try Demo! {#demo}
-
-**Try out the Maintenance Demo: [www.cotalker.com](https://www.cotalker.com)**
-
-<img alt="design" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_cm_00.png')} />
-<br/>
