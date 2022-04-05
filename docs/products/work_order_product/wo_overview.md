@@ -5,7 +5,7 @@ displayed_sidebar: products
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Overview</span>
+<span className="hero__title">Product Overview</span>
 <br/>
 <br/>
 
@@ -16,7 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 With the **Work Orders** product, your _work orders_ are transformed into workflows, allowing you to have complete control over the whole process. In summary, you can submit work order forms, contact service teams or contractors, communicate with each other during the operation, evaluate jobs, and close work orders all in one place.
 
-**Work Orders**, as a stand-alone product, is composed of the [Work Orders Workflow](/docs/products/workflows/work_orders/overview_intro) and the [Quotes Workflow](/docs/products/workflows/budget_management/overview). 
+**Work Orders**, as a stand-alone product, is composed of the [Work Orders Workflow](/docs/products/workflows/work_orders/related-product/wo/overview_intro) and the [Quotes Workflow](/docs/products/workflows/budget_management/overview). 
 
 :::note
 The [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview) and[ **Preventive Maintenance**](/docs/products/preventive_maintenance/pm_overview) products include the **Work Orders** product in their process.
@@ -42,14 +42,14 @@ _Whether used separately or with other products, the procedure is as follows:_
 - After closing, supervisors can send an evaluation form that the maintenance team will also be able to see.
 - If used in conjunction with other products, their respective workflows can also be closed.
 
-
+## Workflows Involved {#workflows}
 _For more in-depth information, view the workflows that make up the Work Order product:_
 
 <div className="container">
 <div className="row">
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/overview_intro">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/related-product/wo/overview_intro">
 
 <span className="hero__subtitle"><b>🧾 Work Orders Workflow</b></span> 
 
@@ -59,7 +59,7 @@ Supervisors initiate by sending contractors a _work order_, allowing them to rev
 </div>
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/overview">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/related-product/wo/overview">
 
 <span className="hero__subtitle"><b>💲 Quotes Workflow</b></span> 
 

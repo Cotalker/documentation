@@ -27,6 +27,8 @@ Supervisors, field workers, maintenance personnel, and budget managers can parti
 <img alt="design" className="img_sizing_small" src={useBaseUrl('img/products/products_corrective_maintenance_00.png')} />
 <br/>
 
+## Workflows Involved {#workflows}
+
 _For in-depth information, view the workflows that make up the Corrective Maintenance:_
 
 <div className="container">
@@ -43,7 +45,7 @@ Field workers notify failures by filling out a form. This initiates the _Notific
 </div>
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/overview_intro">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/related-product/cm/overview_intro">
 
 <span className="hero__subtitle"><b>🧾 Work Orders Workflow</b></span> 
 
@@ -53,7 +55,7 @@ Once the notification is validated, supervisors can send contractors a _work ord
 </div>
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/overview">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/related-product/cm/overview">
 
 <span className="hero__subtitle"><b>💲 Quotes Workflow</b></span> 
 

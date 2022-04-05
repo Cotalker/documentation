@@ -422,7 +422,7 @@ module.exports = {
       ],
     }
   ],
-  'workflow_workorders': [
+  'workflow_preventive_plan': [
     {
       type: 'doc',
       id: 'products/products_overview',
@@ -430,40 +430,180 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Work Orders Workflow',
+      label: 'Preventive Plans Workflow',
       link: {
         type: 'doc',
-        id: 'products/workflows/work_orders/overview_intro',
+        id: 'products/workflows/preventive_plans/overview',
       },
       collapsed: false,
       collapsible: false,
       items: [
-        'products/workflows/work_orders/examples',
-        'products/workflows/work_orders/workflow',
+        'products/workflows/preventive_plans/sample',
+        'products/workflows/preventive_plans/workflow',
+        'products/workflows/preventive_plans/surveys',
+      ]
+    }
+  ],
+  'workflow_workorders_wo': [
+    {
+      type: 'doc',
+      id: 'products/work_order_product/wo_overview',
+      label: 'Back to Product...'
+    },
+    {
+      type: 'category',
+      label: 'Work Orders Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/work_orders/related-product/wo/overview_intro',
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/work_orders/related-product/wo/examples',
+        'products/workflows/work_orders/related-product/wo/workflow',
         {
           type: 'category',
           label: 'Survey Forms',
           link: {
             type: 'doc',
-            id: 'products/workflows/work_orders/surveys'
+            id: 'products/workflows/work_orders/related-product/wo/surveys'
           },
           collapsed: false,
           collapsible: false,
           items: [
-            'products/workflows/work_orders/surveys-create-wo',
-            'products/workflows/work_orders/surveys-accept-wo',
-            'products/workflows/work_orders/surveys-close-wo',
-            'products/workflows/work_orders/surveys-acceptance',
-            'products/workflows/work_orders/surveys-feedback'
+            'products/workflows/work_orders/related-product/wo/surveys-create-wo',
+            'products/workflows/work_orders/related-product/wo/surveys-accept-wo',
+            'products/workflows/work_orders/related-product/wo/surveys-close-wo',
+            'products/workflows/work_orders/related-product/wo/surveys-acceptance',
+            'products/workflows/work_orders/related-product/wo/surveys-feedback'
           ]
         },
       ]
     },
   ],
-  'workflow_quotes': [
+  'workflow_workorders_cm': [
     {
       type: 'doc',
-      id: 'products/products_overview',
+      id: 'products/corrective_maintenance/cm_overview',
+      label: 'Back to Product...'
+    },
+    {
+      type: 'category',
+      label: 'Work Orders Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/work_orders/related-product/cm/overview_intro',
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/work_orders/related-product/cm/examples',
+        'products/workflows/work_orders/related-product/cm/workflow',
+        {
+          type: 'category',
+          label: 'Survey Forms',
+          link: {
+            type: 'doc',
+            id: 'products/workflows/work_orders/related-product/cm/surveys'
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/workflows/work_orders/related-product/cm/surveys-create-wo',
+            'products/workflows/work_orders/related-product/cm/surveys-accept-wo',
+            'products/workflows/work_orders/related-product/cm/surveys-close-wo',
+            'products/workflows/work_orders/related-product/cm/surveys-acceptance',
+            'products/workflows/work_orders/related-product/cm/surveys-feedback'
+          ]
+        },
+      ]
+    },
+  ],
+  'workflow_workorders_pm': [
+    {
+      type: 'doc',
+      id: 'products/preventive_maintenance/pm_overview',
+      label: 'Back to Product...'
+    },
+    {
+      type: 'category',
+      label: 'Work Orders Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/work_orders/related-product/pm/overview_intro',
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/work_orders/related-product/pm/examples-pm',
+        'products/workflows/work_orders/related-product/pm/workflow',
+        {
+          type: 'category',
+          label: 'Survey Forms',
+          link: {
+            type: 'doc',
+            id: 'products/workflows/work_orders/related-product/pm/surveys'
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/workflows/work_orders/related-product/pm/surveys-create-wo',
+            'products/workflows/work_orders/related-product/pm/surveys-accept-wo',
+            'products/workflows/work_orders/related-product/pm/surveys-close-wo',
+            'products/workflows/work_orders/related-product/pm/surveys-acceptance',
+            'products/workflows/work_orders/related-product/pm/surveys-feedback'
+          ]
+        },
+      ]
+    },
+  ],
+  'workflow_quotes_cm': [
+    {
+      type: 'doc',
+      id: 'products/corrective_maintenance/cm_overview',
+      label: 'Back to Product...'
+    },
+    {
+      type: 'category',
+      label: 'Quotes Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/budget_management/related-product/cm/overview'
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/budget_management/related-product/cm/surveys',
+        'products/workflows/budget_management/related-product/cm/approval',
+      ],
+    }
+  ],
+  'workflow_quotes_pm': [
+    {
+      type: 'doc',
+      id: 'products/preventive_maintenance/pm_overview',
+      label: 'Back to Product...'
+    },
+    {
+      type: 'category',
+      label: 'Quotes Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/budget_management/related-product/pm/overview'
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/budget_management/related-product/pm/surveys',
+        'products/workflows/budget_management/related-product/pm/approval',
+      ],
+    }
+  ],
+  'workflow_quotes_wo': [
+    {
+      type: 'doc',
+      id: 'products/work_order_product/wo_overview',
       label: 'Back to Products...'
     },
     {
@@ -471,13 +611,13 @@ module.exports = {
       label: 'Quotes Workflow',
       link: {
         type: 'doc',
-        id: 'products/workflows/budget_management/overview'
+        id: 'products/workflows/budget_management/related-product/wo/overview'
       },
       collapsed: false,
       collapsible: false,
       items: [
-        'products/workflows/budget_management/surveys',
-        'products/workflows/budget_management/approval',
+        'products/workflows/budget_management/related-product/wo/surveys',
+        'products/workflows/budget_management/related-product/wo/approval',
       ],
     }
   ],

@@ -1,5 +1,5 @@
 ---
-title: Setup
+title: Preventive Plan Workflow
 sidebar_label: Workflow Description
 ---
 
