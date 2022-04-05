@@ -147,7 +147,7 @@ module.exports = {
           },
         },
         googleAnalytics: {
-          trackingID: 'G-BP7YHW5W2P',
+          trackingID: 'G-WK2V3XQYBD',
         }
       },
     ],
