@@ -1,11 +1,11 @@
 ---
 title: Setup
-sidebar_label: Database
+sidebar_label: Master Data
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Database Setup</span>
+<span className="hero__title">Master Data</span>
 <br/>
 <br/>
 

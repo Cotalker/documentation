@@ -390,8 +390,8 @@ module.exports = {
   workflow_notifications: [
     {
       type: 'doc',
-      id: 'products/products_overview',
-      label: 'Back to Products...'
+      id: 'products/corrective_maintenance/cm_overview',
+      label: 'Back to Corrective Maintenance...'
     },
     {
       type: 'category',
@@ -422,11 +422,11 @@ module.exports = {
       ],
     }
   ],
-  'workflow_preventive_plan': [
+  workflow_preventive_plan: [
     {
       type: 'doc',
-      id: 'products/products_overview',
-      label: 'Back to Products...'
+      id: 'products/preventive_maintenance/pm_overview',
+      label: 'Back to Preventive Maintenance...'
     },
     {
       type: 'category',
@@ -440,15 +440,29 @@ module.exports = {
       items: [
         'products/workflows/preventive_plans/sample',
         'products/workflows/preventive_plans/workflow',
-        'products/workflows/preventive_plans/surveys',
+        {
+          type: 'category',
+          label: 'Surveys & Input',
+          link: {
+            type: 'doc',
+            id: 'products/workflows/preventive_plans/surveys'
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/workflows/preventive_plans/surveys-create-plan',
+            'products/workflows/preventive_plans/surveys-plan-runner',
+            'products/workflows/preventive_plans/surveys-update-metrics',
+          ]
+        },
       ]
     }
   ],
-  'workflow_workorders_wo': [
+  workflow_workorders_wo: [
     {
       type: 'doc',
       id: 'products/work_order_product/wo_overview',
-      label: 'Back to Product...'
+      label: 'Back to Work Orders...'
     },
     {
       type: 'category',
@@ -482,11 +496,11 @@ module.exports = {
       ]
     },
   ],
-  'workflow_workorders_cm': [
+  workflow_workorders_cm: [
     {
       type: 'doc',
       id: 'products/corrective_maintenance/cm_overview',
-      label: 'Back to Product...'
+      label: 'Back to Corrective Maintenance...'
     },
     {
       type: 'category',
@@ -520,11 +534,11 @@ module.exports = {
       ]
     },
   ],
-  'workflow_workorders_pm': [
+  workflow_workorders_pm: [
     {
       type: 'doc',
       id: 'products/preventive_maintenance/pm_overview',
-      label: 'Back to Product...'
+      label: 'Back to Preventive Maintenance...'
     },
     {
       type: 'category',
@@ -558,11 +572,11 @@ module.exports = {
       ]
     },
   ],
-  'workflow_quotes_cm': [
+  workflow_quotes_cm: [
     {
       type: 'doc',
       id: 'products/corrective_maintenance/cm_overview',
-      label: 'Back to Product...'
+      label: 'Back to Corrective Maintenance...'
     },
     {
       type: 'category',
@@ -579,11 +593,11 @@ module.exports = {
       ],
     }
   ],
-  'workflow_quotes_pm': [
+  workflow_quotes_pm: [
     {
       type: 'doc',
       id: 'products/preventive_maintenance/pm_overview',
-      label: 'Back to Product...'
+      label: 'Back to Preventive Maintenance...'
     },
     {
       type: 'category',
@@ -600,11 +614,11 @@ module.exports = {
       ],
     }
   ],
-  'workflow_quotes_wo': [
+  workflow_quotes_wo: [
     {
       type: 'doc',
       id: 'products/work_order_product/wo_overview',
-      label: 'Back to Products...'
+      label: 'Back to Work Orders...'
     },
     {
       type: 'category',
@@ -621,7 +635,7 @@ module.exports = {
       ],
     }
   ],
-  'Setup': [
+  Setup: [
     {
       type: 'category',
       label: 'Back to Setup Overview...',

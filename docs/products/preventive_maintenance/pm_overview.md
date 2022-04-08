@@ -23,7 +23,7 @@ It's better to be safe than sorry. With Cotalker's **Preventive Maintenance** pr
 For example, if you need to do maintenance on a machine every day, you can set the time trigger to 24 hours. Every 24 hours the [work orders workflow](/docs/products/workflows/work_orders/overview_intro) will be initiated. A work order will be automatically sent to the contractor or maintenance personnel. If they choose to accept the work order, they can send a quote, send messages to stakeholders, and request to close the work order. To finally close the workflow, the supervisor must evaluate the completed maintenance job and fill out the _Acceptance of Work_ form.
 
 ### Value-Based Planner {#value}
-For example, if you need to do maintenance on a car every 6,000 miles, use a value-based plan. Maintenance personnel can periodically use the app to register value metrics, like mileage or fluid levels for a vehicle. In this case, when the car's registered mileage hits 12,000 miles, the value trigger kicks in and gets things ready for the car's second maintenance check. At this point, the [work orders workflow](/docs/products/workflows/work_orders/overview_intro) is initiated, and a work order is sent to the person in charge of the car's maintenance. 
+Let's say that you have to do maintenance on a car every 6,000 miles. In this case, you can use value-based planner. Once the plan is created, maintenance personnel will periodically use the app to register value metrics, like mileage or fluid levels for a vehicle. And, when the car's registered mileage hits 12,000 miles, the value trigger will kick in and get things ready for the car's second maintenance check. At this point, the [work orders workflow](/docs/products/workflows/work_orders/overview_intro) will initiate, and a work order will be sent to the person in charge of the car's maintenance. 
 
 ## Workflows Involved {#workflows}
 
@@ -35,7 +35,7 @@ For example, if you need to do maintenance on a car every 6,000 miles, use a val
 
 <span className="hero__subtitle"><b>🧰 Preventive Plans</b></span> 
 
-Create a time or value based plan with the **Create a new preventive plan** form. Through the form you set all of the preventive plan's settings. Assign those that are responsible for the task, add a maintenance checklist, set priority, and most importantly, designate frecuency based on time or equipment value triggers.
+Create a time-based or value-based plan with the **Create a new preventive plan** form. The form lets you set all of the preventive plan's settings. For example, assign those that are responsible for the task, add a maintenance checklist, set priority, and most importantly, designate frequency based on time or equipment value triggers.
 
 </a>
 </div>
@@ -45,7 +45,7 @@ Create a time or value based plan with the **Create a new preventive plan** form
 
 <span className="hero__subtitle"><b>🧾 Work Orders Workflow</b></span> 
 
-Once the notification is validated, supervisors can send contractors a _work order_, allowing them to review details and decide whether to accept the job or not. Contractors can then submit a _quote_ form that is shared with stakeholders for review. Contractors send the _close work order_ form upon job completion for the supervisor's approval.
+Once a time or value trigger is reached, a _work order_ is automatically sent to stakeholders. Upon receiving the work order, contractors can review the details and decide whether to accept the job or not. Contractors can then submit a _quote_ form that is shared with stakeholders for review. Contractors send the _close work order_ form upon job completion for the supervisor's approval.
 
 </a>
 </div>
