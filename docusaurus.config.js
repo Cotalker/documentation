@@ -146,7 +146,7 @@ module.exports = {
             type: 'all',
           },
         },
-        googleAnalytics: {
+        gtag: {
           trackingID: 'G-WK2V3XQYBD',
         }
       },
