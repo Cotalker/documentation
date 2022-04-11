@@ -4,10 +4,7 @@ title: 'Bug report: '
 labels:
      - Bug report
 assignees:
-     - guillevalin
-     - jdurandpaz
      - acedward
-     - agallardol
 body:
 - type: markdown
   attributes:
