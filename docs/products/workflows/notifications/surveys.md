@@ -21,7 +21,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 The survey forms included in the _Notification_ workflow make it easy to report and validate maintenance issues. Survey forms are integrated with master data, allowing users to choose assets, failure types, and incident locations from database lists.
 
-Once a _Report New Incident_ form is submitted, the _notification_ or _alert_ is created, and the [_notification workflow_](/docs/products/workflows/notifications/workflow) is initiated. A supervisor will then have to fill out the [Validate Incident Notification](#validate) form. Afterward, they will be able to create [work orders](/docs/products/workflows/work_orders/overview_intro) to summon maintenance personnel to fix the issue.
+Once a _Report New Incident_ form is submitted, the _notification_ or _alert_ is created, and the [_notification workflow_](/docs/products/workflows/notifications/workflow) is initiated. A supervisor will then have to fill out the [Validate Incident Notification](#validate) form. Afterward, they will be able to create [work orders](/docs/products/workflows/work_orders/related-product/cm/overview_intro) to summon maintenance personnel to fix the issue.
 
 </div>
 </div>

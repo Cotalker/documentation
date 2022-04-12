@@ -16,7 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 With the **Work Orders** product, your _work orders_ are transformed into workflows, allowing you to have complete control over the whole process. In summary, you can submit work order forms, contact service teams or contractors, communicate with each other during the operation, evaluate jobs, and close work orders all in one place.
 
-**Work Orders**, as a stand-alone product, is composed of the [Work Orders Workflow](/docs/products/workflows/work_orders/related-product/wo/overview_intro) and the [Quotes Workflow](/docs/products/workflows/budget_management/overview). 
+**Work Orders**, as a stand-alone product, is composed of the [Work Orders Workflow](/docs/products/workflows/work_orders/related-product/wo/overview_intro) and the [Quotes Workflow](/docs/products/workflows/budget_management/related-product/wo/overview). 
 
 :::note
 The [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview) and[ **Preventive Maintenance**](/docs/products/preventive_maintenance/pm_overview) products include the **Work Orders** product in their process.

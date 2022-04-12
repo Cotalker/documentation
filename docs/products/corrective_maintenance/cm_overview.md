@@ -24,7 +24,7 @@ Cotalker's **Corrective Maintenance** product offers a mobile solution to fieldw
 
 Supervisors, field workers, maintenance personnel, and budget managers can participate during the whole process.
 
-<img alt="design" className="img_sizing_small" src={useBaseUrl('img/products/products_corrective_maintenance_00.png')} />
+<img alt="design" className="img_sizing" src={useBaseUrl('img/products/products_corrective_maintenance_00.png')} />
 <br/>
 
 ## Workflows Involved {#workflows}

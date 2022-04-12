@@ -1,8 +1,57 @@
 ---
 title: Work Orders Workflow
-sidebar_label: Acceptance of Work Form
+sidebar_label: Work Order Reception
 ---
 
-import Component from '/docs/products/workflows/work_orders/components/_surveys-acceptance.mdx'
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<Component/>
+<span className="hero__title">Survey Forms</span>
+<br/>
+<br/>
+
+## Work Order Reception {#reception}
+
+Once contractors or maintenance personnel request to close the work order, supervisors must fill out the **Work Order Reception** form to either approve or reject the maintenance job. If approved, the work order is officially closed. If rejected, the work order goes back to the pending workflow state.
+
+<div className="alert alert--primary">
+
+_To open the form:_
+
+<img alt="accessing form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_preventive_wo_acceptance_00.png')} />
+<br/>
+
+1. Select <span className="badge badge--primary">Work orders</span> on the **Main Menu Bar**.
+2. From the **Work orders** panel, choose the corresponding work order in the _Validation_ state.
+3. Press the green actions button found at the bottom of the channel workspace. The **Work order reception** form opens up as shown below.
+
+</div>
+<br/>
+
+<div className="alert alert--primary">
+
+_The **Work order reception** form appears in the channel workspace as shown below:_
+
+<img alt="form layout" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/products/product_preventive_wo_acceptance_01.png')} />
+<br/>
+
+Either accept or reject the maintenance job. Accepting will close the work order; rejecting will take the work order back to the pending state.
+
+The form permits adding guarentees that cover maintenance costs.
+
+</div>
+<br/>
+
+<div className="alert alert--primary">
+
+Once approved, the work order goes into the _Closed_ workflow state as shown below:
+
+<img alt="closed state" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_preventive_wo_acceptance_02.png')} />
+<br/>
+
+
+</div>
+<br/>
+
+:::info Next Step
+After closing the work order, supervisors can send [feedback](/docs/products/workflows/work_orders/related-product/pm/surveys-feedback).
+:::

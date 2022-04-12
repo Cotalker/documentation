@@ -376,16 +376,11 @@ module.exports = {
         'products/corrective_maintenance/cm_overview',
         'products/preventive_maintenance/pm_overview',
         'products/work_order_product/wo_overview',
-        {
-          type: 'doc',
-          label: 'Setup',
-          id: 'products/setup/setup_overview',
-
-        }
       ],
       collapsed: false,
       collapsible: false
     },
+    'products/setup/setup_overview'
   ],
   workflow_notifications: [
     {
@@ -550,7 +545,7 @@ module.exports = {
       collapsed: false,
       collapsible: false,
       items: [
-        'products/workflows/work_orders/related-product/pm/examples-pm',
+        'products/workflows/work_orders/related-product/pm/examples',
         'products/workflows/work_orders/related-product/pm/workflow',
         {
           type: 'category',
@@ -562,8 +557,8 @@ module.exports = {
           collapsed: false,
           collapsible: false,
           items: [
-            'products/workflows/work_orders/related-product/pm/surveys-create-wo',
             'products/workflows/work_orders/related-product/pm/surveys-accept-wo',
+            'products/workflows/work_orders/related-product/pm/surveys-checklist-pm',
             'products/workflows/work_orders/related-product/pm/surveys-close-wo',
             'products/workflows/work_orders/related-product/pm/surveys-acceptance',
             'products/workflows/work_orders/related-product/pm/surveys-feedback'

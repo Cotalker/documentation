@@ -3,6 +3,51 @@ title: Work Orders Workflow
 sidebar_label: Close WO Form
 ---
 
-import Component from '/docs/products/workflows/work_orders/components/_surveys-close-wo.mdx'
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<Component/>
+<span className="hero__title">Survey Forms</span>
+<br/>
+<br/>
+
+## Close Work Order {#close}
+
+After completing the maintenance job, contractors can request to close the work order by filling out the corresponding form.
+
+<div className="alert alert--primary">
+
+To open the form:
+
+<img alt="close work order form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_preventive_wo_close_00.png')} />
+<br/>
+
+1. On the **Main Menu Bar**, press <span className="badge badge--primary">Work orders</span>.
+2. Choose the corresponding work order from the **Work orders** panel.
+3. Press the green actions button at the bottom of the channel workspace.
+4. Select **Close work order** from the menu. The form will open up as shown below.
+
+</div>
+<br/>
+
+<div className="alert alert--primary">
+
+_The **Close Work Order** form opens up in the channel workspace as shown below:_
+
+<img alt="close work order form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_preventive_wo_close_01.png')} />
+<br/>
+
+</div>
+<br/>
+
+<div className="alert alert--primary">
+
+_The form is connected to your master data, allowing you to add the cost of services and discount from stock the materials used in the job._
+
+<img alt="close work order form" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/products/product_preventive_wo_close_02.png')} />
+<br/>
+
+</div>
+<br/>
+
+:::info Next Step
+After the **Close Work Order** form is sent, supervisors must [approve the maintenance job](/docs/products/workflows/work_orders/related-product/pm/surveys-acceptance), thus officially closing the work order.
+:::
