@@ -42,7 +42,7 @@ _The form appears as shown below:_
 
 <div className="margin-left--lg">
 
-- **B.** Here, supervisors can either validate or reject the report. If rejected, the workflow stops right here. But, if accepted, the workflow continues, allowing supervisors to create all the necessary [_Work Orders_](/docs/products/workflows/work_orders/overview_intro) to address the maintenance incident.
+- **B.** Here, supervisors can either validate or reject the report. If rejected, the workflow stops right here. But, if accepted, the workflow continues, allowing supervisors to create all the necessary [_Work Orders_](/docs/products/workflows/work_orders/related-product/cm/overview_intro) to address the maintenance incident.
 
 </div>
 
@@ -50,7 +50,7 @@ _The form appears as shown below:_
 <br/>
 
 :::info Next Step
-Once validated, supervisors can fill out the [Create Work Order form](/docs/products/workflows/work_orders/surveys-create-wo), initiating the [Work Order workflow](/docs/products/workflows/work_orders/overview_intro).
+Once validated, supervisors can fill out the [Create Work Order form](/docs/products/workflows/work_orders/related-product/cm/surveys-create-wo), initiating the [Work Order workflow](/docs/products/workflows/work_orders/related-product/cm/overview_intro).
 :::
 
 ---

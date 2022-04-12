@@ -54,7 +54,7 @@ _Details of how Layla validated Azam's report:_
 4. In the channel workspace, she presses the green button labeled _Validate Incident_.
 5. The _Validate Incident Notification_ form pops up.
 6. She chooses to validate and adds a note before submitting the form.
-7. Once the incident is validated, from the same workspace, Layla can send contractors a _work order_ requesting their services, thus initiating the [work order workflow](/docs/products/workflows/work_orders/overview_intro).
+7. Once the incident is validated, from the same workspace, Layla can send contractors a _work order_ requesting their services, thus initiating the [work order workflow](/docs/products/workflows/work_orders/related-product/cm/overview_intro).
 
 </div>
 <br/>
