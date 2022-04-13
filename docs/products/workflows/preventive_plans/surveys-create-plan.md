@@ -21,7 +21,7 @@ _To open the form:_
 
 <div className="margin-left--lg">
 
-1. On the **Main Menu Bar**, go to <span className="badge badge--secondary">Preventive Plans</span>.
+1. On the **Main Menu Bar**, go to <span className="badge badge--primary">Preventive Plans</span>.
 2. From the **Preventive Plans** panel, select **Create Preventive Plan**.
 3. Press the <span className="badge badge--success">Create Preventive Plan</span> found at the bottom of the channel workspace to open the form shown below.
 
