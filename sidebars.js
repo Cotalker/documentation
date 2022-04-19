@@ -485,7 +485,8 @@ module.exports = {
             'products/workflows/work_orders/related-product/wo/surveys-accept-wo',
             'products/workflows/work_orders/related-product/wo/surveys-close-wo',
             'products/workflows/work_orders/related-product/wo/surveys-acceptance',
-            'products/workflows/work_orders/related-product/wo/surveys-feedback'
+            'products/workflows/work_orders/related-product/wo/surveys-feedback',
+            'products/workflows/work_orders/related-product/wo/mass_validation'
           ]
         },
       ]
@@ -523,7 +524,8 @@ module.exports = {
             'products/workflows/work_orders/related-product/cm/surveys-accept-wo',
             'products/workflows/work_orders/related-product/cm/surveys-close-wo',
             'products/workflows/work_orders/related-product/cm/surveys-acceptance',
-            'products/workflows/work_orders/related-product/cm/surveys-feedback'
+            'products/workflows/work_orders/related-product/cm/surveys-feedback',
+            'products/workflows/work_orders/related-product/cm/mass_validation'
           ]
         },
       ]
@@ -561,7 +563,8 @@ module.exports = {
             'products/workflows/work_orders/related-product/pm/surveys-checklist-pm',
             'products/workflows/work_orders/related-product/pm/surveys-close-wo',
             'products/workflows/work_orders/related-product/pm/surveys-acceptance',
-            'products/workflows/work_orders/related-product/pm/surveys-feedback'
+            'products/workflows/work_orders/related-product/pm/surveys-feedback',
+            'products/workflows/work_orders/related-product/pm/mass_validation'
           ]
         },
       ]
