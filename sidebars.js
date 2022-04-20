@@ -45,6 +45,7 @@ module.exports = {
           ],
           collapsed: true,
         },
+        'documentation/client/offline',
       ],
       collapsed: true,
     },
