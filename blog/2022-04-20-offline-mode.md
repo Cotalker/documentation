@@ -1,7 +1,6 @@
 ---
 title: Offline Mode (Beta)
 description: The Offline Mode lets you use your Cotalker mobile app without an internet connection. View the latest synced data, register information, and update tasks while offline. Automatically send all changes and messages when back online.
-
 image: img/updates/update_offline_mode.png
 draft: false
 ---
