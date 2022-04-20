@@ -12,7 +12,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 The _Cotalker app_ is constantly synchronizing with servers sending and retrieving the latest information shared on an organization's _Cotalker platform_. But in cases in which internet access is not available, users on mobile devices can activate the **Offline Mode**. With this feature, users can still work with the latest synchronized data on their mobile app and automatically update changes they made as soon as an internet connection is reestablished.
 
 :::caution
-**Offline Mode** works only on mobile devices and only certain specific actions can be carried out without an internet connection.
+**Offline Mode** works only on mobile devices and [only certain specific actions](#offline-actions) can be carried out without an internet connection.
 :::
 
 :::info
@@ -124,13 +124,13 @@ _If you want to turn on the **Offline Mode** manually, even if you have an inter
 
 ## Offline Features
 
-In case you lose your internet connection, you can continue to work using the **Offline Mode** with the latest data that was synced to your device. Any input you add will be automatically sent to the server once an internet connection is reestablished.
+In case you lose your internet connection, you can continue to work using the **Offline Mode** with the latest data that was synced to your device. The [valid offline actions](#offline-actions) you carry out will be automatically synced with the server once an internet connection is reestablished.
 
 :::caution
 If **Offline Mode** is not set when you don't have access to the internet, the app will try to unsuccessfully connect to the internet. This will prevent it from showing any data and correctly updating any changes you made while offline.
 :::
 
-### Available Offline Actions {#offline-actions}
+### Valid Offline Actions {#offline-actions}
 
 - View [regular and workflow groups](/docs/documentation/client/groups#group-types)
 - View [channel workspaces](/docs/documentation/client/channels)
