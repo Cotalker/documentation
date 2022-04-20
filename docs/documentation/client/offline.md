@@ -9,10 +9,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-The _Cotalker app_ is constantly synchronizing with servers sending and retrieving the latest information shared on an organization's _Cotalker platform_. But in cases in which internet access is not available, users on mobile devices can activate the **Offline Mode**. With this feature, users can still work with the latest synchronized data on their mobile app and automatically update any changes they made as soon as an internet connection is reestablished.
+The _Cotalker app_ is constantly synchronizing with servers sending and retrieving the latest information shared on an organization's _Cotalker platform_. But in cases in which internet access is not available, users on mobile devices can activate the **Offline Mode**. With this feature, users can still work with the latest synchronized data on their mobile app and automatically update changes they made as soon as an internet connection is reestablished.
+
+:::caution
+**Offline Mode** works only on mobile devices and only certain specific actions can be carried out without an internet connection.
+:::
 
 :::info
-The **Offline Mode** is a feature that must be requested in order for it to be available in your organization's Cotalker experience.
+The **Offline Mode** is a feature that must be requested and configured in order for it to be available in your organization's Cotalker experience.
 :::
 
 ## Synchronization {#sync}
@@ -23,7 +27,7 @@ The Cotalker app synchronizes data in the background. This allows users to initi
 
 ### Graphic Indicators {#graphic-indicators}
 
-<div className="container margin-left--lg">
+<div className="container">
 <div className="row">
 <div className="col col--6">
 
@@ -66,7 +70,7 @@ _If synchronization has halted because there is no available internet connection
 <br/>
 
 ### Settings Indicators {#settings-indicators}
-From the _Settings_ section, you can view numeric synchronization indicators.
+From the **Settings** section, you can see how much data was synced since the last time you were online.
 
 <div className="container">
 <div className="row">
@@ -91,9 +95,6 @@ _At the lower half of the **Settings** section, you can see the synchronization 
 </div>
 <br/>
 
-
-From the **Settings** section, you can also activate the **Offline Mode** on your app and see how much data was synced since the last time you were online.
-
 ## Enabling the Offline Mode {#enable}
 
 Enabling the **Offline Mode** on your app can be done either through the **Main Menu** or the **Settings** section.
@@ -102,8 +103,8 @@ Enabling the **Offline Mode** on your app can be done either through the **Main 
 <div className="row">
 <div className="col col--6">
 
-**Main Menu**
-_When internet connection is lost, a yellow banner appears in the upper section of the app with the option to turn on the **Offline Mode**._
+**Main Menu**  
+_When you lose your internet connection, a yellow banner appears in the upper section of the app with the option to turn on the **Offline Mode**._
 
 <img alt="synchronization" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_offline_05.png')} />
 <br/>
@@ -111,7 +112,8 @@ _When internet connection is lost, a yellow banner appears in the upper section 
 </div>
 <div className="col col--6">
 
-**Settings**
+**Settings**  
+_If you want to turn on the **Offline Mode** manually, even if you have an internet connection, go to the **Settings** section to find the option._
 
 <img alt="synchronization" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_offline_06.png')} />
 <br/>
@@ -123,3 +125,19 @@ _When internet connection is lost, a yellow banner appears in the upper section 
 ## Offline Features
 
 In case you lose your internet connection, you can continue to work using the **Offline Mode** with the latest data that was synced to your device. Any input you add will be automatically sent to the server once an internet connection is reestablished.
+
+:::caution
+If **Offline Mode** is not set when you don't have access to the internet, the app will try to unsuccessfully connect to the internet. This will prevent it from showing any data and correctly updating any changes you made while offline.
+:::
+
+### Available Offline Actions {#offline-actions}
+
+- View [regular and workflow groups](/docs/documentation/client/groups#group-types)
+- View [channel workspaces](/docs/documentation/client/channels)
+- Submit forms ([API survey components](/docs/documentation/admin/survey/components/multiple_choice#api-type) do not function in Offline Mode)
+- Submit [workflow and state start forms](/docs/documentation/admin/workflows/admin_workflow_required_survey)
+
+:::note
+- Only one action upon a task is allowed while in Offline Mode. For example, you can change the state of a task from A to B while offline, but cannot additionally change it from B to C.
+- Even though _start forms_ can be submitted while offline, the actions they initiate through their routines may be limited.
+:::
