@@ -59,7 +59,7 @@ _Uploads a file and returns a COTFile instance._
 
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /media/file/upload</span>
 
-#### Endpoing URL {#post-new-url}
+#### Endpoint URL {#post-new-url}
 `https://www.cotalker.com/api/v3/media/file/upload`
 
 #### Headers {#post-new-headers}
@@ -124,7 +124,7 @@ _Requests a signed file URL that grants the user time-limited access to the file
 
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /media/signature</span>
 
-#### Endpoing URL {#post-get-url}
+#### Endpoint URL {#post-get-url}
 `https://www.cotalker.com/api/v3/media/signature`
 
 #### Headers {#post-get-headers}
