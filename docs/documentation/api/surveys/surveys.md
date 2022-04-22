@@ -16,8 +16,8 @@ The `/surveys` API request works with [_survey data models_ (COTSurvey)](/docs/d
 These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
 :::
 
-## Get Properties {#get-all}
-_Returns all properties within the company._
+## Get Surveys {#get-all}
+_Returns all surveys within the company._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /surveys</span>
 
