@@ -102,7 +102,7 @@ Data objects usually go in pairs. The first represents the survey question's dis
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
-| code | Displays code parameters according to the [content type](/docs/documentation/models/surveys/model_questionContentType). | [string] | |
+| code | Displays code parameters according to the [content type](/docs/documentation/models/surveys/model_questionContentType). | [string] | [Click here](/docs/documentation/admin/tips/survey_gps_response) for an example using `survey+gps` content type. |
 | contentType | Indicates the question's [content type](/docs/documentation/models/surveys/model_questionContentType). | string | |
 | diff | Each `diff` object indicates changes or modifications made to an _answer_ after the form was submitted. | object[ ] | The `diff` field follows [RFC6902](https://datatracker.ietf.org/doc/html/rfc6902) standards. |
 | diff[index].from | Indicates origin of moved or copied data. | string | Not present in all operations. |

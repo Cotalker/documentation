@@ -47,6 +47,34 @@ Used for [Text components](/docs/documentation/admin/survey/components/text_comp
 
 Indicates a [Written Answer](/docs/documentation/admin/survey/components/written_answer) component.
 
+_**QR or NFC inputs** can be used with the **text input** content type. In those cases, the following fields are used in the COTQuestion model:_
+
+<div className="margin-left--lg">
+
+#### QR & NFC Fields
+Field | Description | Type | Required | Notes
+--- | --- | --- |--- | ---
+**code** | Code depends on the content type. Below is the code for scanning QR & NFC in surveys. | string[ ] | Required | Objects within the array must be written in string format.
+**code[index].scan** | | object | Required |
+**code[index].scan.enabled** | `true` activates the feature. | boolean | Required |
+**code[index].scan.source** | Indicates the input source. | string[ ] | Required | Valid options: `qr` and/or `nfc`.
+**code[index].scan.force** | `true` allows only QR Code or NFC input. `false` permits manual text input, also. | boolean | Required |
+**contentType** | Indicates how the system should interpret the data. | string | Required | Must be set to: `application/vnd.cotalker.survey+textinput`
+**identifier** | Unique identification name | string | Required | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
+
+#### JSON Sample
+```json
+{
+    "code": [
+        "{\"scan\":{\"enabled\":true,\"source\":[\"qr\",\"nfc\"],\"force\":true}}"
+    ],
+    "identifier": "qr_test",
+    "contentType": "application/vnd.cotalker.survey+textinput",
+    ...
+}
+```
+</div>
+
 </div>
 <br/>
 
@@ -115,7 +143,35 @@ Indicates the [API](/docs/documentation/admin/survey/components/multiple_choice#
 ### GPS {#gps}
 `application/vnd.cotalker.survey+gps`
 
-Indicates a [Location](/docs/documentation/admin/survey/components/location) button component that returns GPS coordinates displayed on an embedded Google Map.
+Displays a [Location](/docs/documentation/admin/survey/components/location) button component on a survey that returns GPS coordinates displayed on an embedded Google Map.
+
+_When this content type is used, the following fields are used in COTQuestion model:_
+
+<div className="margin-left--lg">
+
+#### Fields
+| Field | Description | Type | Required | Notes |
+|-----|-----|-----|-----|----|
+| code | Contains special component details | string[ ] | Required | Objects within the array must be written in string format. |
+| code[x].type | Indicates the map type. | string | Required | Available options: `currentLocation`, `freeLocation` |
+| display | Indicates the map button label within the survey form. | string[ ] | Required | 
+| contentType | Sets the form component type. For maps, it must be set to `application/vnd.cotalker.survey+gps`. | string | Required |
+| identifier | Indicates the components identification code. | string | Required | Can only contain lowercase letters, underscores, and numbers. Must begin with a letter. |
+
+#### JSON Sample
+```json
+{
+    "display": [
+        "Choose Map Location"
+    ],
+    "code": [
+        "{\"type\":\"freeLocation\"}"
+    ],
+    "contentType": "application/vnd.cotalker.survey+gps",
+    ...
+}
+```
+</div>
 
 </div>
 <br/>
