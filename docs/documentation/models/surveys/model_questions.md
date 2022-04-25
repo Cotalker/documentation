@@ -83,10 +83,10 @@ _Questions_ make up survey forms; their wide variety allows different forms for 
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
-| **code** | Depends on the `contentType` | string[ ] | Go to [API docs to configure QR scan & NFC](/docs/documentation/api/surveys/questions#qr-code--nfc-function).
+| **code** | Depends on the `contentType` | string[ ] | Check `code` details for content types that include [QR scan & NFC](/docs/documentation/models/surveys/model_questionContentType#text-input) and [Map Locations](/docs/documentation/models/surveys/model_questionContentType#gps).
 | **command** | [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings | object |
 | **command.commands** | Indicates which questions are commanded or depend on this question, i.e. questions using the `command.isCommanded` field.  | string[ ] | The strings in the array corresponde to the questions `identifier`.
-| **commmand.isCommanded** | Indicates if the question has [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings. | string | The string correspondes to the commanding question's `identifier`. |
+| **commmand.isCommanded** | Indicates if the question has [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings. | string | The string corresponds to the commanding question's `identifier`. |
 | **command.restItentifiers** | string[ ] | 
 | **command.values** | Sets the expected answers to activate the hidden question. | object[ ] |
 | **command.values.op** | Select the comparison criteria, i.e., the operator of the conditional. | string | Options are: `=`, `eq`: Is equal to; `gte`: Greater than or equal; `lte`: Less than or equal; `regex`: Regular expression.
