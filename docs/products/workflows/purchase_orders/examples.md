@@ -15,6 +15,8 @@ Jennifer works in the logistics department of her company. She's been put in cha
 <br/>
 <br/>
 
+## Create Purchase Order {#create}
+
 <div className="alert alert--secondary">
 
 She starts out by creating the purchase order and sending it out for approval. To do that, she simply goes to the **Purchase Order** tool and presses the _action button_ to open up the corresponding form. 
@@ -26,6 +28,8 @@ Since the form is connected to the company's master data, all relevant options f
 
 </div>
 <br/>
+
+## Release Level 1 {#release-one}
 
 <div className="alert alert--secondary">
 
@@ -39,6 +43,8 @@ Once the approval form is signed and submitted, it is sent to the next release l
 </div>
 <br/>
 
+## Release Level 2 {#release-two}
+
 <div className="alert alert--secondary">
 
 Sarah has now received Jennifer's purchase order request. She's the second level releaser, i.e., she reviews all purchase requests over $500. She approves the request by signing and submitting the form.
@@ -50,6 +56,8 @@ Since the purchase order is less than $1000, it does not have to pass through th
 
 </div>
 <br/>
+
+## Declare Receipt (first delivery) {#receipt-one}
 
 <div className="alert alert--secondary">
 
@@ -65,6 +73,8 @@ Luis will then pass the invoice he received to Christina in accounting.
 </div>
 <br/>
 
+## Billing (first invoice) {#billing-one}
+
 <div className="alert alert--secondary">
 
 Christina works in accounting. Luis gave her the partial delivery invoice, and now she must register it. She goes to the purchase order channel and fills out the _Billing Form_.
@@ -76,6 +86,8 @@ The _Billing Form_ is connected to the company's master data and the purchase or
 
 </div>
 <br/>
+
+## Declare Receipt (second delivery) {#receipt-two}
 
 <div className="alert alert--secondary">
 
@@ -89,6 +101,8 @@ He enters the data, all the purchased goods have arrived. He sends Christina the
 </div>
 <br/>
 
+## Billing (second invoice) {#billing-two}
+
 <div className="alert alert--secondary">
 
 After receiving the new invoice, Christina starts filling out the _Billing Form_. While doing so, she accidentally entered a higher cost than expected. The system instantly corrects her error and notifies her of what the maximum payment should be based on the goods already received and paid for.
@@ -100,6 +114,8 @@ After Christina submitted the form, the process is complete. Now, Jennifer or he
 
 </div>
 <br/>
+
+## Close the Purchase Order {#close}
 
 <div className="alert alert--secondary">
 
