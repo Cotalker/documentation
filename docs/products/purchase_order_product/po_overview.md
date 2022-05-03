@@ -26,6 +26,10 @@ With our **Purchase Orders** product you can eliminate paperwork and automate th
 
 ## How does it work? {#how}
 The Purchase Order product consists of a single workflow. 
+
+<img alt="workflow" className="img_sizing" src={useBaseUrl('img/products/product_purchase_overview_01.png')} />
+<br/>
+
 - It starts off with the creation of a purchase order by an authorized user. The purchase order creation form is connected with master data, allowing users to select among designated suppliers, goods, and services.
 - Depending on the cost of the purchase, the company area, and the pre-established release strategy, the purchase order is sent to the area's first level releaser. (If the cost is under the programmed first level amount, then the purchase order is automatically approved and sent to the supplier.)
 - If the purchase order was approved by the first level releaser and its costs is under the second level value, then the purchase order is automatically sent to the supplier. But, if the approved purchase order is equal to or above the second level release value, then the area's second level releaser must approve it before it can be sent to the supplier.
