@@ -25,5 +25,5 @@ Each step of the process is carried out by the corresponding stakeholder. Users 
 - **Invoice**: An official document given by the supplier to the client with details and price of purchased goods or services.
 
 :::info Contact us
-Visit the [customization page](/docs/products/setup/customization) or contact a [Cotalker Sales Representative](/docs/support/commercial) for more information on how to customize surveys for your company's needs.
+Visit the [customization page](/docs/products/setup/customization) or contact a [Cotalker Sales Representative](/docs/support/commercial) for more information on how to customize workflows and surveys for your company's needs.
 :::
