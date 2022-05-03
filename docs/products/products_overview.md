@@ -54,6 +54,16 @@ Manage work orders from start to finish. Work Orders include quote submission an
 </a>
 </div>
 
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/purchase_order_product/po_overview">
+
+<span className="hero__subtitle"><b>📦 Purchase Orders:</b></span> 
+
+Eliminate paperwork and automate the entire process for requesting, authorizing, receiving, and registering purchases. Configure release strategies. Use master data with your purchase orders to simplify and keep track of your processes.
+
+</a>
+</div>
+
 </div>
 </div>
 <br/>

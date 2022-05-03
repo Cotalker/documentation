@@ -16,14 +16,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Introduction {#intro}
 
-You can easily re-configure product **workflows** and **survey forms** to adapt them to your company's needs. The range of customization will depend on your product plan.
+You can easily re-configure product **workflows** and **survey forms** to adapt them to your company's needs. The range of customization will depend on your _product plan_.
+
+:::info Contact us
+Contact a [Cotalker Sales Representative](/docs/support/commercial) for more information on how you can customize workflows and surveys according to your company's needs.
+:::
 
 <span className="hero__subtitle">Example: Notification Workflow</span>
 <br/>
 
 Below you will see how to access the _administrative panel_ and edit a workflow's settings.
 
-:::info Example notes
+:::note Example notes
 - Below, the _Notifications_ workflow group is set as an example of how Cotalker modules can be easily modified. 
 - _Workflow groups_ contain one or more _workflows_ within them. **Notifications** is a _workflow group_ that has one _workflow_ called **Notification**.
 :::

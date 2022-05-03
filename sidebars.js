@@ -377,6 +377,7 @@ module.exports = {
         'products/corrective_maintenance/cm_overview',
         'products/preventive_maintenance/pm_overview',
         'products/work_order_product/wo_overview',
+        'products/purchase_order_product/po_overview',
       ],
       collapsed: false,
       collapsible: false
@@ -631,6 +632,46 @@ module.exports = {
       items: [
         'products/workflows/budget_management/related-product/wo/surveys',
         'products/workflows/budget_management/related-product/wo/approval',
+      ],
+    }
+  ],
+  workflow_purchaseorders: [
+    {
+      type: 'doc',
+      id: 'products/purchase_order_product/po_overview',
+      label: 'Back to Product Overview...'
+    },
+    {
+      type: 'category',
+      label: 'Purchase Order Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/workflows/purchase_orders/overview'
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/workflows/purchase_orders/examples',
+        'products/workflows/purchase_orders/workflow',
+        'products/workflows/purchase_orders/release-strategy',
+        {
+          type: 'category',
+          label: 'Survey Forms',
+          link: {
+            type: 'doc',
+            id: 'products/workflows/purchase_orders/surveys',
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/workflows/purchase_orders/surveys-create-po',
+            'products/workflows/purchase_orders/surveys-release',
+            'products/workflows/purchase_orders/surveys-receipt',
+            'products/workflows/purchase_orders/surveys-billing',
+            'products/workflows/purchase_orders/surveys-close-po',
+            'products/workflows/purchase_orders/surveys_pdf',
+          ]
+        },
       ],
     }
   ],

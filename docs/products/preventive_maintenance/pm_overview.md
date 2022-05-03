@@ -26,6 +26,7 @@ For example, if you need to do maintenance on a machine every day, you can set t
 Let's say that you have to do maintenance on a car every 6,000 miles. In this case, you can use value-based planner. Once the plan is created, maintenance personnel will periodically use the app to register value metrics, like mileage or fluid levels for a vehicle. And, when the car's registered mileage hits 12,000 miles, the value trigger will kick in and get things ready for the car's second maintenance check. At this point, the [work orders workflow](/docs/products/workflows/work_orders/related-product/pm/overview_intro) will initiate, and a work order will be sent to the person in charge of the car's maintenance. 
 
 ## Workflows Involved {#workflows}
+_For in-depth product information, view the workflows below:_
 
 <img alt="workflows" className="img_sizing" src={useBaseUrl('img/products/products_preventive_maintenance_01.png')} /> 
 
