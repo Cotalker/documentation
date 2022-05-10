@@ -41,7 +41,7 @@ _From the administrative panel, you can access the following:_
 </div>
 <div className="row">
 <div className="col col--6">
-<img alt="access" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_01.png')} />
+<img alt="access" className="img_sizing_narrow item shadow--lw" src={useBaseUrl('img/admin_overview_01.png')} />
 <br/>
 </div>
 <div className="col col--6">
@@ -69,12 +69,13 @@ _From the administrative panel, you can access the following:_
   10. [**Schedules**](/docs/documentation/admin/admin_bots): Create and edit scheduled routines.
   11. [**Automation Log**](/docs/documentation/automation/automation_log): Monitor all automations carried out in the Cotalker environment.
   12. [**Routines**](/docs/documentation/admin/routines): Create or edit predetermined bots that can be later used in routines.
+  13. [**Webhooks**](/docs/documentation/admin/admin_webhooks): Set up triggers that send data to your server upon certain events.
 
 <span className="hero__subtitle">SECURITY</span>
 
-  13. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
-  14. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
-  15. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
+  14. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
+  15. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
+  16. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
 
 </div>
 

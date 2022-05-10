@@ -22,6 +22,21 @@ _Each platform offers a similar experience through its design so that users can 
 </div>
 <br/>
 
+:::info System Requirements
+**Cotalker Web Client**  
+Minimum: Chrome v.100  
+Recommended: Latest Chrome version  
+_Works also on Firefox, Safari, Edge (Chromium version), and Chrome-based browsers, but we recommend its use on the latest Google Chrome version. Testing is only carried out on Google Chrome._  
+**Cotalker Android**  
+Minimum: Android 7.0 (SDK 24)  
+Recommended: Android 11 (SDK 30)  
+**Cotalker iOS**  
+Minimum: iOS12 (SDK 15)  
+Recommended: iOS 15 (SDK 15)  
+**Cotalker Huawei**  
+_Even though there are working versions, testing has not been thoroughly completed._
+:::
+
 ## Web Client Platform {#web-client-platform}
 
 <div className="alert alert--secondary">
