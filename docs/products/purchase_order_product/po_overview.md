@@ -38,7 +38,7 @@ The Purchase Order product consists of a single workflow.
 - In case the supplier did not provide all the expected goods or services, a partial receipt of goods or services can be declared. If the supplier sends more than one partial delivery, all receipts are registered and discounted from the expected total.
 - After the supplier provides an invoice, even if it is an invoice for the partiality of the expected goods or services, the corresponding user can register the invoice and billing details.
 - Billing details are connected with master data, the purchase order, and received goods and services registry, allowing a control over expected and received goods or services, partial and total payments, along with a detail of the supplier's banking information.
-- Once everything has been received, paid for, and registered, the workflow can be closed.
+- Once all received goods and services are registered and paid for, the workflow can be closed.
 
 ## Workflow Details {#workflow}
 _For in-depth product details and examples, view the information below:_

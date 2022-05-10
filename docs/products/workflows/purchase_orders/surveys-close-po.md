@@ -38,6 +38,11 @@ _The **Close Purchase Order** appears as shown below:_
 
 <img alt="survey form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_purchase_survey_16.png')} />
 <br/>
+<br/>
+
+:::note
+If not all expected goods or services have been delivered, the **Close purchase order** form alerts you of the cost of the unreceived goods.
+:::
 
 </div>
 <br/>

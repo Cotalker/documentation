@@ -30,7 +30,7 @@ _Description of the different states or stages of the process:_
   
   2.3. **In Release Level 3**: Purchase orders approved in the previous two states and with a cost value equal to or greater than third level's set value, pass through this level for approval.  
 3. **Released and Shipped**: Once the purchase order is fully approved, it goes on to this state. Upon entering this state, the purchase order is automatically generated as a PDF document and sent to the supplier via email. During this state, designated users are added to the workflow to register the reception of goods and services. Furthermore, designated users are added to register invoice and billing information. If deliveries are segmented, reception and billing information are stored and added to each consecutive delivery.
-4. **Closed**: From the **Released and Shipped** state, the purchase order can be closed by a supervisor or the user that initiated the purchase order. Closure comes after the registration of received goods and services along with their billing information. If goods or services are received in segmented deliveries, closure can be delayed until all items and invoices are registered.
+4. **Closed**: From the **Released and Shipped** state, the purchase order can be closed by a supervisor or the user that initiated the purchase order. Closure comes after the registration of received goods and services along with their billing information. If goods or services are received in partial deliveries or not in their totality, closure can be carried out once all received items and invoices are registered.
 5. **Cancelled**: The purchase order is cancelled any time it is rejected while in the release levels.
 
 </div>

@@ -39,6 +39,15 @@ Field | Description | Type | Notes
 **name** | Indicates the webhook's name. | string | We recommend using a descriptive name for the webhook.
 **code** | Indicates the webhook's identification code. The code must be unique. Only lowercase letters, numbers, and underscores can be used. | string |
 **context** | Contains the event trigger's details. The fields used will depend on the selected event type.| object | 
-**context.survey** |
-**context.group** |
-**context.taskGroup** |
+**context.survey** | Contains the ObjectId of the survey to be monitored. | [ObjectId<COTSurvey\>](/docs/documentation/models/surveys/model_surveys) | This field is left with empty quotes when the trigger is not a survey.
+**context.group** | Indicates the ObjectId of the group in which the survey to be monitored is found in. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | This field is left with empty quotes when the trigger is not a survey.
+**context.taskGroup** | This is the ObjectId of the task group in which tasks will be monitored. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | This field is left with empty quotes when the trigger is not a task.
+
+
+## Additional Resources {#additional-resources}
+- [Webhooks Section](/docs/documentation/admin/admin_webhooks): Administrative Panel Settings
+- [Webhook REST API Documentation](/docs/documentation/api/automations/webhooks): Webhook API requests
+
+## Help {#help}
+
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
