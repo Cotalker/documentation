@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-[Webhooks](/docs/documentation/admin/admin_webhooksd) are set up to send specified event data to an indicated server. When the specified event occurs, the webhook trigger is activated and the event's data is sent to the server. Webhooks can be triggered by _user_, _task_, or _survey_ events.
+[Webhooks](/docs/documentation/admin/admin_webhooks) are set up to send specified event data to an indicated server. When the specified event occurs, the webhook trigger is activated and the event's data is sent to the server. Webhooks can be triggered by _user_, _task_, or _survey_ events.
 
 A webhook's configuration is stored within a COTWebhook object. The COTWebhook contains the webhook's name, information regarding the triggering event, and the server URL to which the data is sent.
 
