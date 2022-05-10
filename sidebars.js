@@ -390,7 +390,7 @@ module.exports = {
         'documentation/models/users/model_jobtitles',
         'documentation/models/users/model_accessroles',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -402,7 +402,7 @@ module.exports = {
         'documentation/models/communication/model_messageContent',
         'documentation/models/communication/file',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -416,7 +416,7 @@ module.exports = {
         'documentation/models/surveys/model_surveys',
         'documentation/models/surveys/model_surveychats',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -425,7 +425,7 @@ module.exports = {
         'documentation/models/databases/model_properties',
         'documentation/models/databases/model_propertytypes',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -437,7 +437,7 @@ module.exports = {
         'documentation/models/tasks/model_tasks',
         'documentation/models/tasks/model_taskgroup',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -448,7 +448,7 @@ module.exports = {
         'documentation/models/automations/model_pbscripts',
         'documentation/models/automations/model_scheduler',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -459,7 +459,7 @@ module.exports = {
         'documentation/models/webhooks/webhook',
         'documentation/models/webhooks/webhooklog',
       ],
-      collapsed: false,
+      collapsed: true,
     },
   ],
   support: [

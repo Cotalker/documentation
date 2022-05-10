@@ -49,7 +49,7 @@ _The **Release Purchase Order** form appears as shown below:_
 <img alt="survey form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_purchase_survey_03.png')} />
 <br/>
 
-_After choosing either to approve or reject the purchase order request, a field for the releaser's signature appears:_
+_After choosing to approve the purchase order request, a field for the releaser's signature appears:_
 
 <img alt="survey form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_purchase_survey_04.png')} />
 <br/>

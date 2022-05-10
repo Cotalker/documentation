@@ -27,7 +27,7 @@ _To access the form, designated personnel, do the following:_
 
 1. From the **Main Menu Bar**, press <span className="badge badge--primary">Purchase Orders</span>.
 2. Select the corresponding purchase order from the **Purchase Orders** panel.
-3. In the channel workspace, press the <span className="badge bagde--success">Declare Receipt</span> button to open the form.
+3. In the channel workspace, press the <span className="badge badge--success">Declare Receipt</span> button to open the form.
 
 </div>
 <br/>
