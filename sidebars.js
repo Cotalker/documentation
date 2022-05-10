@@ -10,9 +10,17 @@ module.exports = {
         'documentation/client/basic_concepts',
         {
           type: 'category',
+          label: 'Accessing the Platform',
+          collapsed: true,
+          items: [
+            'documentation/client/platform_access/system_requirements',
+            'documentation/client/platform_access/first_steps',
+          ]
+        },
+        {
+          type: 'category',
           label: 'User-Interface Basics',
           items: [
-            'documentation/client/first_steps',
             'documentation/client/layout',
             'documentation/client/main_menu',
             'documentation/client/tool_bar',

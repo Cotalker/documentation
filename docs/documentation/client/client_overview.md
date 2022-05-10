@@ -29,8 +29,11 @@ For more in-depth information for administrators, please refer to the [Admin Doc
 
 - [**Basic Concepts / Glossary**](/docs/documentation/client/basic_concepts): introductory notes on the fundamental concepts you will encounter in the Cotalker environment
 
+- **Accessing the Platform**:
+  - [System Requirements](/docs/documentation/client/platform_access/system_requirements): minimum and recommended requirements for using Cotalker on your computer or mobile device.
+  - [Logging In](/docs/documentation/client/platform_access/first_steps): standard procedures for logging into the different platform versions: web client, Android, and iOS.
+
 - **User-Interface Basics**
-  - [First Steps](/docs/documentation/client/first_steps): accessing and logging in to the different platform versions
   - [User-Interface Layout](/docs/documentation/client/layout): overview of platform seccions: Main Menu, Tool Bar, Groups Panel, and Channel Workspace
   - [Main Menu Bar](/docs/documentation/client/main_menu): general description of the options available on the main menu
   - [Tool Bar](/docs/documentation/client/tool_bar): overview of search tool and contact button
