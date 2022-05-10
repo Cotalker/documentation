@@ -24,6 +24,3 @@ _Cotalker works also on Firefox, Safari, Edge (Chromium version), and Chrome-bas
 ## Cotalker iOS {#ios}
 **Minimum**: iOS12 (SDK 15)  
 **Recommended**: iOS 15 (SDK 15)  
-
-## Cotalker Huawei {#huawei}
-_Even though there are working versions, testing has not been thoroughly completed._
