@@ -14,7 +14,7 @@ There are different Cotalker platforms available, allowing users access to Cotal
 **Recommended**: Chrome v.103
 
 :::note
-_Cotalker works also on Firefox, Safari, Edge (Chromium version), and Chrome-based browsers, but we recommend its use on the latest Google Chrome version. Because testing is only carried out on Google Chrome, we cannot guarantee that all features function correctly._  
+Cotalker works also on Firefox, Safari, Edge (Chromium version), and Chrome-based browsers, but we recommend its use on the latest Google Chrome version. Because testing is only carried out on Google Chrome, we cannot guarantee that all features function correctly on other web browsers.  
 :::
 
 ## Cotalker Android {#android}
