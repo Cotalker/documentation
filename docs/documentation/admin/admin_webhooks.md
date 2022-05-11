@@ -14,7 +14,7 @@ Configure _webhooks_ to set triggers that automatically send event data to anoth
 Webhooks can be set for three types of triggers: _users_, _tasks_, and _surveys_. Whenever the selected type is created, modified, or removed, the webhook sends the event's data to the specified server.
 
 :::info
-- If a trigger type is set off more than once, the events will be sent in linear order. This means that following events will be sent only after the previous event is received by the server. For example, let's say three tasks have been created, the first task event is sent automatically, the second is sent after the first one is received by server, and the third after the second. This is done so that sequential modifications are always received in the corresponding order in case of a server failure.
+- If a trigger type is set off more than once, the events will be sent in linear order. This means that following events will be sent only after the previous event is received by the server. For example, let's say three tasks have been created, the first task event is sent automatically, the second is sent after the first one is received by the server, and the third after the second. This is done so that sequential modifications are always received in the corresponding order in case of a server failure.
 - If a webhook fails, after 30 seconds it will try –up to two more times– to send the triggered event data to the server.
 :::
 
