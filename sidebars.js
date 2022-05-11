@@ -114,7 +114,7 @@ module.exports = {
               collapsed: true,
             },
           ],
-          collapsed: false,
+          collapsed: true,
         },
         {
           type: 'category',
@@ -150,7 +150,7 @@ module.exports = {
             },
             
           ],
-          collapsed: false,
+          collapsed: true,
         },
         {
           type: 'category',
@@ -160,7 +160,7 @@ module.exports = {
             'documentation/admin/admin_jobtitles',
             'documentation/admin/admin_company',
           ],
-          collapsed: false,
+          collapsed: true,
         },
         {
           type: 'category',
@@ -172,7 +172,7 @@ module.exports = {
             'documentation/admin/routines',
             'documentation/admin/admin_webhooks',
           ],
-          collapsed: false,
+          collapsed: true,
         },
         {
           type: 'category',
@@ -182,7 +182,7 @@ module.exports = {
             'documentation/admin/admin_token',
             'documentation/admin/admin_auditlogs',
           ],
-          collapsed: false,
+          collapsed: true,
         },
       ],
       collapsed: true,
@@ -325,7 +325,7 @@ module.exports = {
         'documentation/api/users/accessroles',
         'documentation/api/users/jobtitles',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -336,7 +336,7 @@ module.exports = {
         'documentation/api/communication/groups',
         'documentation/api/communication/files',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -347,7 +347,7 @@ module.exports = {
         'documentation/api/surveys/questions',
         'documentation/api/surveys/answers',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -356,7 +356,7 @@ module.exports = {
         'documentation/api/databases/property_types',
         'documentation/api/databases/properties',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -365,7 +365,7 @@ module.exports = {
         'documentation/api/tasks/tasks',
         'documentation/api/tasks/statemachines',
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: 'category',
@@ -376,7 +376,7 @@ module.exports = {
         'documentation/api/automations/pbscripts',
         'documentation/api/automations/webhooks',
       ],
-      collapsed: false,
+      collapsed: true,
     },
   ],
   models: [
@@ -447,17 +447,17 @@ module.exports = {
         'documentation/models/automations/model_parametrizedbot',
         'documentation/models/automations/model_pbscripts',
         'documentation/models/automations/model_scheduler',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Webhooks',
-      items: [
-        'documentation/models/webhooks/survey_execution',
-        'documentation/models/webhooks/event',
-        'documentation/models/webhooks/webhook',
-        'documentation/models/webhooks/webhooklog',
+        {
+          type: 'category',
+          label: 'Webhooks',
+          items: [
+            'documentation/models/webhooks/survey_execution',
+            'documentation/models/webhooks/event',
+            'documentation/models/webhooks/webhook',
+            'documentation/models/webhooks/webhooklog',
+          ],
+          collapsed: true,
+        },
       ],
       collapsed: true,
     },

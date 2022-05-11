@@ -4,18 +4,40 @@ sidebar_label: COTSurveyExecution
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<span className="hero__subtitle">COTSurveyExecution</span>
+
 ## Description {#description}
 
-Used for sending survey data through [webhooks](/docs/documentation/admin/admin_webhooks).
+The COTSurveyExecution data model is found within [COTEvent](/docs/documentation/models/webhooks/event) objects sent to external servers via [webhooks](/docs/documentation/admin/admin_webhooks). COTSurveyExecution contains submitted survey data in the form of [COTMessage](/docs/documentation/models/communication/model_messages) objects.
 
-es solo una interface para definir el modelo de la ejecución de un Survey, sin embargo no corresponde al modelo de un documento guardado en base de datos.
-
-Se hizo un cambio, surveyData corresponde actualmente a un array de COTMessage (seguramente esto cambiará en un futuro no muy lejano, por ahorá quedará así). Por lo que ahora como dices al final, es un arreglo de los COTMessages que forman el formulario enviado.
-
+## JSON Sample {#sample}
 ```json
 { 
-    "surveyId": ObjectId,
-    "group": ObjectId, 
-    "surveyData": COTMessage[],
+    "surveyId": "627acd7e58a77633efc55b69",
+    "group": "627acd8437cc96869d805470", 
+    "surveyData": [
+        "627acdb064399b2d607d69a0",
+        "627acdbc7bbc2a5c8102c7e9",
+        "627acdc90e3dfdafb11a59d7",
+        "627acdd173275a80b642c368"
+    ]
 }
 ```
+
+## Fields {#fields}
+
+Field | Description | Type | Note
+--- | --- | --- | ---
+**surveyId** | The ObjectId of submitted survey. | ObjectId<COTSurvey\> |
+**group** | The ObjectId of the group in which the submitted survey is found. | ObjectId<COTGroup\> |
+**surveyData** | An array of the COTMessage objects that constitute the submitted survey. | [COTMessage[ ]](/docs/documentation/models/communication/model_messages) |
+
+
+
+## Additional Resources {#additional-resources}
+- [Webhooks Section](/docs/documentation/admin/admin_webhooks): Administrative Panel Settings
+- [Webhook REST API Documentation](/docs/documentation/api/automations/webhooks): Webhook API requests
+
+## Help {#help}
+
+- [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
