@@ -1,5 +1,5 @@
 ---
-title: Webhook Event
+title: Webhook
 sidebar_label: COTWebhook
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
