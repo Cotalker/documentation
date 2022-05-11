@@ -9,11 +9,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-Configure webhooks to set triggers that automatically send the event data to your server. This is useful for using data collected by Cotalker in other systems. For example, a user can submit a form powered by Cotalker, and the data is immediately sent to a server for further use. Things like purchase orders, maintenance notifications, and much more can be easily shared with other systems. Webhooks expand Cotalker's capabilities, making it the all-in-one solution your company needs.
+Configure _webhooks_ to set triggers that automatically send event data to another server in real time. This feature allows data collected by Cotalker to be sent and used in other systems. For example, a user can submit a form powered by Cotalker, and the data is immediately sent to an external server for further use. Things like purchase orders, maintenance notifications, and much more can be easily shared with other systems. Webhooks expand Cotalker's capabilities, making it the all-in-one solution your company needs.
 
 Webhooks can be set for three types of triggers: _users_, _tasks_, and _surveys_. Whenever the selected type is created, modified, or removed, the webhook sends the event's data to the specified server.
 
-If a webhook fails, after 30 seconds it will try up to two more times to send the triggered event data to the server.
+:::info
+- If a trigger type is set off more than once, the events will be sent in linear order. This means that following events will be sent only after the previous event is received by the server. For example, let's say three tasks have been created, the first task event is sent automatically, the second is sent after the first one is received by server, and the third after the second. This is done so that sequential modifications are always received in the corresponding order in case of a server failure.
+- If a webhook fails, after 30 seconds it will try –up to two more times– to send the triggered event data to the server.
+:::
+
+:::note
+External servers must be configured by their corresponding admins to receive the webhook data.
+:::
 
 ## Accessing Webhooks {#access}
 
@@ -97,7 +104,7 @@ _Configuration:_
 
 <div className="alert alert--secondary">
 
-## A. General information {#general-information}
+### A. General information {#general-information}
 
 <img alt="" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_webhooks_05.png')} />
 <br/>
@@ -142,8 +149,8 @@ Upon any change, i.e., creation, modification, or deletion of the indicated even
 </div>
 <div className="col col--4"><em>
 
-When _task_ events are chosen, the **Workflow** field appears to indicate the workflow to be monitored.  
-When _survey_ events are chosen, the **Survey** and **Group** fields appear to indicate the group and survey to monitor.
+When _task_ events are chosen, the **Workflow** field appears to indicate the workflows to be monitored.  
+When _survey_ events are chosen, the **Survey** and **Group** fields appear to indicate the groups and surveys to monitor.
 
 </em></div>
 </div>
@@ -159,7 +166,7 @@ When _survey_ events are chosen, the **Survey** and **Group** fields appear to i
 
 <div className="alert alert--secondary">
 
-## B. Logs {#logs}
+### B. Logs {#logs}
 
 <img alt="logs" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_webhooks_06.png')} />
 <br/>
@@ -228,11 +235,9 @@ This log contains a [COTTask](/docs/documentation/models/tasks/model_tasks) data
 </div>
 
 </div>
+<br/>
 
----
+
 ## Related Topics {#related-topics}
-- Webhooks API:
-- [COTWebhook](/docs/documentation/models/webhooks/webhook)
-- [COTTask](/docs/documentation/models/tasks/model_tasks)
-- [COTUser](/docs/documentation/models/users/model_users)
-- [COTSurveyExecution](/docs/documentation/models/webhooks/survey_execution)
+- [Webhooks API Documentation](/docs/documentation/api/automations/webhooks): API tools for configuring webhooks and obtaining the data they send.
+- [COTWebhook](/docs/documentation/models/webhooks/webhook): Data model in which a webhook's configuration is stored.
