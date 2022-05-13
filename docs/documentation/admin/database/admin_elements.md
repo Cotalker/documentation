@@ -15,7 +15,7 @@ To access the **Elements Panel**:
 <img alt="elements panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_00.png')} />
 <br/>
 
-1. Go to the [**Database Panel**](/docs/documentation/admin/database/admin_database_overview#accessing).
+1. Go to the [**Collections Panel**](/docs/documentation/admin/database/admin_database_overview#accessing).
 2. Select the _list icon_ of the _collection_ containing the _elements_ you wish to view.
 3. The [**Elements Panel**](#elements-panel-layout) will open up displaying all the _elements_ within the _collection_.
 
@@ -29,17 +29,18 @@ _Example of a collection of cities:_
 <br/>
 <br/>
 
-_Actions:_
+_Options:_
 - **1. Create an Element**: Creates a new element within the collection.
 - **2. Find an Element**: Searches for an element within the collection.
 - **3. Disabled Elements**: Opens the elements panel displaying disabled elements within the collection.
 
-_Table and Options:_
+_Table:_
 - **A. Name**: Element's display name.
 - **B. Code**: Element's code name.
-- **C. Number of sub-elements**: Element's amount of child elements.
+- **C. # subelements**: Element's amount of child elements.
 - **D. Last modified**: Last time the element was edited.
-- **E. Edit**: Opens the [element's settings panel](#edit--create-element) for editing.
+- **E. Actions**: Opens the [element's settings panel](#edit--create-element) for editing.
+- **a, b, c**: Sub-elements.
 
 </div>
 <br/>
@@ -59,23 +60,23 @@ From within the _Elements Panel_, you can edit an existing _element_ by pressing
 <div className="alert alert--secondary">
 
 ## Element Settings Panel Layout {#edit--create-element}
-The following settings panel appears either if you choose to create or edit an element.
+The following settings panel appears when you choose to create or edit an element.  
+_**NOTE**: When creating a new element, only the **General information**, **Additional fields**, and **Associated Surveys** tabs appear._
 
 <img alt="edit/create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04.png')} />
 <br/>
 
-_NOTE: When creating a new element, only the **General information** and **Additional fields** tabs are available for configuration._
 
 _Actions:_
 - **1. Deactivate/Activate**: Makes the element available or unavailable in the collection.
-- **2. Save**: Saves the element with the latest changes made.
+- **2. Close**: Closes the settings panel without saving changes.
+- **3. Save**: Saves the element with the latest changes made.
 
 _Settings:_
-- [**A. General information**](#general-information): Basic element information.
+- [**A. General information**](#general-information): Basic element information and associated child elements.
 - [**B. Additional fields**](#additional-fields): Set or edit additional field values.
 - [**C. Additional attributes**](#additinal-attributes): Adds extra information. Deprecated, only used on legacy systems.
-- [**D. Elements**](#add-elements): Adds child elements (sub-properties).
-- [**E. Channels**](#channels): Displays channels associated with the element.
+- [**D. Channels**](#channels): Displays channels associated with the element.
 - [**F. Associated surveys**](#associated-surveys): Displays survey answers associated with the element.
 - [**G. Child elements**](#child-elements): Displays a list of any child elements.
 - [**H. Parent elements**](#parent-elements): Displays a list of any parent elements.
@@ -87,7 +88,7 @@ _Settings:_
 
 ### A. General information {#general-information}
 
-<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4a.png')} />
+<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04a.png')} />
 <br/>
 
 <div className="container box">
@@ -107,8 +108,18 @@ Only lowercase letters, numbers, and underscores are accepted. The _code_ must s
 </em></div>
 </div>
 <div className="row table-row-1">
+<div className="col col--3"><strong>+ Add Element</strong>:</div>
+<div className="col col--4">Opens the settings to add child elements associated with the element.</div>
+<div className="col col--5"><em>Child elements are also known as subproperties.</em></div>
+</div>
+<div className="row table-row-2">
 <div className="col col--3"><strong>Collection</strong>:</div>
-<div className="col col--4">The collection the element belongs to.</div>
+<div className="col col--4">The collection the child element belongs to.</div>
+<div className="col col--5"><em></em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><strong>Elements</strong>:</div>
+<div className="col col--4">The element or elements set up as child elements.</div>
 <div className="col col--5"><em></em></div>
 </div>
 </div>
@@ -120,15 +131,21 @@ Only lowercase letters, numbers, and underscores are accepted. The _code_ must s
 
 ### B. Additional fields {#additional-fields}
 
-_NOTE: Additional fields vary upon each element._
-<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4b.png')} />
+_NOTE: Additional fields vary upon each collection and their values depends on each particular element._
+<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04b.png')} />
 <br/>
 
 <div className="container box">
 
 <div className="row table-row-1">
 <div className="col col--3"><strong>Customized fields</strong>:</div>
-<div className="col col--5">Each additional field has a customized field name. The type of valid input values also depends on the settings of each additional field. Additional fields created in a collection are available to all its elements.</div>
+<div className="col col--5">
+
+Each additional field has a customized field name.  
+The type of valid input values also depends on the settings of each additional field.  
+Additional fields created in a collection are available to all its elements.
+
+</div>
 <div className="col col--4"><em>
 
 [More information about Additional fields.](/docs/documentation/admin/database/admin_collections#additional-fields)
@@ -144,9 +161,9 @@ _NOTE: Additional fields vary upon each element._
 <div className="alert alert--secondary">
 
 ### C. Additional attributes {#additional-attributes}
-_NOTE: Additional attributes are deprecated and should only be used with legacy systems._
+_NOTE: Additional attributes are deprecated and should only be used with legacy systems. [See more below](#adding-fields-globally)._
 
-<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4c.png')} />
+<img alt="gnrl info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04c.png')} />
 <br/>
 
 <div className="container box">
@@ -171,40 +188,14 @@ _NOTE: Additional attributes are deprecated and should only be used with legacy 
 </div>
 <br/>
 
-<div className="alert alert--secondary">
 
-### D. Elements {#add-elements}
-
-<img alt="add elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4d.png')} />
-<br/>
-
-<div className="container box">
-
-<div className="row table-row-1">
-<div className="col col--3"><strong>+ Add Element</strong>:</div>
-<div className="col col--5">Opens the settings to add child elements associated with the element.</div>
-<div className="col col--4"><em>Child elements are also known as subproperties.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><strong>Collection</strong>:</div>
-<div className="col col--5">The collection the child element belongs to.</div>
-<div className="col col--4"><em></em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><strong>Elements</strong>:</div>
-<div className="col col--5">The element or elements set up as child elements.</div>
-<div className="col col--4"><em></em></div>
-</div>
-</div>
-
-</div>
-<br/>
 
 <div className="alert alert--secondary">
 
-### E. Channels {#channels}
+### D. Channels {#channels}
+_Click on Channel rows to open their corresponding settings panel._
 
-<img alt="channels" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4e.png')} />
+<img alt="channels" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04d.png')} />
 <br/>
 
 <div className="container box">
@@ -215,7 +206,7 @@ _NOTE: Additional attributes are deprecated and should only be used with legacy 
 <div className="col col--4"><em></em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--3"><strong>Channel</strong>:</div>
+<div className="col col--3"><strong>Channel name</strong>:</div>
 <div className="col col--5">Displays the name of the channel associated with the element.</div>
 <div className="col col--4"><em></em></div>
 </div>
@@ -231,9 +222,9 @@ _NOTE: Additional attributes are deprecated and should only be used with legacy 
 
 <div className="alert alert--secondary">
 
-### F. Associated surveys {#associated-surveys}
+### E. Associated surveys {#associated-surveys}
 
-<img alt="associated surveys" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4f.png')} />
+<img alt="associated surveys" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04e.png')} />
 <br/>
 
 <div className="container box">
@@ -269,9 +260,9 @@ _NOTE: Additional attributes are deprecated and should only be used with legacy 
 
 <div className="alert alert--secondary">
 
-### G. Child elements {#child-elements}
+### F. Child elements {#child-elements}
 
-<img alt="child elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4g.png')} />
+<img alt="child elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04f.png')} />
 <br/>
 
 <div className="container box">
@@ -299,9 +290,9 @@ _NOTE: Additional attributes are deprecated and should only be used with legacy 
 
 <div className="alert alert--secondary">
 
-### H. Parent elements {#parent-elements}
+### G. Parent elements {#parent-elements}
 
-<img alt="parent elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_4h.png')} />
+<img alt="parent elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04g.png')} />
 <br/>
 
 <div className="container box">

@@ -10,20 +10,20 @@ import Highlight from '@theme/Highlight';
 _Basic collection settings_
 
 ## Create a Collection {#create-collection}
-From the [Database Panel](/docs/documentation/admin/database/admin_database_overview), press the <span className="badge badge--primary">+</span> icon to create a new _collection_. The new collection's [settings panel](#edit--create-collection) will open up.
+From the [Collections Panel](/docs/documentation/admin/database/admin_database_overview), press the <span className="badge badge--primary">+</span> icon to create a new _collection_. The new collection's [settings panel](#edit--create-collection) will open up.
 
 <img alt="create collection" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_01.png')} />
 <br/>
 
 ## Edit a Collection {#edit-collection}
-From the [Database Panel](/docs/documentation/admin/database/admin_database_overview), press the corresponding _pen_ icon. The collection's [settings panel](#edit--create-collection) will open up.
+From the [Collections Panel](/docs/documentation/admin/database/admin_database_overview), press the corresponding _pen_ icon. The collection's [settings panel](#edit--create-collection) will open up.
 
 <img alt="create collection" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_02.png')} />
 <br/>
 
 <div className="alert alert--secondary">
 
-## Collection Settings Panel Layout {#edit--create-collection}
+## Settings Panel Layout {#edit--create-collection}
 When creating or editing a collection, you will see this settings panel:
 
 <img alt="collestion settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_03.png')} />
@@ -125,7 +125,13 @@ More details about [creating additional fields](#additional-fields) are explaine
 <div className="row table-row-2">
 <div className="col col--3"><strong>Type</strong></div>
 <div className="col col--4">Designates the type or format of the data that will be inserted in the Additional Field. Options include: string, number, date, boolean, link, file, element, and user. </div>
-<div className="col col--5"><em>The "file" option has a subtype which can be set to "video", "picture", or "file". The "element" option can be set to any collection stored in the database. If the collections are not seen in the subtype dropdown menu, you can start typing the name of the collection and it will shortly display itself along with any other similarly named collections. The "link" option will request to specify how the URL will be displayed: embedded, internal or external.</em></div>
+<div className="col col--5"><em>
+
+The `file` option has a **subtype** which can be set to `video`, `picture`, or `file`.  
+The `element` option allows choosing among elements in a collection. The element **subtype** must be set to the corresponding collection.  
+The `link` option will request to specify how the URL will be displayed: `embedded`, `internal` or `external`.
+
+</em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><strong>Required</strong></div>

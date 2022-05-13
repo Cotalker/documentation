@@ -10,7 +10,7 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#database-overview}
 
-The _Database_ panel is a registry of all the [_collections_](/docs/documentation/admin/database/admin_collections) found in your company's Cotalker environment. _Collections_ contain data in the form of [_elements_](/docs/documentation/admin/database/admin_elements). 
+The _Database_ section is a registry of all the [_collections_](/docs/documentation/admin/database/admin_collections) found in your company's Cotalker environment. _Collections_ contain data in the form of [_elements_](/docs/documentation/admin/database/admin_elements). 
 
 _Collections_ can be thought of as database tables and can determine the table columns, while elements can be considered the items that make up the rows of the table. Yet, the versatility of _collections_ and _elements_ can expand the limits of tabular data and should be considered within the scopes of a non-relational database.
 
@@ -34,22 +34,22 @@ At the backend level of Cotalker, _collections_ are called [property types](/doc
 <br/>
 
 
-## Accessing the Database Panel {#accessing}
-To access the the <span className="badge badge--primary">Database</span> panel:
+## Accessing the Collections Panel {#accessing}
+To access the the <span className="badge badge--primary">Collections</span> panel:
 
 <img alt="Database" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_database_section_00.png')} />
 <br/>
 
 1. Press the <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
 2. Select <span className="badge badge--primary">Database</span> from the **Administrative Panel**.
-3. The [**Database Panel**](#database-panel-layout) will open up.
+3. The [**Collections Panel**](#database-panel-layout) will open up.
 
 <br/>
 
 <div className="alert alert--secondary">
 
-## Database Panel Layout {#database-panel-layout}
-Once inside the <span className="badge badge--primary">Database</span> panel in the **Administrative Panel**, you can find the entire list of _collections_ that have been created in the _company_. From this panel, you can also create and edit _collections_.
+## Collections Panel Layout {#database-panel-layout}
+Once inside the **Collections** panel, you can find the entire list of _collections_ that have been created in the _company_. From this panel, you can also create and edit _collections_.
 
 <img alt="collections list" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_collections_00.png')} />
 <br/>
