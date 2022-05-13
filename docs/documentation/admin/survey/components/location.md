@@ -5,12 +5,13 @@ sidebar_label: Location
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
+## Overview {#overview}
 
 The **Location** component is used to let users send location data using embedded Google Maps. The component can be set to register only the user's current GPS location or it can be set to allow users freely indicate any map location.
 
 This component works both on desktop and mobile apps. An internet connection is required for users to answers a _location_ question.
 
-Standard fields are described in the [**general field descriptions**](/docs/documentation/admin/survey/survey_overview/#field-descriptions) section.
+## Description {#description}
 
 Below, fields pertaining to the component are explained:
 
@@ -23,6 +24,9 @@ Below, fields pertaining to the component are explained:
     - Current location only (default): Automatically registers user's current GPS location.
     - Free selection on map: Allows users to freely select a location.
 
+:::note
+Standard fields are described in the [**general field descriptions**](/docs/documentation/admin/survey/survey_overview/#field-descriptions) section.
+:::
 
 ## Survey example {#example}
 ### Current Selection Only Mode {#current}

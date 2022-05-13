@@ -12,6 +12,10 @@ The Answer-Data Data Model (COTAnswerData) is an object that corresponds to the 
 
 Data objects usually go in pairs. The first represents the survey question's displayed field label. The second, the input data.
 
+:::info Location Survey Component
+[Click here](/docs/documentation/admin/tips/survey_gps_response) for specific COTAnswerData field descriptions regarding the **Location Survey Component**, also known as `survey+gps`.
+:::
+
 ## JSON Sample {#json-sample}
 
 ```json
@@ -116,6 +120,7 @@ Data objects usually go in pairs. The first represents the survey question's dis
 | question | References the asked survey question. | ObjectId<COTQuestion\> | [Questions Data Model](/docs/documentation/models/surveys/model_questions) |
 | responses | Shows the input data after being processed. | [string] | |
 | user | Indicates the _user_ that submitted the form. | ObjectId<COTUser\> | [Users Data Group](/docs/documentation/models/users/model_users) |
+
 
 ## Deprecated {#deprecated}
 
