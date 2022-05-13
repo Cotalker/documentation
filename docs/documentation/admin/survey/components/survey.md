@@ -33,7 +33,7 @@ The fields unique to the **Survey** component are described in the following tab
 Standard fields are described in the [**general field descriptions**](/docs/documentation/admin/survey/survey_overview/#field-descriptions) section.
 :::
 
-## Example {#example}
+## Examples {#example}
 
 ### Survey Component Setup {#setup}
 
