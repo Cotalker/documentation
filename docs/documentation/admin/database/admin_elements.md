@@ -15,7 +15,7 @@ To access the **Elements Panel**:
 <img alt="elements panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_00.png')} />
 <br/>
 
-1. Go to the [**Database Panel**](/docs/documentation/admin/database/admin_database_overview#accessing).
+1. Go to the [**Collections Panel**](/docs/documentation/admin/database/admin_database_overview#accessing).
 2. Select the _list icon_ of the _collection_ containing the _elements_ you wish to view.
 3. The [**Elements Panel**](#elements-panel-layout) will open up displaying all the _elements_ within the _collection_.
 
@@ -29,17 +29,18 @@ _Example of a collection of cities:_
 <br/>
 <br/>
 
-_Actions:_
+_Options:_
 - **1. Create an Element**: Creates a new element within the collection.
 - **2. Find an Element**: Searches for an element within the collection.
 - **3. Disabled Elements**: Opens the elements panel displaying disabled elements within the collection.
 
-_Table and Options:_
+_Table:_
 - **A. Name**: Element's display name.
 - **B. Code**: Element's code name.
-- **C. Number of sub-elements**: Element's amount of child elements.
+- **C. # subelements**: Element's amount of child elements.
 - **D. Last modified**: Last time the element was edited.
-- **E. Edit**: Opens the [element's settings panel](#edit--create-element) for editing.
+- **E. Actions**: Opens the [element's settings panel](#edit--create-element) for editing.
+- **a, b, c**: Sub-elements.
 
 </div>
 <br/>
@@ -71,11 +72,11 @@ _Actions:_
 - **2. Save**: Saves the element with the latest changes made.
 
 _Settings:_
-- [**A. General information**](#general-information): Basic element information.
+- [**A. General information**](#general-information): Basic element and child element information.
 - [**B. Additional fields**](#additional-fields): Set or edit additional field values.
 - [**C. Additional attributes**](#additinal-attributes): Adds extra information. Deprecated, only used on legacy systems.
 - [**D. Elements**](#add-elements): Adds child elements (sub-properties).
-- [**E. Channels**](#channels): Displays channels associated with the element.
+- [**C. Channels**](#channels): Displays channels associated with the element.
 - [**F. Associated surveys**](#associated-surveys): Displays survey answers associated with the element.
 - [**G. Child elements**](#child-elements): Displays a list of any child elements.
 - [**H. Parent elements**](#parent-elements): Displays a list of any parent elements.
