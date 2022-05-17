@@ -1,5 +1,5 @@
 ---
-title: Regular Groups Section Overview
+title: Standard Groups Section Overview
 sidebar_label: Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -10,9 +10,9 @@ import Highlight from '@theme/Highlight';
 
 ## Introduction {#introduction}
 
-[_Regular Groups_](/docs/documentation/client/groups#regular-groups), simply referred to as _"groups"_, are to be differentiated from _workflow (task) groups_ and _link groups_. As the other group types, _standard groups_ can be accessed through the **Main Menu Bar** or in the **Group Panel** as sub-groups of other groups. _Standard groups_ are mainly used for communication purposes. Users can be added as participants in the group, allowing them to use the group panel's _actions button_, access _sub-groups_, open _link groups_, access the group's _channels_, and other resources that can be added to a group and its channels. 
+[_Standard Groups_](/docs/documentation/client/groups#regular-groups), simply referred to as _"groups"_, are to be differentiated from _workflow (task) groups_ and _link groups_. As the other group types, _standard groups_ can be accessed through the **Main Menu Bar** or in the **Group Panel** as sub-groups of other groups. _Standard groups_ are mainly used for communication purposes. Users can be added as participants in the group, allowing them to use the group panel's _actions button_, access _sub-groups_, open _link groups_, access the group's _channels_, and other resources that can be added to a group and its channels. 
 
-Through _Channel Workspaces_ within _Regular Groups_, users associated to a  channel can send messages, share files, answer surveys, and view other users participating in the channel.
+Through _Channel Workspaces_ within _Standard Groups_, users associated with a channel can send messages, share files, answer surveys, and view other users participating in the channel.
 
 ## Accessing Groups Section {#access-groups}
 To access the <span className="badge badge--primary">Groups</span> section:

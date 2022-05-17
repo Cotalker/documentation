@@ -268,13 +268,19 @@ _Set display settings._
 <div className="col col--3"><b>Initial view:</b></div>
 <div className="col col--4">
 
-Set whether a _workflow group_ opens from the [group panel](/docs/documentation/client/groups#group-panel) in [task view](/docs/documentation/client/taskview#tasks-views) or it's [channel workspace](/docs/documentation/client/channels).
+Set whether a _workflow group_ opens initially from a [task view](/docs/documentation/client/taskview#tasks-views) or [group panel](/docs/documentation/client/groups#group-view).  
+Task view is the default value.
 
 </div>
 <div className="col col--5"><em>
 
-`Start with group view`: opens the workflow group's channel workspace.  
-`Start with task view`: opens the workflow group in task view.  
+Options are:  
+`Start with group view`: opens the workflow group's **group panel**.  
+`Start with task view`: opens the workflow group in **task view**.  
+
+<br/>
+
+[Click here](/docs/documentation/admin/tips/task_view) for more information on configuring the initial workflow group display.
 
 </em></div>
 </div>

@@ -29,7 +29,9 @@ A _survey_ can even require you to sign your name using a pointing device, such 
 
 Answered surveys appear within the corresponding _channel workspace_, they can also be retrieved in the [Reports](/docs/documentation/client/reports) section.
 
-Surveys can also be made public, allowing them to be answered and submitted outside the Cotalker environment by any user.
+:::info Public Surveys
+Surveys can also be made public, allowing them to be answered and submitted by anyone outside the Cotalker environment.
+:::
 
 <div className="alert alert--secondary">
 
@@ -84,7 +86,7 @@ _Notice how, in the example above, the bot takes data from the survey answers to
 <br/>
 
 ## Survey Location Questions {#location}
-Surveys can also ask users to input map locations. Depending on the question's configuration, users will be able to either send only their current GPS location, or choose to among their current location or any other location they wish.
+Surveys can also ask users to input map locations. Depending on the question's configuration, users will be able to either send only their current GPS location or choose to among their current location or any other location they wish.
 
 _Below is an example of a survey question that allows users to freely choose a location._
 
