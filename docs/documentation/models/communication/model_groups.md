@@ -111,6 +111,8 @@ import TabItem from '@theme/TabItem';
 | nameDisplay | The group name users see on the platform  | string | |
 | parent | Indicates parent group | ObjectId<COTGroup\> | [Group Data Model](/docs/documentation/models/communication/model_groups) |
 | search | Array of automatically generated search keywords | string [ ] | |
+| viewSettings | Sets the initial display type for workflow groups. | object | |
+| viewSettings.initialView | Indicates the chosen display type for the workflow group. Possible values include `task` (task view) and `group` (group view). | string | [Click here](/docs/documentation/admin/tips/task_view) for more details about initial views. |
 | weight | Indicates the group's place in the Main Menu Bar | number | Numbers do not have to be in consecutive order; lower numbers go first |
 
 
@@ -142,7 +144,6 @@ import TabItem from '@theme/TabItem';
 | taskManager | | object | DEPRECATED |
 | task | | object | DEPRECATED |
 | userFilter | | boolean | DEPRECATED |
-| viewSettings | | object | DEPRECATED |
 | visibility | | object | DEPRECATED |
 
 ## Additional Resources {#resources}

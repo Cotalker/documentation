@@ -101,11 +101,11 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
 | **company** | Indicates the company in which the task is found. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
 | **createdAt** | Date the task was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **createdBy** | The _user_ (human or bot) that created the task. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | By default, the creator is designated as the `assignee`, but can later be changed.
-| **editors** | Users tagged as `editors`. Allows reading and writting on all task fields and to participate in the chat. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | 
+| **editors** | Users tagged as `editors`. Editors can read and write on all task details and participate in the chat area. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | 
 | **endDate** | Indicates the task's deadline. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **estimatedTime** | Indicates the estimated number of days to finish the task. | number |
 | **extensions** | Displays collections set as additional fields and their values. | object | The difference between the additional fields displayed here and the ones that appear as `task.status{1,5}` is explained in the [administrative panel documentation](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#workflow-additional-fields).
-| **followers** | Users tagged as `followers`. Followers can read task fields and participate in the chat, but cannot modify task states or details. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) |
+| **followers** | Users tagged as `followers`. Followers can read task details and participate in the chat area but cannot modify task states or details. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) |
 | **image** | Contains URLs to uploaded images used as the task's avatar. | object |
 | **image.small** | Small-sized avatar | URL |
 | **image.square** | Original-sized, square-shaped avatar | URL |
@@ -132,7 +132,7 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
 | **status5** | Indicates the ID of an _element_ that represents an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) put into the task. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | Additional fields characterize tasks by using them to indicate things like priority, department, or permissions. They can also be used to group, filter, or sort tasks in the task view.
 | **taskGroup** | Indicates the _task group_ the task belongs to. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) |
 | **userList** | This is an automatically generated list of all users associated with the task (editor/follower/visibility/assignee). | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | This list is READ ONLY and cannot be manually modified.
-| **visibility** | Users with the `visibility` tag can view limited task information. The can participate in the chat, view _notes_, but they cannot change the task's state. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | 
+| **visibility** | Users with the `visibility` tag can view limited task details. They can participate in the chat area and view _notes_, but they cannot change the task's state. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | 
 | **weight** | Indicates the task's place within the group panel. | number |
 
 ## Deprecated {#deprecated}
