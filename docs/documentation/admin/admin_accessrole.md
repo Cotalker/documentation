@@ -98,6 +98,38 @@ _Grant access to the Administrator Section:_
 | admin-*-write | Allows reading and editing all _endpoints_ in **Administrator** section. |
 | admin-access | Grants access to the **Administrator** section, but will only show the _endpoint permissions_ the user has been granted. |
 
+### Admin Endpoint Permissions {#endpoint-permissions}
+_Permissions for specific sections only. Must be used in conjunction with at least "admin-access"._
+
+| Endpoint permissions | Description |
+| ---- | ---- |
+| admin-groups-read	| Allows reading _groups_. |
+| admin-channels-read | Allows viewing _channels_. |
+| admin-tasks-read | Allows viewing _tasks_. |
+| admin-accesscontrol-read | Allows viewing _access roles_. |
+| admin-users-read | Allows viewing _users_. |
+| admin-bots-read | Allows viewing _bots_. |
+| admin-properties-read | Allows viewing the _database_. |
+| admin-company-read | Allows viewing _company_. |
+| admin-surveys-read | Allows viewing _surveys_. |
+| admin-answers-read | Allows viewing _answers_. |
+| admin-groups-write | Allows editing _groups_. |
+| admin-channels-write | Allows editing _channels_. |
+| admin-tasks-write | Allows editing _tasks_. |
+| admin-accesscontrol-write | Allows editing _access roles_. |
+| admin-users-write | Allows editing _users_. |
+| admin-bots-write | Allows editing _bots_. |
+| admin-properties-write | Allows editing _database_. |
+| admin-company-write | Allows editing _company_. |
+| admin-surveys-write | Allows editing _surveys_. |
+
+
+:::info Take into account:
+- _Endpoint_ permissions require at least the _admin-access_ permission to be accessible through the Administrative Panel.
+- _Admin-accesscontrol-read permission_ or _admin-accesscontrol-write permission_ are required to read or write permissions respectively.
+- In order to apply any _permission_ to a _user_ you must have _admin-accesscontrol-read permission_ **and** _admin-users-write permission_.
+:::
+
 ### Report Section {#report-section}
 _Grant access to the Report Section:_
 <img alt="admin section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_reports_permissions.png')} />
@@ -132,37 +164,7 @@ _Grant access to the Database Section:_
 For the time being, _db-*-read_ and _db-properties-read_ fulfill equivalent roles. Likewise, so do _db-*-write_ and _db-properties-write_.
 :::
 
-### Endpoint Permissions {#endpoint-permissions}
-_Permissions for specific sections only. Must be used in conjunction with at least "admin-access"._
 
-| Endpoint permissions | Description |
-| ---- | ---- |
-| admin-groups-read	| Allows reading _groups_. |
-| admin-channels-read | Allows viewing _channels_. |
-| admin-tasks-read | Allows viewing _tasks_. |
-| admin-accesscontrol-read | Allows viewing _access roles_. |
-| admin-users-read | Allows viewing _users_. |
-| admin-bots-read | Allows viewing _bots_. |
-| admin-properties-read | Allows viewing the _database_. |
-| admin-company-read | Allows viewing _company_. |
-| admin-surveys-read | Allows viewing _surveys_. |
-| admin-answers-read | Allows viewing _answers_. |
-| admin-groups-write | Allows editing _groups_. |
-| admin-channels-write | Allows editing _channels_. |
-| admin-tasks-write | Allows editing _tasks_. |
-| admin-accesscontrol-write | Allows editing _access roles_. |
-| admin-users-write | Allows editing _users_. |
-| admin-bots-write | Allows editing _bots_. |
-| admin-properties-write | Allows editing _database_. |
-| admin-company-write | Allows editing _company_. |
-| admin-surveys-write | Allows editing _surveys_. |
-
-
-:::info Take into account:
-- _Endpoint_ permissions require at least the _admin-access_ permission to be accessible through the Administrative Panel.
-- _Admin-accesscontrol-read permission_ or _admin-accesscontrol-write permission_ are required to read or write permissions respectively.
-- In order to apply any _permission_ to a _user_ you must have _admin-accesscontrol-read permission_ **and** _admin-users-write permission_.
-:::
 
 ## Configuring Permissions {#configuring-permissions}
 

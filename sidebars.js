@@ -96,6 +96,7 @@ module.exports = {
                     // 'documentation/admin/workflows/admin_workflow_configure',
                     'documentation/admin/workflows/admin_workflow_required_survey',
                     'documentation/admin/workflows/admin_workflow_public_survey',
+                    'documentation/admin/tips/task_view'
                   ],
                   collapsed: true,
                 },
@@ -793,7 +794,20 @@ module.exports = {
       items: [
         'products/setup/users',
         'products/setup/master_data',
-        'products/setup/customization',
+        {
+          type: 'category',
+          label: 'Customizations',
+          link: {
+            type: 'doc',
+            id: 'products/setup/customization',
+          },
+          collapsed: false,
+          collapsible: true,
+          items: [
+            'products/setup/customization_examples/workflow_cm',
+            'products/setup/customization_examples/survey_pm',
+          ]
+        },
         'products/setup/integrations',
       ]
     },
