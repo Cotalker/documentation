@@ -16,7 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br/>
 
 ## Introduction {#intro}
-Preventive Maintenance Plans use checklists for each maintenance check. Therefore, companies will need a checklist for each type of preventive maintenance check they wish to carry out.
+[Preventive Maintenance Plans](/docs/products/preventive_maintenance/pm_overview) use _checklists_ for each maintenance check. Therefore, companies will need a checklist for each type of preventive maintenance check they wish to carry out.
 
 This section provides a step-by-step use case example of how to create a customized checklist for a preventive maintenance plan. For more in-depth information, visit the [_Surveys_](/docs/documentation/admin/survey/survey_overview) section in the Admin documentation.
 
@@ -27,7 +27,7 @@ Item | Description
 --- | ---
 Maintenance Check Type | Smoke Detector
 Frecuency | Monthly
-Indicators | Do indicator lights show that the machine is functioning correctly. 
+Indicators | Do indicator lights show that the machine is functioning correctly? 
 Sensors | General cleaning and maintenance.
 
 Below you will find how to incorporate these specifications into a preventive maintenance plan.
@@ -477,6 +477,10 @@ _Once validated, the work order is closed._
 <div className="margin-left--lg">
 
 61. After submitting the approval form, the work order passes to the **Closed** state.
+
+:::Note
+In this preventive maintenance plan, a new work order for a maintenance check on the smoke detector will be created in 30 more days, and the process will begin again.
+:::
 
 </div>
 

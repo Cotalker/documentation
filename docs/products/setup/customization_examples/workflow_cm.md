@@ -59,7 +59,7 @@ _On the settings panel, you can modify the process following each state, add rou
 
 1. **Name**: The workflow's name.
 2. **Initial state**: Indicates the state the workflow starts in.
-3. **Start form**: Indicates the survey form used to create a notification.
+3. **Start form**: Indicates the survey form used to initiate the workflow. In this case, to create a notification.
 4. **Start form permissions**: Only users with this permission can use the survey form to create a new notification.
 5. **Workflow states** table: The states or steps of the process. Clicking on them permits editing their configuration.
 6. **Workflow SLAs**: Displays SLA routines that are triggered to help complete deadlines. SLAs can be created or edited from this table.

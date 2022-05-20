@@ -11,3 +11,7 @@ _Preventive Plans_ comes equiped with the tools you need to create and initiate 
 - [**Create a Preventive Plan Form**](/docs/products/workflows/preventive_plans/surveys-create-plan): With this form you can create and configure a preventive maintenance plan for one of your assets.
 - [**Plan Runner**](/docs/products/workflows/preventive_plans/surveys-plan-runner): With this form, you can initiate your plans.
 - [**Update Value-Based Metrics**](/docs/products/workflows/preventive_plans/surveys-update-metrics): This tool gives users database access to register the latest asset metrics.
+
+:::info Customization
+Visit the [Customizations](/docs/products/setup/customization) section for more information on [how to create a checklist for a preventive maintenance plan](/docs/products/setup/customization_examples/survey_pm).
+:::

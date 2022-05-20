@@ -802,7 +802,7 @@ module.exports = {
             id: 'products/setup/customization',
           },
           collapsed: false,
-          collapsible: true,
+          collapsible: false,
           items: [
             'products/setup/customization_examples/workflow_cm',
             'products/setup/customization_examples/survey_pm',

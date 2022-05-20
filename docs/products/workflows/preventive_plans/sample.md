@@ -46,3 +46,6 @@ Yan, who uses the company car Sarah specified in the plan, can now update the ca
 <br/>
 <br/>
 
+:::info Discover more
+[How to create a customized checklist for a preventive maintenance check](/docs/products/setup/customization_examples/survey_pm): A use case example with a step-by-step tutorial.
+:::

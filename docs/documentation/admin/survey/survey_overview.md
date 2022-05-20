@@ -26,7 +26,7 @@ _Surveys_ can also be programmed to respond to certain answers or contexts. For 
 
 ## Access the Forms Section {#access-surveys-section}
 
-To access the <span className="badge badge--primary">Form</span> panel:
+To access the **Form** panel:
 
 <img alt="access survey section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_surveys_overview_00.png')} />
 <br/>
@@ -219,7 +219,7 @@ Press the <span className="badge badge--info">components</span> button on the up
 - [**Multiple choice**](/docs/documentation/admin/survey/components/multiple_choice): _Give users multiple-choice questions. This component can be configured as a dynamic survey, i.e., to display more options as certain answers are given._
 - [**Rating**](docs/documentation/admin/survey/components/rating): _Users can rate an item with "stars"._
 - [**Date and time**](/docs/documentation/admin/survey/components/date_and_time): _Answers are received in date or date & time format._
-- [**Location**](/docs/documentation/admin/survey/components/location): _GPS location is given as answer. Only available in mobile applications."_
+- [**Location**](/docs/documentation/admin/survey/components/location): _Current or other GPS location is obtained through an embedded Google Map._
 - [**Attachment**](/docs/documentation/admin/survey/components/attachment): _Send almost any type of file through the survey._
 - [**Camera**](/docs/documentation/admin/survey/components/camera): _Send pictures directly from camera or gallery._
 - [**Signature**](/docs/documentation/admin/survey/components/signature): _Freestyle brush that permits handwriting. Useful for signatures._
@@ -243,7 +243,7 @@ The following icons are used in most of the form components for setup and config
 | Action Name | Image | Description |
 | ---- | ----- | ----------- |
 | Drag | <img alt="" src={useBaseUrl('img/icon_drag.png')} /> | Hold click to drag component |
-| Required | <img alt="" src={useBaseUrl('img/icon_required.png')} /> | Click to force user response on the component. |
+| Required | <img alt="" src={useBaseUrl('img/icon_required.png')} /> | Click to make the component a required field that the user must fill out. |
 | Writing not permitted | <img alt="" src={useBaseUrl('img/icon_idw.png')} /> | Users cannot answer the question but will still be visible in the survey. |
 | Duplicate | <img alt="" src={useBaseUrl('img/icon_duplicate.png')} /> | Duplicate the component. It will not duplicate the identifier. |
 | Delete | <img alt="" src={useBaseUrl('img/icon_delete.png')} /> | Delete the component |
