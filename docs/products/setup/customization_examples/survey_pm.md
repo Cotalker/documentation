@@ -478,8 +478,8 @@ _Once validated, the work order is closed._
 
 61. After submitting the approval form, the work order passes to the **Closed** state.
 
-:::Note
-In this preventive maintenance plan, a new work order for a maintenance check on the smoke detector will be created in 30 more days, and the process will begin again.
+:::note
+In this preventive maintenance plan, a new work order for a maintenance check on the smoke detector will be created in 30 more days, and the [process](#work-order) will begin again.
 :::
 
 </div>
