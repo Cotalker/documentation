@@ -66,3 +66,7 @@ Contractors automatically send quotes to stakeholders when filling out the quote
 </div>
 </div>
 <br/>
+
+:::info Customizations
+Visit the [Customizations](/docs/products/setup/customization) section to see a use case example on [how to create a checklist for a preventive maintenance plan](/docs/products/setup/customization_examples/survey_pm).
+:::
