@@ -11,6 +11,10 @@ The **Survey** component functions as a sub-survey. It is used to add an existin
 
 Users will see a button on the main survey form to open the sub-survey questions and fill them out. Depending on the settings, users can add the sub-survey questions more than once.
 
+:::caution
+**Until next release**: Survey components should not be placed first on the form template. Always place another component first. Otherwise, survey responses may not be returned.
+:::
+
 
 ## Description {#description}
 
