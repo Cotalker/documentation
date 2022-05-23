@@ -277,7 +277,7 @@ _Configure the new preventive maintenance plan by filling out the form: **Genera
 
 <div className="margin-left--lg">
 
-34. In the **Equipment** field, choose the item on which the maintenance check will be performed. The available options are all the elements found in the _Checklist_ collection. For this example, we chose _Smoke Detector_.
+34. In the **Equipment** field, choose the item on which the maintenance check will be performed. The available options are all the elements found in the _Equipment_ collection. For this example, we chose _Smoke Detector_.
 35. The **Assignee** field indicates the user that will fill out the checklist when it is time to perform the maintenance check.
 36. **Editors** are users who can follow and edit the preventive maintenance plan and work order details.
 37. In the **Checklist** field, a list of available checklists for the chosen _equipment_ is displayed. Here we will see the smoke detector maintenance checklists we associated with the _smoke detector_ element. For this example, we chose _Smoke Detector Monthly Maintenance_.
