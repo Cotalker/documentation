@@ -63,5 +63,5 @@ When a purchase order request arrives at a release level, the corresponding rele
 ---
 
 ## Related Topics {#related}
-- [**Release Form**](/docs/products/workflows/purchase_orders/surveys-release): Survey form used by releasers to approve or reject a purchase order request.
-- [**Workflow Description**](/docs/products/workflows/purchase_orders/workflow): Describes how release levels act within the Purchase Orders Workflow.
+- [**Release Form**](/docs/products/purchase_order_product/surveys-release): Survey form used by releasers to approve or reject a purchase order request.
+- [**Workflow Description**](/docs/products/purchase_order_product/workflow): Describes how release levels act within the Purchase Orders Workflow.

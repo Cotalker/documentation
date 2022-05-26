@@ -33,7 +33,7 @@ Since the form is connected to the company's master data, all relevant options f
 
 <div className="alert alert--secondary">
 
-Mario is the first level releaser. This means that all purchases equal to or above $100 must get his approval. Jennifer's purchase request costs $900, so Mario has to review it before it can go to the next release level.
+Mario is the first-level releaser. This means that all purchases equal to or above $100 must get his approval. Jennifer's purchase request costs $900, so Mario has to review it before it can go to the next release level.
 
 <img alt="release level 1" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/video_purchase_order_01.gif')} />
 <br/>

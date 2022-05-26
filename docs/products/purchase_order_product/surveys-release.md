@@ -17,7 +17,7 @@ The workflow is currently set to carry purchase order requests through up to thr
 A different _releaser_, i.e., person in charge of approving purchase orders, can be assigned to each company's release levels. Every time a purchase order enters a release level, the corresponding releaser is added to the channel.
 
 :::info
-For more information on release strategies and how to configure them, go to the [Release Strategy Configuration](/docs/products/workflows/purchase_orders/release-strategy) section.
+For more information on release strategies and how to configure them, go to the [Release Strategy Configuration](/docs/products/purchase_order_product/release-strategy) section.
 :::
 
 ## Accessing the Form {#access}

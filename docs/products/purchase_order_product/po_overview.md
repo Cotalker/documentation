@@ -47,7 +47,7 @@ _For in-depth product details and examples, view the information below:_
 <div className="row">
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/purchase_orders/overview">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/purchase_order_product/workflow_overview">
 
 <span className="hero__subtitle"><b>📦 Purchase Order Workflow</b></span> 
 
