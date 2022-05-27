@@ -83,6 +83,41 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 | startGroup | Indicates which _group_ appears in the [group panel](/docs/documentation/client/groups#group-panel) at startup | ObjectId<COTGroup\> | If left `null`, a summary of most recent conversations will show up in the [group panel](/docs/documentation/client/groups#group-panel).
 | subdomain | Used to internally reference the company; also used to indicate subdomain name for web client | string | |
 | system | Indicates the user ID of system manager contact | ObjectId<COTUser\> | [User Data Model](/docs/documentation/models/users/model_users) |
+| whitelabel | Allows customizing the visual aspect of the company's Cotalker platform, i.e., platform colors, images, and text. Also activates Google and Azure login functions. | object | |
+| whitelabel.isActive | Activates the settings in the whitelabel object. | boolean | |
+| whitelabel.names | | object | |
+| whitelabel.names.name | | string | |
+| whitelabel.names.shortName | | string | |
+| whitelabel.urls | URL | string | |
+| whitelabel.urls.app | | string | |
+| whitelabel.urls.api | | string | |
+| whitelabel.style | | object | |
+| whitelabel.style.customCss | CSS | string | |
+| whitelabel.auth | | object | |
+| whitelabel.auth.azureAD | | object | |
+| whitelabel.auth.azureAD.isActive | | boolean | |
+| whitelabel.auth.azureAD.clientId | | string | |
+| whitelabel.auth.azureAD.authority | | string | |
+| whitelabel.auth.azureAD.redirectUri | | string | |
+| whitelabel.auth.googleSignIn | | object | |
+| whitelabel.auth.gooogleSignIn.isActive | | boolean | |
+| whitelabel.images | | object | |
+| whitelabel.images.login | | string | |
+| whitelabel.images.email | | string | |
+| whitelabel.images.logotype | | string | |
+| whitelabel.images.isotype | | string | |
+| whitelabel.images.icon512 | | string | |
+| whitelabel.images.icon384 | | string | |
+| whitelabel.images.icon192 | | string | |
+| whitelabel.images.icon152 | | string | |
+| whitelabel.images.icon144 | | string | |
+| whitelabel.images.icon128 | | string | |
+| whitelabel.images.icon96 | | string | |
+| whitelabel.images.icon72 | | string | |
+| whitelabel.translations | | object | |
+| whitelabel.translations.en | | { [key: string]: string } | |
+| whitelabel.translations.es | | { [key: string]: string } | |
+
 
 
 ## Fields Currently on Standby {#standby}
