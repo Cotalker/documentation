@@ -782,6 +782,42 @@ module.exports = {
       ],
     }
   ],
+  workflow_serviceorders: [
+    {
+      type: 'doc',
+      id: 'products/service_orders/so_overview',
+      label: 'Back to Product Overview...'
+    },
+    {
+      type: 'category',
+      label: 'Service Order Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/service_orders/workflow_overview'
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/service_orders/workflow',
+        {
+          type: 'category',
+          label: 'Forms and Documents',
+          link: {
+            type: 'doc',
+            id: 'products/service_orders/surveys',
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/service_orders/survey-create',
+            'products/service_orders/survey-release',
+            'products/service_orders/survey-pdf-original',
+            'products/service_orders/survey-close',
+          ]
+        },
+      ],
+    }
+  ],
   Setup: [
     {
       type: 'category',

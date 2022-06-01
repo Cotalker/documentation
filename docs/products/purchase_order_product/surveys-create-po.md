@@ -39,11 +39,9 @@ _Below is the form's basic or default layout:_
 <img alt="survey form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_purchase_survey_01.png')} />
 <br/>
 
+</div>
+<br/>
 
 :::info Contact us
 Visit the [customization page](/docs/products/setup/customization) or contact a [Cotalker Sales Representative](/docs/support/commercial) for more information on how to customize surveys for your company's needs.
 :::
-
-
-</div>
-<br/>

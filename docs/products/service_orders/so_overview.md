@@ -33,11 +33,11 @@ _For in-depth product details and examples, view the information below:_
 <div className="row">
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/purchase_order_product/workflow_overview">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_orders/workflow_overview">
 
-<span className="hero__subtitle"><b>🛠 Service Order Workflow</b></span> 
+<span className="hero__subtitle"><b>🪛 Service Order Workflow</b></span> 
 
-The **Service Orders** workflow carries out the internal service order process for the service provider. Learn more about the workflow process, its survey forms, and relation to company master data.
+As the sole component of the _Service Orders Product_, the **Service Orders Workflow** carries out the internal service order process for the service provider. Learn more about the workflow, the survey forms that guide you through the process, and the master data behind it all.
 
 </a>
 </div>

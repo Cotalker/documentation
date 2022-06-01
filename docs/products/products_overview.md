@@ -64,6 +64,16 @@ Eliminate paperwork and automate the entire process for requesting, authorizing,
 </a>
 </div>
 
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_orders/so_overview">
+
+<span className="hero__subtitle"><b>🪛 Service Orders:</b></span> 
+
+Service providers can manage their service orders from start to finish.
+
+</a>
+</div>
+
 </div>
 </div>
 <br/>
@@ -117,7 +127,7 @@ It's that simple!
 
 ## Try Demo! {#demo}
 
-**Try out the Maintenance Demo: [www.cotalker.com](https://www.cotalker.com)**
+**Try out our Cotalker Demo: [www.cotalker.com](https://www.cotalker.com)**
 
 <img alt="design" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_cm_00.png')} />
 <br/>
