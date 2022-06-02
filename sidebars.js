@@ -798,6 +798,7 @@ module.exports = {
       collapsed: false,
       collapsible: false,
       items: [
+        'products/service_orders/examples',
         'products/service_orders/workflow',
         {
           type: 'category',
