@@ -53,9 +53,9 @@ This PDF file contains all the necessary information clients and other stakehold
 
 <div className="alert alert--secondary">
 
-Diego, the IT technician, has been added to the workflow. 
+Diego, the IT technician, has been added to the workflow. He's going to check the service order from his mobile device.
 
-<img alt="create service order" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/video_service_order_04.gif')} />
+<img alt="create service order" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/products/video_service_order_mobile_03.gif')} />
 <br/>
 
 Field workers can view the service order, communicate with supervisors, introduce modifications, and close the service order from the channel workspace.
@@ -67,9 +67,9 @@ Field workers can view the service order, communicate with supervisors, introduc
 
 <div className="alert alert--secondary">
 
-Diego diagnosed the problem and realized it was bigger than they thought. He modifies the service order with the new requirements and confirms these are the last changes needed to complete the job.
+Diego diagnosed the problem and realized it was bigger than they thought. He modifies the service order from his mobile device with the new requirements and confirms these are the last changes needed to complete the job.
 
-<img alt="create service order" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/video_service_order_03.gif')} />
+<img alt="create service order" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/products/video_service_order_mobile_04.gif')} />
 <br/>
 
 In this case, Diego closed the service order with the modifications he introduced. But, he could have left the order open and added further changes that would be summed up to the ones he previously made.
@@ -80,9 +80,9 @@ In this case, Diego closed the service order with the modifications he introduce
 
 <div className="alert alert--secondary">
 
-After introducing the modifications, a new service order PDF document is generated. Diego checks the document.
+After introducing the modifications, a new service order PDF document is generated. Diego checks the document from his desktop computer in the office.
 
-<img alt="create service order" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/video_service_order_05.gif')} />
+<img alt="create service order" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/products/video_service_order_05.gif')} />
 <br/>
 
 The new service order does not include the original costs. Diego had to introduce all the services and materials provided. If he had left the service order open, further modifications would have been summed up with all previous changes.
