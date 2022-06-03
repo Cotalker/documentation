@@ -8,6 +8,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__title">Product Overview</span>
 <br/>
 
+<img alt="service orders" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_service_orders_main.png')} />
+
 ## What can the Service Orders product do for you? {#what}
 The **Service Orders** product helps service providers create a simple and traceable process by which they can manage their service orders and communicate with field workers in real time.
 

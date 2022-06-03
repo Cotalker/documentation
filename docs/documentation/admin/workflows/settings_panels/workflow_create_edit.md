@@ -137,7 +137,7 @@ Options are: _unique_ or _generic_.
 <div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
 <div className="col col--4"><em>
 
-**Note**: The added [collections with their respective addtional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
+**Note**: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
 
 </em></div>
 </div>
@@ -291,7 +291,7 @@ If needed, you can associate tasks that belong to different workflows. To do thi
 
 For example, if _Task 1_ from _Workflow A_ is to be associated with _Task 5_ of _Workflow B_, the _element_ set as the **asset** of _Workflow A_ must include the Id of _Task 5_ in its additional fields. This will permit a [routine](/docs/documentation/automation/admin_routine) to communicate with _Task 5_ from _Task 1_, which would be the case if a [Network Request](/docs/documentation/automation/bots/nwrequest-2.0.0) is used to call the **asset** of _Workflow A_ to obtain the Id of its associated task, i.e., _Task 5_, and hence, being able to [automatically send a message](/docs/documentation/automation/bots/pbmessage-2.0.0) to _Task 5_'s channel or performing [any other automated action](/docs/documentation/automation/existing_routines) in the channel.
 
-The same can be done using [subproperties](/docs/documentation/admin/database/admin_elements#add-elements) instead of additional fields with task Id's.
+The same can be done using [child elements (subproperties)](/docs/documentation/admin/database/admin_elements#general-information) instead of additional fields with task Ids.
 
 ### Using Additional Fields in Workflows. {#workflow-additional-fields}
 When using **additional fields** in your workflows, you will find two types of **additional fields**. 

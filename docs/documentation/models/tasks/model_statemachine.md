@@ -59,6 +59,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
+| **allowedExtensions** | An array of collections used as additional fields for the workflow. | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes)[ ] | The additional fields created by these collections are similar to the additional fields created by the collections in the `dynamicPropertyTypes` field. But the later should be preferred. See ["Best Practices"](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#workflow-additional-fields) for more information.
 | **asset** | Indicates the asset the task represents through a property and its property type. | object |
 | **asset.property** | The asset's property (element) ID. | [ObjectId<COTProperty\> ](/docs/documentation/models/databases/model_properties) |
 | **asset.propertyType** | The asset's property type (collection) ID. | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
