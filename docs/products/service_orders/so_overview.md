@@ -19,8 +19,12 @@ The workflow process is initiated when authorized users create and submit servic
 The workflow process also automatically generates the original service order and its modified versions as PDF documents that can be accessed through the channel workspace.
 
 ## How does it work? {#how}
-The workflow process brings stakeholders together on the same channel workspace where they can share and update service orders until the required service is completed. To make the process pass from one step to another, authorized users fill out the corresponding survey forms. Below, we detail the steps:
+The workflow process brings stakeholders together on the same channel workspace where they can share and update service orders until the required service is completed. To make the process pass from one step to another, authorized users fill out the corresponding survey forms.
 
+<img alt="service orders" className="img_sizing" src={useBaseUrl('img/products/product_service_orders_main_01.png')} />
+<br/>
+
+ Below, we detail the steps:
 - An authorized user submits a service order.
 - The service order is reviewed by a supervisor.
 - If the service order is not approved, the workflow is closed.
