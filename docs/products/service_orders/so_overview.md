@@ -25,13 +25,14 @@ The workflow process brings stakeholders together on the same channel workspace 
 <br/>
 
  Below, we detail the steps:
-- An authorized user submits a service order.
-- The service order is reviewed by a supervisor.
-- If the service order is not approved, the workflow is closed.
-- If the service order is approved, the workflow passes on to the next stage. Field workers can also be added at this point to the workflow process. Plus, a PDF document is automatically generated.
-- Once everything specified in the service order is carried out as stipulated, field workers or a coordinator can choose to close the service order.
-- But, if confronted with unexpected issues, field workers can _create a confirmation_, i.e., modify the service order to adjust it to the actual job. For example, suppose more materials or workers were needed to complete the job or an unforeseen service had to be provided. In that case, the service order can be modified with the _Create a confirmation_ form. _Confirmations_ can take place as many times as needed until the job is complete and the service order closed.
-- An option also exists to close the service order in case the job is not carried out.
+1. An authorized user submits a service order.  
+2. The service order is reviewed by a supervisor.  
+    1. If the service order is not approved, the workflow is closed.  
+    2. If the service order is approved, the workflow passes on to the next stage. Plus, a PDF document of the service order is automatically generated. 
+3. Field workers are added at this point to the workflow process. Once on the ground, field workers must indicate their course of action with regard to the service order:
+    1. If everything specified in the service order is carried out as stipulated, field workers or a coordinator can choose to close the service order.  
+    2. But, if confronted with unexpected issues, field workers can _create a confirmation_, i.e., modify the service order to adjust it to the actual job. For example, suppose more materials or workers were needed to complete the job or an unforeseen service had to be provided. In that case, the service order can be modified with the _Create a confirmation_ form. _Confirmations_ can take place as many times as needed until the job is complete and the service order closed.  
+    3. An option also exists to close the service order in case the job is not carried out.  
 
 ## Workflow Details {#workflow}
 _For in-depth product details and examples, view the information below:_

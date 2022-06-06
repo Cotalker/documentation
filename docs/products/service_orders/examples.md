@@ -42,6 +42,7 @@ Once approved, the service order is released. A PDF document is automatically ge
 Ogechi checks the automatically generated service order PDF document.
 
 <img alt="create service order" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/video_service_order_02.gif')} />
+<br/>
 
 This PDF file contains all the necessary information clients and other stakeholders need. The file can be saved and sent manually. The workflow can also be customized to send the file automatically.
 
