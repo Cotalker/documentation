@@ -484,6 +484,7 @@ module.exports = {
         'products/preventive_maintenance/pm_overview',
         'products/work_order_product/wo_overview',
         'products/purchase_order_product/po_overview',
+        'products/service_orders/so_overview'
       ],
       collapsed: false,
       collapsible: false
@@ -752,30 +753,67 @@ module.exports = {
       label: 'Purchase Order Workflow',
       link: {
         type: 'doc',
-        id: 'products/workflows/purchase_orders/overview'
+        id: 'products/purchase_order_product/workflow_overview'
       },
       collapsed: false,
       collapsible: false,
       items: [
-        'products/workflows/purchase_orders/examples',
-        'products/workflows/purchase_orders/workflow',
-        'products/workflows/purchase_orders/release-strategy',
+        'products/purchase_order_product/examples',
+        'products/purchase_order_product/workflow',
+        'products/purchase_order_product/release-strategy',
         {
           type: 'category',
           label: 'Survey Forms',
           link: {
             type: 'doc',
-            id: 'products/workflows/purchase_orders/surveys',
+            id: 'products/purchase_order_product/surveys',
           },
           collapsed: false,
           collapsible: false,
           items: [
-            'products/workflows/purchase_orders/surveys-create-po',
-            'products/workflows/purchase_orders/surveys-release',
-            'products/workflows/purchase_orders/surveys-receipt',
-            'products/workflows/purchase_orders/surveys-billing',
-            'products/workflows/purchase_orders/surveys-close-po',
-            'products/workflows/purchase_orders/surveys_pdf',
+            'products/purchase_order_product/surveys-create-po',
+            'products/purchase_order_product/surveys-release',
+            'products/purchase_order_product/surveys-receipt',
+            'products/purchase_order_product/surveys-billing',
+            'products/purchase_order_product/surveys-close-po',
+            'products/purchase_order_product/surveys_pdf',
+          ]
+        },
+      ],
+    }
+  ],
+  workflow_serviceorders: [
+    {
+      type: 'doc',
+      id: 'products/service_orders/so_overview',
+      label: 'Back to Product Overview...'
+    },
+    {
+      type: 'category',
+      label: 'Service Order Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/service_orders/workflow_overview'
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/service_orders/examples',
+        'products/service_orders/workflow',
+        {
+          type: 'category',
+          label: 'Forms and Documents',
+          link: {
+            type: 'doc',
+            id: 'products/service_orders/surveys',
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/service_orders/survey-create',
+            'products/service_orders/survey-release',
+            'products/service_orders/survey-pdf-original',
+            'products/service_orders/survey-close',
           ]
         },
       ],

@@ -1,6 +1,6 @@
 ---
 id: tutorial_approval_flow
-title: Setup a Approval Flow
+title: Setup an Approval Flow
 author: Valentina Martinez
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Time to complete: 120 minutes.
 
 ## Company Requests {#company-requests}
-Ruanda want to implement another project: the Approval flow for a product requested by a client. The actual problem is that they need a easy way to handle the requests, because for the moment all is by paper and it could be much easier and quick. This solution will agilize the approval papers of the company, reducing time.<br/><br/>
+Ruanda wants to implement another project: the Approval flow for a product requested by a client. The actual problem is that they need a easy way to handle the requests, because for the moment all is by paper and it could be much easier and quick. This solution will agilize the approval papers of the company, reducing time.<br/><br/>
 The company explains the following flow:
 1. An executive raises a product request from a client. They upload the information to their database and, in return, give a score to the customer.
 2. The request goes up to the chief executive. If it is below a certain amount, you can approve it directly, otherwise it must be evaluated by the risk department.

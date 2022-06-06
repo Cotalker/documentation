@@ -1,5 +1,5 @@
 ---
-title: Setup
+title: Product Setup
 displayed_sidebar: products
 ---
 
