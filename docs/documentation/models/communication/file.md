@@ -45,7 +45,7 @@ _Sample of an uploaded file._
 
 | Field | Description | Type | Notes |
 | --- | --- | --- | --- |
-| **company** | The ID of the company the file is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | |
+| **company** | The ObjectId of the company where the file is stored. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | |
 | **contentType** | Indicates the category the file belongs to. | string | Options are: _image_, _video_, _document_ | DEPRECATED |
 | **context** | Holds information about the file's contexts, i.e., the related data models. | object | The object fields vary depending on the file.
 | **createdAt** | Date and time the file was uploaded. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
@@ -54,9 +54,10 @@ _Sample of an uploaded file._
 | **fileName** | Indicates the file's name and extension. | string | |
 | **key** | Indicates the relative path of the file. | string | The _key_ is needed to get the signed file URL. |
 | **mimeType** | Indicates the file's type and format, e.g., `image/jpeg`, `video/mp4`, `application/pdf`. | string | [Click here](/docs/documentation/models/communication/model_messageContent) for more details about content types. |
-| **modifiedAt** | Last time the file was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **modifiedAt** | The last time the file was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **public** | Enables the file to be viewed or shared outside channels. | boolean | Must be set to true for images used for [branding](/docs/documentation/admin/special_configurations/branding). |
 | **size** | Indicates the original byte size of the file. | number | |
-| **status** | Indicates the files current status in the server. | string | Possible answers: _pending_, _processing_, _uploaded_, _deleted_, _error_ |
+| **status** | Indicates the file's current status on the server. | string | Possible answers: _pending_, _processing_, _uploaded_, _deleted_, _error_ |
 | **totalSize** | Indicates the file's byte size after compression. | number |
 | **user** | User that sent the file. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | DEPRECATED |
 | **url** | The file's URL with signature included. | string | Not present in the response given when a file is just uploaded.
@@ -67,7 +68,6 @@ _Sample of an uploaded file._
 | Field | Description | Type | Notes |
 | --- | --- | --- | --- |
 | **debug** | | object | DEPRECATED |
-| **public** | | boolean | DEPRECATED |
 
 ## Additional Resources {#additional-resources}
 - ["File Sharing" REST API documentation](/docs/documentation/api/communication/files): basic API requests for uploading and viewing files

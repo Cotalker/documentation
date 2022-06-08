@@ -94,7 +94,7 @@ Parameter | Description | Type | Required | Notes
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Body {#patch-company-body}
-_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTJobTitle data model](/docs/documentation/models/users/model_jobtitles)._
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTCompany data model](/docs/documentation/models/model_company)._
 
 #### Request Sample {#patch-company-request}
 ```bash
