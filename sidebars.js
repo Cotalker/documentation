@@ -221,6 +221,7 @@ module.exports = {
       label: 'Special Configurations',
       items: [
         'documentation/admin/special_configurations/azure_config',
+        'documentation/admin/special_configurations/branding',
       ],
       collapsed: true,
     },

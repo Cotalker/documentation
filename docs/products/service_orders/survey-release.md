@@ -40,7 +40,7 @@ _The release form appears as shown below:_
 
 <div className="alert alert--secondary">
 
-<img alt="release form" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_serviceorder_survey_04.png')} />
+<img alt="release form" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/products/product_serviceorder_survey_04.png')} />
 <br/>
 
 Answering **Yes** takes the workflow to the next stage. If the service is not released, the workflow is closed, and the job is not performed.

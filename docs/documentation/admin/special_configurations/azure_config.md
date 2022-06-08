@@ -140,14 +140,32 @@ Do NOT select any of the _implicit_ or _hybrid flow_ checkboxes.
 
 <div className="alert alert--secondary">
 
-15. Finally, Cotalker requires two values from the previously created app. These values are found under the **Overview** option in the previously created app view (Azure Active Directory > App registrations > Cotalker): 
+15. Finally, Cotalker requires two values from the app just created. These values are found under the **Overview** option in the previously created app view (Azure Active Directory > App registrations > Cotalker): 
     1. **Application (client) ID**
     2. **Directory (tenant) ID**
 
-    Once you have these values, please send them to your Cotalker Sales Representative or [Support Team](/docs/support/commercial).
-
 <img alt="overview" className="img_sizing item shadow--tl" src={useBaseUrl('img/azure_config_09.png')} />
 <br/>
+
+Once you have these values, update your Cotalker platform's configuration through an [API PATCH request to the _companies_ endpoint](/docs/documentation/api/company#patch-company). The request must contain the following body filled out with the corresponding values: 
+
+```json
+{
+    "branding": {
+        "auth": {
+            "azureAD": {
+                "isActive": true,
+                "clientId": "", //APPLICATION (CLIENT) ID
+                "authority": "", // DIRECTORY (TENANT) ID
+                "redirectUri": "" // OBTAIN REDIRECT URI FROM COTALKER STAFF.
+            }
+        }
+    }
+}
+```
+
+For more details about the request body, go to the [COTCompany](/docs/documentation/models/model_company) data model section.
+
 
 </div>
 <br/>
