@@ -103,26 +103,42 @@ _Send a request body with a `branding` object, as shown in the example below:_
 ### CSS Settings {#css}
 Copy and paste your CSS code in the `branding.style.customCss` field. The code must be sent in string format, i.e., contained within quotation marks.
 
+:::tip
+You can obtain _selectors_, i.e., the CSS tags associated with the elements you want to modify, with Chrome Developer Tools or a Chrome extension like [CSS Peeper](https://chrome.google.com/webstore/detail/css-peeper/mbnbehikldjhnfehhnaidhjhoofhpehk). 
+:::
+
 #### Code Samples {#css-samples}
 
-_The CSS code displayed here corresponds to the example shown in the [Overview](#overview) section:_
+_The CSS code displayed here corresponds to the example shown in the [Overview](#platform-example) section:_
 
-```css
-:root { --white-label-primary-color: #FCFEFF; --secondary-color: rgba(var(--white-label-secondary-color), 0.12); --secondary-color-focus: #028AFB; --general-menu-text-color: 150, 150, 150; --profile-background-color: #E7EAED; --profile-name-color:  black; --profile-email-color:  black; --menu-buttons-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); --menu-buttons-text-color: #969696; --menu-buttons-text-color-selected: white; --search-bar-background-color: #028AFB;} cotalker-task-list {background-color: white;} cotalker-task-item cotalker-tag .tag-container {background-color: #E2E6EA !important;} cotalker-task-item cotalker-tag span {color: rgba(17,51,85,.56) !important;} cotalker-group-menu .logged-user-status-display {color: green !important;} cotalker-group-menu .cot-icon-font {opacity: 1 !important;} cotalker-group-menu.expanded .cot-icon {filter: contrast(1) brightness(1) opacity(1) !important;} cotalker-group-menu .cot-icon {opacity: 1 !important; filter: contrast(0) brightness(1) opacity(0.85) !important;}
+```json
+{
+    "branding": {
+        "style": {
+            "customCss": {
+                ":root { --white-label-primary-color: #FCFEFF; --secondary-color: rgba(var(--white-label-secondary-color), 0.12); --secondary-color-focus: #028AFB; --general-menu-text-color: 150, 150, 150; --profile-background-color: #E7EAED; --profile-name-color:  black; --profile-email-color:  black; --menu-buttons-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25); --menu-buttons-text-color: #969696; --menu-buttons-text-color-selected: white; --search-bar-background-color: #028AFB;} cotalker-task-list {background-color: white;} cotalker-task-item cotalker-tag .tag-container {background-color: #E2E6EA !important;} cotalker-task-item cotalker-tag span {color: rgba(17,51,85,.56) !important;} cotalker-group-menu .logged-user-status-display {color: green !important;} cotalker-group-menu .cot-icon-font {opacity: 1 !important;} cotalker-group-menu.expanded .cot-icon {filter: contrast(1) brightness(1) opacity(1) !important;} cotalker-group-menu .cot-icon {opacity: 1 !important; filter: contrast(0) brightness(1) opacity(0.85) !important;}"
+            }
+        }
+    }
+}
 ```
 
 _This CSS code corresponds to the example displayed below:_
 
-```css
-:root {--white-label-primary-color: #4D4F53;} cotalker-root {background-color: #E5E5E5;} .login-container {background-color: #8BBB00;} .group-menu-overlay {background-color: rgba(77, 79, 83, 0.24);} .whitelabel-powered-by-cotalker {background-color: rgba(255, 255, 255, 0.12);} .account-widget a {background-color: rgba(77, 79, 83, 0.97);} .account-widget.selected a, .account-widget a:active, .account-widget a:focus {background-color: rgba(255, 255, 255, 0.12);} .side-menu li a.selected, .side-menu li a.group-item:active, .side-menu li a.group-item:focus {background-color: rgba(255, 255, 255, 0.12);} .expanded .account-widget a:hover {background-color: rgba(255, 255, 255, 0.12);} .expanded .account-widget.selected a, .expanded .account-widget a:active, .expanded .account-widget a:focus {background-color: rgba(255, 255, 255, 0.12);} .expanded .side-menu li a:hover {background-color: rgba(255, 255, 255, 0.12);} .expanded .side-menu li a.selected, .expanded .side-menu li a.group-item:active, .expanded .side-menu li a.group-item:focus {background-color: rgba(255, 255, 255, 0.12);}
+```json
+{
+    "branding": {
+        "style": {
+            "customCss": {
+                ":root {--white-label-primary-color: #4D4F53;} cotalker-root {background-color: #E5E5E5;} .login-container {background-color: #8BBB00;} .group-menu-overlay {background-color: rgba(77, 79, 83, 0.24);} .whitelabel-powered-by-cotalker {background-color: rgba(255, 255, 255, 0.12);} .account-widget a {background-color: rgba(77, 79, 83, 0.97);} .account-widget.selected a, .account-widget a:active, .account-widget a:focus {background-color: rgba(255, 255, 255, 0.12);} .side-menu li a.selected, .side-menu li a.group-item:active, .side-menu li a.group-item:focus {background-color: rgba(255, 255, 255, 0.12);} .expanded .account-widget a:hover {background-color: rgba(255, 255, 255, 0.12);} .expanded .account-widget.selected a, .expanded .account-widget a:active, .expanded .account-widget a:focus {background-color: rgba(255, 255, 255, 0.12);} .expanded .side-menu li a:hover {background-color: rgba(255, 255, 255, 0.12);} .expanded .side-menu li a.selected, .expanded .side-menu li a.group-item:active, .expanded .side-menu li a.group-item:focus {background-color: rgba(255, 255, 255, 0.12);}"
+            }
+        }
+    }
+}
 ```
 
 <img alt="branding css" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_branding_02.png')} />
 <br/>
-
-:::tip
-You can obtain _selectors_, i.e., the CSS tags associated with the elements you want to modify, with Chrome Developer Tools or a Chrome extension like [CSS Peeper](https://chrome.google.com/webstore/detail/css-peeper/mbnbehikldjhnfehhnaidhjhoofhpehk). 
-:::
 
 ### Obtaining Image ObjectId {#images}
 To change images and icons, you must:
@@ -139,12 +155,14 @@ To change images and icons, you must:
 _Example:_
 ```json
 {
-"images": {
+    "branding": {
+        "images": {
             "logotype": "628b9648dd6676581d5fd491",
             "isotype": "629e6e6af9a744da09a43f73",
             "icon512": "629e6e73697a860893d8fd2a",
             "login": "629e6e7b8ee85377e2b73da7"
         }
+    }
 }
 ```
 
@@ -176,7 +194,8 @@ _Translated text sections:_
 _The code used for the example above modifies the English version:_
 ```json
 {
-"translations": {
+    "branding": {
+        "translations": {
             "en": {
                 "admin.main_title": "Адміністративна панель",
                 "subjects.state_machine_groups_other": "Групи робочого процесу",
@@ -186,6 +205,7 @@ _The code used for the example above modifies the English version:_
                 "descriptors.admin_menu_section": "Розділи"
             }
         }
+    }
 }
 ```
 
@@ -193,28 +213,30 @@ _The code used for the example above modifies the English version:_
 Through the `branding.auth` object, you can also enable user login with your company's Google and Microsoft accounts.
 
 :::tip
-- Go to the [COTCompany](/docs/documentation/models/model_company) data model section for details on how to set up authentification with your company's Microsoft or Google accounts.
+- Go to the [COTCompany](/docs/documentation/models/model_company) data model section for `branding.auth` field descriptions.
 - Visit the [Microsoft Azure AD Sign-in Configuration](/docs/documentation/admin/special_configurations/azure_config) section for a step-by-step tutorial.
 - Ask your Cotalker sales representative or support team for more information.
 :::
 
 :::note
-This feature's availability depends on your company's Cotalker plan. Speak with your Cotalker sales representative for more information.
+This feature's availability may depend on your company's Cotalker plan. Speak with your Cotalker sales representative for more information.
 :::
 
 #### Code Sample {#auth-code}
 
 ```json
 {
-    "auth": {
-        "azureAD": {
-            "isActive": false,
-            "clientId": "",
-            "authority": "",
-            "redirectUri": ""
-        },
-        "googleSignIn": {
-            "isActive": true
+    "branding": {
+        "auth": {
+            "azureAD": {
+                "isActive": false,
+                "clientId": "",
+                "authority": "",
+                "redirectUri": ""
+            },
+            "googleSignIn": {
+                "isActive": true
+            }
         }
     }
 }

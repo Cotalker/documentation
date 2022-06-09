@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description
 
-The _Companies_ Data Model (COTCompany) is the underlying configuration for the platform. Most data models are associated with it. It contains basic company information, such as name, tax identification number, and country. It also establishes platform display settings such as language, icon display, initial groups, and much more.
+The _Companies_ Data Model (COTCompany) is the underlying configuration for the platform. Most data models are associated with it. It contains basic company information, such as its name, tax identification number, and country. It also establishes platform display settings such as language, icon display, colors, authentification, and other branding options.
 
 ## JSON Sample {#json-sample}
 
