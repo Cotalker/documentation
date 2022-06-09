@@ -11,6 +11,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 You can customize certain aspects of Cotalker's UI to your organization's needs by updating the _companies_ endpoint. Specifically, you can override the default CSS settings, allowing you to modify the platform's colors and buttons. You can also change UI text, login screen images, and the company icon. Furthermore, your company's Microsoft or Google accounts can be set as authentication methods for sign-in.
 
+:::warning
+Cotalker continuously makes updates to the app platform and cannot guarantee that CSS code, text identifier keys, images, and other modifiable elements will not change. It is each company's responsibility to maintain and update their branding settings.
+:::
+
 #### Custom Login Screen Example {#login}
 _Here's an example of a customized startup screen with a new logo and side image. Furthermore, Google Sign-in was enabled in this customization, and the browser tab was set to display the company´s name._
 
@@ -170,7 +174,7 @@ login | This is the image displayed on the righthand panel of the login screen.
 
 
 ### Text Translation {#keys}
-Currently, there are two language sets for the Cotalker UI: English (en) and Spanish (es). The language is chosen automatically depending on the language you have your browser set on. For example, if your browser is set to Spanish, then Cotalker will automatically set itself to Spanish. But, if you use any other language, it will be set to English.
+Currently, there are three language sets for the Cotalker UI: English (en), Spanish (es), and Portuguese (pt). The language is chosen automatically depending on the language you have your browser set on. For example, if your browser is set to Spanish, then Cotalker will automatically set itself to Spanish. If you use any language other than Spanish or Portuguese, it will be set to English.
 
 In case your company wishes to translate Cotalker's UI to another languger or perhaps even modify default UI texts into something more appropiate for your company's identity or culture, you can introduce the required modifications into the `branding.translations` object.
 
