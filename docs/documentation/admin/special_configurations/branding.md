@@ -140,16 +140,11 @@ _This CSS code corresponds to the example displayed below:_
 <img alt="branding css" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_branding_02.png')} />
 <br/>
 
-### Obtaining Image ObjectId {#images}
+### Images {#images}
 To change images and icons, you must:
-1. First, upload the images and obtain their ObjectId.
-2. Ensure that the images' `public` field is set to `true`. 
+1. First, upload the images. Use the [_Upload a File_](/docs/documentation/api/communication/files#post-new) request to upload your image files. In the request body, set the _uploadInput_ key to `{ "public": true }`.
+2. Use the request's _response_ to get the image's ObjectId. The _response_ follows the [COTFile](/docs/documentation/models/communication/file) data model.
 3. Use the ObjectIds as values in the corresponding `branding.images` fields. 
-
-:::tip
-- Use the [_Upload a File_](/docs/documentation/api/communication/files#post-new) request to upload your image files. In the request body, set the _uploadInput_ key to `{ "public": true }`.
-- Use the request's _response_ to get the image's ObjectId. The _response_ follows the [COTFile](/docs/documentation/models/communication/file) data model.
-:::
 
 #### Code Sample: {#images-example}
 _Example:_
@@ -174,7 +169,7 @@ icon512 | This is the company icon and is displayed while the platform is loadin
 login | This is the image displayed on the righthand panel of the login screen.
 
 
-### Obtaining Text Identifier Keys {#keys}
+### Text Translation {#keys}
 Currently, there are two language sets for the Cotalker UI: English (en) and Spanish (es). The language is chosen automatically depending on the language you have your browser set on. For example, if your browser is set to Spanish, then Cotalker will automatically set itself to Spanish. But, if you use any other language, it will be set to English.
 
 In case your company wishes to translate Cotalker's UI to another languger or perhaps even modify default UI texts into something more appropiate for your company's identity or culture, you can introduce the required modifications into the `branding.translations` object.
