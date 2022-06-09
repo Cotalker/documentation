@@ -11,7 +11,6 @@ import Highlight from '@theme/Highlight';
 
 _Users_ are the basic unit of the Cotalker platform. They can log into their company's Cotalker environment and perform various actions. According to their [access roles](/docs/documentation/admin/admin_accessrole), they can view company data, create tasks following a workflow process, send messages to other users, submit information through surveys, interact with bots, initiate automated processes, and much more.
 
-
 _Users_ can represent real people (team members, clients, associates, supervisors, platform administrators, etc.) or even non-people, such as robots. For example, a _user_ may be the company's Chief Operating Officer or a _bot_ who reminds you of pending tasks. 
 
 _Users_ can also view and perform changes in the **Administrative Panel**, depending on the _permissions_ included in their _access roles_.
@@ -52,7 +51,7 @@ _Table and Options:_
 <br/>
 
 ## Create User {#create-user}
-Create a new _user_ by pressing the <span className="badge badge--primary">+</span> icon in the upper right corner of the **Users Panel**. The [**User Settings Panel**](#user-settings-panel) will open up.
+Create a new _user_ by pressing the <span className="badge badge--secondary">+</span> icon in the upper right corner of the **Users Panel**. The [**User Settings Panel**](#user-settings-panel) will open up.
 
 <img alt="create user" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_03.png')} />
 <br/>
@@ -126,7 +125,7 @@ _Configuration:_
 <div className="col col--5">The user's job title or responsibility within the company.</div>
 <div className="col col--4"><em>
 
-[Job titles](/docs/documentation/admin/admin_jobtitles) can be used to create pools of users, as well as granting them special attributes.
+[Job titles](/docs/documentation/admin/admin_jobtitles) can be used to create pools of users, as well as granting them special attributes (additional fields), access roles, and elements.
 
 </em></div>
 </div>
@@ -147,17 +146,21 @@ _Configuration:_
 <div className="col col--3"><strong>Access roles</strong>:</div>
 <div className="col col--3">
 
-The [access roles](/docs/documentation/admin/admin_accessrole) assigned to the user.  
+The [access roles](/docs/documentation/admin/admin_accessrole) assigned to the user.
 
 <br/>
 
-For security reasons, it is **EXTREMELY IMPORTANT** to assign _access roles_ with full knowledge of what their _permissions_ allow _users_ to do.
+User _access roles_ imported by their [job title](/docs/documentation/admin/admin_jobtitles#access-roles) appear in gray.
+
+<br/>
+
+For security reasons, it is **EXTREMELY IMPORTANT** to assign _access roles_ with full knowledge of what their [_permissions_](/docs/documentation/admin/admin_accessrole#default-permissions) allow _users_ to do.
 
 </div>
 <div className="col col--6">
 
 ⚠️ – _Keep access roles with the __admin-accesscontrol-write__ and __admin-*-write__ permissions limited to key users because they can assign access roles to all other users. Furthermore, they can access and change every configuration in the entire company._  
-⚠️ – _Beware of changing or removing assigned user access roles or elements. This could affect workflow or automation behavior, but adding new ones will generally not have any side effects._
+⚠️ – _Beware of changing or removing assigned user access roles. This could affect workflow or automation behavior, but adding new ones will generally not have any side effects._
 
 </div>
 </div>
@@ -259,24 +262,38 @@ Appears when the **+ Add Additional Attribute** button is pressed.
 
 <div className="row table-row-1">
 <div className="col col--3"><strong>+ Add Element</strong>:</div>
-<div className="col col--5">Opens the settings box to choose a collection and its elements.</div>
-<div className="col col--4"><em>Useful when setting up a routine or survey associated with a particular element.</em></div>
+<div className="col col--5">
+
+Opens the settings box to choose a [database collection and its elements](/docs/documentation/admin/database/admin_database_overview).
+
+</div>
+<div className="col col--4"><em>An element can be used to grant users permission to certain routines or surveys associated with the particular element.</em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><strong>Collection</strong>:</div>
-<div className="col col--5">Indicates a collection from where to choose elements to be associated with the user.</div>
+<div className="col col--5">
+
+Indicates a collection from where to choose elements to be associated with the user.  
+Collections imported from the user's [job title](/docs/documentation/admin/admin_jobtitles#elements) appear in gray.
+
+</div>
 <div className="col col--4"><em>
 
-Appears when the **+ Add Element** button is pressed.
+Press the the **+ Add Element** button if elements from another collection are needed.
 
 </em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><strong>Elements</strong>:</div>
-<div className="col col--5">Indicates the elements in the collection chosen to be associated with the user.</div>
+<div className="col col--5">
+
+Indicates the elements from the collection chosen to be associated with the user.  
+Elements imported from the user's [job title](/docs/documentation/admin/admin_jobtitles#elements) appear in gray.
+
+</div>
 <div className="col col--4"><em>
 
-Appears when the **+ Add Element** button is pressed.
+Press the **+ Add Element** button if elements from another collection are needed.
 
 </em></div>
 </div>
@@ -394,7 +411,8 @@ _An additional field's name, input type, and order of apperance is customizable 
 <div className="row table-row-2">
 <div className="col col--12">
 
-Go to the [**Additional Fields**](#additional-fields) section for setup information and more details.
+Go to the [**Additional Fields**](#additional-fields) section for setup information and more details on setting up _additional fields_ for a particular user.  
+For information on adding _additional fields_ through a user's _job title_, go to the [**Attributes section of the Job Titles page**](/docs/documentation/admin/admin_jobtitles#attributes).
 
 </div>
 </div>

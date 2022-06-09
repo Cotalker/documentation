@@ -17,9 +17,9 @@ _Collections_ can be thought of as database tables and can determine the table c
 _Elements_ can represent almost anything and are flexible enough to store all types of information.
 They can be used to establish a relationship or define something. That's why you can use _elements_ sometimes as a resource and others as an asset.
 
-For example, you can associate an _element_ with a [_user_](/docs/documentation/admin/users). In this case, you could send a message to all the _users_ who have the "Team A" _element_ associated to them. 
+For example, you can associate an _element_ with a [_user_](/docs/documentation/admin/users). In this case, you could send a message to all the _users_ with the "Team A" _element_ or grant them special permissions. 
 
-You can also use [_additional fields_](/docs/documentation/admin/database/admin_collections#additional-fields) to add more information to your _elements_. The fields are created through a _collection_ and applied to all its _elements_. Then each _element_ can assign a value to its additional fields.
+You can also use [_additional fields_](/docs/documentation/admin/database/admin_collections#additional-fields) to add more information to your _elements_. The fields are created through a _collection_ and applied to all its _elements_. Values can later be added to each _element's_ additional fields.
 
 Furthermore, [_workflows_ use _elements_ to define their states](/docs/documentation/admin/workflows/settings_panels/create_edit_state#how-to-create-a-state). For example, let's say a _workflow_ has to have a "backlog", "doing", "done", and "unable to complete" _state_. You must first create a _collection_ containing _elements_ that represent the before-mentioned _states_ and then associate the _collection_ with the _workflow_.
 
