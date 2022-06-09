@@ -1,6 +1,6 @@
 ---
 title: Job Titles Update
-description: 
+description: Up to now, job titles sort users into pools and provide users with additional fields used for gathering extra information. But with the latest update, job titles can now also share access roles and elements with all associated users. This update will allow admins to configure permissions to fill out survey forms or participate in tasks according to users' job titles, thus making security measures easier to implement within a company.
 image: img/updates/update_jobtitles-accessroles-elements.png
 draft: false
 ---
@@ -27,7 +27,7 @@ Simplfy access control with job titles.
 </div>
 <div className="card__body">
 
-Up to now, job titles sort users into pools and provide users with additional fields used for gathering extra information. But with the latest update, job titles can now also share access roles and elements with all associated users. This update will allow admins to configure permissions to fill out survey forms or participate in tasks according to users' job titles, thus making security measures easier to implement within a company.
+Up to now, job titles sort users into pools and provide users with _additional fields_ used for gathering extra information. But with the latest update, _job titles_ can now also share _access roles_ and _elements_ with all associated _users_. This update will allow admins to configure permissions to fill out _survey forms_ or participate in _tasks_ according to users' _job titles_, thus making security measures easier to implement within a company.
 
 </div>
 <div className="card__footer text-center align-padding-center">
