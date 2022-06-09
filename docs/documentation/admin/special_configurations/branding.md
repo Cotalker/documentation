@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-You can customize certain aspects of Cotalker's UI to your organization's needs by updating the _companies_ endpoint. Specifically, you override the default CSS settings, meaning that you can modify the platform's colors and buttons. You can also change UI text, login screen images, and the company icon. Furthermore, your company's Microsoft or Google accounts can be set as authentication methods for sign-in.
+You can customize certain aspects of Cotalker's UI to your organization's needs by updating the _companies_ endpoint. Specifically, you can override the default CSS settings, allowing you to modify the platform's colors and buttons. You can also change UI text, login screen images, and the company icon. Furthermore, your company's Microsoft or Google accounts can be set as authentication methods for sign-in.
 
 #### Custom Login Screen Example {#login}
 _Here's an example of a customized startup screen with a new logo and side image. Furthermore, Google Sign-in was enabled in this customization, and the browser tab was set to display the company´s name._
