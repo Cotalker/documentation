@@ -12,7 +12,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 You can customize certain aspects of Cotalker's UI to your organization's needs by updating the _companies_ endpoint. Specifically, you can override the default CSS settings, allowing you to modify the platform's colors and buttons. You can also change UI text, login screen images, and the company icon. Furthermore, your company's Microsoft or Google accounts can be set as authentication methods for sign-in.
 
 :::warning
-Cotalker continuously makes updates to the app platform and cannot guarantee that CSS code, text identifier keys, images, and other modifiable elements will not change. It is each company's responsibility to maintain and update their branding settings.
+Cotalker continuously makes updates to the app platform and cannot guarantee that CSS class selectors, text identifier keys, images, and other modifiable elements will not change. It is each company's responsibility to maintain and update their branding settings.
 :::
 
 #### Custom Login Screen Example {#login}
