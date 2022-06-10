@@ -106,17 +106,29 @@ _Other options for legacy use only._
 Options are: _unique_ or _generic_.
 
 </div>
-<div className="col col--4"><em>Use the "generic" type for tasks that need to be repeated. Use "unique" for one-time tasks.</em></div>
+<div className="col col--4"><em>Use the "generic" type for tasks that are on-going or cyclical, e.g., a preventive maintenance task. Use the "unique" type for tasks that should be closed once completed.</em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Collection:</b></div>
-<div className="col col--5">A collection, along with one of its elements, must be selected. They will define the tasks that flow through the workflow.</div>
-<div className="col col--4"><em>The collection requires at least one element. Both collection and element must have been previously created.</em></div>
+<div className="col col--5">
+
+Choose the collection that will act as the asset. This collection is used to define the tasks on the workflow. The collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) are shared with each task, giving tasks the necessary slots to store relevant data.
+
+</div>
+<div className="col col--4"><em>
+
+If the _unique_ type is chosen, task references are stored in the collection.
+
+</em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Element:</b></div>
-<div className="col col--5">An element from the chosen collection must be selected. This element is used to define the task that flows through the workflow.</div>
-<div className="col col--4"><em>This field appears once the collection is chosen.</em></div>
+<div className="col col--5">
+
+If the _generic_ type is selected, you must choose an element from the collection. This element is used to define the task that flows through the workflow.
+
+</div>
+<div className="col col--4"><em></em></div>
 </div>
 </div>
 <br/>
