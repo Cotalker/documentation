@@ -49,8 +49,8 @@ _Main settings and actions:_
 _Settings:_
 - [**A. Additional information**](#additional-information): Space used to give a brief description of the task.
 - [**B. General information**](#general-information): Basic task settings.
-- [**C. Additional fields (status)**](#additional-fields-status): Collections assigned as additional fields of the task are displayed here. These additional fields, known as _statuses_, are optional and vary in every workflow. 
-- [**D. Additional fields (extensions)**](#additional-field-extensions): Collections assigned as additional fields of the task are displayed here. These additional fields, known as _extensions_ are optional and vary in every workflow.
+- [**C. Additional fields**](#additional-fields-status): A collection's additional fields that are added to a workflow's tasks. These additional fields, also known as _statuses_, are optional and can vary in every workflow. 
+- [**D. Extra tabs with additional fields**](#additional-fields-extensions): Extra tabs with additional fields based on preselected collections. These additional fields, also known as _extensions_ are optional and can vary in every workflow.
 - [**E. Notes**](#notes): Displays the list of task notes. Permits viewing and creating notes.
 - [**F. Images, Videos, Files**](#attachments): Displays thumbnails of files shared within the task workspace.
 
@@ -177,9 +177,13 @@ _Example:_
 <img alt="elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_05.png')} />
 <br/>
 
-Additional fields are optional and vary according to your organization's needs. They are set up in the [Create/Edit Workflow](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) settings panel. Up to five additional fields can be added to the **General information** section.
+These _additional fields_ that are added to tasks' general information correspond to the [additional fields of the preselected collections](/docs/documentation/admin/database/admin_collections#additional-fields).
 
-These additonal fields are known as `status{1,5}` in the [task data model](/docs/documentation/models/tasks/model_tasks).
+The _collections_ that determine the _additional fields_ are selected in the [Create/Edit Workflow](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) settings panel. Up to five _collections_ can be used to add _additional fields_ to the **General information** section.
+
+The collections that provide the _additional fields_ are found in the `status{1,5}` fields of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_tasks).
+
+_Additional fields_ are optional and vary according to your organization's needs.
 
 </div>
 <br/>
@@ -187,18 +191,23 @@ These additonal fields are known as `status{1,5}` in the [task data model](/docs
 <div className="alert alert--secondary">
 
 ### D. Additional Fields (extensions) {#additional-fields-extensions}
-_Additional fields added to task details._
+_Extra tabs with additional fields are added to task details._
 
 _Example:_
 
 <img alt="general info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_06.png')} />
 <br/>
 
-Additional fields are optional and vary according to your organization's needs. They are set up in the [Create/Edit Workflow](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) settings panel. Multiple collections can be set as additional fields. 
+Extra tabs with [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) vary depending on the selected collection.
 
-These additonal fields are known as `extensions` in the [task data model](/docs/documentation/models/tasks/model_tasks).
+The collection's name is used as the title of the extra tab, and its additional fields are included within the tab.
+In the [Create/Edit Workflow](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) settings panel you can choose which collections are used to create extra tabs and additional fields. Up to fifty collections can be selected.
 
-[Click here](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#workflow-additional-fields) to learn more about the difference between `extensions` and `status{1,5}`.
+Extra tabs with additional fields are optional and vary according to your organization's needs.
+
+The selected collections are found in the `allowdExtensions` field in the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine).
+
+[Click here](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#workflow-additional-fields) to learn more about the difference between the two types of additional fields.
 
 </div>
 <br/>
