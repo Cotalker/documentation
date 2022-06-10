@@ -176,12 +176,24 @@ Contains the [access roles](/docs/documentation/admin/admin_accessrole) that are
 <div className="container box">
 <div className="row table-row-1">
 <div className="col col--3"><b>+ Add Element</b></div>
-<div className="col col--5">Opens the dialog boxes for adding [database elements with their respective collections](/docs/documentation/admin/database/admin_database_overview).</div>
-<div className="col col--4"><em>Elements can be used for sorting and granting [users](/docs/documentation/admin/users#elements) certain permissions.</em></div>
+<div className="col col--5">
+
+Opens the dialog boxes for adding [database elements with their respective collections](/docs/documentation/admin/database/admin_database_overview).
+
+</div>
+<div className="col col--4"><em>
+
+Elements can be used for sorting and granting [users](/docs/documentation/admin/users#elements) certain permissions.
+
+</em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Collection</b></div>
-<div className="col col--5">A collection which holds the elements that are shared among [users](/docs/documentation/admin/users#elements) with the job title.</div>
+<div className="col col--5">
+
+A collection which holds the elements that are shared among [users](/docs/documentation/admin/users#elements) with the job title.
+
+</div>
 <div className="col col--4"><em>
 
 If another collection is needed, press the **+ Add Element** button.
