@@ -133,8 +133,14 @@ Options are: _unique_ or _generic_.
 
 <div className="container box">
 <div className="row table-row-1">
-<div className="col col--3"><b>Additional field Nº:</b></div>
-<div className="col col--5">Adds a collection that is used to filter, group, or sort the tasks in the task view.</div>
+<div className="col col--3"><b>Additional field (Nº 1-5):</b></div>
+<div className="col col--5">
+
+Adds a collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) to tasks belonging to the workflow. The additional fields are used to filter, group, or sort the tasks in the task view. 
+
+These collections correspond to the five _status_ fields belonging to the `dynamicPropertyTypes` object of the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
+
+</div>
 <div className="col col--4"><em>
 
 **Note**: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
@@ -143,10 +149,20 @@ Options are: _unique_ or _generic_.
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Additional fields:</b></div>
-<div className="col col--5">Adds multiple collections that are used to filter, group, or sort the tasks in the task view.</div>
+<div className="col col--5">
+
+Collections are added to be used as [_additional tabs_ on task details](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels#additional-fields-extensions). The [collections' additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) are included on the added tab. Up to fifty collections can be selected.
+
+The additional fields are used to filter, group, or sort the tasks in the task view. 
+
+These collections correspond to the `allowedExtensions` field in the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
+
+
+</div>
 <div className="col col--4"><em>
 
-**Note**: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. The collections added here are not stored the same as the first five additional fields. [See "best practices" below for more information](#workflow-additional-fields).
+**Note**: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. 
+The collections added here are not the same as the additional field options shown above. [See "best practices" below for more information on the differences between these two types of additional fields](#workflow-additional-fields).
 
 </em></div>
 </div>
