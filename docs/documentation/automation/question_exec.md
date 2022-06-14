@@ -108,6 +108,11 @@ _Question Code Automation_ **MUST** comply with at least two requirements:
 
 2. The function **MUST** return array with [_command objects_](#command-objects).  
   
+  :::note Command Notes
+  **A.** The function may return more than one command.  
+  **B.** [Below](#command-objects) are descriptions and samples of the available command objects.
+  :::
+
   _Structure example:_
   ```javascript
   return [
@@ -118,11 +123,9 @@ _Question Code Automation_ **MUST** comply with at least two requirements:
       target: <cmd-target> //Used with SET-RESPONSES commands.
     }
   ];
-  ```  
-  :::note Command Notes
-  **A.** The function may return more than one command.  
-  **B.** [Below](#command-objects) are descriptions and samples of the available command objects.
-  :::
+  ```
+
+  <br/>
 
 :::tip Best Practices
 - Use console logs or print statements within your code to show on the browser console what your function is doing and debug if necessary.
