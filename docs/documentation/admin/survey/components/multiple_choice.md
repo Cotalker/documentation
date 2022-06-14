@@ -204,7 +204,7 @@ _Example of how a user will see the list of items in a survey:_
 From the settings panel, press the <span className="badge badge--primary">+ Add Item</span> button to create a new option and set the following fields:
 
 - **Display**: Text that will be shown to the user.
-- **Value**: The item's identification code.
+- **Value**: The value assigned to the item. The value will be sent internally in the [`answers.data.process`](/docs/documentation/models/surveys/model_answer_data) field.
 
 _The settings panel should look something like this:_
 

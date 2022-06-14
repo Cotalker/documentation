@@ -1,30 +1,32 @@
 ---
 id: question_exec
-title: Question Exec
-sidebar_label: Question Exec
+title: Question Code Automations
+sidebar_label: Question Code Automations
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
 <span className="hero__subtitle">
 
-_Customize Survey Questions with JavaScript Code_
+_Program logic, retrieve data, and add automations on Survey Questions with JavaScript Code_
 
 </span>
 
 ## Overview {#overview}
-Surveys are among Cotalker's main features. Their flexibility and customization ability allow them to adapt to each business's needs.
-
-This spec expands the notion of survey functionality by introducing _QuestionExec_, custom code execution for your survey questions.
+_Question Code Automations_ permit adding Javascript code to a survey question. These automations can be set using customized code logic to add validation processes, retrieve external data, automatically fill out survey questions, and much more.
 
 :::info
-- Custom code must be written in **JavaScript**.
-- Code runs on the client side, within a _sandbox_.
+- Custom code must be written in **JavaScript** using an asynchronous function.
+- The code runs on the client side, within a _sandbox_.
+- On the backend, _Question Code Automations_ are found in [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) objects. (Sometimes _Question Code Automations_ are referred to as _Question Exec_)
 :::
 
 ## Setup {#setup}
-
-To add your custom code, choose any survey component and select the **Automation** tab. **The code is added in the field at the bottom of the settings panel.**
+To add your custom code:
+1. Select the [**Automation** tab](/docs/documentation/admin/survey/survey_overview#automation) within the [survey component](/docs/documentation/admin/survey/survey_overview#form-template)
+2. Choose a [_lifecycle stage_](#component-lifecycle-stages).
+3. Choose the appropriate [_parameters_](#parameters).
+4. Put your[Question Code function](#function) on the editor box at the bottom of the settings panel.
 
 _See the image below:_
 
@@ -32,58 +34,49 @@ _See the image below:_
 <br/>
 <br/>
 
-You can add custom code in any one of the four _stages_ of a _survey component's lifecycle_. Select the **stage** either with the dropdown menu or by clicking the corresponding icon. 
+## Component Lifecycle Stages {#component-lifecycle-stages}
+You can add custom code in any of the four _stages_ of a _survey component's lifecycle_. Select the **stage** either with the dropdown menu or by clicking the corresponding icon. 
 
 _See the image below:_
 
-<img alt="automation tab" className="img_sizing_narrow item shadow--md" src={useBaseUrl('img/automation_question_exec_01.png')} />
+<img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01.png')} />
 <br/>
 
-## Component Lifecycle Stages {#component-lifecycle-stages}
 - **Preload**: The code executes when the survey is created.
 - **onDisplay**: Code executes when a survey is in editing mode, i.e., when a user opens the survey from the channel, and it is displayed for answering. 
 - **Validate**: Code executes before internal validations and before sending the survey. This permits adding additional levels of validation (business guidelines, protocols, etc.). 
 - **Postsave**: If custom and internal validations are passed, the code executes after the survey is sent.
 
-## Coding Guide {#coding-guide}
+:::caution
+- Lifecycles can be complex, especially when dealing with aysnchronous functions. Avoid using repetitions.
+:::
 
-### QuestionExec Function
+:::tip Best Practices
+- Use survey field answers to validate other fields.
+- Use validations for complex rules involving string manipulation or mathematical operations.
+- When possible, try using [routines](/docs/documentation/automation/admin_routine) instead of executing code on the _postsave_ stage.
+:::
 
-1. The QuestionExec function **MUST** be written as a function named `run`, without any arguments e.g., 
+## Stage Funciton / Coding Guide {#coding-guide}
+In the Stage Function section you can write or paste your [Question Code function](#function) into the editor box and set the necessary [parameters](#parameters) for it to work.
 
-  ```javascript
-  function run () { /* yourCode; */ return []; }
-  ```
+<img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01a.png')} />
+<br/>
 
-2. The function **MUST** return a _command_ array with the following structure:
-  
-  ```javascript
-  return [
-    { 
-      cmd: <cmd-name>, 
-      value: <cmd-value>, 
-      result: <cmd-result> 
-    }
-  ];
-  ```
-The function may return more than one command.
-  
-### Command Array Elements {#command-array-elements}
 
-| _cmd-name_ | _cmd-value_ | _cmd-result_ | Description |
-| ----- | ----- | ----- | ----- |
-| **SET_READONLY** | "true", "false" | | Sets the field to read-only mode.|
-| **SET_RESPONSES** | [value] | | Replaces the value stored in the field. |
-| **SET_REQUIRED** | "true", "false" | | Sets the field as mandatory, requiring an answer. |
-| **RESULT** | Custom error message | "true", "false" | Validates responses with a "true" or "false" _result_ |
+### Parameters (Context Variables) {#parameters}
+_Parameters_ or _context variables_ enable communication with different endpoints.
 
-### Parameters (Context Variables) {#parameters-context-variables}
+<img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01b.png')} />
+<br/>
+
 _The following context variables are available for use in the code but must be selected from the Parameters menu for them to be accessible:_
 
 - **property#channel**: Properties associated with a channel.
 - **property#user**: Properties associated with a user.
 - **channel#self**: Channel where the survey is located.
 - **user#me**: User that is answering the survey.
+- **user#company**: The company the user belongs to.
 - **responses#self**: Survey field answer stored as value.
 - **message#self**: Message associated with the survey.
 
@@ -98,32 +91,174 @@ const channelDisplay = context['channel#self'].nameDisplay;  // display name
 :::
 
 
+### Question Code Function {#function}
+Write or paste your code into the editor.
+
+<img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01c.png')} />
+<br/>
+
+_Question Code Automation_ **MUST** comply with at least two requirements:
+
+1. The Question Code Automation **SHOULD** be written as an asynchronous function named `run`, without any arguments.  
+
+  _Structure example:_  
+  ```javascript
+  async function run () { /* yourCode; */ return []; }
+  ```
+
+2. The function **MUST** return array with [_command objects_](#command-objects).  
+  
+  :::note Command Notes
+  **A.** The function may return more than one command.  
+  **B.** [Below](#command-objects) are descriptions and samples of the available command objects.
+  :::
+
+  _Structure example:_
+  ```javascript
+  return [
+    { 
+      cmd: <cmd-name>, 
+      value: <cmd-value>, 
+      result: <cmd-result> //Used with RESULT commands.
+      target: <cmd-target> //Used with SET-RESPONSES commands.
+    }
+  ];
+  ```
+
+  <br/>
+
+:::tip Best Practices
+- Use console logs or print statements within your code to show on the browser console what your function is doing and debug if necessary.
+- Wrap your code logic in try-catch statements.
+- Code defensively, expect null values in your logic, try to handle null cases when reading an answer from another question.
+:::
+
+### Command Objects {#command-objects}
+Command objects are used to provide the system with instructions and data for continuing the process. 
+
+#### READONLY {#readonly-cmd}
+
+<div className="margin margin-left--lg">
+
+**Description**: Sets the field to read-only mode.  
+**Example**: `{cmd: 'SET_READONLY', value: 'true' }`
+
+Field | Values 
+--- | --- 
+**cmd**  | SET_READONLY
+**value** | 'true' \| 'false'
+
+</div>
+
+#### RESPONSES {#responses-cmd}
+
+:::tip Best Practices
+Let survey field answers automatically determine other answers. The _target_ option in the SET_RESPONSES command can help you with this.
+:::
+
+<div className="margin margin-left--lg">
+
+**Description**: _Places a value on the indicated field._  
+**Example**: `{ cmd: 'SET_RESPONSES', target: 'rating_00', value: '5' }`
+
+Field | Values 
+--- | --- 
+**cmd**  | SET_RESPONSES
+**target** | 'self' \| '[Identifier of the survey question](/docs/documentation/admin/survey/survey_overview#field-descriptions) where the value will be placed.'
+**value** | _The value to be placed in the target field. <br/>The value's type or format must correspond to the [content type](/docs/documentation/models/surveys/model_questionContentType)._
+
+</div>
+
+#### REQUIRED {#required-cmd}
+
+<div className="margin margin-left--lg">
+
+**Description**: Sets the field as mandatory, requiring an answer.  
+**Example**: `{ cmd: 'SET_REQUIRED', value: 'true' }`
+
+Field | Values
+--- | ---
+**cmd** | SET_REQUIRED | 
+**value** | 'true' \| 'false'
+
+</div>
+
+#### RESULT {#result-cmd}
+
+<div className="margin margin-left--lg">
+
+**Description**: Validates responses with a "true" or "false" _result_.  
+**Example**: `{ cmd: RESULT, result: 'false', value: 'Please try again.' }`  
+
+Field | Values
+--- | ---
+**cmd** | RESULT
+**result** | 'true' \| 'false'
+**value** | _custom error message_
+
+</div>
+
+### Network Requests {#network-requests}
+The Question Code Automation can make network requests, i.e., API requests that can be customized with user survey input and then filtered and processed to be used to fill out the survey or any other process that can be automated with the code.
+
+:::caution
+- Use network requests with caution and only for retrieving precise data.
+- Avoid including passwords or API tokens directly in your code.
+:::
+
+To make a network request you must include in your code the following function: `networkRequest(url, { headers, method, body }, options)`.  
+If an authentification token is needed to make an API request, add `{token: true}` option to use the current user's token.
+
+_Code structure example:_
+
+```javascript
+const example = await networkRequest(`url`, {
+            method: 'GET' | 'POST' | 'PATCH',
+            header: {...},
+            body: {...} // Used with POST & PATCH
+        },
+        {
+            token: true // Adds user's API token to the header
+        });
+    return [];  //Must return a command object.
+}
+```
+
+[See Example 3 for more details](#example-network-request).
+
 ## Examples {#examples}
 
 ### Example 1: Preload User and Channel {#example-1}
-_Displays the user name and current channel in the survey field. Set on Preload stage._
+_Displays the current channel and user name on read-only survey field, as shown below:_
+
+<img alt="preload user and channel" className="img_sizing item shadow--lt" src={useBaseUrl('img/automation_question_exec_02a.png')} />
+<br/>
+
+_Settings:_
+
+- Set _lifecycle_ on **Preload** stage.  
+- Set _parameters_ to **user#me** and **channel#self**.
+
+_Code sample_:
 
 ```javascript
-function run(){
-  const commands = [];
-  const user = context['user#me'];
-  const channel = context['channel#self'];
-  const channelName = channel.nameDisplay;
-  const userName = user.name.names + ' ' + user.name.lastName;
-  
-  commands.push(
-    { 
-      cmd: 'SET_RESPONSES', 
-      value: channelName + ' / ' + userName 
-    }
-  );
-  commands.push(
-    { 
-      cmd: 'SET_READONLY',
-      value: 'true' 
-    }
-  );
-  return commands;
+function run() {
+    const commands = [];
+    const user = context['user#me'];
+    const channel = context['channel#self'];
+    const channelName = channel.nameDisplay;
+    const userName = user.name.names + ' ' + user.name.lastName;
+
+    commands.push({
+        cmd: 'SET_RESPONSES',
+        target: 'self',
+        value: channelName + ' / ' + userName
+    });
+    commands.push({
+        cmd: 'SET_READONLY',
+        value: 'true'
+    });
+    return commands;
 }
 ```
 _Your settings panel should look something like this:_
@@ -133,72 +268,147 @@ _Your settings panel should look something like this:_
 
 
 ### Example 2: Validate Value {#example-2}
-_Validates if a value is between 0 and 100. Set on Validate stage._
+_Validates if a value is between 0 and 100. An error message appears and the form cannot be submitted. See image below:_ 
+
+<img alt="validate value" className="img_sizing item shadow--lt" src={useBaseUrl('img/automation_question_exec_03a.png')} />
+<br/>
+
+_Settings:_
+- Set _lifecylce_ on **Validate** stage.
+- Set _parameters_ on **responses#self**.
+
+_Code:_
 
 ```javascript
-function run(){
-  const val = context['responses#self'][0];
+function run() {
+    const val = context['responses#self'][0];
 
-  if (!val) 
-    return [
-      { 
-        cmd: 'RESULT', 
-        result: false, 
-        value: 'Please enter a number.' 
-      }
-    ];
-  
-  if (val < 0) 
-    return [
-      { 
-        cmd: 'RESULT', 
-        result: false, 
-        value: 'Value is lower than the   minimum allowed (0).' 
-      }
-    ];
-  
-  if (val > 100) 
-    return [
-      { 
-        cmd: 'RESULT', 
-        result: false, 
-        value: 'Value is greater than   maximum allowed (100).' 
-      }
-    ];
-  
-  else 
-    return [
-      { 
-        cmd: 'RESULT', 
-        result: true 
-      }
+    if (!val)
+        return [{
+            cmd: 'RESULT',
+            result: false,
+            value: 'Please enter a number.'
+        }];
+
+    if (val < 0)
+        return [{
+            cmd: 'RESULT',
+            result: false,
+            value: 'Value is lower than the minimum allowed (0).'
+        }];
+
+    if (val > 100)
+        return [{
+            cmd: 'RESULT',
+            result: false,
+            value: 'Value is greater than the maximum allowed (100).'
+        }];
+
+    else
+        return [{
+            cmd: 'RESULT',
+            result: true
+        }];
+}
+```
+
+<br/>
+
+### Example 3: Make a network request. {#example-network-request}
+_This example makes an API request to retreive all elements belonging to a particular collection and use the data to fill out the form._
+
+:::info Example Explanation
+- In the example, an array of all the _elements_ belonging to the `client` _collection_ was retrieved by the network request. The code is hotwired to use the forth element in the array and extract from it the client's contact name and email and use them to fill out the form.
+- With a little bit of coding, you can add customized logic to the survey to automate data retrival and usage.
+:::
+
+_Settings:_
+- Set lifecycle on **Preload** stage.
+- No parameters required.
+
+_Code:_
+```javascript
+async function run() {
+    const test = await networkRequest(
+        `https://www.cotalker.com/api/v2/properties?propertyTypes=client`, {
+            method: 'GET',
+            header: {
+                "admin": "true"
+            },
+        }, {
+            token: true
+        });
+    const printTest = test.data.properties[3];
+    console.log(test);
+    return [{
+            cmd: "SET_RESPONSES",
+            target: "self",
+            value: printTest.schemaInstance.contact_name
+        },
+        {
+            cmd: "SET_RESPONSES",
+            target: "comments",
+            value: printTest.schemaInstance.email
+        },
     ];
 }
 ```
 
-_Your settings panel should look something like this:_
+_The code above retrived this [element (COTProperty)](/docs/documentation/api/databases/properties):_
 
-<img alt="validate value" className="img_sizing_narrow item shadow--lt" src={useBaseUrl('img/automation_question_exec_03.png')} />
+```json {14-15}
+{
+    "data": {
+        "_id": "62a8f377f2fb5bf8612fc356",
+        "subproperty": [],
+        "isActive": true,
+        "name": {
+            "display": "ACME",
+            "code": "ein_99-787654"
+        },
+        "propertyType": "client",
+        "schemaInstance": {
+            "address_1": "130 32nd St.",
+            "tax_id": "153225974",
+            "email": "sales@acme.com",
+            "contact_name": "Rebbecca Rogers",
+            "address_2": "-",
+            "city": "Union City",
+            "state": "NJ",
+            "zip": "07087",
+            "phone": "2018653676"
+        },
+        "company": "62a8f3225c32dfdb26a90b77",
+        "createdAt": "2022-06-06T11:57:48.474Z",
+        "modifiedAt": "2022-06-14T18:54:46.230Z"
+    }
+}
+```
+
+_With this data, the returned commands set responses for two survey fields:_
+
+<img alt="preload user and channel" className="img_sizing_narrow item shadow--lt" src={useBaseUrl('img/automation_question_exec_03b.png')} />
 <br/>
 
+
+<!--  EXAMPLE NOT WORKING
 ### Example 3: Validate Email Address {#validate-email-address}
 _Validates if response has "@". Set on Validate stage._
 
 ```javascript
 function run() {
-  const email = context['responses#self'][0] ; // gets the value from the input
-  
-  if (!email.match(/@/)) 
-    return [
-      { 
-        cmd: 'RESULT', 
-        result: false, 
-        value: 'The input must have an @' 
-      }
-    ];
+    const email = context['responses#self'][0]; // gets the value from the input
 
-  return [{ cmd: 'RESULT', result: true }];
+    if (!email.match(/@/))
+        return [{
+            cmd: 'RESULT',
+            result: false,
+            value: 'The input must have an @'
+        }];
+
+    return [{
+        cmd: 'RESULT',
+        result: true
+    }];
 }
-```
-
--------
+``` -->
