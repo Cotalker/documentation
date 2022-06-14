@@ -11,6 +11,10 @@ import Mermaid from '@theme/Mermaid';
 
 Surveys are made up of _questions_ and each _question_ is represented by a [form component](/docs/documentation/admin/survey/survey_overview#form-components). In a question's data model ([COTQuestions](/docs/documentation/models/surveys/model_questions)), the [form component](/docs/documentation/admin/survey/survey_overview#form-components) type is indicated by the _Question Content Type_.
 
+:::note
+The **COTQuestionContentType** is also used on survey answers within the [COTAnswerData](/docs/documentation/models/surveys/model_answer_data) model.
+:::
+
 <Mermaid chart={`
 	graph LR;
         S[COTSurvey] --> C1[COTSurveyChat #1]
@@ -28,14 +32,23 @@ Surveys are made up of _questions_ and each _question_ is represented by a [form
         Q3 --> QC5[COTQuestionContentType]
 `}/>
 
+
+
 ## Content Types {#content-types}
+
+:::info
+On each _content type_ card displayed below, a **content type code**, **data type**, and **description** are indicated. 
+- **Content Type Code**: Corresponds to the system code used to indicate the question content type.
+- **Answer Data Type**: Indicates the input type and format the question field handles. For example, the [Text Number](#textnumber) content type used for _rating_ components processes _number_ values. Submitted answers are found in the [`answers.data.process`](/docs/documentation/models/surveys/model_answer_data) field.
+- **Description**: Indicates the related survey component and other uses.
+:::
 
 <div className="alert alert--secondary">
 
 ### Text {#text}
-`application/vnd.cotalker.survey+text`
-
-Used for [Text components](/docs/documentation/admin/survey/components/text_component) and [COTQuestions](/docs/documentation/models/surveys/model_questions) that represent the field labels displayed in the survey form.
+**Content Type Code**: `application/vnd.cotalker.survey+text`  
+**Description**: Used for [text components](/docs/documentation/admin/survey/components/text_component) and [COTQuestions](/docs/documentation/models/surveys/model_questions) that represent the field labels displayed in the survey form.  
+**Answer Data Type**: Any characters. Example: `Hello world!`  
 
 </div>
 <br/>
@@ -43,11 +56,11 @@ Used for [Text components](/docs/documentation/admin/survey/components/text_comp
 <div className="alert alert--secondary">
 
 ### Text Input {#text-input}
-`application/vnd.cotalker.survey+textinput`
+**Content Type Code**: `application/vnd.cotalker.survey+textinput`  
+**Description**: Indicates a [written answer component](/docs/documentation/admin/survey/components/written_answer).  
+**Answer Data Type**: Any characters. Example: `Hello world!`  
 
-Indicates a [Written Answer](/docs/documentation/admin/survey/components/written_answer) component.
-
-_**QR or NFC inputs** can be used with the **text input** content type. In those cases, the following fields are used in the COTQuestion model:_
+- _**QR or NFC inputs** can be used with the **text input** content type. In those cases, the following fields are used in the COTQuestion model:_
 
 <div className="margin-left--lg">
 
@@ -63,6 +76,7 @@ Field | Description | Type | Required | Notes
 **identifier** | Unique identification name | string | Required | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
 
 #### JSON Sample
+_Text Input with QR and NFC inputs:_
 ```json
 {
     "code": [
@@ -81,9 +95,9 @@ Field | Description | Type | Required | Notes
 <div className="alert alert--secondary">
 
 ### Text Number {#textnumber}
-`application/vnd.cotalker.survey+textnumber`
-
-Indicates a [Rating](/docs/documentation/admin/survey/components/rating) component used for evaluating with a five-star system.
+**Content Type Code**: `application/vnd.cotalker.survey+textnumber`  
+**Description**: Used on [rating components](/docs/documentation/admin/survey/components/rating) for evaluating with a five-star system.  
+**Answer Data Type**: Number. Example: `5`  
 
 </div>
 <br/>
@@ -91,9 +105,9 @@ Indicates a [Rating](/docs/documentation/admin/survey/components/rating) compone
 <div className="alert alert--secondary">
 
 ### Date Time {#datetime}
-`application/vnd.cotalker.survey+datetime`
-
-Indicates the [Date and time](/docs/documentation/admin/survey/components/date_and_time) component used to choose a date and time from a pop-up calendar and clock.
+**Content Type Code**: `application/vnd.cotalker.survey+datetime`  
+**Description**: Indicates the [date and time component](/docs/documentation/admin/survey/components/date_and_time) used to choose a date and time from a pop-up calendar and clock.  
+**Answer Data Type**: Number in Unix Epoch time format. Example: `1654895560`  
 
 </div>
 <br/>
@@ -101,9 +115,11 @@ Indicates the [Date and time](/docs/documentation/admin/survey/components/date_a
 <div className="alert alert--secondary">
 
 ### List Question {#listquestion}
-`application/vnd.cotalker.survey+listquestion`
+**Content Type Code**: `application/vnd.cotalker.survey+listquestion`  
+**Description**: Indicates the [multiple choice component item list type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) used to choose items from a list made during survey setup.  
+**Answer Data Type**: Array of "values" of the selected options, i.e., the _value_ assigned to the _item_. See the [list of items type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) for further details. Example: `["value1", "value2"]` 
 
-Indicates the [Item List](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) type of the Multiple Choice component to choose items from a list made during survey setup.
+
 
 </div>
 <br/>
@@ -111,9 +127,9 @@ Indicates the [Item List](/docs/documentation/admin/survey/components/multiple_c
 <div className="alert alert--secondary">
 
 ### Property {#property}
-`application/vnd.cotalker.survey+property`
-
-Indicates the [Collection](/docs/documentation/admin/survey/components/multiple_choice#collection-type) type of the Multiple Choice component to choose among the elements of a collection.
+**Content Type Code**: `application/vnd.cotalker.survey+property`  
+**Description**: Corresponds to a [multiple choice component collection type](/docs/documentation/admin/survey/components/multiple_choice#collection-type) used to provide the elements of the indicated collection as options.  
+**Answer Data Type**: [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) array. Example: `["6185cfe1ef46d0aee4c2b653", "6185cfe8b420610501b280d8"]`
 
 </div>
 <br/>
@@ -121,9 +137,9 @@ Indicates the [Collection](/docs/documentation/admin/survey/components/multiple_
 <div className="alert alert--secondary">
 
 ### Person {#person}
-`application/vnd.cotalker.survey+person`
-
-Indicates the [Users](/docs/documentation/admin/survey/components/multiple_choice#users-type) type of the Multiple Choice component to choose among _users_.
+**Content Type Code**: `application/vnd.cotalker.survey+person`  
+**Description**: Indicates the [multiple choice component users type](/docs/documentation/admin/survey/components/multiple_choice#users-type) to choose among _users_.  
+**Answer Data Type**: [ObjectId<COTUsers\>](/docs/documentation/models/users/model_users) array. Example: `["611a7d2f174df70491261623", "611a7d54f13f3d03e631f990"]`  
 
 </div>
 <br/>
@@ -131,9 +147,9 @@ Indicates the [Users](/docs/documentation/admin/survey/components/multiple_choic
 <div className="alert alert--secondary">
 
 ### API {#api}
-`application/vnd.cotalker.survey+api`
-
-Indicates the [API](/docs/documentation/admin/survey/components/multiple_choice#api-type) type of the Multiple Choice component that permits gathering data through API request.
+**Content Type Code**: `application/vnd.cotalker.survey+api`  
+**Description**: Indicates the [ multiple choice component API type](/docs/documentation/admin/survey/components/multiple_choice#api-type) that permits gathering data through API request.  
+**Answer Data Type**: Varies.  
 
 </div>
 <br/>
@@ -141,9 +157,9 @@ Indicates the [API](/docs/documentation/admin/survey/components/multiple_choice#
 <div className="alert alert--secondary">
 
 ### GPS {#gps}
-`application/vnd.cotalker.survey+gps`
-
-Displays a [Location](/docs/documentation/admin/survey/components/location) button component on a survey that returns GPS coordinates displayed on an embedded Google Map.
+**Content Type Code**: `application/vnd.cotalker.survey+gps`  
+**Description**: Refers to the [location component](/docs/documentation/admin/survey/components/location) that returns GPS coordinates displayed on an embedded Google Map.  
+**Answer Data Type**: Latitud and longitude array. Example: `["-33.0419355", "-71.4323595"]`  
 
 _When this content type is used, the following fields are used in COTQuestion model:_
 
@@ -179,9 +195,9 @@ _When this content type is used, the following fields are used in COTQuestion mo
 <div className="alert alert--secondary">
 
 ### Image {#image}
-`application/vnd.cotalker.survey+image`
-
-Refers to the [Camera](/docs/documentation/admin/survey/components/camera) component to get photos from a device's camera or gallery.
+**Content Type Code**: `application/vnd.cotalker.survey+image`  
+**Description**: Refers to the [camera component](/docs/documentation/admin/survey/components/camera) to get photos from a device's camera or gallery.  
+**Answer Data Type**: URL of file uploaded to Cotalker server.  
 
 </div>
 <br/>
@@ -189,9 +205,9 @@ Refers to the [Camera](/docs/documentation/admin/survey/components/camera) compo
 <div className="alert alert--secondary">
 
 ### Signature {#signature}
-`application/vnd.cotalker.survey+signature`
-
-Indicates a [Signature](/docs/documentation/admin/survey/components/signature) component to capture a hand or mouse written drawing.
+**Content Type Code**: `application/vnd.cotalker.survey+signature`  
+**Description**: Indicates a [signature component](/docs/documentation/admin/survey/components/signature) to capture a hand or mouse written drawing.  
+**Answer Data Type**: Captured signature image code.  
 
 </div>
 <br/>
@@ -199,29 +215,29 @@ Indicates a [Signature](/docs/documentation/admin/survey/components/signature) c
 <div className="alert alert--secondary">
 
 ### File {#file}
-`application/vnd.cotalker.survey+file`
-
-Used to indicate the [Attachment](/docs/documentation/admin/survey/components/attachment) component when sharing files or notes.
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-### Survey
-`application/vnd.cotalker.survey+survey`
-
-The [survey](/docs/documentation/admin/survey/components/survey) component is used when embedding a survey into the survey.
+**Content Type Code**: `application/vnd.cotalker.survey+file`  
+**Description**: Used to indicate the [attachment component](/docs/documentation/admin/survey/components/attachment) when sharing files or notes.  
+**Answer Data Type**: URL of uploaded file or note. 
 
 </div>
 <br/>
 
 <div className="alert alert--secondary">
+
+### Survey {#survey}
+**Content Type Code**: `application/vnd.cotalker.survey+survey`  
+**Description**: The [survey component](/docs/documentation/admin/survey/components/survey) is used when embedding a survey into the survey.  
+**Answer Data Type**: Object which includes [`answer.uuid`](/docs/documentation/models/surveys/model_answers), [`survey._id`](/docs/documentation/models/surveys/model_surveys), and [`survey.code`](/docs/documentation/models/surveys/model_surveys). The data within the object must be in string format. Example: `"{\"uuids\":[\"62a4730d71d581cb11c5197c\"],\"survey\":\"62a473166e323e750390b2de\",\"code\":\"location_list_00\"}"`  
+
+</div>
+<br/>
+
+<!-- <div className="alert alert--secondary">
 
 ### Calendar
-`application/vnd.cotalker.survey+calendar`
-
-_Not yet implemented._
+**Content Type Code**: `application/vnd.cotalker.survey+calendar`  
+**Description**: _Not yet implemented._  
+**Answer Data Type**: N/A  
 
 </div>
-<br/>
+<br/> -->

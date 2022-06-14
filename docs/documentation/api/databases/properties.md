@@ -45,8 +45,8 @@ Parameter | Description | Type | Required | Notes
 **sortBy** | Sorts _properties_ in the response according to the last time they were modified. | string | Optional | Option: `modifiedAt`.
 **ids** | Returns _properties_ with the IDs indicated in the array. | [ObjectId<COTProperty\>[ ]](/docs/documentation/models/databases/model_properties) | Optional |
 **parent** | Returns _properties_ that have the properties indicated in the array as their parents. | [ObjectId<COTProperties\>[ ]](/docs/documentation/models/databases/model_properties) | Optional |
-**propertyTypes** | Returns all the _properties_ that belong to the indicated property type. The property type is identified by its `code`. | string[ ] | Optional | `code` is found in the [COTPropery](/docs/documentation/models/databases/model_properties) data model.
-**codes** | Returns _properties_ that have the `code` fields indicated in the array. | string[ ] | Optional | `code` is found in the [COTPropery](/docs/documentation/models/databases/model_properties) data model.
+**propertyTypes** | Returns all the _properties_ that belong to the indicated property type. The property type is identified by its `code`. | string[ ] | Optional | `code` is found in the [COTProperyType](/docs/documentation/models/databases/model_propertytypes) data model.
+**codes** | Returns _properties_ that have the `name.code` fields indicated in the array. | string[ ] | Optional | `name.code` is found in the [COTPropery](/docs/documentation/models/databases/model_properties) data model.
 **isActive** | Returns _properties_ according to their `isActive` status. | string | Optional | Options are: `all`, `true`, `false`
 **owner** | Gets properties that are associated to a _user_ or _task_ as an additional field. The query is done through the `owner` field in the [COTProperty](/docs/documentation/models/databases/model_properties) data model. | object | Optional | Sample:<br/>'GET /properties?owner[$ref]=users<br/>&owner[$id]=61a77fc936d18897da3e8fa5'
 **modified** | Returns _properties_ with the indicated modification date in the `modifiedAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ

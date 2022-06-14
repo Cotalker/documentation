@@ -275,7 +275,7 @@ From the **General** tab, configure basic _component_ settings. Each component w
 <div className="col col--5">The unique id of the component.</div>
 <div className="col col--4"><em>
 
-It will be needed if working with APIs, dashboards, routines, or [conditional display](#conditional-display).
+It will be needed if working with APIs, dashboards, routines, [conditional display](#conditional-display), or [automations](#automation).
 
 </em></div>
 </div>
