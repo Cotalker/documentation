@@ -26,7 +26,7 @@ To add your custom code:
 1. Select the [**Automation** tab](/docs/documentation/admin/survey/survey_overview#automation) within the [survey component](/docs/documentation/admin/survey/survey_overview#form-template)
 2. Choose a [_lifecycle stage_](#component-lifecycle-stages).
 3. Choose the appropriate [_parameters_](#parameters).
-4. Put your[Question Code function](#function) on the editor box at the bottom of the settings panel.
+4. Put your [Question Code function](#function) on the editor box at the bottom of the settings panel.
 
 _See the image below:_
 
@@ -131,6 +131,7 @@ _Question Code Automation_ **MUST** comply with at least two requirements:
 - Use console logs or print statements within your code to show on the browser console what your function is doing and debug if necessary.
 - Wrap your code logic in try-catch statements.
 - Code defensively, expect null values in your logic, try to handle null cases when reading an answer from another question.
+- Let survey field answers automatically determine other answers. The _target_ option in the [SET_RESPONSES](#responses-cmd) command can help you with this.
 :::
 
 ### Command Objects {#command-objects}
@@ -151,10 +152,6 @@ Field | Values
 </div>
 
 #### RESPONSES {#responses-cmd}
-
-:::tip Best Practices
-Let survey field answers automatically determine other answers. The _target_ option in the SET_RESPONSES command can help you with this.
-:::
 
 <div className="margin margin-left--lg">
 
@@ -347,7 +344,7 @@ async function run() {
         },
         {
             cmd: "SET_RESPONSES",
-            target: "comments",
+            target: "contact_email",
             value: printTest.schemaInstance.email
         },
     ];
