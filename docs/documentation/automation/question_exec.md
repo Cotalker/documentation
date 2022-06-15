@@ -17,7 +17,7 @@ _Question Code Automations_ permit adding Javascript code to a survey question. 
 
 :::info
 - Custom code must be written in **JavaScript** using an asynchronous function.
-- The code runs on the client side, within a _sandbox_.
+- The code runs on the client-side within a _sandbox_.
 - On the backend, _Question Code Automations_ are found in [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) objects. (Sometimes _Question Code Automations_ are referred to as _Question Exec_)
 :::
 
@@ -48,7 +48,7 @@ _See the image below:_
 - **Postsave**: If custom and internal validations are passed, the code executes after the survey is sent.
 
 :::caution
-- Lifecycles can be complex, especially when dealing with aysnchronous functions. Avoid using repetitions.
+- Lifecycles can be complex, especially when dealing with asynchronous functions. Avoid using repetitions.
 :::
 
 :::tip Best Practices
@@ -58,7 +58,7 @@ _See the image below:_
 :::
 
 ## Stage Funciton / Coding Guide {#coding-guide}
-In the Stage Function section you can write or paste your [Question Code function](#function) into the editor box and set the necessary [parameters](#parameters) for it to work.
+In the Stage Function section, you can write or paste your [Question Code function](#function) into the editor box and set the necessary [parameters](#parameters) for it to work.
 
 <img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01a.png')} />
 <br/>
@@ -106,7 +106,7 @@ _Question Code Automation_ **MUST** comply with at least two requirements:
   async function run () { /* yourCode; */ return []; }
   ```
 
-2. The function **MUST** return array with [_command objects_](#command-objects).  
+2. The function **MUST** return an array with _command_ objects_](#command-objects).  
   
   :::note Command Notes
   **A.** The function may return more than one command.  
@@ -130,12 +130,12 @@ _Question Code Automation_ **MUST** comply with at least two requirements:
 :::tip Best Practices
 - Use console logs or print statements within your code to show on the browser console what your function is doing and debug if necessary.
 - Wrap your code logic in try-catch statements.
-- Code defensively, expect null values in your logic, try to handle null cases when reading an answer from another question.
+- Code defensively, expect null values in your logic, and try to handle null cases when reading an answer from another question.
 - Let survey field answers automatically determine other answers. The _target_ option in the [SET_RESPONSES](#responses-cmd) command can help you with this.
 :::
 
 ### Command Objects {#command-objects}
-Command objects are used to provide the system with instructions and data for continuing the process. 
+Command objects provide the system with instructions and data for continuing the process. 
 
 #### READONLY {#readonly-cmd}
 
@@ -312,10 +312,10 @@ function run() {
 <br/>
 
 ### Example 3: Make a network request. {#example-network-request}
-_This example makes an API request to retreive all elements belonging to a particular collection and use the data to fill out the form._
+_This example makes an API request to retrieve all elements belonging to a particular collection and use the data to fill out the form._
 
 :::info Example Explanation
-- In the example, an array of all the _elements_ belonging to the `client` _collection_ was retrieved by the network request. The code is hotwired to use the forth element in the array and extract from it the client's contact name and email and use them to fill out the form.
+- In the example, an array of all the _elements_ belonging to the `client` _collection_ was retrieved by the network request. The code is hotwired to use the fourth element in the array and extract from it the client's contact name and email and use them to fill out the form.
 - With a little bit of coding, you can add customized logic to the survey to automate data retrival and usage.
 :::
 
