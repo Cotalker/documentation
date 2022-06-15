@@ -161,8 +161,8 @@ Field | Values
 Field | Values 
 --- | --- 
 **cmd**  | SET_RESPONSES
-**target** | 'self' \| '[Identifier of the survey question](/docs/documentation/admin/survey/survey_overview#field-descriptions) where the value will be placed.'
-**value** | _The value to be placed in the target field. <br/>The value's type or format must correspond to the [content type](/docs/documentation/models/surveys/model_questionContentType)._
+**target** | 'self' \| '[Survey question identifier](/docs/documentation/admin/survey/survey_overview#field-descriptions)'
+**value** | [Click here to view value type format.](/docs/documentation/automation/question_exec_extras/set_responses_values)
 
 </div>
 
