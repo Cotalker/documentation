@@ -73,20 +73,21 @@ _Example:_
 }
 ```
 
-<!-- ### Date Time
+<!-- 
+### Date Time
 **Description**: Used on the [date and time component](/docs/documentation/admin/survey/components/date_and_time) used to choose a date and time from a pop-up calendar and clock.  
 **Content Type Code**: `application/vnd.cotalker.survey+datetime`  
-**Notes**: Use [Date (ECMAScript or Unix epoch)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) in string format.
-
+**Notes**: Value can be a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object.
 
 _Example:_
 
 ```javascript
 {
     cmd: 'SET_RESPONSES', 
-    value: '165529080000' 
+    value: Date 
 }
-``` -->
+```
+-->
 
 ### List Question
 **Description**: Used on [multiple choice component item list type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) used to choose items from a list made during survey setup.  
@@ -116,7 +117,7 @@ _The value can be an array of strings, where the strings are the **"values"** in
 
 
 ### Property
-**Description**: Used on multiple-choice component collection types](/docs/documentation/admin/survey/components/multiple_choice#collection-type) when the elements of the indicated collection are given as options.  
+**Description**: Used on [multiple-choice component collection types](/docs/documentation/admin/survey/components/multiple_choice#collection-type) when the elements of the indicated collection are given as options.  
 **Content Type Code**: `application/vnd.cotalker.survey+property`  
 **Notes**: Use an [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) array, i.e., the `_id` of the [elements (properties)](/docs/documentation/models/databases/model_properties) to return as values.
 
