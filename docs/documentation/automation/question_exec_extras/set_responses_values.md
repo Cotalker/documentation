@@ -73,6 +73,7 @@ _Example:_
 }
 ```
 
+<!-- 
 ### Date Time
 **Description**: Used on the [date and time component](/docs/documentation/admin/survey/components/date_and_time) used to choose a date and time from a pop-up calendar and clock.  
 **Content Type Code**: `application/vnd.cotalker.survey+datetime`  
@@ -86,6 +87,7 @@ _Example:_
     value: Date 
 }
 ```
+-->
 
 ### List Question
 **Description**: Used on [multiple choice component item list type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) used to choose items from a list made during survey setup.  
