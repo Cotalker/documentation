@@ -37,10 +37,7 @@ Configuration details and code guidelines are explained below. Code examples and
 :::
 
 ## Coding Guide {#coding-guide}
-The code script used to program the survey's accessibility should follow the 
-
-### Context {#context}
-Code used for determining survey accessibility should follow the guidelines specified below.
+The code script used to program the survey's accessibility should follow the guidelines specified below.
 
 ### Context {#context} 
 The _context_ field indicates a relevant _source_ from which data can be extracted. _Sources_ are Cotalker objects structured with a corresponding [data model](/docs/documentation/models/overview_model). The _context_ can be used as a variable representing the object within the code to extract data from an indicated source.
