@@ -1,6 +1,6 @@
 ---
 title: Developer Mode Survey Access
-description: So far, users have been able to access surveys on channel workspaces according to different settings that act as filters determining the survey's availability. And now, with the new developer mode, you can program an extra layer of logic to determine whether or not a survey should be available. Use task details, like states or other data, to decide if and when a survey can be used by users in the channel. With a small code script, you can easily automate the finest details of your processes.
+description: So far, users have been able to access surveys on channel workspaces according to different settings that act as filters determining the survey's availability. But now, with the new developer mode, you can also program an extra layer of logic to determine whether or not a survey should be available. Use task details, like states or other data, to decide if and when a survey can be used by users in the channel. With a small code script, you can easily automate the finest details of your processes.
 image: img/updates/update_survey_access.png
 draft: false
 ---
@@ -27,7 +27,7 @@ Make surveys available using custom logic.
 </div>
 <div className="card__body">
 
-So far, users have been able to access surveys on channel workspaces according to different settings that act as filters determining the survey's availability. And now, with the new developer mode, you can program an extra layer of logic to determine whether or not a survey should be available. Use task details, like states or other data, to decide if and when a survey can be used by users in the channel. With a small code script, you can easily automate the finest details of your processes.
+So far, users have been able to access surveys on channel workspaces according to different settings that act as filters determining the survey's availability. But now, with the new developer mode, you can also program an extra layer of logic to determine whether or not a survey should be available. Use task details, like states or other data, to decide if and when a survey can be used by users in the channel. With a small code script, you can easily automate the finest details of your processes.
 
 
 </div>
