@@ -196,7 +196,7 @@ Determines whether a survey can be edited once it is submitted. Options are:
 </div>
 <div className="col col--4"><em>
 
-Go to the [**Survey Editability Code**](/docs/documentation/automation/surveys/survey_editable_code) section for details about using the developer mode.
+Go to the [**Developer Mode Survey Editability**](/docs/documentation/automation/surveys/survey_editable_code) section for details about using the developer mode.
 
 </em></div>
 </div>

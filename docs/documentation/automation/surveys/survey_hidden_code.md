@@ -7,7 +7,7 @@ displayed_sidebar: documentation
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
-Users can see surveys on channel workspaces according to different settings that act as filters determining the survey's accessibility. Among these settings, the _Developer _Mode_ permits the use of custom code to program the survey's visibility.
+Users can see surveys on channel workspaces according to different settings that act as filters determining the survey's accessibility. Among these settings, the _Developer Mode_ permits the use of custom code to program the survey's availability.
 
 :::note
 Go to the [survey settings panel](/docs/documentation/admin/survey/survey_overview#access) for more details on _Access_ configurations.
