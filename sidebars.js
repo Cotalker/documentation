@@ -195,7 +195,15 @@ module.exports = {
         // 'documentation/automation/overview',
         'documentation/automation/admin_routine',
         'documentation/automation/existing_routines',
-        'documentation/automation/question_exec',
+        {
+          type: 'category',
+          label: 'Survey Automations',
+          items: [
+            'documentation/automation/surveys/question_exec',
+            'documentation/automation/surveys/survey_editable_code',
+            'documentation/automation/surveys/survey_hidden_code',
+          ]
+        },
         // 'documentation/automation/scheduling',
         'documentation/automation/sla',
         'documentation/automation/automation_log',

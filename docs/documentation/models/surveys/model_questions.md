@@ -94,7 +94,7 @@ _Questions_ make up survey forms; their wide variety allows different forms for 
 | **company** | Company identification code | ObjectId<COTCompany\> |
 | **contentType** | Indicates COTQuestionContentType, i.e. [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) | string | [List of question content types](/docs/documentation/models/surveys/model_questionContentType)
 | **display** | Displayed question title or _field label_ | string[ ] | Its contents depend on the `contentType` and whether the data model corresponds to the _title_ section of the question.
-| **exec** | [Javascript-automated questions (QuestionExec)](/docs/documentation/automation/question_exec) | object | 
+| **exec** | [Javascript-automated questions (QuestionExec)](/docs/documentation/automation/surveys/question_exec) | object | 
 | **exec.filter** | Currently not in use. | object<COTQuestionExecFilter\> |
 | **exec.onChange** | Code runs after _validate_, but not after initial value is set. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.
 | **exec.onDisplay** | Code executes when a survey is in editing mode, i.e., when a user opens the survey from the channel, and it is displayed for answering. | object<COTQuestionExec\> | See [Question Execution Data Model](/docs/documentation/models/surveys/model_questionExec) for more information.

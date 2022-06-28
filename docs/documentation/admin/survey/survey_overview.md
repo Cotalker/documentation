@@ -16,7 +16,7 @@ Configure survey questions to receive information from different **input sources
 _Surveys_ can also be programmed to respond to certain answers or contexts. For example, you can: 
 - make **dynamic surveys** that with certain answers display new [questions](#conditional-display) or [options](/docs/documentation/admin/survey/components/multiple_choice#tree-selector), 
 - lead a _workflow_ to **[trigger](/docs/documentation/admin/workflows/admin_workflow_required_survey) a new state or create a new task**; these last surveys can be even made [**public**](/docs/documentation/admin/workflows/admin_workflow_public_survey) for users outside the Cotalker environment,
-- automate your surveys with [**Javascript code**](/docs/documentation/automation/question_exec), e.g., loading the current user's information when opening a survey, validating input information, or automatically sending an email after submitting a survey form. 
+- automate your surveys with [**Javascript code**](/docs/documentation/automation/surveys/question_exec), e.g., loading the current user's information when opening a survey, validating input information, or automatically sending an email after submitting a survey form. 
 
 
 :::note
@@ -80,7 +80,7 @@ Both the **Create form** and **Edit form** settings panels have the same layout 
 <div className="row">
 <div className="col col--6">
 
-<img alt="access survey section" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_surveys_overview_04.png')} />
+<img alt="access survey section" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_surveys_overview_04.png')} />
 <br/>
 
 </div>
@@ -109,14 +109,14 @@ _Settings:_
 
 <div className="container box">
 <div className="row table-row-1">
-<div className="col col--3"><b>Name:</b></div>
-<div className="col col--5">The survey's display name.</div>
-<div className="col col--4"><em></em></div>
+<div className="col col--2"><b>Name:</b></div>
+<div className="col col--4">The survey's display name.</div>
+<div className="col col--6"><em>Any character can be used. We recommend using short descriptive names.</em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--3"><b>Code:</b></div>
-<div className="col col--5">The survey's identification code.</div>
-<div className="col col--4"><em>Only lowercase letters, numbers, and underscores are accepted; the code must start with a letter. Once you create and save a code, it cannot be modified.</em></div>
+<div className="col col--2"><b>Code:</b></div>
+<div className="col col--4">The survey's identification code.</div>
+<div className="col col--6"><em>Only lowercase letters, numbers, and underscores are accepted; the code must start with a letter. Once you create and save a code, it cannot be modified.</em></div>
 </div>
 </div>
 
@@ -126,7 +126,7 @@ _Settings:_
 <div className="alert alert--secondary">
 
 ### B. Access {#access}
-_User access to surveys can be configured through three types of filters: groups, user access roles, and elements associated with channels. They can be used in conjunction to limit which users can access a survey. [See the diagram below](#example)._
+_User access to surveys can be configured through three types of filters: groups, user access roles, and elements associated with channels. They can be used in conjunction to limit which users can access a survey. [**See the diagram below to see how access settings work**](#example)._
 
 <img alt="access" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_surveys_overview_06.png')} />
 <br/>
@@ -134,20 +134,74 @@ _User access to surveys can be configured through three types of filters: groups
 <div className="container box">
 <div className="row table-row-1">
 <div className="col col--3"><b>Group Permission:</b></div>
-<div className="col col--5">Select the group that will be allowed to view and answer the survey.</div>
+<div className="col col--5">
+
+Select the [group](/docs/documentation/client/groups) that will be allowed to view and answer the survey.
+
+</div>
 <div className="col col--4"><em></em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Access Role:</b></div>
-<div className="col col--5">Access roles users need to be able to fill out the survey.</div>
-<div className="col col--4"><em>At least one access role must be chosen. If multiple access roles are selected, users must have at least one of them.</em></div>
+<div className="col col--5">
+
+Indicates the [_access roles_](/docs/documentation/admin/admin_accessrole) users need to be able to fill out the survey.
+
+</div>
+<div className="col col--4"><em>If multiple access roles are selected, users must have at least one of them to access the survey form.</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12">CHANNEL ELEMENTS</div>
 </div>
 <div className="row table-row-1">
-<div className="col col--3"><b>Add Element:</b></div>
-<div className="col col--5">Assigns the collection and element of a channel to serve as survey display filter.</div>
-<div className="col col--4"><em>The element will be used to show the survey only on the channels that have the same element assigned.</em></div>
+<div className="col col--3"><b>Developer Mode</b></div>
+<div className="col col--5">Allows the use of custom code to program the logic that determines if a survey is available.</div>
+<div className="col col--4"><em>
+
+Go to the [**Survey Visibility Code**](/docs/documentation/automation/surveys/survey_hidden_code) section for details on about using developer mode.
+
+</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>+ Add Element:</b></div>
+<div className="col col--5">
+
+Assigns the [collection and element](/docs/documentation/admin/database/admin_database_overview) of a [channel](/docs/documentation/admin/groups/admin_channels#elements) to serve as a survey display filter.
+
+</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Collection</b></div>
+<div className="col col--5">The collection that holds the elements to be used as filters.</div>
+<div className="col col--4"><em>One collection can be selected every time the <b>+ Add Element</b> option has been selected.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Elements</b></div>
+<div className="col col--5">The chosen elements used to show the survey only on the channels that have the same elements assigned.</div>
+<div className="col col--4"><em>This field appears when the <b>+ Add Element</b> option has been selected.</em></div>
+</div>
+<div className="row table-row-title">
+<div className="col col--12"></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Editable</b></div>
+<div className="col col--5">
+
+Determines whether a survey can be edited once it is submitted. Options are: 
+- _Yes_ : Allows the survey to be edited after submission.
+- _No_ : Sets the survey to read-only mode.
+- _Developer Mode_ : Allows the use of custom code to program the logic that determines if the survey is editable or not.
+
+</div>
+<div className="col col--4"><em>
+
+Go to the [**Survey Editability Code**](/docs/documentation/automation/surveys/survey_editable_code) section for details about using the developer mode.
+
+</em></div>
 </div>
 </div>
+
 <br/>
 
 <div className="container">
@@ -157,7 +211,7 @@ _User access to surveys can be configured through three types of filters: groups
 #### Survey Access Example {#example}
 _The diagram below represents a survey using the three access filters._
 
-<img alt="survey access" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/survey_access_settings_00.png')} />
+<img alt="survey access" className="img_sizing item shadow--tl" src={useBaseUrl('img/survey_access_settings_00.png')} />
 <br/>
 
 </div>
@@ -221,7 +275,7 @@ Press the <span className="badge badge--info">components</span> button on the up
 - [**Date and time**](/docs/documentation/admin/survey/components/date_and_time): _Answers are received in date or date & time format._
 - [**Location**](/docs/documentation/admin/survey/components/location): _Current or other GPS location is obtained through an embedded Google Map._
 - [**Attachment**](/docs/documentation/admin/survey/components/attachment): _Send almost any type of file through the survey._
-- [**Camera**](/docs/documentation/admin/survey/components/camera): _Send pictures directly from camera or gallery._
+- [**Camera**](/docs/documentation/admin/survey/components/camera): _Send pictures directly from a camera or gallery._
 - [**Signature**](/docs/documentation/admin/survey/components/signature): _Freestyle brush that permits handwriting. Useful for signatures._
 - [**Survey**](/docs/documentation/admin/survey/components/survey): _Adds an existing survey into the survey._
 
@@ -233,7 +287,7 @@ Below you will find more information regarding [component configuration in gener
 <br/>
 
 ## Configuring Form Components {#configuring-components}
-Genral component configuration is discussed here. For specific component configuration, refer to the [component list shown above](#form-components).
+General component configuration is discussed here. For specific component configuration, refer to the [component list shown above](#form-components).
 
 _Icons and each configuration tab are be explained below._
 
@@ -344,7 +398,7 @@ For multiple answers, use the following syntax: `(example1)|(example2)`
 
 ### Automation Tab {#automation}
 
-From the **automation** tab, you can add Javascript code to customize your surveys even more. For complete information and examples, go to the [QuestionExec](/docs/documentation/automation/question_exec) section.
+From the **automation** tab, you can add Javascript code to customize your surveys even more. For complete information and examples, go to the [QuestionExec](/docs/documentation/automation/surveys/question_exec) section.
 
 <img alt="automation tab" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_06.png')} />
 <br/>

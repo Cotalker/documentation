@@ -1,24 +1,24 @@
 ---
 id: question_exec
-title: Question Code Automations
-sidebar_label: Question Code Automations
+title: Custom Code Question Automations
+sidebar_label: Custom Code Question
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
 <span className="hero__subtitle">
 
-_Program logic, retrieve data, and add automations on Survey Questions with JavaScript Code_
+_Program logic, retrieve data, and add customized automations on Survey Questions with JavaScript Code._
 
 </span>
 
 ## Overview {#overview}
-_Question Code Automations_ permit adding Javascript code to a survey question. These automations can be set using customized code logic to add validation processes, retrieve external data, automatically fill out survey questions, and much more.
+_Custom Code Question Automations_ permit adding Javascript code to a survey question. These automations can be set using customized code logic to add validation processes, retrieve external data, automatically fill out survey questions, and much more.
 
 :::info
 - Custom code must be written in **JavaScript** using an asynchronous function.
 - The code runs on the client-side within a _sandbox_.
-- On the backend, _Question Code Automations_ are found in [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) objects. (Sometimes _Question Code Automations_ are referred to as _Question Exec_)
+- On the backend, _Custom Code Question Automations_ are found in [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) objects. (Sometimes _Custom Code Question Automations_ are referred to as _Question Exec_)
 :::
 
 ## Setup {#setup}
@@ -26,11 +26,11 @@ To add your custom code:
 1. Select the [**Automation** tab](/docs/documentation/admin/survey/survey_overview#automation) within the [survey component](/docs/documentation/admin/survey/survey_overview#form-template)
 2. Choose a [_lifecycle stage_](#component-lifecycle-stages).
 3. Choose the appropriate [_parameters_](#parameters).
-4. Put your [Question Code function](#function) on the editor box at the bottom of the settings panel.
+4. Put your [Custom Code Question function](#function) on the editor box at the bottom of the settings panel.
 
 _See the image below:_
 
-<img alt="automation tab" className="img_sizing_narrow item shadow--md" src={useBaseUrl('img/automation_question_exec_00.png')} />
+<img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_00.png')} />
 <br/>
 <br/>
 
@@ -58,7 +58,7 @@ _See the image below:_
 :::
 
 ## Stage Funciton / Coding Guide {#coding-guide}
-In the Stage Function section, you can write or paste your [Question Code function](#function) into the editor box and set the necessary [parameters](#parameters) for it to work.
+In the Stage Function section, you can write or paste your [Custom Code Question function](#function) into the editor box and set the necessary [parameters](#parameters) for it to work.
 
 <img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01a.png')} />
 <br/>
@@ -91,22 +91,22 @@ const channelDisplay = context['channel#self'].nameDisplay;  // display name
 :::
 
 
-### Question Code Function {#function}
+### Custom Code Question Function {#function}
 Write or paste your code into the editor.
 
 <img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01c.png')} />
 <br/>
 
-_Question Code Automation_ **MUST** comply with at least two requirements:
+_Custom Code Question Automation_ **MUST** comply with at least two requirements:
 
-1. The Question Code Automation **SHOULD** be written as an asynchronous function named `run`, without any arguments.  
+1. The Custom Code Question Automation **SHOULD** be written as an asynchronous function named `run`, without any arguments.  
 
   _Structure example:_  
   ```javascript
   async function run () { /* yourCode; */ return []; }
   ```
 
-2. The function **MUST** return an array with _command_ objects_](#command-objects).  
+2. The function **MUST** return an array with [_command objects_](#command-objects).  
   
   :::note Command Notes
   **A.** The function may return more than one command.  
@@ -162,7 +162,7 @@ Field | Values
 --- | --- 
 **cmd**  | SET_RESPONSES
 **target** | 'self' \| '[Survey question identifier](/docs/documentation/admin/survey/survey_overview#field-descriptions)'
-**value** | [Click here to view value type format.](/docs/documentation/automation/question_exec_extras/set_responses_values)
+**value** | [Click here to view value type format.](/docs/documentation/automation/surveys/question_exec_extras/set_responses_values)
 
 </div>
 
@@ -196,7 +196,7 @@ Field | Values
 </div>
 
 ### Network Requests {#network-requests}
-The Question Code Automation can make network requests, i.e., API requests that can be customized with user survey input and then filtered and processed to be used to fill out the survey or any other process that can be automated with the code.
+The Custom Code Question Automation can make network requests, i.e., API requests that can be customized with user survey input and then filtered and processed to be used to fill out the survey or any other process that can be automated with the code.
 
 :::caution
 - Use network requests with caution and only for retrieving precise data.

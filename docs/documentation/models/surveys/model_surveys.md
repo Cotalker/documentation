@@ -67,8 +67,15 @@ Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey)
 | **code** | The survey's unique identification name. | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique. |
 | **company** | Indicates the company the survey is found in. | ObjectId<COTCompany\> | |
 | **createdAt** | Date the survey was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
+| **editable** | Determines if a survey can be edited after being submitted. | object | Go to the [**Developer Mode Survey Editability**](/docs/documentation/automation/surveys/survey_editable_code) section for more details on adding custom code to determine if a survey can be edited. |
+| **editable.mode** | Indicates the option selected to handle survey editability. | string | _Options are_: <br/>`enabled`: Allows the survey to be edited after submission.<br/>`disabled`: Prevents the survey from being edited.<br/>`advanced`: Allows the use of custom code to program the logic that determines the survey's editability. |
+| **editable.context** | Indicates the _context_ from which data is extracted. | string | Currently, only the `channel#task` context is available which permits retriving data from the task channel associated with survey. |
+| **editable.src** | Contains [custom Javascript code](/docs/documentation/automation/surveys/survey_editable_code) used to program the logic that determines survey editability. | string | The Javascript code is contained in string format. |
 | **groupPermission** | Limits the use of the survey to the specified group. | ObjectId<COTGroup\> | Soon to be deprecated and replaced by `groupPermissionsV2`. |
 | **groupPermissionsV2** | List of group object IDs, indicating the groups where the survey may be used. If empty, and `groupPermission` is not being used, the survey can be used in any group. | ObjectId<COTGroup\>[ ] | |
+| **hidden** | Allows including custom coded logic to determine survey availability. | object | Go to the [**Developer Mode Survey Access**](/docs/documentation/automation/surveys/survey_hidden_code) section for further details.
+| **hidden.context** | Indicates the _context_ from which data is extracted. | string | Currently, only the `channel#task` context is available which permits retriving data from the task channel associated with survey.
+| **hidden.src** | Contains [custom Javascript code](/docs/documentation/automation/surveys/survey_hidden_code) used to program the logic that determines survey visibility. | string | The Javascript code is contained in string format.
 | **isActive** | Indicates if the survey is available for use. | boolean | |
 | **isSystemModel** | If true, the survey cannot be changed, even by admins. | boolean | |
 | **modifiedAt** | Indicates the last time the survey was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |

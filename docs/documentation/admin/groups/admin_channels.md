@@ -138,7 +138,7 @@ See [this tutorial](/docs/tutorials/intermediate/create_survey_bot) on how to ma
 <div className="alert alert--secondary">
 
 ### C. Elements {#elements}
-_Lets you add an element to your channel. Useful when setting up a routine or survey associated with a particular _element_. For example, if you add elements associated with a survey to the channel, the survey will be available through the [actions button found in the channel's workspace](/docs/documentation/client/channels#task-menus-within-channel)._
+_Lets you add an element to your channel. Useful when setting up a routine or survey associated with a particular element. For example, if you add elements associated with a survey to the channel, the survey will be available through the [actions button found in the channel's workspace](/docs/documentation/client/channels#task-menus-within-channel)._
 
 <img alt="elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_group_channels_01c.png')} />
 <br/>

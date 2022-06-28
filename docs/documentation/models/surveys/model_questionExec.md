@@ -12,7 +12,7 @@ import Mermaid from '@theme/Mermaid';
 
 ## Description {#description}
 
-The Question Execution Data Model (COTQuestionExec) is part of  [COTQuestion](/docs/documentation/models/surveys/model_questions) within an `exec` field, i.e., `exec.onChange`, `exec.onDisplay`, `exec.preload`, `exec.presave`, `exec.postsave`, `exec.validate`. This model holds data for a Javascript-automated question that runs within a [component lifecycle stage](/docs/documentation/automation/question_exec#component-lifecycle-stages). It specifies the [parameters or context variables](/docs/documentation/automation/question_exec#parameters-context-variables) and source code used in [Javascript-automated survey components](/docs/documentation/automation/question_exec). 
+The Question Execution Data Model (COTQuestionExec) is part of  [COTQuestion](/docs/documentation/models/surveys/model_questions) within an `exec` field, i.e., `exec.onChange`, `exec.onDisplay`, `exec.preload`, `exec.presave`, `exec.postsave`, `exec.validate`. This model holds data for a Javascript-automated question that runs within a [component lifecycle stage](/docs/documentation/automation/surveys/question_exec#component-lifecycle-stages). It specifies the [parameters or context variables](/docs/documentation/automation/surveys/question_exec#parameters-context-variables) and source code used in [Javascript-automated survey components](/docs/documentation/automation/surveys/question_exec). 
 
 <Mermaid chart={`
 	graph LR;
@@ -43,7 +43,7 @@ The Question Execution Data Model (COTQuestionExec) is part of  [COTQuestion](/d
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
 | context | Indicates the Cotalker Data Model or *context* from where to extract the data. | string | See [Execution Context](#context) table below for more details.  |
-| src | The Javascript code used for the automation | string | See the [Coding Guide](/docs/documentation/automation/question_exec#coding-guide) for details.
+| src | The Javascript code used for the automation | string | See the [Coding Guide](/docs/documentation/automation/surveys/question_exec#coding-guide) for details.
 
 
 ## Execution Context {#context}
@@ -74,7 +74,7 @@ _Examples:_
 
 ## Additional Resources {#resources}
 
-- [Question Exec](/docs/documentation/automation/question_exec): Overview and examples of Javascript-automated questions
+- [Question Exec](/docs/documentation/automation/surveys/question_exec): Overview and examples of Javascript-automated questions
 - [COTQuestion](/docs/documentation/models/surveys/model_questions): Questions data model
 - ["Questions" REST API documentation](/docs/documentation/api/surveys/questions): basic "Questions" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)

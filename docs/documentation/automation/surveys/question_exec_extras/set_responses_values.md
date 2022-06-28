@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Summary {#description}
 
-The SET_RESPONSES command is an object used by [Question Code Automation](/docs/documentation/automation/question_exec) functions to return specified values and insert them to answer the indicated survey question.
+The SET_RESPONSES command is an object used by [Custom Code Question Automation](/docs/documentation/automation/surveys/question_exec) functions to return specified values and insert them to answer the indicated survey question.
 
 SET\_RESPONSES must return [_values_](#value-types) in the data type or format of the [survey question's content type](/docs/documentation/models/surveys/model_questionContentType).
 

@@ -1,5 +1,5 @@
 ---
-title: Database Panel Overview
+title: Database Overview
 sidebar_label: Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
