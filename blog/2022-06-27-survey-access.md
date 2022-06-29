@@ -33,7 +33,7 @@ So far, users have been able to access surveys on channel workspaces according t
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/admin/survey/survey_overview">Admin Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/survey/survey_overview#access">Admin Documentation</a>
 <br/>
 
 <a className="button button--info button--block" href="/docs/documentation/automation/surveys/survey_hidden_code">Developer Mode Documentation</a>

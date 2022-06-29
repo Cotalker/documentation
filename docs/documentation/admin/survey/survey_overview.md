@@ -158,7 +158,7 @@ Indicates the [_access roles_](/docs/documentation/admin/admin_accessrole) users
 <div className="col col--5">Allows the use of custom code to program the logic that determines if a survey is available.</div>
 <div className="col col--4"><em>
 
-Go to the [**Survey Visibility Code**](/docs/documentation/automation/surveys/survey_hidden_code) section for details on about using developer mode.
+Go to the [**Developer Mode Survey Access**](/docs/documentation/automation/surveys/survey_hidden_code) section for details on about using developer mode.
 
 </em></div>
 </div>
@@ -195,6 +195,8 @@ Determines whether a survey can be edited once it is submitted. Options are:
 
 </div>
 <div className="col col--4"><em>
+
+By default, surveys are not editable, except for surveys created before the release of this feature (June 2022).
 
 Go to the [**Developer Mode Survey Editability**](/docs/documentation/automation/surveys/survey_editable_code) section for details about using the developer mode.
 

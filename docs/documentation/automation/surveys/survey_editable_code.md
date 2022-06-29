@@ -13,6 +13,10 @@ This feature is useful when submitted forms affect task characteristics or conta
 
 The code is inserted in the [survey's settings panel in the Access section](/docs/documentation/admin/survey/survey_overview#access).
 
+:::info
+By default, surveys are not editable, except for surveys created before the release of this feature (June 2022).
+:::
+
 ## Setup {#setup}
 To enable the use of custom code to determine survey editability:
 
