@@ -20,7 +20,7 @@ Create _time-based_ or _value-based_ plans with the **Create a new preventive pl
 
 ----
 ## Glossary {#glossary}
-- Preventive Maintenance (PM): Scheduled maitenance checks with the intention to reduce unplanned failures or issues.
+- Preventive Maintenance (PM): Scheduled maintenance checks with the intention to reduce unplanned failures or issues.
 - Time-based plan: A preventive maintenance plan scheduled to run at certain time intervals.
 - Value-based plan: A preventive maintenance plan scheduled to run when equipment reaches certain metric intervals.
 - Work Order (WO): An authorized request sent to contractors or service personnel to complete a maintenance task containing relative information for the job.

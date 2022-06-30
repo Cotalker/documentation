@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__title">Plan Runner</span>
 
-With this form, execute all active preventive maintenance plans.
+With this form, execute all active preventive maintenance plans. Once the plan is executed, when value or time-based triggers are set off, [work orders](/docs/products/workflows/work_orders/related-product/pm/overview_intro) will be automatically created.
 
 <div className="alert alert--primary">
 
