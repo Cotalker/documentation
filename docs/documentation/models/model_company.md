@@ -75,7 +75,7 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 | modifiedAt | Last modification date | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | offline | Sets offline mode for mobile apps | object | Only available in enterprise edition |
 | offline.isActive | Turns offline mode on or off | boolean | |
-| offlines.maxSyncTimeMs | Indicates object synchronization time | number | number indicates |
+| offline.maxSyncTimeMs | Indicates object synchronization time | number | |
 | permissions | | object | |
 | permissions.showTos | Displays "terms of service" document when new users log in for the first time | object | |
 | permissions.showTos.value | Determines whether or not to display the "terms of service" | boolean | If no URL is indicated, Cotalker will display its generic terms of service. |
@@ -83,7 +83,7 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 | startGroup | Indicates which _group_ appears in the [group panel](/docs/documentation/client/groups#group-panel) at startup | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | If left `null`, a summary of most recent conversations will show up in the [group panel](/docs/documentation/client/groups#group-panel).
 | subdomain | Used to internally reference the company; also used to indicate subdomain name for web client | string | |
 | system | Indicates the user ID of system manager contact | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | |
-| branding | Allows customizing the certain aspects of Cotalker's UI, i.e., platform colors, images, and text. Also enables login authentification with an organization's Google and Microsoft accounts. | object | Visit the [Branding Settings](/docs/documentation/admin/special_configurations/branding) section for examples and tips. |
+| branding | Allows customizing certain aspects of Cotalker's UI, i.e., platform colors, images, and text. Also enables login authentification with an organization's Google and Microsoft accounts. | object | Visit the [Branding Settings](/docs/documentation/admin/special_configurations/branding) section for examples and tips. |
 | branding.isActive | Activates the use of custom images. If `true`, the custom images contained in the `images` object are displayed. | boolean | |
 | branding.names | Allows overriding the default platform name. | object | |
 | branding.names.name | Corresponds to the environment build name, i.e., the code name by which the system identifies the customized version of the platform. | string |  |
