@@ -1,0 +1,61 @@
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
+
+<span className="hero__title">Survey Forms</span>
+<br/>
+
+## Creating Work Orders {#create-work-order}
+Two survey forms are available for creating _work orders_ when using the [Corrective Maintenance](/docs/products/corrective_maintenance/cm_overview) product.
+
+<div className="alert alert--primary">
+
+_To create a work order, follow the instructions below:_
+
+<img alt="create work order" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_work_orders_workflow_forms_03.png')} />
+<br/>
+
+1. Press <span className="badge badge--primary">Notifications</span> in the **Main Menu Bar**.
+2. Select the corresponding incident report from the **Notifications** panel.
+3. From the channel workspace, press the _action button_ to open the _Actions_ menu.
+4. Press one of the following options from the **Actions** menu:
+    - [**A. Bid**](#bid): Create and send multiple _work orders_ to contractors chosen from a list. Contractors can then send quotes for bidding.
+    - [**B. Create Work Order**](#create-wo): Create and send a single _work order_ to predefined stakeholders.
+
+</div>
+<br/>
+
+<div className="alert alert--primary">
+
+### A. Bid {#bid}
+_Allows supervisors to create a work order for the notified maintenance issue and send it to multiple contractors chosen from a list in the survey form._
+
+_After choosing the **Bid** option, the following form appears:_
+
+<img alt="bid" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_work_orders_workflow_forms_03a.png')} />
+<br/>
+
+On this form, set deadlines, write details, and choose from suppliers listed in the database. The rest of the details registered in the [notification](/docs/products/workflows/notifications/overview) are automatically added and sent in the work order.
+
+A work order workflow will be created for each selected supplier. They can then [send quotes](/docs/products/workflows/budget_management/related-product/cm/surveys) for bidding. The corresponding stakeholders will have to [approve or reject the quotes](/docs/products/workflows/budget_management/related-product/cm/approval).
+
+
+</div>
+<br/>
+
+<div className="alert alert--primary">
+
+### B. Create Work Order {#create-wo}
+_This option lets you create a single work order that involves predefined stakeholders._
+
+<img alt="create work order" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_work_orders_workflow_forms_04.png')} />
+<br/>
+
+The form permits adding a description, details, and setting a deadline for the correction to be completed. The rest of the details registered in the [notification](/docs/products/workflows/notifications/overview) are automatically added and sent in the work order.
+
+Once submitted, the _work order_ workflow initiates and is set to the first state, i.e., _reported_. Simultaneously, the form is sent to technical teams or contractors to request their services.
+
+</div>
+<br/>
+
+:::info Next Step
+After creating the work order, maintenance personnel review it and can choose to accept it or not with the [**Accept Work Order**](surveys-accept-wo) form.
+:::
