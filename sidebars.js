@@ -493,7 +493,8 @@ module.exports = {
         'products/preventive_maintenance/pm_overview',
         'products/work_order_product/wo_overview',
         'products/purchase_order_product/po_overview',
-        'products/service_orders/so_overview'
+        'products/service_orders/so_overview',
+        'products/service_quotations/sq_overview'
       ],
       collapsed: false,
       collapsible: false
@@ -823,6 +824,43 @@ module.exports = {
             'products/service_orders/survey-release',
             'products/service_orders/survey-pdf-original',
             'products/service_orders/survey-close',
+          ]
+        },
+      ],
+    }
+  ],
+  workflow_servicequotations: [
+    {
+      type: 'doc',
+      id: 'products/service_quotations/sq_overview',
+      label: 'Back to Product Overview...'
+    },
+    {
+      type: 'category',
+      label: 'Service Quotation Workflow',
+      link: {
+        type: 'doc',
+        id: 'products/service_quotations/workflow_overview'
+      },
+      collapsed: false,
+      collapsible: false,
+      items: [
+        'products/service_quotations/examples',
+        'products/service_quotations/workflow',
+        {
+          type: 'category',
+          label: 'Step-by-step process',
+          link: {
+            type: 'doc',
+            id: 'products/service_quotations/surveys',
+          },
+          collapsed: false,
+          collapsible: false,
+          items: [
+            'products/service_quotations/survey-request',
+            'products/service_quotations/survey-accept',
+            'products/service_quotations/survey-create',
+            'products/service_quotations/survey-approve',
           ]
         },
       ],
