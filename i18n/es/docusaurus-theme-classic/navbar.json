@@ -22,5 +22,9 @@
   "item.label.Support & Help": {
     "message": "Soporte",
     "description": "Navbar item with label Support & Help"
+  },
+  "item.label.Products": {
+    "message": "Productos",
+    "description": "Navbar item with label Products"
   }
 }

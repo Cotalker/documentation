@@ -13,7 +13,7 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@cmfcmf/docusaurus-search-local": "^0.10.0",
+    "@cmfcmf/docusaurus-search-local": "^0.11.0",
     "@docusaurus/core": "^2.0.0-beta.17",
     "@docusaurus/plugin-content-docs": "^2.0.0-beta.17",
     "@docusaurus/preset-classic": "^2.0.0-beta.17",
@@ -21,10 +21,12 @@
     "@docusaurus/theme-translations": "^2.0.0-beta.17",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
-    "mermaid": "^8.13.8",
+    "got": "^12.1.0",
+    "mermaid": "^9.1.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "trim": "^1.0.1"
   },
   "browserslist": {
     "production": [
@@ -40,8 +42,8 @@
   },
   "devDependencies": {
     "cssnano": "^5.0.15",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "postcss": "^8.4.5",
-    "postcss-cli": "^9.1.0"
+    "postcss-cli": "^10.0.0"
   }
 }
