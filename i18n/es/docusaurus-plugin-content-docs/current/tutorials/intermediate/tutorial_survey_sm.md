@@ -6,6 +6,8 @@ author_url: https://www.cotalker.com/
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
+Tutorial on setting up a channel with a task creation button.
+
 Time: 30 minutes
 
 ## Company Requirements {#company-requirements}
@@ -192,7 +194,7 @@ The collections mentioned were to be created during previous tutorials and might
 
     2. Then, press <span className="badge badge--primary">+ Add Stage</span> and set the following:
         - **Code**: `create_task`
-        - **Type**: `Crear Tarea`
+        - **Type**: `Create Task`
 
     _Your screen should now look something like this:_
 
@@ -200,7 +202,7 @@ The collections mentioned were to be created during previous tutorials and might
 
     3. Also set the following:
 
-        - In **Nombre** field, press <span className="badge badge--primary">+ Add Item</span>, then set:
+        - In the **Name** field, press <span className="badge badge--primary">+ Add Item</span>, then set:
             - **Item**: `$VALUE#data|[find=>identifier=nametask_00]|process|0`
 
           :::note
@@ -208,33 +210,33 @@ The collections mentioned were to be created during previous tutorials and might
             - Notice how we use `nametask_00` to reference the survey's **Name of the Task** field.
           :::
         -------
-        - **Grupo**: `($CODE#group#code#group-code)|_id`
+        - **Group**: `($CODE#group#code#group-code)|_id`
           :::note IMPORTANT!
             - **Replace** `group-code` with your _Task Manager_ workflow-group's _code_.
             - **Or**, instead of using this [Cotlang](/docs/documentation/automation/admin_cotlang) script, you may also insert the _Task Manager_'s id number which can be obtained from its URL.
           :::
         -------
-        - **Usuario**: `$VALUE#user`
+        - **User**: `$VALUE#user`
           :::note 
           This [Cotlang](/docs/documentation/automation/admin_cotlang) script will get the person who filled out the survey.
           :::
         -------
-        - In **Respuestas**, press <span className="badge badge--primary">+ Add Item</span>, then set:
+        - In **Answers**, press <span className="badge badge--primary">+ Add Item</span>, then set:
             - **Item**: `$VALUE#uuid`
         -------
-        - **Campo Dinámico 1**: `$VALUE#data|[find=>identifier=importancetask_00]|process|0`
+        - **Dynamic Field 1**: `$VALUE#data|[find=>identifier=importancetask_00]|process|0`
           :::note
             - We use [Cotlang](/docs/documentation/automation/admin_cotlang) script to retrieve the task's level of importance which was entered in the survey.
             - Notice how we use `importancetask_00` to reference the survey's **Importance** field.
           :::
         -------
-        - **Campo Dinámico 2**: `$VALUE#data|[find=>identifier=departmenttask_00]|process|0`
+        - **Dynamic Field 2**: `$VALUE#data|[find=>identifier=departmenttask_00]|process|0`
           :::note
             - We use [Cotlang](/docs/documentation/automation/admin_cotlang) script to retrieve the department assigned to the task.
             - Notice how we use `departmenttask_00` to reference the survey's **Department** field.
           :::
         -------
-        - In **Asignado**, press <span className="badge badge--primary">+ Add Item</span>, then set: 
+        - In **Assignee**, press <span className="badge badge--primary">+ Add Item</span>, then set: 
             - **Item**: `$VALUE#user`
         
           :::note

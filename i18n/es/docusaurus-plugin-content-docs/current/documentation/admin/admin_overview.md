@@ -1,34 +1,93 @@
 ---
-title: Overview
-sidebar_label: Overview
+title: Introduction
 ---
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-## Introduction {#introduction}
-Cotalker customers will find themselves with different _data models_.
-One of these _models_ is the _user_, the basic unit of a company, which can:
-- Be assigned an _access role_ which defines what information they can read or edit.
-- Interact through _channels_ using _surveys_ or _messages_ with other _users_ in a particular _group_.
-- Participate in a company process modeled by a _workflow_ guided by a _task_. For example, a workflow can be the rendering of expenses. In the _group channel_, _users_ can send a request to have it managed as a _task_. The _task_ is then sent to each of the bosses – through the use of _surveys_ – for their approval. Each created _task_ will be housed in its own unique _channel_, where the respective responses of the people involved will be found.
-The **workflow** requires the creation of a _state machine_ to configure the process. It is built upon relations (represented by arrows) and states (represented by nodes), as you can see in the following image:
-<img alt="" src={useBaseUrl('img/admin_overview_statemachine.png')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/Platforms.svg')} />
+<br/>
 
-Furthermore, it is important to know that:
-- Creating a _routine_ is necessary for the state machine to perform any action, such as changing from one state to another, sending an email, or sending a standard message to a channel.
-- A _bot_ corresponds to the _model_ that executes a _routine_ to start a state machine or a standard activity in a company.
-- Finally, the _scheduler_ works to execute a routine periodically in the company. For example: sending the pending task of the week every Monday.
+The _administrative panel_ is the admin's main workplace. From here, they can configure and monitor the entire Cotalker environment.
 
-_Elements_ are a state machine's basic unit because they determine the states a _state machine_ can have. Each _element_ corresponds to a unit derived from a _collection_. Following the example above, the _elements_ of the state machine (Headquarters Review, CEOs reviews, Management Review, Rejected Requests, and Accepted Requests) belong to the same _collection_ ("Expenses Report").
+:::info
+Access and use of the administrative panel is limited by the user's [access roles](/docs/documentation/admin/admin_accessrole).
+:::
 
-_Elements_ can also be used with different data models (_surveys_, _channels_, _users_, and others). The concepts used in each model are specified accordingly in the documentation.
+## Accessing the Administrative Panel {#access-administrative-panel}
 
+<img alt="access" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_00.png')} />
+<br/>
+
+1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
+2. The _administrative panel_ opens up, 
+3. A corresponding settings panel shows up.
+
+
+
+
+
+<div className="container alert alert--secondary">
+<div className="row">
+<div className="col col--12">
+
+## Layout/Index {#layout}
+
+The administrative panel's layout serves also as this documentation section's index.
+
+_From the administrative panel, you can access the following:_
+
+</div>
+</div>
+<div className="row">
+<div className="col col--6">
+<img alt="access" className="img_sizing_narrow item shadow--lw" src={useBaseUrl('img/admin_overview_01.png')} />
+<br/>
+</div>
+<div className="col col--6">
+
+<span className="hero__subtitle">SECTIONS</span>
+
+  1. [**Workflows**](/docs/documentation/admin/workflows/admin_workflow_overview): Create and configure workflow groups and workflows.
+  2. [**Link Groups**](/docs/documentation/admin/admin_links): Create links that appear on the _Main Menu Bar_ or within a _group_.
+  3. [**Groups**](/docs/documentation/admin/admin_group): Create _standard groups_ for communicating with other users and sharing information.
+
+<span className="hero__subtitle">DATA</span>
+
+  4. [**Database**](/docs/documentation/admin/database/admin_database_overview): Manage collections and elements.
+  5. [**Surveys**](/docs/documentation/admin/survey/survey_overview): Create and modify surveys used to gather information from users or configure workflows.
+
+<span className="hero__subtitle">COMPANY</span>
+
+  6. [**Users**](/docs/documentation/admin/users): Create and modify _user profiles_ along with their access roles, job titles, and additional fields.
+  7. [**Job Titles**](/docs/documentation/admin/admin_jobtitles): Create job titles that can be associated to users as elements with special attributes.
+  8. [**Configuration**](/docs/documentation/admin/admin_company): Edit company information and language.
+
+<span className="hero__subtitle">AUTOMATIONS</span>
+
+  9. [**Bots**](/docs/documentation/admin/admin_bots): Create and edit customized bots to carry out automated routines.
+  10. [**Schedules**](/docs/documentation/admin/admin_bots): Create and edit scheduled routines.
+  11. [**Automation Log**](/docs/documentation/automation/automation_log): Monitor all automations carried out in the Cotalker environment.
+  12. [**Routines**](/docs/documentation/admin/routines): Create or edit predetermined bots that can be later used in routines.
+  13. [**Webhooks**](/docs/documentation/admin/admin_webhooks): Set up triggers that send data to your server upon certain events.
+
+<span className="hero__subtitle">SECURITY</span>
+
+  14. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
+  15. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
+  16. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
+
+</div>
+
+</div>
+</div>
+<br/>
 
 ## Icons {#icons}
-When using the _administrative panel_, various icons will appear to offer possible actions or options in the different windows.
+When using the _administrative panel_, various icons will appear in its settings panels to offer possible actions or options.
 
 
-Below, we find the descriptions of the buttons used for **element lists in all _models_**:
+_Below, we find the descriptions of the buttons used for in all list tables:_
 
 | Action Name | Image | Description |
 | ---- | ----- | ----------- |

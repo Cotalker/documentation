@@ -1,61 +1,86 @@
 ---
-id: groups_channels
-title: Groups & Channels
-
+title: Groups
 ---
+
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 
-## Groups {#groups}
-Displayed in the main menu bar, _groups_ are the primary places to share information among users. _Groups_ – which can only be created by administrators – are classified into three kinds: _communication_, _workflow_, and _links_. 
-
-- _Communication Groups_: They incorporate a list of users and include _channels_ – chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel.
-
-- _Workflow Groups_: These are made up of _tasks_ and can incorporate _channels_. _Tasks_, _channels_, and subgroups can be multiple within a group. We shall later look into how _tasks_ function within the workflow.
-
-- _Link Groups_: Finally, a group can also be a _link_ which redirects the user to another source of information, whether it be another webpage, a document, a dashboard, or pretty much anything else.
-
-
-
-## Channels {#channels}
-
-A _channel_ is primarily a *chatroom* for a specific group's users, allowing quick and transparent communication between people working on a _task_ or project. Apart from messaging, _channels_ can also include _surveys_. We will look into _surveys_ in the next section; for now, _surveys_ help gather data from users, improving procedures within the company.
-
-The *messaging service* in _channels_ permits sending texts, emojis, links, images, and videos.
-<!-- TODO ##### image with text input and paper clip -->
-
-Within certain _groups_, users are allowed to create _channels_. The _user_ can then choose what _users_ to include in the newly made _channel_. 
-<!-- TODO ##### image of the top of channels list with "plus sign" shown here -->
-
-When there are multiple _channels_ in a group, it is recommended to use the *search bar* which permits finding a _channel_ by its name.
-<!-- TODO ##### image of the top of the channels list with a magnifying glass -->
-
-*Direct messages* for other users can be made through the _contacts_ button at the top of the _main menu_.
-<!-- TODO ##### image of contact button on top of the main menu bar -->
-
-
-### View of Channels inside of a group {#view-of-channels-inside-of-a-group}
-<img alt="" src={useBaseUrl('img/channellistweb.jpg')} />
-
-### View of Chat Channel {#view-of-chat-channel}
-<img alt="" src={useBaseUrl('img/channelopen.jpg')} />
-
-### Task Menus within Channel {#task-menus-within-channel}
-From within the respective _channel_, you can change a _task's_ state. Simply hover over the task in the group's channel list and left-click over the icon that appears to the right.
-
-_The following image shows how to open the pop-up menu:_
-<img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_popup_00.png')} />
+<img alt="design" className="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
+<br/>
 <br/>
 
-You can also open up a side panel with all the task info by clicking on the task number found on the top of the screen.
 
-_The following image shows how to open the side panel:_
-<img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channel_task_sidepanel_00.png')} />
+## General Description {#descriptions}
+
+_Groups_ are the primary place to interact and exchange information in the Cotalker environment. From a group's panel, you can go to [channels](/docs/documentation/client/channels) and subgroups. Depending on the type of group, you can create and view [tasks](/docs/documentation/client/taskview), create other channels, or access a link to other information.
+
+<div className="alert alert--primary">
+
+## Group Types {#group-types}
+_Groups_ – which can only be created by administrators – are classified into three kinds:
+
+### Standard Groups {#regular-groups} 
+Normally, we refer to _regular groups_ simply as _groups_. They incorporate a list of users and include [_channels_](/docs/documentation/client/basic_concepts#channel), i.e., chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel. 
+
+### Workflow Groups {#workflow-groups}
+_Workflow groups_, also known as _task groups_, are similar to standard groups in that they include channels and subgroups. Their great advantage is that they host [_tasks_](/docs/documentation/client/basic_concepts#tasks) with their corresponding [_channels_](/docs/documentation/client/basic_concepts#channel). You can access task details either through the [_group panel_](#group-panel) or the [_channel workspace_](/docs/documentation/client/channels).
+
+### Link Groups {#link-groups}
+This kind of _group_ is a _link_ that can be found in the [_main menu bar_](/docs/documentation/client/main_menu) or [_group panel_](#group-panel). It can redirect the user to another source of information, whether internal or external to the Cotalker environment.
+
+</div>
 <br/>
 
-### Floating Action Button (FAB) {#floating-action-button-fab}
-Within a group panel, you might see a green button floating near the bottom. This is a floating action button (FAB) that can be configured for a group's specfic needs. This button can let you create a new channel, answer a survey, create a task, redirect to another URL, among others.
+## Group Display {#access}
+Groups can be displayed either in _group view_ or _task view_. 
+- [**Task View**](#task-view): This is the default view for _workflow groups_. It displays tasks in one of the [available task views](/docs/documentation/client/taskview#tasks-view).
+- [**Group View**](#group-view): Contains the group panel, which can display sub-groups, folders, links, channels, and tasks. _Standard groups_ are always displayed in _group view_. Although this is not the default view for _Task groups_, the [admin](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit#settings) can set them to be displayed in _group view_.
 
-_The FAB and the enabled actions will look something like the image below:_
-<img alt="fab secondary actions" className="img_sizing item shadow--lw" src={useBaseUrl('img/admin_groups_fab_secondary_actions.png')} />
+### Task View {#task-view}
+
+#### How to access a workflow (task) group: {#access-task-view}
+
+<img alt="groups" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_groups_02.png')} />
+<br/>
+
+<div className="margin-left--lg">
+
+1. Choose a _task group_ from the **Main Menu Bar**.
+2. Tasks appear according to the predetermined _task view_.
+3. The _task view toolbar_ appears above, allowing to change the task view appearance and display filters.
+
+:::info
+For more details about _task views_ and their display options, go to the [**Task View**](/docs/documentation/client/taskview#tasks-view) section.
+:::
+
+</div>
+
+### Group View {#group-view}
+
+#### How to access a group: {#access-group-view}
+
+<img alt="groups" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_groups_00.png')} />
+<br/>
+
+<div className="margin-left--lg">
+
+1. Choose a _standard group_ through the **Main Menu Bar**.
+2. The _group panel_ opens up, displaying the content and available options.
+
+</div>
+
+<br/>
+<div className="alert alert--secondary">
+
+#### Group Panel Layout {#group-panel}
+
+<img alt="group panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_groups_01.png')} />
+<br/>
+
+- a.) [Task Viewer](/docs/documentation/client/taskview): Appears within workflow groups. Permits viewing tasks with display filters.
+- b.) [Group Search Tool](/docs/documentation/client/client_search#group-search): Search within the group.
+- c.) Channel and Subgroup list: Access [channels](/docs/documentation/client/channels) and subgroups.
+- d.) [Actions Button](/docs/documentation/client/actions_button): Depending on the group's configuration, create channels, tasks, or access a URL.
+
+</div>
 <br/>

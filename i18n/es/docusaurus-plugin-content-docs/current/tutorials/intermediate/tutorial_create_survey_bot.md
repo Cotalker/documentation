@@ -86,24 +86,24 @@ _So far, your screen should look something like this:_
     --------
     2. Add the first stage by pressing the <span className="badge badge--primary">+ Add stage</span> button, and set the following:
         - **Code**: `property_request`
-        - **Type**: `Solicitud de red` 
-        - **URL** : `$JOIN#/#($ENV#BASEURL)#api#properties#($VALUE#data|[find=>identifier=department]|process|0) <br/>`
+        - **Type**: `Network Request` 
+        - **URL** : `$JOIN#/#($ENV#BASEURL)#api#properties#($VALUE#data|[find=>identifier=department]|process|0)`
         :::note 
         The [Cotlang](/docs/documentation/automation/admin_cotlang) string in the URL field gets the department's URL address.
         :::
-        - **Método**: *GET*
-        - **Autenticación Predeterminada**: _activate option_
+        - **Method**: *GET*
+        - **Default authentication**: _activate option_
     --------
     3. Scroll back up the <span className="badge badge--primary">Routine builder</span> section to add the second stage by pressing the <span className="badge badge--primary">+ Add Stage</span> button again. Set the following:
         - **Code**: `message`
-        - **Type**: `Enviar mensaje` 
-        - **Contenido**: `$JOIN# #Welcome#($VALUE#data|[find=>identifier=nickname]|process|0)#! I wish you all the best of luck in this new journey in the company! Hey team, say hi to our new pal from the#($OUTPUT#property_request#data|name|display)#area.`
-        - **content type**: `text/plain`
-        - **user**: `($CODE#user#email#pet@cotalker.com)|_id`
+        - **Type**: `Send Message` 
+        - **Content**: `$JOIN# #Welcome#($VALUE#data|[find=>identifier=nickname]|process|0)#! I wish you all the best of luck in this new journey in the company! Hey team, say hi to our new pal from the#($OUTPUT#property_request#data|name|display)#area.`
+        - **Content type**: `text/plain`
+        - **User**: `($CODE#user#email#pet@cotalker.com)|_id`
         :::note 
         This [Cotlang] string will return the _COTuser_ that matches the email *pet@cotalker.com* and then obtain its *id*.
         :::
-        - **channel**: `$VALUE#channel`
+        - **Channel**: `$VALUE#channel`
         :::note 
         The context being accessed is _COTanswer_.
         :::
@@ -113,22 +113,22 @@ _So far, your screen should look something like this:_
         - **Type**: `Enviar Gif`
         - In <span className="badge badge--primary">Búsqueda</span>, press the <span className="badge badge--primary">+ Add item</span>, and set:
             - **Item**: `Welcome Pal`
-        - **Canal**: `$VALUE#channel`
-        - **Usuario**: `($CODE#user#email#pet@cotalker.com)|_id`
+        - **Channel**: `$VALUE#channel`
+        - **User**: `($CODE#user#email#pet@cotalker.com)|_id`
     --------
     5. Scroll back up again and set:
         - **Max. Iterations**: `10`
         - **Initial Stage**: `property_request`
     --------
     6. Select the <span className="badge badge--primary">property_request</span> stage. Then, scroll to the bottom of the section and configure the following:
-        - Under **Outputs**, in the **Exito** field: `message` 
+        - Under **Outputs**, in the **Succeed** field: `message` 
     
     _The stages can be selected from this menu bar:_
     ![stages menu bar](/img/tutorial_inter_survey_bot_02.png)
 
     --------
     7. Select the <span className="badge badge--primary">message</span> stage. Scroll to the bottom of the section and configure the following:
-        - Under **Outputs**, in the **Por defecto** field: `gif`
+        - Under **Outputs**, in the **Default** field: `gif`
 
 </div>
 <br/>

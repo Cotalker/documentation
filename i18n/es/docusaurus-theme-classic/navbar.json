@@ -3,9 +3,9 @@
     "message": "Primeros Pasos",
     "description": "Navbar item with label Getting Started"
   },
-  "item.label.Updates": {
-    "message": "Actualizaciones",
-    "description": "Navbar item with label Updates"
+  "item.label.What's New": {
+    "message": "Novedades",
+    "description": "Navbar item with label What's New"
   },
   "item.label.Documentation": {
     "message": "Documentación",
@@ -20,7 +20,7 @@
     "description": "Navbar item with label Certification"
   },
   "item.label.Support & Help": {
-    "message": "Soporte y Ayuda",
+    "message": "Soporte",
     "description": "Navbar item with label Support & Help"
   }
 }

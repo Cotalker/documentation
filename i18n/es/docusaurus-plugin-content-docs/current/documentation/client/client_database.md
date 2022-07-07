@@ -6,7 +6,9 @@ sidebar_label: Database
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-# Database Overview {#database-overview}
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Database.svg')} />
+
+## Overview {#database-overview}
 In this section, we will see how company asset types organize information. Information could be customized by the client, but usually, it is grouped by general information, customized information, related assets, related channels, and associated surveys.
 
 The following image shows the asset types:

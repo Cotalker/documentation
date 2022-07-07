@@ -5,14 +5,17 @@ title: Certification Overview
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="" src={useBaseUrl('img/cotalker_university.png')} width= "40%" height= "40%"/>
+
+
+<img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/Certification.svg')} />
+<img alt="cotalker university logo" className="logo" src={useBaseUrl('img/cotalker_university.png')} />
 <br/><br/>
 
 ## Introduction {#introduction}
 
 Cotalker University offers the official training for admins, consultants and partners. <br/><br/>
 
-<img alt="" src={useBaseUrl('img/certification_levels.png')} width= "60%" height= "60%" />
+<img alt="certification levels chart" className="img_title" src={useBaseUrl('img/certification_levels_chart.svg')} />
 <br/><br/>
   
 
@@ -31,8 +34,6 @@ Cotalker University offers the official training for admins, consultants and par
 Checkout these links for more information:
 
 [Official Documentation](https://doc.cotalker.com)
-
-[Video Courses](https://docs.google.com/spreadsheets/d/1KFjacbH_vdDTddXJXO5BbUoicm0tsLyEbvsO6WPl070/edit#gid=0) (_Videos are currently only in Spanish._)
 
 ## Syllabus {#syllabus}
 

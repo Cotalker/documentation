@@ -6,7 +6,9 @@ sidebar_label: Reports
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 
-# Reports {#reports}
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Reports.svg')} />
+
+## Overview {#reports}
 
 Reports allow viewing, filtering, and sorting answered surveys. This section is activated only when the user has report permissions.
 

@@ -1,119 +1,205 @@
 ---
 id: configure_company
-title: Configure Company
+title: Configure Company Basics
 author: Edward Alvarado & Valentina Martinez
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight'; 
 
-Tutorial on how to configure a _company_. 
+<span className="hero__subtitle">
+
+Tutorial on how to edit _company_ settings and create _job titles_. 
+
+</span>
 
 Time: 7 minutes
 
 :::tip Vocabulary note:
-- A _company_ is the institution that will be using the Cotalker App. All _companies_ have to configure the app to their characteristics and needs. 
-- For the sake of this tutorial, the _company_ will be already created, but it needs to be configured. 
+- In the [_Administrative Panel_](/docs/documentation/admin/admin_overview#layout), the **company** subdivision has three sections: [_Users_](/docs/documentation/admin/users), [_Job titles_](/docs/documentation/admin/admin_jobtitles), and [_Configuration_](/docs/documentation/admin/admin_company).
+- In other parts of the documentation, we refer to a [**company**](/docs/documentation/models/model_company) as a data model that represents the business or organization and unites all other data models.
 :::
 
 ## Company Requirements {#company-requirements}
-#### Tutorial Objectives {#tutorial-objectives}
 
-As mentioned in the [Overview](../tutorial_overview), we will be working with a make-believe company for this tutorial. Our mock company is _Ruanda_. Below, we will see their first requirements for installing the app.
+As mentioned in the [Overview](../tutorial_overview), we will be working with a make-believe company called _Ruanda_ for this tutorial. The company's first requirements are described below:
 
-- First, they have different job positions that need to be added to the software, such as:
+- The company resides in Chile, but they work oversees, so its language preference should be set to English.
+
+- They have the following job positions that need to be integrated to the platform:
   - CEO
-  - head of financial control
-  - financial controller
+  - chief of cybersecurity
   - developer
-  - chief of cyber security
+  - finance manager
+  - project manager
+  - customer success manager
   - secretary
-  - head of commercial division
-  - executive
-  - head of the treasury division
   - accounting
-  - head of the marketing division
-  - advertiser
-  - head of risk control
-  - risk analyst
-  - head of human resources
-  - psychologist
-  - IT boss
+  - marketing analyst
+  - field service representative
+  - human resources manager
+  - IT manager
 
-- They have also requested that, when a new user logs into the app for the first time, their terms of services be displayed.
-
-- The company resides in Chile, so its language preference is Spanish.
+## Tutorial Objectives {#tutorial-objectives}
+- [**A. Change basic company settings**](#change-company-settings)
+- [**B. Create _job titles_**](#create-job-titles)
 
 ## Pre-Requisites {#pre-requisites}
 #### Access Role {#access-role}
-* _User_ with `admin-company-write`, `web-admin-write` and `web-admin-read` permissions to edit a company.
-* _User_ with the `read admin` access role.
+- For simplicity's sake, use a [_User_](/docs/documentation/admin/users) account with an [_access role_](/docs/documentation/admin/admin_accessrole) containing the `admin-*-write` permission.  
+
+:::caution  
+The `admin-*-write` permission enables writing in the entire **Administrative Panel**. Use with caution.  
+:::  
+:::tip
+- If you do not have this permission, ask your admin for help.
+- Below, you can see (1) an image of a [user's settings](/docs/documentation/admin/users#user-settings-panel) highlighting their access roles. If you click on the _access role_ in the _user_ settings panel, the (2) [access role's settings](/docs/documentation/admin/admin_accessrole#edit--create-single-access-role) opens up. There you will see the permissions associated with the access role, i.e., the permissions the user has been granted.  
+
+<img alt="permissions" className="img_sizing item shadow--tl"   src={useBaseUrl('img/tutorials/tutorial_basic_company_00.png')  } />
+<br/>
+
+:::
 
 ## Steps {#steps}
+### A. Change Basic Company Settings {#change-company-settings}
+
 <div className="alert alert--secondary">
 
-1. From the **Main Menu Bar**, access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Company</span>.
+**I. Go to the Company Settings Panel.**
 
-  _The company's settings panel will open up as shown below:_
+<img alt="access company" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorials/tutorial_basic_company_01.png')} /> 
+<br/>
 
-<img className="img_sizing item shadow--tl" alt="" src={useBaseUrl('img/tutorial_configure_company_01.png')} /> 
-<br/>
-<br/>
+1. From the **Main Menu Bar**, press <span className="badge badge--primary">Administrator</span> button.
+2. In the Administrative Panel, select <span className="badge badge--primary">Configuration</span>.
+3. The [_Company Settings Panel_](/docs/documentation/admin/admin_company) opens up.
 
 :::note 
-- _The name of the mock company could be different in your tutorial session._
+_The mock company settings could be different in your tutorial session._
 :::
 
 </div>
-<br></br>
+<br/>
 
 <div className="alert alert--secondary">
 
-2. Under the <span className="badge badge--primary">Features</span> tab, in the _Job categories_ field, add the desired job titles:
-    - CEO
-    - head of financial control
-    - financial controller
-    - developer
-    - chief of cyber security
-    - secretary
-    - etc.
+**II. Change the company settings.** 
+
+<img className="img_sizing item shadow--tl" alt="edit company" src={useBaseUrl('img/tutorials/tutorial_basic_company_02.png')} /> 
+<br/>
+
+1. Open the <span className="badge badge--primary">Billing information</span> tab.
+2. Set the _country_ to _Chile_.
+3. Open the <span className="badge badge--primary">Appearance</span> tab.
+4. Set the _language_ to _English_. 
 
 :::note
-  - _Press the Enter key after writing the name of each job to have it saved._
-  - _Adding the first five job titles is enough for the tutorial._
+In general, the Cotalker platform is displayed in the language of the navegation browser it is being used on. The _language_ option in the _company settings_ sets the language used for certain variables, such as bots.
 :::
 
 </div>
-<br></br>
+<br/>
 
 <div className="alert alert--secondary">
 
-3. Set up their _terms of service_ URL:
-    - Activate the ***Show terms of service*** option.
-    - Copy and add this [*link*](https://docs.google.com/document/d/e/2PACX-1vQSIQFLoNStF9hQ_RJyUWyXrpCl3kqSPRJxATlFHrcYcJtQLZY1ZKnAsGqNogyRe7f0UJGVNuxZSeeB/pub) in the **Terms of service's URL** field.
+**III. Save the current changes.**
 
-</div>
-<br></br>
+<img className="img_sizing item shadow--tl" alt="save company" src={useBaseUrl('img/tutorials/tutorial_basic_company_03.png')} /> 
+<br/>
 
-<div className="alert alert--secondary">
+Press the <span className="badge badge--primary">Save</span> button on the upper right-hand corner.
 
-4. Under the <span className="badge badge--primary">Apperance</span> tab, set the default language to _Spanish_.
+:::caution 
+_Don't leave the settings panel without saving. All changes will be lost if not saved before leaving._
+:::
 
-</div>
-<br></br>
-
-<div className="alert alert--secondary">
-
-5. Press <span className="badge badge--primary">Save</span>.
-
-:::note 
-- _The **Save** button is on the upper right-hand corner._
-- _Don't leave the settings panel without saving. Changes will be saved only if the **Save** button is pressed._
+:::tip
+Feel free to play around with the settings and save a different company configuration.
 :::
 
 </div>
-<br></br>
+<br/>
 
-## Result {#result}
-After completing all the steps, your settings panel should look something like this:
 
-<img alt="result" className="img_sizing item shadow--tl" src={useBaseUrl('img/tutorial_create_company_02.png')} />
+### B. Create Job Titles {#create-job-titles}
+
+<div className="alert alert--secondary">
+
+**I. Go to the Job Titles section.**
+
+<img className="img_sizing item shadow--tl" alt="access job titles" src={useBaseUrl('img/tutorials/tutorial_basic_company_04.png')} /> 
+<br/>
+
+1. From the **Main Menu Bar**, press <span className="badge badge--primary">Administrator</span> button.
+2. In the Administrative Panel, select <span className="badge badge--primary">Job titles</span>.
+3. The [_Job Titles Sections_](/docs/documentation/admin/admin_jobtitles) opens up.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+**II. Open a Job Titles Settings Panel.**
+
+<img className="img_sizing item shadow--tl" alt="open job titles settings panel" src={useBaseUrl('img/tutorials/tutorial_basic_company_05.png')} /> 
+<br/>
+
+To open the _job titles settings panel_, press the <span className="badge badge--primary">+</span> icon in the upper right-hand corner.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+**III. Set up and Save New Job Title.**
+
+<img className="img_sizing item shadow--tl" alt="save job titles" src={useBaseUrl('img/tutorials/tutorial_basic_company_06.png')} /> 
+<br/>
+
+From the _Job Titles settings panel_,
+
+1. Enter the job title's **name**. This is the name will be viewed by other users.
+2. Enter the job title's **code**. This code must be unique and will be used by the system to identify the job title.
+3. Save when done.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+**IV. Repeat.**
+
+Repeat the procedure with the remaining job titles until done.
+
+:::tip
+Feel free to add more or less job titles than those indicated in the [company requirements](#company-requirements).
+:::
+
+</div>
+<br/>
+
+## Expected Results {#expected-results}
+
+A. When finished, your company configuration should look something like this:
+
+<img className="img_sizing item shadow--tl" alt="check company settings" src={useBaseUrl('img/tutorials/tutorial_basic_company_07.png')} /> 
+<br/>
+
+B. Your _Job titles_ section should be similar to the image below.
+
+<img className="img_sizing item shadow--tl" alt="check job titles" src={useBaseUrl('img/tutorials/tutorial_basic_company_08.png')} /> 
+<br/>
+<br/>
+
+<div className="align-center">
+
+<iframe src="https://giphy.com/embed/kzs7srxbKNqjbI62U4" width="90%" height="90%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+<p><a href="https://giphy.com/gifs/abcnetwork-kzs7srxbKNqjbI62U4">via GIPHY</a></p>
+
+</div>
+
+---
+
+## Related Topics {#related-topics}
+- [Company configuration](/docs/documentation/admin/admin_company): Administrative Panel documentation
+- [Job titles](/docs/documentation/admin/admin_jobtitles): Administrative Panel documentation

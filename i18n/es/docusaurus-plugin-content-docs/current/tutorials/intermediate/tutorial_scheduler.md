@@ -1,91 +1,243 @@
 ---
 id: tutorial_scheduler
-title: Create Scheduled Routine
+title: Create a Scheduled Routine
 author: Valentina Martínez
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-## Company Request {#company-request}
-The Human Resources department of the Rwanda Company asks if cotalker can implement a bot that remembers the team's birthday on a monthly basis. So, every first of the month he sends a message of the birthdays of the month so that everyone has them in mind. <br/>
+:::caution
+Tutorial under review due to updates in data schemes.
+:::
 
-To make it more fun, cotalker offers to have the company's mascot send the message
 
-## Functional Requirements {#functional-requirements}
-**ACCESS ROLE**
-* User with the permission `admin-*-write`, which allows all to access to the admin.
-* User with the permissions `web-admin-write` and `web-admin-read` to set up in the admin.
-* User with the access role `read admin`.
+## Company Requirements {#company-requirements}
 
-**CHANNEL**
-* Create a channel that has the entire team on it. Save the channel id, we'll refer to it with *channel_id*
+Ruanda's Human Resources department wants to implement a bot that reminds team members of upcoming birthdays. The idea is to have a monthly reminder of all the birthdays on that month so that everyone has them in mind.
 
-**USER**
-* Create a user (company's mascot), who will send the birthday message on the team channel. Save the user id, we'll refer to it with *user_id*
+To make it even more fun, have the company's mascot send the message.
 
-**DATABASE**
-* Create the collection *month_birthday* with the following elements with the addtional attribute named *display*:
+## Pre-Requisites {#pre-requisites}
+#### Access Role
+- _User_ with the `admin-*-write` permission, which allows complete access to the admin.
+- _User_ with the `read admin` access role.
 
-| Name | Code | display |
-|--------|--------|-------------|
-| January | month_01 | Andres [2], Sergio I. [3], Ariel  [12], Guille Valin [20] and Julius [23] |
-| February | month_02 | Mario [2] and Will Smith [12]  |
-| March | month_03 | Valentina [15] and Aroon Piper [22] |
-| May | month_05 | Javiera [16] and Cristian[15] |
-| June | month_06 | Tom Holland [18] |
-| July | month_07 | Joaquin [30] |
-| August | month_08 | Roberto [13] |
-| September | month_09 | Zac Effron [7] |
-| October | month_10 | Lily Collins [3] |
-| November | month_11 | Tom Cruse [5] |
-| December | month_12 | Harry Style [20] and Ducker [17] |
+#### Channel
+- Create a channel that has the entire team on it. Save the _channel id_, we'll refer to it as `channel_id`. 
+- You might already have a _channel_ like this from the [Create Groups & Channels Tutorial](/docs/tutorials/basic/create_group) or [Create Survey Tutorial](/docs/tutorials/basic/create_survey).
+- You can easily get the _id_ by going to the channel's page and coping the serial number that appears in the URL.
+
+#### User
+- Create a _user_ (company mascot), who will send the birthday message on the team channel. Save the _user id_, we'll refer to it as `user_id`.
+- You might already have a _user_ that serves as a company mascot from  the [Create Survey-Triggered Parameterized Bot Survey](/docs/tutorials/intermediate/create_survey_bot).
+- You can easily get the _id_ by going to the user's settings page and coping the serial number that appears in the URL.
 
 ## Steps {#steps}
-1. Access the `administrator` and open `Workflows`
-2. Press `+` button to create a new scheduler.
-3. Set up the general information:
-    * `Code`: *monthbirthday*
-    * Active the button `Recurrence` 
-    * Press `Monthly` option
-    * `Every`: 1
-    * `Day`: 1
-    * `Hour`: 9
-    * `Minute`: 0
-4. Set up the *Routine builder*
-    1. Press `+ Add Stage`
-        * `code`: *get_date*
-        * `type`: *Network Request* 
-        * `URL`: *http://worldtimeapi.org/api/timezone/America/Santiago*
-        * `Method`: *GET*
 
-    2. Press `+ Add Stage`
-        * `code`: *property*
-        * `type`: *Network Request* 
-        * `URL`: *$JOIN#/#($ENV#BASEURL)#api#properties#findByCode#($JOIN##month_#($OUTPUT#get_date#data|datetime|[date=>format=MM]))*
-        * `Method`: *GET*
-        * Active the button `Default authentication`
-        :::note It needs to be active to use the cotalker api.
+<!-- @maurice despues que revisamos este tutorial  tenemos que 
+
+1. Cambiar los extras por los nuevos SchemaNodes
+2. Cambiar en la forma que funciona en general, porque schema nodes no permite objectos anidados (ya hablaremos de  esto) igual es un gran contra de modelar muchas cosas (vamos a hablar con @alfredo por si tiene alguna buena idea)
+3.  Modificar el bot para usar el nuevo modelo
+4. Esperar bots con codigo custom para poder adaptar los formatos -->
+
+### I. Create a Collection
+
+<div className="alert alert--secondary">
+
+1. Create the _birthdays_ collection.
+
+<!--  First proposal:
+    - Create the collection.
+    - Use Additional Fields for birthday date
+    - Then create an element for each team member and use additional field to add birthdate.
+ -->
+<!-- Second proposal:
+    - Add Additional Field in Users for birthdate -->
+<!-- Third proposal: 
+    - ???
+-->
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+2. Add **Elements** to add person and birthdate. 
+
+
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+3. Use the following data for this exercise:
+
+<!-- This was taken from the former version, for use with (soon to be deprecated Attributes) -->
+
+<div className="container">
+<div className="row table-row-1">
+<div className="col col--4">Name:</div>
+<div className="col col--4">Code:</div>
+<div className="col col--4">Display:</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--4">January</div>
+<div className="col col--4">month_01</div>
+<div className="col col--4">Andrew [2], Sergio [3], Ariel [12], Gwen [20] and Julie [23]</div>
+</div>
+<div className="row table-row-1">
+<div className="col col--4">February</div>
+<div className="col col--4">month_02</div>
+<div className="col col--4">Mario [2] and Will Smith [12]</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--4">March</div>
+<div className="col col--4">month_03</div>
+<div className="col col--4">Valentina [15] and Aron Piper [22]</div>
+</div>
+<div className="row table-row-1">
+<div className="col col--4">May</div>
+<div className="col col--4">month_05</div>
+<div className="col col--4">Javiera [16] and Christian[15]</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--4">June</div>
+<div className="col col--4">month_06</div>
+<div className="col col--4">Tom Holland [18]</div>
+</div>
+<div className="row table-row-1">
+<div className="col col--4">July</div>
+<div className="col col--4">month_07</div>
+<div className="col col--4">Joaquin [30]</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--4">August</div>
+<div className="col col--4">month_08</div>
+<div className="col col--4">Robert [13]</div>
+</div>
+<div className="row table-row-1">
+<div className="col col--4">September</div>
+<div className="col col--4">month_09</div>
+<div className="col col--4">Zac Efron [7]</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--4">October</div>
+<div className="col col--4">month_10</div>
+<div className="col col--4">Lily Collins [3]</div>
+</div>
+<div className="row table-row-1">
+<div className="col col--4">November</div>
+<div className="col col--4">month_11</div>
+<div className="col col--4">Tom Cruise [5]</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--4">December</div>
+<div className="col col--4">month_12</div>
+<div className="col col--4">Harry Styles [20] and LeBron James [30]</div>
+</div>
+</div>
+<br/>
+
+</div>
+<br/>
+
+### II. Create Scheduler
+
+<!-- This has to be redone and adapted to Scheme Nodes. -->
+
+<div className="alert alert--secondary">
+
+4. Access the <span className="badge badge--primary">Administrator</span> and open <span className="badge badge--primary">Schedules</span>.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+5. Press <span className="badge badge--primary">+</span> button to create a new scheduler.
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+6. Set up the <span className="badge badge--primary">General information</span> section:
+    - **Code**: `birthday_reminder`
+    - Activate the **Recurrence** button.
+    - Select the **Monthly** option
+    - **Every**: 1
+    - **Day**: 1
+    - **Hour**: 9
+    - **Minute**: 0
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+7. Set up the <span className="badge badge--primary">Routine builder</span> and set the following:
+
+    1. Press <span className="badge badge--primary">+ Add Stage</span>
+        - **Code**: `get_date`
+        - **Type**: `Network Request` 
+        - **URL**: `http://worldtimeapi.org/api/timezone/America/Santiago`
+        * **Method**: `GET`
+    ----
+
+    2. Press <span className="badge badge--primary">+ Add Stage</span> and set the following:
+        - **Code**: `property`
+        - **Type**: `Network Request` 
+        - **URL**: `$JOIN#/#($ENV#BASEURL)#api#properties#findByCode#($JOIN##month_#($OUTPUT#get_date#data|datetime|[date=>format=MM]))`
+        - **Method**: `GET`
+        - Activate the **Default authentication** button.
+        :::note 
+        Default authentication must be be active in order for it to work with the Cotalker API.
         :::
-    3. Press `+ Add Stage`
-        * `code`: *message*
-        * `type`: *Send Message* 
-        * `Content`: *$JOIN##(🎈 ¡This month we celebrate the following birthday! 🎈)#($OUTPUT#property#data|extra|display)*
-        * `Content Type`: *text/plain*
-        * `User`: *user_id*
-        * In *Channel* press `+ Add Item`:
-            * `Item`: *channel_id*
-    4. Press `+ Add Stage`
-        * `code`: *empty_condition*
-        * `type`: *Conditional* 
-        * `left side`: *$OUTPUT#property#data*
-        * `right side`: *$CODE#users#email#asdasd@cotalker.com*
-        * `Operator`: *neq*
-        * `True Condition`: *message*
-    5. `Max. Iterations`: *10*
-    6. `Initial Stage`: *get_date*
-    7. Set up the Outputs section of the *get_date* stage:
-        * `Succed`: *property*
-    8. Set up the Outputs section of the *property* stage:
-        * `Succed`: *conditional*
-5. Save.
+    ----
+
+    3. Press <span className="badge badge--primary">+ Add Stage</span> and set the following:
+        - **Code**: `message`
+        - **Type**: `Send Message` 
+        - **Content**: `$JOIN##(🎈 This month we celebrate the following birthdays! 🎈)#($OUTPUT#property#data|extra|display)`
+        - **Content Type**: `text/plain`
+        - **User**: *user_id*\*
+        - In *Channel* press **+ Add Item**:
+          - **Item**: *channel_id*\*
+        :::note
+        *_Remember to use the mascot's and channel's id as explained [above](#pre-requisites)._
+    ----
+    
+    4. Press <span className="badge badge--primary">+ Add Stage</span> and set the following:
+        - **Code**: `empty_condition`
+        - **Type**: `Conditional`
+        - **Left side**: `$OUTPUT#property#data`
+        - **Right side**: `$CODE#users#email#asdasd@cotalker.com`
+        - **Operator**: `neq`
+        - **True Condition**: `message`
+    ----
+
+    5. **Max. Iterations**: `10`
+    ----
+
+    6. **Initial Stage**: `get_date`
+    ----
+    
+    7. Set up the **Outputs** section of the *get_date* stage:
+        - `Succed`: *property*
+    ----
+
+    8. Set up the **Outputs** section of the *property* stage:
+        - **Succed**: `conditional`
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+8. Press <span className="badge badge--primary">Save</span>.
+
+</div>
+<br/>
 
 ## Result {#result}

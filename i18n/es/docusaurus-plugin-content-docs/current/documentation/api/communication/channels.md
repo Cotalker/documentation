@@ -6,49 +6,80 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-A __channel__ is a space where users and bots can communicate through messages.
+## Overview {#overview}
+_Channels_ are workspaces where _users_ can get _task_ information, change _task_ states, submit _surveys_, summon _bots_, chat with other _users_, and share files. 
 
-## Model {#model}
+_Channels_ exist within either [_regular or workflow groups_](/docs/documentation/client/groups).
 
-| Field | Type | Description | Notes |
-| ----  | ---- | ----------- | ----  |
-| _id   | id   | Unique Identifier   | Unique. Exactly 24 chars. Valid chars [0-9a-f] |
-| group   | id   | Channel belongs to this group   | Exactly 24 chars. Valid chars [0-9a-f] |
-| userIds   | Array\<id\>   | List of users in channel   | 
-| propertyIds   | Array\<id\>   | List of channel properties   | 
-| name  | string | Display   | Required |
-| code  | string | Code Name | Unique. Max 60 chars. Valid chars [a-z0-9_] |
-| modifiedAt | date | Last modification date
-| createdAt | date | Entry creation date
-NOTE: This is a simplified version. Please check the [API](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f) docs for the full model.
+:::tip additional resources
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
+:::
 
-## API {#api}
+## Get Channels {#get-all-channels}
+_Returns all channels within the company._
 
-The main features of the API are:
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /channels</span>
 
-### Client Channel-API {#client-channel-api}
-* Get list of all channels
-* Get data of specific channel
+#### Endpoint URL {#get-all-url}
+`https://www.cotalker.com/api/v2/channels`
 
-## Examples {#examples}
+#### Headers {#get-all-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 
-### Client-API GET /channels {#client-api-get-channels}
-Listing all channels and their properties.
+#### Query Parameters {#query-get-all}
 
-[A valid access-token is required to perform the request.](/docs/documentation/api/auth)
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | ---- | ----
+**search** | Returns channels that match the keywords in the `search` field array. | string | Optional |
+**limit** | Limits the amount of _channels_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
+**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
+**count** | Adds the `counter` field with the total amount of _channels_ within the company. | boolean | Optional | 
+**orderBy** | Orders the _channels_ by ascendeing or descending order according to their `modifiedAt` field. | string | Optional | Options: `asc`, `desc`
+**sortBy** | Sorts _channels_ in the response according to the chosen field: `nameCode`, `modifiedAt`, or `createdAt`. | string | Optional | Details about the [Channel Data Model](/docs/documentation/models/communication/model_channels)
+**group** | Returns all _channels_ found within the indicated _group_. | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups)
+**isActive** | Returns _channels_ according to their `isActive` status. | string | Optional | Options are: `all`, `true`, `false`
+**user** | Returns _channels_ in which the indicated _user_ and the current _user_ are found in. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Optional |
+**userIsAdmin** | Returns _channels_ in which the indicated _user_ is found in the `groupOwnerIds` | boolean | Optional | Must be used in conjunction with the _user query parameter_.
+**directChannels** | Returns _channels_ according to their `isDirect` field which indicates whether a channel represents direct messages between two users or not. | string | Optional | Options are: `all`, `true`, `false`.
+**modified** | Returns _channels_ with the indicated modification date in the `modifiedAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gt** | Returns _channels_ modified after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gte** | Returns _channels_ with a value in the `modifiedAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created** | Returns _channels_ with the indicated creation date in the `createdAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_gt** | Returns _channels_ created after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_gte** | Returns _channels_ with a value in the `createdAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_lt** | Returns _channels_ created before the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**created_lte** | Returns _channels_ with a value in the `createdAt` field equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
-<Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
-<TabItem value="curl">
+#### Request Samples {#get-all-request-sample}
 
+<Tabs defaultValue="curl-get-all" values={[ {label: 'cURL (default)', value: 'curl-get-all'}, {label: 'cURL (query)', value: 'curl-group'}, {label: 'Typescript (default)', value: 'typescript'} ]}>
+<TabItem value="curl-get-all">
+
+_This default request gets all the channels in the company._
 ```bash
 curl --location --request GET 'https://www.cotalker.com/api/v2/channels' \
---header 'Authorization: Bearer TOKEN'
-``` 
+--header 'Authorization: Bearer $ACCESS_TOKEN'
+```
+
+</TabItem>
+<TabItem value="curl-group">
+
+_This example uses the group query parameter to get channels within a group._
+```bash
+curl --location --request GET 'https://www.cotalker.com/api/v2/channels?group=61984c6f68a78ccc932d67f8' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
+```
 
 </TabItem>
 <TabItem value="typescript" example="api_channel.ts">
 
+_This example gets all channels in the company._
 ```typescript
+// $ACCESS_TOKEN stored in .env file.
+
 import { ChannelGetCollection, Configuration, V2ChannelsApi} from "@cotalker/cotalker-api";
 
 const api = new V2ChannelsApi(new Configuration({
@@ -65,73 +96,52 @@ async function getChannels(): Promise<ChannelGetCollection | undefined> {
 getChannels().then(channels => console.log(channels)).catch(e=>console.log(e))
 
 ``` 
-
 </TabItem>
 </Tabs>
 
-Expected network result:
-<!-- response=api_channel.json -->
-```json
-{
-    "data": {
-        "channels": [
-            {
-                "_id": "5fb4324f2d8a0df350d08b85",
-                "group": "5fb4326b13e16501861ee68e",
-                "userIds": [
-                    "5fb43304d59b01c7b1153ec9",
-                    "5fb4331d97081d7b189bde3b",
-                    "5fb43328d39a68d0a81e6e04"
-                ],
-                "propertyIds": [
-                    "5fb43357db8c4eee6df656dd",
-                    "5fb43366d4025f010312bb69"
-                ],
-                "name": "NYC Workgroup",
-                "code": "workgroup_01",
-                "modifiedAt": "2020-10-15T16:06:09.813Z",
-                "createdAt": "2018-05-24T14:41:42.957Z"
-            },
-            {
-                "_id": "5fb434eadaf347f938e1f3a4",
-                "group": "5fb434f5df57219c8ba948b6",
-                "userIds": [
-                    "5fb434fc1d8928aa51f8275a",
-                    "5fb4350559582e91a2fa2fa9",
-                    "5fb4350c8a892f4b30954e74"
-                ],
-                "propertyIds": [
-                    "5fb43514a4b74d16c7529672",
-                    "5fb4351b62405e8bb4c1c207"
-                ],
-                "name": "Beijing Workgroup",
-                "code": "workgroup_02",
-                "modifiedAt": "2020-03-31T22:14:34.722Z",
-                "createdAt": "2019-04-06T14:46:07.797Z"
-                
-            }
-        ]
-    }
-}
-```
-### Client-API GET channel/{id} {#client-api-get-channelid}
+#### Response Sample {#get-all-response-sample}
+Responses follow the [COTChannel](/docs/documentation/models/communication/model_channels) data model.
 
-You can get the data from a specific channel.
+---
 
-[A valid access-token is required to perform the request.](/docs/documentation/api/auth)
+## Get a Channel by Id {#get-channel-id}
+_Returns the channel indicated by the Id._
 
-<Tabs defaultValue="curl" values={[ {label: 'Shell', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /channels/&#123;id&#125;</span>
+
+#### Endpoint URL {#get-channel-id-url}
+`https://www.cotalker.com/api/v2/channels/{id}`
+
+#### Path Parameters {#get-channel-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**id** | The ObjectId of the _channel_ that is to be returned. | [ObjectId<COTChannel\>](/docs/documentation/models/communication/model_channels) | Required |
+
+#### Headers {#get-channel-id-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+
+#### Query Parameters {#get-channel-id}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+
+#### Request Sample {#get-channel-id-request}
+
+<Tabs defaultValue="curl" values={[ {label: 'cURL', value: 'curl'}, {label: 'Typescript', value: 'typescript'} ]}>
 <TabItem value="curl">
 
 ```bash
-curl --location --request GET 'https://www.cotalker.com/api/v2/channels/5fb4324f2d8a0df350d08b85' \
---header 'Authorization: Bearer TOKEN'
-``` 
+curl --location --request GET 'https://www.cotalker.com/api/v2/channels/619648a6f27b4eb1a9e319ba' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' 
+```
 
 </TabItem>
 <TabItem value="typescript" example="api_channel.ts">
 
 ```typescript
+// $ACCESS_TOKEN stored in .env file.
 import { ChannelGetCollectionChannels, Configuration, V2ChannelsApi } from "@cotalker/cotalker-api";
 
 const api = new V2ChannelsApi(new Configuration({
@@ -141,38 +151,185 @@ const api = new V2ChannelsApi(new Configuration({
 }));
 
 async function getChannel(): Promise<ChannelGetCollectionChannels | undefined> {
-    const response = await api.getV2ChannelsId( { id: "5fb4324f2d8a0df350d08b85" } );
+    const response = await api.getV2ChannelsId( { id: "619648a6f27b4eb1a9e319ba" } );  // ObjectId<COTChannel>
     return response.data?.data;
 }
 
 getChannel().then(channel => console.log(channel)).catch(e=>console.log(e))
-
 ``` 
 
 </TabItem>
 </Tabs>
 
-Expected network result:
-<!-- response=api_channel.json -->
-```json
-{
-    "data": {
-        "_id": "5fb4324f2d8a0df350d08b85",
-        "group": "5fb4326b13e16501861ee68e",
-        "userIds": [
-            "5fb43304d59b01c7b1153ec9",
-            "5fb4331d97081d7b189bde3b",
-            "5fb43328d39a68d0a81e6e04"
-        ],
-        "propertyIds": [
-            "5fb43357db8c4eee6df656dd",
-            "5fb43366d4025f010312bb69"
-        ],
-        "name": "NYC Workgroup",
-        "code": "workgroup_01",
-        "modifiedAt": "2020-10-15T16:06:09.813Z",
-        "createdAt": "2018-05-24T14:41:42.957Z"
-    }
-}
+#### Response Sample {#get-channel-id-response}
+The response follows the [COTChannel](/docs/documentation/models/communication/model_channels) data model.
 
+---
+
+## Create a New Channel {#post-channel}
+_Creates a new channel within the company._
+
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /channels</span>
+
+#### Endpoint URL {#post-channel-url}
+`https://www.cotalker.com/api/v2/channels`
+
+#### Headers {#post-channel-headers}
+
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to create a _channel_. | Required | true 
+**Content-Type** | Indicates the body's format. | Required | application/json
+
+#### Query Parameters {#post-channel-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+
+#### Request Body {#post-channel-body}
+_Only required fields are listed below. For a complete schema description, please go to the [COTChannel data model](/docs/documentation/models/communication/model_channels). Unrequired fields that are not submitted are either filled in automatically or left blank._
+
+Element | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**nameDisplay** | The _channel_ name _users_ will see on the platform. | string | Required |
+**nameCode** | The _channel's_ unique identification name. | string | Required | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
+
+#### Request Sample {#post-channel-request}
+_Channel created with the minimum required fields:_
+```bash
+curl --location --request POST 'https://www.cotalker.com/api/v2/channels' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "nameDisplay": "Maintenance",
+    "nameCode": "maintenance_channel",
+    "group": "619b8b9f026233d770d7ef0a"
+}'
 ```
+
+#### Response Sample {#post-channel-response}
+Go to [COTChannel](/docs/documentation/models/communication/model_channels) for a complete description of the response.
+```json {29-31}
+{
+    "_id": "619b8cf2107bbec0876cddf2",
+    "settings": {
+        "write": "all"
+    },
+    "videoCall": {
+        "start": {
+            "any": false,
+            "permissions": []
+        },
+        "isActive": false,
+        "duration": [],
+        "publishVideo": [],
+        "publishAudio": []
+    },
+    "propertyIds": [],
+    "userIds": [],
+    "groupOwnerIds": [],
+    "isPrivate": true,
+    "isDirect": false,
+    "isActive": true,
+    "pinned": [],
+    "bots": [],
+    "search": [
+        "maintenance",
+        "channel",
+        "maintenancechannel"
+    ],
+    "nameDisplay": "Maintenance",
+    "nameCode": "maintenance_channel",
+    "group": "619b8b9f026233d770d7ef0a",
+    "company": "6136968b580aaf2b0e49d844",
+    "createdAt": "2021-11-22T11:52:26.975Z",
+    "modifiedAt": "2021-11-22T11:52:26.977Z",
+}
+```
+
+---
+
+## Update a Channel {#patch-channel}
+
+_Updates or edits an existing channel's information._
+
+<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /channels/&#123;id&#125;</span>
+
+#### Endpoint URL {#patch-channel-url}
+`https://www.cotalker.com/api/v2/channels/{id}`
+
+#### Path Parameters {#patch-channel-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**id** | The ObjectId of the _channel_ that is to be modified. | [ObjectId<COTChannel\>](/docs/documentation/models/communication/model_channels) | Required |
+
+#### Headers {#patch-channel-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to modify a _channel_. | Required | true 
+**Content-Type** | Sets the body's format. | Required | application/json
+
+#### Query Parameters {#patch-channel-query}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+
+#### Request Body {#patch-channel-body}
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTChannel data model](/docs/documentation/models/communication/model_channels)._
+
+#### Request Sample {#patch-channel-request}
+_Updating a channel's display name:_
+```bash
+curl --location --request PATCH 'https://www.cotalker.com/api/v2/channels/619b8cf2107bbec0876cddf2?debug=true' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "nameDisplay": "Maintenance Report"
+}'
+```
+
+#### Response Sample {#patch-channel-response}
+Go to [COTChannel](/docs/documentation/models/communication/model_channels) for a complete description of the response.
+```json {29}
+{
+    "_id": "619b8cf2107bbec0876cddf2",
+    "settings": {
+        "write": "all"
+    },
+    "videoCall": {
+        "start": {
+            "any": false,
+            "permissions": []
+        },
+        "isActive": false,
+        "duration": [],
+        "publishVideo": [],
+        "publishAudio": []
+    },
+    "propertyIds": [],
+    "userIds": [],
+    "groupOwnerIds": [],
+    "isPrivate": true,
+    "isDirect": false,
+    "isActive": true,
+    "pinned": [],
+    "bots": [],
+    "search": [
+        "maintenance",
+        "channel",
+        "maintenancechannel"
+    ],
+    "nameDisplay": "Maintenance Report",
+    "nameCode": "maintenance_channel",
+    "group": "619b8b9f026233d770d7ef0a",
+    "company": "6136968b580aaf2b0e49d844",
+    "createdAt": "2021-11-22T11:52:26.975Z",
+    "modifiedAt": "2021-11-22T11:52:26.977Z",
+}
+```
+---
+

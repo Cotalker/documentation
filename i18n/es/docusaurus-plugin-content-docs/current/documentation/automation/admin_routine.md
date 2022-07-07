@@ -1,21 +1,40 @@
 ---
 id: admin_routine
-title: Routines Builder
+title: Routine Builder
 sidebar_label: Routine Builder
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl'; 
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-# Routine Overview {#routine-overview}
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/routines.svg')} />
+
+## Overview {#routine-overview}
+
+The _Routine Builder_ is used to build routines in _Workflows_, _Bots_, _Schedules_, and _SLAs_. This section explains how to build a _routine_ within the mentioned processes.
+
+_Routines_ are used to configure various actions within a company. For example, you can automate the sending of an email or a message, create a task, or change a workflow from one state to another.
+
+- Check out the [list](/docs/documentation/automation/existing_routines#stage-list) of automations that you can include in your _routines_.
+
+- Test your _routines_ with the [automation log](#run-routine).
+
+
+<div className="alert alert--secondary">
+
+#### Routine builder in settings panels:
+
+
+<img alt="routine builder" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_00.png')} />
 <br/>
-Routine is not a module of the admin, but it is used in Statemachine, Bot, Scheduler and SLA. So, this section will explain the routine. <br/>
-The routine is used to configure various action in a company in Cotalker. For example, you can automate the sending of an email or a message. But it also is used to run a workflow, bot or scheduler, for example, changing from one state to another or creating / updating tasks.
 <br/>
-A routine looks like the following image:
-<br /><br/>
-<img alt="" src={useBaseUrl('img/admin_routine.png')} />
-<br /><br />
-On the right side is the visualization of the routine that has been created. A routine is build by a set of stage and its functionality is chosen based on the type. You will find types of stages that can:
+
+#### Routine builder in workflows:
+
+<img alt="routine builder" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_01.png')} />
+<br/>
+<br/>
+
+The settings panel shows a visualization of the _routine_ that has been created. A _routine_ is built by a set of _stages_ or _steps_ that can function in different ways according to the chosen type. In general, [stage types](#stage-type-list) can do the following:
 
 * help with configuration
 * make decisions based on context
@@ -24,76 +43,66 @@ On the right side is the visualization of the routine that has been created. A r
 * edit workflow components
 * update workflow components
 
-<br /><br />
-The buttons in this section will be explained in the following table.<br /><br />
+</div>
+<br/>
 
-| Action Name | Image | Description |
-| ---- | ----- | ----------- |
-| Delete | <img alt="" src={useBaseUrl('img/icon_deleteroutine.png')} /> | Delete the stage |
-| Test | <img alt="" src={useBaseUrl('img/icon_testroutine.png')} /> | Test the whole routine |
+## Routine Setup {#setup-the-routine}
 
-# Setup the routine {#setup-the-routine}
-A routine setup looks like the following image:
-<br /><br/>
-<img alt="" src={useBaseUrl('img/admin_routine_setup.png')} />
-<br /><br />
-Below you will find the description and notes for each field in the pictures above.
+Below you will find the description and notes for each field in the Routine Builder's settings panel.
 
 | Field | Description | Notes | 
 | ---- | ----------- | ----- | 
-| Initial State | Select the stage that initialize the routine | The list is of the stages that have been created so far in this particular routine |
-| Max Itertations | Specifies the iteration of stages. | Make sure this number is greater than the stages it has, this way the routine iterates all the stages. |
-| Add Stage | Add a Stage | The code and the type of stage must be specified. After that, it will show the settings for the selected stage type. |
-| Code | Stage identification | |
-| Type | Select the type of the stage. | The function of the types will be explained below |
+| Initial State | Select the stage that initializes the routine. | The list shows the stages that have been created so far in this particular routine. You can fill in this field after you have added the stage or stages. |
+| Max Iterations | Specifies the maximum number of stages the routine can go through. | Make sure looping stages are taken into account when specifying the maximum number of iterations. |
+| Add Stage | Adds a stage to the routine. | The _code_ and _stage type_ must be specified. After that, the settings for the selected stage type will be displayed. |
+| Code | Stage identification name | This field only allows lowercase letters, underscores and should always start with a letter.  |
+| Type | Select the stage type. | The dropdown menu lists all the available _stage types_. Hover over the name for a brief explanation. [Click here](/docs/documentation/automation/existing_routines#stage-list) for more information. |
+| Version | Select the stage type version. | Available versions will appear in the dropdown menu. For more information, [click here](/docs/documentation/automation/existing_routines#stage-type-versions).|
 
-## Configure Stage Types {#configure-stage-types}
-There are various action that can be configured, desplayed in a list. If you hover over the name, a brief explination of the function will be displayed. <br/>
+## Stage Type Configuration {#configure-stage-types}
+After selecting <span className="badge badge--primary">+ Add Stage</span>, there are various _stage types_ that can be chosen and configured. 
 
-When adding a stage, once the type is selected, the field to make the bot work will be displayed.<br/>
-For example:
-<img alt="" src={useBaseUrl('img/admin_routine_field.png')} /> <br/><br/>
-The name of the field is at the top left [CHANNEL]. Next to it is the specifition of the 
+The **Type** field has a dropdown menu with a list of all the available _stage types_. If you hover over the name, a brief explanation of the function will be displayed. 
 
-*requierd* field and *input type* [COTCHANNELID](admin_cotlang). And in the italic letter is the explanation of the expected input [ID OF THE CHANNEL TO WICH THE GIFWILL BE SENT].
 
-It's common to use COTLANG to get the info for the fields. 
+:::tip
+Click here to learn more about [stage types](/docs/documentation/automation/existing_routines).
+:::
 
-### Stage Type List {#stage-type-list}
+<div className="alert alert--secondary">
 
-The Stage Types will be explained in the following table:<br/>
+Once the type is selected, its specific settings fields will be displayed.
 
-| Field | Description | Notes | 
-| ---- | ----------- | ----- | 
-| Iterar | Itera sobre un Array |  | 
-  | Condicional | Ejecuta la siguiente etapa condicionalmente en función de la mano izquierda y derecha del operador |  | 
-  | Switch múltiple | Ejecuta condicionalmente y en paralelo todas las etapas en función de la mano izquierda y derecha del operador |  | 
-  | Switch | Ejecuta condicionalmente la siguiente etapa en función de la mano izquierda y derecha del operador |  | 
-  | Ejecutar bot legado | Hace una solicitud de red para ejecutar un bot legado |  | 
-  | Solicitud de red | Hace una solicitud de red |  | 
-  | Esperar | Ejecuta la siguiente etapa después de los milisegundos definidos |  | 
-  | Buscar respuestas | Busca respuestas de formularios |  | 
-  | Cambiar estado de Tarea | Cambia el estado de una Tarea |  | 
-  | Editar usuarios de Canal | Añade o remueve usuarios de un Canal |  | 
-  | Obtener Tarea de un Canal | Obtiene la Tarea asociada a un Canal (en caso de que exista) |  | 
-  | Limpiar canales | Elimina los mensajes que tengan los canales indicados |  | 
-  | Copiar mensajes | Copia mensajes de un Canal a otro |  | 
-  | Crear Canal | Crea un nuevo Canal |  | 
-  | Crear Propiedad | Crea una nueva Propiedad |  | 
-  | Crear Tarea | Crear una nueva Tarea |  | 
-  | Crear Usuario | Crea un nuevo Usuario |  | 
-  | Cambiar Formulario a modo edición | Cambia un conjunto de formularios a modo edición |  | 
-  | Enviar email | Envía un email |  | 
-  | Enviar gif | Envía un gif a un Canal |  | 
-  | Ocultar mensajes | Oculta mensajes de un Canal |  | 
-  | Enviar mensaje | Envía un mensaje a un conjunto de canales |  | 
-  | Crear PDF | Crea un PDF a partir de un archivo local o una URL |  | 
-  | Generar código QR | Genera un código QR |  | 
-  | Enviar Formulario | Envía un Formulario a un Canal |  | 
-  | Editar usuarios de una Tarea | Añade o remueve los usuarios de una Tarea |  | 
-  | Generar HTML | Genera un HTML a partir de una plantilla y un objeto con datos |  | 
-  | Actualizar Canal | Actualiza un Canal |  | 
-  | Actualizar Propiedad | Actualiza una Propiedad |  | 
-  | Actualizar Tarea | Actualiza una Tarea |  | 
-  | Actualizar Usuario | Actualizar un Usuario |  | 
-  
+_For example, if you chose the **Send gif** stage type, you will see the following fields appear:_
+
+<img alt="type fields" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_02.png')} />
+<br/>
+
+- **Options**: In this example, the **Send gif** stage type has three options or fields: _Search_, _Channel_, and _User_.
+- **Required Fields**: The _required_ fields are outlined by a red box (_Search_ and _Channel_).
+- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](admin_cotlang)). In italic letters, at the bottom of the box, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
+
+**Note:** _It's common to use [COTLang](admin_cotlang) (Cotalker Script Language) for getting automatized data for fields._
+
+</div>
+<br/>
+
+
+## Run Routine {#run-routine}
+
+<img alt="run routine" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
+<br/>
+
+The <span className="badge badge--primary">Run Routine</span> button is a blue button found in the *Routine Builder*. This button opens up an automation log that will help you test and debug your routines while still building them.
+
+To learn more about the log information shown in **Run Routine**, please refer to [Automation Log](/docs/documentation/automation/automation_log).
+
+:::warning
+*Run Routine* is **not** a "playground" or "sandbox". The routine will actually execute all the steps. So, for example, if you program the routine to send an email, it will really send the email.
+You can insert mock data into the *Context* editor to avoid mishaps.
+:::
+
+## Best Practices {#best-practices}
+### Routines associated with state changes. {#routines-state-change}
+A task can change from one state to another through different means, e.g., a _state start form_, a _survey trigger_, the _task view_, a _routine-stage bot_, the _action button_, or an API request. If a _routine_ is to be associated with the state change, it is highly recommended to add the _routine_ in the [**State Change**](/docs/documentation/admin/workflows/settings_panels/create_edit_state#state-changes) and not through other means, like a _survey_ or a _routine-stage bot_.
+

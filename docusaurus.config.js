@@ -83,10 +83,10 @@ module.exports = {
         },
         // --- Language Dropdown Menu ----
         // --- Uncomment code to activate i18n options ---
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'left',
-        // },
+        {
+          type: 'localeDropdown',
+          position: 'left',
+        },
       ],
     },
     prism: {
@@ -154,18 +154,18 @@ module.exports = {
   ],
   // --- Language Options ---
   // --- Uncomment code to activate i18n options
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   locales: ['en', 'es'],
-  //   localeConfigs: {
-  //     en: {
-  //       label: 'English',
-  //       direction: 'ltr',
-  //     },
-  //     es: {
-  //       label: 'Español',
-  //       direction: 'ltr',
-  //     },
-  //   },
-  // },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+      },
+    },
+  },
 };

@@ -6,6 +6,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
 
+<img alt="design" className="img_sizing" src={useBaseUrl('img/design/scheduler.svg')} />
+
 ## Overview {#overview}
 
 <div className="container">
@@ -33,12 +35,12 @@ In this part, you can find the entire **list of schedules** that have been creat
 <img alt="scheduler list" className="" src={useBaseUrl('img/admin_scheduler_list.png')} />
 <br/><br/>
 
-### _Types of Schedules:_ {#_types-of-schedules_}
+### Types of Schedules: {#types-of-schedules}
 The _scheduler_ list is divided by recurring and non-recurring schedules. And the two filters are:
 - **Show system schedules**: displays the list of the system schedules.
 - **Show executed schedules**: displays the list of the executed schedules.
 
-### _Schedule information:_ {#_schedule-information_}
+### Schedule information: {#schedule-information}
 The information shown in the list is as follows:
 - **Code**: scheduler code.
 - **Start date**: scheduler start date
@@ -63,7 +65,7 @@ In this section you can edit or create a single group.
 | Time zone | The default time zone of the company.  | It isn't changeable. |
 | Recurrence | Add the recurrence to the scheduler. End time and recurrence must be specified | -->
 
-### _Description of General Information Fields_ {#_description-of-general-information-fields_}
+### Description of General Information Fields {#description-of-general-information-fields}
 
 <div className="container">
   <div className="row table-row-1">
