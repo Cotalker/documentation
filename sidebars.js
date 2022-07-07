@@ -504,7 +504,7 @@ module.exports = {
     {
       type: 'doc',
       id: 'products/corrective_maintenance/cm_overview',
-      label: 'Back to Corrective Maintenance...'
+      label: '<--'
     },
     {
       type: 'category',

@@ -82,5 +82,17 @@
   "sidebar.products.category.Products Overview": {
     "message": "Resumen de Productos",
     "description": "The label for category Products Overview in sidebar products"
+  },
+  "sidebar.workflow_notifications.category.Notifications Workflow": {
+    "message": "Flujo de Notificaciones",
+    "description": "The label for category Notifications Workflow in sidebar notifications_workflow"
+  },
+  "sidebar.workflow_notifications.docLink.<--": {
+    "message": "Regresar",
+    "description": "The label for doc link Back to Corrective Maintenance in sidebar workflow_notifications"
+  },
+  "sidebar.workflow_notifications.category.Survey Forms": {
+    "message": "Paso a Paso",
+    "description": "The label for category Notifications Workflow in sidebar notifications_workflow"
   }
 }
