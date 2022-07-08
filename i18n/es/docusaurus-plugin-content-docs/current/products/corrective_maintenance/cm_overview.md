@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br/>
 <br/>
 
-<img alt="corrective maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_corrective_maintenance_01.png')} />
+<img alt="corrective maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('img/productos_es/products_corrective_maintenance_01.png')} />
 <br/>
 
 ## ¿Por qué "Mantenimiento Correctivo"? {#why}
@@ -24,7 +24,7 @@ El producto **Mantenimiento Correctivo** de Cotalker ofrece una solución móvil
 
 Los supervisores, trabajadores de campo, personal de mantenimiento y administradores de presupuesto pueden participar durante todo el proceso.
 
-<img alt="diseño" className="img_sizing" src={useBaseUrl('img/products/products_corrective_maintenance_00.png')} />
+<img alt="diseño" className="img_sizing" src={useBaseUrl('img/productos_es/products_corrective_maintenance_00.png')} />
 <br/>
 
 ## Flujos de trabajo involucrados {#workflows}

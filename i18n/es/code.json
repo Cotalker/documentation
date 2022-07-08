@@ -65,12 +65,16 @@
     "description": "The ARIA label for the blog posts pagination"
   },
   "theme.blog.post.paginator.newerPost": {
-    "message": "Newer Post",
+    "message": "Más Reciente",
     "description": "The blog post button label to navigate to the newer/previous post"
   },
   "theme.blog.post.paginator.olderPost": {
-    "message": "Older Post",
+    "message": "Anterior",
     "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.blog.sidebar.blogSidebarTitle": {
+    "message": "Últimas novedades",
+    "description": "Sidebar title"
   },
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
@@ -176,10 +180,10 @@
     "message": "Last updated{atDate}{byUser}",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
-  "Partner & Technical Consultants Documentation": {
-    "message": "Documentación para Consultores Técnicos y Socios"
+  "Cotalker Technical Documentation": {
+    "message": "Documentación Técnica de Cotalker"
   },
-  "Cotalker Training Center": {
-    "message": "Centro de Capacitación Cotalker"
+  "Products, Tutorials, Admin, API and Support": {
+    "message": "Productos, Tutoriales, Admin, API y Soporte"
   }
 }
