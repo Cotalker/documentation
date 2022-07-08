@@ -75,15 +75,16 @@ module.exports = async function myPlugin(context, options) {
         console.log(content, actions)
       },
 
-      // async postStart(props) {
-      //   console.log(props)
-      // },
-      // translateThemeConfig({themeConfig, translationFiles}) {
-      //   if ( context.i18n.currentLocale == 'es' ) {
+      async postStart(props) {
+        console.log(props)
+      },
+      translateThemeConfig({themeConfig, translationFiles}) {
+        console.log(themeConfig, translationFiles)
+        if ( context.i18n.currentLocale == 'es' ) {
           
-      //   }
-      //   return themeConfig
-      // },
+        }
+        return themeConfig
+      },
 
       getTranslationFiles({content}) {
         
