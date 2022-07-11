@@ -46,8 +46,7 @@ fileList.forEach( async file => {
             }
         else {
             await $`cp ${baseFolder}/${base} ${i18nFolder}/${base}`;
-        }
-          
+        } 
     }
     else {
         if (fs.existsSync(`${i18nFolder}/${base}`)) {
