@@ -9,6 +9,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br/>
 <br/>
 
+
+
 The Service Quotations workflow uses survey forms to gather information from external users and the company's master data, which is then used to generate a service quotation. If approved, the data on the service quotation is used to generate a _service order_, thus initiating the [service orders workflow](/docs/products/service_orders/so_overview).
 
 ----

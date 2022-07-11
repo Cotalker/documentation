@@ -8,6 +8,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__title">Product Overview</span>
 <br/>
 
+<img alt="title" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_sq_title.png')} />
+
 ## What is Cotalker Service Quotations? {#what-is}
 
 The Service Quotations product allows service providers to share quotation request forms with clients and prospects outside the Cotalker platform and automatically generate quotations.
