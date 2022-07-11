@@ -8,7 +8,7 @@ const baseFolder = path.resolve(__dirname,'../docs/');
 const baseBlogFolder = path.resolve(__dirname,'../blog/');
 const i18nBlogFolder = path.resolve(__dirname,'../i18n/es/docusaurus-plugin-content-blog/');
 
-var caution = "\n:::caution Advertencia\nEsta página aún no se encuentra traducida al español.\n:::";
+const caution = "\n:::caution Advertencia\nEsta página aún no se encuentra traducida al español.\n:::";
 
 const getFiles = async (basePath) => {
     cd(basePath);
@@ -17,11 +17,11 @@ const getFiles = async (basePath) => {
 }
 
 const insertCaution = async (data , file) => {
-    var formatedData = data.split("\n");
+    const formatedData = data.split("\n");
     fs.openSync(file, "a");
     let title = false;
     for (let i = 0; i < formatedData.length; i++){
-        if ( i == 0 && !title  ) title = true;
+        if ( i == 0 && formatedData[i] == '---'  ) title = true;
         fs.appendFileSync(file, formatedData[i]+'\n');
         if( i > 1 && formatedData[i] == '---' && title ){
             title = false;
@@ -44,19 +44,15 @@ fileList.forEach( async file => {
         if (fs.existsSync(`${i18nFolder}/${base}`)) {
                 return;
             }
-        else {
-            await $`cp ${baseFolder}/${base} ${i18nFolder}/${base}`;
-        } 
+        await $`cp ${baseFolder}/${base} ${i18nFolder}/${base}`; 
     }
     else {
         if (fs.existsSync(`${i18nFolder}/${base}`)) {
             return;
         }
-        else {
-            const baseFile = `${baseFolder}/${base}`
-            const newFile = `${i18nFolder}/${base}`
-            fs.readFile( baseFile , "utf-8", (err, data) => {insertCaution(data,newFile)})
-        }
+        const baseFile = `${baseFolder}/${base}`
+        const newFile = `${i18nFolder}/${base}`
+        fs.readFile( baseFile , "utf-8", (err, data) => {insertCaution(data,newFile)})
     }
 });
 
@@ -68,9 +64,7 @@ blogList.forEach( async file => {
     if (fs.existsSync(`${i18nBlogFolder}/${base}`)) {
         return;
     }
-    else {
-        const baseFile = `${baseBlogFolder}/${base}`
-        const newFile = `${i18nBlogFolder}/${base}`
-        fs.readFile( baseFile , "utf-8", (err, data) => {insertCaution(data,newFile)});
-    }
+    const baseFile = `${baseBlogFolder}/${base}`
+    const newFile = `${i18nBlogFolder}/${base}`
+    fs.readFile( baseFile , "utf-8", (err, data) => {insertCaution(data,newFile)});
 });
