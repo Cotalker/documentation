@@ -75,8 +75,3 @@ blogList.forEach( async file => {
         fs.readFile( baseFile , "utf-8", (err, data) => {insertCaution(data,newFile)});
     }
 });
-
-
-
-
-
