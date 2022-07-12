@@ -1,38 +1,35 @@
 ---
-title: Preventive Maintenance
+title: Mantenimiento Preventivo
 displayed_sidebar: products
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<span className="hero__title">Product Overview</span>
+<span className="hero__title">Resumen del Producto</span>
 <br/>
 <br/>
 
-<img alt="preventive maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('/img/products/products_preventive_maintenance_00.png')} />
+<img alt="preventive maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('/img/productos_es/products_preventive_maintenance_00.png')} />
 <br/>
 
-## Why use our Preventive Maintenance product? {#why}
-It's better to be safe than sorry. With Cotalker's **Preventive Maintenance** product, you'll be able to keep all your routine maintenance checks on track. Choose between time or value metrics to trigger maintenance alerts. Once a time or value trigger is reached, a work order is automatically sent to maintenance personnel and contractors.
+## ¿Por qué utilizar nuestro producto de Mantenimiento Preventivo? {#why}
+Es mejor prevenir que lamentar. Con el producto de **Mantenimiento Preventivo** de Cotalker, podrá realizar todos sus controles de mantenimiento de rutina al día. Elija entre métricas de tiempo o valor para activar notificaciones de mantenimiento. Una vez que se alcanza el tiempo o valor determinados, se envía automáticamente una orden de trabajo al personal de mantenimiento y/o contratistas externos.
 
 
-## How does it work? {#how}
-**Preventive Maintenance** has two types of _preventive plans_ to help you stay up to date on all your maintenance tasks. Plans can be set to track maintenance needs either by time or value metrics. When maintenance metrics are met, they trigger the _work orders_ workflow.
+## ¿Cómo funciona? {#how}
+**Mantenimiento Preventivo** tiene dos tipos de _planes preventivos_ para mantenerse al día en todas sus tareas de mantenimiento. Los planes se pueden configurar para realizar mantenimiento guiado por métricas de tiempo o valores predeterminados. Cuando se cumplen las métricas de mantenimiento, se activa el flujo de _órdenes de trabajo_.
 
-### Time-Based Planner {#time}
-For example, if you need to do maintenance on a machine every day, you can set the time trigger to 24 hours. Every 24 hours the [work orders workflow](/docs/products/workflows/work_orders/related-product/pm/overview_intro) will be initiated. A work order will be automatically sent to the contractor or maintenance personnel. If they choose to accept the work order, they can send a quote, send messages to stakeholders, and request to close the work order. To finally close the workflow, the supervisor must evaluate the completed maintenance job and fill out the _Acceptance of Work_ form.
+### Plan de Tiempo {#time}
+Por ejemplo, si una máquina diariamente necesita mantenimiento se puede configurar el plan para activarse cada 24 horas. Cada 24 horas se iniciará el [flujo de órdenes de trabajo](/docs/products/workflows/work_orders/related-product/pm/overview_intro). Se enviará automáticamente una orden de trabajo al contratista o al personal de mantenimiento. Si eligen aceptar la orden de trabajo, pueden enviar una cotización, enviar mensajes a las partes interesadas y solicitar cerrar la orden de trabajo. Para cerrar el flujo de trabajo, el supervisor debe evaluar el trabajo de mantenimiento completado e enviar el formulario de _Aceptación de trabajo_.
 
-### Value-Based Planner {#value}
-Let's say that you have to do maintenance on a car every 6,000 miles. In this case, you can use value-based planner. Once the plan is created, maintenance personnel will periodically use the app to register value metrics, like mileage or fluid levels for a vehicle. And, when the car's registered mileage hits 12,000 miles, the value trigger will kick in and get things ready for the car's second maintenance check. At this point, the [work orders workflow](/docs/products/workflows/work_orders/related-product/pm/overview_intro) will initiate, and a work order will be sent to the person in charge of the car's maintenance. 
+### Plan de Valor {#value}
+Digamos que se quiere un plan para un vehículo que necesita mantenimiento cada 10.000 kilómetros. En este caso, se puede utilizar el plan de valor. Una vez que se crea el plan, el personal de mantenimiento utilizará periódicamente la aplicación para registrar métricas de valor, como el kilometraje o los niveles de un vehículo. Cuando el kilometraje registrado del automóvil alcance los 20.000 km, se activará el plan y preparará todo para la segunda revisión de mantenimiento del automóvil. En este punto, se iniciará el [flujo órdenes de trabajo](/docs/products/workflows/work_orders/related-product/pm/overview_intro) y se enviará una orden de trabajo a la persona a cargo del mantenimiento del automóvil.
 
-## Workflows Involved {#workflows}
-_For in-depth product information, view the workflows below:_
+## Flujos de Trabajo Involucrados {#workflows}
+_Para más información, consulte los flujos de trabajo descritos abajo:_
 
-<img alt="workflows" className="img_sizing" src={useBaseUrl('img/products/products_preventive_maintenance_01.png')} /> 
+<img alt="workflows" className="img_sizing" src={useBaseUrl('img/productos_es/products_preventive_maintenance_01.png')} />
+<br/> 
 
 <div className="container">
 <div className="row">
@@ -40,9 +37,9 @@ _For in-depth product information, view the workflows below:_
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/preventive_plans/overview">
 
-<span className="hero__subtitle"><b>🧰 Preventive Plans</b></span> 
+<span className="hero__subtitle"><b>🧰 Planes Preventivos</b></span> 
 
-Create a time-based or value-based plan with the **Create a new preventive plan** form. The form lets you set all of the preventive plan's settings. For example, assign those that are responsible for the task, add a maintenance checklist, set priority, and most importantly, designate frequency based on time or equipment value triggers.
+Inicia un plan de tiempo o valor con el formulario **Crear un nuevo plan preventivo**. El formulario permite establecer todas las configuraciones del plan preventivo. Por ejemplo, asignar a los responsables de la tarea, agregar un checklist de mantenimiento, establecer la prioridad de la tarea y designar la frecuencia en función del tiempo o los valores del equipo.
 
 </a>
 </div>
@@ -50,9 +47,9 @@ Create a time-based or value-based plan with the **Create a new preventive plan*
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/related-product/pm/overview_intro">
 
-<span className="hero__subtitle"><b>🧾 Work Orders Workflow</b></span> 
+<span className="hero__subtitle"><b>🧾 Flujo de Órdenes de Trabajo</b></span> 
 
-Once a time or value trigger is reached, a _work order_ is automatically sent to stakeholders. Upon receiving the work order, contractors can review the details and decide whether to accept the job or not. Contractors can then submit a _quote_ form that is shared with stakeholders for review. Contractors send the _close work order_ form upon job completion for the supervisor's approval.
+Una vez que se alcanza el tiempo o valor indicado en el plan, se envía automáticamente una _orden de trabajo_ a las partes interesadas. Al recibir la orden de trabajo, los contratistas pueden revisar los detalles y decidir si aceptan o no el trabajo. Luego, los contratistas pueden enviar un formulario de _presupuesto_ que se comparte con las partes interesadas para su revisión. Los contratistas envían el formulario de _cierre de orden de trabajo_ al finalizar el trabajo para la aprobación del supervisor.
 
 </a>
 </div>
@@ -60,9 +57,9 @@ Once a time or value trigger is reached, a _work order_ is automatically sent to
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/related-product/pm/overview">
 
-<span className="hero__subtitle"><b>💲 Quotes Workflow</b></span> 
+<span className="hero__subtitle"><b>💲 Flujo de Presupuestos</b></span> 
 
-Contractors automatically send quotes to stakeholders when filling out the quote form in the _work orders workflow_. Stakeholders can review the quote and approve or reject it.
+A través del formulario de cotización, contratistas pueden enviar cotizaciones automáticamente a los responsables en aprobar presupuestos. Los responsables, al revisar la cotización, la pueden aprobar o rechazar.
 
 </a>
 </div>
@@ -70,7 +67,3 @@ Contractors automatically send quotes to stakeholders when filling out the quote
 </div>
 </div>
 <br/>
-
-:::info Customizations
-Visit the [Customizations](/docs/products/setup/customization) section to see a use case example on [how to create a checklist for a preventive maintenance plan](/docs/products/setup/customization_examples/survey_pm).
-:::

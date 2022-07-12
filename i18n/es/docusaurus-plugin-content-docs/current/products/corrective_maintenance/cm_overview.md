@@ -37,7 +37,7 @@ _Para obtener información detallada, consulte los flujos de trabajo que compone
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/notifications/overview">
 
-<span className="hero__subtitle"><b>🔔 Flujo de trabajo de notificaciones</b></span>
+<span className="hero__subtitle"><b>🔔 Flujo de notificaciones</b></span>
 
 Los trabajadores de campo notifican las fallas llenando un formulario. Esto inicia el flujo de trabajo de _Notificaciones_ y alerta a las partes interesadas correspondientes. Luego, los supervisores pueden validar o rechazar el _nuevo informe de incidente_.
 
@@ -47,7 +47,7 @@ Los trabajadores de campo notifican las fallas llenando un formulario. Esto inic
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/related-product/cm/overview_intro">
 
-<span className="hero__subtitle"><b>🧾 Flujo de trabajo de órdenes de trabajo</b></span>
+<span className="hero__subtitle"><b>🧾 Flujo de órdenes de trabajo</b></span>
 
 Una vez que se valida la notificación, los supervisores pueden enviar a los contratistas una _orden de trabajo_, lo que les permite revisar los detalles y decidir si aceptan o no el trabajo. Luego, los contratistas pueden enviar un formulario de _presupuesto_ que se comparte con las partes interesadas para su revisión. Los contratistas envían el formulario de _cierre de orden de trabajo_ al finalizar el trabajo para la aprobación del supervisor.
 
@@ -57,7 +57,7 @@ Una vez que se valida la notificación, los supervisores pueden enviar a los con
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/related-product/cm/overview">
 
-<span className="hero__subtitle"><b>💲 Flujo de trabajo de cotizaciones</b></span>
+<span className="hero__subtitle"><b>💲 Flujo de cotizaciones</b></span>
 
 Los contratistas envían cotizaciones automáticamente a las partes interesadas cuando completan el formulario de cotización en el _flujo de trabajo de órdenes de trabajo_. Las partes interesadas pueden revisar la cotización y aprobarla o rechazarla.
 
