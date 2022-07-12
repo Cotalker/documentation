@@ -20,12 +20,13 @@ By default, your function can access two variables:
 - `value` is an object that contains the [context](/docs/documentation/automation/triggers_and_contexts) data. The _context data_ depends on the [trigger](/docs/documentation/automation/triggers_and_contexts).
 - `output` is an array of objects -e.g.,`{ key: 'step-name', result: Object }`- with all the previous executed steps.
 
-:::caution Attention:
-- The JavaScript code runs in a sandboxed _node.js_ environment without access to `require`, `Buffer`, or `process.env`.
-Therefore no network or IO activity will work. This means that this block is intended to transform data from the `value` and `output` variables, not to store o gather external information.
-- Access to the _Axios_ library is available. With the _Axios_ library, the stage-bot can make network requests.
-- The code must always return a value. This value can later be used in the following stages as [COTLang](/docs/documentation/automation/admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
-:::
+### Return Statements {#return}
+- The code must always return a value. This value can later be used in the following routine stages as [COTLang](/docs/documentation/automation/admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
+
+### Network Requets {#network-requests}
+
+- The JavaScript code runs in a sandboxed _node.js_ environment without access to `require`, `Buffer`, or `process.env`. Therefore, network or IO activity will not work directly. This code block is intended to transform data from the `value` and `output` variables, not to store or gather external information.
+- Nonetheless, access to the _Axios_ library is available. With the _Axios_ library, the stage-bot can make network requests.
 
 <div className="alert alert--secondary">
 
