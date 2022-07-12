@@ -87,8 +87,8 @@
     "message": "Flujo de Notificaciones",
     "description": "The label for category Notifications Workflow in sidebar notifications_workflow"
   },
-  "sidebar.workflow_notifications.docLink.<--": {
-    "message": "Regresar",
+  "sidebar.workflow_notifications.doc.Back to Product Overview...": {
+    "message": "Regresar al Resumen del Producto...",
     "description": "The label for doc link Back to Corrective Maintenance in sidebar workflow_notifications"
   },
   "sidebar.workflow_notifications.category.Survey Forms": {
