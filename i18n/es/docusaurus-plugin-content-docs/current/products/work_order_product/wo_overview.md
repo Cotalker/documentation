@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br/>
 <br/>
 
-<img alt="corrective maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/products_work_orders_01.png')} />
+<img alt="corrective maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('img/productos_es/products_work_orders_01.png')} />
 <br/>
 
 ## ¿Qué es el Producto de Órdenes de Trabajo {#what-does}
@@ -26,7 +26,7 @@ Los productos de [**Mantenimiento correctivo**](/docs/products/corrective_mainte
 
 **Órdenes de trabajo** facilita el desarrollo de actividades. Como se indicó anteriormente, **Órdenes de trabajo** se puede usar de forma independiente o junto a otros productos de mantenimiento.
 
-<img alt="corrective maintenance" className="img_sizing" src={useBaseUrl('img/products/products_work_orders_00.png')} />
+<img alt="corrective maintenance" className="img_sizing" src={useBaseUrl('img/productos_es/products_work_orders_00.png')} />
 <br/>
 
 _Ya sea que es utilizado independientemente o en conjunto con otros productos, el proceso es el siguiente:_
@@ -50,7 +50,7 @@ _For more in-depth information, view the workflows that make up the Work Order p
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/work_orders/related-product/wo/overview_intro">
 
-<span className="hero__subtitle"><b>🧾 Flujos de Órdenes de Trabajo</b></span> 
+<span className="hero__subtitle"><b>🧾 Flujo de Órdenes de Trabajo</b></span> 
 
 Los supervisores comienzan enviando a los contratistas una _orden de trabajo_. En el canal de tareas los destinatarios pueden revisar los detalles y decidir si aceptan o no el trabajo. Luego, los contratistas pueden enviar un formulario de _presupuesto_ que se comparte con los responsables para su revisión. Los contratistas envían el formulario de _cierre de orden de trabajo_ al finalizar el trabajo para la aprobación del supervisor.  
 
