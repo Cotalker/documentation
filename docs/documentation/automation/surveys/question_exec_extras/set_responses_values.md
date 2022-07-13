@@ -40,7 +40,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_05', 
     value: 'Hello world!' 
 }
 ```
@@ -54,7 +55,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_02', 
     value: 'Hello world!' 
 }
 ```
@@ -68,7 +70,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_01', 
     value: '5'
 }
 ```
@@ -83,34 +86,24 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'self', 
     value: Date 
 }
 ```
 -->
 
 ### List Question
-**Description**: Used on [multiple choice component item list type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) used to choose items from a list made during survey setup.  
+**Description**: Used on [multiple choice component item list type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type). Choose items from a list made during survey setup.  
 **Content Type Code**: `application/vnd.cotalker.survey+listquestion`  
-**Notes**: Array of "values" of the selected options. See the [list of items type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) for further details.
+**Notes**: The value is an array of strings, where the strings are the **"values"** indicated in the [component setup](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type).
 
-
-_The value can be an array of `__ON__` and `__OFF__` strings:_
-
-```javascript
-{
-    cmd: 'SET_RESPONSES', 
-    value: ['__OFF__', '__ON__', '__ON__'] 
-}
-```
-
-OR
-
-_The value can be an array of strings, where the strings are the **"values"** indicated in the [component setup](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type)._
+_Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'self', 
     value: ['b', 'c'] 
 }
 ```
@@ -125,7 +118,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_03', 
     value: ['6185cfe1ef46d0aee4c2b653', '6185cfe8b420610501b280d8']
 }
 ```
