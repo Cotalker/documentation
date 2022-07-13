@@ -96,3 +96,10 @@ Generates /build folder
 ```
 npm run build
 ```
+
+## Missing Translation Warning
+Copies files missing in `i18n` to corresponding folders and adds a warning at the top of each page.
+```
+npm run create-translations
+```
+_note: `npm install zx` might be required._

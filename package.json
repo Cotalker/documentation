@@ -27,7 +27,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "request": "^2.88.2",
-    "trim": "^1.0.1"
+    "trim": "^1.0.1",
+    "zx": "^7.0.7"
   },
   "browserslist": {
     "production": [

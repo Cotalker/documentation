@@ -67,9 +67,19 @@ Elimina papeleos y automatiza todo el proceso de solicitud, autorización, recep
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_orders/so_overview">
 
-<span className="hero__subtitle"><b>🪛 Pedidos de servicio:</b></span>
+<span className="hero__subtitle"><b>🪛 Órdenes de servicio:</b></span>
 
 Los proveedores de servicios pueden gestionar sus órdenes de servicio de principio a fin.
+
+</a>
+</div>
+
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_orders/so_overview">
+
+<span className="hero__subtitle"><b>🖋 Cotización de servicios:</b></span>
+
+Clientes y otros usuarios externos pueden solicitar una cotización de servicios a través de un formulario público. La comunicación con el proveedor de servicios y la generación de documentos es totalmente automatizada.
 
 </a>
 </div>
