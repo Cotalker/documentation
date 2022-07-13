@@ -64,19 +64,35 @@
     "description": "The label for category Infrastructure in sidebar documentation"
   },
   "sidebar.tutorials.category.Basic": {
-    "message": "Basic",
+    "message": "Básico",
     "description": "The label for category Basic in sidebar tutorials"
   },
   "sidebar.tutorials.category.Intermediate": {
-    "message": "Intermediate",
+    "message": "Intermedio",
     "description": "The label for category Intermediate in sidebar tutorials"
   },
   "sidebar.tutorials.category.Advanced": {
-    "message": "Advanced",
+    "message": "Avanzado",
     "description": "The label for category Advanced in sidebar tutorials"
   },
   "sidebar.certification.category.[1.a] Basic Admin": {
     "message": "[1.a] Basic Admin",
     "description": "The label for category [1.a] Basic Admin in sidebar certification"
+  },
+  "sidebar.products.category.Products Overview": {
+    "message": "Resumen de Productos",
+    "description": "The label for category Products Overview in sidebar products"
+  },
+  "sidebar.workflow_notifications.category.Notifications Workflow": {
+    "message": "Flujo de Notificaciones",
+    "description": "The label for category Notifications Workflow in sidebar notifications_workflow"
+  },
+  "sidebar.workflow_notifications.doc.Back to Product Overview...": {
+    "message": "Regresar al Resumen del Producto...",
+    "description": "The label for doc link Back to Corrective Maintenance in sidebar workflow_notifications"
+  },
+  "sidebar.workflow_notifications.category.Survey Forms": {
+    "message": "Paso a Paso",
+    "description": "The label for category Notifications Workflow in sidebar notifications_workflow"
   }
 }

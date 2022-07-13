@@ -80,7 +80,7 @@ This code follows three simple steps to determine survey editability.
 :::tip Extracting context data
 - In this example, we use the `task` variable, that represents the _context source_, to retrieve the task's current state.
 - By looking at the [task's data model](/docs/documentation/models/tasks/model_tasks), we know that we can find this information through `task.status`. The information retrieved is an ObjectId which identifies the task.
-- We must also [get the ObjectId of the state](docs/documentation/admin/tips/find_property_objectID.md) in which the survey could be edited.
+- We must also [get the ObjectId of the state](docs/documentation/admin/tips/find_property_objectID) in which the survey could be edited.
 - An `if` statement is used to compare both ObjectIds.
 :::
 

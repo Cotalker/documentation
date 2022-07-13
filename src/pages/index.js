@@ -62,11 +62,11 @@ function Home() {
         <div className="container">
           <h1 className={classnames('hero__title', styles.heroTitle)}>
             {/* {siteConfig.title} */}
-            <Translate>Partner & Technical Consultants Documentation</Translate>
+            <Translate>Cotalker Technical Documentation</Translate>
           </h1>
           <h2 className={classnames('hero__subtitle', styles.heroSubTitle)}>
               {/* {siteConfig.tagline} */}
-              <Translate>Cotalker Training Center</Translate>
+              <Translate>Products, Tutorials, Admin, API and Support</Translate>
           </h2>
           <div className={classnames(styles.buttons)}>
             <Link
