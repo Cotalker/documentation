@@ -11,6 +11,28 @@ The SET_RESPONSES command is an object used by [Question Code Automation](/docs/
 
 SET\_RESPONSES must return [_values_](#value-types) in the data type or format of the [survey question's content type](/docs/documentation/models/surveys/model_questionContentType).
 
+## Micro-Tutorial {#tutorial}
+In this micro-tutorial, we made a survey form that automatically selects options in a multiple-choice question. We can pre-select options by returning a SET_RESPONSES command and indicating the _target_ and _values_.
+
+<iframe src={useBaseUrl('img/automation_questionexec_set_responses.mp4')} height="450" width="100%" title="tutorial"></iframe>
+<br/>
+<br/>
+
+You can add further logic to set the answers with variables and predefined _contexts_.
+
+_For example, you can use variables to call other predefined survey values:_
+
+<img alt="variable example" className="img_sizing item shadow--tl" src={useBaseUrl('img/automation_questionexec_set_responses_00.png')} />
+<br/>
+
+
+_The code displayed above will give the following result:_
+
+<img alt="variable example" className="img_sizing item shadow--tl" src={useBaseUrl('img/automation_questionexec_set_responses_01.png')} />
+<br/>
+
+---
+
 ## Command Field Descriptions {#field-descriptions}
 
 _Sample:_
