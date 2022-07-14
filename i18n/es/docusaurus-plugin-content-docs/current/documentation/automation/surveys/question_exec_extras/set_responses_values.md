@@ -11,9 +11,31 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Summary {#description}
 
-The SET_RESPONSES command is an object used by [Question Code Automation](/docs/documentation/automation/surveys/question_exec) functions to return specified values and insert them to answer the indicated survey question.
+The SET\_RESPONSES command is an object used by [Question Code Automation](/docs/documentation/automation/surveys/question_exec) functions to return specified values and insert them to answer the indicated survey question.
 
 SET\_RESPONSES must return [_values_](#value-types) in the data type or format of the [survey question's content type](/docs/documentation/models/surveys/model_questionContentType).
+
+## Micro-Tutorial {#tutorial}
+In this micro-tutorial, we made a survey form that automatically selects options in a multiple-choice question. We can pre-select options by returning a SET\_RESPONSES command and indicating the _target_ and _values_.
+
+<iframe src={useBaseUrl('img/automation_questionexec_set_responses.mp4')} height="450" width="100%" title="tutorial"></iframe>
+<br/>
+<br/>
+
+You can add further logic to set the answers with variables and predefined _contexts_.
+
+_For example, you can use variables to call other predefined survey values:_
+
+<img alt="variable example" className="img_sizing item shadow--tl" src={useBaseUrl('img/automation_questionexec_set_responses_00.png')} />
+<br/>
+
+
+_The code displayed above will give the following result:_
+
+<img alt="variable example" className="img_sizing item shadow--tl" src={useBaseUrl('img/automation_questionexec_set_responses_01.png')} />
+<br/>
+
+---
 
 ## Command Field Descriptions {#field-descriptions}
 
@@ -44,7 +66,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_05', 
     value: 'Hello world!' 
 }
 ```
@@ -58,7 +81,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_02', 
     value: 'Hello world!' 
 }
 ```
@@ -72,7 +96,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_01', 
     value: '5'
 }
 ```
@@ -87,34 +112,24 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'self', 
     value: Date 
 }
 ```
 -->
 
 ### List Question
-**Description**: Used on [multiple choice component item list type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) used to choose items from a list made during survey setup.  
+**Description**: Used on [multiple choice component item list type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type). Choose items from a list made during survey setup.  
 **Content Type Code**: `application/vnd.cotalker.survey+listquestion`  
-**Notes**: Array of "values" of the selected options. See the [list of items type](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type) for further details.
+**Notes**: The value is an array of strings, where the strings are the **"values"** indicated in the [component setup](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type).
 
-
-_The value can be an array of `__ON__` and `__OFF__` strings:_
-
-```javascript
-{
-    cmd: 'SET_RESPONSES', 
-    value: ['__OFF__', '__ON__', '__ON__'] 
-}
-```
-
-OR
-
-_The value can be an array of strings, where the strings are the **"values"** indicated in the [component setup](/docs/documentation/admin/survey/components/multiple_choice#list-of-items-type)._
+_Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'self', 
     value: ['b', 'c'] 
 }
 ```
@@ -129,8 +144,8 @@ _Example:_
 
 ```javascript
 {
-    cmd: 'SET_RESPONSES', 
+    cmd: 'SET_RESPONSES',
+    target: 'question_03', 
     value: ['6185cfe1ef46d0aee4c2b653', '6185cfe8b420610501b280d8']
 }
 ```
-

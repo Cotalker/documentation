@@ -7,12 +7,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Summary {#description}
 
-The SET_RESPONSES command is an object used by [Question Code Automation](/docs/documentation/automation/surveys/question_exec) functions to return specified values and insert them to answer the indicated survey question.
+The SET\_RESPONSES command is an object used by [Question Code Automation](/docs/documentation/automation/surveys/question_exec) functions to return specified values and insert them to answer the indicated survey question.
 
 SET\_RESPONSES must return [_values_](#value-types) in the data type or format of the [survey question's content type](/docs/documentation/models/surveys/model_questionContentType).
 
 ## Micro-Tutorial {#tutorial}
-In this micro-tutorial, we made a survey form that automatically selects options in a multiple-choice question. We can pre-select options by returning a SET_RESPONSES command and indicating the _target_ and _values_.
+In this micro-tutorial, we made a survey form that automatically selects options in a multiple-choice question. We can pre-select options by returning a SET\_RESPONSES command and indicating the _target_ and _values_.
 
 <iframe src={useBaseUrl('img/automation_questionexec_set_responses.mp4')} height="450" width="100%" title="tutorial"></iframe>
 <br/>
