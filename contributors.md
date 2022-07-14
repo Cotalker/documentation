@@ -98,7 +98,7 @@ npm run build
 ```
 
 ## Missing Translation Warning
-Copies files missing in `i18n` to corresponding folders and adds a warning at the top of each page.
+Compares files in the `i18n` folder with the English version. Files not mirrored in i18n are copied to the corresponding folders, and a warning at the top of each page is added.
 ```
 npm run create-translations
 ```
