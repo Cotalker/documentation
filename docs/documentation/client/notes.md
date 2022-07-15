@@ -11,7 +11,7 @@ import Mermaid from '@theme/Mermaid';
 
 ## Overview {#overview}
 
-Easily create notes to share and edit in real-time among other users within the Cotalker environment. Thanks to our powerful [search tool](/docs/documentation/client/client_search#shared-documents), _task notes_ can be made accessible to all users, thus creating a dynamic knowledge base for your company that all users can help build.
+Easily create notes to share and edit in real-time among other users within the Cotalker environment. Thanks to our powerful [search tool](/docs/documentation/client/client_search#shared-documents), _task notes_ can be made accessible to all users, thus creating a dynamic knowledge base for your company that all users can help build. Plus, you can save notes as PDF documents.
 
 The _Notes_ tool uses [markdown syntax](/docs/documentation/client/notes_markdown) to help you focus on writing the text and forget about formatting. 
 
@@ -107,11 +107,12 @@ The Notes tool can appear either within the task view or as an individual web br
 
 <div className="padding-left--lg">
 
-1. **Edit**: See only the editor.
-2. **View**: See only the result.
-3. **Both**: See both in split view.
-4. **Copy**: Copy link to clipboard.
-5. **Pop-out**: Open note in new tab.
+1. **View**: Display the formatted document only.
+2. **Both**: Split view with the editor and formatted document.
+3. **Edit**: Display only the editor.
+4. **PDF**: Export the formatted document as a PDF document.
+5. **Copy**: Copy link to clipboard.
+6. **Pop-out**: Open note in new tab.
 
 </div>
 <br/>
