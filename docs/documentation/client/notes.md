@@ -107,10 +107,10 @@ The Notes tool can appear either within the task view or as an individual web br
 
 <div className="padding-left--lg">
 
-1. **View**: Display the formatted document only.
+1. **View**: Display the [formatted document only](#doc-view).
 2. **Both**: Split view with the editor and formatted document.
-3. **Edit**: Display only the editor.
-4. **PDF**: Export the formatted document as a PDF document.
+3. **Edit**: Display only the [editor](#editor).
+4. **PDF**: Export the formatted document as a [PDF document](#pdf).
 5. **Copy**: Copy link to clipboard.
 6. **Pop-out**: Open note in new tab.
 
@@ -157,6 +157,13 @@ The Notes tool can appear either within the task view or as an individual web br
 
 </div>
 <br/>
+
+#### PDF Exporter {#pdf}
+The PDF exporter generates automatically formatted documents.
+
+<img alt="pdf exporter" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_pdf_exporter.gif')} />
+
+
 
 </div>
 <br/>
