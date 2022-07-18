@@ -97,7 +97,7 @@ Field | Description | [Type](/docs/documentation/models/overview_model#data-type
 **diff** | When the triggering object is modified, this field displays its current and previous data. | object | The `diff` field consists of an object containing the changed fields, and each changed field is an object itself with the previous and current changes.
 **event** | Indicates the event type, i.e., whether an object was created, modified, or removed. | string | Options are `create`, `edit`, or `delete`.
 **extraData** | Contains any extra data the webhook sends. | Depends on the type of data sent. | Usually set to `Null`.|
-**type** | Indicates the type of object that triggered the webhook, i.e., task, user, or survey. | string | Options are `COTTask`, `COTUser`, or `COTSurvey`
+**type** | Indicates the type of object that triggered the webhook, i.e., task, user, or survey. | string | Options are `COTTask`, `COTUser`, `COTSurvey`, `COTProperty`, or `Auth`.
 
 
 
