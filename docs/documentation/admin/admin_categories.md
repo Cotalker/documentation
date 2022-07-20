@@ -110,7 +110,7 @@ _Set up the category group's basic settings._
 <div className="row table-row-2">
 <div className="col col--3"><strong>Code</strong>:</div>
 <div className="col col--4">The category group's identification code name.</div>
-<div className="col col--5"><em>This field is automatically completed with the text input in the Name field, but can be manually changed before saving. The code only allows lowecase letters, numbers, underscores, and must always begin with a letter.</em></div>
+<div className="col col--5"><em>This field is automatically completed with the text input in the Name field, but can be manually changed before saving. The code only allows lowercase letters, numbers, underscores, and must always begin with a letter.</em></div>
 </div>
 
 <div className="row table-row-1">
