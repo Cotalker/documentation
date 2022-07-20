@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Partner & Technical Consultants Documentation',
-  tagline: 'Cotalker Training Center',
+  title: 'Cotalker Technical Documentation',
+  tagline: 'Products, Tutorials, Admin, API and Support',
   url: 'https://doc.cotalker.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',

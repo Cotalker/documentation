@@ -13,7 +13,7 @@ import Highlight from '@theme/Highlight';
 
 _If you're an admin and looking for information on how to use this documentation, you've come to the right place._
 
-The _Admin Docs_ are the core of the [**Partner & Technical Consultants Documentation**](https://doc.cotalker.com).
+The _Admin Docs_ are the core of the [**Cotalker Technical Documentation**](https://doc.cotalker.com).
 
 <div className="alert alert--primary">
 
