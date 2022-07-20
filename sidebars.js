@@ -461,8 +461,8 @@ module.exports = {
           type: 'category',
           label: 'Webhooks',
           items: [
-            'documentation/models/webhooks/survey_execution',
             'documentation/models/webhooks/event',
+            'documentation/models/webhooks/survey_execution',
             'documentation/models/webhooks/webhook',
             'documentation/models/webhooks/webhooklog',
           ],
