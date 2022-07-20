@@ -51,31 +51,32 @@ _From the administrative panel, you can access the following:_
   1. [**Workflows**](/docs/documentation/admin/workflows/admin_workflow_overview): Create and configure workflow groups and workflows.
   2. [**Link Groups**](/docs/documentation/admin/admin_links): Create links that appear on the _Main Menu Bar_ or within a _group_.
   3. [**Groups**](/docs/documentation/admin/admin_group): Create _standard groups_ for communicating with other users and sharing information.
+  4. [**Categories**](/docs/documentation/admin/admin_categories): Configure sub-menus on the _Main Menu Bar_.
 
 <span className="hero__subtitle">DATA</span>
 
-  4. [**Database**](/docs/documentation/admin/database/admin_database_overview): Manage collections and elements.
-  5. [**Surveys**](/docs/documentation/admin/survey/survey_overview): Create and modify surveys used to gather information from users or configure workflows.
+  5. [**Database**](/docs/documentation/admin/database/admin_database_overview): Manage collections and elements.
+  6. [**Surveys**](/docs/documentation/admin/survey/survey_overview): Create and modify surveys used to gather information from users or configure workflows.
 
 <span className="hero__subtitle">COMPANY</span>
 
-  6. [**Users**](/docs/documentation/admin/users): Create and modify _user profiles_ along with their access roles, job titles, and additional fields.
-  7. [**Job Titles**](/docs/documentation/admin/admin_jobtitles): Create job titles that can be associated to users as elements with special attributes.
-  8. [**Configuration**](/docs/documentation/admin/admin_company): Edit company information and language.
+  7. [**Users**](/docs/documentation/admin/users): Create and modify _user profiles_ along with their access roles, job titles, and additional fields.
+  8. [**Job Titles**](/docs/documentation/admin/admin_jobtitles): Create job titles that can be associated to users as elements with special attributes.
+  9. [**Configuration**](/docs/documentation/admin/admin_company): Edit company information and language.
 
 <span className="hero__subtitle">AUTOMATIONS</span>
 
-  9. [**Bots**](/docs/documentation/admin/admin_bots): Create and edit customized bots to carry out automated routines.
-  10. [**Schedules**](/docs/documentation/admin/admin_bots): Create and edit scheduled routines.
-  11. [**Automation Log**](/docs/documentation/automation/automation_log): Monitor all automations carried out in the Cotalker environment.
-  12. [**Routines**](/docs/documentation/admin/routines): Create or edit predetermined bots that can be later used in routines.
-  13. [**Webhooks**](/docs/documentation/admin/admin_webhooks): Set up triggers that send data to your server upon certain events.
+  10. [**Bots**](/docs/documentation/admin/admin_bots): Create and edit customized bots to carry out automated routines.
+  11. [**Schedules**](/docs/documentation/admin/admin_bots): Create and edit scheduled routines.
+  12. [**Automation Log**](/docs/documentation/automation/automation_log): Monitor all automations carried out in the Cotalker environment.
+  13. [**Routines**](/docs/documentation/admin/routines): Create or edit predetermined bots that can be later used in routines.
+  14. [**Webhooks**](/docs/documentation/admin/admin_webhooks): Set up triggers that send data to your server upon certain events.
 
 <span className="hero__subtitle">SECURITY</span>
 
-  14. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
-  15. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
-  16. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
+  15. [**Access Roles**](/docs/documentation/admin/admin_accessrole): Create and modify sets of permissions given to users for different types of access.
+  16. [**API Tokens**](/docs/documentation/admin/admin_token): Create API tokens or bearer keys that grant different levels of access and can be shared with users even outside the Cotalker environment.
+  17. [**Audit Logs**](/docs/documentation/admin/admin_auditlogs): Monitor creation and modifications of _users_ and _access roles_.
 
 </div>
 

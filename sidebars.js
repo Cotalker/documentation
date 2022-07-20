@@ -114,6 +114,7 @@ module.exports = {
               ],
               collapsed: true,
             },
+            'documentation/admin/admin_categories',
           ],
           collapsed: true,
         },
@@ -339,7 +340,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Channels & Messages',
+      label: 'Groups & Messages',
       items: [
         'documentation/api/communication/channels',
         'documentation/api/communication/messages',
@@ -404,7 +405,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Channels & Messages',
+      label: 'Groups & Messages',
       items: [
         'documentation/models/communication/model_channels',
         'documentation/models/communication/model_groups',
