@@ -1,4 +1,8 @@
-# Custom Javascript Code  
+---
+displayed_sidebar: documentation
+---
+# Custom Javascript Code 1.0.0
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="title image" className="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />
