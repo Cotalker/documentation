@@ -1,6 +1,6 @@
 ---
 title: Routine Javascript Runner Update
-description: Up till now, developers have been able to summon the Custom Code Javascript Stage-Bot (CCJS) stage-bot within any routine to add customized Javascript code but without the ability to access external libraries. But now, they can make network requests using Axios. Users will be able to benefit from the development of improved customized automated routines that can now work with external data.
+description: Users will be able to benefit from the development of improved customized automated routine that can now work with external data. That is because, up until now, developers have been able to summon the Custom Javascript Code Stage-Bot (CCJS) within any routine to add customized Javascript code but without the ability to access external libraries. But now they have the power to make network requests using Axios within the CCJS stage-bot!
 image: img/updates/update_ccjs_update.png
 draft: false
 ---
@@ -27,7 +27,7 @@ Give your bots a boost of power!
 </div>
 <div className="card__body">
 
-🤖 Users will be able to benefit from the development of improved customized automated _routines_ that can now work with external data. That is because, up until now, developers have been able to summon the _Custom Code Javascript Stage-Bot_ (CCJS) within any _routine_ to add customized Javascript code but without the ability to access external libraries. But now they have the power to make network requests using _Axios_ within the CCJS stage-bot!
+🤖 Users will be able to benefit from the development of improved customized automated _routines_ that can now work with external data. That is because, up until now, developers have been able to summon the _Custom Javascript Code Stage-Bot_ (CCJS) within any _routine_ to add customized Javascript code but without the ability to access external libraries. But now they have the power to make network requests using _Axios_ within the CCJS stage-bot!
 
 </div>
 <div className="card__footer text-center align-padding-center">
