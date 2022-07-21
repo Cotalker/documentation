@@ -33,11 +33,15 @@ By default, your function can access two variables:
 - Use date-fns 2.28.0 for manipulating Javascript dates.
 :::
 
-### <span className="hero__subtitle">Samples</span> {#example}
-This tool is typically used for –but not limited to– automated data extraction from data sources, like _collections_, and then returning the results in string format for use in the routine's upcoming stage.
+### <span className="hero__subtitle">Code Samples</span> {#example}
 
+:::caution Attention
+Code must be wrapped within ` ``` ` to work properly.
+:::
 
 #### Data Extraction Sample {#extract}
+This tool is typically used for –but not limited to– automated data extraction from data sources, like _collections_, and then returning the results in string format for use in the routine's upcoming stage.
+
 Below is a code sample that takes a _list-input_ value of `email` or `name` to convert a list of `COTUsers` into a list of `emails` or `names`.
 
 ```javascript
