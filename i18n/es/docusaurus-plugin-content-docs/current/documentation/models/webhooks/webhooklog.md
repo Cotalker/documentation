@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__subtitle">COTWebhookLog</span>
 
 ## Description {#description}
-COTWebhookLog objects contain all of an event's webhook log data. The data sent through the webhook and received by the server
+_COTWebhookLog_ objects contain all of an event's webhook log data. The data sent through the webhook and received by the server is stored within the `COTWebhookLog.event` field. The `COTWebhookLog` can also be accessed in the [webhook logs](/docs/documentation/admin/admin_webhooks#logs).
 
 ## JSON Sample {#sample}
 _Below is a sample of a returned COTWebhookLog object:_

@@ -17,6 +17,7 @@ Group types:
 - _Standard groups_ contain channels used for communicating with other users. 
 - _Workflow or Task groups_, like standard groups, have communication channels but are associated with workflow tasks and their states. 
 - _Link groups_ direct you to anywhere within or outside the Cotalker environment.
+- _Category groups_ bring together other groups to form sub-menus on the Main Menu Bar.
 
 
 ## Get Groups {#get-all-groups}
@@ -36,25 +37,27 @@ Header | Description | Required | Values
 
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | ---- | ----
-**search** | Returns _groups_ that match the keywords in the `groups.search` field array. | string | Optional |
-**limit** | Limits the amount of _groups_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
-**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
-**count** | Adds the `counter` field with the total amount of _groups_ within the company. | boolean | Optional | 
-**orderBy** | Orders the _groups_ by ascendeing or descending order according to their `modifiedAt` field. | string | Optional | Options: `asc`, `desc`
-**sortBy** | Sorts _groups_ in the response according to the `modifiedAt` field. | string | Optional | `modifiedAt` is the only value available.
-**isActive** | Returns _groups_ according to their `isActive` status. | string | Optional | Options are: `all`, `true`, `false`
-**modified** | Returns _groups_ with the indicated modification date in the `modifiedAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
-**modified_gt** | Returns _groups_ modified after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
-**modified_gte** | Returns _groups_ with a value in the `modifiedAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created** | Returns _groups_ with the indicated creation date in the `createdAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created_gt** | Returns _groups_ created after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created_gte** | Returns _groups_ with a value in the `createdAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created_lt** | Returns _groups_ created before the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
 **created_lte** | Returns _groups_ with a value in the `createdAt` field equal to or less than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**count** | Adds the `counter` field with the total amount of _groups_ within the company. | boolean | Optional | 
+**groupType** | Returns groups specified by type. | string | Optional | Available values: `link` (link groups), `task` (workflow or task groups), and `channel` (standard groups)
+**hasCatergories** | Filters [category groups](/docs/documentation/admin/admin_categories), i.e., groups displayed in sub-menus on the Main Menu Bar. | boolean | Optional | `true` displays categorized groups. `false` displays uncategorized groups.
+**isActive** | Returns _groups_ according to their `isActive` status. | string | Optional | Options are: `all`, `true`, `false`
 **isLink** | Returns all _link groups_ found in the company. | boolean | Optional |
 **isTaskGroup** | Returns all _task groups_ found in the company. | boolean | Optional |
-**groupType** | Returns groups specified by type. | string | Optional | Available values: `link` (link groups), `task` (workflow or task groups), and `channel` (standard groups)
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
+**limit** | Limits the amount of _groups_ returned in the response. | number | Optional | By default, the _limit_ is set to 10.
+**modified** | Returns _groups_ with the indicated modification date in the `modifiedAt` field. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gt** | Returns _groups_ modified after the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**modified_gte** | Returns _groups_ with a value in the `modifiedAt` field equal to or greater than the indicated date and time. | ISODate | Optional | YYYY-MM-DDTHH:mm:ss.SSSZ
+**orderBy** | Orders the _groups_ by ascendeing or descending order according to their `modifiedAt` field. | string | Optional | Options: `asc`, `desc`
+**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
+**sortBy** | Sorts _groups_ in the response according to the `modifiedAt` field. | string | Optional | `modifiedAt` is the only value available.
+**search** | Returns _groups_ that match the keywords in the `groups.search` field array. | string | Optional |
+
 
 #### Request Samples {#get-all-request-sample}
 

@@ -1,4 +1,12 @@
-# Custom Javascript Code  
+---
+displayed_sidebar: documentation
+---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+# Custom Javascript Code 1.0.0
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="title image" className="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />
