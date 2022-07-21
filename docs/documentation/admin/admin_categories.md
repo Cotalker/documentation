@@ -16,7 +16,8 @@ _Category groups appear on the Main Menu Bar as shown below:_
 
 :::note
 - _Category groups_ can only be one level deep.
-- Sub-menus appear initially in the closed position but will reappear in the last position left at by the user.
+- Groups nested within a _parent group_, i.e., groups not displayed in the _Main Menu Bar_ but within a _group panel_, cannot be placed into categories.
+- Sub-menus appear initially in the closed position but will always reappear in the last position in which the user left them.
 :::
 
 ## Access the Categories Section {#access}
@@ -115,14 +116,14 @@ _Set up the category group's basic settings._
 
 <div className="row table-row-1">
 <div className="col col--3"><strong>Weight</strong>:</div>
-<div className="col col--4">A relative number that positions the group on the Main Menu Bar or Group Panel. Smaller numbers accommodate the group near the top, larger numbers towards the end.</div>
+<div className="col col--4">A relative number that positions the group on the Main Menu Bar or Group Panel. Smaller numbers accommodate the group near the top and larger numbers towards the bottom.</div>
 <div className="col col--5"><em>If left empty, the system will automatically determine a value which can be edited later on.</em></div>
 </div>
 
 <div className="row table-row-2">
 <div className="col col--3"><strong>Nested groups</strong>:</div>
-<div className="col col--4">Select the groups that are included in the category from the drop-down menu.</div>
-<div className="col col--5"><em>Groups already in other categories are not displayed in the drop-down menu.</em></div>
+<div className="col col--4">Use the dropdown menu to select the groups you wish to include in the category.</div>
+<div className="col col--5"><em>Groups nested within parent groups, along with those placed in other categories, are not displayed as options in the drop-down menu.</em></div>
 </div>
 
 </div>
