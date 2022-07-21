@@ -1,3 +1,4 @@
+| [Custom Javascript Code (2.0.0)](/docs/documentation/automation/bots/ccjs-2.0.0) | FaaS JS runner. | _CCJS_ |  
 | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. | _CCJS_ |  
 | [Iterate](/docs/documentation/automation/bots/fceach) | Iterate over an Array | _FCEach_ |  
 | [Conditional](/docs/documentation/automation/bots/fcifelse) | Execute the next stage conditionally based on the operator's left and right hand | _FCIfElse_ |  

@@ -15,10 +15,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Configure _webhooks_ to set triggers that automatically send event data to another server in real time. This feature allows data collected by Cotalker to be sent and used in other systems. For example, a user can submit a form powered by Cotalker, and the data is immediately sent to an external server for further use. Things like purchase orders, maintenance notifications, and much more can be easily shared with other systems. Webhooks expand Cotalker's capabilities, making it the all-in-one solution your company needs.
 
-Webhooks can be set for three types of triggers: _users_, _tasks_, and _surveys_. Whenever the selected type is created, modified, or removed, the webhook sends the event's data to the specified server.
+Webhooks can be set for various types of triggers: _users_, _tasks_, _surveys_, and _elements_. The webhook sends the event's data to the specified server whenever the selected type is created, modified, or removed. _User logout_ can also be set as a webhook trigger.
 
 :::info
-- If a trigger type is set off more than once, the events will be sent in linear order. This means that following events will be sent only after the previous event is received by the server. For example, let's say three tasks have been created, the first task event is sent automatically, the second is sent after the first one is received by the server, and the third after the second. This is done so that sequential modifications are always received in the corresponding order in case of a server failure.
+- Sequential webhook triggers are always sent and received in the corresponding order in case of a server failure. Let's say an event type is set off more than once, the events will be sent in linear order. This means that following events will be sent only after the previous event is received by the server. For example, let's say three tasks have been created, the first task event is sent automatically, the second is sent after the server receives the first one, and the third after the second.
 - If a webhook fails, after 30 seconds it will try –up to two more times– to send the triggered event data to the server.
 :::
 
@@ -147,6 +147,8 @@ Events are classified into three groups:
 - Create/Edit/Remove User
 - Create/Edit/Remove Task
 - Create/Edit/Remove Survey  
+- Create/Edit/Remove Element
+- User Logout
 
 Upon any change, i.e., creation, modification, or deletion of the indicated event, the webhook is automatically triggered and sends the event data to the server.
 

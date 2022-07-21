@@ -21,16 +21,19 @@ _Groups_ are the primary place to interact and exchange information in the Cotal
 <div className="alert alert--primary">
 
 ## Group Types {#group-types}
-_Groups_ – which can only be created by administrators – are classified into three kinds:
+_Groups_ – which can only be created by administrators – are classified into four kinds:
 
 ### Standard Groups {#regular-groups} 
-Normally, we refer to _regular groups_ simply as _groups_. They incorporate a list of users and include [_channels_](/docs/documentation/client/basic_concepts#channel), i.e., chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel. 
+Normally, we refer to _standard groups_ simply as _groups_. They incorporate a list of users and include [_channels_](/docs/documentation/client/basic_concepts#channel), i.e., chat rooms for messaging and answering surveys. Groups can have subgroups and more than one channel. 
 
 ### Workflow Groups {#workflow-groups}
 _Workflow groups_, also known as _task groups_, are similar to standard groups in that they include channels and subgroups. Their great advantage is that they host [_tasks_](/docs/documentation/client/basic_concepts#tasks) with their corresponding [_channels_](/docs/documentation/client/basic_concepts#channel). You can access task details either through the [_group panel_](#group-panel) or the [_channel workspace_](/docs/documentation/client/channels).
 
 ### Link Groups {#link-groups}
 This kind of _group_ is a _link_ that can be found in the [_main menu bar_](/docs/documentation/client/main_menu) or [_group panel_](#group-panel). It can redirect the user to another source of information, whether internal or external to the Cotalker environment.
+
+### Category Groups {#category-groups}
+All group types can be grouped into _categories_. These _category groups_ then appear as sub-menus in the Main Menu Bar.  
 
 </div>
 <br/>

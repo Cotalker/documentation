@@ -113,7 +113,8 @@ import TabItem from '@theme/TabItem';
 | modifiedAt | Last date and time the group was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | nameCode | The group's unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique. |
 | nameDisplay | The group name users see on the platform  | string | |
-| parent | Indicates parent group | ObjectId<COTGroup\> | [Group Data Model](/docs/documentation/models/communication/model_groups) |
+| nestedGroups | Contains the ObjectIds of the _groups_ in a _category_ displayed as a sub-menu on the Main Menu Bar. | ObjectId<COTGroup\>[ ] | More information in the [Categories](/docs/documentation/admin/admin_categories) section. |
+| parent | Indicates the parent group, making the child group appear in the parent's group panel. | ObjectId<COTGroup\> |  |
 | search | Array of automatically generated search keywords | string [ ] | |
 | viewSettings | Sets the initial display type for workflow groups. | object | |
 | viewSettings.initialView | Indicates the chosen display type for the workflow group. Possible values include `task` (task view) and `group` (group view). | string | [Click here](/docs/documentation/admin/tips/task_view) for more details about initial views. |

@@ -17,6 +17,10 @@ The code is inserted in the [survey's settings panel in the Access section](/doc
 By default, surveys are not editable, except for surveys created before the release of this feature (June 2022).
 :::
 
+:::caution
+If a submitted survey form is part of a routine, even if it is edited, the data gathered by the routine remains the same.
+:::
+
 ## Setup {#setup}
 To enable the use of custom code to determine survey editability:
 
