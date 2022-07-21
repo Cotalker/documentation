@@ -396,7 +396,7 @@ Go to [COTMessage](/docs/documentation/models/communication/model_messages) for 
             "payload": {
                 "url": "https://dev.cotalker.com/api/redirect/r/623a065fc6bed20007066384",
                 "ogMetadata": {
-                    "title": "Work Orders Workflow | Partner & Technical Consultants Documentation",
+                    "title": "Work Orders Workflow | Cotalker Technical Documentation",
                     "image": "https://doc.cotalker.com/img/products/products_work_orders_workflow_forms_11.png",
                     "url": "https://doc.cotalker.com/docs/products/workflows/work_orders/surveys-acceptance",
                     "description": "Survey Forms",

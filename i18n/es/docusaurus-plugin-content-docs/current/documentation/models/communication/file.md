@@ -30,7 +30,7 @@ _Sample of an uploaded file._
         "group": "61b2436808be63e2facd087f"
     },
     "size": 529644,
-    "fileName": "SQL Data Model _ Partner & Technical Consultants Documentation.pdf",
+    "fileName": "SQL Data Model _ Cotalker Technical Documentation.pdf",
     "mimeType": "application/pdf",
     "key": "acme_inc/document/v4_61b243bdc8f27b93e2cd12ef/default/sql-data-model-partner-technical-consultants-d.pdf",
     "extension": ".pdf",
