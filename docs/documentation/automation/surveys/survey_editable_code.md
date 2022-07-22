@@ -42,6 +42,10 @@ To enable the use of custom code to determine survey editability:
 Configuration details and code guidelines are explained below. Code examples and expected results are shown further below.
 :::
 
+:::tip
+See the [Embedded Code Editor](/docs/documentation/automation/code_editor) section for more information on how to use the editor.
+:::
+
 
 ## Coding Guide {#guide}
 Code used for determining survey editability should follow the guidelines specified below.

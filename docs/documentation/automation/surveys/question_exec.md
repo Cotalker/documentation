@@ -63,6 +63,9 @@ In the Stage Function section, you can write or paste your [Question Code functi
 <img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01a.png')} />
 <br/>
 
+:::tip
+See the [Embedded Code Editor](/docs/documentation/automation/code_editor) section for more information on how to use the editor.
+:::
 
 ### Parameters (Context Variables) {#parameters}
 _Parameters_ or _context variables_ enable communication with different endpoints.
