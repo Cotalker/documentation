@@ -194,6 +194,9 @@ module.exports = {
       label: 'Automation Tools',
       items: [
         // 'documentation/automation/overview',
+        'documentation/automation/automation_log',
+        'documentation/automation/admin_cotlang',
+        'documentation/automation/code_editor',
         'documentation/automation/admin_routine',
         'documentation/automation/existing_routines',
         {
@@ -205,10 +208,8 @@ module.exports = {
             'documentation/automation/surveys/survey_hidden_code',
           ]
         },
-        // 'documentation/automation/scheduling',
+        //'documentation/automation/scheduling',
         'documentation/automation/sla',
-        'documentation/automation/automation_log',
-        'documentation/automation/admin_cotlang',
         'documentation/automation/triggers_and_contexts',
       ],
       collapsed: true,

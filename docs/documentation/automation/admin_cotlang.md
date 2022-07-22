@@ -1,7 +1,7 @@
 ---
 id: admin_cotlang
-title: COTLang
-sidebar_label: COTLang
+title: COTLang Guide
+sidebar_label: COTLang Guide
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

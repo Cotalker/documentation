@@ -14,6 +14,10 @@ Simply add your JavaScript code into the **source code** field in the stage-bot'
 <img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_00.png')} />
 <br/>
 
+:::tip
+See the [Embedded Code Editor](/docs/documentation/automation/code_editor) section for more information on how to use the editor.
+:::
+
 ### Default Variables {#default-variables}
 By default, your function can access two variables:
 
