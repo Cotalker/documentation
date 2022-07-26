@@ -15,7 +15,7 @@ The _embedded code editor_ can be found in:
 - [Question Code Automations](/docs/documentation/automation/surveys/question_exec)
 - [Developer Mode Survey Editability](/docs/documentation/automation/surveys/survey_editable_code)
 - [Developer Mode Survey Access](/docs/documentation/automation/surveys/survey_hidden_code)
-- [Custom Javascript Code Routine Stage Bot](/docs/documentation/automation/bots/ccjs-2.0.0)
+- [Custom Javascript Code Routine Stage Bot](/docs/documentation/automation/bots/ccjs-2.0.1)
 
 The code editor can also test your code by running the code in a sandboxed environment. Test _dummy_ data is automatically provided for contexts involved in the function.
 
@@ -97,4 +97,4 @@ _To test your code:_
 - [Question Code Automations](/docs/documentation/automation/surveys/question_exec)
 - [Developer Mode Survey Editability](/docs/documentation/automation/surveys/survey_editable_code)
 - [Developer Mode Survey Access](/docs/documentation/automation/surveys/survey_hidden_code)
-- [Custom Javascript Code Routine Stage Bot](/docs/documentation/automation/bots/ccjs-2.0.0)
+- [Custom Javascript Code Routine Stage Bot](/docs/documentation/automation/bots/ccjs-2.0.1)

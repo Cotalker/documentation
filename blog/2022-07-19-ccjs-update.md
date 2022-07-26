@@ -32,7 +32,7 @@ Give your bots a boost of power!
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/automation/bots/ccjs-2.0.0">Routine Stage Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/bots/ccjs-2.0.1">Routine Stage Documentation</a>
 <br/>
 
 
