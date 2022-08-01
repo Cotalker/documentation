@@ -13,7 +13,7 @@ import Mermaid from '@theme/Mermaid';
 
 <span className="hero__subtitle">Make the most out of Cotalker's potential for your automation processes using its API tools.</span>
 
-Everything available in Cotalker's GUI is accessible through API requests. This permits developers add extra layers of automatization and ability to integrate other systems with Cotalker.
+Everything available in Cotalker's GUI is accessible through API requests. This permits developers to add extra layers of automatization and the ability to integrate other systems with Cotalker.
 _Here are some examples of what you can do with Cotalker's API tools:_
 - easily upload large amounts of data
 - scale and automate the work of admins
