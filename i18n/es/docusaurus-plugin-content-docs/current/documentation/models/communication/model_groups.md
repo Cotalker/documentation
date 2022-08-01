@@ -155,8 +155,8 @@ import TabItem from '@theme/TabItem';
 - [Groups](/docs/documentation/client/groups): Admin documentation on groups
 - ["Group" REST API documentation](/docs/documentation/api/communication/groups): basic "Group" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
-- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
-- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+- [COTLang](/docs/documentation/automation/cotlang/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/cotlang/triggers_and_contexts): more information on using data models within routines
 
 ## Help {#help}
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum

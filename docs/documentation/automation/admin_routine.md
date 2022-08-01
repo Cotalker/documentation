@@ -80,9 +80,9 @@ _For example, if you chose the **Send gif** stage type, you will see the followi
 
 - **Options**: In this example, the **Send gif** stage type has three options or fields: _Search_, _Channel_, and _User_.
 - **Required Fields**: The _required_ fields are outlined by a red box (_Search_ and _Channel_).
-- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](admin_cotlang)). In italic letters, at the bottom of the box, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
+- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](/docs/documentation/automation/cotlang/admin_cotlang)). In italic letters, at the bottom of the box, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
 
-**Note:** _It's common to use [COTLang](admin_cotlang) (Cotalker Script Language) for getting automatized data for fields._
+**Note:** _It's common to use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Script Language) for getting automatized data for fields._
 
 </div>
 <br/>

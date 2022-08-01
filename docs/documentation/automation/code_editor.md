@@ -88,7 +88,7 @@ _To test your code:_
 -----
 
 ## Related Resources {#related}
-- [Triggers & Contexts](/docs/documentation/automation/triggers_and_contexts)
+- [Triggers & Contexts](/docs/documentation/automation/cotlang/triggers_and_contexts)
 - [Data Models Overview](/docs/documentation/models/overview_model)
 - [Question Code Automations](/docs/documentation/automation/surveys/question_exec)
 - [Developer Mode Survey Editability](/docs/documentation/automation/surveys/survey_editable_code)

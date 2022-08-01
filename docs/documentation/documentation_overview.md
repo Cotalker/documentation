@@ -33,6 +33,6 @@ You might also want to visit these other sections:
 - [**Getting Started**](/docs/getting_started/intro_overview): Platform basics
 - [**What's New**](/blog): Latest features and updates
 - [**API**](/docs/documentation/api/overview_api): API reference guide for admins and developers, complete with descriptions and examples.
-- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
+- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/cotlang/triggers_and_contexts#context-language) when extracting data.
 - [**Tutorials**](/docs/tutorials/tutorial_overview): Real-life examples
 - [**Support & Help**](/docs/support/support_overview): Contacts and other useful resources

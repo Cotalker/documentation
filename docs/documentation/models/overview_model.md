@@ -11,7 +11,7 @@ import Mermaid from '@theme/Mermaid';
 
 **Data models** are the backbone of the Cotalker environment. Almost everything in Cotalker sustains itself inside a _data model_. 
 
-Model settings allow building custom workflows. Knowing _data model_ structures is especially important for admins and developers when using [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/triggers_and_contexts#context-language) when extracting data.
+Model settings allow building custom workflows. Knowing _data model_ structures is especially important for admins and developers when using [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/cotlang/triggers_and_contexts#context-language) when extracting data.
 
 There are a limited set of internal _data models_ which are explained below.
 

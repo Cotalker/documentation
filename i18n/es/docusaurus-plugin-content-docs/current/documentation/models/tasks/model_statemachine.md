@@ -14,7 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-_State machines_, also know as [_workflows_](/docs/documentation/client/basic_concepts#workflows), are definitions of how [tasks](/docs/documentation/client/basic_concepts#tasks) behave. They define a workflow's initial [state](/docs/documentation/client/basic_concepts#state), the other states they can change to, what [triggers](/docs/documentation/automation/triggers_and_contexts) are executed, if [reminders](/docs/documentation/automation/sla) are sent, and more. A [state machine's (workflow's) settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit) are stored in the _COTSMStateMachine_ data model explained below.
+_State machines_, also know as [_workflows_](/docs/documentation/client/basic_concepts#workflows), are definitions of how [tasks](/docs/documentation/client/basic_concepts#tasks) behave. They define a workflow's initial [state](/docs/documentation/client/basic_concepts#state), the other states they can change to, what [triggers](/docs/documentation/automation/cotlang/triggers_and_contexts) are executed, if [reminders](/docs/documentation/automation/sla) are sent, and more. A [state machine's (workflow's) settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit) are stored in the _COTSMStateMachine_ data model explained below.
 
 ## JSON Sample {#json-sample}
 
@@ -104,8 +104,8 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 - [Create Workflow Tutorial](/docs/tutorials/basic/create_state_machines): Basic tutorial on how to create a workflow
 - ["State Machines" REST API documentation](/docs/documentation/api/tasks/statemachines): basic "State Machines" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
-- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
-- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+- [COTLang](/docs/documentation/automation/cotlang/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/cotlang/triggers_and_contexts): more information on using data models within routines
 
 ## Help {#help}
 

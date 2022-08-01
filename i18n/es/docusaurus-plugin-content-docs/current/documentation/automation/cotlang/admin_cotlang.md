@@ -1,7 +1,7 @@
 ---
 id: admin_cotlang
-title: COTLang
-sidebar_label: COTLang
+title: COTLang Guide
+sidebar_label: COTLang Guide
 ---
 
 :::caution Advertencia
@@ -25,7 +25,7 @@ import Highlight from '@theme/Highlight';
 ## Overview {#cotlang-overview}
 
 COTLang is a scripting language created by Cotalker, primarily used in its _routines_.
-It is used to extract data from different [_contexts_](/docs/documentation/automation/triggers_and_contexts) in Cotalker.
+It is used to extract data from different [_contexts_](/docs/documentation/automation/cotlang/triggers_and_contexts) in Cotalker.
 
 </div>
 <br/>

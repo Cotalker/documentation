@@ -207,7 +207,7 @@ The Question Code Automation can make network requests, i.e., API requests that 
 :::
 
 To make a network request, you must include in your code the following function: `networkRequest(url, { headers, method, body }, options)`.  
-If an authentification token is needed to make an API request, add `{token: true}` option to use the current user's token.
+If an authentication token is needed to make an API request, add `{token: true}` option to use the current user's token.
 
 _Code structure example:_
 
