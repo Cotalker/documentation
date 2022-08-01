@@ -32,7 +32,7 @@ Before passing on to the [step-by-step example](#example), we provide a quick re
 
 <div className="alert alert--secondary">
 
-We can use a parameterized bot to make an [API request that obtains element data](/docs/documentation/api/databases/properties#get-by-id) submitted through a survey. This type of bot can be set as a [stage](/docs/documentation/automation/existing_routines) within a [routine](/docs/documentation/automation/admin_routine). 
+We can use a [_Network Request_](/docs/documentation/automation/bots/nwrequest-2.0.0), i.e., a parameterized bot used to make [API requests](/docs/documentation/api/databases/properties#get-by-id), to help us obtain element data submitted through a survey. This type of bot can be set as a [stage](/docs/documentation/automation/existing_routines) within a [routine](/docs/documentation/automation/admin_routine). 
 
 Below is a list of bot settings and COTLang scripts that can be used to make this API request: `https://www.cotalker.com/api/v2/properties/{id}`.
 
