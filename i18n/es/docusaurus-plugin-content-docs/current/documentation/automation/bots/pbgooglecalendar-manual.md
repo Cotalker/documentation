@@ -30,7 +30,7 @@ In [Start Date](#4-start-date-key-initialdate) and [End Date](#5-end-date-key-en
 `$VALUE#createdAt`
 
 :::note
-Go to [COTLang](/docs/documentation/automation/admin_cotlang) section for more information on scripts shown above.
+Go to [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) section for more information on scripts shown above.
 :::
 
 </div>

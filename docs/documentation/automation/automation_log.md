@@ -74,7 +74,7 @@ Displays the automation's basic information, which is also shown in the automati
 <div className="col col--3">Shows the data context related to the source.</div>
 <div className="col col--6">
 
-_Click here for more information on [data context](/docs/documentation/automation/triggers_and_contexts)._
+_Click here for more information on [data context](/docs/documentation/automation/cotlang/triggers_and_contexts)._
 
 </div>
 </div>
@@ -148,7 +148,7 @@ _The **Run Routine** window will look something like this:_
 
 The **Context** editor is the big black box on the upper half of the window. It acts just like a code editor and is used to edit the data context for testing purposes.
 
-Next to the **Context** title, you can find a link to the [Triggers & Contexts](/docs/documentation/automation/triggers_and_contexts) section for more information on data context.
+Next to the **Context** title, you can find a link to the [Triggers & Contexts](/docs/documentation/automation/cotlang/triggers_and_contexts) section for more information on data context.
 
 When using **Run Routine** with a subtask, the **Context** editor is automatically filled with mock data for testing.
 

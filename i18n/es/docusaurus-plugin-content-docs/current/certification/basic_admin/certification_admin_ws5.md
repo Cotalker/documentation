@@ -55,7 +55,7 @@ To build the routine, is often and useful to use Cotlang. It is a language creat
 For example, to build the routine, that every time a user requests a vacation through Cotalker's administrative management solution, an email is sent to the boss. Then each email will contain a different reason and will be sent by a different transmitter, which depends on the subject. **So this is when cotlang is used.** It helps to generalize the actions (send an email) to personalize the content. Then a single routine is used for each time a user wants to request vacations and not a different routine for each person with their own data. <br/>
 This is scalable! <br/>
 Among other examples! It can be useful to get information from the database, display the date in a specific format, etc. <br/>
-For more details, go to the [admin's cotlang section](/docs/documentation/automation/admin_cotlang).
+For more details, go to the [admin's cotlang section](/docs/documentation/automation/cotlang/admin_cotlang).
 
 ### What to build {#what-to-build}
 In this workshop we will simulate that we are working with a client of a financial company.. <br/>

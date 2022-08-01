@@ -210,19 +210,19 @@ The collections mentioned were to be created during previous tutorials and might
             - **Item**: `$VALUE#data|[find=>identifier=nametask_00]|process|0`
 
           :::note
-            - We use [Cotlang](/docs/documentation/automation/admin_cotlang) script to retrieve the task's name from the entered survey.
+            - We use [Cotlang](/docs/documentation/automation/cotlang/admin_cotlang) script to retrieve the task's name from the entered survey.
             - Notice how we use `nametask_00` to reference the survey's **Name of the Task** field.
           :::
         -------
         - **Group**: `($CODE#group#code#group-code)|_id`
           :::note IMPORTANT!
             - **Replace** `group-code` with your _Task Manager_ workflow-group's _code_.
-            - **Or**, instead of using this [Cotlang](/docs/documentation/automation/admin_cotlang) script, you may also insert the _Task Manager_'s id number which can be obtained from its URL.
+            - **Or**, instead of using this [Cotlang](/docs/documentation/automation/cotlang/admin_cotlang) script, you may also insert the _Task Manager_'s id number which can be obtained from its URL.
           :::
         -------
         - **User**: `$VALUE#user`
           :::note 
-          This [Cotlang](/docs/documentation/automation/admin_cotlang) script will get the person who filled out the survey.
+          This [Cotlang](/docs/documentation/automation/cotlang/admin_cotlang) script will get the person who filled out the survey.
           :::
         -------
         - In **Answers**, press <span className="badge badge--primary">+ Add Item</span>, then set:
@@ -230,13 +230,13 @@ The collections mentioned were to be created during previous tutorials and might
         -------
         - **Dynamic Field 1**: `$VALUE#data|[find=>identifier=importancetask_00]|process|0`
           :::note
-            - We use [Cotlang](/docs/documentation/automation/admin_cotlang) script to retrieve the task's level of importance which was entered in the survey.
+            - We use [Cotlang](/docs/documentation/automation/cotlang/admin_cotlang) script to retrieve the task's level of importance which was entered in the survey.
             - Notice how we use `importancetask_00` to reference the survey's **Importance** field.
           :::
         -------
         - **Dynamic Field 2**: `$VALUE#data|[find=>identifier=departmenttask_00]|process|0`
           :::note
-            - We use [Cotlang](/docs/documentation/automation/admin_cotlang) script to retrieve the department assigned to the task.
+            - We use [Cotlang](/docs/documentation/automation/cotlang/admin_cotlang) script to retrieve the department assigned to the task.
             - Notice how we use `departmenttask_00` to reference the survey's **Department** field.
           :::
         -------
@@ -251,7 +251,7 @@ The collections mentioned were to be created during previous tutorials and might
           - **Information**: `$VALUE#data|[find=>identifier=descriptiontask_00]|process|0`
           
           :::note
-            - We use [Cotlang](/docs/documentation/automation/admin_cotlang) script to retrieve the _Long Description of the Task_ which was entered in the survey.
+            - We use [Cotlang](/docs/documentation/automation/cotlang/admin_cotlang) script to retrieve the _Long Description of the Task_ which was entered in the survey.
             - Notice how we use `descriptiontask_00` to reference the survey's **Importance** field. 
             - The description will be placed in the task's _additional information_ field.
           :::

@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description
 
-The _Companies_ Data Model (COTCompany) is the underlying configuration for the platform. Most data models are associated with it. It contains basic company information, such as its name, tax identification number, and country. It also establishes platform display settings such as language, icon display, colors, authentification, and other branding options.
+The _Companies_ Data Model (COTCompany) is the underlying configuration for the platform. Most data models are associated with it. It contains basic company information, such as its name, tax identification number, and country. It also establishes platform display settings such as language, icon display, colors, authentication, and other branding options.
 
 ## JSON Sample {#json-sample}
 
@@ -83,7 +83,7 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 | startGroup | Indicates which _group_ appears in the [group panel](/docs/documentation/client/groups#group-panel) at startup | [ObjectId<COTGroup\>](/docs/documentation/models/communication/model_groups) | If left `null`, a summary of most recent conversations will show up in the [group panel](/docs/documentation/client/groups#group-panel).
 | subdomain | Used to internally reference the company; also used to indicate subdomain name for web client | string | |
 | system | Indicates the user ID of system manager contact | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | |
-| branding | Allows customizing certain aspects of Cotalker's UI, i.e., platform colors, images, and text. Also enables login authentification with an organization's Google and Microsoft accounts. | object | Visit the [Branding Settings](/docs/documentation/admin/special_configurations/branding) section for examples and tips. |
+| branding | Allows customizing certain aspects of Cotalker's UI, i.e., platform colors, images, and text. Also enables login authentication with an organization's Google and Microsoft accounts. | object | Visit the [Branding Settings](/docs/documentation/admin/special_configurations/branding) section for examples and tips. |
 | branding.isActive | Activates the use of custom images. If `true`, the custom images contained in the `images` object are displayed. | boolean | |
 | branding.names | Allows overriding the default platform name. | object | |
 | branding.names.name | Corresponds to the environment build name, i.e., the code name by which the system identifies the customized version of the platform. | string |  |
@@ -162,8 +162,8 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 - [Configuration](/docs/documentation/admin/admin_company): Configure some of the company settings from the Administrative Panel
 - ["Company" REST API documentation](/docs/documentation/api/company): basic "Company" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
-- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
-- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+- [COTLang](/docs/documentation/automation/cotlang/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/cotlang/triggers_and_contexts): more information on using data models within routines
 
 ## Help {#help}
 

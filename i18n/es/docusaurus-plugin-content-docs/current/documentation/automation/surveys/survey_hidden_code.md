@@ -40,6 +40,10 @@ To use custom code to program survey accessibility:
 Configuration details and code guidelines are explained below. Code examples and expected results are shown further below.
 :::
 
+:::tip
+See the [Embedded Code Editor](/docs/documentation/automation/code_editor) section for more information on how to use the editor.
+:::
+
 ## Coding Guide {#coding-guide}
 The code script used to program the survey's accessibility should follow the guidelines specified below.
 

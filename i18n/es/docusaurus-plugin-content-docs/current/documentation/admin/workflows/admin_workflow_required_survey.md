@@ -118,7 +118,7 @@ When using a Workflow Start Form and some input error prevents a task from being
 
 <div className="alert alert--secondary">
 
-7. New fields –based on the the _Create Task_ bot– will appear. In the **Name** field, press the <span className="badge badge--primary">Add item</span> button, and include a [COTLang Script command](/docs/documentation/automation/admin_cotlang) like the following: 
+7. New fields –based on the the _Create Task_ bot– will appear. In the **Name** field, press the <span className="badge badge--primary">Add item</span> button, and include a [COTLang Script command](/docs/documentation/automation/cotlang/admin_cotlang) like the following: 
 
   `$VALUE#answer|data|[find=>identifier=text_input_question_identifier]|process|0`
 
