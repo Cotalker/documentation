@@ -19,19 +19,131 @@ _Below is a simple automated routine used for demonstration purposes. It is trig
 
 </div>
 
-_In the following section, you can find more information and a brief tutorial on how use COTLang scripts to obtain element data submitted through a survey._
+_In the following section, you can find more information and a brief tutorial on how use COTLang scripts within automated routines to obtain element data submitted through a survey._
 
 :::tip
 Using _element_ data gathered from submitted survey forms provides enormous potential for creating automations that can handle and update your database information.
 :::
 
-## Suggested COTLang Scripts {#cotlang}
-Here is a list of COTLang scripts that can be used for obtaining element data submitted through a survey form:
+## Summary {#summary}
+Before passing on to the [step-by-step example](#example), we provide a quick reference summary of the settings used to set up the automation.
+
+### Automated API Request {#api_summary}
+
+<div className="alert alert--secondary">
+
+We can use a parameterized bot to make an [API request that obtains element data](/docs/documentation/api/databases/properties#get-by-id) submitted through a survey. This type of bot can be set as a [stage](/docs/documentation/automation/existing_routines) within a [routine](/docs/documentation/automation/admin_routine). 
+
+Below is a list of bot settings and COTLang scripts that can be used to make this API request: `https://www.cotalker.com/api/v2/properties/{id}`.
+
+:::note
+In the table below:
+- Underneath the Administrative Panel's user interface field names, the [COTParametrizedBot.stages[ ]](/docs/documentation/models/automations/model_parametrizedbot) nomenclature is indicated in italics.
+- When UI and data model nomeclature differ, both sample types are indicated.
+:::
+
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><b>Code</b><br/><em>key</em></div>
+<div className="col col--9">
+
+`get_property`
+
+</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Type</b><br/><em>name</em></div>
+<div className="col col--9">
+
+Network Request
+
+`NWRequest`
+
+</div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>URL</b><br/><em>data.url</em></div>
+<div className="col col--9">
+
+1- `$JOIN#/#($ENV#BASEURL)#(api)#(v2)#(properties)#($VALUE#data|[find=>identifier=identifier_code]|process|0)`  
+<br/>
+
+2- `$JOIN##https://www.cotalker.com/api/v2/properties/#($VALUE#data|[find=>identifier=identifier_code]|process|0)"`  
+<br/>
+
+3- `$JOIN#/#($ENV#BASEURL)#api#v2#properties#($VALUE#data|[find=>identifier=identifier_code]|process|0)`  
+<br/>
+
+_NOTES:_
+- _Option 1 is the best choice because it helps indicate the different parts of the URL path._
+- _`identifier_code` refers to a survey question's identifier._
+
+</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Method</b><br/><em>data.method</em></div>
+<div className="col col--9">
+
+`GET`
+
+</div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Default Authentication</b><br/><em>data.defaultAuth</em></div>
+<div className="col col--9">
+
+_Switch ON on the Admin Panel._
+
+`true`
+
+</div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Headings</b><br/><em>data.headers</em></div>
+<div className="col col--9">
+
+`{"admin":true}`
+
+</div>
+</div>
+
+</div>
+<br/>
+
+</div>
+<br/>
+
+### Obtaining Output Data {#output_summary}
+
+<div className="alert alert--secondary">
+
+#### $OUTPUT {#output}
+The `OUTPUT` command can be used to obtain the previous stage's data.
+
+_Example (obtaining an element's display name):_  
+`$OUTPUT#get_property#data|data|name|display`
+
+_Example (obtaining an element's code name):_  
+`$OUTPUT#get_property#data|data|name|code`
+
+#### $CODE {#code}
+The `CODE` command transforms the code into an object which can be used within the routine.
+
+_Example (using an element's display name):_  
+`($CODE#property#id#($VALUE#data|[find=>identifier=identifier_code]|process|0))|name|display`
+
+_Example (using an element's code name):_
+`($CODE#property#id#($VALUE#data|[find=>identifier=identifier_code]|process|0))|name|code`
+
+:::note
+`identifier_code` refers to a survey question's identifier.
+:::
+
+</div>
+<br/>
 
 
-
-
-## Example {#example}
+## Step-by-Step Example {#example}
 Below is an example that uses the suggested scripts for obtaining element data submitted through a survey form.
 
 ### Previous Steps {#previous}
