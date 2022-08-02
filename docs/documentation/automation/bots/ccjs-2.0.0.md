@@ -178,28 +178,24 @@ return {
 
 
 -----------  
-**Sandboxed JS runner.**  
+**FAAS JS runner.**  
 key: CCJS  
 ## Inputs  
 ### 1. Source Code (key: src)  
-Must return an Object. e.g., return { hello: 'world' };. Variables 'input' and 'output' can be read.  
+Must return an Object. e.g., return { hello: 'world' };. Variables 'value' and 'output' can be read.  
 Required: true  
-Data Type: string   
+Data Type: code   
 ## Next Stages  
 ### 1. SUCCESS  
   
 ### 2. ERROR  
   
 ## Outputs  
-### 1. statusCode  
-Status code number: 0 if successful  
-Required: no  
-Data Type: number   
-### 2. error  
+### 1. error  
 Error message.  
 Required: no  
 Data Type: string   
-### 3. data  
+### 2. data  
 Returned value.  
 Required: no  
 Data Type: any 

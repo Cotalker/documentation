@@ -154,7 +154,9 @@ Upon any change, i.e., creation, modification, or deletion of the indicated even
 When _task_ events are chosen, the **Workflow** field appears to indicate the workflows to be monitored.  
 When _survey_ events are chosen, the **Survey** and **Group** fields appear to indicate the groups and surveys to monitor.
 
-Go to [COTEvent](/docs/documentation/models/webhooks/event) for details about event trigger data models.
+<br/>
+
+Go to [**COTEvent**](/docs/documentation/models/webhooks/event) for details about event trigger data models.
 
 </em></div>
 </div>
@@ -171,7 +173,7 @@ Go to [COTEvent](/docs/documentation/models/webhooks/event) for details about ev
 <div className="alert alert--secondary">
 
 ### B. Logs {#logs}
-Check the [COTWebhookLog](/docs/documentation/models/webhooks/webhooklog) for the logs data model details.
+Check the [COTWebhookLog](/docs/documentation/models/webhooks/webhooklog) for the log data model details.
 
 
 <img alt="logs" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_webhooks_06.png')} />

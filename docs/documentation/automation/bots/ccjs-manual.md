@@ -1,5 +1,3 @@
-# Custom Javascript Code 2.0.1
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
@@ -14,18 +12,20 @@ Simply add your JavaScript code into the **source code** field in the stage-bot'
 <img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_00.png')} />
 <br/>
 
-:::warning Alert
-Source code **must** be wrapped within ` ``` ` to work properly.
-:::
-
-:::caution Attention
-All functions have a 30-second timeout limit.
-:::
-
 :::info
 - Asynchronous code is supported, `await` can be used.
 - Use Axios 0.27.2 to make HTTP requests.
 - Use date-fns 2.28.0 for manipulating Javascript dates.
+:::
+
+:::note Legacy Versions
+- Source code **must** be wrapped within ` ``` ` to work properly in versions prior to 2.0.1.
+- Newer versions can still use (but not at all require) code wrapped in backticks: ` ``` `. Just remember to use the backslash before a backtick in case they are used within the code: ``` \` ```
+- Versions prior to 2.0.1 cannot handle asynchronous code.
+:::
+
+:::caution Attention
+All functions have a 30-second timeout limit.
 :::
 
 :::tip
@@ -94,9 +94,6 @@ Add a JSON object to include extra data the _source code_ can fetch. _COTLang_ e
 </div>
 
 ### Code Samples {#example}
-:::warning Remember
-Source code **must** be wrapped within ` ``` ` to work properly.
-:::
 
 #### - Payload Sample {#payload}
 ```javascript
