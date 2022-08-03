@@ -43,6 +43,13 @@ _Available URLs:_
 - `https://www.cotalker.com/api/v2`
 - `https://www.cotalker.com/api/v3`
 
+:::caution demo users
+If you're using Cotalker through a free-demo trial, use the following URL paths:  
+- `https://demo.cotalker.com/api/v1`
+- `https://demo.cotalker.com/api/v2`
+- `https://demo.cotalker.com/api/v3`
+:::
+
 ## Endpoints {#endpoints}
 In this documentation, you can find basic REST API requests with samples and references to their [data models](/docs/documentation/models/overview_model). For a complete schematic guide to our APIs, please consult our [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
 
