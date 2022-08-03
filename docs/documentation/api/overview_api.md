@@ -44,7 +44,7 @@ _Available URLs:_
 - `https://www.cotalker.com/api/v3`
 
 :::caution demo users
-If you're using Cotalker through a free-demo trial, use the following URL paths:  
+If you're using Cotalker through a free-trial demo, use the following URL paths:  
 - `https://demo.cotalker.com/api/v1`
 - `https://demo.cotalker.com/api/v2`
 - `https://demo.cotalker.com/api/v3`
