@@ -97,7 +97,7 @@ Field | Description | [Type](/docs/documentation/models/overview_model#data-type
 **diff** | When the triggering object is modified, this field displays its current and previous data. | object | The `diff` field consists of an object containing the changed fields, and each changed field is an object itself with the previous and current changes.
 **event** | Indicates the event type, i.e., whether an event trigger object was created, modified, or removed. It can also indicate when a user logs out. | string | Options are `create`, `edit`, `delete`, or `logout`.
 **extraData** | Contains any extra data the webhook sends. | Depends on the type of data sent. | If no extra data is sent, this field is set to `null`.<br/>A _user logout event_ places in this field an object with the _COTUser ObjectId_ and _timestamp_ of the logout in Epoch time format:<br/>`{"userId": ObjectId, "timestamp": number}`. |
-**type** | Indicates the type of object that triggered the webhook, i.e., task, user, or survey. | string | Options are `COTTask`, `COTUser`, `COTSurvey`, `COTProperty`, or `Auth`.
+**type** | Indicates the type of event that triggered the webhook, i.e., task, user, survey, or user logout. | string | Options are `COTTask` (task), `COTUser` (user), `COTSurvey` (survey), `COTProperty` (element/property), or `Auth`(user logout).
 
 
 
