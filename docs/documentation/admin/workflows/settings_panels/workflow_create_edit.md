@@ -145,10 +145,10 @@ If the _generic_ type is selected, you must choose an element from the collectio
 
 <div className="container box">
 <div className="row table-row-1">
-<div className="col col--3"><b>Additional field (Nº 1-5):</b></div>
+<div className="col col--3"><b>Status (Nº 1-5):</b></div>
 <div className="col col--5">
 
-Adds a collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) to tasks belonging to the workflow. The additional fields are used to filter, group, or sort the tasks in the task view. 
+Adds a collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) to tasks belonging to the workflow. The additional fields (_statuses_) are used to filter, group, or sort the tasks in the task view. 
 
 These collections correspond to the five _status_ fields belonging to the `dynamicPropertyTypes` object of the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
 
@@ -328,9 +328,9 @@ _Two types of additional fields for workflows:_
 <img alt="additional fields in workflows" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_create_edit_bestpractices_00.png')} />
 <br/>
 
-In the workflow's data model ([COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine)), the first five **additional field** slots (A) correspond to the `dynamicPropertyTypes` field. The **additional fields** slot found at the bottom of the section (B) can contain multiple collections and are stored in the `allowedExtensions` field of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine).
+The first five _additional fields_ or **statuses** (A) correspond to the `dynamicPropertyTypes` field in the workflow's data model ([COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine)). The **additional fields** slot found at the bottom of the section (B) can contain multiple collections and are stored in the `allowedExtensions` field of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine).
 
-As best practice, it is recommended to use the first five **additional field** slots (A) because their structure permits greater consistency between the elements.
+As best practice, it is recommended to use the first five **statuses** (A) because their structure permits greater consistency between the elements.
 
 
 ## Related Topics {#related-topics}
