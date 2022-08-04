@@ -72,8 +72,7 @@
 .not-heading h4 {
   margin-bottom: 0px;
   /* font-family: "Jost"; */
-  font-size: 14px;
-  font-weight: semi;
+  font-size: 16px;
 }
 
 /* .alert--warning {
@@ -243,7 +242,7 @@ html[data-theme='dark'] {
 :root {
   --ifm-heading-font-family: Jost;
   --ifm-font-family-base: Jost;
-  --ifm-font-size-base: 14px;
+  --ifm-font-size-base: 16px;
   /*---- Navy ----*/
 
   /*---- Magenta ----*/
