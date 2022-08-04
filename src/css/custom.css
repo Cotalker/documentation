@@ -73,6 +73,7 @@
   margin-bottom: 0px;
   /* font-family: "Jost"; */
   font-size: 14px;
+  font-weight: semi;
 }
 
 /* .alert--warning {
@@ -302,9 +303,10 @@ html[data-theme='dark'] {
 }
 
 /*---- Fonts Family  ----*/
-/* h1, h2, h3, h4, h5{
-  font-family: 'Jost', sans-serif;
-} */
+h1, h2, h3, h4, h5{
+  /* font-family: 'Jost', sans-serif; */
+  font-weight: 600;
+}
 
 /* p, td, th, li {
   font-family: 'Jost', sans-serif;
