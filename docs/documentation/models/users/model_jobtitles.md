@@ -44,7 +44,7 @@ _Job titles_ can group _users_ in "pools" and give them special attributes accor
 | \_id | The job title's ID. | ObjectId<COTJobtitle\> |
 | allowedExtensions | Attributes or additional fields added that will be associated with users that have the job title. | [ObjectId<COTPropertyType\>[ ]](/docs/documentation/models/databases/model_propertytypes) |
 | code | The job title's unique ID name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
-| company | The company the job titles belong in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| company | The company the job titles belong in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | createdAt | Date the job title was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | display | The job title's display name. | string |
 | elements | Array of elements (properties) shared with all users associated with the job title. | [ObjectId<COTProperty\>[ ]](/docs/documentation/models/databases/model_properties)

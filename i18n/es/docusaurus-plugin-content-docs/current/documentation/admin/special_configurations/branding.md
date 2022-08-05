@@ -40,7 +40,7 @@ To apply changes, you must:
 
 :::tip
 - Examples and tips for the API request with _body_ details are given below.
-- The `branding` object that must be included in the request body is described in the [COTCompany](/docs/documentation/models/model_company) data model specifications.
+- The `branding` object that must be included in the request body is described in the [COTCompany](/docs/documentation/models/company/model_company) data model specifications.
 - The API reference guide for the PATCH request on the _companies_ endpoint is available in the [Update a Company](/docs/documentation/api/company#patch-company) section.
 :::
 
@@ -216,7 +216,7 @@ _The code used for the example above modifies the English version:_
 Through the `branding.auth` object, you can also enable user login with your company's Google and Microsoft accounts.
 
 :::tip
-- Go to the [COTCompany](/docs/documentation/models/model_company) data model section for `branding.auth` field descriptions.
+- Go to the [COTCompany](/docs/documentation/models/company/model_company) data model section for `branding.auth` field descriptions.
 - Visit the [Microsoft Azure AD Sign-in Configuration](/docs/documentation/admin/special_configurations/azure_config) section for a step-by-step tutorial.
 - Ask your Cotalker sales representative or support team for more information.
 :::

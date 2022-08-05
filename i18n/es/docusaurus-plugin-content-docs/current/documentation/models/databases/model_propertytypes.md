@@ -70,7 +70,7 @@ _Property types_ contain [_properties_ or _elements_](/docs/documentation/models
 | --- | --- | --- | --- |
 | **\_id** | System generated property type ID. | ObjectId<COTPropertyType\> |
 | **code** | The property type's unique identification name. | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
-| **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Date the property type was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **display** | The property type's display name. | string |
 | **isActive** | Indicates whether the workflow is active or not. | boolean |

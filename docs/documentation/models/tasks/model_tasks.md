@@ -98,7 +98,7 @@ Tasks are hosted within [Task Groups (COTTaskGroup)](/docs/documentation/models/
 | **channel** | The task's [channel workspace](/docs/documentation/client/channels) | [ObjectId<COTChannel\>](/docs/documentation/models/communication/model_channels) |
 | **child** | Array of child tasks. | ObjectId<COTTask\>[ ] | |
 | **closedAt** | Indicates the resolution date, i.e., when the task was closed. If not yet closed, the value is `null`. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
-| **company** | Indicates the company in which the task is found. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| **company** | Indicates the company in which the task is found. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Date the task was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **createdBy** | The _user_ (human or bot) that created the task. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | By default, the creator is designated as the `assignee`, but can later be changed.
 | **editors** | Users tagged as `editors`. Editors can read and write on all task details and participate in the chat area. | [ObjectId<COTUser\>[ ]](/docs/documentation/models/users/model_users) | 

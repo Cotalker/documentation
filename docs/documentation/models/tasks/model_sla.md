@@ -55,7 +55,7 @@ The COTSMSLA data model contains the settings of a [service-level agreement (SLA
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
 | **code** | The SLA's code name | string | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
-| **company** | The ID of the company the SLA is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| **company** | The ID of the company the SLA is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Date the SLA was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **data** | Date and time configuration for the SLA. | object |
 | **data.baseDate** | Sets _static_ and _dynamic_ `time` reference. | string | Enum: ["endDate", "startDate", "resolutionDate", "default"]<br/>[Details availible here.](/docs/documentation/automation/sla#base-date)

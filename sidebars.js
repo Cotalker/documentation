@@ -379,7 +379,7 @@ module.exports = {
       type: 'category',
       label: 'Company & Users',
       items: [
-        'documentation/models/model_company',
+        'documentation/models/company/model_company',
         'documentation/models/users/model_users',
         'documentation/models/users/model_jobtitles',
         'documentation/models/users/model_accessroles',

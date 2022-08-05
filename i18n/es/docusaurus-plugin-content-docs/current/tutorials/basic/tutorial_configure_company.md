@@ -20,7 +20,7 @@ Time: 7 minutes
 
 :::tip Vocabulary note:
 - In the [_Administrative Panel_](/docs/documentation/admin/admin_overview#layout), the **company** subdivision has three sections: [_Users_](/docs/documentation/admin/users), [_Job titles_](/docs/documentation/admin/admin_jobtitles), and [_Configuration_](/docs/documentation/admin/admin_company).
-- In other parts of the documentation, we refer to a [**company**](/docs/documentation/models/model_company) as a data model that represents the business or organization and unites all other data models.
+- In other parts of the documentation, we refer to a [**company**](/docs/documentation/models/company/model_company) as a data model that represents the business or organization and unites all other data models.
 :::
 
 ## Company Requirements {#company-requirements}

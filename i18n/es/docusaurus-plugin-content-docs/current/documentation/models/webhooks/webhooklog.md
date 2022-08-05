@@ -94,7 +94,7 @@ _Below is a sample of a returned COTWebhookLog object:_
 
 Field | Description | Type | Notes
 --- | --- | --- | ---
-**company** | Displays the ObjectId of the company in which the triggering event was set off. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company)
+**company** | Displays the ObjectId of the company in which the triggering event was set off. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company)
 **createdAt** | Indicates the date and time the webhook sent the data to the server. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 **event** | Contains the triggering event data that is sent to the external server. | [COTEvent](/docs/documentation/models/webhooks/event) |
 **retry** | Indicates the number of times the webhook has tried to send the data to the external server. | number | If a webhook fails to successfully send data to the external server, it will resend the data in thirty seconds and will try it up to three times.

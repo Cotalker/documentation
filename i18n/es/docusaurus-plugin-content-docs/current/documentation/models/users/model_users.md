@@ -104,7 +104,7 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 | companies[index].hierarchy.peers | The ID number of the user's peers | ObjectId<COTUser\>[ ] | |
 | companies[index].hierarchy.subordinate | The ID number of the user's subordinates | ObjectId<COTUser\>[ ] | |
 | companies[index]._id | Internal system ID. | ObjectId | Ignore this field. |
-| companies[index].companyId | The company's ID number | ObjectId<COTCompany\> | [Company Model](/docs/documentation/models/model_company) |
+| companies[index].companyId | The company's ID number | ObjectId<COTCompany\> | [Company Model](/docs/documentation/models/company/model_company) |
 | createdAt | The date the _user_ was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | email | The user's email. | string | The email cannot be changed. |
 | extensions | Collections used to store user information | object | [Additional fields](/docs/documentation/admin/users#additional-fields) |

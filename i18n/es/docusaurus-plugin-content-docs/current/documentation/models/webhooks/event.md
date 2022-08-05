@@ -95,7 +95,7 @@ _Below is a sample of a user modification event that triggered a webhook:_
 
 Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes
 --- | --- | --- | ---
-**company** | Indicates the ObjectId of the company in which the event was triggered. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+**company** | Indicates the ObjectId of the company in which the event was triggered. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 **createdAt** | Displays the time and date the event was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 **data** | Contains the corresponding event data that triggered the webhook. Depending on the trigger type, the data is structured with either task, user, or survey data models. | [COTTask](/docs/documentation/models/tasks/model_tasks), [COTUser](/docs/documentation/models/users/model_users), or [COTSurveyExecution](/docs/documentation/models/webhooks/survey_execution) |
 **diff** | When the triggering object is modified, this field displays its current and previous data. | object | The `diff` field consists of an object containing the changed fields, and each changed field is an object itself with the previous and current changes.

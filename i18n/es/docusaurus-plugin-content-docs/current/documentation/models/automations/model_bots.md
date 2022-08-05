@@ -99,7 +99,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 | **commands[index].isSurvey** | Indicates if the bot is triggered by a survey or not. | boolean | 
 | **commands[index].slashCmd** | Indicates the string that, along with a preceeding slash, triggers the bot, e.g., `/string`. | string | `isSlash` must be `true`.
 | **commands[index].surveyIds** | Points to the surveys that trigger that bot. | [ObjectId<COTSurvey\>[ ](/docs/documentation/models/surveys/model_surveys)] | `isSurvey` must be `true`.
-| **company** | The ID of the company the bot is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| **company** | The ID of the company the bot is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Indicates when the bot was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **description** | A brief description of what the bot does. | string |
 | **global** | Indicates if the bot is available globally, i.e., in all the channels of the company. | boolean |

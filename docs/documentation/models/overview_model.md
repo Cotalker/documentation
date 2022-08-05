@@ -27,7 +27,7 @@ Data Model (Context) | Description | Endpoint
 [COTAnswerData](/docs/documentation/models/surveys/model_answer_data) | contains an answer's submitted data and is found in COTAnswer | N/A
 [COTBot](/docs/documentation/models/automations/model_bots) | bots carry out diverse programmable routines | /bots , 
 [COTChannel](/docs/documentation/models/communication/model_channels) | workspace channels where users can view task information, answer surveys, or chat with other users associated with the channel | /channels
-[COTCompany](/docs/documentation/models/model_company) | company configuration and settings | /companies
+[COTCompany](/docs/documentation/models/company/model_company) | company configuration and settings | /companies
 [COTGroup](/docs/documentation/models/communication/model_groups) | groups hold together tasks and channels or act as links to URLs | /groups
 [COTJobTitle](/docs/documentation/models/users/model_jobtitles) | job titles group users and give them special attributes | /jobtitles
 [COTMessage](/docs/documentation/models/communication/model_messages) | messages correspond to chat messages users send to each in channels, responses submitted in a survey, or system-generated messages | /messages
@@ -66,7 +66,7 @@ Data Model (Context) | Description | Endpoint
 * [__Tasks__](/docs/documentation/models/tasks/model_tasks): Element that represents a task or asset
 * [__Scheduler__](/docs/documentation/models/automations/model_scheduler): Time based, or repetitive action
 * [__Bots__](/docs/documentation/models/automations/model_bots): Represents an action that is triggered based on its configuration.
-* [__Company__](/docs/documentation/models/model_company): The underlying data model that connects all other elements, contains basic company configuration -->
+* [__Company__](/docs/documentation/models/company/model_company): The underlying data model that connects all other elements, contains basic company configuration -->
 
 ## Interactions {#interactions}
 

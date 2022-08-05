@@ -52,7 +52,7 @@ A _task group_ stores a [workflow group's configuration](/docs/documentation/adm
 | **\_id** | The task group's identification code | ObjectId | For internal use only. Do not modify.
 | **botUser** | Code name of automatically-created bot associated with the workflow group. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | For internal use only. Do not modify.
 | **collectionName** | The workflow group's _code_ name: [`groups.nameCode`](/docs/documentation/models/communication/model_groups) | string | For internal use only. Do not modify. |
-| **company** | The _company_ the task is found in | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | For internal use only. Do not modify.
+| **company** | The _company_ the task is found in | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) | For internal use only. Do not modify.
 | **createdAt** | Date and time the group was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **defaultFilter** | [Filter](/docs/documentation/client/taskview#create-a-filter) used to sort tasks in the task view. | ObjectId | 
 | **defaultView** | Indicates the default view in the [_task view_](/docs/documentation/client/taskview#tasks-views) section. | string | Options: `list`, `kanban`, `calendar`, `gantt`, `grid`

@@ -42,7 +42,7 @@ Permissions grant access to read or write in the [administrative panel](/docs/do
 | permissions | Set of permissions available in the accessrole | string[ ] | [List of default permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
 | name  | Display name | string | |
 | description | Discription given to the access role | string | |
-| company | Company's ID number | objectID<COTCompany\> | [Company Model](/docs/documentation/models/model_company) |
+| company | Company's ID number | objectID<COTCompany\> | [Company Model](/docs/documentation/models/company/model_company) |
 
 
 ## Additional Resources {#resources}
