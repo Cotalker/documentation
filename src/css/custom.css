@@ -10,6 +10,7 @@
 /* @import url('https://fonts.googleapis.com/css?family=Merriweather:900|Jost&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Jost&family=Jost&display=swap'); */
 @import url('https://indestructibletype.com/fonts/Jost.css');
+@import url('https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css');
 
 .aa-suggestion {
   border: 1px solid #c1c1c1;
@@ -243,6 +244,7 @@ html[data-theme='dark'] {
   --ifm-heading-font-family: Jost;
   --ifm-font-family-base: Jost;
   --ifm-font-size-base: 16px;
+  --ifm-font-family-monospace: Fira Code, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   /*---- Navy ----*/
 
   /*---- Magenta ----*/
@@ -307,6 +309,17 @@ h1, h2, h3, h4, h5{
   font-weight: 600;
 }
 
+.hero__subtitle {
+  font-family: Jost;
+}
+
+code { font-family: Fira Code, monospace; }
+
+@supports (font-variation-settings: normal) {
+  code { font-family: Fira Code VF, monospace; }
+}
+
+
 /* p, td, th, li {
   font-family: 'Jost', sans-serif;
 } */
@@ -332,9 +345,7 @@ h1, h2, h3, h4, h5{
 /*---- Admonition ----*/
 
 /* Added by Maurice: testing responsiveness for tables and images */
-.hero__subtitle {
-  font-family: Jost;
-}
+
 
 .framedPage {
   width: 100%;
