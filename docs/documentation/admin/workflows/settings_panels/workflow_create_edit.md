@@ -71,20 +71,7 @@ _Settings:_
 <div className="col col--5">Workflow identification name. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter.</div>
 <div className="col col--4"><em>The code cannot be edited once it is saved.</em></div>
 </div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Chat channels:</b></div>
-<div className="col col--5">
 
-Refers to the [relationship](/docs/documentation/admin/tips/chat_channels_workflows) between tasks and their chat channels. 
-
-</div>
-<div className="col col--4"><em>
-
-SHOULD BE KEPT AT BOUND.  
-_Other options for legacy use only._
-
-</em></div>
-</div>
 </div>
 <br/>
 
@@ -99,36 +86,22 @@ _Other options for legacy use only._
 <br/>
 
 <div className="container box">
-<div className="row table-row-2">
-<div className="col col--3"><b>Type:</b></div>
-<div className="col col--5">
-
-Options are: _unique_ or _generic_.
-
-</div>
-<div className="col col--4"><em>Use the "generic" type for tasks that are on-going or cyclical, e.g., a preventive maintenance task. Use the "unique" type for tasks that should be closed once completed.</em></div>
-</div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Collection:</b></div>
 <div className="col col--5">
 
-Choose the collection that will act as the asset. This collection is used to define the tasks on the workflow. The collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) are shared with each task, giving tasks the necessary slots to store relevant data.
+Choose the collection that will act as the asset. This collection is used to define the tasks on the workflow. 
+
+<br/>
+
+The collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) are shared with each task, giving tasks the necessary slots to store relevant data.
 
 </div>
 <div className="col col--4"><em>
 
-If the _unique_ type is chosen, task references are stored in the collection.
+Task references are stored in the collection.
 
 </em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Element:</b></div>
-<div className="col col--5">
-
-If the _generic_ type is selected, you must choose an element from the collection. This element is used to define the task that flows through the workflow.
-
-</div>
-<div className="col col--4"><em></em></div>
 </div>
 </div>
 <br/>
@@ -148,14 +121,20 @@ If the _generic_ type is selected, you must choose an element from the collectio
 <div className="col col--3"><b>Status (Nº 1-5):</b></div>
 <div className="col col--5">
 
-Adds a collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) to tasks belonging to the workflow. The additional fields (_statuses_) are used to filter, group, or sort the tasks in the task view. 
+Adds a collection as an [additional field](/docs/documentation/admin/database/admin_collections#additional-fields) to [tasks](/docs/documentation/client/taskview) belonging to the workflow. The additional fields (_statuses_) are used to filter, group, or sort the tasks in the task view. The elements within the collection are used as the available options for each _status_.
+
+<br/>
 
 These collections correspond to the five _status_ fields belonging to the `dynamicPropertyTypes` object of the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
 
 </div>
 <div className="col col--4"><em>
 
-**Note**: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
+The elements chosen for each _status_ appear on the task description displayed in [task view](/docs/documentation/client/taskview#tasks-view).
+
+<br/>
+
+Status options can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
 
 </em></div>
 </div>
@@ -173,8 +152,8 @@ These collections correspond to the `allowedExtensions` field in the [COTSMState
 </div>
 <div className="col col--4"><em>
 
-**Note**: The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. 
-The collections added here are not the same as the additional field options shown above. [See "best practices" below for more information on the differences between these two types of additional fields](#workflow-additional-fields).
+The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. 
+The collections added here are not the same as the additional field options shown above (status 1-5). [See "best practices" below for more information on the differences between these two types of additional fields](#workflow-additional-fields).
 
 </em></div>
 </div>
