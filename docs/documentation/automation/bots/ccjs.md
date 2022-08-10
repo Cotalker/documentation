@@ -20,8 +20,7 @@ Simply add your JavaScript code into the **source code** field in the stage-bot'
 :::
 
 :::note Legacy Versions
-- Source code **must** be wrapped within ` ``` ` to work properly in versions prior to 2.0.1.
-- Newer versions can still use (but not at all require) code wrapped in backticks: ` ``` `. Just remember to use the backslash before a backtick in case they are used within the code: ``` \` ```
+- Code can still be wrapped in backticks (but it is not required): ` ``` `. Just remember to use the backslash before a backtick in case they are used within the code: ``` \` ```
 - Versions prior to 2.0.1 cannot handle asynchronous code.
 :::
 
