@@ -39,6 +39,9 @@ This method obtains a user's _access token_. You must include the user's email a
 #### Endpoint URL: 
 `POST https://www.cotalker.com/auth/local`
 
+_In case you're using a free-trial version of Cotalker:_  
+`POST https://demo.cotalker.com/auth/local`
+
 #### Headers {#headers}
 Header | Description | Required | Values
 --- | --- | --- | ---

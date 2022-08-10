@@ -379,7 +379,20 @@ module.exports = {
       type: 'category',
       label: 'Company & Users',
       items: [
-        'documentation/models/company/model_company',
+        {
+          type: 'category',
+          label: 'COTCompany',
+          link: {
+            type: 'doc',
+            id: 'documentation/models/company/model_company',
+          },
+          items: [
+            'documentation/models/company/company_branding',
+            'documentation/models/company/company_searchengine'
+          ],
+          collapsed: true
+        },
+        
         'documentation/models/users/model_users',
         'documentation/models/users/model_jobtitles',
         'documentation/models/users/model_accessroles',
