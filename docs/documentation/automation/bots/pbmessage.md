@@ -1,9 +1,5 @@
 # Send message  
-:::tip
-If you are writing HTML in the **Content** field to add links to your messages, add a backslash before an equal sign: `\=`.  
-EXAMPLE:  
-`<a href\="https://www.website.com" target\="_blank">Click here</a>`
-:::  
+  
 **Send a message to a set of channels**  
 key: PBMessage  
 ## Inputs  
