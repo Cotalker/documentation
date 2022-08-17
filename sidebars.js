@@ -312,34 +312,23 @@ module.exports = {
     'documentation/api/auth',
     {
       type: 'category',
+      label: 'Automations',
+      items: [
+        'documentation/api/automations/bots',
+        'documentation/api/automations/scheduler',
+        'documentation/api/automations/pbscripts',
+        'documentation/api/automations/webhooks',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
       label: 'Company & Users',
       items: [
         'documentation/api/company',
         'documentation/api/users/users',
         'documentation/api/users/accessroles',
         'documentation/api/users/jobtitles',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Groups & Messages',
-      items: [
-        'documentation/api/communication/channels',
-        'documentation/api/communication/messages',
-        'documentation/api/communication/groups',
-        'documentation/api/communication/files',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Survey Forms',
-      items: [
-        'documentation/api/surveys/surveys',
-        'documentation/api/surveys/survey_chats',
-        'documentation/api/surveys/questions',
-        'documentation/api/surveys/answers',
       ],
       collapsed: true,
     },
@@ -354,24 +343,36 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Groups & Messages',
+      items: [
+        'documentation/api/communication/channels',
+        'documentation/api/communication/messages',
+        'documentation/api/communication/groups',
+        'documentation/api/communication/files',
+      ],
+      collapsed: true,
+    },
+    'documentation/api/search',
+    {
+      type: 'category',
+      label: 'Survey Forms',
+      items: [
+        'documentation/api/surveys/surveys',
+        'documentation/api/surveys/survey_chats',
+        'documentation/api/surveys/questions',
+        'documentation/api/surveys/answers',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
       label: 'Workflows & Tasks',
       items: [
         'documentation/api/tasks/tasks',
         'documentation/api/tasks/statemachines',
       ],
       collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Automations',
-      items: [
-        'documentation/api/automations/bots',
-        'documentation/api/automations/scheduler',
-        'documentation/api/automations/pbscripts',
-        'documentation/api/automations/webhooks',
-      ],
-      collapsed: true,
-    },
+    }
   ],
   models: [
     'documentation/models/overview_model',
@@ -468,6 +469,15 @@ module.exports = {
       ],
       collapsed: true,
     },
+    {
+      type: 'category',
+      label: 'Search',
+      items: [
+        'documentation/models/search/searchengine',
+        'documentation/models/search/searchresult'
+      ],
+      collapsed: true,
+    }
   ],
   support: [
     'support/support_overview',

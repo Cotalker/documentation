@@ -1,11 +1,10 @@
 ---
-title: Branding Object Data Model
-sidebar_label: COTCompanyBranding
+title: Branding Data Model
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<span className="hero__subtitle">COTCompanyBranding</span>
+<span className="hero__subtitle">COTCompany</span>
 
 ## Description {#description}
 Within the [COTCompany](/docs/documentation/models/company/model_company) data model, the `companies.branding` object allows customizing certain aspects of Cotalker's UI, i.e., platform colors, images, and text. It also enables login authentication with an organization's Google and Microsoft accounts.

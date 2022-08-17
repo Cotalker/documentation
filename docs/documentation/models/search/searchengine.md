@@ -1,49 +1,49 @@
 ---
-title: Search Engines Data Model
+title: Search Engine Model
+sidebar_label: Search Engine Model
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<span className="hero__subtitle">COTCompany</span>
+<span className="hero__subtitle">Search Parameters for use with Search API</span>
 
 ## Description {#description}
-Within the COTCompany data model, the `companies.searchEngines` field is an array of objects that permits configuring search query responses made through the platform's UI [search tool](/docs/documentation/client/client_search).
+The Search Engine Model is an array of objects containing search engine parameters. These parameters allow customizing searches made through Cotalker's [Search API](/docs/documentation/api/search).
+
+The Search Engine Model has the following general structure: `[{"name": string, "options": object}]`.
+
+:::caution important
+The Search Engine Model must be converted to Base64 format for it to be used in the Search API.
+:::
 
 ## JSON Sample {#json}
-The `searchEngines` object has the following general structure: `[{"name": string, "options": object}]`.
-
-In the `companies` sample below, you can find the `searchEngines` object array on lines 11 to 20.
-
-```json {11} showLineNumbers
-{
-    "defaultCountry": "US",
-    "defaultLanguage": "en",
-    "isActive": true,
-    "_id": "62fcdc16e341c5b6f2a23992",
-    "subdomain": "lorem",
-    "displayName": "lorem",
-    "legalName": "lorem",
-    "createdAt": "2022-07-01T20:49:32.158Z",
-    "modifiedAt": "2022-08-17T12:03:42.726Z",
-    "searchEngines": [
-        {
-            "_id": "62fcdc22739ece121e506876",
-            "name": "users",
-            "options": {
-                "limit": 100,
-                "orderBy": "asc"
+```json
+[
+    {
+        "name": "tasksElastic",
+        "options": {
+            "entityType": "hedgedoc", 
+            "limit":2
             }
-        },
-        {
-            "_id": "62fcdc297daf1a16d4c6e78c",
-            "name": "taskElastic",
-            "options": {
-                "entityType": "hedgedoc"
+    },
+    {
+        "name": "users",
+        "options": {
+            "limit":10
             }
-        }
-    ]
-}
+    }
+]
 ```
+
+_Encoded sample:_
+```
+W3sibmFtZSI6InRhc2tzRWxhc3RpYyIsIm9wdGlvbnMiOnsiZW50aXR5VHlwZSI6ImhlZGdlZG9jIiwgImxpbWl0IjoyfX0seyJuYW1lIjoidXNlcnMiLCJvcHRpb25zIjp7ImxpbWl0IjoxMH19XQ==
+```
+
+:::tip
+To encode the array into Base 64 format, you can use a tool like [Base 64](https://www.base64encode.org/).
+:::
+
 
 ## Fields {#fields}
 Field | Description | Type | Notes
@@ -71,9 +71,3 @@ Field | Description | Type | Notes
 **options.disableSerial** | By default, if a query begins with a number, e.g., `#18` or `18`, tasks with that serial number will be returned in the response. If activated, this behavoir is disabled. | boolean | This allows you to search through task names that have numbers in them and avoid including the automatically generated task serial number.
 **options.entityType** | Available only on `tasksElastic`. Indicates the type of _| string | _Options are:_ <br/>`task` \| `hedgedoc` \| `property` \| `channel` \| `user`
 **options.groups** | Available only on `tasksElastic`, `tasks`, `channels`. | string[ ] | NOT WORKING
-
-## Additional Resources {#resources}
-- [Search Tool (UI)](/docs/documentation/client/client_search)
-- [Search API](/docs/documentation/api/search)
-- [Search Engine Model](/docs/documentation/models/search/searchengine)
-- [Search Category Results Model](/docs/documentation/models/search/searchresult)
