@@ -67,6 +67,9 @@ In the Stage Function section, you can write or paste your [Question Code functi
 <img alt="automation tab" className="img_sizing_small item shadow--md" src={useBaseUrl('img/automation_question_exec_01a.png')} />
 <br/>
 
+:::tip
+See the [Embedded Code Editor](/docs/documentation/automation/code_editor) section for more information on how to use the editor.
+:::
 
 ### Parameters (Context Variables) {#parameters}
 _Parameters_ or _context variables_ enable communication with different endpoints.
@@ -208,7 +211,7 @@ The Question Code Automation can make network requests, i.e., API requests that 
 :::
 
 To make a network request, you must include in your code the following function: `networkRequest(url, { headers, method, body }, options)`.  
-If an authentification token is needed to make an API request, add `{token: true}` option to use the current user's token.
+If an authentication token is needed to make an API request, add `{token: true}` option to use the current user's token.
 
 _Code structure example:_
 

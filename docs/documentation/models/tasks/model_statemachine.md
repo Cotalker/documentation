@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-_State machines_, also know as [_workflows_](/docs/documentation/client/basic_concepts#workflows), are definitions of how [tasks](/docs/documentation/client/basic_concepts#tasks) behave. They define a workflow's initial [state](/docs/documentation/client/basic_concepts#state), the other states they can change to, what [triggers](/docs/documentation/automation/triggers_and_contexts) are executed, if [reminders](/docs/documentation/automation/sla) are sent, and more. A [state machine's (workflow's) settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit) are stored in the _COTSMStateMachine_ data model explained below.
+_State machines_, also know as [_workflows_](/docs/documentation/client/basic_concepts#workflows), are definitions of how [tasks](/docs/documentation/client/basic_concepts#tasks) behave. They define a workflow's initial [state](/docs/documentation/client/basic_concepts#state), the other states they can change to, what [triggers](/docs/documentation/automation/cotlang/triggers_and_contexts) are executed, if [reminders](/docs/documentation/automation/sla) are sent, and more. A [state machine's (workflow's) settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit) are stored in the _COTSMStateMachine_ data model explained below.
 
 ## JSON Sample {#json-sample}
 
@@ -67,7 +67,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 | **code** | The state machine's unique identification name. | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
 | **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
 | **createdAt** | Date the workflow was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
-| **dynamicPropertyTypes** | Indicates the collections (property types) set as [additional fields](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). Users will be able to select elements from the collections to give further details about the task. | object | This option can be used to filter tasks, establish permissions, set priorities, among others.
+| **dynamicPropertyTypes** | Indicates the collections (property types) set as _statuses_ in the [additional fields](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) section of workflow settings. Users will be able to select elements from the collections to give further details about the task. | object | This option can be used to filter tasks, establish permissions, set priorities, among others.
 | **dynamicPropertyTypes.isActive** | Lists the statuses associated with a _collection (property type)_. | string[ ] | Enum: [ "status1", "status2", "status3", "status4", "status5"]
 | **dynamicPropertyTypes.status1** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
 | **dynamicPropertyTypes.status2** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
@@ -100,8 +100,8 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 - [Create Workflow Tutorial](/docs/tutorials/basic/create_state_machines): Basic tutorial on how to create a workflow
 - ["State Machines" REST API documentation](/docs/documentation/api/tasks/statemachines): basic "State Machines" API requests
 - [API documentation in Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f): complete with data models (schemas)
-- [COTLang](/docs/documentation/automation/admin_cotlang): use COTLang for extracting data from models in routines
-- [Triggers and Contexts](/docs/documentation/automation/triggers_and_contexts): more information on using data models within routines
+- [COTLang](/docs/documentation/automation/cotlang/admin_cotlang): use COTLang for extracting data from models in routines
+- [Triggers and Contexts](/docs/documentation/automation/cotlang/triggers_and_contexts): more information on using data models within routines
 
 ## Help {#help}
 

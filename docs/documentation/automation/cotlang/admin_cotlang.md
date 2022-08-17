@@ -21,7 +21,7 @@ import Highlight from '@theme/Highlight';
 ## Overview {#cotlang-overview}
 
 COTLang is a scripting language created by Cotalker, primarily used in its _routines_.
-It is used to extract data from different [_contexts_](/docs/documentation/automation/triggers_and_contexts) in Cotalker.
+It is used to extract data from different [_contexts_](/docs/documentation/automation/cotlang/triggers_and_contexts) in Cotalker.
 
 </div>
 <br/>
@@ -44,7 +44,7 @@ _Below is a table with COTLang commands, their descriptions, and format:_
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>OUTPUT</b>:</div>
-<div className="col col--4"></div>
+<div className="col col--4">Used to obtain the previous stage's data</div>
 <div className="col col--5">
 
 `$OUTPUT#[stage-name]#[EXTRACTOR]`

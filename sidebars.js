@@ -195,7 +195,21 @@ module.exports = {
       items: [
         // 'documentation/automation/overview',
         'documentation/automation/automation_log',
-        'documentation/automation/admin_cotlang',
+        {
+          type: 'category',
+          label: 'COTLang Guide',
+          link: {
+            type: 'doc',
+            id: 'documentation/automation/cotlang/admin_cotlang'
+          },
+          items: [
+            'documentation/automation/cotlang/triggers_and_contexts',
+            'documentation/automation/cotlang/extract_survey_element'
+          ],
+          collapsed: true,
+          collapsible: true
+        },
+        ,
         'documentation/automation/code_editor',
         'documentation/automation/admin_routine',
         'documentation/automation/existing_routines',
@@ -210,7 +224,7 @@ module.exports = {
         },
         //'documentation/automation/scheduling',
         'documentation/automation/sla',
-        'documentation/automation/triggers_and_contexts',
+        
       ],
       collapsed: true,
     },
@@ -220,9 +234,6 @@ module.exports = {
       items: [
         'documentation/sql_bi/overview',
         'documentation/sql_bi/model',
-        // 'documentation/sql_bi/bi_examples',
-        // 'documentation/sql_bi/sql_examples',
-        // 'documentation/sql_bi/sql_connection',
       ],
       collapsed: true,
     },
@@ -235,35 +246,6 @@ module.exports = {
       ],
       collapsed: true,
     },
-    // {
-    //   type: 'category',
-    //   label: 'Extensions (FAAS)',
-    //   items:  [
-    //     'documentation/extensions/overview',
-    //     'documentation/extensions/getting_started',
-    //     'documentation/extensions/cli',
-    //     {
-    //       type: 'category',
-    //       label: 'Examples',
-    //       items:  [
-    //         'documentation/extensions/examples/send_survey',
-    //         'documentation/extensions/examples/static_site',
-    //         'documentation/extensions/examples/survey_api',
-    //         'documentation/extensions/examples/write_api'
-    //       ],
-    //       collapsed: true,
-    //     },
-    //   ],
-    //   collapsed: true,
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Infrastructure',
-    //   items:  [
-    //     'documentation/infrastructure/overview',
-    //   ],
-    //   collapsed: true,
-    // }
    ],
   tutorials: [
     'tutorials/tutorial_overview',

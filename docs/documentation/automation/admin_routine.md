@@ -64,25 +64,31 @@ After selecting <span className="badge badge--primary">+ Add Stage</span>, there
 
 The **Type** field has a dropdown menu with a list of all the available _stage types_. If you hover over the name, a brief explanation of the function will be displayed. 
 
+Once the **type** is selected, its specific settings fields will be displayed (an example is displayed below).
 
-:::tip
-Click here to learn more about [stage types](/docs/documentation/automation/existing_routines).
+:::info
+- Go to the [Routine Stage Types](/docs/documentation/automation/existing_routines) section for a complete list and description of **stage types**.
+- On the backend, **stage types** use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Script Language) for settings fields. Depending on your needs, you can input any text characters and even use _HTML_ and _COTLang_ on the various settings fields.
+:::
+
+:::caution Characters that must be escaped
+Since **stage type** fields have a COTLang underlying, certain characters must be escaped within all stage settings fields (except the source code in the _Custom Javascript Code_ stage type).
+- If the text input is wrapped in triple backticks ` ``` `, only ``` ` ``` need to be escaped using a backslash. For example: ``` \` ```.
+- Otherwise, `= | ( ) [ ] #` must be escaped. Example: ` \= `
 :::
 
 <div className="alert alert--secondary">
 
-Once the type is selected, its specific settings fields will be displayed.
+#### Stage Type Example {#stage-example}
 
-_For example, if you chose the **Send gif** stage type, you will see the following fields appear:_
+_For example, if you choose the **Send gif** stage type, the following fields appear:_
 
 <img alt="type fields" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_02.png')} />
 <br/>
 
 - **Options**: In this example, the **Send gif** stage type has three options or fields: _Search_, _Channel_, and _User_.
 - **Required Fields**: The _required_ fields are outlined by a red box (_Search_ and _Channel_).
-- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](admin_cotlang)). In italic letters, at the bottom of the box, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
-
-**Note:** _It's common to use [COTLang](admin_cotlang) (Cotalker Script Language) for getting automatized data for fields._
+- **General Field Description**: The field highlighted in red has its name at the top left (in this case: "CHANNEL"). Next to it, you can find the field's _specifications_ ("REQUIRED") and the _input type_ ([COTCHANNELID](/docs/documentation/automation/cotlang/admin_cotlang)). In italic letters, at the bottom of the box, is the explanation of the expected input ("ID OF THE CHANNEL TO WHICH THE GIF WILL BE SENT").
 
 </div>
 <br/>

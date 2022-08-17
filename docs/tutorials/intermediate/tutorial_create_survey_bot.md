@@ -89,7 +89,7 @@ _So far, your screen should look something like this:_
         - **Type**: `Network Request` 
         - **URL** : `$JOIN#/#($ENV#BASEURL)#api#properties#($VALUE#data|[find=>identifier=department]|process|0)`
         :::note 
-        The [Cotlang](/docs/documentation/automation/admin_cotlang) string in the URL field gets the department's URL address.
+        The [Cotlang](/docs/documentation/automation/cotlang/admin_cotlang) string in the URL field gets the department's URL address.
         :::
         - **Method**: *GET*
         - **Default authentication**: _activate option_

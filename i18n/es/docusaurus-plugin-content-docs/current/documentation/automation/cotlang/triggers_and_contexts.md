@@ -32,7 +32,7 @@ Contexts are stored in JSON format and follow the Cotalker data model schemas. T
 
 The [table](#contexts-table) below indicates the different _sources_ or _triggers_ and their corresponding _contexts_. 
 
-You can use [COTLang](/docs/documentation/automation/admin_cotlang) to extract data from the triggered event _contexts_ in order carry out further automations. For example, in a [_state survey trigger_](#sm-survey-trigger) (i.e., [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)) routine, you can get direct access to the task's data which can be used in other stages of the routine.
+You can use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) to extract data from the triggered event _contexts_ in order carry out further automations. For example, in a [_state survey trigger_](#sm-survey-trigger) (i.e., [State Start Form](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states)) routine, you can get direct access to the task's data which can be used in other stages of the routine.
 
 :::tip
 See the [Context Language Description](#context-language) section for a brief explanation of the values shown in the table below.

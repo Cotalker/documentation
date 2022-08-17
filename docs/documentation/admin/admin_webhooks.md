@@ -119,7 +119,7 @@ _Configuration:_
 <div className="col col--3"><b>Code</b></div>
 <div className="col col--5">
 
-This is the webhooks unique identification. Only lowercase letters, numbers, and underscores are allowed. After filling out the `Name` field, the system automatically generates a suggestion for the `Code`.
+This is the webhook's unique identification. Only lowercase letters, numbers, and underscores are allowed. After filling out the `Name` field, the system automatically generates a suggestion for the `Code`.
 
 </div>
 <div className="col col--4"><em>Once saved, the Code cannot be modified.</em></div>
@@ -154,6 +154,10 @@ Upon any change, i.e., creation, modification, or deletion of the indicated even
 When _task_ events are chosen, the **Workflow** field appears to indicate the workflows to be monitored.  
 When _survey_ events are chosen, the **Survey** and **Group** fields appear to indicate the groups and surveys to monitor.
 
+<br/>
+
+Go to [**COTEvent**](/docs/documentation/models/webhooks/event) for details about event trigger data models.
+
 </em></div>
 </div>
 <div className="row table-row-2">
@@ -169,6 +173,8 @@ When _survey_ events are chosen, the **Survey** and **Group** fields appear to i
 <div className="alert alert--secondary">
 
 ### B. Logs {#logs}
+Check the [COTWebhookLog](/docs/documentation/models/webhooks/webhooklog) for the log data model details.
+
 
 <img alt="logs" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_webhooks_06.png')} />
 <br/>
@@ -198,7 +204,7 @@ Returned status codes in the range of 300's, 400's, 500's are considered as FAIL
 <div className="col col--3"><b>Logs</b></div>
 <div className="col col--5">
 
-Opens a panel with event data that was sent and the response from the server. Event data is sent in JSON format and follow the [COTTask](/docs/documentation/models/tasks/model_tasks), [COTUser](/docs/documentation/models/users/model_users), and [COTSurveyExecution](/docs/documentation/models/webhooks/survey_execution) data model structures, respectively.
+Opens a panel with [event data](/docs/documentation/models/webhooks/event) that was sent and the response from the server. Event data is sent in JSON format and follow the [COTTask](/docs/documentation/models/tasks/model_tasks), [COTUser](/docs/documentation/models/users/model_users), and [COTSurveyExecution](/docs/documentation/models/webhooks/survey_execution) data model structures, respectively.
 
 </div>
 <div className="col col--4"><em>
@@ -243,3 +249,6 @@ This log contains a [COTTask](/docs/documentation/models/tasks/model_tasks) data
 ## Related Topics {#related-topics}
 - [Webhooks API Documentation](/docs/documentation/api/automations/webhooks): API tools for configuring webhooks and obtaining the data they send.
 - [COTWebhook](/docs/documentation/models/webhooks/webhook): Data model in which a webhook's configuration is stored.
+- [COTEvent](/docs/documentation/models/webhooks/event): Trigger event data models. COTEvent data can be viewed in [webhook logs](http://localhost:3000/docs/documentation/admin/admin_webhooks#logs) or as an object within [COTWebhookLog.event](http://localhost:3000/docs/documentation/models/webhooks/webhooklog).
+- [COTWebhookLog](/docs/documentation/models/webhooks/webhooklog): COTWebhookLog objects contain all of an event's webhook log data. 
+- [COTSurveyExecution](/docs/documentation/models/webhooks/survey_execution): COTSurveyExecution is found within COTEvent objects and contains submitted survey data in the form of COTMessage objects.

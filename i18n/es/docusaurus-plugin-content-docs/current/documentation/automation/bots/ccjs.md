@@ -25,13 +25,13 @@ Simply add your JavaScript code into the **source code** field in the stage-bot'
 
 By default, your function can access two variables:
 
-- `value` is an object that contains the [context](/docs/documentation/automation/triggers_and_contexts) data, this will depend on the [trigger](/docs/documentation/automation/triggers_and_contexts).
+- `value` is an object that contains the [context](/docs/documentation/automation/cotlang/triggers_and_contexts) data, this will depend on the [trigger](/docs/documentation/automation/cotlang/triggers_and_contexts).
 - `output` is an array of objects -e.g.,`{ key: 'step-name', result: Object }`- with all the previous executed steps.
 
 :::caution Attention:
 - The JavaScript code runs in a sandboxed _node.js_ environment without access to `require` `Buffer` or `process.env`.
 Therefore no network or IO activity will work. This means that this block is intended to transform data from the `value` and `output` variables, not to store o gather external information.
-- The code must always return a value. This value can later be used in the following stages as [COTLang](/docs/documentation/automation/admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
+- The code must always return a value. This value can later be used in the following stages as [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
 :::
 
 <div className="alert alert--secondary">

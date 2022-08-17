@@ -1,5 +1,3 @@
-# Custom Javascript Code 2.0.1
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
@@ -14,18 +12,19 @@ Simply add your JavaScript code into the **source code** field in the stage-bot'
 <img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_00.png')} />
 <br/>
 
-:::warning Alert
-Source code **must** be wrapped within ` ``` ` to work properly.
-:::
-
-:::caution Attention
-All functions have a 30-second timeout limit.
-:::
-
 :::info
 - Asynchronous code is supported, `await` can be used.
 - Use Axios 0.27.2 to make HTTP requests.
 - Use date-fns 2.28.0 for manipulating Javascript dates.
+:::
+
+:::note Legacy Versions
+- Code can still be wrapped in backticks (but it is not required): ` ``` `. Just remember to use the backslash before a backtick in case they are used within the code: ``` \` ```
+- Versions prior to 2.0.1 cannot handle asynchronous code.
+:::
+
+:::caution Attention
+All functions have a 30-second timeout limit.
 :::
 
 :::tip
@@ -38,19 +37,19 @@ By default, your function can access the followigng variables:
 
 variable | description | syntax
 --- | --- | ---
-**input** | An object that contains the [context](/docs/documentation/automation/triggers_and_contexts) data. The _context data_ depends on the [trigger](/docs/documentation/automation/triggers_and_contexts). | Context sturctures depend on the respective [Data Model](/docs/documentation/models/overview_model).
+**input** | An object that contains the [context](/docs/documentation/automation/cotlang/triggers_and_contexts) data. The _context data_ depends on the [trigger](/docs/documentation/automation/cotlang/triggers_and_contexts). | Context sturctures depend on the respective [Data Model](/docs/documentation/models/overview_model).
 **output** | An array of objects with all the returned results of previously executed steps in the routine. | `[{ key: 'step-name', result: Object }]`
 **data** | Provides access to data inserted within the _Optional Inputs_ field. | Follows JSON format. COTLang can be used within values.
 **env** | Used as URL for network requests within the Cotalker environment. | `env.EXTERNAL_API_URL`, `env.EXTERNAL_APP_URL`
 
 ### Return Statements {#return}
 - The code **must** always return an object. 
-- The returned object can later be used on the following routine stages and accessed using [COTLang](/docs/documentation/automation/admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
+- The returned object can later be used on the following routine stages and accessed using [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) script, e.g., `$OUTPUT#step-name#data`.
 
 ### Network Requets {#network-requests}
 - The JavaScript code runs in a sandboxed _node.js_ environment without access to `require`, `Buffer`, or `process.env`. Therefore, network or IO activity will not work directly. This code block is intended to transform data from the `input` and `output` variables, not to store or gather external information.
 - Nonetheless, access to the _Axios_ library is available. With the _Axios_ library, the stage-bot can make network requests. See below for a code sample.
-- An authentification token can be automatically included for Coltalker API requests. [See below for details](#auth).
+- An authentication token can be automatically included for Coltalker API requests. [See below for details](#auth).
 
 ### Optional Inputs {#optional}
 Use _optional inputs_ to include data not found in the _source code_, _context_, or available through a network request. [Input types](#types) are described below.
@@ -77,7 +76,7 @@ Repeat the steps to add another input type.
 _Optional Input types_ are described below:
 
 #### - Use Default Cotalker Auth {#auth}
-For safety reasons, it is best not to include authentification tokens in your _source code_. To let Cotalker automatically provide the bot's authentification token to make Cotalker API requests, turn on the option once the _Use Default Cotalker Auth_ input type has been selected.
+For safety reasons, it is best not to include authentication tokens in your _source code_. To let Cotalker automatically provide the bot's authentication token to make Cotalker API requests, turn on the option once the _Use Default Cotalker Auth_ input type has been selected.
 
 <img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_02.png')} />
 <br/>
@@ -94,9 +93,6 @@ Add a JSON object to include extra data the _source code_ can fetch. _COTLang_ e
 </div>
 
 ### Code Samples {#example}
-:::warning Remember
-Source code **must** be wrapped within ` ``` ` to work properly.
-:::
 
 #### - Payload Sample {#payload}
 ```javascript

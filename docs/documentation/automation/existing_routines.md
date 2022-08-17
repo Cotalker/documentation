@@ -15,11 +15,21 @@ import Highlight from '@theme/Highlight';
 
 
 ## Stage Types List {#stage-list}
-Stage Types are explained in the following table:
+Stage Types are explained in the following table.  
+Click links for more detailed information.
 
-:::tip
-- Click links for more detailed information.
-- When using _automation logs_, stage types will be referred to by the _key_ indicated in this table.
+:::info
+On the backend, **stage types** use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Script Language) for settings fields. Depending on your needs, you can input any text characters and even use _HTML_ and _COTLang_ on the various settings fields.
+:::
+
+:::caution Characters that must be escaped
+Since **stage type** fields have a COTLang underlying, certain characters must be escaped within all stage settings fields (except the source code in the _Custom Javascript Code_ stage type).
+- If the text input is wrapped in triple backticks ` ``` `, only ``` ` ``` need to be escaped using a backslash. For example: ``` \` ```.
+- Otherwise, `= | ( ) [ ] #` must be escaped. Example: ` \= `
+:::
+
+:::note
+When using _automation logs_, stage types will be referred to by the _key_ indicated in this table.
 :::
 
 | Stage Type Name (Bot) | Description | Key |

@@ -1,5 +1,7 @@
-| [Custom Javascript Code (2.0.0)](/docs/documentation/automation/bots/ccjs-2.0.1) | FaaS JS runner. | _CCJS_ |  
+| [Custom Javascript Code (2.0.1)](/docs/documentation/automation/bots/ccjs-2.0.1) | FAAS JS runner. | _CCJS_ |  
+| [Custom Javascript Code (2.0.0)](/docs/documentation/automation/bots/ccjs-2.0.0) | FAAS JS runner. | _CCJS_ |  
 | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. | _CCJS_ |  
+| [Iterate (2.0.0)](/docs/documentation/automation/bots/fceach-2.0.0) | Iterate over an Array | _FCEach_ |  
 | [Iterate](/docs/documentation/automation/bots/fceach) | Iterate over an Array | _FCEach_ |  
 | [Conditional](/docs/documentation/automation/bots/fcifelse) | Execute the next stage conditionally based on the operator's left and right hand | _FCIfElse_ |  
 | [Wait](/docs/documentation/automation/bots/fcsleep) | Execute the next stage after the defined milliseconds | _FCSleep_ |  
@@ -13,6 +15,7 @@
 | [Search for answers (2.0.0)](/docs/documentation/automation/bots/pbanswerchecker-2.0.0) | Search for form responses | _PBAnswerChecker_ |  
 | [Search for answers](/docs/documentation/automation/bots/pbanswerchecker) | Search for form responses | _PBAnswerChecker_ |  
 | [Calendar 2.0.0 (2.0.0)](/docs/documentation/automation/bots/pbcalendar-2.0.0) |  | _PBCalendar_ |  
+| [Change Task Status (2.1.0)](/docs/documentation/automation/bots/pbchangestate-2.1.0) | Change the status of a Task | _PBChangeState_ |  
 | [Change Task Status (2.0.0)](/docs/documentation/automation/bots/pbchangestate-2.0.0) | Change the status of a Task | _PBChangeState_ |  
 | [Change Task Status](/docs/documentation/automation/bots/pbchangestate) | Change the status of a Task | _PBChangeState_ |  
 | [Edit Channel Users (2.0.0)](/docs/documentation/automation/bots/pbchanneladduser-2.0.0) | Add or remove users from a Channel | _PBChannelAddUser_ |  
@@ -34,6 +37,7 @@
 | [Create User](/docs/documentation/automation/bots/pbcreateuser) | Create a new User | _PBCreateUser_ |  
 | [Duplicate Task (2.0.0)](/docs/documentation/automation/bots/pbduplicatetask-2.0.0) |  | _PBDuplicateTask_ |  
 | [Duplicate Task](/docs/documentation/automation/bots/pbduplicatetask) |  | _PBDuplicateTask_ |  
+| [Change Form to edit mode (2.0.1)](/docs/documentation/automation/bots/pbeditablesurvey-2.0.1) | Change a set of forms to edit mode | _PBEditableSurvey_ |  
 | [Change Form to edit mode (2.0.0)](/docs/documentation/automation/bots/pbeditablesurvey-2.0.0) | Change a set of forms to edit mode | _PBEditableSurvey_ |  
 | [Change Form to edit mode](/docs/documentation/automation/bots/pbeditablesurvey) | Change a set of forms to edit mode | _PBEditableSurvey_ |  
 | [Send email (2.0.0)](/docs/documentation/automation/bots/pbemail-2.0.0) | Send an email | _PBEmail_ |  
@@ -49,8 +53,10 @@
 | [Send message](/docs/documentation/automation/bots/pbmessage) | Send a message to a set of channels | _PBMessage_ |  
 | [Payments (2.0.0)](/docs/documentation/automation/bots/pbpayments-2.0.0) |  | _PBPayments_ |  
 | [Payments](/docs/documentation/automation/bots/pbpayments) |  | _PBPayments_ |  
+| [Create PDF (3.0.0)](/docs/documentation/automation/bots/pbpdf-3.0.0) | Create a PDF from a local file or a URL | _PBPdf_ |  
 | [Create PDF (2.0.0)](/docs/documentation/automation/bots/pbpdf-2.0.0) | Create a PDF from a local file or a URL | _PBPdf_ |  
 | [Create PDF](/docs/documentation/automation/bots/pbpdf) | Create a PDF from a local file or a URL | _PBPdf_ |  
+| [PDF Extractor](/docs/documentation/automation/bots/pbpdfextractor) | Convert data and tables from PDFs to JSON | _PBPDFExtractor_ |  
 | [Generate QR code (2.0.0)](/docs/documentation/automation/bots/pbqrcode-2.0.0) | Generate a QR code | _PBQRCode_ |  
 | [Generate QR code](/docs/documentation/automation/bots/pbqrcode) | Generate a QR code | _PBQRCode_ |  
 | [Script (2.0.0)](/docs/documentation/automation/bots/pbscript-2.0.0) |  | _PBScript_ |  
@@ -58,6 +64,10 @@
 | [Submit Form (3.0.0)](/docs/documentation/automation/bots/pbsendsurvey-3.0.0) | Send a Form to a Channel | _PBSendSurvey_ |  
 | [Submit Form (2.0.0)](/docs/documentation/automation/bots/pbsendsurvey-2.0.0) | Send a Form to a Channel | _PBSendSurvey_ |  
 | [Submit Form](/docs/documentation/automation/bots/pbsendsurvey) | Send a Form to a Channel | _PBSendSurvey_ |  
+| [XLSX/CSV to JSON (1.0.0)](/docs/documentation/automation/bots/pbsheet-1.0.0) | Convert Excel and CSV files to JSON (Object Arrays) | _PBSheet_ |  
+| [Edit users of a Task (2.2.1)](/docs/documentation/automation/bots/pbtaskaddeditor-2.2.1) | Add or remove users from a Task | _PBTaskAddEditor_ |  
+| [Edit users of a Task (2.2.0)](/docs/documentation/automation/bots/pbtaskaddeditor-2.2.0) | Add or remove users from a Task | _PBTaskAddEditor_ |  
+| [Edit users of a Task (2.1.0)](/docs/documentation/automation/bots/pbtaskaddeditor-2.1.0) | Add or remove users from a Task | _PBTaskAddEditor_ |  
 | [Edit users of a Task (2.0.0)](/docs/documentation/automation/bots/pbtaskaddeditor-2.0.0) | Add or remove users from a Task | _PBTaskAddEditor_ |  
 | [Edit users of a Task](/docs/documentation/automation/bots/pbtaskaddeditor) | Add or remove users from a Task | _PBTaskAddEditor_ |  
 | [Generate HTML (2.0.0)](/docs/documentation/automation/bots/pbtemplate-2.0.0) | Generates an HTML from a template and an object with data | _PBTemplate_ |  
@@ -67,6 +77,7 @@
 | [Update Property (2.0.1)](/docs/documentation/automation/bots/pbupdateproperty-2.0.1) | Update a Property | _PBUpdateProperty_ |  
 | [Update Property (2.0.0)](/docs/documentation/automation/bots/pbupdateproperty-2.0.0) | Update a Property | _PBUpdateProperty_ |  
 | [Update Property](/docs/documentation/automation/bots/pbupdateproperty) | Update a Property | _PBUpdateProperty_ |  
+| [Update Task (2.1.0)](/docs/documentation/automation/bots/pbupdatetask-2.1.0) | Update a Task | _PBUpdateTask_ |  
 | [Update Task (2.0.1)](/docs/documentation/automation/bots/pbupdatetask-2.0.1) | Update a Task | _PBUpdateTask_ |  
 | [Update Task (2.0.0)](/docs/documentation/automation/bots/pbupdatetask-2.0.0) | Update a Task | _PBUpdateTask_ |  
 | [Update Task](/docs/documentation/automation/bots/pbupdatetask) | Update a Task | _PBUpdateTask_ |  

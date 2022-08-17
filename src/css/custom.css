@@ -7,8 +7,10 @@
 
 /* You can override the default Infima variables here. */
 
-/* @import url('https://fonts.googleapis.com/css?family=Merriweather:900|Roboto&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Jost&family=Roboto&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Merriweather:900|Jost&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Jost&family=Jost&display=swap'); */
+@import url('https://indestructibletype.com/fonts/Jost.css');
+@import url('https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css');
 
 .aa-suggestion {
   border: 1px solid #c1c1c1;
@@ -70,8 +72,8 @@
 
 .not-heading h4 {
   margin-bottom: 0px;
-  font-family: "Roboto";
-  font-size: 14px;
+  /* font-family: "Jost"; */
+  font-size: 16px;
 }
 
 /* .alert--warning {
@@ -239,7 +241,10 @@ html[data-theme='dark'] {
 /* ---My tweeks end here: MAC-- */
 
 :root {
-  --ifm-font-size-base: 14px;
+  --ifm-heading-font-family: Jost;
+  --ifm-font-family-base: Jost;
+  --ifm-font-size-base: 16px;
+  --ifm-font-family-monospace: Fira Code, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   /*---- Navy ----*/
 
   /*---- Magenta ----*/
@@ -300,12 +305,24 @@ html[data-theme='dark'] {
 
 /*---- Fonts Family  ----*/
 h1, h2, h3, h4, h5{
-  font-family: 'Jost', sans-serif;
+  /* font-family: 'Jost', sans-serif; */
+  font-weight: 600;
 }
 
-p, td, th {
-  font-family: 'Roboto', sans-serif;
+.hero__subtitle {
+  font-family: Jost;
 }
+
+code { font-family: Fira Code, monospace; }
+
+@supports (font-variation-settings: normal) {
+  code { font-family: Fira Code VF, monospace; }
+}
+
+
+/* p, td, th, li {
+  font-family: 'Jost', sans-serif;
+} */
 /*---- Fonts Family  ----*/
 
 
@@ -328,6 +345,8 @@ p, td, th {
 /*---- Admonition ----*/
 
 /* Added by Maurice: testing responsiveness for tables and images */
+
+
 .framedPage {
   width: 100%;
   height: 500px;
@@ -341,7 +360,7 @@ p, td, th {
   border-right-width: 1px;
   border-color: var(--box-color);
   border-style: solid;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 
 .box h3 {
