@@ -53,8 +53,8 @@ Field | Description | Type | Notes
 **options.limit** | Limits the number of search results returned in a single page. | number | By default, `limit` is set to `2`.
 **options.page** | Displays the results of the indicated page. | number | Used best with the `limit` parameter.
 **options.count** | Adds a | boolean | NOT WORKING
-**options.orderBy** | | `asc` or `desc`, | NOT WORKING
-**options.sortBy** | | string | NOT SURE
+**options.orderBy** | Orders results in ascending or descending order. | `asc` or `desc`, | NOT WORKING
+**options.sortBy** | Sorts results by the indicated field. Sorting is carried out using the available parameter options in the respective API request, i.e., channels can be sorted according to the `sortBy` options in the [Channels API](/docs/documentation/api/communication/channels#get-all-channels). | string |
 **options.isActive** | | boolean or `all`, | NOT SURE
 **options.modified** | | Date | DATE FORMAT IS UNCERTAIN. TEST WITH ISODATE AND EPOCH TIME.
 **options.modifiedGt** | | Date | DATE FORMAT IS UNCERTAIN. TEST WITH ISODATE AND EPOCH TIME.

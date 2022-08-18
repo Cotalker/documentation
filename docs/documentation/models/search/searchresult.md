@@ -4,69 +4,76 @@ title: Search Category Results Model
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<span className="hero__subtitle">API Search Tool Results</span>
+<span className="hero__subtitle">API Search Category Results</span>
+
+## Description {#description}
+The _Search Category Results Model_ is used for returning results when using the Search API.
 
 
+## JSON Sample {#json}
+The `categories` field is an array of objects that contain returned search results by category.
 
 ```json
 {
     "categories": [
         {
-            "name": "tasks",
+            "name": "channels",
             "results": [
                 {
-                    "_id": "62dacec2a134e617d5d449f1",
-                    "name": "dolor",
-                    "image": null,
-                    "type": "hedgedoc",
+                    "_id": "62fe8218a1a3eb0008eb0432",
+                    "name": "chat",
+                    "image": "",
+                    "type": "channel",
                     "action": {
-                        "elasticId": "hedgedoc_62f6c6ae6cafbf99af90cefa",
-                        "task": "62dacec2a134e617d5d449f1",
-                        "taskGroup": "62bf5e03654e96999b00e474",
-                        "channel": "62dacebf9aca6500088ee40e",
-                        "fileId": "62f6c6ae6cafbf99af90cefa"
-                    },
-                    "weight": 6.2053347,
-                    "modifiedAt": "2022-08-12T21:41:40.888Z",
-                    "tags": [
-                        {
-                            "type": "main",
-                            "color": "#1133558f",
-                            "display": "# 5",
-                            "value": "62dacec2a134e617d5d449f1"
-                        },
-                        {
-                            "type": "group",
-                            "value": "62bf5e03654e962fdb00e468"
-                        }
-                    ],
-                    "highlights": [
-                        "dolor\n\n<em>Lorem</em> ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
-                    ]
-                }
-            ],
-            "facets": []
-        },
-        {
-            "name": "users",
-            "results": [
-                {
-                    "tags": [
-                        {
-                            "display": "Admin",
-                            "color": "rgba(51, 204, 68, 1)",
-                            "value": "Admin",
-                            "type": "main"
-                        }
-                    ],
-                    "_id": "62bf5ddc654e96f03700ad81",
-                    "name": "Admin ",
-                    "type": "user",
-                    "action": {
-                        "user": "62bf5ddc654e96f03700ad81"
+                        "channel": "62fe8218a1a3eb0008eb0432",
+                        "group": "62ebcc5c5c14300008d38063"
                     },
                     "weight": 1,
-                    "modifiedAt": "2022-07-01T20:50:18.772Z",
+                    "modifiedAt": "2022-08-18T18:16:56.473Z",
+                    "tags": [
+                        {
+                            "type": "group",
+                            "value": "62ebcc5c5c14300008d38063"
+                        }
+                    ],
+                    "highlights": []
+                },
+                {
+                    "_id": "62fe81b5a1a3eb0008eb03be",
+                    "name": "chat 0",
+                    "image": "",
+                    "type": "channel",
+                    "action": {
+                        "channel": "62fe81b5a1a3eb0008eb03be",
+                        "group": "62ebcc5c5c14300008d38063"
+                    },
+                    "weight": 0.6666666666666666,
+                    "modifiedAt": "2022-08-18T18:15:17.699Z",
+                    "tags": [
+                        {
+                            "type": "group",
+                            "value": "62ebcc5c5c14300008d38063"
+                        }
+                    ],
+                    "highlights": []
+                },
+                {
+                    "_id": "62fe819ba1a3eb0008eb0384",
+                    "name": "chat 1",
+                    "image": "",
+                    "type": "channel",
+                    "action": {
+                        "channel": "62fe819ba1a3eb0008eb0384",
+                        "group": "62ebcc5c5c14300008d38063"
+                    },
+                    "weight": 0.3333333333333333,
+                    "modifiedAt": "2022-08-18T18:14:51.829Z",
+                    "tags": [
+                        {
+                            "type": "group",
+                            "value": "62ebcc5c5c14300008d38063"
+                        }
+                    ],
                     "highlights": []
                 }
             ],
@@ -75,3 +82,20 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
     ]
 }
 ```
+
+## Fields {#fields}
+
+Field | Description | Type | Notes
+--- | --- | --- | ---
+**name** | Indicates the search type or category. | string |
+**results** | Array of results returned according to the category. | object[ ] | 
+**results[x]._id** | Id of the returned search result. | string |
+**results[x].name** | Corresponds to the display name of the returned result. | string | 
+**results[x].image** | Indicates an image associated with the result. | string | 
+**results[x].type** | Indicates the type or category of the search query. | string | 
+**results[x].action** | Object containing result context data, i.e., the ObjectIds related to the result. | object | The object's fields vary depending on the result type.
+**results[x].weight.** | Number that indicates the result's position in the list of returned results. | number |
+**results[x].modifiedAt** | Indicates the date and time the result was last modified. | ISODate | "YYYY-MM-DDTHH:mm:ss.SSSZ"
+**results[x].tags** | Array of result data. | object[ ] | Objects depend on the result type.
+**results[x].highlights** | Array displaying snippets of found keywords in their context. |
+**facets** | Array | [ ] | UNKNOWN
