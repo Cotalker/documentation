@@ -1,18 +1,14 @@
 ---
-title: Service Quotations
+title: Cotización de Servicios
 displayed_sidebar: products
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Product Overview</span>
+<span className="hero__title">Resumen del Producto</span>
 <br/>
 
-<img alt="title" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_sq_title.png')} />
+<img alt="title" className="img_sizing item shadow--tl" src={useBaseUrl('img/productos_es/product_sq_title.png')} />
 <br/>
 
 ## What is Cotalker Service Quotations? {#what-is}
