@@ -1,45 +1,41 @@
 ---
-title: Service Orders
+title: Órdenes de Servicio
 displayed_sidebar: products
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Product Overview</span>
+<span className="hero__title">Resumen del Producto</span>
 <br/>
 
-<img alt="service orders" className="img_sizing item shadow--tl" src={useBaseUrl('img/products/product_service_orders_main.png')} />
+<img alt="service orders" className="img_sizing item shadow--tl" src={useBaseUrl('img/productos_es/product_service_orders_main.png')} />
 <br/>
 
-## What can the Service Orders product do for you? {#what}
-The **Service Orders** product helps service providers create a simple and traceable process by which they can manage their service orders and communicate with field workers in real time.
+## ¿Qué puede hacer Órdenes de Servicio para ti? {#what}
+**Órdenes de servicio** ayuda a proveedores de servicios crear un proceso simple y rastreable mediante el cual pueden administrar sus órdenes de servicio y comunicarse con los trabajadores de campo en tiempo real.
 
-The workflow process is initiated when authorized users create and submit service orders for approval. Once approved by a supervisor, field workers are added to the process, allowing them to update the service order while on the field until the job is finally completed.
+El flujo de trabajo se inicia cuando usuarios autorizados envían una orden de servicio para ser aprobada. Una vez aprobada por un supervisor, los trabajadores de campo se agregan al flujo de trabajo, lo que les permite actualizar la orden de servicio mientras están en el campo hasta que finalmente se completa el trabajo.
 
-The workflow process also automatically generates the original service order and its modified versions as PDF documents that can be accessed through the channel workspace.
+El flujo de trabajo también genera automáticamente la orden de servicio como un documento PDF que se pueden acceder a través del canal.
 
-## How does it work? {#how}
-The workflow process brings stakeholders together on the same channel workspace where they can share and update service orders until the required service is completed. To make the process pass from one step to another, authorized users fill out the corresponding survey forms.
+## ¿Cómo funciona? {#how}
+El flujo de trabajo reúne a los usuarios involucrados en el mismo canal donde pueden compartir y actualizar los pedidos de servicio hasta que se complete el servicio requerido. Para que el proceso pase de un paso a otro, los usuarios autorizados llenan los formularios correspondientes.
 
-<img alt="service orders" className="img_sizing" src={useBaseUrl('img/products/product_service_orders_main_01.png')} />
+<img alt="service orders" className="img_sizing" src={useBaseUrl('img/productos_es/product_service_orders_main_01.png')} />
 <br/>
 
- Below, we detail the steps:
-1. An authorized user submits a service order.  
-2. The service order is reviewed by a supervisor.  
-    1. If the service order is not approved, the workflow is closed.  
-    2. If the service order is approved, the workflow passes on to the next stage. Plus, a PDF document of the service order is automatically generated. 
-3. Field workers are added at this point to the workflow process. Once on the ground, field workers must indicate their course of action with regard to the service order:
-    1. If everything specified in the service order is carried out as stipulated, field workers or a coordinator can choose to close the service order.  
-    2. But, if confronted with unexpected issues, field workers can _create a confirmation_, i.e., modify the service order to adjust it to the actual job. For example, suppose more materials or workers were needed to complete the job or an unforeseen service had to be provided. In that case, the service order can be modified with the _Create a confirmation_ form. _Confirmations_ can take place as many times as needed until the job is complete and the service order closed.  
-    3. An option also exists to close the service order in case the job is not carried out.  
+A continuación, detallamos los pasos:
+1. Un usuario autorizado envía una _orden de servicio_.
+2. La _orden de servicio_ es revisada por un supervisor.
+    1. Si no se aprueba la _orden de servicio_, se cierra el flujo de trabajo.
+    2. Si se aprueba la _orden de servicio_, el flujo de trabajo pasa a la siguiente etapa. Además, se genera automáticamente un documento PDF de la _orden de servicio_.
+3. Los trabajadores de campo se agregan en este punto al proceso. Una vez en terreno, los trabajadores deben indicar su curso de acción con respecto a la _orden de servicio_:
+    1. Si todo lo especificado en la_ orden de servicio_ se lleva a cabo según lo estipulado, los trabajadores de campo o un coordinador pueden optar por cerrar la _orden de servicio_.
+    2. Pero, si se enfrentan a problemas inesperados, los trabajadores de campo pueden _crear una confirmación_, es decir, modificar la _orden de servicio_ para ajustarla al trabajo real. Por ejemplo, suponga que se necesitaron más materiales o trabajadores para completar el trabajo o se tuvo que proporcionar un servicio imprevisto. En ese caso, la _orden de servicio_ se puede modificar con el formulario _Crear una confirmación_. Las _confirmaciones_ pueden realizarse tantas veces como sea necesario hasta que se complete el trabajo y se cierre la _orden de servicio_.
+    3. También existe una opción para cerrar la _orden de servicio_ en caso de que el trabajo no se lleve a cabo.
 
-## Workflow Details {#workflow}
-_For in-depth product details and examples, view the information below:_
+## Detalles del Flujo {#workflow}
+_Para obtener detalles y ejemplos sobre el producto, consulte la siguiente información:_
 
 <div className="container">
 <div className="row">
@@ -47,9 +43,9 @@ _For in-depth product details and examples, view the information below:_
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_orders/workflow_overview">
 
-<span className="hero__subtitle"><b>🪛 Service Order Workflow</b></span> 
+<span className="hero__subtitle"><b>🪛 Flujo de Órdenes de Servicio</b></span> 
 
-As the sole component of the _Service Orders Product_, the **Service Orders Workflow** carries out the internal service order process for the service provider. Learn more about the workflow, the survey forms that guide you through the process, and the master data behind it all.
+Como único componente del _Producto de Órdenes de Servicio_, el **Flujo de Órdenes de Servicio** lleva a cabo el proceso interno de órdenes de servicio para el proveedor de servicios. Obtenga más información sobre el flujo de trabajo, los formularios de encuesta que lo guían a través del proceso y los datos maestros detrás de todo.
 
 </a>
 </div>
