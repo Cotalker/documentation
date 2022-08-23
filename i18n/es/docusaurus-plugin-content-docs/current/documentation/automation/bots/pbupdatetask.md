@@ -11,8 +11,8 @@ Data Type: CotTaskId
 Id of the Group to which the Task belongs  
 Required: true  
 Data Type: CotTaskGroupId   
-### 3. State machine (key: smState)  
-Id of the State Machine to which the Task belongs  
+### 3. State (key: smState)  
+State id of the task  
 Required: no  
 Data Type: CotStateMachineStateId   
 ### 4. Dynamic Field 1 (key: status1)  
