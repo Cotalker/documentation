@@ -11,7 +11,7 @@ Data Type: CotChannelId
   
 Required: true  
 Data Type: string   
-### 3. Answer (key: answer)  
+### 3. Survey Id (key: surveyId)  
   
 Required: true  
 Data Type: CotSurveyId   

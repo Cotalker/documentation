@@ -1,13 +1,4 @@
----
-displayed_sidebar: documentation
----
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
-# Custom Javascript Code 2.0.1
-
+# Custom Javascript Code  
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
@@ -22,18 +13,19 @@ Simply add your JavaScript code into the **source code** field in the stage-bot'
 <img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_00.png')} />
 <br/>
 
-:::warning Alert
-Source code **must** be wrapped within ` ``` ` to work properly.
-:::
-
-:::caution Attention
-All functions have a 30-second timeout limit.
-:::
-
 :::info
 - Asynchronous code is supported, `await` can be used.
 - Use Axios 0.27.2 to make HTTP requests.
 - Use date-fns 2.28.0 for manipulating Javascript dates.
+:::
+
+:::note Legacy Versions
+- Code can still be wrapped in backticks (but it is not required): ` ``` `. Just remember to use the backslash before a backtick in case they are used within the code: ``` \` ```
+- Versions prior to 2.0.1 cannot handle asynchronous code.
+:::
+
+:::caution Attention
+All functions have a 30-second timeout limit.
 :::
 
 :::tip
@@ -102,9 +94,6 @@ Add a JSON object to include extra data the _source code_ can fetch. _COTLang_ e
 </div>
 
 ### Code Samples {#example}
-:::warning Remember
-Source code **must** be wrapped within ` ``` ` to work properly.
-:::
 
 #### - Payload Sample {#payload}
 ```javascript
@@ -187,30 +176,33 @@ return {
 ```
 
 
------------
-  
-**FaaS JS runner.**  
+-----------  
+**FAAS JS runner.**  
 key: CCJS  
 ## Inputs  
-### 1. Source Code (key: src)  
+### 1. Use Default Cotalker Auth (key: useDefaultCotalkerAuth)  
+This will add a contextual authentication token to the requests made to Cotalker API in Source Code  
+Required: no  
+Data Type: boolean   
+### 2. Data (key: data)  
+Data to use in Source Code  
+Required: no  
+Data Type: object   
+### 3. Source Code (key: src)  
 Must return an Object. e.g., return { hello: 'world' };. Variables 'input', 'output', 'data' and 'env' can be read.  
 Required: true  
-Data Type: string   
+Data Type: code   
 ## Next Stages  
 ### 1. SUCCESS  
   
 ### 2. ERROR  
   
 ## Outputs  
-### 1. statusCode  
-Status code number: 0 if successful  
-Required: no  
-Data Type: number   
-### 2. error  
+### 1. error  
 Error message.  
 Required: no  
 Data Type: string   
-### 3. data  
+### 2. data  
 Returned value.  
 Required: no  
 Data Type: any 

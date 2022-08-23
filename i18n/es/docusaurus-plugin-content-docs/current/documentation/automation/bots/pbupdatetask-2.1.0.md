@@ -91,6 +91,14 @@ Data Type: CotTaskId
 String with additional information of the task  
 Required: no  
 Data Type: string   
+### 23. Extensions (key: extensions)  
+  
+Required: no  
+Data Type: dictionary any  
+### 24. Quiet (key: quiet)  
+  
+Required: no  
+Data Type: boolean   
 ## Next Stages  
 ### 1. SUCCESS  
   

@@ -1,3 +1,4 @@
+# Custom Javascript Code  
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
@@ -175,4 +176,25 @@ return {
 ```
 
 
------------
+-----------  
+**FAAS JS runner.**  
+key: CCJS  
+## Inputs  
+### 1. Source Code (key: src)  
+Must return an Object. e.g., return { hello: 'world' };. Variables 'value' and 'output' can be read.  
+Required: true  
+Data Type: code   
+## Next Stages  
+### 1. SUCCESS  
+  
+### 2. ERROR  
+  
+## Outputs  
+### 1. error  
+Error message.  
+Required: no  
+Data Type: string   
+### 2. data  
+Returned value.  
+Required: no  
+Data Type: any 

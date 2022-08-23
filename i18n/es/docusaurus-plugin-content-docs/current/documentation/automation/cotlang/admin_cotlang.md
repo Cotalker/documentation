@@ -48,7 +48,7 @@ _Below is a table with COTLang commands, their descriptions, and format:_
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>OUTPUT</b>:</div>
-<div className="col col--4"></div>
+<div className="col col--4">Used to obtain the previous stage's data</div>
 <div className="col col--5">
 
 `$OUTPUT#[stage-name]#[EXTRACTOR]`

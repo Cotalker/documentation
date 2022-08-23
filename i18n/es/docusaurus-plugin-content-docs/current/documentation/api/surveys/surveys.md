@@ -207,7 +207,7 @@ _Updates or edits an existing survey._
 <span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /surveys/&#123;id&#125;</span>
 
 #### Endpoint URL {#patch-update-url}
-`https://www.cotalker.com/api/v1/surveys/{id}`
+`https://www.cotalker.com/api/v2/surveys/{id}`
 
 #### Path Parameters {#patch-update-path}
 Parameter | Description | Type | Required | Notes

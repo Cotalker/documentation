@@ -138,11 +138,11 @@ Required: no
 Data Type: string   
 ### 3. Channel Id (key: channelId)  
   
-Required: true  
+Required: no  
 Data Type: CotChannelId   
 ### 4. Task Id (key: taskId)  
   
-Required: true  
+Required: no  
 Data Type: CotTaskId   
 ### 5. Task Group Id (key: taskGroupId)  
   
@@ -161,6 +161,10 @@ Data Type: CotUserId
 Required: no  
 Data Type: boolean   
 ### 9. Prefilled (key: prefilled)  
+  
+Required: no  
+Data Type: dictionary any  
+### 10. Meta (key: meta)  
   
 Required: no  
 Data Type: dictionary any  
