@@ -1,7 +1,7 @@
 ---
 title: Read-Only Users
 description: Give more users the ability to log into your company's Cotalker platform by creating user profiles with read-only access. These users will be able to view data, tasks, and view chat channels but without the ability to participate, edit, or modify anything.
-image: img/updates/update_categories.png
+image: img/updates/update_user_readonly.png
 draft: false
 ---
 
