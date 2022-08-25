@@ -17,6 +17,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Cotalker _products_ are ready-to-use solutions that address specific organizational needs commonly found in businesses and industries. They are built upon our low-code workflow management platform. The platform provides all the power to automate and make your processes more efficient, meaning that _products_ can be further customized to meet your company's requirements. 
 
+:::info Contact us
+_Please consult with a [Cotalker sales representative](/docs/support/commercial) to:_
+- learn more about these and other products;
+- discover our different plans and customization options.
+:::
+
 ## Products {#products}
 
 _Products_ described in this documentation are mentioned below. Click on _products_ for in-depth information.
@@ -74,16 +80,20 @@ Service providers can manage their service orders from start to finish.
 </a>
 </div>
 
+<div className="col col--12 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_quotations/sq_overview">
+
+<span className="hero__subtitle"><b>🖋 Service Quotations:</b></span>
+
+Clients and other external users can request service quotes through public forms. Communication with service providers and document generation are completely automated.
+
+</a>
+</div>
+
 </div>
 </div>
 <br/>
 
-
-:::info Contact us
-_Please consult with a [Cotalker sales representative](/docs/support/commercial) to:_
-- learn more about these and other products;
-- discover our different plans and customization options.
-:::
 
 ## Setup {#product-related-workflows}
 Product setup for your organization is easily done through either the platform's user interface or API tools. Further customizations are available depending on purchased plans.
@@ -103,7 +113,6 @@ Learn about: _Users and Access Roles_, _Master Data_, _Customizations_, _Integra
 
 </div>
 </div>
-
 
 ## Examples {#examples}
 ### Service Station Maintenance {#service-station}

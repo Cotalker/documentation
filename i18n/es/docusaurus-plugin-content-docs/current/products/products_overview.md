@@ -75,7 +75,7 @@ Los proveedores de servicios pueden gestionar sus órdenes de servicio de princi
 </div>
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_orders/so_overview">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/service_quotations/sq_overview">
 
 <span className="hero__subtitle"><b>🖋 Cotización de servicios:</b></span>
 
