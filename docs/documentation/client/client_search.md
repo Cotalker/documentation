@@ -24,7 +24,7 @@ There are two types of searches:
 </div>
 
 :::note
-Admins can [configure search result filters](/docs/documentation/models/company/company_searchengine) to display information according to company needs.
+Admins can [filter search results](/docs/documentation/models/company/company_searchengine) to display information according to company needs.
 :::
 
 ## Global Search {#global-search}

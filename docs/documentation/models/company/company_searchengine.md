@@ -47,7 +47,7 @@ _In the `companies` sample below, you can find the `searchEngines` object array 
 ## Fields {#fields}
 Field | Description | Type | Notes
 ---|---|---|---
-**name** | Indicates the search category or type that is being configured.<br/>_Options are:_ <br/>`users` \| `tasks` \| `public-tasks` \| `channels` \| `properties` \| `tasksElastic` | string | `public-tasks` is still in beta.
+**name** | Indicates the search category or type that is being configured.<br/>_Options are:_ <br/>`users` \| `public-tasks` \| `channels` \| `properties` \| `tasksElastic` | string | `public-tasks` is still in beta.
 **options** | Indicates the parameters used to filter searches in the given category or type. | object | Parameters are relative to the category, e.g., the parameters for searching for _properties_ recur to the query parameters available in the [Properties API](/docs/documentation/api/databases/properties#get-all).
 **options.limit** | Limits the number of search results returned in a single page. | number | By default, `limit` is set to `2`.
 **options.page** | Displays the results of the indicated page. Used best with the `limit` parameter. | number | UNNECESSARY?
