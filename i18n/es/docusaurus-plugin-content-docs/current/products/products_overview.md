@@ -17,6 +17,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Los _productos_ de Cotalker son soluciones listas para usar que abordan necesidades organizativas específicas que se encuentran comúnmente en empresas e industrias. Se basan en nuestra plataforma de gestión de flujo de trabajo de bajo código. La plataforma brinda todo el poder para automatizar y hacer que sus procesos sean más eficientes, lo que significa que los _productos_ se pueden personalizar aún más para cumplir con los requisitos de su empresa.
 
+:::info Contáctanos
+_Consulte con un [representante de ventas de Cotalker](/docs/support/commercial) para:_
+- obtener más información sobre estos y otros productos;
+- descubre nuestros diferentes planes y opciones de personalización.
+:::
+
 ## Productos {#products}
 
 Los _Productos_ descritos en esta documentación se mencionan a continuación. Haga clic en _productos_ para obtener información detallada.
@@ -87,13 +93,6 @@ Clientes y otros usuarios externos pueden solicitar una cotización de servicios
 </div>
 </div>
 <br/>
-
-
-:::info Contáctanos
-_Consulte con un [representante de ventas de Cotalker](/docs/support/commercial) para:_
-- obtener más información sobre estos y otros productos;
-- descubre nuestros diferentes planes y opciones de personalización.
-:::
 
 ## Configurar {#product-related-workflows}
 La configuración del producto para su organización se realiza fácilmente a través de la interfaz de usuario de la plataforma o de las herramientas API. Hay más personalizaciones disponibles según los planes comprados.
