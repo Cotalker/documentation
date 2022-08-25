@@ -121,7 +121,11 @@ Options are determined by the [global filters](/docs/documentation/client/taskvi
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><b>Read Permissions:</b></div>
-<div className="col col--5">Permissions that allow users to view task settings in the [_details_](/docs/documentation/client/taskview#task-details) tab.</div>
+<div className="col col--5">
+
+Permissions that allow users to view task settings in the [details](/docs/documentation/client/taskview#task-details) tab.
+
+</div>
 <div className="col col--4"><em>
 
 [List of available Read Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
@@ -130,7 +134,11 @@ Options are determined by the [global filters](/docs/documentation/client/taskvi
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Write Permissions:</b></div>
-<div className="col col--5">Permissions that allow users to edit task settings in the [_details_](/docs/documentation/client/taskview#task-details) tab.</div>
+<div className="col col--5">
+
+Permissions that allow users to edit task settings in the [details](/docs/documentation/client/taskview#task-details) tab.
+
+</div>
 <div className="col col--4"><em>
 
 [List of available Write Permissions](/docs/documentation/admin/admin_accessrole#default-permissions)
