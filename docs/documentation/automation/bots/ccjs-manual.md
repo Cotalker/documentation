@@ -5,17 +5,26 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-With the _Custom JavaScript Code_ stage-bot, you can add extra customization to your [routines](/docs/documentation/automation/admin_routine). This powerful tool runs safely in a sandboxed _node.js_ environment with the ability to extract, process, and return data for use in the rest of your routine. The stage-bot can also access the Axios library, allowing it to make network requests.
+With the _Custom JavaScript Code_ stage-bot, you can add extra customization to your [routines](/docs/documentation/automation/admin_routine). This powerful tool runs safely in a sandboxed _node.js_ environment with the ability to extract, process, and return data for use in the rest of your routine. 
 
 Simply add your JavaScript code into the **source code** field in the stage-bot's settings panel:
 
-<img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_00.png')} />
+<img alt="ccjs settings panel" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_00.png')} />
 <br/>
 
-:::info
+:::info Accepted Libraries
+
+_The stage-bot can access the following libraries:_
+- [**axios**](https://axios-http.com/): Use Axios 0.27.2 and above to make HTTP requests.
+- [**date-fns**](https://date-fns.org/): Use date-fns 2.28.0 and above for manipulating Javascript dates.
+- [**form-data**](https://www.npmjs.com/package/form-data): A library to create readable "multipart/form-data" streams. Can be used to submit forms and file uploads to other web applications.
+- [**qs**](https://www.npmjs.com/package/qs): A query string parsing and stringifying library with some added security.
+- [**querystring**](https://nodejs.org/api/querystring.html): Provides utilities for parsing and formatting URL query strings.
+
+:::
+
+:::note Asynchronicity
 - Asynchronous code is supported, `await` can be used.
-- Use Axios 0.27.2 to make HTTP requests.
-- Use date-fns 2.28.0 for manipulating Javascript dates.
 :::
 
 :::note Legacy Versions
@@ -56,7 +65,7 @@ Use _optional inputs_ to include data not found in the _source code_, _context_,
 
 _To add optional inputs:_
 
-<img alt="ccjs settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_01.png')} />
+<img alt="ccjs settings panel" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/automations_routines_stage_ccjs_01.png')} />
 <br/>
 
 <div className="margin margin-left--lg">
