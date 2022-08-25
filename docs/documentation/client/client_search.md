@@ -8,8 +8,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
 
-<div className="alert alert--secondary">
-
 Search queries are carried out through different fields of the Cotalker environment, making it easier and more efficient to find and display results. Search fields include: _user_, _channel_, _action_, _properties_, _task names_, _additional task information_, and _shared documents_.
 
 
@@ -25,8 +23,9 @@ There are two types of searches:
 
 </div>
 
-</div>
-<br/>
+:::note
+Admins can [configure search result filters](/docs/documentation/models/company/company_searchengine) to display information according to company needs.
+:::
 
 ## Global Search {#global-search}
 When accessed through the **Tool Bar**, search queries are global, i.e., made throughout the entire environment.
