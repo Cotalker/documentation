@@ -203,6 +203,8 @@ _By pressing the actions buttons found at in the group panel, a workflow start f
 ## Updating a Task {#modifying-tasks}
 Depending on users' permissions and [role](#user-roles) within the task, they will be able to view or update certain task aspects. 
 
+Once a task has been updated or modified a system message is sent to the task's chat channel notifying the change.
+
 _Updating tasks can be carried out through various means detailed below._
 :::note
 If programmed by the administrator, a [_State Start Form_](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-modifying-task-states) window might also appear when trying to modify the task.
