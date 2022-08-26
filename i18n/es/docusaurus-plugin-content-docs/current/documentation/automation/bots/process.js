@@ -17,7 +17,7 @@ const args = process.argv.slice(2);
 if (args.length !== 2) {
   console.log(`usage: node process.js ENV AUTH  
 ENV: prod | local  
-AUTH: "Authorization: Bearer abcde..."  
+AUTH: "Bearer abcde..."  
 `);
   process.exit(1);
 }

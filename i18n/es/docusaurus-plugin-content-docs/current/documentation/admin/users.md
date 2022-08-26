@@ -90,7 +90,7 @@ _Configuration:_
 - [**F. Related users**](#related-users): Indicates users that are direct superiors and subordinates.
 - [**G. Channels**](#channels): Displays a list of the channels the user has access to.
 - [**H. Surveys answered**](#surveys-answered): Displays a list of the surveys the user has submitted.
-- [**I. Additional fields...**](#additional-fields-tab): Additional fields vary in name, type, and order of appearance according to the user's settings and the associated collection.
+- [**I. Additional fields**](#additional-fields-tab): _Additional fields_ vary in name, type, and order of appearance according to the user's settings and the associated collection.
 
 </div>
 <br/>
@@ -133,7 +133,15 @@ _Configuration:_
 
 </em></div>
 </div>
+<div className="row table-row-2">
+<div className="col col--3"><strong>Is a read only user</strong>:</div>
+<div className="col col--5">Gives the user read-only access.</div>
+<div className="col col--4"><em></em></div>
 </div>
+
+</div>
+
+
 </div>
 <br/>
 

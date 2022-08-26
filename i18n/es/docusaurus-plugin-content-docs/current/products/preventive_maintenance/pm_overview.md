@@ -17,10 +17,10 @@ Es mejor prevenir que lamentar. Con el producto de **Mantenimiento Preventivo** 
 
 
 ## ¿Cómo funciona? {#how}
-**Mantenimiento Preventivo** tiene dos tipos de _planes preventivos_ para mantenerse al día en todas sus tareas de mantenimiento. Los planes se pueden configurar para realizar mantenimiento guiado por métricas de tiempo o valores predeterminados. Cuando se cumplen las métricas de mantenimiento, se activa el flujo de _órdenes de trabajo_.
+**Mantenimiento Preventivo** tiene dos tipos de _planes preventivos_ para que se mantenga al día en todas sus tareas de mantenimiento. Los planes se pueden configurar para realizar mantenimiento guiado por métricas de tiempo o valores predeterminados. Cuando se cumplen las métricas de mantenimiento, se activa el flujo de _órdenes de trabajo_.
 
 ### Plan de Tiempo {#time}
-Por ejemplo, si una máquina diariamente necesita mantenimiento se puede configurar el plan para activarse cada 24 horas. Cada 24 horas se iniciará el [flujo de órdenes de trabajo](/docs/products/workflows/work_orders/related-product/pm/overview_intro). Se enviará automáticamente una orden de trabajo al contratista o al personal de mantenimiento. Si eligen aceptar la orden de trabajo, pueden enviar una cotización, enviar mensajes a las partes interesadas y solicitar cerrar la orden de trabajo. Para cerrar el flujo de trabajo, el supervisor debe evaluar el trabajo de mantenimiento completado e enviar el formulario de _Aceptación de trabajo_.
+Por ejemplo, si una máquina requiere mantenimiento cada día, se puede configurar el plan para activarse diariamente. Cada 24 horas se iniciará el [flujo de órdenes de trabajo](/docs/products/workflows/work_orders/related-product/pm/overview_intro). Se enviará automáticamente una orden de trabajo al contratista o al personal de mantenimiento. Si eligen aceptar la orden de trabajo, pueden enviar una cotización, enviar mensajes a las partes interesadas y solicitar cerrar la orden de trabajo. Para cerrar el flujo de trabajo, el supervisor debe evaluar el trabajo de mantenimiento completado e enviar el formulario de _Aceptación de trabajo_.
 
 ### Plan de Valor {#value}
 Digamos que se quiere un plan para un vehículo que necesita mantenimiento cada 10.000 kilómetros. En este caso, se puede utilizar el plan de valor. Una vez que se crea el plan, el personal de mantenimiento utilizará periódicamente la aplicación para registrar métricas de valor, como el kilometraje o los niveles de un vehículo. Cuando el kilometraje registrado del automóvil alcance los 20.000 km, se activará el plan y preparará todo para la segunda revisión de mantenimiento del automóvil. En este punto, se iniciará el [flujo órdenes de trabajo](/docs/products/workflows/work_orders/related-product/pm/overview_intro) y se enviará una orden de trabajo a la persona a cargo del mantenimiento del automóvil.
@@ -57,7 +57,7 @@ Una vez que se alcanza el tiempo o valor indicado en el plan, se envía automát
 <div className="col col--12 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/related-product/pm/overview">
 
-<span className="hero__subtitle"><b>💲 Flujo de Presupuestos</b></span> 
+<span className="hero__subtitle"><b>💲 Flujo de Cotizaciones</b></span> 
 
 A través del formulario de cotización, contratistas pueden enviar cotizaciones automáticamente a los responsables en aprobar presupuestos. Los responsables, al revisar la cotización, la pueden aprobar o rechazar.
 

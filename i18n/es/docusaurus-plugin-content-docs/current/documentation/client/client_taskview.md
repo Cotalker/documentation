@@ -14,7 +14,11 @@ import Highlight from '@theme/Highlight';
 
 ## Overview {#overview}
 
-Essentially, a Cotalker [**task**](/docs/documentation/client/basic_concepts#tasks) is _something_ that _someone_ has to do but is not limited to that. Every **task** represents an asset and has at least a _name_, _description_, _state_, and _assignee_. _Tasks_ also count with a corresponding [channel workspace](/docs/documentation/client/channels). Furthermore, _tasks_ can be assigned to _users_, monitored (either by other users or automatically), and updated (manually or automatically). _Start_ and _end dates_ along with _SLAs_ can be configured to give programmed responses or notifications according to established deadlines. This amplitude of functions gives _tasks_ the versatility to adapt to each organization's needs.
+In general, a Cotalker [**task**](/docs/documentation/client/basic_concepts#tasks) is _something_ that _someone_ has to do but can be much more than that. Every **task** represents an asset and has at least a _name_, _description_, _state_, and _assignee_.
+
+Cotalker _tasks_ exist within a [workflow](/docs/documentation/admin/workflows/admin_workflow_overview) and represent the state of a real-life task.
+
+_Tasks_ count with a corresponding [channel workspace](/docs/documentation/client/channels). Furthermore, _tasks_ can be assigned to _users_, monitored (either by other users or automatically), and updated (manually or automatically). _Start_ and _end dates_ along with _SLAs_ can be configured to give programmed responses or notifications according to established deadlines. This amplitude of functions gives _tasks_ the versatility to adapt to each organization's needs.
 
 Tasks can be created and updated either manually or automatically:
 - manually: 
@@ -198,6 +202,8 @@ _By pressing the actions buttons found at in the group panel, a workflow start f
 
 ## Updating a Task {#modifying-tasks}
 Depending on users' permissions and [role](#user-roles) within the task, they will be able to view or update certain task aspects. 
+
+Once a task has been updated or modified a system message is sent to the task's chat channel notifying the change.
 
 _Updating tasks can be carried out through various means detailed below._
 :::note
