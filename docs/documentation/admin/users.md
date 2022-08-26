@@ -131,8 +131,8 @@ _Configuration:_
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><strong>Is a read only user</strong>:</div>
-<div className="col col--5">Gives the user read-only access.</div>
-<div className="col col--4"><em></em></div>
+<div className="col col--5">Creates a user limited with read-only access. These users will be able to view information and channels according to their permissions. But they will not be able to create or modify tasks and elements. Nor will they be able to chat on channels or submit forms.</div>
+<div className="col col--4"><em>This option can be activated only when the user is being created. But it can be disabled later on. Once disabled, it cannot be re-activated.</em></div>
 </div>
 
 </div>
