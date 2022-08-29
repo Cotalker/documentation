@@ -51,41 +51,46 @@ From within the _Elements Panel_, you can create a new _element_ by pressing the
 <img alt="create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_02.png')} />
 <br/>
 
-This will open up the **Create** element settings panel (shown below), where you can create a single _element_.
+:::note
+_Elements can also be created from within the [Database](/docs/documentation/client/database) tool._
+:::
+
+_The **Create** settings panel opens up when to create a single element when this option is chosen_:
 
 <img alt="create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_02a.png')} />
+<br/>
 
 _Options:_
-- **1.**
-- **2.**
+- **1.** Closes the settings window.
+- **2.** Saves the element with the current settings.
 
 _Settings:_
-- **A.**
-- **B.**
+- [**A. General information**](#general-information): Basic element information and associated child elements.
+- [**B. Additional fields**](#additional-fields): Set or edit additional field values.
+- **C. Associated surveys**: This field is empty until the element is saved and associated with a survey. See [below](#associated-surveys) for details.
 
 
 
 
 ## Edit an Element {#edit-element}
-From within the _Elements Panel_, you can edit an existing _element_ by pressing the corresponding _pen_ icon. This will open up the [**Element Settings Panel**](#edit--create-element), where you can edit the _element_.
+From within the _Elements Panel_, you can edit an existing _element_ by pressing the corresponding icon.
 
 <img alt="edit element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_03.png')} />
 <br/>
 
-<div className="alert alert--secondary">
+:::note
+_Elements can also be edited from within the [Database](/docs/documentation/client/database) tool._
+:::
 
-## Element Settings Panel Layout {#edit--create-element}
-The following settings panel appears when you choose to create or edit an element.  
-_**NOTE**: When creating a new element, only the **General information**, **Additional fields**, and **Associated Surveys** tabs appear._
+_The following settings panel appears when you choose to edit an element:_
 
 <img alt="edit/create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04.png')} />
 <br/>
 
-
 _Actions:_
-- **1. Deactivate/Activate**: Makes the element available or unavailable in the collection.
-- **2. Close**: Closes the settings panel without saving changes.
-- **3. Save**: Saves the element with the latest changes made.
+- **1. Close**: Closes the settings panel without saving changes.
+- **2. Save**: Saves the element with the latest changes made.
+- **3. Deactivate/Activate**: Makes the element available or unavailable in the collection.
 
 _Settings:_
 - [**A. General information**](#general-information): Basic element information and associated child elements.
@@ -96,8 +101,8 @@ _Settings:_
 - [**G. Child elements**](#child-elements): Displays a list of any child elements.
 - [**H. Parent elements**](#parent-elements): Displays a list of any parent elements.
 
-</div>
-<br/>
+
+## Settings Details {#settings}
 
 <div className="alert alert--secondary">
 
