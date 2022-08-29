@@ -69,7 +69,7 @@ Only lowercase letters, numbers, and underscores are accepted. The _code_ must s
 <div className="col col--3"><strong>Don't show this collection in the database section</strong></div>
 <div className="col col--4">
 
-Toggling the bar off makes the collection available in the [Database section](/docs/documentation/client/database).
+Toggling the bar off makes the collection available in the [Database viewer](/docs/documentation/client/database).
 
 </div>
 <div className="col col--5"><em>

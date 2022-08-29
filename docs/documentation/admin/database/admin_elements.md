@@ -92,6 +92,11 @@ _Actions:_
 - **2. Save**: Saves the element with the latest changes made.
 - **3. Deactivate/Activate**: Makes the element available or unavailable in the collection.
 
+_Special Features:_
+- **a.** Displays the element's [**QR code**](/docs/documentation/client/database). 
+- **b.** Displays previously created [**reports or actions**](/docs/documentation/client/database).
+- **c.** Creates a [**report or action**](/docs/documentation/client/database) associated with the element.
+
 _Settings:_
 - [**A. General information**](#general-information): Basic element information and associated child elements.
 - [**B. Additional fields**](#additional-fields): Set or edit additional field values.
