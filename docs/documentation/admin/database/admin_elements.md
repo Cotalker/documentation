@@ -82,30 +82,35 @@ From within the _Elements Panel_, you can edit an existing _element_ by pressing
 _Elements can also be edited from within the [Database](/docs/documentation/client/database) tool._
 :::
 
-_The following settings panel appears when you choose to edit an element:_
+_The [asset viewer](/docs/documentation/admin/database/asset_viewer) opens up when you choose to edit an element:_
 
 <img alt="edit/create element" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_elements_04.png')} />
 <br/>
 
-_Actions:_
-- **1. Close**: Closes the settings panel without saving changes.
-- **2. Save**: Saves the element with the latest changes made.
-- **3. Deactivate/Activate**: Makes the element available or unavailable in the collection.
-
 _Special Features:_
-- **a.** Displays the element's [**QR code**](/docs/documentation/client/database). 
-- **b.** Displays previously created [**reports or actions**](/docs/documentation/client/database).
-- **c.** Creates a [**report or action**](/docs/documentation/client/database) associated with the element.
+- **<span className="badge badge--success">a.</span>** Displays the element's [**QR code**](/docs/documentation/admin/database/asset_qr). 
+- **<span className="badge badge--success">b.</span>** Displays previously created [**reports or actions**](/docs/documentation/admin/database/asset_reports_actions).
+- **<span className="badge badge--success">c.</span>** Creates a [**report or action**](/docs/documentation/admin/database/asset_reports_actions) associated with the element.
+
+_Actions:_
+- **<span className="badge badge--primary">1.</span> Close**: Closes the settings panel without saving changes.
+- **<span className="badge badge--primary">2.</span> Deactivate/Activate**: Makes the element available or unavailable in the collection.
+- **<span className="badge badge--primary">3.</span> Save**: Saves the element with the latest changes made.
 
 _Settings:_
-- [**A. General information**](#general-information): Basic element information and associated child elements.
-- [**B. Additional fields**](#additional-fields): Set or edit additional field values.
-- [**C. Additional attributes**](#additinal-attributes): Adds extra information. Deprecated, only used on legacy systems.
-- [**D. Channels**](#channels): Displays channels associated with the element.
-- [**F. Associated surveys**](#associated-surveys): Displays survey answers associated with the element.
-- [**G. Child elements**](#child-elements): Displays a list of any child elements.
-- [**H. Parent elements**](#parent-elements): Displays a list of any parent elements.
+- [**<span className="badge badge--danger">A.</span> General information**](#general-information): Basic element information and associated child elements.
+- [**<span className="badge badge--danger">B.</span> Additional fields**](#additional-fields): Set or edit additional field values.
+- [**<span className="badge badge--danger">C.</span> Additional attributes**](#additinal-attributes): Adds extra information. Deprecated, only used on legacy systems.
+- [**<span className="badge badge--danger">D.</span> Channels**](#channels): Displays channels associated with the element.
+- [**<span className="badge badge--danger">E.</span> Associated surveys**](#associated-surveys): Displays survey answers associated with the element.
+- [**<span className="badge badge--danger">F.</span> Child elements**](#child-elements): Displays a list of any child elements.
+- [**<span className="badge badge--danger">G.</span> Parent elements**](#parent-elements): Displays a list of any parent elements.
 
+:::info Special Features
+Go to the [**Asset Viewer**](/docs/documentation/admin/database/asset_viewer) section for more details about _special features_: 
+- [QR Code](/docs/documentation/admin/database/asset_qr)
+- [Reports & Actions](/docs/documentation/admin/database/asset_reports_actions)
+:::
 
 ## Settings Details {#settings}
 
