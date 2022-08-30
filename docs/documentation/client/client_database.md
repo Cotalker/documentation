@@ -24,7 +24,7 @@ The **Database viewer** gives non-administrative _users_ access to company data.
     - associated surveys
 :::
 
-## Accessing the Database viewer {#access}
+## Accessing the Database Viewer {#access}
 _To access the Database viewer:_
 
 <img alt="access database viewer" className="img_sizing item shadow--tl" src={useBaseUrl('img/database_viewer_00.png')} /> 
@@ -36,14 +36,14 @@ _To access the Database viewer:_
 - **<span className="badge badge--warning">D.</span>** The _elements/assets_ contained within the chosen _collection_ appear in the panel.
 
 
-## Asset View {#element-view}
+## Asset Viewer {#element-view}
 _After selecting an asset from within a collection, the asset viewer window pops up._
 
 <img alt="asset viewer" className="img_sizing item shadow--tl" src={useBaseUrl('img/database_viewer_01.png')} /> 
 <br/>
 
 - **<span className="badge badge--danger">A.</span> Displays the asset's QR code.** _The QR code can be printed and placed in strategic places, allowing users to access asset data by scanning the code with their mobile devices. Go to the [**Asset QR Code**](/docs/documentation/admin/database/asset_qr) section for more details._
-- **<span className="badge badge--success">B.</span> Opens asset reports and actions.** _Reports and actions have to be previously configured by admins. These features can be set to:_ 
+- **<span className="badge badge--success">B.</span> Opens asset reports and actions.** _Reports and actions have to be previously [configured by admins](/docs/documentation/admin/database/asset_reports_actions). These features can be set to:_ 
     - Display **tasks** associated with the asset
     - Open **forms** associated with the asset
     - Display data gathered from the **SQL database**
