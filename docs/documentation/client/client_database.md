@@ -42,7 +42,7 @@ _After selecting an asset from within a collection, the asset viewer window pops
 <img alt="asset viewer" className="img_sizing item shadow--tl" src={useBaseUrl('img/database_viewer_01.png')} /> 
 <br/>
 
-- **<span className="badge badge--danger">A.</span> Displays the asset's QR code.** _The QR code can be printed and placed in strategic places, allowing users to access asset data by scanning the code with their mobile devices_.
+- **<span className="badge badge--danger">A.</span> Displays the asset's QR code.** _The QR code can be printed and placed in strategic places, allowing users to access asset data by scanning the code with their mobile devices. Go to the [**Asset QR Code**](/docs/documentation/admin/database/asset_qr) section for more details._
 - **<span className="badge badge--success">B.</span> Opens asset reports and actions.** _Reports and actions have to be previously configured by admins. These features can be set to:_ 
     - Display **tasks** associated with the asset
     - Open **forms** associated with the asset
