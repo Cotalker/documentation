@@ -128,31 +128,43 @@ module.exports = {
               items: [
                 'documentation/admin/database/admin_database_overview',
                 'documentation/admin/database/admin_collections',
-                'documentation/admin/database/admin_elements',
                 {
                   type: 'category',
-                  label: 'Asset Viewer',
+                  label: 'Elements',
                   link: {
-                    type: 'doc',
-                    id: 'documentation/admin/database/asset_viewer',
-                  },
+                      type: 'doc',
+                      id: 'documentation/admin/database/admin_elements'
+                    },
                   items: [
-                    'documentation/admin/database/asset_qr',
+                    'documentation/admin/database/asset_create',
                     {
                       type: 'category',
-                      label: 'Reports & Actions',
+                      label: 'Asset Viewer',
                       link: {
                         type: 'doc',
-                        id: 'documentation/admin/database/asset_reports_actions',
+                        id: 'documentation/admin/database/asset_viewer',
                       },
                       items: [
-                        'documentation/admin/database/asset_tasks',
-                        'documentation/admin/database/asset_actions',
-                        'documentation/admin/database/asset_forms',
-                      ]
+                        'documentation/admin/database/asset_qr',
+                        {
+                          type: 'category',
+                          label: 'Reports & Actions',
+                          link: {
+                            type: 'doc',
+                            id: 'documentation/admin/database/asset_reports_actions',
+                          },
+                          items: [
+                            'documentation/admin/database/asset_tasks',
+                            'documentation/admin/database/asset_actions',
+                            'documentation/admin/database/asset_forms',
+                          ]
+                        },
+                        'documentation/admin/database/asset_edit'
+                      ],
+                      collapsed: true,
                     }
                   ],
-                  collapsed: true,
+                  collapsed: true
                 }
               ],
               collapsed: true,
