@@ -34,14 +34,14 @@ _From the Asset Viewer you can open, create, or delete reports and actions:_
     - _Right-click_: [**Edit** or **delete**](#edit-delete) a report or action
 2. [**Create**](#create) a report or action (only available when accessed through Administrative Panel)
 
-## Open Reports/Actions {#open}
+### Open Reports/Actions {#open}
 Reports and actions accessed through the Asset Viewer are divided into three categories:
 - [**Tasks**](/docs/documentation/admin/database/asset_tasks): Displays [tasks](/docs/documentation/client/taskview) according to predefined filters
 - [**Actions**](/docs/documentation/admin/database/asset_actions): Opens a [survey](/docs/documentation/client/surveys)
 - [**Forms**](/docs/documentation/admin/database/asset_forms): Displays data gathered from an SQL database query.
 
 
-## Edit/Delete Reports/Actions {#edit-delete}
+### Edit/Delete Reports/Actions {#edit-delete}
 _To edit or delete a report or action:_
 
 <img alt="reports and actions" className="img_sizing item shadow--tl" src={useBaseUrl('img/asset_reports_actions_01.png')} />
@@ -50,7 +50,7 @@ _To edit or delete a report or action:_
 - Right-click the corresponding report or action to open the sub-menu.
 - Choose to **Edit** or **Delete** from the sub-menu.
 
-## Create Reports & Actions. {#create}
+### Create Reports & Actions. {#create}
 Once the _create_ icon is selected, the following window appears:
 
 <img alt="reports and actions" className="img_sizing item shadow--tl" src={useBaseUrl('img/asset_reports_actions_02.png')} />
