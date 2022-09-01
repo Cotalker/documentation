@@ -132,7 +132,11 @@ _Configuration:_
 <div className="row table-row-2">
 <div className="col col--3"><strong>Is a read only user</strong>:</div>
 <div className="col col--5">Creates a user limited with read-only access. These users will be able to view information and channels according to their permissions. But they will not be able to create or modify tasks and elements. Nor will they be able to chat on channels or submit forms.</div>
-<div className="col col--4"><em>This option can be activated only when the user is being created. But it can be disabled later on. Once disabled, it cannot be re-activated.</em></div>
+<div className="col col--4"><em>
+
+Through the platform, this option can only be activated when the user is being created and be disabled later on. If disabled, it can only be reactivated through an [API request](/docs/documentation/api/users/#patch-user) modifying the `isReadOnly` field within the [user's data model](/docs/documentation/models/users/model_users). 
+
+</em></div>
 </div>
 
 </div>

@@ -29,7 +29,7 @@ _From the Asset Viewer you can open, create, or delete reports and actions:_
 <img alt="reports and actions" className="img_sizing item shadow--tl" src={useBaseUrl('img/asset_reports_actions_00.png')} />
 <br/>
 
-1. Existing reports and actions
+1. Existing reports and actions (customizable for each asset)
     - _Left-click_: [**Open**](#open) a report or action
     - _Right-click_: [**Edit** or **delete**](#edit-delete) a report or action
 2. [**Create**](#create) a report or action (only available when accessed through Administrative Panel)

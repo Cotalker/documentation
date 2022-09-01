@@ -106,6 +106,7 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 | extensions | Collections used to store user information | object | [Additional fields](/docs/documentation/admin/users#additional-fields) |
 | isActive | Indicates if the user is still active or if it has been deactivated | boolean | |
 | isOnline | | boolean | |
+| isReadOnly | Sets the user to read-only mode. | boolean |
 | job | ObjectId of the [job title](/docs/documentation/admin/admin_jobtitles) assigned to the user | ObjectId<COTJobTitles\> | [Job Title Data Model](/docs/documentation/models/users/model_jobtitles) |
 | jobTitle | The user's job title | string | |
 | lastRequestDate | | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
