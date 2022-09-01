@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__subtitle">API Search Category Results</span>
 
 ## Description {#description}
-The _Search Category Results Model_ is used for returning results when using the Search API.
+The _Search Category Results Model_ is used by the system for returning results when using the Search API.
 
 
 ## JSON Sample {#json}
