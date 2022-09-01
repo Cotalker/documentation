@@ -33,23 +33,25 @@ _A new tab opens in the web browser, as shown below:_
 <div className="margin margin-left--lg">
 
 2. The web browser displays the QR code and the link it directs to.
-3. Right-click on the QR code to either copy or save the image for later use.
-
-<div className="alert alert--secondary align-center">
-
-<span className="hero__subtitle">QR code sample:</span>
-<br/>
-
-<img alt="qr code" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/asset_qr_01a.png')} />
-<br/>
-
-_The copied or saved QR code will look like the image shown here._
+3. From the web browser's options, print the screen.
 
 </div>
 <br/>
 
+
+<img alt="qr code" className="img_sizing item shadow--tl" src={useBaseUrl('img/asset_qr_01a.png')} />
+<br/>
+
+<div className="margin margin-left--lg">
+
+4. The web browser should allow you to either print or save the screen as a PDF file for later use.
+
 </div>
 <br/>
+
+Finally, **print the QR code** and place it on your asset or a strategic place to give users access to the asset's data and tools.
+
+
 
 
 
