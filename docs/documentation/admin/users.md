@@ -80,7 +80,7 @@ _Actions:_
 _Configuration:_
 - [**A. General information**](#general-information): Basic user information.
 - [**B. Access**](#access): User's access roles, i.e., sets of permissions.
-- [**C. Settings**](#settings): Sets the visiblity of platform shortcuts for the user.
+- [**C. Settings**](#settings): Sets the visibility of platform shortcuts for the user.
 - [**D. Additional attributes**](#additional-attributes): Adds attributes to the user (deprecated).
 - [**E. Elements**](#elements): Associates elements to the user.
 - [**F. Related users**](#related-users): Indicates users that are direct superiors and subordinates.
@@ -199,7 +199,7 @@ For security reasons, it is **EXTREMELY IMPORTANT** to assign _access roles_ wit
 <div className="col col--3"><strong>Hide Summary</strong>:</div>
 <div className="col col--5">
 
-When this toggle bar is on, the _home_ icon in the [**Main Menu Bar**](/docs/documentation/client/main_menu#main-menu-bar-layout) disapears, hiding access to all recent conversations.
+When this toggle bar is on, the _home_ icon in the [**Main Menu Bar**](/docs/documentation/client/main_menu#main-menu-bar-layout) disappears, hiding access to all recent conversations.
 
 </div>
 <div className="col col--4"><em></em></div>
@@ -287,7 +287,7 @@ Collections imported from the user's [job title](/docs/documentation/admin/admin
 </div>
 <div className="col col--4"><em>
 
-Press the the **+ Add Element** button if elements from another collection are needed.
+Press the **+ Add Element** button if elements from another collection are needed.
 
 </em></div>
 </div>
@@ -412,7 +412,7 @@ Click to view the corresponding form in the [Reports](/docs/documentation/client
 <div className="row table-row-1">
 <div className="col col--12">
 
-_An additional field's name, input type, and order of apperance is customizable and depends on its collection. The image shown above is just an example._
+_An additional field's name, input type, and order of appearance are customizable and depend on its collection. The image shown above is just an example._
 
 </div>
 </div>
@@ -453,7 +453,7 @@ _From the following dialog box, choose the **Collection containing the Additiona
 <br/>
 <br/>
 
-_You can also conduct a search for the **collection** you are looking for._
+_You can also search for the **collection** you are looking for._
 
 <img alt="choose additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_07.png')} />
 <br/>
