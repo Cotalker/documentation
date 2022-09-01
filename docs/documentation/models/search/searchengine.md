@@ -63,7 +63,7 @@ Field | Description | Type | Notes
 **options.modifiedLte** | Displays results modified on or before the indicated date and time. | Date |
 **options.created** | Displays results created on the indicated date and time. | Date |
 **options.createdGt** | Displays results created after the indicated date and time. | Date |
-**options.createdGte** | Displays results created on or after the indicated date and time. |
+**options.createdGte** | Displays results created on or after the indicated date and time. | Date |
 **options.createdLt** | Displays results created before the indicated date and time. | Date |
 **options.createdLte** | Displays results created on or before the indicated date and time. | Date |
 **options.debug** | | boolean |
