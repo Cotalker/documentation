@@ -165,6 +165,11 @@
   color: var(--secondary-custom)
 } */
 
+.badge--danger {
+  --ifm-badge-background-color: #F6594C;
+  --ifm-badge-border-color: #F6594C;
+}
+
 html[data-theme='light'] {
   --ifm-link-color: #5784b1;
   --ifm-font-color-base: #113355;
