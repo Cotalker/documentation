@@ -37,7 +37,35 @@ module.exports = {
             'documentation/client/client_search',
             'documentation/client/actions_button',
             'documentation/client/surveys',
-            'documentation/client/taskview',
+            {
+              type: 'category',
+              label: 'Tasks',
+              items: [
+                'documentation/client/tasks/overview',
+                'documentation/client/tasks/access_task',
+                {
+                  type: 'category',
+                  label: 'User Interface',
+                  items: [
+                    'documentation/client/tasks/taskview',
+                    'documentation/client/tasks/group_view',
+                    'documentation/client/tasks/task_details',
+                    'documentation/client/tasks/task_chat',
+                    'documentation/client/tasks/task_notes'
+                  ],
+                  collapsed: true
+                },
+                {
+                  type: 'category',
+                  label: 'How-To',
+                  items: [
+                    'documentation/client/tasks/create_task',
+                    'documentation/client/tasks/update_task',
+                  ],
+                  collapsed: true
+                },
+              ]
+            },
             'documentation/client/database',
             'documentation/client/dashboard',
             'documentation/client/reports',

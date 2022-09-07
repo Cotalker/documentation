@@ -134,7 +134,7 @@ _Configuration:_
 <div className="col col--5">Creates a user limited with read-only access. These users will be able to view information and channels according to their permissions. But they will not be able to create or modify tasks and elements. Nor will they be able to chat on channels or submit forms.</div>
 <div className="col col--4"><em>
 
-Through the platform, this option can only be activated when the user is being created and be disabled later on. If disabled, it can only be reactivated through an [API request](/docs/documentation/api/users/#patch-user) modifying the `isReadOnly` field within the [user's data model](/docs/documentation/models/users/model_users). 
+The Administrative Panel allows this option to be activated only when the user is being created and permits it to be disabled later on. If disabled, it can only be reactivated through an [API request](/docs/documentation/api/users/#patch-user) modifying the `isReadOnly` field within the [user's data model](/docs/documentation/models/users/model_users). 
 
 </em></div>
 </div>
@@ -406,7 +406,7 @@ Click to view the corresponding form in the [Reports](/docs/documentation/client
 
 <div className="alert alert--secondary">
 
-### i. Additional fields... {#additional-fields-tab}
+### I. Additional fields... {#additional-fields-tab}
 
 <img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_users_02i.png')} />
 <br/>
