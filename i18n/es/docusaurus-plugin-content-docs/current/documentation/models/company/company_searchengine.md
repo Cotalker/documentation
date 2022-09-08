@@ -11,16 +11,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <span className="hero__subtitle">COTCompany</span>
 
 ## Description {#description}
-Within the [COTCompany](/docs/documentation/models/company/model_company) data model, the `companies.searchEngines` field is an array of objects that permits configuring search query responses made through the platform's UI [search tool](/docs/documentation/client/client_search). The search configuration is applied to all user search queries made within the company's Cotalker platform.
+Within the [COTCompany](/docs/documentation/models/company/model_company) data model, the `searchEngines` field is an array of objects that permits configuring search query responses made through the platform's UI [search tool](/docs/documentation/client/client_search). The search configuration is applied to all user search queries made within the company's Cotalker platform.
 
 :::info
-- If left blank, all search engines will be searched through.
+- Search Engine **objects** have the following general structure:  
+`{"searchEngines": [{"name": string, "options": object}]}`.
+- The `searchEngines` field's **default value** is an empty array: `{"searchEngines": []}`
+- If left empty, all search engines will search through their corresponding categories.
 - When search engine objects are placed in the array, only the specified search engines will be used in the UI search tool.
 :::
 
 ## JSON Sample {#json}
-The `searchEngines` object has the following general structure: `[{"name": string, "options": object}]`.
-
 _In the `companies` sample below, you can find the `searchEngines` object array on lines 11 to 27._
 ```json {11} showLineNumbers
 {
