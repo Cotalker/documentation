@@ -1,6 +1,10 @@
 ---
 title: Schedules
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
@@ -44,5 +48,6 @@ curl --location --request GET 'https://www.cotalker.com/api/v2/schedules' \
 Responses follow the [**COTSchedule**](/docs/documentation/models/automations/model_scheduler) data model.
 
 ---
+
 
 

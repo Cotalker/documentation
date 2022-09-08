@@ -2,6 +2,10 @@
 title: Bots
 sidebar_label: Bots
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 
@@ -301,5 +305,6 @@ Go to [COTBot](/docs/documentation/models/automations/model_bots) for a complete
 ```
 
 ---
+
 
 

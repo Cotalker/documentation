@@ -2,6 +2,10 @@
 title: Asset Tasks
 sidebar_label: Asset Tasks
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
@@ -42,3 +46,4 @@ The **report** displaying the _notifications_ involving _Equipment 1-A_ is gener
 
 <img alt="tasks" className="img_sizing item shadow--tl" src={useBaseUrl('img/asset_tasks_02.png')} />
 <br/>
+

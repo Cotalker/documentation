@@ -2,6 +2,10 @@
 title: Create Element
 sidebar_label: Create Element
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Component1, {toc as Title1TOC} from '/docs/documentation/admin/database/_asset_create.mdx';
 
@@ -88,4 +92,5 @@ Additional fields created in a collection are available to all its elements.
 
 </div>
 <br/>
+
 

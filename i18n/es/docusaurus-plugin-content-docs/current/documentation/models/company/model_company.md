@@ -2,6 +2,10 @@
 title: Companies Data Model
 sidebar_label: COTCompany
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">COTCompany</span>
@@ -140,3 +144,4 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
+

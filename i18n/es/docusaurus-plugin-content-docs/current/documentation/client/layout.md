@@ -1,6 +1,10 @@
 ---
 title: User-Interface Layout
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 import Tabs from '@theme/Tabs';
@@ -35,5 +39,6 @@ The layout in _mobile devices_ and _narrow web browser windows_ is similar but d
 
 </div>
 <br/>
+
 
 

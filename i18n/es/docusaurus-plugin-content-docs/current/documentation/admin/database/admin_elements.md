@@ -2,6 +2,10 @@
 title: Elements (Properties)
 sidebar_label: Elements
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Create, {toc as Title2TOC} from '/docs/documentation/admin/database/_asset_create.mdx';
 import Edit, {toc as Title1TOC} from '/docs/documentation/admin/database/_asset_viewer.mdx';

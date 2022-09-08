@@ -2,6 +2,10 @@
 title: Audit Logs
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 ## Description: {#description}
@@ -121,3 +125,4 @@ _To filter the list of logs displayed:_
 <br/>
 
 3. Press <span className="badge badge--secondary">Filter</span> to apply selected filters.
+

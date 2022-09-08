@@ -1,6 +1,10 @@
 ---
 title: Search Tool
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="title image" className="img_sizing" src={useBaseUrl('img/design/Database.svg')} />

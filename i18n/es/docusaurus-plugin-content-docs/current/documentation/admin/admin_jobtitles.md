@@ -2,6 +2,10 @@
 title: Job Titles
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="design" className="img_title" src={useBaseUrl('img/design/Groups_and_Channels.svg')} />
@@ -223,3 +227,4 @@ Press **+ Add Element** if elements from another collection are needed.
 - [COTJobTitle data model documentation.](/docs/documentation/models/users/model_jobtitles)
 - ["Job Titles" REST API documentation](/docs/documentation/api/users/jobtitles)
 - [User Admin Documentation](/docs/documentation/admin/users)
+

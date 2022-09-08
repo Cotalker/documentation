@@ -2,6 +2,10 @@
 title: Job Titles Data Model
 sidebar_label: COTJobTitle
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">COTJobTitle</span>

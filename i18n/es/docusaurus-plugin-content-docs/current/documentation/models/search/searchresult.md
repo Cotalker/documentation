@@ -2,6 +2,10 @@
 title: Search Category Results Model
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">API Search Category Results</span>
@@ -99,3 +103,4 @@ Field | Description | Type | Notes
 **results[x].tags** | Array of result data. | object[ ] | Objects depend on the result type.
 **results[x].highlights** | Array displaying snippets of found keywords in their context. |
 **facets** | Returns details of search results based on tags, e.g., how many results have the same tag. | [ ] |
+

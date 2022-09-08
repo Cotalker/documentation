@@ -2,6 +2,10 @@
 title: Tasks Data Model
 sidebar_label: COTTask
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle"><em>COTTask</em></span>

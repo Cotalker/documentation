@@ -2,6 +2,10 @@
 title: Branding Settings
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Customize platform colors, text, and login authentication.</span>
@@ -240,3 +244,4 @@ This feature's availability may depend on your company's Cotalker plan. Speak wi
     }
 }
 ```
+

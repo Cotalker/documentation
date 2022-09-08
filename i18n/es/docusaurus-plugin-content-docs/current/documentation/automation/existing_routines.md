@@ -3,6 +3,10 @@ id: existing_routines
 title: Routine Stage Types
 sidebar_label: Routine Stage Types
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -129,3 +133,4 @@ _In the image below, you can see where the **version** field is located and the 
 :::caution Attention
 - If you change the version of a stage type, you will not be able to go back to previous versions after saving.
 :::
+
