@@ -2,10 +2,6 @@
 title: Access Roles Section
 sidebar_label: Access Roles
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
@@ -192,4 +188,3 @@ Hard-coding _permissions_ has been deprecated.
 | news-write |  |
 | web-access |  |
 | app-access | can use any client |
-

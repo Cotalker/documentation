@@ -2,10 +2,6 @@
 title: Question Content Type Data Model
 sidebar_label: COTQuestionContentType
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 
@@ -245,4 +241,3 @@ _When this content type is used, the following fields are used in COTQuestion mo
 
 </div>
 <br/> -->
-

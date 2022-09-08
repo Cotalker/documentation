@@ -1,10 +1,6 @@
 ---
 title: Property Types (Collections)
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
@@ -264,5 +260,4 @@ Go to [COTPropertyType](/docs/documentation/models/databases/model_propertytypes
 }
 ```
 ---
-
 

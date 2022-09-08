@@ -2,10 +2,6 @@
 title: Survey Chats Data Model
 sidebar_label: COTSurveyChat
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
@@ -79,4 +75,3 @@ Each Survey Chat data model (COTSurveyChat) represents a [component](/docs/docum
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-

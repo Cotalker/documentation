@@ -1,10 +1,6 @@
 ---
 title: Using the Notes Tool
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import TOCInline from '@theme/TOCInline';
 import Mermaid from '@theme/Mermaid';

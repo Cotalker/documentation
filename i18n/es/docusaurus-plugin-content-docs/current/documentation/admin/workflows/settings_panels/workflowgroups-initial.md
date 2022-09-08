@@ -3,10 +3,6 @@ title: Initial Settings Panel
 sidebar_label: Initial Settings Panel (Workflow Groups)
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Settings Panel Guide</span>
@@ -55,4 +51,3 @@ _This is the layout of the workflow groups settings panel:_
 - [**Routine Builder**](/docs/documentation/automation/admin_routine)
 - [**SLAs**](/docs/documentation/automation/sla)
 - [**Create a Survey that Starts a Workflow**](/docs/tutorials/intermediate/create_survey_sm)
-

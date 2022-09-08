@@ -2,10 +2,6 @@
 title: Schedules Data Model
 sidebar_label: COTSchedule
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle"><em>COTSchedule</em></span>
@@ -107,5 +103,4 @@ The [Scheduler](/docs/documentation/admin/admin_scheduler) creates _schedules_ o
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-
 

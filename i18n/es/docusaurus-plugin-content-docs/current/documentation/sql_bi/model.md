@@ -3,10 +3,6 @@ id: model
 title: SQL Data Model
 sidebar_label: SQL Data Model
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="design" className="img_sizing" src={useBaseUrl('img/design/Database.svg')} />
@@ -364,4 +360,3 @@ modifiedat_unixms:  bigint,
 **NOTE**: Extra user elements can be added through [_properties_](#properties) tables.
 
 ------
-

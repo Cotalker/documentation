@@ -1,10 +1,6 @@
 ---
 title: PBScripts
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -327,4 +323,3 @@ Go to [COTPBScripts](/docs/documentation/models/automations/model_pbscripts) for
 ```
 
 ---
-

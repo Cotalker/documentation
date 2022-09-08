@@ -1,10 +1,6 @@
 ---
 title: Logging In
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="design" className="img_title" src={useBaseUrl('img/design/users.svg')} />
@@ -165,4 +161,3 @@ For those who are constantly on the go or doing fieldwork, our _mobile apps_ –
 </div>
 </div>
 <br/>
-

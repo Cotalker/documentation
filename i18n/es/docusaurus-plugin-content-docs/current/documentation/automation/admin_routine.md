@@ -3,10 +3,6 @@ id: admin_routine
 title: Routine Builder
 sidebar_label: Routine Builder
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
@@ -115,5 +111,4 @@ You can insert mock data into the *Context* editor to avoid mishaps.
 ## Best Practices {#best-practices}
 ### Routines associated with state changes. {#routines-state-change}
 A task can change from one state to another through different means, e.g., a _state start form_, a _survey trigger_, the _task view_, a _routine-stage bot_, the _action button_, or an API request. If a _routine_ is to be associated with the state change, it is highly recommended to add the _routine_ in the [**State Change**](/docs/documentation/admin/workflows/settings_panels/create_edit_state#state-changes) and not through other means, like a _survey_ or a _routine-stage bot_.
-
 

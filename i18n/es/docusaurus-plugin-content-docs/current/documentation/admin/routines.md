@@ -3,10 +3,6 @@ id: routines
 title: Routines Section
 sidebar_label: Routines
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -161,4 +157,3 @@ For setup information, go to the [Routine Builder](/docs/documentation/automatio
 
 - [Routine Builder](/docs/documentation/automation/admin_routine): Read how routines are added to processes.
 - [Routine Stage Types](/docs/documentation/automation/existing_routines): Learn more about the Routine Stage Types that can be used to make your routines.
-

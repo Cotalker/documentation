@@ -1,10 +1,6 @@
 ---
 title: Main Menu Bar
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="design" className="img_sizing" src={useBaseUrl('img/design/Main_menu.svg')} />

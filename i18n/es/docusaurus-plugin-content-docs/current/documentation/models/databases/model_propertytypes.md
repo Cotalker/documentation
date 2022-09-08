@@ -2,10 +2,6 @@
 title: Property Types (Collections) Data Model
 sidebar_label: COTPropertyType
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <span className="hero__subtitle"><em>COTPropertyType</em></span>
@@ -121,4 +117,3 @@ _Property types_ contain [_properties_ or _elements_](/docs/documentation/models
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-

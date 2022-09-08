@@ -2,10 +2,6 @@
 title: Survey+GPS Component Response
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 
@@ -96,4 +92,3 @@ process | Contains the latitude and longitude of the location. | string[ ] | The
 :::note
 For a complete description, go to the [COTAnswer data model](/docs/documentation/models/surveys/model_answers) documentation.
 :::
-

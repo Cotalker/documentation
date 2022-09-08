@@ -1,18 +1,12 @@
 ---
 title: Search Tool
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="title image" className="img_sizing" src={useBaseUrl('img/design/Database.svg')} />
 <br/>
 
 ## Overview {#overview}
-
-<div className="alert alert--secondary">
 
 Search queries are carried out through different fields of the Cotalker environment, making it easier and more efficient to find and display results. Search fields include: _user_, _channel_, _action_, _properties_, _task names_, _additional task information_, and _shared documents_.
 
@@ -29,8 +23,9 @@ There are two types of searches:
 
 </div>
 
-</div>
-<br/>
+:::note
+Admins can [filter search results](/docs/documentation/models/company/company_searchengine) to display information according to company needs.
+:::
 
 ## Global Search {#global-search}
 When accessed through the **Tool Bar**, search queries are global, i.e., made throughout the entire environment.

@@ -1,10 +1,6 @@
 ---
 title: Categories
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img alt="design" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
@@ -166,5 +162,5 @@ _Configure the category's icon displayed on the Main Menu Bar._
 
 ---
 ## Related Resources {#related}
-- [COTGroup Data Model](/docs/documentation/models/communication/model_groups): The `nestedGroups` field is an array that contains the ObjectId of each group in the category.
+- [COTGroup Data Model](/docs/documentation/models/communication/model_groups): The `isCategory` and `nestedGroups` fields are used in conjunction to establish a _group_ as a _category_.
 - [Group API Reference](/docs/documentation/api/communication/groups): The `hasCatergories` parameter filters category groups.

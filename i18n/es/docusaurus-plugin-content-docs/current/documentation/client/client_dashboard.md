@@ -3,10 +3,6 @@ id: dashboard
 title: Dashboard
 sidebar_label: Dashboard
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -62,7 +58,6 @@ Finally, when all the questions are ready, it only remains for you to add them t
 :::important IMPORTANT
 It takes less time to make a dashboard with similar questions already created in another company since you only have to change the table's names and make some adaptations if necessary. But other times – when there are particular needs and Metabase limits are present – the implementation could take much longer.
 :::
-
 
 
 

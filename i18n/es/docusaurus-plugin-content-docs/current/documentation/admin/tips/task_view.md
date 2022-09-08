@@ -3,10 +3,6 @@ title: Task View Configuration
 displayed_sidebar: documentation
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 ## Introduction {#intro}
@@ -89,4 +85,3 @@ _To set the **group view** as default:_
 3. Press <span className="badge badge--info">Save</span>.
 
 </div>
-
