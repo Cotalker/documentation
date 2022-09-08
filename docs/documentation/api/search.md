@@ -33,7 +33,7 @@ Parameter | Description | Type | Required | Notes
 #### Request Sample {#request-sample}
 _The request sample below returns documents and users with the word "lorem"._
 ```bash
-curl --location --request GET 'https://www.cotalker.com/api/v3/search/search?search=lorem&engines=WwogICAgIHsKICAgICAgICAgICAgICAibmFtZSI6ICJ1c2VycyIsCiAgICAgICAgICAgICAgICJvcHRpb25zIjogewogICAgICAgICAgICAgICAgICJvcmRlckJ5IjogImFzYyIsCiAgICAgICAgICAgICAgICAgICJsaW1pdCI6IDEwMCwKICAgICAgICAgICAgICAgICAgImRlYnVnIjogdHJ1ZQogICAgICAgICAgICB9CiAgICB9Cl0=' \
+curl --location --request GET 'https://www.cotalker.com/api/v3/search/search?search=lorem&engines=WwogICAgIHsKICAgICAgICAgICAgICAibmFtZSI6ICJ1c2VycyIsCiAgICAgICAgICAgICAgICJvcHRpb25zIjogewogICAgICAgICAgICAgICAgICJvcmRlckJ5IjogImFzYyIsCiAgICAgICAgICAgICAgICAgICJsaW1pdCI6IDEwMAogICAgICAgICAgICB9CiAgICB9Cl0=' \
 --header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 

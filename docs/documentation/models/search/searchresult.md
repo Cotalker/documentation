@@ -98,4 +98,4 @@ Field | Description | Type | Notes
 **results[x].modifiedAt** | Indicates the date and time the result was last modified. | ISODate | "YYYY-MM-DDTHH:mm:ss.SSSZ"
 **results[x].tags** | Array of result data. | object[ ] | Objects depend on the result type.
 **results[x].highlights** | Array displaying snippets of found keywords in their context. |
-**facets** | Array | [ ] | UNKNOWN
+**facets** | Returns details of search results based on tags, e.g., how many results have the same tag. | [ ] |
