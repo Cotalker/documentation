@@ -3,6 +3,10 @@ id: admin_group
 title: Groups Section
 sidebar_label: Groups
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 

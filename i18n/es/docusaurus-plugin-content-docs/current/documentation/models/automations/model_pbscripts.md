@@ -2,6 +2,10 @@
 title: Parametrized Bot Scripts Data Model
 sidebar_label: COTPBScript
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -109,4 +113,5 @@ import Highlight from '@theme/Highlight';
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
+
 

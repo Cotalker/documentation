@@ -2,6 +2,10 @@
 title: Tasks
 sidebar_label: Tasks
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -625,4 +629,5 @@ Go to [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) for a com
 :::
 
 ---
+
 

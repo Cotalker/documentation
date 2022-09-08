@@ -2,6 +2,10 @@
 title: Introduction
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
@@ -129,3 +133,4 @@ In the next table, buttons for when a **list of items is imported**:
 | ---- | ----- | ----------- |
 | Select | <img width="80" alt="" src={useBaseUrl('img/icon_select.png')} /> | Select a file from your finder |
 | Cancel | <img width="80" alt="" src={useBaseUrl('img/icon_cancel_import.png')} /> | Retract the import |
+

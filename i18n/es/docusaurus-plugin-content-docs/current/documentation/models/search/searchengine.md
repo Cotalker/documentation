@@ -3,6 +3,10 @@ title: Search Engine Model
 sidebar_label: Search Engine Model
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Search Parameters for use with Search API</span>
@@ -71,4 +75,5 @@ Field | Description | Type | Notes
 **options.modifiedLt** | Displays results modified before the indicated date and time. | Date | Accepts either ISODate or Unix Epoch Time formats.
 **options.modifiedLte** | Displays results modified on or before the indicated date and time. | Date | Accepts either ISODate or Unix Epoch Time formats.
 **options.sortBy** | Sorts results by the indicated field. Sorting is carried out using the available parameter options in the respective API request, i.e., channels can be sorted according to the `sortBy` options in the [Channels API](/docs/documentation/api/communication/channels#get-all-channels). | string |
+
 

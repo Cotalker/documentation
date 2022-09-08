@@ -3,6 +3,10 @@ title: Users Data Model
 sidebar_label: COTUser
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 <span className="hero__subtitle">COTUser</span>
 
 
@@ -166,4 +170,5 @@ _The following deprecated items might still be found in the model:_
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
+
 

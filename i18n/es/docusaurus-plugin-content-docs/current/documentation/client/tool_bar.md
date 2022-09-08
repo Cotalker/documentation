@@ -1,6 +1,10 @@
 ---
 title: Toolbar
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="design" className="img_title" src={useBaseUrl('img/design/users.svg')} />

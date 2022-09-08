@@ -3,6 +3,10 @@ id: triggers_and_contexts
 title: Triggers & Contexts
 sidebar_label: Triggers & Contexts
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -483,4 +487,5 @@ _Brief explanation of the values used in the [Contexts Table](#contexts-table)._
 8. `ObjectID[T]`: 24-character unique identifier that represents an object of type _T_
 
 </div>
+
 

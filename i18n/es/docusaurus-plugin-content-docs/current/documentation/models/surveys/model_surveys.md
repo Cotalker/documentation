@@ -2,6 +2,10 @@
 title: Surveys Data Model
 sidebar_label: COTSurvey
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
@@ -119,3 +123,4 @@ Surveys are used to gather data from users. The _Surveys Data Model_ (COTSurvey)
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
+

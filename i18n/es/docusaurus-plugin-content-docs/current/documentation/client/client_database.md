@@ -3,6 +3,10 @@ id: database
 title: Database
 sidebar_label: Database
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Component1, {toc as Title1TOC} from '/docs/documentation/admin/database/_asset_viewer.mdx';
 import Component2, {toc as Title2TOC} from '/docs/documentation/admin/database/_asset_create.mdx';

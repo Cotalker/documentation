@@ -2,6 +2,10 @@
 title: Scheduler Section
 sidebar_label: Scheduler
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
@@ -110,3 +114,4 @@ In this section you can edit or create a single group.
 </br>
 
 _The Routine builder is explained in the [Routine Section](/docs/documentation/automation/admin_routine)._
+

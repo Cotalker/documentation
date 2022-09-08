@@ -2,6 +2,10 @@
 title: Questions Data Model
 sidebar_label: COTQuestion
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 
@@ -135,3 +139,4 @@ _Questions_ make up survey forms; their wide variety allows different forms for 
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
+

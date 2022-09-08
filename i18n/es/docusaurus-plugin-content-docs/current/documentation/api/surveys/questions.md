@@ -1,6 +1,10 @@
 ---
 title: Questions
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
@@ -373,4 +377,5 @@ Go to [COTQuestion](/docs/documentation/models/surveys/model_questions) for a co
     "__v": 0
 }
 ```
+
 

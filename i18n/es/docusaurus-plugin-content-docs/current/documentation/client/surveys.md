@@ -1,6 +1,10 @@
 ---
 title: Surveys
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 
@@ -103,6 +107,7 @@ _Below is an example of a survey question that allows users to freely choose a l
 
 </div>
 <br/>
+
 
 
 

@@ -2,6 +2,10 @@
 title: Create/Edit Workflow
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <span className="hero__subtitle">Settings Panel Guide</span>
@@ -319,3 +323,4 @@ As best practice, it is recommended to use the first five **statuses** (A) becau
 - [**Set up a Public Survey**](/docs/documentation/admin/workflows/admin_workflow_public_survey)
 - [**Routine Builder**](/docs/documentation/automation/admin_routine)
 - [**SLAs**](/docs/documentation/automation/sla)
+

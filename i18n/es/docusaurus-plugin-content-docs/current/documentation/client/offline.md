@@ -3,6 +3,10 @@ title: Offline Mode
 sidebar_label: Offline Mode
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <span className="hero__subtitle">⚠ This feature is still in BETA stage.</span>
@@ -88,3 +92,4 @@ If **Offline Mode** is not set when you don't have access to the internet, the a
 - Only one action upon a task is allowed while in Offline Mode. For example, you can change the state of a task from A to B while offline but cannot additionally change it from B to C.
 - Even though _start forms_ can be submitted while offline, the actions they initiate through their routines may be limited.
 :::
+

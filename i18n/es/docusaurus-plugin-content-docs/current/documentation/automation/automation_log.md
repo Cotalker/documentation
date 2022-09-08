@@ -3,6 +3,10 @@ id: automation_log
 title: Automation Log
 sidebar_label: Automation Log
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -160,3 +164,4 @@ You can insert mock data into the *Context* editor to avoid mishaps.
 ### Automation Log {#run-routine-automation-log}
 
 The _automation log_ in **Run Routine** is the same as described [above](#automation-log-details). 
+

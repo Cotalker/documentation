@@ -3,6 +3,10 @@ id: reports
 title: Reports
 sidebar_label: Reports
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Mermaid from '@theme/Mermaid';
 
@@ -27,4 +31,5 @@ It is possible to filter them.
 
 Display of an individual answer.
 <img alt="" src={useBaseUrl('img/report_download.png')} />
+
 

@@ -211,3 +211,4 @@ _Configures special channel options._
 - [Channel Workspace Basics](/docs/documentation/client/channels)
 - [Channel Data Model (COTChannel)](/docs/documentation/models/communication/model_channels)
 - [Channel API Requests](/docs/documentation/api/communication/channels)
+

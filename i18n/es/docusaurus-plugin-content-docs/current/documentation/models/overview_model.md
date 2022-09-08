@@ -2,6 +2,10 @@
 title: Data Models Overview
 sidebar_label: Overview
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import Mermaid from '@theme/Mermaid';
 
 

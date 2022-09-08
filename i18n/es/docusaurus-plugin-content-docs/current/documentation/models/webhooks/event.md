@@ -2,6 +2,10 @@
 title: Triggering Event
 sidebar_label: COTEvent
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">COTEvent</span>

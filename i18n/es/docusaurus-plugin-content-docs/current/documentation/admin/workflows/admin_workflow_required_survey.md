@@ -3,6 +3,10 @@ id: admin_workflow_required_survey
 title: Start Forms
 sidebar_label: Start Forms
 ---
+
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -232,4 +236,5 @@ If a _routine_ is afterwards added, the automatic change of _state_ is disabled 
 
 </div>
 <br/>
+
 

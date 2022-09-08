@@ -3,6 +3,10 @@ title: Value Types for SET_RESPONSES command
 displayed_sidebar: documentation
 ---
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 ## Summary {#description}
@@ -145,3 +149,4 @@ _Example:_
     value: ['6185cfe1ef46d0aee4c2b653', '6185cfe8b420610501b280d8']
 }
 ```
+
