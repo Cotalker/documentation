@@ -87,7 +87,7 @@ Each time a _survey_ is submitted, a unique _answer_ is created to store the gat
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
 | channel | The _channel_ in which the survey was answered | ObjectId<COTChannel\> | [Channel Data Model](/docs/documentation/models/communication/model_channels)
-| company | The _company_ in which the survey was answered | ObjectId<COTCompany\> | [Companies Data Model](/docs/documentation/models/model_company)
+| company | The _company_ in which the survey was answered | ObjectId<COTCompany\> | [Companies Data Model](/docs/documentation/models/company/model_company)
 | createdAt | Date answer was submitted | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | data | This is where all the data of answered surveys is stored. | COTAnswerData[ ] | [Answer Data Data Model](/docs/documentation/models/surveys/model_answer_data)
 | extendsAnswer | Extends or adds information through an _answer_ of an [embedded survey](/docs/documentation/admin/survey/components/survey) | ObjectId<COTAnswer\> | Superseded by `answers.rExtendsAnswer` |

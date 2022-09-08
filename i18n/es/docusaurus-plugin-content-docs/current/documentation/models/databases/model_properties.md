@@ -98,7 +98,7 @@ _Property associated with a user:_
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
 | **\_id** | System generated property ID. | ObjectId<COTProperty\> |
-| **company** | The ID of the company the property is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| **company** | The ID of the company the property is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Indicates when the property was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **isActive** | Indicates if the property is active or not. | boolean |
 | **modifiedAt** | Indicates the last time the property's configuration was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ

@@ -80,7 +80,7 @@ import TabItem from '@theme/TabItem';
 | actions[index].weight | Indicates the link's place in the menu | number | Numbers do not have to be in consecutive order; lower numbers go first |
 | channelsWithoutCategoryLocation | | string | Options are: `top` or `hide` | 
 | color | The color of the group icon in the Main Menu Bar | string | Hex color code |
-| company | Company ObjectId | ObjectId<COTCompany\> | [Company Data Model](/docs/documentation/models/model_company) |
+| company | Company ObjectId | ObjectId<COTCompany\> | [Company Data Model](/docs/documentation/models/company/model_company) |
 | createChannels | Allows users to create new channels within the group | object | |
 | createChannels.active | Indicates whether or not users can create new channels within the group | boolean | |
 | createChannels.requiredPermission | Array of the access role IDs users need to create new channels | ObjectId<COTAccessRole\>[ ] | [Access Roles Data Model](/docs/documentation/models/users/model_accessroles) |

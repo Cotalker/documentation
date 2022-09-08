@@ -57,7 +57,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
-| **company** | The ID of the company the state is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| **company** | The ID of the company the state is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Indicates when the state was created | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **isActive** | Indicates if the state is active or not. | boolean |
 | **modifiedAt** | Indicates the last time the state's configuration was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ

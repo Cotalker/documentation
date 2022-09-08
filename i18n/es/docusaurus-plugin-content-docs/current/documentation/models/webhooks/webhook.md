@@ -39,7 +39,7 @@ A webhook's configuration is stored within a _COTWebhook_ object. The _COTWebhoo
 Field | Description | Type | Notes
 --- | --- | --- | ---
 **_id** | The webhook's ObjectId. The ObjectId is used to identify the webhook. | ObjectId<COTWebhook\> | 
-**company** | Indicates the ObjectId of the company in which the webhook is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+**company** | Indicates the ObjectId of the company in which the webhook is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 **isActive** | Indicates whether the webhook is active or not. | boolean | 
 **trigger** | Specifies the type of event that triggers the webhook. Triggers can be set to go off when a _user_, _task_, ,_survey_, or _property_ is created, modified, or deactivated. _User logouts_ can also be set as triggers. <br/><br/>**Options are:** <br/>– `create-edit-delete-user` <br/>– `create-edit-delete-task` <br/>– `create-edit-delete-survey` <br/>– `create-edit-delete-property`<br/>– `logout-user` | string | Some triggers can be configured with special pararmeters. See the `contexts` field for details.
 **url** | Indicates the URL address of the server to which the event data is sent. | string | Server URLs are provided by external systems or third-parties.

@@ -35,7 +35,7 @@ curl --location --request GET 'https://www.cotalker.com/api/v1/companies' \
 ```
 
 #### Response Sample {#get-company-id-response}
-The response follows the [COTCompany](/docs/documentation/models/model_company) data model.
+The response follows the [COTCompany](/docs/documentation/models/company/model_company) data model.
 
 ---
 
@@ -50,7 +50,7 @@ _Returns the company indicated by the Id._
 #### Path Parameters {#patch-company-path}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**id** | The ObjectId of the _company_ that is to be returned. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | Required |
+**id** | The ObjectId of the _company_ that is to be returned. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) | Required |
 
 #### Headers {#get-company-id-headers}
 Header | Description | Required | Values
@@ -64,7 +64,7 @@ curl --location --request GET 'https://www.cotalker.com/api/v1/companies/61976ce
 ```
 
 #### Response Sample {#get-company-id-response}
-The response follows the [COTCompany](/docs/documentation/models/model_company) data model.
+The response follows the [COTCompany](/docs/documentation/models/company/model_company) data model.
 
 ---
 
@@ -79,7 +79,7 @@ _Updates or edits an existing job title._
 #### Path Parameters {#patch-company-path}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**id** | The ObjectId of the _company_ that is to be modified. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | Required |
+**id** | The ObjectId of the _company_ that is to be modified. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) | Required |
 
 #### Headers {#patch-company-headers}
 Header | Description | Required | Values
@@ -94,7 +94,7 @@ Parameter | Description | Type | Required | Notes
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Body {#patch-company-body}
-_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTCompany data model](/docs/documentation/models/model_company)._
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTCompany data model](/docs/documentation/models/company/model_company)._
 
 #### Request Sample {#patch-company-request}
 ```bash
@@ -108,7 +108,7 @@ curl --location --request PATCH 'https://staging.cotalker.com/api/v1/companies/6
 ```
 
 #### Response Sample {#patch-company-response}
-Go to [COTCompany](/docs/documentation/models/model_company) for a complete description of the response.
+Go to [COTCompany](/docs/documentation/models/company/model_company) for a complete description of the response.
 ```json {11-12}
 {
     "__v" : 14,

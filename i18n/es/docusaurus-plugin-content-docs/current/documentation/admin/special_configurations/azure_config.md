@@ -164,7 +164,7 @@ Once you have these values, update your Cotalker platform's configuration throug
 }
 ```
 
-For more details about the request body, go to the [COTCompany](/docs/documentation/models/model_company) data model section.
+For more details about the request body, go to the [COTCompany](/docs/documentation/models/company/model_company) data model section.
 
 
 </div>

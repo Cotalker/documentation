@@ -45,7 +45,7 @@ _Sample of an uploaded file._
 
 | Field | Description | Type | Notes |
 | --- | --- | --- | --- |
-| **company** | The ObjectId of the company where the file is stored. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | |
+| **company** | The ObjectId of the company where the file is stored. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) | |
 | **contentType** | Indicates the category the file belongs to. | string | Options are: _image_, _video_, _document_ | DEPRECATED |
 | **context** | Holds information about the file's contexts, i.e., the related data models. | object | The object fields vary depending on the file.
 | **createdAt** | Date and time the file was uploaded. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |

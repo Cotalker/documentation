@@ -68,7 +68,7 @@ The [Scheduler](/docs/documentation/admin/admin_scheduler) creates _schedules_ o
 | **\_id** | System generated scheduler ID. | ObjectId<COTSchedule\>
 | **body** | Contains the scheduled routine. | [COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot) | 
 | **code** | The _schedule's_ name code. | Maximum 60 characters; only lowercase letters, numbers, and underscores allowed; must be unique.
-| **company** | The ID of the company the schedule is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | 
+| **company** | The ID of the company the schedule is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) | 
 | **createdAt** | Indicates the date the scheduled routine was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **cron** | Scheduled routine recurrence indicated in _cron_ format, e.g., `00 30 08 * * 1,4,5` | string | Cron format : <br/>Seconds: 0-59<br/>Minutes: 0-59<br/>Hours: 0-23<br/>Day of Month: 1-31<br/>Months: 0-11 (Jan-Dec)<br/>Day of Week: 0-6 (Sun-Sat)
 | **cronTimeZone** | Indicates the time zone using _TZ database name_. | string | Default: `America/Santiago`

@@ -65,7 +65,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/client/basic_co
 | **asset.propertyType** | The asset's property type (collection) ID. | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
 | **asset.type** | Use the `generic` type for tasks that need to be repeated. Use `unique` for one-time tasks. | string | Enum: [ "generic", "unique" ]
 | **code** | The state machine's unique identification name. | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
-| **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) |
+| **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Date the workflow was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **dynamicPropertyTypes** | Indicates the collections (property types) set as _statuses_ in the [additional fields](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) section of workflow settings. Users will be able to select elements from the collections to give further details about the task. | object | This option can be used to filter tasks, establish permissions, set priorities, among others.
 | **dynamicPropertyTypes.isActive** | Lists the statuses associated with a _collection (property type)_. | string[ ] | Enum: [ "status1", "status2", "status3", "status4", "status5"]

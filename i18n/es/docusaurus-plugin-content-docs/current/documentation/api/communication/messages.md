@@ -258,7 +258,7 @@ Element | Description | Type | Required | Notes
 **contentParts[x].payload.card** | The data displayed when hovering over `hover` type content. | object | Required when using the `hover` type. |
 **contentParts[x].payload.card.image** | URL of the image that is displayed on the pop-up card. | string | Required when using the `hover` type. | 
 **contentParts[x].payload.card.text** | The text that is displayed on the pop-up card. | string | Required when using the `hover` type. |
-**contentParts[x].payload.company** | ObjectId of the company in which the message is sent. | [ObjectId<COTCompany\>](/docs/documentation/models/model_company) | Required when using the `task` type. | 
+**contentParts[x].payload.company** | ObjectId of the company in which the message is sent. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) | Required when using the `task` type. | 
 **contentParts[x].payload.task** | ObjectId of the task that is linked to the `contentParts.content` text. | [ObjectId<COTTask\>](/docs/documentation/models/tasks/model_tasks) | Required when using the `task` type. |
 **contentParts[x].payload.taskGroup** | ObjectId of the task group in which the task is found. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required when using the `task` type.
 **isSaved** | This field must be set to `2` to send the message. | number | Required |

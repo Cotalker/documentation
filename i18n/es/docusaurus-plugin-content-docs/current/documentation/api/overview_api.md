@@ -62,7 +62,7 @@ _Here's a list of the endpoints we cover in this documentation:_
 Endpoint | Description | Data Model(s)
 --- | --- | ---
 [/auth/local](/docs/documentation/api/auth) | authentication token | N/A
-[/companies](/docs/documentation/api/company) | company configuration and settings | [COTCompany](/docs/documentation/models/model_company)
+[/companies](/docs/documentation/api/company) | company configuration and settings | [COTCompany](/docs/documentation/models/company/model_company)
 [/users](/docs/documentation/api/users/) | users in your company, both humans and bots | [COTUser](/docs/documentation/models/users/model_users)
 [/accessroles](/docs/documentation/api/users/accessroles) | set of permissions granted to users | [COTAccessRole](/docs/documentation/models/users/model_accessroles)
 [/jobtitles](/docs/documentation/api/users/jobtitles) | job titles can group users and give them special attributes | [COTJobTitle](/docs/documentation/models/users/model_jobtitles)
