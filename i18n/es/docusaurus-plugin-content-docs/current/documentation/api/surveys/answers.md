@@ -3,10 +3,6 @@ id: answers
 title: Answers
 sidebar_label: Answers
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 
@@ -103,4 +99,3 @@ curl --location --request GET 'https://www.cotalker.com/api/v2/answers/61a7c1df0
 The response follows the [COTAnswer](/docs/documentation/models/surveys/model_answers) data model.
 
 ---
-

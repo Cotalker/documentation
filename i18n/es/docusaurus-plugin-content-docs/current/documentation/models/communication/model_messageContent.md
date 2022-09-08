@@ -2,10 +2,6 @@
 title: Message Content Type Data Models
 sidebar_label: COTMessageContentType
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">COTMessageContentType</span>
@@ -188,4 +184,3 @@ wordprocessingml.document",
   "content" : "{ \"userid\": \"618a9d0b3a562186911eafb1\", \"external\": \"https://www.google.com\", \"externalLabel\": \"Google\" }",
 }
 ```
-

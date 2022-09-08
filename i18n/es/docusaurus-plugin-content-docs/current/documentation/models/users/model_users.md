@@ -3,10 +3,6 @@ title: Users Data Model
 sidebar_label: COTUser
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 <span className="hero__subtitle">COTUser</span>
 
 
@@ -110,6 +106,7 @@ A [__user__](/docs/documentation/admin/users) represents a person or [bot](/docs
 | extensions | Collections used to store user information | object | [Additional fields](/docs/documentation/admin/users#additional-fields) |
 | isActive | Indicates if the user is still active or if it has been deactivated | boolean | |
 | isOnline | | boolean | |
+| isReadOnly | Sets the user to read-only mode. | boolean |
 | job | ObjectId of the [job title](/docs/documentation/admin/admin_jobtitles) assigned to the user | ObjectId<COTJobTitles\> | [Job Title Data Model](/docs/documentation/models/users/model_jobtitles) |
 | jobTitle | The user's job title | string | |
 | lastRequestDate | | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
@@ -169,5 +166,4 @@ _The following deprecated items might still be found in the model:_
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-
 

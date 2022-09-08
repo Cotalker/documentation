@@ -2,10 +2,6 @@
 title: API Overview
 sidebar_label: Overview
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 import Mermaid from '@theme/Mermaid';
@@ -110,4 +106,3 @@ Endpoint | Description | Data Model(s)
         U --> W
         C --> W
 `}/>
-

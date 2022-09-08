@@ -2,10 +2,6 @@
 title: Location Component
 sidebar_label: Location
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
@@ -48,4 +44,3 @@ _This mode allows users to freely select a location. For more details on how it 
 ## Data Models {#data-models}
 - The Location survey component's [data model can be viewed here](/docs/documentation/models/surveys/model_questionContentType#gps).
 - A sample of a submitted [answer's data model can be viewed here](/docs/documentation/admin/tips/survey_gps_response).
-

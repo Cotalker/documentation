@@ -2,10 +2,6 @@
 title: Question Execution
 sidebar_label: COTQuestionExec
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 import Tabs from '@theme/Tabs';
@@ -88,4 +84,3 @@ _Examples:_
 ## Help {#help}
 
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-

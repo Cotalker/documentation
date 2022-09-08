@@ -2,10 +2,6 @@
 title: Basic Concepts / Glossary
 sidebar_label: Basic Concepts
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
@@ -185,7 +181,6 @@ A workflow is sometimes referred to as a _state machine_.
 
 </div>
 <br/>
-
 
 
 

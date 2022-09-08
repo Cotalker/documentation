@@ -2,10 +2,6 @@
 title: Access Roles Data Model
 sidebar_label: COTAccessRole
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">COTAccessRole</span>

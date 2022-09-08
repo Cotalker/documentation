@@ -1,10 +1,6 @@
 ---
 title: Workflow Group Tasks
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <span className="hero__subtitle">Settings Panel Guide</span>

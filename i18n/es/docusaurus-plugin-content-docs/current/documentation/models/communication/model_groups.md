@@ -2,10 +2,6 @@
 title: Groups Data Modal
 sidebar_label: COTGroup
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'; 
@@ -100,6 +96,7 @@ import TabItem from '@theme/TabItem';
 | innerSort | Sorts channels within the group| string | `modifiedAt`, `createdAt`, `a-z`, `lastMessage` |
 | innerSortDirection | Indicates whether sorting order is _ascending_ or _descending_. | string | Options are: `asc` or `desc` |
 | isActive | Indicates if group is active or has been deactivated | boolean | |
+| isCategory | Indicates whether the group is a [category](/docs/documentation/admin/admin_categories), i.e., if it contains sub-groups within the Main Menu Bar. | boolean | This field is used in conjunction with the `nestedGroups` field.
 | link | Settings for [link groups](/docs/documentation/admin/admin_links) that appear on the Main Menu Bar | object | |
 | link.auth | Sends user's [authentication token](/docs/documentation/api/auth) |boolean | |
 | link.cmd | | string | |
@@ -113,7 +110,7 @@ import TabItem from '@theme/TabItem';
 | modifiedAt | Last date and time the group was modified | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ |
 | nameCode | The group's unique identification name | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique. |
 | nameDisplay | The group name users see on the platform  | string | |
-| nestedGroups | Contains the ObjectIds of the _groups_ in a _category_ displayed as a sub-menu on the Main Menu Bar. | ObjectId<COTGroup\>[ ] | More information in the [Categories](/docs/documentation/admin/admin_categories) section. |
+| nestedGroups | Contains the ObjectIds of the _groups_ in a _category_ displayed as a sub-menu on the Main Menu Bar. Must be used in conjunction with the `isCategory` field. | ObjectId<COTGroup\>[ ] | More information in the [Categories](/docs/documentation/admin/admin_categories) section. |
 | parent | Indicates the parent group, making the child group appear in the parent's group panel. | ObjectId<COTGroup\> |  |
 | search | Array of automatically generated search keywords | string [ ] | |
 | viewSettings | Sets the initial display type for workflow groups. | object | |
@@ -160,4 +157,3 @@ import TabItem from '@theme/TabItem';
 
 ## Help {#help}
 - [Cotalker Platform Community](https://github.com/Cotalker/documentation/discussions): post your questions or search for previous answers given in the forum
-

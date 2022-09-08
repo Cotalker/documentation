@@ -2,10 +2,6 @@
 title: State Machines
 sidebar_label: State Machines
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
@@ -710,5 +706,4 @@ Go to [COTSLA](/docs/documentation/models/tasks/model_sla) for a complete descri
 ```
 
 ---
-
 

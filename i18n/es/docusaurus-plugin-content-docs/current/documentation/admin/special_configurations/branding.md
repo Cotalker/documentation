@@ -2,10 +2,6 @@
 title: Branding Settings
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Customize platform colors, text, and login authentication.</span>
@@ -40,7 +36,7 @@ To apply changes, you must:
 
 :::tip
 - Examples and tips for the API request with _body_ details are given below.
-- The `branding` object that must be included in the request body is described in the [COTCompany](/docs/documentation/models/company/model_company) data model specifications.
+- The `branding` object that must be included in the request body is described in the [`companies.branding`](/docs/documentation/models/company/model_company) data model specifications.
 - The API reference guide for the PATCH request on the _companies_ endpoint is available in the [Update a Company](/docs/documentation/api/company#patch-company) section.
 :::
 
@@ -244,4 +240,3 @@ This feature's availability may depend on your company's Cotalker plan. Speak wi
     }
 }
 ```
-

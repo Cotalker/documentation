@@ -3,10 +3,6 @@ id: sla
 title: Adding an SLA Routine to your Workflow
 sidebar_label: SLA Routine
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 

@@ -2,10 +2,6 @@
 title: Company
 sidebar_label: Company
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}

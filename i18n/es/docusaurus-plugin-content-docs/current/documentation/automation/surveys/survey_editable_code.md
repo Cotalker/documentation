@@ -4,10 +4,6 @@ sidebar_label: Developer Mode Editability
 displayed_sidebar: documentation
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
@@ -141,5 +137,4 @@ _The task state has changed and now the survey cannot be edited:_
 - [Survey Admin Documentation](/docs/documentation/admin/survey/survey_overview)
 - [COTSurvey data model](/docs/documentation/models/surveys/model_surveys)
 - [COTTask data model](/docs/documentation/models/tasks/model_tasks)
-
 

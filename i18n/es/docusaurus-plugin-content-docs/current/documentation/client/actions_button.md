@@ -2,10 +2,6 @@
 title: Actions Buttons
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
-
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 ## Overview {#overview}
@@ -38,5 +34,4 @@ _The Channel Workspace's **actions button** will look something like the image b
 
 <img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_actions_00.png')} />
 <br/>
-
 

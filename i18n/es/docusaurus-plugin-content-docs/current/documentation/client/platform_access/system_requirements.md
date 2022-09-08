@@ -1,10 +1,6 @@
 ---
 title: System Requirements
 ---
-
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
 <img alt="design" className="img_title" src={useBaseUrl('img/design/Platforms.svg')} />
@@ -28,4 +24,3 @@ Cotalker works also on Firefox, Safari, Edge (Chromium version), and Chrome-base
 ## Cotalker iOS {#ios}
 **Minimum**: iOS12 (SDK 15)  
 **Recommended**: iOS 15 (SDK 15)  
-

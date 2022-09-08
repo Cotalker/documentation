@@ -55,4 +55,3 @@ _Settings and Options:_
 - [Channel Data Model (COTChannel)](/docs/documentation/models/communication/model_channels)
 - [Group API Requests](/docs/documentation/api/communication/groups)
 - [Channel API Requests](/docs/documentation/api/communication/channels)
-
