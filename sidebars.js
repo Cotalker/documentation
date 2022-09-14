@@ -25,8 +25,7 @@ module.exports = {
             'documentation/client/main_menu',
             'documentation/client/tool_bar',
             'documentation/client/groups',
-            'documentation/client/channels',
-            // 'documentation/client/videocalls',
+            'documentation/client/channels'
           ],
           collapsed: true,
         },
@@ -40,8 +39,11 @@ module.exports = {
             {
               type: 'category',
               label: 'Tasks',
+              link: {
+                type: 'doc',
+                id: 'documentation/client/tasks/overview',
+              },
               items: [
-                'documentation/client/tasks/overview',
                 'documentation/client/tasks/access_task',
                 {
                   type: 'category',
@@ -49,9 +51,20 @@ module.exports = {
                   items: [
                     'documentation/client/tasks/taskview',
                     'documentation/client/tasks/group_view',
-                    'documentation/client/tasks/task_details',
-                    'documentation/client/tasks/task_chat',
-                    'documentation/client/tasks/task_notes'
+                    {
+                      type: 'category',
+                      label: 'Task Workspace',
+                      link: {
+                        type: 'doc',
+                        id: 'documentation/client/tasks/task_workspace',
+                      },
+                      items: [
+                        'documentation/client/tasks/task_notes',
+                        'documentation/client/tasks/task_chat',
+                        'documentation/client/tasks/task_details'
+                      ],
+                      collapsed: true
+                    },
                   ],
                   collapsed: true
                 },
@@ -61,6 +74,7 @@ module.exports = {
                   items: [
                     'documentation/client/tasks/create_task',
                     'documentation/client/tasks/update_task',
+                    'documentation/client/tasks/filter_tasks'
                   ],
                   collapsed: true
                 },

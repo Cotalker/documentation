@@ -1,34 +1,16 @@
 ---
 title: Task Details
+sidebar_label: Details
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
+import Layout, {toc as Title1TOC} from '/docs/documentation/client/tasks/task_details/_task-details-layout.mdx';
 
 
 
-## User Task Roles {#user-roles}
-User task roles are set in the task **Details** section. If you have the proper permissions and task role, you can write the name of the user in the corresponding field.
+Task settings are displayed in the **Details** tab on the task workspace. Settings can be viewed and edited according to the workflow configuration and user access roles.
 
-<div className="container">
-<div className="row">
-<div className="col col--6">
-
-
-<img alt="create task" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/client_tasks_12.png')} />
-<br/>
-
-</div>
-<div className="col col--6">
-
-1. **Assignee**: The user in charge of carrying out the task. Only one _assignee_ can be designated at a time. By default, the _creator_ of the task is designated as the _assignee_, but can later be changed.
-2. **Creator**: The user that created the task. The _creator_ can be a human or a bot.
-3. **Users** (_doble-click on the user tag to shuffle through the following options_):
-    - **Follower**: A _follower_ can read task details and participate in the chat area, but cannot update task states or details.
-    - **Editor**: An _editor_ has read & write access on all task detail fields and can participate in the chat area.
-    - **Visibility**: Users with the _visibility_ tag can view limited task details. They can participate in the chat area and view notes, but they cannot change the task's state.
-
-</div>
-</div>
-</div>
+## Layout {#layout}
+<Layout/>
 
 ---
 

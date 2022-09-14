@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Tasks
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tasks, {toc as Title1TOC} from '/docs/documentation/client/glossary/_task.mdx';
@@ -8,6 +8,8 @@ export const toc = [...Title1TOC];
 
 <img alt="design" className="img_title" src={useBaseUrl('img/design/Tasks.svg')} />
 <br/>
+
+## Overview {#overview}
 
 <Tasks/>
 
@@ -27,7 +29,7 @@ The image above displays the tasks that were created in a specific workflow. The
 - Users can create tasks.
 - Tasks can be filtered and sorted in the display. 
 - The _task workspace_ includes:  
-    - [Files](/docs/documentation/client/tasks/task_notes): Dispalys shared files and notes. Notes can also be edited from here. 
+    - [Files](/docs/documentation/client/tasks/task_notes): Displays shared files and notes. Notes can also be edited from here. 
     - [Chat](/docs/documentation/client/tasks/task_chat): Accesses the chat area which displays user and system messages, survey forms, and shared files.
     - [Details](/docs/documentation/client/tasks/task_details): View and edit task settings.
 - Tasks count with different levels of user access.
