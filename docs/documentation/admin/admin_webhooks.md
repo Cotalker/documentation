@@ -249,6 +249,6 @@ This log contains a [COTTask](/docs/documentation/models/tasks/model_tasks) data
 ## Related Topics {#related-topics}
 - [Webhooks API Documentation](/docs/documentation/api/automations/webhooks): API tools for configuring webhooks and obtaining the data they send.
 - [COTWebhook](/docs/documentation/models/webhooks/webhook): Data model in which a webhook's configuration is stored.
-- [COTEvent](/docs/documentation/models/webhooks/event): Trigger event data models. COTEvent data can be viewed in [webhook logs](http://localhost:3000/docs/documentation/admin/admin_webhooks#logs) or as an object within [COTWebhookLog.event](http://localhost:3000/docs/documentation/models/webhooks/webhooklog).
+- [COTEvent](/docs/documentation/models/webhooks/event): Trigger event data models. COTEvent data can be viewed in [webhook logs](/docs/documentation/admin/admin_webhooks#logs) or as an object within [COTWebhookLog.event](/docs/documentation/models/webhooks/webhooklog).
 - [COTWebhookLog](/docs/documentation/models/webhooks/webhooklog): COTWebhookLog objects contain all of an event's webhook log data. 
 - [COTSurveyExecution](/docs/documentation/models/webhooks/survey_execution): COTSurveyExecution is found within COTEvent objects and contains submitted survey data in the form of COTMessage objects.

@@ -25,8 +25,7 @@ module.exports = {
             'documentation/client/main_menu',
             'documentation/client/tool_bar',
             'documentation/client/groups',
-            'documentation/client/channels',
-            // 'documentation/client/videocalls',
+            'documentation/client/channels'
           ],
           collapsed: true,
         },
@@ -37,7 +36,50 @@ module.exports = {
             'documentation/client/client_search',
             'documentation/client/actions_button',
             'documentation/client/surveys',
-            'documentation/client/taskview',
+            {
+              type: 'category',
+              label: 'Tasks',
+              link: {
+                type: 'doc',
+                id: 'documentation/client/tasks/overview',
+              },
+              items: [
+                'documentation/client/tasks/access_task',
+                {
+                  type: 'category',
+                  label: 'User Interface',
+                  items: [
+                    'documentation/client/tasks/taskview',
+                    'documentation/client/tasks/group_view',
+                    {
+                      type: 'category',
+                      label: 'Task Workspace',
+                      link: {
+                        type: 'doc',
+                        id: 'documentation/client/tasks/task_workspace',
+                      },
+                      items: [
+                        'documentation/client/tasks/task_notes',
+                        'documentation/client/tasks/task_chat',
+                        'documentation/client/tasks/task_details'
+                      ],
+                      collapsed: true
+                    },
+                  ],
+                  collapsed: true
+                },
+                {
+                  type: 'category',
+                  label: 'How-To',
+                  items: [
+                    'documentation/client/tasks/create_task',
+                    'documentation/client/tasks/update_task',
+                    'documentation/client/tasks/filter_tasks'
+                  ],
+                  collapsed: true
+                },
+              ]
+            },
             'documentation/client/database',
             'documentation/client/dashboard',
             'documentation/client/reports',
