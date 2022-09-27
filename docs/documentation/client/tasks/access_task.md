@@ -51,7 +51,7 @@ Task view displays vary depending on the configuration. See [Task Views](/docs/d
 
 ## II. Choose a Task {#task}
 
-Depending on its configuration, you can choose a _tasks_ either from the [**task view**](#task-view) or [**group panel**](#group-panel).
+Depending on its configuration, you can choose a _task_ either from the [**task view**](#task-view) or [**group panel**](#group-panel).
 
 <div className="alert alert--secondary">
 
@@ -96,5 +96,9 @@ If you are not automatically taken to the _task view_ when you choose a _task gr
 <img alt="task button" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_access_04.png')} />
 <br/>
 
+<div className="margin margin-left--lg">
+
 - **<span className="badge badge--danger">A.</span>** Either through the _task button_, found on top of the _group panel_.  
-- **<span className="badge badge--danger">B.</span>** Or by pressing the _kebab menu icon_ in the upper-right corner of the _channel workspace_:  
+- **<span className="badge badge--danger">B.</span>** Or by pressing the _kebab menu icon_ in the upper-right corner of the _channel workspace_.  
+
+</div>

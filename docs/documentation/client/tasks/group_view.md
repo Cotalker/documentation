@@ -24,5 +24,15 @@ The group panel can also display sub-groups and links.
   - **<span className="badge badge--info">7.</span> Task View**: Allows users to switch to [task view](/docs/documentation/client/tasks/taskview).
 
 
+## Task Details {#details}
+To view or edit task details:
 
+<img alt="task group" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_group_01.png')} />
+<br/>
 
+- <span className="badge badge--danger">1.</span> Press the title bar on the channel workspace.
+- <span className="badge badge--danger">2.</span> The task details panel slides open on the right side of the screen.
+
+:::info
+Go to the [Task Details](/docs/documentation/client/tasks/task_details) section for more information.
+:::

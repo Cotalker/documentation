@@ -1,5 +1,5 @@
 ---
-title: Filtering & Sorting Tasks
+title: Filter & Sort Tasks
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

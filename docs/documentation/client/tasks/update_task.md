@@ -1,5 +1,5 @@
 ---
-title: Updating Tasks
+title: Update a Task
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
