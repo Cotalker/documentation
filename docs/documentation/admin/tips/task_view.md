@@ -8,12 +8,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ## Introduction {#intro}
 This section provides information on how admins can customize the way users initially view tasks for a particular workflow (task) group.
 
-Users can view tasks in the Cotalker platform through the [_group view_](/docs/documentation/client/groups#group-view) or one of four [_task views_](/docs/documentation/client/taskview). _Task view_ is set as the default.
+Users can view tasks in the Cotalker platform through the [_group view_](/docs/documentation/client/groups#group-view) or one of four [_task views_](/docs/documentation/client/tasks/taskview). _Task view_ is set as the default.
 
 ### Task Views {#task-views}
 _Task views_ display tasks in such a way as to help users visualize their current state. 
 
-Currently, Cotalker has four [tasks views](/docs/documentation/client/taskview) available for workflow groups:
+Currently, Cotalker has four [tasks views](/docs/documentation/client/tasks/taskview) available for workflow groups:
 1. List View
 2. Kanban View
 3. Calendar View
@@ -26,15 +26,17 @@ _Below is an example of the task kanban view:_
 ### Group View {#group-view}
 The _group view_ is similar to the _task list view_, but can display content not available through task views in its [_group panel_](/docs/documentation/client/groups#group-panel). For example, sub-groups and links are accessible through the _group panel_. The _group panel_ also has a special _actions button_ that can be used to summon a _workflow start form_ or open any other useful link. 
 
-The _group view_ also offers users the option to [access the _task view_](/docs/documentation/client/taskview#access-task-view).
+To change from the _group view_ to the [_task view_](/docs/documentation/client/tasks/taskview), simply press the [corresponding icon on the upper right side of the group panel](/docs/documentation/client/tasks/group_view).
 
 _Below is an example of the group view:_
 
 <img alt="group view" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_view_05.png')} />
 <br/>
 
-## Changing Task View {#change-task-view}
+## Set Up the Task View {#change-task-view}
 _To set the default **task view** and the available **task views** to choose from on the **task view toolbar**:_
+
+#### I. Select the workflow group you wish to set up.
 
 <img alt="set task view" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_view_00.png')} />
 <br/>
@@ -51,6 +53,8 @@ _To set the default **task view** and the available **task views** to choose fro
 <img alt="set task view" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_view_02.png')} />
 <br/>
 
+#### II. Adjust the workflow group settings.
+
 <div className="margin-left--lg">
 
 1. From **Workflows** Settings Panel, select the **Configuration** tab.
@@ -60,8 +64,10 @@ _To set the default **task view** and the available **task views** to choose fro
 
 </div>
 
-## Change to Group View {#change-group-view}
-_To set the **group view** as default:_
+## Set Group or Task View as Default {#change-group-view}
+_To set the default view as either **group view** or **task view**:_
+
+#### I. Select the workflow group you wish to set up.
 
 <img alt="set task view" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_view_01.png')} />
 <br/>
@@ -74,6 +80,8 @@ _To set the **group view** as default:_
 4. Select the _edit workflow group_ icon to open the corresponding settings panel shown below.
 
 </div>
+
+#### II. Adjust the workflow group settings.
 
 <img alt="set task view" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_view_03.png')} />
 <br/>

@@ -11,14 +11,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ## Introduction {#introduction}
 Channel Workspaces allow quick and transparent communication between people working on a _task_ or project. At first, a _channel_ looks primarily like a *chatroom*, but they are much more than that:
 
-- Chat channels exist within [regular and workflow groups](/docs/documentation/client/taskview).
-- If the chat channel is found within a [workflow group](/docs/documentation/client/groups#workflow-groups) and is associated with a [task](/docs/documentation/client/taskview), you can configure the task, change its state, and interact with those involved.
+- Chat channels exist within [regular and workflow groups](#layout).
+- If the chat channel is found within a [workflow group](/docs/documentation/client/groups#workflow-groups) and is associated with a [task](/docs/documentation/client/tasks/overview), you can configure the task, change its state, and interact with those involved.
 - All channel workspaces can contain [surveys](/docs/documentation/client/surveys) that users can fill out and send.
-- Depending on access roles, users can include other users into the channel workspace.
+- Depending on access roles, users can include other users in the channel workspace.
 
 :::note How to create new channels
 - In [standard groups](/docs/documentation/client/groups#regular-groups), new chat channels can be created using the [group panel's](/docs/documentation/client/groups#group-panel) [_actions button_](/docs/documentation/client/actions_button).
-- In [workflow (task) groups](/docs/documentation/client/groups#workflow-groups), new chat channels are automatically created along with [tasks](/docs/documentation/client/taskview).
+- In [workflow (task) groups](/docs/documentation/client/groups#workflow-groups), new chat channels are automatically created along with [tasks](/docs/documentation/client/tasks/overview).
 :::
 
 ## Accessing the Channel Workspace
@@ -67,7 +67,7 @@ _To access a channel from the group view:_
 1. **Title Bar**: Displays the task's name and users associated with it.
 2. **Files**: Access [_notes_](/docs/documentation/client/notes#accessing-task-notes) associated with the task.
 3. **Chat**: Access the task's _channel workspace_.
-4. **Details**: Open the task's [settings panel](/docs/documentation/client/taskview#modifying-tasks).
+4. **Details**: Open the task's [settings panel](/docs/documentation/client/tasks/task_details).
 5. **Chat Area**: Displays messages, files, images, emojis, system messages, bot interactions, and more. [Click here for more details.](#chat-message-options)
 6. **Attachment Icon**: Press to add files you wish to share. Or you can simply drag and drop files in the chat area.
 7. **Actions Button**: Direct access to allowed task actions. Actions can include filling out a survey or changing a task's state. [Click here for more details.](#task-menus-within-channel)

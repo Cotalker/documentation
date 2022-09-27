@@ -32,7 +32,7 @@ A message notification icon now appears on task information cards while in task 
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/client/taskview#chat-in-task">UI Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/client/tasks/task_chat#new-message">UI Documentation</a>
 <br/>
 
 </div>

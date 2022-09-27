@@ -100,8 +100,8 @@ _A new settings panel will open up._
         ----
 
     :::note Cotlang script descriptions 
-    - `$OUTPUT#task_request#data|assignee`: _Get the task asignee id._
-    - `($CODE#users#_id#($OUTPUT#task_request#data|assignee))|name|names`: _Get the name of the asignee_
+    - `$OUTPUT#task_request#data|assignee`: _Get the task assignee Id_
+    - `($CODE#users#_id#($OUTPUT#task_request#data|assignee))|name|names`: _Get the name of the assignee_
     - `$OUTPUT#task_request#data|serial`: _unique number of the task_
     - `$OUTPUT#task_request#data|name`: _get the name of the task_
     :::

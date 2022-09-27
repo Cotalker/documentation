@@ -1,5 +1,4 @@
 ---
-id: taskview
 title: Tasks
 sidebar_label: Tasks
 ---

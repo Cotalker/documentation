@@ -125,20 +125,32 @@ Task references are stored in the collection.
 <div className="col col--3"><b>Status (Nº 1-5):</b></div>
 <div className="col col--5">
 
-Adds a collection as an [additional field](/docs/documentation/admin/database/admin_collections#additional-fields) to [tasks](/docs/documentation/client/taskview) belonging to the workflow. The additional fields (_statuses_) are used to filter, group, or sort the tasks in the task view. The elements within the collection are used as the available options for each _status_.
+Adds a _collection_ as an [additional field or status](/docs/documentation/admin/database/admin_collections#additional-fields) on all tasks belonging to the workflow. 
+
+The _elements_ within the _collection_ are used as the available values (options) for each _status_. 
+
+<br/>
+
+_Status_ options can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
+
+<br/>
+
+_Status_ values can also be used to filter, group, or sort the tasks in the task view.
+
+
+</div>
+<div className="col col--4"><em>
+
+_Status_ fields are displayed on the [general information of task details](/docs/documentation/client/tasks/task_details).
+
+<br/>
+
+_Status_ values appear on task descriptions when displayed on [list](/docs/documentation/client/tasks/taskview#list-view) or [kanban](/docs/documentation/client/tasks/taskview#kanban-view) views.
 
 <br/>
 
 These collections correspond to the five _status_ fields belonging to the `dynamicPropertyTypes` object of the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
 
-</div>
-<div className="col col--4"><em>
-
-The elements chosen for each _status_ appear on the task description displayed in [task view](/docs/documentation/client/taskview#tasks-view).
-
-<br/>
-
-Status options can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
 
 </em></div>
 </div>
@@ -146,18 +158,28 @@ Status options can indicate things like task priority, corresponding company dep
 <div className="col col--3"><b>Additional fields:</b></div>
 <div className="col col--5">
 
-Collections are added to be used as [_additional tabs_ on task details](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels#additional-fields-extensions). The [collections' additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) are included on the added tab. Up to fifty collections can be selected.
+_Collections_ used to add extra information to tasks. The [_additional fields contained within the selected collections_](/docs/documentation/admin/database/admin_collections#additional-fields) will be used as additional fields on the task. Up to fifty collections can be selected.
 
-The additional fields are used to filter, group, or sort the tasks in the task view. 
+<br/>
 
-These collections correspond to the `allowedExtensions` field in the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
+The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. 
 
+<br/>
+
+The _additional fields_ can also be used to filter, group, or sort the tasks in the _task view_. 
 
 </div>
 <div className="col col--4"><em>
 
-The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. 
-The collections added here are not the same as the additional field options shown above (status 1-5). [See "best practices" below for more information on the differences between these two types of additional fields](#workflow-additional-fields).
+These _additional fields_ will appear within [_extra tabs_ on task details](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels#details-layout). 
+
+<br/>
+
+These _collections_ correspond to the `allowedExtensions` field in the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
+
+<br/>
+
+These _additional fields_ differ from the _statuses_ shown above (status 1-5). [See "best practices" below for information on the preference of _statuses_ over _additional fields_](#workflow-additional-fields).
 
 </em></div>
 </div>
@@ -311,7 +333,9 @@ _Two types of additional fields for workflows:_
 <img alt="additional fields in workflows" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_create_edit_bestpractices_00.png')} />
 <br/>
 
-The first five _additional fields_ or **statuses** (A) correspond to the `dynamicPropertyTypes` field in the workflow's data model ([COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine)). The **additional fields** slot found at the bottom of the section (B) can contain multiple collections and are stored in the `allowedExtensions` field of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine).
+The five **statuses** (A), found in the **Additional Fields** tab, correspond to the `dynamicPropertyTypes` field in the workflow's data model ([COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine)) and are displayed as [standard task settings](/docs/documentation/client/tasks/task_details/standard-task-details) on the [task details](/docs/documentation/client/tasks/task_details) panel. 
+
+The **additional fields** slot found at the bottom of the section (B) can contain multiple _collections_ and are stored in the `allowedExtensions` field of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine). These _additional fields_ are displayed as extra tabs in the [task details](/docs/documentation/client/tasks/task_details) panel.
 
 As best practice, it is recommended to use the first five **statuses** (A) because their structure permits greater consistency between the elements.
 

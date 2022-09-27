@@ -32,7 +32,7 @@ Keep track of changes made to task settings. All updates made to task details ar
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/client/taskview#modifying-tasks">Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/client/tasks/task_chat">Documentation</a>
 <br/>
 
 </div>

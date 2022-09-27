@@ -37,7 +37,7 @@ Customizing the way tasks are displayed is crucial. That's why we keep updating 
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/client/taskview#create-a-filter">View Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/client/tasks/filter_tasks">View Documentation</a>
 <br/>
 
 </div>

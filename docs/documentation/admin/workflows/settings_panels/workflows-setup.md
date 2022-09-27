@@ -72,7 +72,7 @@ Choose the _initial workflow_ from the existing workflows in the group.
 <div className="col col--3"><b>Available Views:</b></div>
 <div className="col col--5">
 
-Indicates how users can view tasks within the task-view. The options will be made available through icons in the [task-view toolbar](/docs/documentation/client/taskview#menu-bar-icons).
+Indicates how users can view tasks within the _task view_. The options will be made available through icons in the [_task view menu bar_](/docs/documentation/client/tasks/taskview#menu-bar-icons).
 
 </div>
 <div className="col col--4"><em>
@@ -100,7 +100,7 @@ Filter used by default to sort tasks in the _task view_.
 </div>
 <div className="col col--4"><em>
 
-Options are determined by the [global filters](/docs/documentation/client/taskview#create-a-filter) that have been created.
+Options are determined by the [global filters](/docs/documentation/client/tasks/filter_tasks) that have been created.
 
 </em></div>
 </div>
@@ -123,7 +123,7 @@ Options are determined by the [global filters](/docs/documentation/client/taskvi
 <div className="col col--3"><b>Read Permissions:</b></div>
 <div className="col col--5">
 
-Permissions that allow users to view task settings in the [details](/docs/documentation/client/taskview#task-details) tab.
+Permissions that allow users to view task settings in the [details](/docs/documentation/client/tasks/task_details) tab.
 
 </div>
 <div className="col col--4"><em>
@@ -136,7 +136,7 @@ Permissions that allow users to view task settings in the [details](/docs/docume
 <div className="col col--3"><b>Write Permissions:</b></div>
 <div className="col col--5">
 
-Permissions that allow users to edit task settings in the [details](/docs/documentation/client/taskview#task-details) tab.
+Permissions that allow users to edit task settings in the [details](/docs/documentation/client/tasks/task_details) tab.
 
 </div>
 <div className="col col--4"><em>

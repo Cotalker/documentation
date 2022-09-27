@@ -44,11 +44,11 @@ All _task notes_ are indexed for [search queries](/docs/documentation/client/cli
 Create as many _notes_ as you want within your _tasks_.
 
 ### Creating Task Notes {#create-task-note}
-To create a _task note_, go to the _task's details_, either from the [_channel workspace_](/docs/documentation/client/taskview#tasks-channel) or [_task view_](/docs/documentation/client/taskview#task-view). 
+To create a _task note_, go to the _task's details_, either from the [_group view_](/docs/documentation/client/tasks/group_view#details) or [_task view_](/docs/documentation/client/tasks/taskview). 
 
 Here are three ways to create a note within a task:
 
-- _the Channel Workspace's task panel_
+- _the Group View's task panel_
   
   <img alt="associate note to task 1" className="img_sizing item shadow--tl" src={useBaseUrl('img/notes_11.png')} />
   <br/>

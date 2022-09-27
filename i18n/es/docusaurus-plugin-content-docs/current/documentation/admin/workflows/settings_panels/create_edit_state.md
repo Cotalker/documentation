@@ -106,14 +106,14 @@ The state should already exist as an element in the collection selected previous
 <div className="col col--5">
 
 Creates an action button in the workflow's channel that indicates how a state change can be triggered. Options are: 
-- _None_: The action button is not created. Use this option to change states through other means, like: [_survey trigger_](/docs/documentation/admin/workflows/settings_panels/create_edit_state/#survey-trigger), [_task view_](/docs/documentation/client/taskview#task-view), a [routine-stage bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/).
+- _None_: The action button is not created. Use this option to change states through other means, like: [_survey trigger_](/docs/documentation/admin/workflows/settings_panels/create_edit_state/#survey-trigger), [_task view_](/docs/documentation/client/tasks/update_task), a [routine-stage bot](/docs/documentation/automation/bots/pbchangestate), or through [API](/docs/documentation/api/tasks/).
 - _Survey_: A survey is added as an option in the actions button. The **start form** field appears. There you can indicate which survey should be summoned.
 - _Manual_: Adds the state itself as an option in the actions button.
 
 </div>
 <div className="col col--4"><em>
 
-[Click here](/docs/documentation/client/taskview#modifying-tasks) to see where to find the _actions button_ in the channel and how the options appear in it.
+[Click here](/docs/documentation/client/actions_button) to see where to find the _actions button_ in the channel and how the options appear in it.
 
 </em></div>
 </div>

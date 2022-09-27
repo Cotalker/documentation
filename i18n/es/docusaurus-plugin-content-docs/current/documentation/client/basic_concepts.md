@@ -7,7 +7,10 @@ sidebar_label: Basic Concepts
 Esta página aún no se encuentra traducida al español.
 :::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Highlight from '@theme/Highlight';
+import Tasks, {toc as Title1TOC} from '/docs/documentation/client/glossary/_task.mdx';
+import Workflows, {toc as Title2TOC} from '/docs/documentation/client/glossary/_workflows.mdx';
+
+
 
 <div className="alert alert--primary">
 
@@ -125,66 +128,14 @@ _Workflow Start Form:_
 </div>
 <br/>
 
-<div className="alert alert--secondary">
-
 ## Tasks {#tasks}
 
-<span className="hero__subtitle">A task is the representation of an asset and its state.</span>
-
-You can view, edit, create tasks, and change their [state](#state) and data. The tasks view allows filtering and grouping by states, assignments, users, among others.
-
-A task can only exist within a [workflow](#workflows). Before creating tasks, an appropriate workflow must be available.
-
-_Some examples of tasks and their possible states:_
-
-| Asset | States | 
-| ----- | ------ | 
-| Assignment | Open, Closed |
-| Job posting | Scouting, Interviews, Position Filled |
-| Client | Lead, First Meeting, Deal Closed |
-| Issue | Open, Verified, Fixed |
-| Contact | Pending, Responded |
-| Machine | Working, broken, At maintenance |
-| Store | Good, Average, Bad |
-
------
-
-_Task viewer – displays and filters tasks:_
-
-<img alt="task manager" className="img_sizing item shadow--tl" src={useBaseUrl('img/concepts_task_00.png')} />
-<br/>
-<br/>
-
------
-
-:::note More Information and Examples
-- [General information on viewing and creating tasks](/docs/documentation/client/taskview).
-- Related step-by-step tutorials:
-  - Creating a [workflow](/docs/tutorials/basic/create_state_machines).
-  - Creating and viewing [tasks](/docs/tutorials/basic/tutorial_taskview)
-:::
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
+<Tasks/>
 
 ## Workflows {#workflows}
 
-<span className="hero__subtitle">A Workflow is the process your tasks go through.</span>
-<br/>
-<br/>
+<Workflows/>
 
-_Workflow diagram with its states:_
-<img alt="workflow" className="img_sizing item" src={useBaseUrl('img/concepts_workflow_00.png')} />
-<br/>
-
-Create customized workflows for your [tasks](#tasks) through easy-to-fill-out forms. Add routines with built-in bots that permit all sorts of automations, or even create your own.
-
-A workflow is sometimes referred to as a _state machine_.
-
-</div>
-<br/>
 
 
 

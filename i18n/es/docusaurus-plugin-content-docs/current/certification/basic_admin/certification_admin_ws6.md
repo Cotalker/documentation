@@ -27,7 +27,7 @@ Understanding of the basics elements of the Admin:
 ### Introduction {#introduction}
 Reports, Database and Dashboard are different visualizations of the data. The first is used for audits, the second is used to access information on a company asset, and the last is used to monitor and manage company metrics. <br/><br/>
 On the other hand, to manage the task in cotalker is to use the task view. The task could be a financial or administrative request or even a maintenance ticket, among others. <br/> 
-For more details, go to the [task view section](/docs/documentation/client/taskview).
+For more details, go to the [task view section](/docs/documentation/client/tasks/taskview).
 
 ### What to build {#what-to-build}
 In this workshop we will simulate that we are working with a client of a financial company. <br/>

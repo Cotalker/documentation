@@ -14,7 +14,7 @@ Tutorial on configuring _tasks_ and using filters to organize _tasks_ in the _ta
 Time: 15 minutes
 
 :::tip Vocabulary Note:
-The [_task view_](/docs/documentation/client/taskview) is a tool used to display and organize tasks within a workflow. Tasks can be arranged using customized filters, allowing you to view at a glance the state of tasks according to your needs. Filters can also be shared globally so that all company members can use the same criteria for organizing tasks.
+The [_task view_](/docs/documentation/client/tasks/taskview) is a tool used to display and organize tasks within a workflow. Tasks can be arranged using customized filters, allowing you to view at a glance the state of tasks according to your needs. Filters can also be shared globally so that all company members can use the same criteria for organizing tasks.
 :::
 
 ## Company Requirements {#company-requirements}
@@ -325,4 +325,4 @@ _**NOTE**: More views can be added to the toolbar through the [**Workflows** set
 :::
 
 ## Related Topics {#related-topics}
-- [Task View](/docs/documentation/client/taskview): Getting Started Documentation
+- [Task View](/docs/documentation/client/tasks/taskview): Getting Started Documentation

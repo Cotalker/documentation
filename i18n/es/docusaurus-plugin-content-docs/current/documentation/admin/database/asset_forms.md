@@ -20,11 +20,16 @@ _SQL commands are used to set up the report:_
 <br/>
 <br/>
 
+_Options:_
+- **<span className="badge badge--primary">A.</span>** Closes the settings panel. Clicking outside the panel returns you to the previous window.
+- **<span className="badge badge--primary">B.</span>** Displays a preview of the report with the current settings.
+- **<span className="badge badge--primary">C.</span>** Saves the report, making it accessible through the _asset viewer_.
+
+_General Information:_
 - **<span className="badge badge--danger">1.</span> Report Name**: Write a name to identify the report.
 - **<span className="badge badge--danger">2.</span> Collection Name**: Choose the collection from where to gather data.
 
 _SQL Commands:_
-
 - **<span className="badge badge--danger">3.</span> Joins**: Combines rows from other collections based on related columns between them.
 - **<span className="badge badge--danger">4.</span> Where**: Returns only elements that fulfill the specified values.
 - **<span className="badge badge--danger">5.</span> Select**: Selects the table rows to display in the report.
@@ -35,11 +40,10 @@ _Settings:_
 - **<span className="badge badge--danger">8.</span> Asc/Desc**: Indicates if the order of results is ascending or descending.
 - **<span className="badge badge--danger">9.</span> Offset**: Sets the row from where to start returning data.
 
-_Options:_
-- **<span className="badge badge--primary">A.</span>** Closes the settings panel. Clicking outside the panel returns you to the previous window.
-- **<span className="badge badge--primary">B.</span>** Displays a preview of the report with the current settings.
-- **<span className="badge badge--primary">C.</span>** Saves the report, making it accessible through the _asset viewer_.
-
+:::info
+On the **Where**, **Limit**, and **Offset** fields, a special annotation can be used to retrieve a _value_ from the respective element (property): `${property.[...]}`.
+_Example_: `${property.schemaInstance.number}`
+:::
 
 ## Example {#example}
 This is a simple report that returns all the assets found within a specific collection.

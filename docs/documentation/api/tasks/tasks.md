@@ -253,7 +253,7 @@ Parameter | Description | Type | Required | Notes
 **status** | Returns tasks that are in the indicated state or status. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | Optional |
 **limitBy** | | string | Optional | Options are: "all", "group", or "none".
 **smStateMachine** | Lists all the tasks in the group that belong to the indicated state machine (workflow). | [ObjectId<COTSMStateMachine\>](/docs/documentation/models/tasks/model_statemachine) | Optional |
-**filter** | Returns tasks ordered by the indicated [_task view_ filter](/docs/documentation/client/taskview#create-a-filter). | ObjectId | Optional | The _filter_ ObjectId is stored in the `defaultFilter` field of the [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) data model.
+**filter** | Returns tasks ordered by the indicated [_task view_ filter](/docs/documentation/client/tasks/filter_tasks). | ObjectId | Optional | The _filter_ ObjectId is stored in the `defaultFilter` field of the [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) data model.
 **modifiedAt** | Lists tasks modified after the indicated date. | number | Optional | Date and time must be in Unix Epoch Timestamp format (with milliseconds), e.g., 1638219703000 = Monday, November 29, 2021 9:01:43 PM. |
 
 #### Request Sample {#get-tasks-for-user-request}

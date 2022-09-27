@@ -9,7 +9,7 @@ import Highlight from '@theme/Highlight';
 <br/>
 <br/>
 
-A Task report filters tasks associated with the element (asset) and displays them in the [task view](/docs/documentation/client/taskview).
+A Task report filters tasks associated with the element (asset) and displays them in the [task view](/docs/documentation/client/tasks/taskview).
 
 ## Settings {#settings}
 Fill out the settings below to configure an _asset task report_:

@@ -268,8 +268,8 @@ _Set display settings._
 <div className="col col--3"><b>Initial view:</b></div>
 <div className="col col--4">
 
-Set whether a _workflow group_ opens initially from a [task view](/docs/documentation/client/taskview#tasks-views) or [group panel](/docs/documentation/client/groups#group-view).  
-Task view is the default value.
+Set whether a _workflow group_ opens initially from a [_task view_](/docs/documentation/client/tasks/taskview) or [_group view_](/docs/documentation/client/tasks/group_view).  
+_Task view_ is the default value.
 
 </div>
 <div className="col col--5"><em>

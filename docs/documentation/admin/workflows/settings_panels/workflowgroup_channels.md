@@ -6,9 +6,9 @@ import Layout, {toc as Title1TOC} from '/docs/documentation/client/tasks/task_de
 
 <span className="hero__subtitle">Settings Panel Guide</span>
 
-_Workflow groups host [tasks](/docs/documentation/client/taskview) that exist within their workflows or state machines. You can access an individual task's configuration from the Administrative Panel or the task's workspace. Task configuration from the Administrative Panel is described below._
+_Workflow groups host [tasks](/docs/documentation/client/tasks/overview) that exist within their workflows or state machines. You can access an individual task's configuration from the Administrative Panel or the task's workspace. Task configuration from the Administrative Panel is described below._
 
-_Take advantage of tasks' ample array of tools and configurations that permit customizing them to your organization's needs. All tasks have an incorporated [channel workspace](/docs/documentation/client/channels), the ability to share files and [notes](/docs/documentation/client/notes#task-notes), and the possibility to view and configure other settings, like state, users, start and end dates, and additional fields, among others._
+_Take advantage of tasks' ample array of tools and configurations that permit customizing them to your organization's needs. All tasks have an incorporated [task workspace](/docs/documentation/client/tasks/task_workspace), the ability to share files and [notes](/docs/documentation/client/notes#task-notes), and the possibility to view and configure other settings, like state, users, start and end dates, and additional fields, among others._
 
 
 ## Access settings panel {#access}

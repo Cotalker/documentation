@@ -16,7 +16,7 @@ import Mermaid from '@theme/Mermaid';
 
 ## General Description {#descriptions}
 
-_Groups_ are the primary place to interact and exchange information in the Cotalker environment. From a group's panel, you can go to [channels](/docs/documentation/client/channels) and subgroups. Depending on the type of group, you can create and view [tasks](/docs/documentation/client/taskview), create other channels, or access a link to other information.
+_Groups_ are the primary place to interact and exchange information in the Cotalker environment. From a group's panel, you can go to [channels](/docs/documentation/client/channels) and subgroups. Depending on the type of group, you can create and view [tasks](/docs/documentation/client/tasks/overview), create other channels, or access a link to other information.
 
 <div className="alert alert--primary">
 
@@ -40,7 +40,7 @@ All group types can be grouped into _categories_. These _category groups_ then a
 
 ## Group Display {#access}
 Groups can be displayed either in _group view_ or _task view_. 
-- [**Task View**](#task-view): This is the default view for _workflow groups_. It displays tasks in one of the [available task views](/docs/documentation/client/taskview#tasks-view).
+- [**Task View**](#task-view): This is the default view for _workflow groups_. It displays tasks in one of the [available task views](/docs/documentation/client/tasks/taskview).
 - [**Group View**](#group-view): Contains the group panel, which can display sub-groups, folders, links, channels, and tasks. _Standard groups_ are always displayed in _group view_. Although this is not the default view for _Task groups_, the [admin](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit#settings) can set them to be displayed in _group view_.
 
 ### Task View {#task-view}
@@ -57,7 +57,7 @@ Groups can be displayed either in _group view_ or _task view_.
 3. The _task view toolbar_ appears above, allowing to change the task view appearance and display filters.
 
 :::info
-For more details about _task views_ and their display options, go to the [**Task View**](/docs/documentation/client/taskview#tasks-view) section.
+For more details about _task views_ and their display options, go to the [**Task View**](/docs/documentation/client/tasks/taskview) section.
 :::
 
 </div>
@@ -84,7 +84,7 @@ For more details about _task views_ and their display options, go to the [**Task
 <img alt="group panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_groups_01.png')} />
 <br/>
 
-- a.) [Task Viewer](/docs/documentation/client/taskview): Appears within workflow groups. Permits viewing tasks with display filters.
+- a.) [Task Viewer](/docs/documentation/client/tasks/taskview): Appears within workflow groups. Permits viewing tasks with display filters.
 - b.) [Group Search Tool](/docs/documentation/client/client_search#group-search): Search within the group.
 - c.) Channel and Subgroup list: Access [channels](/docs/documentation/client/channels) and subgroups.
 - d.) [Actions Button](/docs/documentation/client/actions_button): Depending on the group's configuration, create channels, tasks, or access a URL.
