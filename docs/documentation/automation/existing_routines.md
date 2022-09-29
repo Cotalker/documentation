@@ -19,7 +19,37 @@ Stage Types are explained in the following table.
 Click links for more detailed information.
 
 :::info
-On the backend, **stage types** use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Script Language) for settings fields. Depending on your needs, you can input any text characters and even use _HTML_ and _COTLang_ on the various settings fields.
+On the backend, **stage types** use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Script Language) for settings fields. Depending on your needs, you can input any text characters and even use _HTML_ or _COTLang_ on the various settings fields.
+:::
+
+:::caution Using variables
+- Variables declared within a _stage routine_ are always read by the system as strings.
+- Therefore, if you are to use a function in relation to a variable, such as to cast a number as an integer, that function must be used when the variable is being used, and not when the variable is being declared or defined.  
+  
+  **For example:**  
+  The function `[cast=>parseInt]` **should not** be used when declaring the variable as shown below:
+  ```  
+  {
+      "key" : "lastStock",
+      "value" : "$CODE#property#qty|[cast=>parseInt]"
+  },
+  {
+      "key" : "actualStock",
+      "value" : "$VAR#lastStock|[math=>add=($VALUE#qty)]"
+  },  
+  ```  
+  But **should rather** be used when the variable is used, as shown below:  
+    ```
+  {
+      "key" : "lastStock",
+      "value" : "$CODE#property#qty"
+  },
+  {
+      "key" : "actualStock",
+      "value" : "(($VAR#lastStock)|[cast=>parseInt])|[math=>add=($VALUE#qty)]"
+  },  
+    
+    ```
 :::
 
 :::caution Characters that must be escaped
@@ -28,7 +58,7 @@ Since **stage type** fields have a COTLang underlying, certain characters must b
 - Otherwise, `= | ( ) [ ] #` must be escaped. Example: ` \= `
 :::
 
-:::note
+:::info
 When using _automation logs_, stage types will be referred to by the _key_ indicated in this table.
 :::
 

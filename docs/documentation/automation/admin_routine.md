@@ -80,16 +80,24 @@ Once the **type** is selected, its specific settings fields will be displayed (a
   ```  
   {
       "key" : "lastStock",
-      "value" : "($CODE#property#code#($VALUE#valorizationCode))|schemaInstance|($VALUE#stockCode)|[cast=>parseInt]"
+      "value" : "$CODE#property#qty|[cast=>parseInt]"
   },
   {
       "key" : "actualStock",
-      "value" : "$VAR#lastStock|[math=>($VALUE#operation)=($VALUE#quantity)]"
+      "value" : "$VAR#lastStock|[math=>add=($VALUE#qty)]"
   },  
   ```  
-  But **should rather** be used when the variable is used, as in the `math` operation shown below:  
+  But **should rather** be used when the variable is used, as shown below:  
     ```
-    (($VAR#lastStock)|[cast=>parseInt])|[math=>($VALUE#operation)=($VALUE#quantity)]
+  {
+      "key" : "lastStock",
+      "value" : "$CODE#property#qty"
+  },
+  {
+      "key" : "actualStock",
+      "value" : "(($VAR#lastStock)|[cast=>parseInt])|[math=>add=($VALUE#qty)]"
+  },  
+    
     ```
 :::
 
