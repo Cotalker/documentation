@@ -272,8 +272,6 @@ module.exports = {
       type: 'category',
       label: 'Automation Tools',
       items: [
-        // 'documentation/automation/overview',
-        'documentation/automation/automation_log',
         {
           type: 'category',
           label: 'COTLang Guide',

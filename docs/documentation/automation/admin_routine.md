@@ -60,7 +60,7 @@ Below you will find the description and notes for each field in the Routine Buil
 | Version | Select the stage type version. | Available versions will appear in the dropdown menu. For more information, [click here](/docs/documentation/automation/existing_routines#stage-type-versions).|
 
 ## Stage Type Configuration {#configure-stage-types}
-After selecting <span className="badge badge--primary">+ Add Stage</span>, there are various _stage types_ that can be chosen and configured. 
+After selecting <span className="badge badge--primary">+ Add Stage</span>, choose among the various _stage types_ that are made available and configure them for use within the routine. 
 
 The **Type** field has a dropdown menu with a list of all the available _stage types_. If you hover over the name, a brief explanation of the function will be displayed. 
 
@@ -68,7 +68,29 @@ Once the **type** is selected, its specific settings fields will be displayed (a
 
 :::info
 - Go to the [Routine Stage Types](/docs/documentation/automation/existing_routines) section for a complete list and description of **stage types**.
-- On the backend, **stage types** use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Script Language) for settings fields. Depending on your needs, you can input any text characters and even use _HTML_ and _COTLang_ on the various settings fields.
+- On the backend, **stage types** use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Script Language) for settings fields. Depending on your needs, you can input any text characters and even use _HTML_ or _COTLang_ on the various settings fields.
+:::
+
+:::caution Using variables
+- Variables declared within a _stage routine_ are always read by the system as strings.
+- Therefore, if you are to use a function in relation to a variable, such as to cast a number as an integer, that function must be used when the variable is being used, and not when the variable is being declared or defined.  
+  
+  **For example:**  
+  The function `[cast=>parseInt]` **should not** be used when declaring the variable as shown below:
+  ```  
+  {
+      "key" : "lastStock",
+      "value" : "($CODE#property#code#($VALUE#valorizationCode))|schemaInstance|($VALUE#stockCode)|[cast=>parseInt]"
+  },
+  {
+      "key" : "actualStock",
+      "value" : "$VAR#lastStock|[math=>($VALUE#operation)=($VALUE#quantity)]"
+  },  
+  ```  
+  But **should rather** be used when the variable is used, as in the `math` operation shown below:  
+    ```
+    (($VAR#lastStock)|[cast=>parseInt])|[math=>($VALUE#operation)=($VALUE#quantity)]
+    ```
 :::
 
 :::caution Characters that must be escaped
