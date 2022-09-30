@@ -280,6 +280,7 @@ module.exports = {
             id: 'documentation/automation/cotlang/admin_cotlang'
           },
           items: [
+            'documentation/automation/cotlang/cotlang_guide',
             'documentation/automation/cotlang/triggers_and_contexts',
             'documentation/automation/cotlang/extract_survey_element'
           ],
@@ -446,6 +447,7 @@ module.exports = {
       label: 'Workflows & Tasks',
       items: [
         'documentation/api/tasks/tasks',
+        'documentation/api/tasks/tasks-v1',
         'documentation/api/tasks/statemachines',
       ],
       collapsed: true,

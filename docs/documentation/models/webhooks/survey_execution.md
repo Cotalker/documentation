@@ -28,7 +28,7 @@ The COTSurveyExecution data model is found within [COTEvent](/docs/documentation
 
 Field | Description | Type | Note
 --- | --- | --- | ---
-**surveyId** | The ObjectId of submitted survey. | ObjectId<COTSurvey\> |
+**surveyId** | The ObjectId of the submitted survey. | ObjectId<COTSurvey\> |
 **group** | The ObjectId of the group in which the submitted survey is found. | ObjectId<COTGroup\> |
 **surveyData** | An array of the COTMessage objects that constitute the submitted survey. | [COTMessage[ ]](/docs/documentation/models/communication/model_messages) |
 

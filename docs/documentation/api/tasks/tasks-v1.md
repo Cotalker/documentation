@@ -1,59 +1,54 @@
 ---
-title: Tasks (v2)
+title: Tasks (v1)
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::caution Soon to be deprecated.
+When possible, use [`/v2/task-groups/`](/docs/documentation/api/tasks) for task-related API requests.
+:::
+
 ## Overview {#overview}
+
 A [_task_](/docs/documentation/client/basic_concepts#tasks) is the representation of an asset and its state. In other words, a task is created within a workflow group and can follow a workflow process, passing from one state to another.
 
 A [_Task group_](/docs/documentation/models/tasks/model_taskgroup) contains the [_tasks_](/docs/documentation/models/tasks/model_tasks) that are processed through a specific _workflow group_. _Task group_ and _workflow group_ are sometimes used synonymously. Users can access _task groups_ through the [_group panel_](/docs/documentation/client/groups#group-panel).
 
 :::tip additional resources
-- These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
-- Some task-related API requests should still be done using [version 1](/docs/documentation/api/tasks/tasks-v1), i.e., `/v1/tasks`.
+These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
 :::
 
-## Get Task Groups {#get-task-groups}
-_Lists the task groups in the company._
 
-<span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks-groups/</span>
+## Get Task Groups {#get-task-groups}
+_Lists the tasks groups in the company._
+
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/group/</span>
 
 #### Endpoint URL {#get-task-groups-url}
-`https://www.cotalker.com/api/v2/task-groups`
+`https://www.cotalker.com/api/v1/tasks/group`
 
 #### Headers {#get-task-groups-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to view _tasks_. | Required | true
 
 #### Query Parameters {#get-task-groups-parameters}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**count** | Adds the `counter` field which returns the total amount of _task groups_.| boolean | Optional | 
-**createdAt** | Returns task groups created on the specified date and time. | ISODate | Optional | 
-**createdAt_gte** | Returns _task groups_ created on or after the specified date and time. | ISODate | Optional | 
-**createdAt_lte** | Returns _task groups_ created on or before the specified date and time. | ISODate | Optional | 
-**createdAt_gt** | Returns _task groups_ created after the specified date and time. | ISODate | Optional | 
-**createdAt_lt** | Returns _task groups_ created before the specified date and time. | ISODate | Optional | 
-**groupIds** | Returns _task groups_ according to the [COTGroup](/docs/documentation/api/communication/groups) they are associated with. | [ObjectId<COTGroup\>](/docs/documentation/api/communication/groups) | Optional | 
-**Ids** | Returns _task groups_ with the specified Ids |  | Optional | NOT WORKING
-**isActive** | Returns _task groups_ that are active according to their _isActive_ field. | string | Optional | `all`, `true`, `false`
-**limit** | Limits the amount of _task groups_ that are returned in the response. | number | Optional | By default, the _limit_ is set to 10.
-**modifiedAt** | Returns _tasks groups_ modified on the indicated date. | ISODate | Optional | 
-**modifiedAt_gte** | Returns _task groups_ modified on or after the specified date and time. | ISODate | Optional | 
-**modifiedAt_lte** | Returns _task groups_ modified on or before the specified date and time. | ISODate | Optional | 
-**modifiedAt_gt** | Returns _task groups_ modified after the specified date and time. | ISODate | Optional | 
-**modifiedAt_lt** | Returns _task groups_ modified befoire the specified date and time. | ISODate | Optional | 
-**orderBy** | Orders _task groups_ by ascending or descending order according to the value of the `sortBy` field. | string | Optional | Options: `asc`, `desc`
+**limit** | Limits the amount of _tasks_ that are returned in the response. | number | Optional | By default, the _limit_ is set to 10.
 **page** | Makes the response display data from the indicated page number. | number | Optional | 
-**sortBy** | Sorts _tasks groups_ by the indicated value. | string | Optional | Options: <br/>`createdAt`, `modifiedAt`, `collectionName`
-
+**count** | Adds the `counter` field with the total amount of _tasks_.| boolean | Optional | 
+**orderBy** | Orders the _tasks_ by ascending or descending order according to the value of the `sortBy` field. | string | Optional | Options: `asc`, `desc`
+**sortBy** | Sorts the _tasks_ by the indicated value. | string | Optional | Options: <br/>`createdAt`, `modifiedAt`, `collectionName`
+**isActive** | Returns _tasks_ that are active according to their _isActive_ field. | string | Optional | `all`, `true`, `false`
+**debug** | Adds the `debug` field with error notificaciones. | string | Optional | Option: `true`
 
 #### Request Sample {#get-task-groups-sample}
 ```bash
-curl --location --request GET 'https://www.cotalker.com/api/v2/task-groups' \
+curl --location --request GET 'https://www.cotalker.com/api/v1/tasks/group' \
+--header 'Admin: true' \
 --header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
@@ -62,30 +57,33 @@ Responses follow the [**COTTaskGroup**](/docs/documentation/models/tasks/model_t
 
 ---
 
-
 ## Get Task Group by Id {#get-taskgroup-by-id}
 _Returns the inidicated task group._
 
-<span className="hero__subtitle"><span className="badge badge--success">GET</span> /task-groups/&#123;taskGroupId&#125;</span>
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/group/&#123;groupId&#125;</span>
 
 #### Endpoint URL {#get-taskgroup-by-id-url}
-`https://www.cotalker.com/api/v2/task-groups/{taskGroupId}`
+`https://www.cotalker.com/api/v1/tasks/group/{groupId}`
 
 #### Path Parameters {#get-taskgroup-by-id-path}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**taskGroupId** | The ObjectId of the _task group_ that is to be returned. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
+**groupId** | The ObjectId of the _task group_ that is to be returned. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
 
 #### Headers {#get-taskgroup-by-id-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Admin** | Gives administrative access to the endpoint. | Required | true
+**Admin** | Gives administrative access to the endpoint. | Optional | true
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+
+#### Query Parameters {#get-taskgroup-by-id}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
 
 #### Request Sample {#get-taskgroup-by-id-request}
 ```bash
-curl --location --request GET 'https://www.cotalker.com/api/v2/task-groups/62bf5e03654e96017e00e46a' \
---header 'Admin: true' \
+curl --location --request GET 'https://www.cotalker.com/api/v1/tasks/group/61a8b233685ed3562e7cfdeb' \
 --header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
@@ -98,15 +96,14 @@ The response follows the [COTTaskGroup](/docs/documentation/models/tasks/model_t
 ## Create New Task Group {#post-taskgroup}
 _Create a new a task group._
 
-<span className="hero__subtitle"><span className="badge badge--info">POST</span> /task-groups</span>
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/group</span>
 
 #### Endpoint URL {#create-taskgroup-url}
-`https://www.cotalker.com/api/v2/task-groups`
+`https://www.cotalker.com/api/v1/tasks/group`
 
 #### Headers {#create-taskgroup-headers}
 Header | Description | Required | Values
 --- | --- | --- | ---
-**Admin** | Gives administrative access to the endpoint. | Required | true
 **Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
 **Content-Type** | Indicates the body's format. | Required | application/json
 
@@ -121,10 +118,9 @@ Element | Description | Type | Required | Notes
 
 #### Request Sample {#create-taskgroup-request}
 ```bash
-curl --location --request POST 'https://www.cotalker.com/api/v2/task-groups' \
---header 'Admin: true' \
---header 'Content-Type: application/json' \
+curl --location --request POST 'https://www.cotalker.com/api/v1/tasks/group' \
 --header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
 --data-raw '{
     "group": "61ae5eb11f130a35a73e2e06"
 }'
@@ -164,20 +160,85 @@ Go to [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) for a com
 
 ---
 
+## Update Task Group {#patch-task-group}
+_Updates or edits the indicated task group._
+
+<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /tasks/group/&#123;groupId&#125;</span>
+
+#### Endpoint URL {#patch-taskgroup-permissions-url}
+`https://www.cotalker.com/api/v1/tasks/group/{groupId}`
+
+#### Path Parameters {#permissions-parameters}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**groupId** | The task group's ID | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
+
+#### Headers {#permissions-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+**Admin** | Grants administrative access to edit _tasks_. | Required | true
+**Content-Type** | Sets the body's format. | Required | application/json
+
+#### Request Body {#permissions-body}
+_Only the fields that are being updated or added are required to be put into the body. For a complete schema description, please go to the [COTTaskGroup data model](/docs/documentation/models/tasks/model_taskgroup)._
 
 
-## Get Tasks within a Task Group {#get-tasks-for-user}
-_Returns tasks the user can view within the specified task group._
+#### Request Sample {#permissions-sample}
 
-<span className="hero__subtitle"><span className="badge badge--success">GET</span> /task-groups/&#123;taskGroupId&#125;/tasks</span>
+```bash
+curl --location --request PATCH 'https://www.cotalker.com/api/v1/tasks/group/616eafbda973cd46d72fb841' \
+--header 'Admin: true' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "defaultView": "list"
+}'
+```
+
+#### Response Sample {#permissions-response}
+Go to [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) for a complete description of the response.
+```json {7}
+{
+    "_id" : "616eafbda973cd46d72fb841",
+    "botUser" : "616eafc8c5b117753c1ae35c",
+    "collectionName" : "projects",
+    "company" : "613eafd572343ecb53cc8ccc",
+    "createdAt" : "2021-10-18T21:53:27.028Z",
+    "defaultView" : "list",
+    "flowType" : "state-machine",
+    "group" : "616eafea86d8203cfb2c8c6b",
+    "hideClosedAfterDays" : 7,
+    "initialStateMachine" : "616eb003c91d4c15104cc1fb",
+    "isActive" : true,
+    "levelConfig" : [],
+    "modifiedAt" : "2021-10-18T21:53:27.028Z",
+    "readPermissions" : ["app-access"],
+    "taskEditorPermissions" : ["admin-task-write"],
+    "taskFollowerPermissions" : ["admin-task-read", "admin-channels-read"],
+    "taskPropertyPermissions" : [{
+      "property" : "616eb3a8e59baa38b250da97",
+      "editor" : ["admin-groups-write", "admin-properties-write"],
+      "follower" : ["admin-groups-read"]
+    }],
+    "writePermissions" : ["admin-*-write"]
+}
+```
+
+---
+
+## Get Tasks for User within Group {#get-tasks-for-user}
+_Returns all active tasks the user can view within the specified task group._
+
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/&#123;groupId&#125;/task</span>
 
 #### Endpoint URL {#get-tasks-for-user-url}
-`https://www.cotalker.com/api/v2/task-groups/{taskGroupId}/tasks`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/task`
 
 #### Path Parameters {#get-tasks-for-user-path}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**taskGroupId** | The ObjectId of the _task group_ that is to be searched through. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
+**groupId** | The ObjectId of the _task group_ that is to be searched through. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
 
 #### Headers {#get-tasks-for-user-headers}
 Header | Description | Required | Values
@@ -188,27 +249,19 @@ Header | Description | Required | Values
 #### Query Parameters {#get-tasks-for-user}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**count** | When activated, returns the `count` field with the number of tasks returned by the request. | boolean | Optional | 
-**createdAt** | Returns _tasks_ created on the indicated date. | ISODate | Optional | 
-**createdAt_gte** | Returns _tasks_ created on or after the indicated date. | ISODate | Optional | 
-**createdAt_lte** | Returns _tasks_ created on or before the indicated date. | ISODate | Optional | 
-**createdAt_gt** | Returns _tasks_ created after the indicated date. | ISODate | Optional | 
-**createdAt_lt** | Returns _tasks_ created before the indicated date. | ISODate | Optional | 
-**isActive** | Returns either active or deactivated tasks. | boolean | Optional | In the [COTTask](/docs/documentation/models/tasks/model_tasks) data model, the `isActive` field indicates the task's active status.
-**limit** | Limits the number of _tasks__ that are returned per response page. | number | Optional | By default, the _limit_ is set to 10.
-**modifiedAt** | Returns _tasks_ modified on the indicated date. | ISODate | Optional | 
-**modifiedAt_gte** | Returns _tasks_ modified on or after the indicated date. | ISODate | Optional | 
-**modifiedAt_lte** | Returns _tasks_ modified on or before the indicated date. | ISODate | Optional | 
-**modifiedAt_gt** | Returns _tasks_ modified after the indicated date. | ISODate | Optional | 
-**modifiedAt_lt** | Returns _tasks_ modified before the indicated date. | ISODate | Optional | 
-**orderBy** | Returns results in ascending or descending order. | string | Optional | Options: `asc` or `desc`.
-**page** | Displays data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
-**sortBy** | Sorts results by indicated attribute. |  |  | "sortBy\" must be [name]:\n(\"\"). NEED HELP! 
-
+**limit** | Limits the amount of _tasks_ that are returned per response page. | number | Optional | By default, the _limit_ is set to 10.
+**page** | Makes the response display data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
+**search** | Searches for the keywords through all task fields. | string | Optional | Allows comma separated values, e.g., `/task?search=sales, report`
+**assignee** | Returns tasks with the specified assignee. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Optional |
+**status** | Returns tasks that are in the indicated state or status. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) | Optional |
+**limitBy** | | string | Optional | Options are: "all", "group", or "none".
+**smStateMachine** | Lists all the tasks in the group that belong to the indicated state machine (workflow). | [ObjectId<COTSMStateMachine\>](/docs/documentation/models/tasks/model_statemachine) | Optional |
+**filter** | Returns tasks ordered by the indicated [_task view_ filter](/docs/documentation/client/tasks/filter_tasks). | ObjectId | Optional | The _filter_ ObjectId is stored in the `defaultFilter` field of the [COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) data model.
+**modifiedAt** | Lists tasks modified after the indicated date. | number | Optional | Date and time must be in Unix Epoch Timestamp format (with milliseconds), e.g., 1638219703000 = Monday, November 29, 2021 9:01:43 PM. |
 
 #### Request Sample {#get-tasks-for-user-request}
 ```bash
-curl --location --request GET 'https://www.cotalker.com/api/v2/tasks/61a8b233685ed3562e7cfdeb/task' \
+curl --location --request GET 'https://www.cotalker.com/api/v1/tasks/61a8b233685ed3562e7cfdeb/task' \
 --header 'Authorization: Bearer $ACCESS_TOKEN'
 ```
 
@@ -218,64 +271,47 @@ The response follows the [COTTask](/docs/documentation/models/tasks/model_tasks)
 ---
 
 
-## Get Tasks by Relations {#get-tasks-by-relations}
-_Returns tasks related by the indicated parameters._
+## Get All Tasks within a Group {#get-all-tasks}
+_Returns all tasks within the task group, regardless if the user is associated to them._
 
-<span className="hero__subtitle"><span className="badge badge--success">GET</span> /task-groups/&#123;taskGroupId&#125;/tasks/relations</span>
-
-#### Endpoint URL {#get-tasks-for-user-url}
-`https://www.cotalker.com/api/v2/task-groups/{taskGroupId}/tasks/relations`
-
-#### Path Parameters {#get-tasks-for-user-path}
-Parameter | Description | Type | Required | Notes
---- | --- | --- | --- | ---
-**taskGroupId** | The ObjectId of the _task group_ that is to be searched through. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
-
-#### Headers {#get-tasks-for-user-headers}
-Header | Description | Required | Values
---- | --- | --- | ---
-**Admin** | Gives administrative access to the endpoint. | Required | true
-**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
-
-#### Query Parameters {#get-tasks-for-user}
-Parameter | Description | Type | Required | Notes
---- | --- | --- | --- | ---
-**limit** | Limits the number of _tasks__ that are returned per response page. | number | Optional | By default, the _limit_ is set to 10.
-**page** | Displays data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
-**count** | When activated, returns the `count` field with the number of tasks returned by the request. | boolean | Optional | 
-**sortBy** | Sorts results by indicated attribute. |  |  | "sortBy\" must be [name]:\n(\"\"). NEED HELP! 
-**orderBy** | Returns results in ascending or descending order. | string | Optional | Options: `asc` or `desc`.
-**assignee** | Returns tasks assigned to the specified user. | [ObjectId<COTUser\>](/docs/documentation/models/users/model_users) | Optional |
-**property** | Returns tasks associated with the indicated property (element). | [ObjectId,<COTProperty\>](/docs/documentation/models/databases/model_properties) |  | 
-**isActive** | Returns either active or deactivated tasks. | boolean | Optional | In the [COTTask](/docs/documentation/models/tasks/model_tasks) data model, the `isActive` field indicates the task's active status.
-
-
-#### Request Sample {#get-tasks-for-user-request}
-```bash
-curl --location --request GET 'https://www.cotalker.com/api/v2/task-groups/61a8b233685ed3562e7cfdeb/tasks/relations' \
---header 'Admin: true' \
---header 'Authorization: Bearer $ACCESS_TOKEN'
-```
-
-#### Response Sample {#get-tasks-for-user-response}
-The response follows the [COTTask](/docs/documentation/models/tasks/model_tasks) data model.
-
----
-
-
-
-## Get a Specific Task {#get-specific-task}
-_Returns the indicated task._
-
-<span className="hero__subtitle"><span className="badge badge--success">GET</span> /task-groups/&#123;taskGroupId&#125;/tasks/&#123;taskId&#125;</span>
+<span className="hero__subtitle"><span className="badge badge--info">POST</span> /tasks/&#123;groupId&#125;/task/all</span>
 
 #### Endpoint URL {#get-taskgroup-by-id-url}
-`https://www.cotalker.com/api/v2/task-groups/{taskGroupId}/tasks/{taskId}`
+`https://www.cotalker.com/api/v1/tasks/{groupId}/task/all`
 
 #### Path Parameters {#get-by-path}
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**taskGroupId** | The ObjectId of the _task group_ that is to be searched through. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
+**groupId** | The ObjectId of the _task group_ that is to be searched through. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
+
+#### Headers {#get-by-id-headers}
+Header | Description | Required | Values
+--- | --- | --- | ---
+**Authorization** | Sends your _access token_ to make an API request.<br/>[Click here to see how to obtain an _access token_.](/docs/documentation/api/auth#how-to) | Required | Bearer $ACCESS_TOKEN
+
+#### Request Sample {#get-by-id-request}
+```bash
+curl --location --request POST 'https://www.cotalker.com/api/v1/tasks/61a8b233685ed3562e7cfdeb/task/all' \
+--header 'Authorization: Bearer $ACCESS_TOKEN' \
+```
+
+#### Response Sample {#get-all-tasks-response}
+The response follows the [COTTask](/docs/documentation/models/tasks/model_tasks) data model.
+
+---
+
+## Get Specific Task {#get-specific-task}
+_Returns the indicated task._
+
+<span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/&#123;groupId&#125;/task/&#123;taskId&#125;</span>
+
+#### Endpoint URL {#get-taskgroup-by-id-url}
+`https://www.cotalker.com/api/v1/tasks/{groupId}/task/{taskId}`
+
+#### Path Parameters {#get-by-path}
+Parameter | Description | Type | Required | Notes
+--- | --- | --- | --- | ---
+**groupId** | The ObjectId of the _task group_ that is to be searched through. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Required |
 **taskId** | The ObjectId of the _task_ that is to be returned. | [ObjectId<COTTask\>](/docs/documentation/models/tasks/model_tasks) | Required |
 
 #### Headers {#get-by-id-headers}
