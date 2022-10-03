@@ -5,8 +5,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::caution Soon to be deprecated.
-When possible, use [`/v2/task-groups/`](/docs/documentation/api/tasks) for task-related API requests.
+:::info New version available
+Some requests are also available through version 2 endpoints: [`/v2/task-groups/`](/docs/documentation/api/tasks)  
+Version 2 endpoints provide a more comprehensive path structure.
+
 :::
 
 ## Overview {#overview}
@@ -21,7 +23,7 @@ These are just some of the most basic API requests. For a complete list of endpo
 
 
 ## Get Task Groups {#get-task-groups}
-_Lists the tasks groups in the company._
+_Lists the task groups in the company._
 
 <span className="hero__subtitle"><span className="badge badge--success">GET</span> /tasks/group/</span>
 
