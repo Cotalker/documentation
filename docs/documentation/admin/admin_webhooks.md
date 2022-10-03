@@ -144,6 +144,7 @@ Events are classified into three groups:
 - Create/Edit/Remove Task
 - Create/Edit/Remove Survey  
 - Create/Edit/Remove Element
+- Edit Note
 - User Logout
 
 Upon any change, i.e., creation, modification, or deletion of the indicated event, the webhook is automatically triggered and sends the event data to the server.
