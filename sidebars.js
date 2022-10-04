@@ -457,7 +457,7 @@ module.exports = {
     'documentation/models/overview_model',
     {
       type: 'category',
-      label: 'Company & Users',
+      label: '1. Company & Users',
       items: [
         {
           type: 'category',
@@ -481,7 +481,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Groups & Messages',
+      label: '2. Groups & Messages',
       items: [
         'documentation/models/communication/model_channels',
         'documentation/models/communication/model_groups',
@@ -493,7 +493,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Survey Forms',
+      label: '3. Survey Forms',
       items: [
         'documentation/models/surveys/model_answers',
         'documentation/models/surveys/model_answer_data',
@@ -507,7 +507,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Database',
+      label: '4. Database',
       items: [
         'documentation/models/databases/model_properties',
         'documentation/models/databases/model_propertytypes',
@@ -516,7 +516,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Tasks & Workflows',
+      label: '5. Tasks & Workflows',
       items: [
         'documentation/models/tasks/model_sla',
         'documentation/models/tasks/model_state',
@@ -528,7 +528,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Automations',
+      label: '6. Automations',
       items: [
         'documentation/models/automations/model_bots',
         'documentation/models/automations/model_parametrizedbot',
@@ -550,7 +550,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Search',
+      label: '7. Search',
       items: [
         'documentation/models/search/searchengine',
         'documentation/models/search/searchresult'
