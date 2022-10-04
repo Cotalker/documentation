@@ -10,7 +10,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Description {#description}
 
-_State machines_, also know as [_workflows_](/docs/documentation/client/basic_concepts#workflows), are definitions of how [tasks](/docs/documentation/client/basic_concepts#tasks) behave. They define a workflow's initial [state](/docs/documentation/client/basic_concepts#state), the other states they can change to, what [triggers](/docs/documentation/automation/cotlang/triggers_and_contexts) are executed, if [reminders](/docs/documentation/automation/sla) are sent, and more. A [state machine's (workflow's) settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit) are stored in the _COTSMStateMachine_ data model explained below.
+The _COTSMStateMachine_ data model explained below stores a [state machine's (workflow's) settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit).
+
+_State machines_, also know as [_workflows_](/docs/documentation/admin/workflows/admin_workflow_overview), are definitions of how [tasks](/docs/documentation/client/tasks/overview) behave. They define a workflow's initial [state](/docs/documentation/client/basic_concepts#state), the other states they can change to, what [triggers](/docs/documentation/automation/cotlang/triggers_and_contexts) are executed, if [reminders](/docs/documentation/automation/sla) are sent, and more.
 
 ## JSON Sample {#json-sample}
 

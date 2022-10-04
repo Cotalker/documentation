@@ -11,9 +11,9 @@ import TabItem from '@theme/TabItem';
 :::
 
 ## Overview {#overview}
-A [_task_](/docs/documentation/client/basic_concepts#tasks) is the representation of an asset and its state. In other words, a task is created within a workflow group and can follow a workflow process, passing from one state to another.
+A [_task_](/docs/documentation/client/tasks/overview) is the representation of an asset and its state. In other words, a task is created within a workflow group and can follow a workflow process, passing from one state to another.
 
-A [_Task group_](/docs/documentation/models/tasks/model_taskgroup) contains the [_tasks_](/docs/documentation/models/tasks/model_tasks) that are processed through a specific _workflow group_. _Task group_ and _workflow group_ are sometimes used synonymously. Users can access _task groups_ through the [_group panel_](/docs/documentation/client/groups#group-panel).
+A [_Task group_](/docs/documentation/models/tasks/model_taskgroup) contains the [_tasks_](/docs/documentation/models/tasks/model_tasks) that are processed through a specific _workflow group_. The terms _task groups_ and _workflow groups_ are sometimes used synonymously. Users can [access _task groups_ through either the task or group view](/docs/documentation/client/tasks/access_task).
 
 :::tip additional resources
 - These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
@@ -100,7 +100,7 @@ The response follows the [COTTaskGroup](/docs/documentation/models/tasks/model_t
 
 
 ## Create New Task Group {#post-taskgroup}
-_Create a new a task group._
+_Create a new task group._
 
 <span className="hero__subtitle"><span className="badge badge--info">POST</span> /task-groups</span>
 
@@ -207,7 +207,7 @@ Parameter | Description | Type | Required | Notes
 **modifiedAt_lt** | Returns _tasks_ modified before the indicated date. | ISODate | Optional | 
 **orderBy** | Returns results in ascending or descending order. | string | Optional | Options: `asc` or `desc`.
 **page** | Displays data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
-**sortBy** | Sorts results by indicated attribute. |  | Optional | 
+**sortBy** | Sorts results by indicated attribute. |  | Optional | Only `name` attribute currently available.
 
 
 #### Request Sample {#get-tasks-for-user-request}
@@ -251,7 +251,7 @@ Parameter | Description | Type | Required | Notes
 **orderBy** | Returns results in ascending or descending order. | string | Optional | Options: `asc` or `desc`.
 **page** | Displays data from the indicated page number. | number | Optional | Best used in combination with the "limit" parameter.
 **property** | Returns tasks associated with the indicated property (element). | [ObjectId,<COTProperty\>](/docs/documentation/models/databases/model_properties) | Optional | 
-**sortBy** | Sorts results by indicated attribute. |  | Optional | 
+**sortBy** | Sorts results by indicated attribute. |  | Optional | Only `name` attribute currently available.
 
 
 #### Request Sample {#get-tasks-for-user-request}
