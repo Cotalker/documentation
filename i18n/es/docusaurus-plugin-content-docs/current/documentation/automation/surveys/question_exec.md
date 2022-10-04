@@ -192,7 +192,7 @@ Field | Values
 <div className="margin margin-left--lg">
 
 **Description**: Validates responses with a "true" or "false" _result_.  
-**Example**: `{ cmd: RESULT, result: 'false', value: 'Please try again.' }`  
+**Example**: `{ cmd: 'RESULT', result: 'false', value: 'Please try again.' }`  
 
 Field | Values
 --- | ---
@@ -218,7 +218,7 @@ _Code structure example:_
 ```javascript
 const example = await networkRequest(`url`, {
             method: 'GET' | 'POST' | 'PATCH',
-            header: {...},
+            headers: {...},
             body: {...} // Used with POST & PATCH
         },
         {
@@ -336,7 +336,7 @@ async function run() {
     const test = await networkRequest(
         `https://www.cotalker.com/api/v2/properties?propertyTypes=client`, {
             method: 'GET',
-            header: {
+            headers: {
                 "admin": "true"
             },
         }, {

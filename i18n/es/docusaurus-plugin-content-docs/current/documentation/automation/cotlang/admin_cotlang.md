@@ -357,7 +357,3 @@ Return the values that apply to one of the following conditions: *>= x*, *> x*, 
 </div>
 <br/>
 
-## Quick Reference Guide & Command Tester {#command-quick-reference-guide}
-
-<iframe scrolling="yes" className="framedPage" src="https://www.cotalker.com/function/cotlang/"></iframe>
-<br/>

@@ -13,64 +13,81 @@ import Mermaid from '@theme/Mermaid';
 
 ## Introduction {#introduction}
 
-**Data models** are the backbone of the Cotalker environment. Almost everything in Cotalker sustains itself inside a _data model_. 
+**Data models** are the backbone of the Cotalker environment. All data in Cotalker is sustained within _data models_. 
 
-Model settings allow building custom workflows. Knowing _data model_ structures is especially important for admins and developers when using [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/cotlang/triggers_and_contexts#context-language) when extracting data.
+_Data model_ structures are important for admins and developers in understanding data [contexts](/docs/documentation/automation/cotlang/triggers_and_contexts#context-language), especially when using [automated routines](/docs/documentation/automation/admin_routine) and making [API](/docs/documentation/api/overview_api) requests.
 
-There are a limited set of internal _data models_ which are explained below.
+Available data models are explained below.
 
 </div>
 <br/>
 
 ## Model Descriptions {#descriptions}
 
+### 1. Company & Users {#company-users}
 Data Model (Context) | Description | Endpoint
 --- | --- | ---
-[COTAccessRole](/docs/documentation/models/users/model_accessroles) | access roles that grant user permissions | /accessroles 
-[COTAnswer](/docs/documentation/models/surveys/model_answers) | answers represent the submitted survey response | /answers
-[COTAnswerData](/docs/documentation/models/surveys/model_answer_data) | contains an answer's submitted data and is found in COTAnswer | N/A
-[COTBot](/docs/documentation/models/automations/model_bots) | bots carry out diverse programmable routines | /bots , 
-[COTChannel](/docs/documentation/models/communication/model_channels) | workspace channels where users can view task information, answer surveys, or chat with other users associated with the channel | /channels
-[COTCompany](/docs/documentation/models/company/model_company) | company configuration and settings | /companies
-[COTGroup](/docs/documentation/models/communication/model_groups) | groups hold together tasks and channels or act as links to URLs | /groups
-[COTJobTitle](/docs/documentation/models/users/model_jobtitles) | job titles group users and give them special attributes | /jobtitles
-[COTMessage](/docs/documentation/models/communication/model_messages) | messages correspond to chat messages users send to each in channels, responses submitted in a survey, or system-generated messages | /messages
+[COTCompany](/docs/documentation/models/company/model_company) | Company configuration and settings | /companies
+[COTUser](/docs/documentation/models/users/model_users) | Users in your company, both humans and bots | /users
+[COTJobTitle](/docs/documentation/models/users/model_jobtitles) | Job titles group users and give them special attributes | /jobtitles
+[COTAccessRole](/docs/documentation/models/users/model_accessroles) | Access roles that grant user permissions | /accessroles 
+
+
+### 2. Gruops & Messages {#group-messages}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[COTChannel](/docs/documentation/models/communication/model_channels) | Workspace channels where users can view task information, answer surveys, or chat with other users associated with the channel | /channels
+[COTGroup](/docs/documentation/models/communication/model_groups) | Groups hold together tasks and channels or act as links to URLs | /groups
+[COTMessage](/docs/documentation/models/communication/model_messages) | Messages correspond to chat messages users send to each in channels, responses submitted in a survey, or system-generated messages | /messages
 [COTMessageContentType](/docs/documentation/models/communication/model_messageContent) | Indicates the content type of the message and is found in COTMessage | N/A
-[COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot) | Holds an automated routine and is found in COTSMStateMachine, COTSMState, COTSMSLA, COTBot, COTPBScipt, and COTSchedule. | N/A
-[COTPBScript](/docs/documentation/models/automations/model_pbscripts) | corresponds to saved routine stages that can be later incorporated to any routine | /pbscripts
-[COTProperty](/docs/documentation/models/databases/model_properties) | properties (elements) make up the property types and can be used to act as assets or even states | /properties
-[COTPropertyType](/docs/documentation/models/databases/model_propertytypes) | property types (collections) are like tables that can store all kinds of data | /propertyTypes
+
+
+### 3. Survey Forms {#survey-forms}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[COTAnswer](/docs/documentation/models/surveys/model_answers) | Answers represent the submitted survey response | /answers
+[COTAnswerData](/docs/documentation/models/surveys/model_answer_data) | Contains an answer's submitted data and is found in COTAnswer | N/A
 [COTQuestion](/docs/documentation/models/surveys/model_questions) | The individual survey [component](/docs/documentation/admin/survey/survey_overview#form-components) | /questions
 [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType) | The question's or survey component's content type. | N/A
 [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) | Javascript automation that runs within the survey and is found in COTQuestion | N/A
-[COTSchedule](/docs/documentation/models/automations/model_scheduler) | schedules are automated scheduled routines | /schedules
-[COTSMSLA](/docs/documentation/models/tasks/model_sla) | automated SLA routines associated to State Machines (workflow groups) | /tasks/{id}/sla
-[COTSMState](/docs/documentation/models/tasks/model_state) | the state of workflow or task | /tasks/{id}/sm/smstate
-[COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) | a state machine is the workflow process a task goes through | /tasks/{id}/sm/smstatemachine
-[COTSurvey](/docs/documentation/models/surveys/model_surveys) | surveys gather different types of input from users | /surveys
-[COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) | each survey chat holds _questions_ that correspond to a survey [_component_](/docs/documentation/admin/survey/survey_overview#form-components) | /surveychats
-[COTTask](/docs/documentation/models/tasks/model_tasks) | a task is the representation of an asset and its state | /tasks/{id}/task
-[COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) | a task group contains the tasks of the same workflow group | /tasks/group
-[COTUser](/docs/documentation/models/users/model_users) | users in your company, both humans and bots | /users
+[COTSurvey](/docs/documentation/models/surveys/model_surveys) | Surveys gather different types of input from users | /surveys
+[COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) | Each survey chat holds _questions_ that correspond to a survey [_component_](/docs/documentation/admin/survey/survey_overview#form-components) | /surveychats
 
 
-<!-- 
-* [__Users__](/docs/documentation/models/users/model_users): Represents a person or bot that can perform actions within a company.
-* [__Access Roles__](/docs/documentation/models/users/model_accessroles): Set of permissions
-* [__Channels__](/docs/documentation/models/communication/model_channels): Represents a space where users can communicate
-* [__Messages__](/docs/documentation/models/communication/model_messages): Has content and contentType that determines how to represent the element
-* [__Groups__](/docs/documentation/models/communication/model_groups): Represents a workflow, may contain channels and/or tasks or a link.
-* [__Collections (Property Types)__](/docs/documentation/models/databases/model_propertytypes): Custom tables for companies. E.g., Products, Offices, Customers, Colors, SKUs, States, etc
-* [__Elements (Properties)__](/docs/documentation/models/databases/model_properties): Items that fill or make up a _collection_.
-* [__Surveys__](/docs/documentation/models/surveys/model_surveys): Format of a form
-* [__Survey Chats__](/docs/documentation/models/surveys/model_surveychats): References all the questions asked in a survey
-* [__Questions__](/docs/documentation/models/surveys/model_questions): The individual questions asked in a survey
-* [__Answers__](/docs/documentation/models/surveys/model_answers): An _answer_ is created each time a _survey_ is filled.
-* [__State Machine__](/docs/documentation/models/tasks/model_statemachine): Rules of how tasks are created and managed
-* [__Tasks__](/docs/documentation/models/tasks/model_tasks): Element that represents a task or asset
-* [__Scheduler__](/docs/documentation/models/automations/model_scheduler): Time based, or repetitive action
-* [__Bots__](/docs/documentation/models/automations/model_bots): Represents an action that is triggered based on its configuration.
-* [__Company__](/docs/documentation/models/company/model_company): The underlying data model that connects all other elements, contains basic company configuration -->
+### 4. Database {#database}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[COTProperty](/docs/documentation/models/databases/model_properties) | Properties (elements) make up the property types and can be used to act as assets or even states | /properties
+[COTPropertyType](/docs/documentation/models/databases/model_propertytypes) | Property types (collections) are like tables that can store all kinds of data | /propertyTypes
+
+
+### 5. Tasks & Workflows {#tasks-workflows}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[COTSMSLA](/docs/documentation/models/tasks/model_sla) | Automated SLA routines associated to State Machines (workflow groups) | /tasks/{id}/sla
+[COTSMState](/docs/documentation/models/tasks/model_state) | The state of workflow or task | /tasks/{id}/sm/smstate
+[COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) | A state machine is the workflow process a task goes through | /tasks/{id}/sm/smstatemachine
+[COTTask](/docs/documentation/models/tasks/model_tasks) | A task is the representation of an asset and its state | /tasks/{id}/task
+[COTTaskGroup](/docs/documentation/models/tasks/model_taskgroup) | A task group contains the tasks of the same workflow group | /tasks/group
+
+
+### 6. Automations {#automations}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[COTBot](/docs/documentation/models/automations/model_bots) | Bots carry out diverse programmable routines | /bots , 
+[COTParametrizedBot](/docs/documentation/models/automations/model_parametrizedbot) | Holds an automated routine and is found in COTSMStateMachine, COTSMState, COTSMSLA, COTBot, COTPBScipt, and COTSchedule. | N/A
+[COTPBScript](/docs/documentation/models/automations/model_pbscripts) | Corresponds to saved routine stages that can be later incorporated to any routine | /pbscripts
+[COTSchedule](/docs/documentation/models/automations/model_scheduler) | Schedules are automated scheduled routines | /schedules
+[COTWebhook](/docs/documentation/models/webhooks/webhook) | Webhook settings for sending event data when triggered. | /webhook/subscription
+[COTWebhookLog](/docs/documentation/models/webhooks/webhooklog) | Webhook logs contain all the webhook data at the moment of triggering. | /webhook/subscription/logs/{id}
+[COTEvent](/docs/documentation/models/webhooks/event) | The triggering event's data. | /webhook/subscription/logs/{id}
+[COTSurveyExecution](/docs/documentation/models/webhooks/survey_execution) | Survey data associated with triggering events. | /webhook/subscription/logs/{id}
+
+### 7. Search {#search}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[Search Engine Model](/docs/documentation/models/search/searchengine) | Settings for data search made through an API request. | /search/search
+[Search Category Results Model](/docs/documentation/models/search/searchresult) | Returned search results. | /search/search
 
 ## Interactions {#interactions}
 

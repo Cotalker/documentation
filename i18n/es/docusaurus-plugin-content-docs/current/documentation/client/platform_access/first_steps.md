@@ -51,7 +51,11 @@ _Each platform offers a similar experience through its design so that users can 
   <br/>
 
   :::note
-  If you don't have a registered email and password or can't log in with your Google or Microsoft account, please consult with your company admin.
+  If you don't have a registered email and password or can't log in with your Google or Microsoft account into your company's Cotalker platform, please consult with your company admin.
+  :::
+
+  :::tip Free Trial Demo
+  If your company doesn't have a Cotalker platform, you can use Cotalker for free by clicking **Try Cotalker** at the bottom of the sign-in screen.
   :::
 
 
@@ -131,7 +135,15 @@ For those who are constantly on the go or doing fieldwork, our _mobile apps_ –
 
 <div className="col col--6">
 
-3. Log in with your credentials. Contact your company admin if you don't have a registered email and password.
+3. Log in with your credentials. 
+
+:::note
+Contact your company admin if you don't have a registered email and password.
+:::
+
+:::tip Free Trial Demo
+If your company doesn't have a Cotalker platform, you can use Cotalker for free by clicking **Try Cotalker** at the bottom of the sign-in screen.
+:::
 
 </div>
 

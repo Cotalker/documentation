@@ -76,4 +76,5 @@ Field | Description | Type | Notes
 **options.modifiedLte** | Displays results modified on or before the indicated date and time. | Date | Accepts either ISODate or Unix Epoch Time formats.
 **options.sortBy** | Sorts results by the indicated field. Sorting is carried out using the available parameter options in the respective API request, i.e., channels can be sorted according to the `sortBy` options in the [Channels API](/docs/documentation/api/communication/channels#get-all-channels). | string |
 
-
+## Related Topics {#related-topics}
+- [Search API](/docs/documentation/api/search)
