@@ -29,7 +29,7 @@ Data Model (Context) | Description | Endpoint
 [COTAccessRole](/docs/documentation/models/users/model_accessroles) | Access roles that grant user permissions | /accessroles 
 
 
-### 2. Gruops & Messages {#group-messages}
+### 2. Groups & Messages {#group-messages}
 Data Model (Context) | Description | Endpoint
 --- | --- | ---
 [COTChannel](/docs/documentation/models/communication/model_channels) | Workspace channels where users can view task information, answer surveys, or chat with other users associated with the channel | /channels
