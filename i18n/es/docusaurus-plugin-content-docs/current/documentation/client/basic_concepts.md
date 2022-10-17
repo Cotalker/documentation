@@ -7,7 +7,7 @@ sidebar_label: Basic Concepts
 Esta página aún no se encuentra traducida al español.
 :::
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Tasks, {toc as Title1TOC} from '/docs/documentation/client/glossary/_task.mdx';
+import Tasks, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/documentation/client/glossary/_task.mdx';
 import Workflows, {toc as Title2TOC} from '/docs/documentation/client/glossary/_workflows.mdx';
 
 

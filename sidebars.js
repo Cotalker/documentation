@@ -983,4 +983,25 @@ module.exports = {
       ]
     },
   ],
+  products_landing: [
+    {
+      type: 'category',
+      label: 'Corrective Maintenance',
+      link: {
+        type: 'doc',
+        id: 'products/corrective_maintenance/landing/overview',
+      },
+      collapsed: true,
+      collapsible: true,
+      items: [
+        'products/corrective_maintenance/landing/create_notification',
+        'products/corrective_maintenance/landing/validate_notification',
+        'products/corrective_maintenance/landing/accept_wo',
+        'products/corrective_maintenance/landing/close_wo',
+        'products/corrective_maintenance/landing/validate_wo',
+        'products/corrective_maintenance/landing/feedback_wo',
+        'products/corrective_maintenance/landing/complete_task',
+      ]
+    },
+  ]
 }

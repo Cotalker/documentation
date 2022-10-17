@@ -94,5 +94,10 @@
   "sidebar.workflow_notifications.category.Survey Forms": {
     "message": "Paso a Paso",
     "description": "The label for category Notifications Workflow in sidebar notifications_workflow"
-  }
+  },
+
+    "sidebar.products_landing.category.Corrective Maintenance": {
+      "message": "Mantenimiento Correctivo",
+      "description": "The label for category Corrective Maintenance in sidebar products_landing"
+    }
 }
