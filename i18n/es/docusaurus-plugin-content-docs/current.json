@@ -95,9 +95,21 @@
     "message": "Paso a Paso",
     "description": "The label for category Notifications Workflow in sidebar notifications_workflow"
   },
-
     "sidebar.products_landing.category.Corrective Maintenance": {
       "message": "Mantenimiento Correctivo",
       "description": "The label for category Corrective Maintenance in sidebar products_landing"
+  },
+    "sidebar.products_landing.category.Actions & Forms": {
+      "message": "Acciones y Formularios",
+      "description": "The label for category Actions and Forms in sidebar products_landing"
+    },
+    "sidebar.products_landing.category.Configure Master Data": {
+      "message": "Configurar Data Maestra",
+      "description": "The label for category Configure Master Data in sidebar products_landing"
+    },
+    "sidebar.products_landing.category.Maintenance Report": {
+      "message": "Reporte Mantenimiento",
+      "description": "The label for category Maintenance Report in sidebar products_landing"
     }
+
 }

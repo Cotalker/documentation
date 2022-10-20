@@ -87,6 +87,11 @@ El usuario debe tener, al menos, los siguientes características:
 ![create wo form](/img/productos_es/products_cm_validate_notification_02-1a.png)
 
 </div>
+
+:::note Más detalles
+📋 [Formulario Crear Orden de Trabajo](/docs/products/corrective_maintenance/forms/form_create_wo)
+:::
+
 </div>
 <br/>
 
@@ -113,6 +118,91 @@ _o bien:_
 </TabItem>
 <TabItem value="mobile" label="Versión Móvil">
     
+1. Selecciona el aviso.
+
+
+<div className="margin-left--lg">
+
+**<span className="badge badge--warning">a.</span>** Apretar **Aviso** desde el _Menu Principal_. Esto abrirá la vista de _avisos_.  
+**<span className="badge badge--warning">b.</span>** Seleccionar el _Aviso_ reportado. El panel de trabajo de la tarea se abrirá.  
+**<span className="badge badge--warning">c.</span>** Revisa el _Aviso_ desde el panel de trabajo.  
+
+![first-step](/img/productos_es/products_cm_validate_notification_01.png)
+
+</div>
+<br/>
+
+2. Presiona el botón de acciones.
+
+<!-- <span className="hero__subtitle"><b>2. Apretar botón de acciones </b></span>
+<br/>
+<br/> -->
+
+<div className="margin-left--lg">
+
+![second-step](/img/productos_es/products_cm_validate_notification_02.png)
+
+</div>
+<br/>
+
+3. Selecciona una opción.
+
+<div className="margin-left--lg">
+
+**<span className="badge badge--danger">A.</span>** Si se pretende dar solución al _aviso_, selecciona _Crear una Orden de Trabajo_. (3.1)  
+**<span className="badge badge--danger">B.</span>** Si se ha optado por rechazar el _aviso_, selecciona _Rechazar el Aviso_. (3.2)  
+
+<div className="img_sizing_small">
+
+![opciones](/img/productos_es/products_cm_validate_notification_02a.png)
+
+</div>
+
+</div>
+
+- 3.1 Presiona _Crear una Orden de Trabajo_ y rellena el formulario que aparece.
+
+<!-- <span className="hero__subtitle"><b>2.1 Crear una Orden de Trabajo</b></span>
+<br/>
+<br/> -->
+
+<div className="margin-left--lg">
+
+<div className="img_sizing_small">
+
+<!-- ![second-first-step](/img/productos_es/products_cm_validate_notification_02-1.png) -->
+
+![create wo form](/img/productos_es/products_cm_validate_notification_02-1a.png)
+
+</div>
+
+:::note Más detalles
+📋 [Formulario Crear Orden de Trabajo](/docs/products/corrective_maintenance/forms/form_create_wo)
+:::
+
+</div>
+<br/>
+
+_o bien:_
+
+- 3.2 Presiona _Rechazar Aviso_ y rellena el formulario que aparece.
+
+<!-- <span className="hero__subtitle"><b>2.2 Rechazar el Aviso</b></span>
+<br/>
+<br/> -->
+
+<div className="margin-left--lg">
+
+<div className="img_sizing_small">
+
+<!-- ![second-second-step](/img/productos_es/products_cm_validate_notification_02-2.png) -->
+
+![reject form](/img/productos_es/products_cm_validate_notification_02-2a.png)
+
+</div>
+</div>
+<br/>
+
 </TabItem>
 </Tabs>
 
@@ -127,8 +217,8 @@ _o bien:_
 
 </div>
 
-:::note Nota
-Las _órdenes de trabajo_ creadas inician un nuevo flujo de trabajo que incluye personal de mantenimiento y supervisores.
+:::info Siguiente paso
+☞ Al crear una _orden de trabajo_, ésta inician un nuevo flujo de trabajo que incluye personal de mantenimiento y supervisores. El personal de mantenimiento debe indicar si ha decidido [**aceptar la orden de trabajo**](/docs/products/corrective_maintenance/landing/wo_accept).
 :::
 
 ## Temas Relacionados {#related}

@@ -994,14 +994,50 @@ module.exports = {
       collapsed: true,
       collapsible: true,
       items: [
-        'products/corrective_maintenance/landing/create_notification',
-        'products/corrective_maintenance/landing/validate_notification',
-        'products/corrective_maintenance/landing/accept_wo',
-        'products/corrective_maintenance/landing/close_wo',
-        'products/corrective_maintenance/landing/validate_wo',
-        'products/corrective_maintenance/landing/feedback_wo',
-        'products/corrective_maintenance/landing/complete_task',
+        {
+          type: 'category',
+          label: 'Actions & Forms',
+          items: [
+            'products/corrective_maintenance/landing/create_notification',
+            'products/corrective_maintenance/landing/wo_accept',
+            'products/corrective_maintenance/landing/wo_close',
+            'products/corrective_maintenance/landing/wo_validate',
+            'products/corrective_maintenance/landing/wo_feedback',
+            'products/corrective_maintenance/landing/wo_fast_close',
+            'products/corrective_maintenance/landing/wo_reject_request',
+            'products/corrective_maintenance/landing/wo_reject_accept',
+          ],
+          collapsed: true
+        },
+        {
+          type: 'category',
+          label: 'Configure Master Data',
+          link: {
+            type: 'doc',
+            id: 'products/corrective_maintenance/master_data/glossary',
+          },
+          collapsed: true,
+          collapsible: true,
+          items: [
+            'products/corrective_maintenance/master_data/users',
+            'products/corrective_maintenance/master_data/job_title',
+            'products/corrective_maintenance/master_data/workstation',
+            'products/corrective_maintenance/master_data/failure_catalog',
+            'products/corrective_maintenance/master_data/equipment_sector',
+            'products/corrective_maintenance/master_data/equipment_subcategory',
+            'products/corrective_maintenance/master_data/center',
+            'products/corrective_maintenance/master_data/asset',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Maintenance Report',
+          items: [
+            'products/corrective_maintenance/reports/overview'
+          ]
+        }
       ]
     },
+    
   ]
 }

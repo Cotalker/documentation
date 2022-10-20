@@ -1,0 +1,38 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
+import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
+
+## ¿Qué es un cargo? {#overview}
+Es el título de trabajo, que agrupa a los [usuarios](/docs/products/corrective_maintenance/master_data/users) y les otorga atributos especiales de acuerdo a su cargo.
+
+Los atributos especiales están designados por los _roles de acceso_ asociados al cargo, los cuales permiten al usuario ver y/o editar tareas como también acceder a los formularios de un flujo de trabajo.
+
+## Cargos Estándar según Acciones/Formularios {#actions-forms}
+Cada acción o formulario presente en el proceso de [mantenimiento correctivo](/docs/products/corrective_maintenance/landing/overview) requiere que el usuario tengo un _rol de acceso_. Ese rol de acceso es otorgado por los cargos indicados en la lista. Es decir, el usuario debe tener uno de esos cargos para ejercer la acción indicada.
+- [**Crear Aviso**](/docs/products/corrective_maintenance/landing/create_notification): `supervisor` | `levantador` | `jefe` | `administrador` | `técnico` 
+- [**Aceptar OT**](/docs/products/corrective_maintenance/landing/wo_accept): `supervisor` | `técnico` | `jefe` | `administrador`
+- [**Cerrar OT**](/docs/products/corrective_maintenance/landing/wo_close): `supervisor` | `técnico` | `jefe` | `administrador`
+- [**Recepción OT**](/docs/products/corrective_maintenance/landing/wo_validate): `supervisor` | `jefe` | `administrador`
+- [**Cerrar Rápido OT**](/docs/products/corrective_maintenance/landing/wo_fast_close): `supervisor` | `jefe` | `administrador`
+- [**Solicitar Rechazo**](/docs/products/corrective_maintenance/landing/wo_reject_request): `supervisor` | `jefe` | `administrador`
+- [**Aceptación de Rechazo**](/docs/products/corrective_maintenance/landing/wo_reject_accept): `jefe` | `administrador`
+
+
+## ¿Cómo crear un nuevo cargo? {#create}
+1. Selecciona la opción **Cargo** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear nuevo cargo_.
+4. Rellena el formulario.
+
+## ¿Cuál es un buen nombre? {#details}
+Un [usuario](/docs/products/corrective_maintenance/master_data/users) puede ser un mecánico y otro puede ser un validador. También pueden haber usuarios que son supervisores. A esto nos referimos a "cargos", elemento que luego se le asigna a un usuario en el flujo de "Usuarios".
+
+## ¿Qué necesito para crear un cargo? {#requirements}
+A cada cargo le puedes asociar _roles de acceso_ (permisos para realizar ciertas acciones, como crear una orden de trabajo) y también le puedes asociar [_puestos de trabajo_](/docs/products/corrective_maintenance/master_data/workstation) (lugares donde se realiza el trabajo, representado por un rol específico). Todos los usuarios que pertenezcan al cargo creado, se les atribuye también los roles de acceso y los puestos de trabajo de este cargo.
+
+:::note Y recuerda...
+Si necesitas nuevos roles de acceso o [_puestos de trabajo_](/docs/products/corrective_maintenance/master_data/workstation) que no aparecen en la lista, puedes dirigirte a los flujos respectivos para crearlos.
+:::
+
