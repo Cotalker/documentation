@@ -1,3 +1,6 @@
+import Mermaid from '@theme/Mermaid';
+
+
 ## ¿Qué es un sector de equipamiento?
 Lugar donde se realizan los mantenimientos de los activos de tu empresa, dicho de otro modo, estructura los equipos de mantenimiento de acuerdo con criterios funcionales, relativos al proceso o espaciales.
 
@@ -6,3 +9,22 @@ Un sector de equipamiento podría ser tu "Proceso de maquinado", donde se encuen
 
 ## ¿Qué necesito para crear un sector de equipamiento?
 En el nivel 1 y 2 tendrás que definir un supervisor responsable, quien es el encargado de proceder a crear las órdenes de trabajo para resolver las fallas. Por otro lado, para el nivel 3 (nivel más específico), necesitarás asociar al menos un puesto de trabajo. Los puestos de trabajo sirven para identificar a los técnicos y supervisores asociados al lugar de trabajo. Un usuario podrá tener más de un puesto de trabajo asociado si es necesario. La idea de definir estos puestos de trabajo, es poder crear automáticamente las órdenes de trabajo cuando se levante un incidente en el nivel más específico.
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        U(Usuario):::user --> C(Cargos)
+        U --> PT(Puestos de Trabajo)
+        PT --> R(Rol)
+        PT --> SE3(Sector de Equipamiento - 3)
+        SE2(Sector de Equipamiento - 2) --> SE3
+        SE1(Sector de Equipamiento - 1) --> SE2
+        SE3 --> EQ(Equipo)
+        style EQ fill:#f799e3
+`}/>
+
+</div>
+<br/>

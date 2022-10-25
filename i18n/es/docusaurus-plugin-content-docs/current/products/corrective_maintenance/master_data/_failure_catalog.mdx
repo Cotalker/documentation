@@ -1,28 +1,13 @@
----
-title: Configurar Data Maestra
----
-
-import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
-import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
 import Mermaid from '@theme/Mermaid';
 
+## ¿Qué es un grupo de falla? {#what-is}
+Categoría que agrupa a varias averías de un mismo tipo, según cómo puede fallar un equipo. Un grupo de fallas va a agrupar tanto a los Síntomas como a las Causas posibles de una avería.
 
-## Resumen {#overview}
-La data maestra de tu compañía agregada a Cotalker permite la automatización de tareas, su selección desde los formularios correspondientes y el registro de data relevante.
+## ¿Cuál es un buen nombre? {#naming}
+Quizás el equipo genera un ruido extraño o tiene una temperatura alta. Estos son Síntomas de falla que pertenecen a un mismo grupo de fallas: avería mecánica. Por otro lado, la verdadera causa de estas averías puede haber sido debido a una excesiva vibración o por un componente que estaba deteriorado. Estas son Causas de falla que pertenecen al mismo grupo de fallas mecánicas. Otro grupo de fallas podría ser averías eléctricas o estructurales.
 
-## Formularios para Agregar Data Maestra {#forms}
 
-<Configuration/>
 
-## Cómo Acceder a los Formularios {#access}
-Selecciona **Datos maestros** en el menú principal. Luego aparece un sub-menú con todos los formularios disponibles para agregar data maestra.
-
-<div className="margin-left--lg img_sizing">
-
-![access](/img/productos_es/product_master_data_00.png)
-
-</div>
 
 ## Mapa de Data Maestra {#map}
 
@@ -33,10 +18,10 @@ Selecciona **Datos maestros** en el menú principal. Luego aparece un sub-menú 
         U(Usuario):::user --> C(Cargos):::user
         U --> PT(Puestos de Trabajo):::user
         PT --> R(Rol):::user
-        PT --> SE3(Sector de Equipamiento - 3):::sector
-        SE2(Sector de Equipamiento - 2):::sector --> SE3
-        SE1(Sector de Equipamiento - 1):::sector --> SE2
-        SE3 --> EQ(Equipo):::thing
+        PT --> SE1(Sector de Equipamiento - 1):::sector
+        SE2(Sector de Equipamiento - 2):::sector --> SE1
+        SE3(Sector de Equipamiento - 3):::sector --> SE2
+        SE1 --> EQ(Equipo):::thing
         CE(Clase Equipo):::equip --> EQ
         CO(Centro Operativo):::center --> EQ
         TCO(Tipo Centro Operativo):::center --> CO

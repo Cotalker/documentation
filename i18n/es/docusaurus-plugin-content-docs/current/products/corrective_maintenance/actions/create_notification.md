@@ -4,7 +4,6 @@ displayed_sidebar: products_landing
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -12,9 +11,27 @@ import TabItem from '@theme/TabItem';
 Por medio de un formulario, [usuarios](/docs/products/corrective_maintenance/master_data/users) pueden crear **avisos** que alertan supervisores de fallas en equipos o activos e inician un proceso de mantenimiento correctivo.  
 
 ## Requisitos {#requirements}
-El [usuario](/docs/products/corrective_maintenance/master_data/users) debe tener, al menos, las siguientes características:
+<details>
+<summary>Usuario</summary>
+<div>
+
+El [**usuario**](/docs/products/corrective_maintenance/master_data/users) debe tener, al menos, las siguientes características:
 - [**Cargo**](/docs/products/corrective_maintenance/master_data/job_title): `Levantador`, `Supervisor`, `Jefe`, `Administrador` o `Técnico`
-- [**Puestos de trabajo**](/docs/products/corrective_maintenance/master_data/workstation): _Según corresponda al sector de equipamiento._
+- [**Puestos de trabajo**](/docs/products/corrective_maintenance/master_data/workstation): _Según corresponda al sector de equipamiento en que se encuentra el activo o equipo._
+
+</div>
+</details>
+
+<details>
+<summary>Equipo</summary>
+<div>
+
+El [**equipo**](/docs/products/corrective_maintenance/master_data/asset) que ha sufrido un incidente debe estar correctamente agregado a la data maestra. El _equipo_ debe estar también asociado a lo siguiente:
+- [**Sectores de Equipamiento**](/docs/products/corrective_maintenance/master_data/equipment_sector): Los sectores de equipamiento agrupan equipos según criterios funcionales, relativos al proceso o espaciales. Por defecto, existen tres niveles de sectores de equipamientos.
+- [**Fallas**](/docs/products/corrective_maintenance/master_data/failure_catalog): Descripción de la avería específica de cómo puede fallar un equipo según su grupo. Las fallas que se pueden reportar deben estar asociadas a _grupo de fallas_, _causas_, _síntomas_ y _prioridad_. 
+
+</div>
+</details>
 
 ## Pasos para Crear un Aviso {#steps}
 
@@ -167,29 +184,32 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 </Tabs>
 
 ## Resultados Esperados {#results}
-Al crear el **Aviso**, éste aparece en la vista de tareas bajo la sección **Reportados**.
+Al enviar el **Aviso**, se genera automáticamente la orden de trabajo correspondiente con toda la información entregada. Esta aparece como _Reportada_ en la sección _Órdenes de Trabajo_.
 
-El **Aviso** es compartido inmediatamente con personal de supervisión para su aprobación.
+Personal administrativo y de mantenimiento son agregados al flujo.
 
 _Versión de escritorio:_
 
 <div className="margin-left--lg">
 
-
-![fifth-step](/img/productos_es/products_cm_create_notification_05.png)
+![fifth-step](/img/productos_es/products_cm_wo_00.png)
 
 </div>
 <br/>
 
 _Versión móvil:_
 
-<img alt="fifth step" className="img_sizing_50 shadow--tl" src={useBaseUrl('/img/productos_es/products_cm_create_notification_mobile_05.png')} />
+<img alt="fifth step" className="img_sizing_50 shadow--tl" src={useBaseUrl('/img/productos_es/products_cm_wo_00a.png')} />
 <br/>
 
-:::info Siguiente paso
-☞ El personal de supervisión o administración debe [**validar el aviso**](/docs/products/corrective_maintenance/landing/validate_notification).
+:::info Siguientes pasos
+☞ El personal de mantenimiento indica si va a [aceptar la orden de trabajo](/docs/products/corrective_maintenance/actions/wo_accept) o no.  
+☞ El personal administrativo o de jefatura puede hacer un [cierre rápido](/docs/products/corrective_maintenance/actions/wo_fast_close) o hacer una [solicitud de rechazo](/docs/products/corrective_maintenance/actions/wo_reject_request) respecto a la orden.
 :::
 
 
 ## Temas relacionados {#related}
-<Related/>
+- [**Mantenimiento Correctivo**](/docs/products/corrective_maintenance/landing/overview). Producto que conduce y conecta a los usuarios en un proceso de mantenimiento correctivo.
+- [**Aceptar Orden de Trabajo**](/docs/products/corrective_maintenance/actions/wo_accept): Personal de mantenimiento acepta la orden de trabajo.
+- [**Cierre Rápido**](/docs/products/corrective_maintenance/actions/wo_fast_close): Utilizado para cerrar la tarea inmediatamente indicando que se completó exitosamente.
+- [**Solicitud de Rechazo**](/docs/products/corrective_maintenance/actions/wo_reject_request): Petición para descartar la tarea por falta de tiempo o por ser innecesaria.

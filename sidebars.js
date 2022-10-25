@@ -997,15 +997,19 @@ module.exports = {
         {
           type: 'category',
           label: 'Actions & Forms',
+          link: {
+            type: 'doc',
+            id: 'products/corrective_maintenance/actions/overview'
+          },
           items: [
-            'products/corrective_maintenance/landing/create_notification',
-            'products/corrective_maintenance/landing/wo_accept',
-            'products/corrective_maintenance/landing/wo_close',
-            'products/corrective_maintenance/landing/wo_validate',
-            'products/corrective_maintenance/landing/wo_feedback',
-            'products/corrective_maintenance/landing/wo_fast_close',
-            'products/corrective_maintenance/landing/wo_reject_request',
-            'products/corrective_maintenance/landing/wo_reject_accept',
+            'products/corrective_maintenance/actions/create_notification',
+            'products/corrective_maintenance/actions/wo_accept',
+            'products/corrective_maintenance/actions/wo_close',
+            'products/corrective_maintenance/actions/wo_validate',
+            'products/corrective_maintenance/actions/wo_feedback',
+            'products/corrective_maintenance/actions/wo_fast_close',
+            'products/corrective_maintenance/actions/wo_reject_request',
+            'products/corrective_maintenance/actions/wo_reject_accept',
           ],
           collapsed: true
         },
@@ -1032,8 +1036,15 @@ module.exports = {
         {
           type: 'category',
           label: 'Maintenance Report',
+          link: {
+            type: 'doc',
+            id: 'products/corrective_maintenance/reports/overview',
+          },
           items: [
-            'products/corrective_maintenance/reports/overview'
+            'products/corrective_maintenance/reports/filters',
+            'products/corrective_maintenance/reports/confidence_indicators',
+            'products/corrective_maintenance/reports/reported_incidents',
+            'products/corrective_maintenance/reports/cm_workflow',
           ]
         }
       ]

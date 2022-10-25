@@ -1,7 +1,18 @@
 import Equipment, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_sector.mdx'; 
+import Rol, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_rol.mdx';
+import Mermaid from '@theme/Mermaid';
+
 
 ## ¿Qué es un puesto de trabajo? {#overview}
-Son los lugares donde se realiza el trabajo, que está representado por un rol específico y por los [usuarios](/docs/products/corrective_maintenance/master_data/users), por lo tanto, un usuario puede asociarse a distintos puestos de trabajo, pero solo 1 por rol. Es decir, un puesto de trabajo conecta a los usuarios con los sectores de equipamiento a través de los roles.
+Son utilizados para identificar el lugar de trabajo de técnicos y supervisores (roles existentes). Cuando ocurre un problema en un sector, se sabrá por sistema a qué _usuario_ notificar para resolverlo.
+
+Un [usuario](/docs/products/corrective_maintenance/master_data/users) podrá contar con ninguno, uno o más _puestos de trabajo_ asociado. Todo dependerá de qué tan eficiente deseas tu mantenimiento. 
+
+Si defines los _puestos de trabajos_, el sistema podrá crear automáticamente las órdenes de trabajo frente a una falla notificada, esto implica que el supervisor y técnico serán notificados casi instantáneamente para resolverla.
+
+Si hay más de un técnico asociado a resolver la orden de trabajo, el primero que la acepte será el asignado, y el resto no seguirán asociados a dicha orden.
+
+En caso de no contar con la lógica de _puestos de trabajo_, se realizarán asignaciones directas a los técnicos.
 
 ## ¿Cómo crear un nuevo puesto de trabajo? {#create}
 1. Selecciona la opción **Puesto de trabajo** en la sección _Datos Maestros_ en el _menú principal_.
@@ -10,12 +21,7 @@ Son los lugares donde se realiza el trabajo, que está representado por un rol e
 4. Rellena el formulario.
 
 ## ¿Cuál es un buen nombre? {#details}
-Por ejemplo, si queremos invitar a los mecánicos (rol) a participar del proceso de mantenimiento cuando se necesite realizar la reparación, pero sólo a los mecánicos que participan del "Proceso de maquinado" (sector de equipamiento), por lo tanto, existirá un puesto de trabajo llamado "Proceso de maquinado - mecánicos ".
-
-
-:::note Y recuerda...
-A los [usuarios](/docs/products/corrective_maintenance/master_data/users) le podrás asignar estos puestos de trabajo (en el flujo "Usuarios") y de esta forma conectarás a los usuarios con el sector de equipamiento y el rol. Si no existe el rol que deseas, ¡lo puedes crear!
-:::
+El _puesto de trabajo_ asociado a los técnicos que velan sobre incidentes ocurridos en el "Proceso de Maquinado" (último nivel de [_sector de equipamiento_](/docs/products/corrective_maintenance/master_data/equipment_sector)) podría llamarse "Proceso de maquinado - técnicos”. Esto facilitará la creación y seguimiento del flujo de trabajo que corre cada vez que una persona levanta un incidente ocurrido en dicho sector de equipamiento y se envía automáticamente la notificación a los técnicos responsables.
 
 ## Especificaciones Técnicas {#specifications}
 
@@ -33,8 +39,26 @@ A los [usuarios](/docs/products/corrective_maintenance/master_data/users) le pod
 <summary>Rol</summary>
 <div>
 
-Un rol es...
+<Rol/>
 
 </div>
 <br/>
 </details>
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        U(Usuario) --> C(Cargos)
+        U --> PT(Puestos de Trabajo)
+        PT --> R(Rol)
+        PT --> SE3(Sector de Equipamiento - 3)
+        SE2(Sector de Equipamiento - 2) --> SE3
+        SE1(Sector de Equipamiento - 1) --> SE2
+        style PT fill:#f799e3
+`}/>
+
+</div>
+<br/>
