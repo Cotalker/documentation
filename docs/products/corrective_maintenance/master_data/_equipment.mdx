@@ -1,0 +1,16 @@
+import Mermaid from '@theme/Mermaid';
+
+
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        CO(Centro Operativo) --> EQ
+        TCO(Tipo Centro Operativo) --> CO
+        CO --> M(Material)
+        style EQ fill:#f799e3
+`}/>
+
+</div>

@@ -1,0 +1,49 @@
+import Mermaid from '@theme/Mermaid';
+import Tipocentro, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_center_type.mdx'; 
+
+## ¿Qué es un centro operativo? {#what-is}
+Lugar físico donde pueden haber _materiales_ y/o _equipos_.
+
+## ¿Cómo crear un nuevo centro? {#create}
+1. Selecciona la opción **Centro** en la sección **Datos Maestros** en el _menú principal_.
+2. Presiona el _botón de acciones_.
+3. Elije la opción **Crear nuevo centro**.
+4. Rellena el formulario.
+
+## Nomenclatura {#naming}
+Un centro puede ser "Estación de Servicio Bahía las Minas", que pertenece al tipo de centro denominado "Estaciones". Su "centro de costo" es 321TDO105, que es el código único que identifica a esta estación y su "responsable" es la cuenta del usuario a cargo.
+
+:::info Y recuerda...  
+Esta estación puede tener [_materiales_](/docs/products/corrective_maintenance/master_data/material) (por ejemplo, un tubo pvc 75mmx1m gris) y/o [_equipos_](/docs/products/corrective_maintenance/master_data/equipment) (por ejemplo, el compresor de aire a1500). Crear esta estación te permitirá crear activos y/o materiales asociados al mismo.
+:::
+
+## Data Maestra Asociada {#requirements}
+
+<details>
+<summary>Tipo de Centro</summary>
+<div>
+
+Debes elegir un tipo de centro.
+
+
+
+<Tipocentro/>
+
+</div>
+</details>
+<br/>
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        CO(Centro Operativo) --> EQ
+        TCO(Tipo Centro Operativo) --> CO
+        CO --> M(Material)
+        style CO fill:#f799e3
+`}/>
+
+</div>

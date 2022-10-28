@@ -1,11 +1,11 @@
 ---
-title: Centro Operativo
-displayed_sidebar: products_landing
+title: 🔵 Centro
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import CenterOp, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_center.mdx'; 
 
-import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
-import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
+
+<CenterOp/>
+
+export const toc = [...Title1TOC];

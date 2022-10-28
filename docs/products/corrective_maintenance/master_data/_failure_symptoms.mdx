@@ -1,0 +1,39 @@
+import Mermaid from '@theme/Mermaid';
+
+## ¿Qué es un síntoma? {#symptoms}
+Es la falla visual que identifica el usuario al levantar un incidente. Muchas veces es confundido con la [_causa de falla_](/docs/current/products/corrective_maintenance/master_data/failure_cause), sin embargo, el síntoma se origina por la causa raíz del problema.
+
+## Nomenclatura {#naming}
+Quizás el equipo no enciende, o tiene olor a quemado, o enciende intermitente. Estos corresponden a los síntomas del problema, que pertenecen a un mismo grupo de fallas: avería de tipo eléctrica. Otro grupo de falla puede ser averías mecánicas, donde los síntomas podrían ser un ruido extraño, temperatura alta, o excesiva vibración.
+
+## Requerimientos {#requirements}
+
+<details>
+<summary>Prioridad</summary>
+<div>
+
+A cada síntoma le debes asignar una _prioridad_, la cual es usada además para levantar alertas por el no cumplimiento del tiempo a resolver la falla reportada (SLA).
+
+Las _prioridades_ son predefinidas y son las siguientes tres:
+- _Alta_
+- _Baja_
+- _Media_
+
+</div>
+</details>
+<br/>
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph LR;
+        EQ(Equipo) --> GF(Grupo de Falla):::fail
+        GF --> Sin(Síntoma):::fail
+        Sin --> Prior(Prioridad):::fail
+        GF --> CF(Causa de Falla):::fail
+        style Sin fill:#f799e3
+`}/>
+
+</div>

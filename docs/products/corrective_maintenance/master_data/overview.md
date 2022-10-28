@@ -25,6 +25,9 @@ Selecciona **Datos maestros** en el menú principal. Luego aparece un sub-menú 
 </div>
 
 ## Mapa de Data Maestra {#map}
+Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra para facilitar su configuración.
+
+☞ _Presiona sobre los ítems de data maestra para obtener mayor información._
 
 <div className="align-center">
 
@@ -42,7 +45,7 @@ Selecciona **Datos maestros** en el menú principal. Luego aparece un sub-menú 
         TCO(Tipo Centro Operativo):::center --> CO
         CO --> M(Material):::thing
         S(Servicio):::thing
-        EQ --> Cond(Condición):::equip
+        EQ --> State(Estado):::equip
         EQ --> FEq(Familia del Equipo):::equip
         EQ --> CEq(Categoría de Equipo):::equip
         FEq --> CEq
@@ -58,6 +61,10 @@ Selecciona **Datos maestros** en el menú principal. Luego aparece un sub-menú 
         classDef center fill:#fcfa6f,stroke-width:0px
         classDef fail fill:#faa7a7,stroke-width:0px
         classDef check fill:#fae105,stroke-width:0px
+        click U "users"
+        click C "job_title"
+        click PT "workstation"
+        click R "rol"
 `}/>
 
 </div>

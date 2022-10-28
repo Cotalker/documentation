@@ -1,6 +1,5 @@
 ---
-title: Usuario
-displayed_sidebar: products_landing
+title: 🟡 Usuario
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

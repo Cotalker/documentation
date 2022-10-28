@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
-const Highlight = ({text, color}) => (<span style={{
+const Highlight = ({text, color, textcolor}) => (<span style={{
   backgroundColor: color,
   borderRadius: '3px',
-  color: '#fff',
+  color: textcolor,
   padding: '0.2rem',
   'margin-right': '3px',
   'margin-left': '3px'

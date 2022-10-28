@@ -1,0 +1,67 @@
+import Jobtitles, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_job_title.mdx'; 
+import Workstation, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_workstation.mdx'; 
+import Mermaid from '@theme/Mermaid';
+
+
+
+## Resumen {#overview}
+Los _usuarios_ son la unidad básica de Cotalker, representan individuos o incluso bots. Pueden ingresar a la plataforma de Cotalker y llevar a cabo varias acciones según sus roles y permisos.
+
+## ¿Cómo crear un nuevo usuario? {#create}
+1. Selecciona la opción **Usuario** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear nuevo usuario_.
+4. Rellena el formulario.
+
+## Información Requerida {#details}
+### Datos personales {#personal-data}
+- Nombres
+- Apellidos
+- Teléfono
+- Correo Electrónico (obligatorio; no se puede cambiar una vez creado el usuario.)
+
+### Especificaciones Técnicas {#specifications}
+
+<details>
+<summary>Cargos</summary>
+<div>
+
+Las acciones que se le permitirán al usuario hacer en el flujo de mantenimiento dependen del cargo seleccionado.
+
+<Jobtitles/>
+
+<br/>
+</div>
+</details>
+
+<details>
+<summary>Puestos de Trabajo</summary>
+<div>
+
+Puedes asignarle puestos de trabajo a un usuario para identificar en qué sectores trabaja y así involucrarlo automáticamente en los mantenimientos de dichos lugares.
+
+<Workstation/>
+
+:::info Y recuerda...
+Si el _puesto de trabajo_ que necesitas no se encuentra en la lista, puedes ir a crearlo al flujo de [**Puesto de trabajo**](/docs/products/corrective_maintenance/master_data/workstation). 
+:::
+
+</div>
+</details>
+
+
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph LR;
+        U(Usuario) --> C(Cargos)
+        U --> PT(Puestos de Trabajo)
+        PT --> SE(Sector de Equipamiento)
+        PT --> R(Rol)
+        style U fill:#f799e3
+`}/>
+
+</div>

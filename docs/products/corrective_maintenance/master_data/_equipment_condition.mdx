@@ -1,0 +1,31 @@
+import Mermaid from '@theme/Mermaid';
+
+## ¿Qué es el estado físico del equipo? {#what-is}
+Permite categorizar la condición en que se encuentra el equipo, es decir, _bueno_, _regular_ o _malo_. Por defecto, existen los tres estados mencionados pero se pueden agregar más por medio del formulario de _Crear Nuevo Equipo_.
+
+## Nomenclatura {#naming}
+Los estados por defecto son:
+`1. Buen Estado`  
+`2. Regular Estado`  
+`3. Mal Estado`  
+Se utilizan números para ordenar los estados en orden cualitativo.
+
+
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        CE(Clase Equipo) --> EQ
+        EQ --> State(Estado)
+        EQ --> FEq(Familia del Equipo)
+        EQ --> CEq(Categoría de Equipo)
+        FEq --> CEq
+        FEq --> CL(Checklist)
+        style State fill:#f799e3
+`}/>
+
+</div>

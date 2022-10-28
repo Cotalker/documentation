@@ -1,5 +1,5 @@
 ---
-title: Mantenimiento Preventivo
+title: 📅 Mantenimiento Preventivo
 displayed_sidebar: products
 ---
 

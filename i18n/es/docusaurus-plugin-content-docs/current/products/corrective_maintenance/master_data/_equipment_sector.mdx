@@ -1,14 +1,40 @@
 import Mermaid from '@theme/Mermaid';
 
+## ¿Qué es un sector de equipamiento? {#what-is}
+Lugar donde se realizan los mantenimientos de los equipos o activos de tu empresa, dicho de otro modo, estructura los equipos de mantenimiento de acuerdo con criterios funcionales, relativos al proceso o espaciales.
 
-## ¿Qué es un sector de equipamiento?
-Lugar donde se realizan los mantenimientos de los activos de tu empresa, dicho de otro modo, estructura los equipos de mantenimiento de acuerdo con criterios funcionales, relativos al proceso o espaciales.
+## ¿Cómo crear un nuevo sector? {#create}
+1. Selecciona la opción **Sector de Equipamiento** en la sección **Datos Maestros** en el _menú principal_.
+2. Presiona el _botón de acciones_.
+3. Elije la opción **Crear nuevo sector de equipamiento**.
+4. Rellena el formulario y agrega los distintos niveles de equipamiento.
 
-## ¿Cuál es un buen nombre?
-Un sector de equipamiento podría ser tu "Proceso de maquinado", donde se encuentran tus equipos de "taladro 869" y la "fresadora 332". Así mismo, puedes tener más niveles de sectores de equipamiento: tu "Proceso de Maquinado" se encuentra en la "comuna de Quilicura", y esta en la "región Metropolitana". Puedes tener distintos niveles de sector de equipamiento: el primer nivel sería el más genérico, la región, y el último el más particular, tu estación de servicio. En este formulario deberás crear 3 niveles de sector de equipamiento.
+## Nomenclatura {#naming}
+Un _sector de equipamiento_ podría ser tu "Proceso de maquinado", donde se encuentran tus equipos de "taladro 869" y la "fresadora 332". Así mismo, puedes tener más niveles de _sectores de equipamiento_: tu "Proceso de Maquinado" se encuentra en la "comuna de Quilicura", y esta en la "región Metropolitana". Puedes tener distintos niveles de _sector de equipamiento_: el primer nivel sería el más genérico, la región, y el último el más particular, tu estación de servicio. En este formulario deberás crear 3 niveles de sector de equipamiento.
 
-## ¿Qué necesito para crear un sector de equipamiento?
-En el nivel 1 y 2 tendrás que definir un supervisor responsable, quien es el encargado de proceder a crear las órdenes de trabajo para resolver las fallas. Por otro lado, para el nivel 3 (nivel más específico), necesitarás asociar al menos un puesto de trabajo. Los puestos de trabajo sirven para identificar a los técnicos y supervisores asociados al lugar de trabajo. Un usuario podrá tener más de un puesto de trabajo asociado si es necesario. La idea de definir estos puestos de trabajo, es poder crear automáticamente las órdenes de trabajo cuando se levante un incidente en el nivel más específico.
+## Data Maestra Asociada {#requirements}
+
+### Niveles 1 y 2 
+
+<details>
+<summary>Supervisor</summary>
+<div>
+
+En el nivel 1 y 2 tendrás que definir un [**usuario**](/docs/products/corrective_maintenance/master_data/users) con al menos el cargo de _supervisor_. El  _supervisor_ responsable es quien está encargado de proceder a crear las órdenes de trabajo para resolver las fallas. 
+
+</div>
+</details>
+
+### Nivel 3
+
+<details>
+<summary>Puesto de Trabajo</summary>
+<div>
+
+Por otro lado, para el _nivel 3_ (nivel más específico), necesitarás asociar al menos un [**puesto de trabajo**](/docs/products/corrective_maintenance/master_data/workstation). Los _puestos de trabajo_ sirven para identificar a los técnicos y supervisores asociados al lugar de trabajo. Un _usuario_ podrá tener más de un _puesto de trabajo_ asociado si es necesario. La idea de definir estos _puestos de trabajo_, es poder crear automáticamente las órdenes de trabajo cuando se levante un incidente en el nivel más específico.
+
+</div>
+</details>
 
 ## Mapa de Data Maestra {#map}
 
@@ -23,7 +49,9 @@ En el nivel 1 y 2 tendrás que definir un supervisor responsable, quien es el en
         SE2(Sector de Equipamiento - 2) --> SE3
         SE1(Sector de Equipamiento - 1) --> SE2
         SE3 --> EQ(Equipo)
-        style EQ fill:#f799e3
+        style SE3 fill:#f799f3
+        style SE2 fill:#f799d3
+        style SE1 fill:#f799b3
 `}/>
 
 </div>

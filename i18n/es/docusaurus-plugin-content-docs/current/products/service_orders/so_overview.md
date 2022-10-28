@@ -1,5 +1,5 @@
 ---
-title: Órdenes de Servicio
+title: 🪛 Órdenes de Servicio
 displayed_sidebar: products
 ---
 

@@ -1,0 +1,22 @@
+import Mermaid from '@theme/Mermaid';
+
+## ¿Qué es una causa? {#cause}
+Es el motivo del deterioro detectado en un equipo. Al reportar una falla, el usuario podría identificar la causa raíz del problema. Complementando, el técnico que va a resolver la falla, podrá corroborar esta información.
+
+## Nomenclatura {#naming}
+Si se detecta el síntoma de falla como excesiva vibración del motor de un equipo, la causa de esta avería podría ser un ajuste inadecuado de un componente. El _síntoma_ y la _causa de falla_, pertenecen al mismo grupo de fallas mecánicas. Por ejemplo, otra causa podría ser un elemento deteriorado o lubricante degradado.
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph LR;
+        EQ(Equipo) --> GF(Grupo de Falla):::fail
+        GF --> Sin(Síntoma):::fail
+        Sin --> Prior(Prioridad):::fail
+        GF --> CF(Causa de Falla):::fail
+        style CF fill:#f799e3
+`}/>
+
+</div>

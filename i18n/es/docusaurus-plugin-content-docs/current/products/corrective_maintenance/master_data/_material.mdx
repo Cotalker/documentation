@@ -1,0 +1,48 @@
+import Mermaid from '@theme/Mermaid';
+import Centro, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_center.mdx'; 
+
+## ¿Qué es un material? {#what-is}
+Elemento que permite la realización de los trabajos de mantenimiento.
+
+## ¿Cómo crear un nuevo material? {#create}
+1. Selecciona la opción **Sector de Equipamiento** en la sección **Datos Maestros** en el _menú principal_.
+2. Presiona el _botón de acciones_.
+3. Elije la opción **Crear nuevo sector de equipamiento**.
+4. Rellena el formulario y agrega los distintos niveles de equipamiento.
+
+## Nomenclatura {#naming}
+Un material puede ser un tubo pvc 75mmx1m gris, identificado con el código "13" (identificador único), marca "Vinilit", modelo "tubo sanitario" y con un costo de $2000. 
+
+## Data Maestra Asociada {#requirements}
+
+<details>
+<summary>Centro</summary>
+<div>
+
+Cada _material_ puede ser asignado a distintos _centros_, por ejemplo, pueden haber 4 tubos en el "Almacén norte" y 2 tubos en el "Almacén sur". Si el _centro_ que necesitas no se encuentra en la lista, puedes ir a crearlo al flujo de "[**Centro**](/docs/products/corrective_maintenance/master_data/center)".
+
+<Centro/>
+
+</div>
+</details>
+<br/>
+
+
+:::info Y recuerda…
+Este material lo puedes asignar a distintos centros, por ejemplo, pueden haber 4 tubos en el "Almacén norte" y 2 tubos en el "Almacén sur". Si el centro que necesitas no se encuentra en la lista, puedes ir a crearlo al flujo de "Centro".
+:::
+
+## Mapa de Data Maestra {#master-data}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        CO(Centro Operativo) --> EQ
+        TCO(Tipo Centro Operativo) --> CO
+        CO --> M(Material)
+        style M fill:#f799e3
+`}/>
+
+</div>

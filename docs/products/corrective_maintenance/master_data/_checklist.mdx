@@ -1,0 +1,38 @@
+import Mermaid from '@theme/Mermaid';
+
+## ¿Qué es una checklist? {#what-is}
+Lista o guía que nos asegura que no nos saltemos ninguno de los pasos que debemos seguir en el proceso de realizar el mantenimiento preventivo o una inspección.
+
+## Nomenclatura {#naming}
+Imaginemos que queremos crear un checklist para evaluar a todos los equipos que pertenecen a la familia de containers, entonces podemos simplemente llamar a esta checklist "Checklist familia containers".
+
+## ¿Cómo crear un checklist? {#create}
+1. Selecciona la opción **Checklist** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear checklist_.
+4. Rellena el formulario.
+5. Dirígete al link que te llegará por el canal de la sección Checklist.
+6. Desde el [Panel Administrativo](/docs/documentation/admin/survey/survey_overview#form-template), añade los puntos a evaluar que desees tener en la checklist.
+
+A través de este formulario crearás un formulario checklist. Solo debes colocar el nombre que le quieres dar a la checklist y la familia asociada. Luego deberás dirigirte al link que te llegará por este canal para añadir los puntos a evaluar que desees tener en esta checklist.
+
+:::info Y recuerda…
+Si la familia que necesitas no se encuentra en la lista, puedes ir a crearla al flujo "Familia de equipo".
+:::
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        CE(Clase Equipo):::equip --> EQ
+        EQ --> State(Estado):::equip
+        EQ --> FEq(Familia del Equipo):::equip
+        EQ --> CEq(Categoría de Equipo):::equip
+        FEq --> CEq
+        FEq --> CL(Checklist):::check
+`}/>
+
+</div>

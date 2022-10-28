@@ -1,5 +1,5 @@
 ---
-title: Órdenes de Trabajo
+title: 🧾 Órdenes de Trabajo
 displayed_sidebar: products
 ---
 

@@ -1,0 +1,24 @@
+import Mermaid from '@theme/Mermaid';
+
+## ¿Qué es una familia de equipo? {#family}
+Conjunto que agrupa a varias categorías de equipo del mismo tipo.
+
+## Nomenclatura {#naming}
+Una familia de equipo puede ser "tanque de combustible". Dentro de esta familia, pueden existir tanques de combustible de 2000 galones y de 10000 galones, que corresponden a las categorías de los equipos.
+
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        EQ --> FEq(Familia del Equipo)
+        FEq --> CEq
+        FEq --> CL(Checklist)
+        EQ --> CEq(Categoría de Equipo)
+        style FEq fill:#f799e3
+`}/>
+
+</div>

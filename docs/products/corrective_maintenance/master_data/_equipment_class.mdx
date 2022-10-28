@@ -1,0 +1,25 @@
+import Mermaid from '@theme/Mermaid';
+
+## ¿Qué es una clase de activo?
+Es información que se utiliza para fines contables. Los activos de la misma clase generalmente exhiben características similares respecto a riesgo y estructura, reaccionan de manera similar en el mercado y generalmente están sujetos a las mismas regulaciones.
+
+## Nomenclatura
+Algunas clases de activo pueden ser "Maquinarias y equipos", "Muebles y enseres", "Equipo de procesador de datos", "Vehículos", entre otros. Cuando crees un equipo nuevo, podrás asociar esta nueva clase de activo.
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        CE(Clase Equipo) --> EQ
+        EQ --> State(Estado)
+        EQ --> FEq(Familia del Equipo)
+        EQ --> CEq(Categoría de Equipo)
+        FEq --> CEq
+        FEq --> CL(Checklist)
+        style CE fill:#f799e3
+`}/>
+
+</div>

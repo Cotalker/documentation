@@ -80,7 +80,10 @@
     "description": "The label for category [1.a] Basic Admin in sidebar certification"
   },
   "sidebar.products.category.Products Overview": {
-    "message": "Resumen de Productos",
+    "message": "📌 Resumen de Productos",
+    "description": "The label for category Products Overview in sidebar products"
+  },  "sidebar.products.category.Configure Master Data": {
+    "message": "⚙️ Data Maestra",
     "description": "The label for category Products Overview in sidebar products"
   },
   "sidebar.workflow_notifications.category.Notifications Workflow": {

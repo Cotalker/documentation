@@ -1,48 +1,52 @@
 import Mermaid from '@theme/Mermaid';
+import Symptoms, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_symptoms.mdx'; 
+import Cause, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_cause.mdx'; 
 
 ## ¿Qué es un grupo de falla? {#what-is}
-Categoría que agrupa a varias averías de un mismo tipo, según cómo puede fallar un equipo. Un grupo de fallas va a agrupar tanto a los Síntomas como a las Causas posibles de una avería.
+Es la categoría que agrupa a varias averías de un mismo tipo, según cómo puede fallar un equipo. Un grupo de fallas va a agrupar tanto a los Síntomas como a las Causas posibles de una avería.
 
-## ¿Cuál es un buen nombre? {#naming}
-Quizás el equipo genera un ruido extraño o tiene una temperatura alta. Estos son Síntomas de falla que pertenecen a un mismo grupo de fallas: avería mecánica. Por otro lado, la verdadera causa de estas averías puede haber sido debido a una excesiva vibración o por un componente que estaba deteriorado. Estas son Causas de falla que pertenecen al mismo grupo de fallas mecánicas. Otro grupo de fallas podría ser averías eléctricas o estructurales.
+## ¿Cómo crear una nueva falla? {#create}
+1. Selecciona la opción **Grupo de Falla** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear nueva falla_.
+4. Rellena el formulario, agregando _síntomas_, _causas_ y _grupos_ según necesidad.
 
+## Nomenclatura {#naming}
+Quizás el equipo genera un ruido extraño o tiene una temperatura alta. Estos son _Síntomas_ de falla que pertenecen a un mismo _grupo de fallas_: avería mecánica. Por otro lado, la verdadera causa de estas averías puede haber sido debido a una excesiva vibración o por un componente que estaba deteriorado. Estas son _Causas_ de falla que pertenecen al mismo grupo de fallas mecánicas. Otro grupo de fallas podría ser averías eléctricas o estructurales.
 
+## Data Maestra Asociada {#requirements}
 
+<details>
+<summary>Síntomas</summary>
+<div>
+
+<Symptoms/>
+
+</div>
+</details>
+
+<details>
+<summary>Causa de Falla</summary>
+<div>
+
+<Cause/>
+
+</div>
+</details>
+<br/>
 
 ## Mapa de Data Maestra {#map}
+_Cada grupo de fallas tiene sus propios síntomas y causas._
 
 <div className="align-center">
 
 <Mermaid chart={`
-    graph TD;
-        U(Usuario):::user --> C(Cargos):::user
-        U --> PT(Puestos de Trabajo):::user
-        PT --> R(Rol):::user
-        PT --> SE1(Sector de Equipamiento - 1):::sector
-        SE2(Sector de Equipamiento - 2):::sector --> SE1
-        SE3(Sector de Equipamiento - 3):::sector --> SE2
-        SE1 --> EQ(Equipo):::thing
-        CE(Clase Equipo):::equip --> EQ
-        CO(Centro Operativo):::center --> EQ
-        TCO(Tipo Centro Operativo):::center --> CO
-        CO --> M(Material):::thing
-        S(Servicio):::thing
-        EQ --> Cond(Condición):::equip
-        EQ --> FEq(Familia del Equipo):::equip
-        EQ --> CEq(Categoría de Equipo):::equip
-        FEq --> CEq
-        FEq --> CL(Checklist):::check
-        EQ --> GF(Grupo de Falla):::fail
-        GF --> Sin(Síntoma):::fail
-        Sin --> Prior(Prioridad):::fail
-        GF --> CF(Causa de Falla):::fail
-        classDef user fill:#58f5f2,stroke-width:0px
-        classDef thing fill:#77fa3e,stroke-width:0px
-        classDef sector fill:#f2f558,stroke-width:0px
-        classDef equip fill:#cefaca,stroke-width:0px
-        classDef center fill:#fcfa6f,stroke-width:0px
-        classDef fail fill:#faa7a7,stroke-width:0px
-        classDef check fill:#fae105,stroke-width:0px
+    graph LR;
+        EQ(Equipo) --> GF(Grupo de Falla)
+        GF --> Sin(Síntoma)
+        Sin --> Prior(Prioridad)
+        GF --> CF(Causa de Falla)
+        style GF fill:#f799c3
 `}/>
 
 </div>

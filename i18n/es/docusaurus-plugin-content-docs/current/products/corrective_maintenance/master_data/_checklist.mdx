@@ -1,0 +1,54 @@
+import Mermaid from '@theme/Mermaid';
+import Family, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_family.mdx'; 
+
+## ¿Qué es una checklist? {#what-is}
+Lista o guía que nos asegura que no nos saltemos ninguno de los pasos que debemos seguir en el proceso de realizar el mantenimiento preventivo o una inspección.
+
+## Nomenclatura {#naming}
+Imaginemos que queremos crear un checklist para evaluar a todos los equipos que pertenecen a la familia de containers, entonces podemos simplemente llamar a esta checklist "Checklist familia containers".
+
+## ¿Cómo crear un checklist? {#create}
+1. Selecciona la opción **Checklist** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear checklist_.
+4. Rellena el formulario.
+5. Dirígete al link que te llegará por el canal de la sección Checklist.
+6. Desde el [Panel Administrativo](/docs/documentation/admin/survey/survey_overview#form-template), añade los puntos a evaluar que desees tener en la checklist.
+
+## Data Maestra Asociada {#requirements}
+
+<details>
+<summary>Familia de Equipos</summary>
+<div>
+
+Debes asociar una _familia_ a la _checklist_. Todos los _equipos_ pertenecientes a la _familia_ podrán ser revisados con el _checklist_.
+
+<Family/>
+
+<!-- :::info Y recuerda…
+Si la familia que necesitas no se encuentra en la lista, puedes ir a crearla al flujo [**Familia de equipo**](/docs/products/corrective_maintenance/master_data/equipment_family).
+::: -->
+
+</div>
+</details>
+<br/>
+
+
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph TD;
+        EQ(Equipo)
+        CE(Clase Equipo) --> EQ
+        EQ --> State(Estado)
+        EQ --> FEq(Familia del Equipo)
+        EQ --> CEq(Categoría de Equipo)
+        FEq --> CEq
+        FEq --> CL(Checklist)
+        style CL fill:#f799e3
+`}/>
+
+</div>
