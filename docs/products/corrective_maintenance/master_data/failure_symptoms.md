@@ -1,5 +1,5 @@
 ---
-title: Síntoma de Falla
+title: 🟣 Síntoma de Falla
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

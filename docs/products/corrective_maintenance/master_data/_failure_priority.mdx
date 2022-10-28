@@ -1,8 +1,25 @@
+import Mermaid from '@theme/Mermaid';
+
 ## ¿Qué son prioridades? {#what-is}
-La colección de prioridades indica los niveles de urgencia que puede tener una falla.
+La colección de prioridades indica los niveles de urgencia que puede tener una falla. La prioridad va asociada al [**síntoma**](/docs/products/corrective_maintenance/master_data/failure_symptoms).
 
 ## Nomenclatura {#naming}
 Las prioridades están predefinidas y son las siguientes:
 - Alta
 - Baja
 - Media
+
+## Mapa de Data Maestra {#map}
+
+<div className="align-center">
+
+<Mermaid chart={`
+    graph LR;
+        EQ(Equipo) --> GF(Grupo de Falla):::fail
+        GF --> Sin(Síntoma):::fail
+        Sin --> Prior(Prioridad):::fail
+        GF --> CF(Causa de Falla):::fail
+        style Prior fill:#f799e3
+`}/>
+
+</div>

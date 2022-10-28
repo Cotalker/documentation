@@ -1,16 +1,131 @@
 import Mermaid from '@theme/Mermaid';
+import Family, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_family.mdx'; 
+import Sector, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_sector.mdx'; 
+import CenterOp, {toc as Title3TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_center.mdx'; 
+import Condition, {toc as Title4TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_condition.mdx'; 
+import Category, {toc as Title5TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_category.mdx'; 
+
+## ¿Qué es un equipo? {#what-is}
+Son objetos individuales y físicos que requieren un histórico de mantenimiento independiente. Uno o más equipos pueden ser instalados en un mismo sector de equipamiento.
+
+## ¿Cómo inscribir un equipo? {#setup}
+1. Selecciona la opción **Equipo** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear nuevo equipo_.
+4. Rellena el formulario.
+
+## Nomenclatura {#naming}
+El nombre debe ser único para lograr diferenciarlo de los demás equipos, por lo que _te lo generamos automáticamente_. Por ejemplo, un tanque de combustible de 5000 galones identificado con el número único de a3024, lo llamaremos                                                  "a3024 - Tanque de combustible de 5000 galones - fecha creación". ¡Así de simple!
+
+## Información y Data Maestra Asociada {#requirements}
+
+<details>
+<summary>Código Único</summary>
+<div>
+
+En primer lugar necesitamos identificarlo por su código único. Para ello ingresa el código y aprieta el botón "play", así podemos corroborar si el código introducido ya ha sido utilizado por otro equipo.
+
+</div>
+</details>
+
+<details>
+<summary>Familia de Equipo</summary>
+<div>
+
+Luego debes ingresar a qué _familia_ pertenece este equipo, por ejemplo, en este caso corresponde a la _familia_ "tanques de combustible".
+
+<Family/>
+
+</div>
+</details>
+
+<details>
+<summary>Categoría</summary>
+<div>
+
+Luego de eligir la _familia de equipo_, se debe indicar la _categoría_. En el ejemplo anterior, el equipo perteneciente a la _familia_ "tanques de combustible", podría estar dentro de la _categoría_ de "tanques de combustible de 5000 galones".
+
+<Category/>
+
+</div>
+</details>
+
+<details>
+<summary>Marca y Modelo</summary>
+<div>
+
+De manera opcional, puedes registrar la marca y el modelo del nuevo equipo.
+
+</div>
+</details>
+
+<details>
+<summary>Sector de Equipamiento</summary>
+<div>
+
+Si este equipo necesita mantenimiento, tendrás que registrar también datos como el _sector de equipamiento_, que corresponde al lugar en donde se realiza mantenimiento, y también debemos asociar los grupos de falla que puede tener este equipo.
+
+<Sector/>
+
+</div>
+</details>
+
+<details>
+<summary>Centro Operativo</summary>
+<div>
+
+Para información logística, tendrás que registrar el centro operativo en donde se encontrará este equipo, y de manera opcional puedes registrar a su responsable.
+
+<CenterOp/>
+
+</div>
+</details>
+
+<details>
+<summary>Información Física</summary>
+<div>
+
+Podrás especificar información física (como el estado en el que se encuentra el equipo y/o fotos), e información contable (como el costo, clase del equipo, fecha de capitalización, depreciaciones, saldo y vida útil).
+
+<Condition/>
+
+</div>
+</details>
+
+<details>
+<summary>Información Contable</summary>
+<div>
+
+También podrás especificar información contable (como el costo, clase del equipo, fecha de capitalización, depreciaciones, saldo y vida útil).
+
+</div>
+</details>
 
 
+<br/>
+
+
+:::info Y recuerda…
+Si necesitas una nueva [**familia**](/docs/products/corrective_maintenance/master_data/equipment_family) y/o [**categoría**](/docs/products/corrective_maintenance/master_data/equipment_category), un nuevo [**centro**](/docs/products/corrective_maintenance/master_data/center), un nuevo [**sector de equipamiento**](/docs/products/corrective_maintenance/master_data/equipment_sector) o un nuevo [**grupo de falla**](/docs/products/corrective_maintenance/master_data/failure_catalog), puedes ir a crearlos a sus respectivos flujos.
+:::
+
+
+## Mapa de Data Maestra {#master-data}
 
 <div className="align-center">
 
 <Mermaid chart={`
-    graph TD;
+    graph LR;
         EQ(Equipo)
+        CE(Clase Equipo) --> EQ
+        EQ --> State(Estado)
+        EQ --> FEq(Familia del Equipo)
+        EQ --> CEq(Categoría de Equipo)
+        FEq --> CEq
+        FEq --> CL(Checklist)
         CO(Centro Operativo) --> EQ
-        TCO(Tipo Centro Operativo) --> CO
-        CO --> M(Material)
         style EQ fill:#f799e3
 `}/>
 
 </div>
+

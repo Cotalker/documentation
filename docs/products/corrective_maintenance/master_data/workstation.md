@@ -1,6 +1,5 @@
 ---
-title: Puestos de Trabajo
-displayed_sidebar: products_landing
+title: 🟡 Puestos de Trabajo
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

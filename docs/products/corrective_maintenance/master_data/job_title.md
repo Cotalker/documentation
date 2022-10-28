@@ -1,6 +1,5 @@
 ---
-title: Cargos
-displayed_sidebar: products_landing
+title: 🟡 Cargos
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

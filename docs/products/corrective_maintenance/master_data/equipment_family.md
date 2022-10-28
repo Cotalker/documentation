@@ -1,5 +1,5 @@
 ---
-title: Familia de Equipos
+title: 🟣 Familia de Equipos
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

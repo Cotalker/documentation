@@ -1,6 +1,5 @@
 ---
-title: Sector de Equipamiento
-displayed_sidebar: products_landing
+title: 🟣 Sector de Equipamiento
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

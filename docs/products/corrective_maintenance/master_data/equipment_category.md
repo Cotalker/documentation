@@ -1,6 +1,5 @@
 ---
-title: Categoría de Equipo
-displayed_sidebar: products_landing
+title: 🟣 Categoría de Equipo
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
