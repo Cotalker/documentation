@@ -1,5 +1,5 @@
 ---
-title: ⚙️ Data Maestra
+title: ⚙️ Configure Master Data
 ---
 
 import Highlight from '@theme/Highlight';
@@ -8,6 +8,9 @@ import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs
 import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
 import Mermaid from '@theme/Mermaid';
 
+:::caution We're sorry... 😢
+Our English version is not yet available.
+:::
 
 ## 📌 Resumen {#overview}
 La _data maestra_ de tu compañía agregada a Cotalker permite la automatización de tareas, su selección desde los formularios correspondientes y el registro de data relevante.
