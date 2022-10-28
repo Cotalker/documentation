@@ -1,13 +1,9 @@
 ---
-title: 🧾 Órdenes de Trabajo
+title: Órdenes de Trabajo
 displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
-
-<span className="hero__title">Resumen del Producto</span>
-<br/>
-<br/>
 
 <img alt="corrective maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('img/productos_es/products_work_orders_01.png')} />
 <br/>

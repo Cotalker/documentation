@@ -1,13 +1,10 @@
 ---
-title: 📅 Mantenimiento Preventivo
+title: Mantenimiento Preventivo
 displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<span className="hero__title">Resumen del Producto</span>
-<br/>
-<br/>
 
 <img alt="preventive maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('/img/productos_es/products_preventive_maintenance_00.png')} />
 <br/>

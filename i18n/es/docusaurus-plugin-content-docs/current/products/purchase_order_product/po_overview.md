@@ -1,12 +1,10 @@
 ---
-title: 📦 Órdenes de Compra
+title: Órdenes de Compra
 displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Resumen del Producto</span>
-<br/>
 
 <img alt="purchase orders" className="img_sizing item shadow--tl" src={useBaseUrl('img/productos_es/product_purchase_overview_00.png')} />
 <br/>

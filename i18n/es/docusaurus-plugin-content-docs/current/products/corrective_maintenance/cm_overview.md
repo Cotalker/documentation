@@ -1,13 +1,10 @@
 ---
-title: 🛠 Mantenimiento Correctivo
+title: Mantenimiento Correctivo
 displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
-<span className="hero__title">Resumen del producto</span>
-<br/>
-<br/>
 
 <img alt="corrective maintenance" className="img_sizing item shadow--tl" src={useBaseUrl('img/productos_es/products_corrective_maintenance_01.png')} />
 <br/>
