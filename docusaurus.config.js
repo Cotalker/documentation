@@ -9,9 +9,8 @@ module.exports = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ['@docusaurus/theme-live-codeblock','@docusaurus/theme-mermaid'],
   plugins: [
-    '@docusaurus/theme-live-codeblock',
     [require.resolve('@cmfcmf/docusaurus-search-local'), {
       // blogRouteBasePath: '/blog', // must correspond to the base route path configured for the blog plugin
       // docsRouteBasePath: '/docs', // must correspond to the base route path configured for the docs plugin
@@ -24,9 +23,6 @@ module.exports = {
   ],
   themeConfig: {
     disableDark: 'light',
-    // mermaid: {
-    //   theme: {light: 'neutral', dark: 'forest'},
-    // },
     navbar: {
       title: '',
       logo: {
