@@ -584,37 +584,37 @@ module.exports = {
       ],
       collapsed: true,
     },
-    {
-      type: 'category',
-      label: 'Configure Master Data',
-      link: {
-        type: 'doc',
-        id: 'products/corrective_maintenance/master_data/overview',
-      },
-      collapsed: true,
-      collapsible: true,
-      items: [
-        'products/corrective_maintenance/master_data/users',
-        'products/corrective_maintenance/master_data/job_title',
-        'products/corrective_maintenance/master_data/workstation',
-        'products/corrective_maintenance/master_data/rol',
-        'products/corrective_maintenance/master_data/failure_catalog',
-        'products/corrective_maintenance/master_data/failure_symptoms',
-        'products/corrective_maintenance/master_data/failure_priority',
-        'products/corrective_maintenance/master_data/failure_cause',
-        'products/corrective_maintenance/master_data/equipment_sector',
-        'products/corrective_maintenance/master_data/equipment_family',
-        'products/corrective_maintenance/master_data/equipment_category',
-        'products/corrective_maintenance/master_data/equipment_class',
-        'products/corrective_maintenance/master_data/equipment_condition',
-        'products/corrective_maintenance/master_data/checklist',
-        'products/corrective_maintenance/master_data/center_type',
-        'products/corrective_maintenance/master_data/center',
-        'products/corrective_maintenance/master_data/equipment',
-        'products/corrective_maintenance/master_data/material',
-        'products/corrective_maintenance/master_data/service'
-      ]
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Configure Master Data',
+    //   link: {
+    //     type: 'doc',
+    //     id: 'products/corrective_maintenance/master_data/overview',
+    //   },
+    //   collapsed: true,
+    //   collapsible: true,
+    //   items: [
+    //     'products/corrective_maintenance/master_data/users',
+    //     'products/corrective_maintenance/master_data/job_title',
+    //     'products/corrective_maintenance/master_data/workstation',
+    //     'products/corrective_maintenance/master_data/rol',
+    //     'products/corrective_maintenance/master_data/failure_catalog',
+    //     'products/corrective_maintenance/master_data/failure_symptoms',
+    //     'products/corrective_maintenance/master_data/failure_priority',
+    //     'products/corrective_maintenance/master_data/failure_cause',
+    //     'products/corrective_maintenance/master_data/equipment_sector',
+    //     'products/corrective_maintenance/master_data/equipment_family',
+    //     'products/corrective_maintenance/master_data/equipment_category',
+    //     'products/corrective_maintenance/master_data/equipment_class',
+    //     'products/corrective_maintenance/master_data/equipment_condition',
+    //     'products/corrective_maintenance/master_data/checklist',
+    //     'products/corrective_maintenance/master_data/center_type',
+    //     'products/corrective_maintenance/master_data/center',
+    //     'products/corrective_maintenance/master_data/equipment',
+    //     'products/corrective_maintenance/master_data/material',
+    //     'products/corrective_maintenance/master_data/service'
+    //   ]
+    // },
   ],
   workflow_notifications: [
     {
@@ -1042,35 +1042,35 @@ module.exports = {
           ],
           collapsed: true
         },
-        // {
-        //   type: 'category',
-        //   label: 'Configure Master Data',
-        //   link: {
-        //     type: 'doc',
-        //     id: 'products/corrective_maintenance/master_data/overview',
-        //   },
-        //   collapsed: true,
-        //   collapsible: true,
-        //   items: [
-        //     'products/corrective_maintenance/master_data/users',
-        //     'products/corrective_maintenance/master_data/job_title',
-        //     'products/corrective_maintenance/master_data/workstation',
-        //     'products/corrective_maintenance/master_data/failure_catalog',
-        //     'products/corrective_maintenance/master_data/failure_symptoms',
-        //     'products/corrective_maintenance/master_data/failure_cause',
-        //     'products/corrective_maintenance/master_data/equipment_sector',
-        //     'products/corrective_maintenance/master_data/equipment_family',
-        //     'products/corrective_maintenance/master_data/equipment_category',
-        //     'products/corrective_maintenance/master_data/equipment_class',
-        //     'products/corrective_maintenance/master_data/checklist',
-        //     'products/corrective_maintenance/master_data/center_type',
-        //     'products/corrective_maintenance/master_data/center',
-        //     'products/corrective_maintenance/master_data/equipment',
-        //     'products/corrective_maintenance/master_data/equipment_condition',
-        //     'products/corrective_maintenance/master_data/material',
-        //     'products/corrective_maintenance/master_data/service'
-        //   ]
-        // },
+        {
+          type: 'category',
+          label: 'Configure Master Data',
+          link: {
+            type: 'doc',
+            id: 'products/corrective_maintenance/master_data/overview',
+          },
+          collapsed: true,
+          collapsible: true,
+          items: [
+            'products/corrective_maintenance/master_data/users',
+            'products/corrective_maintenance/master_data/job_title',
+            'products/corrective_maintenance/master_data/workstation',
+            'products/corrective_maintenance/master_data/failure_catalog',
+            'products/corrective_maintenance/master_data/failure_symptoms',
+            'products/corrective_maintenance/master_data/failure_cause',
+            'products/corrective_maintenance/master_data/equipment_sector',
+            'products/corrective_maintenance/master_data/equipment_family',
+            'products/corrective_maintenance/master_data/equipment_category',
+            'products/corrective_maintenance/master_data/equipment_class',
+            'products/corrective_maintenance/master_data/checklist',
+            'products/corrective_maintenance/master_data/center_type',
+            'products/corrective_maintenance/master_data/center',
+            'products/corrective_maintenance/master_data/equipment',
+            'products/corrective_maintenance/master_data/equipment_condition',
+            'products/corrective_maintenance/master_data/material',
+            'products/corrective_maintenance/master_data/service'
+          ]
+        },
         {
           type: 'category',
           label: 'Maintenance Report',

@@ -25,8 +25,6 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
 
 </div>
 
-<div className="align-center">
-
 <Mermaid chart={`
     graph TD;
         U(Usuario):::user1 --> C(Cargos):::user0
@@ -57,31 +55,35 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         classDef equip0 fill:#F1DEFF,stroke-width:0px,color:gray
         classDef thing1A fill:#64D0E7,color:white,stroke-width:0px
         classDef thing1B fill:#55B3C7,stroke-width:0px,color:white
-        click U "users"
-        click C "job_title"
-        click PT "workstation"
-        click R "rol"
-        click SE3 "equipment_sector"
-        click SE2 "equipment_sector"
-        click SE1 "equipment_sector"
-        click CE "equipment_class"
-        click CO "center"
-        click TCO "center_type"
-        click M "material"
-        click S "service"
-        click State "equipment_condition"
-        click EQ "equipment"
-        click FEq "equipment_family"
-        click CEq "equipment_category"
-        click CL "checklist"
-        click GF "failure_catalog"
-        click Sin "failure_symptoms"
-        click Prior "failure_priority"
-        click CF "failure_cause"
+        click U "users" "Se puede crear. Tiene formulario propio."
+        click C "job_title" "No se puede crear."
+        click PT "workstation" "Se puede crear. Tiene formulario propio."
+        click R "rol" "No se puede crear."
+        click SE3 "equipment_sector" "Se puede crear. Tiene formulario propio."
+        click SE2 "equipment_sector" "Se puede crear. Tiene formulario propio."
+        click SE1 "equipment_sector" "Se puede crear. Tiene formulario propio."
+        click CE "equipment_class" "Se puede crear. No tiene formulario propio."
+        click CO "center" "Se puede crear. Tiene formulario propio."
+        click TCO "center_type" "Se puede crear. No tiene formulario propio."
+        click M "material" "Se puede crear. Tiene formulario propio."
+        click S "service" "Se puede crear. Tiene formulario propio."
+        click State "equipment_condition" "Se puede crear. No tiene formulario propio."
+        click EQ "equipment" "Se puede crear. Tiene formulario propio."
+        click FEq "equipment_family" "Se puede crear. No tiene formulario propio."
+        click CEq "equipment_category" "Se puede crear. Tiene formulario propio."
+        click CL "checklist" "Se puede crear. Tiene formulario propio."
+        click GF "failure_catalog" "Se puede crear. Tiene formulario propio."
+        click Sin "failure_symptoms" "Se puede crear. No tiene formulario propio."
+        click Prior "failure_priority" "No se puede crear."
+        click CF "failure_cause" "Se puede crear. No tiene formulario propio."
 `}/>
 
-
-</div>
+<Mermaid chart={`
+  graph LR
+    A-->B
+    click A "https://www.github.com" "Click here for Github. aaa."
+    click B "https://www.google.com" "Go to Google. aa."
+`}/>
 
 <div className="align-center">
 
