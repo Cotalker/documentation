@@ -1,13 +1,12 @@
 import Mermaid from '@theme/Mermaid';
-import Family, {toc as Title1TOC} from '/docs/products/corrective_maintenance/master_data/_equipment_family.mdx'; 
-import Sector, {toc as Title2TOC} from '/docs/products/corrective_maintenance/master_data/_equipment_sector.mdx'; 
-import CenterOp, {toc as Title3TOC} from '/docs/products/corrective_maintenance/master_data/_center.mdx'; 
-import Condition, {toc as Title4TOC} from '/docs/products/corrective_maintenance/master_data/_equipment_condition.mdx'; 
-import Category, {toc as Title5TOC} from '/docs/products/corrective_maintenance/master_data/_equipment_category.mdx'; 
+import Family, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_family.mdx'; 
+import Sector, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_sector.mdx'; 
+import CenterOp, {toc as Title3TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_center.mdx'; 
+import Condition, {toc as Title4TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_condition.mdx'; 
+import Category, {toc as Title5TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_category.mdx'; 
+import Class, {toc as Title6TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_class.mdx'; 
+import User, {toc as Title7TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_users.mdx'; 
 
-:::caution We're sorry... 😢
-Our English version is not yet available.
-:::
 
 ## ¿Qué es un equipo? {#what-is}
 Son objetos individuales y físicos que requieren un histórico de mantenimiento independiente. Uno o más equipos pueden ser instalados en un mismo sector de equipamiento.
@@ -78,7 +77,7 @@ Si este equipo necesita mantenimiento, tendrás que registrar también datos com
 <summary>Centro Operativo</summary>
 <div>
 
-Para información logística, tendrás que registrar el centro operativo en donde se encontrará este equipo, y de manera opcional puedes registrar a su responsable.
+Para información logística, tendrás que registrar el centro operativo en donde se encontrará este equipo.
 
 <CenterOp/>
 
@@ -86,10 +85,21 @@ Para información logística, tendrás que registrar el centro operativo en dond
 </details>
 
 <details>
-<summary>Información Física</summary>
+<summary>Responsable</summary>
 <div>
 
-Podrás especificar información física (como el estado en el que se encuentra el equipo y/o fotos), e información contable (como el costo, clase del equipo, fecha de capitalización, depreciaciones, saldo y vida útil).
+De manera opcional puedes registrar a su responsable, es decir a un _usuario_ previamente creado en la plataforma.
+
+<User/>
+
+</div>
+</details>
+
+<details>
+<summary>Estado Físico</summary>
+<div>
+
+Junto con la información física del _equipo_ podrás especificar el _estado_ en el que se encuentra el equipo.
 
 <Condition/>
 
@@ -97,10 +107,12 @@ Podrás especificar información física (como el estado en el que se encuentra 
 </details>
 
 <details>
-<summary>Información Contable</summary>
+<summary>Clase Equipo</summary>
 <div>
 
-También podrás especificar información contable (como el costo, clase del equipo, fecha de capitalización, depreciaciones, saldo y vida útil).
+Junto con especificar información contable (como el costo, fecha de capitalización, depreciaciones, saldo y vida útil) se debe indicar la _clase del equipo_. Si la _clase_ no existe se puede crear desde el mismo formulario para crear un _Equipo_.
+
+<Class/>
 
 </div>
 </details>
@@ -120,7 +132,7 @@ Si necesitas una nueva [**familia**](/docs/products/corrective_maintenance/maste
 
 <Mermaid chart={`
     graph LR;
-        EQ(Equipo)
+        U(Usuario) --> EQ(Equipo)
         CE(Clase Equipo) --> EQ
         EQ --> State(Estado)
         EQ --> FEq(Familia del Equipo)

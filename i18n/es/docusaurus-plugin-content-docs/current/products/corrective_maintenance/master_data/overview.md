@@ -34,12 +34,12 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         SE2(Sector de Equipamiento - 2):::equip1B --> SE3
         SE1(Sector de Equipamiento - 1):::equip1B --> SE2
         SE3 --> EQ(Equipo):::thing1A
-        CE(Clase Equipo):::equip1B --> EQ
+        CE(Clase Equipo):::thing1B --> EQ
         CO(Centro Operativo):::thing1A --> EQ
         TCO(Tipo Centro Operativo):::thing1B --> CO
         CO --> M(Material):::thing1A
         S(Servicio):::thing1A
-        EQ --> State(Estado):::equip1B
+        EQ --> State(Estado):::thing1B
         EQ --> FEq(Familia del Equipo):::equip1B
         EQ --> CEq(Categoría de Equipo):::equip1A
         FEq --> CEq
@@ -76,13 +76,6 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         click Sin "failure_symptoms" "Se puede crear. No tiene formulario propio."
         click Prior "failure_priority" "No se puede crear."
         click CF "failure_cause" "Se puede crear. No tiene formulario propio."
-`}/>
-
-<Mermaid chart={`
-  graph LR
-    A-->B
-    click A "https://www.github.com" "Click here for Github. aaa."
-    click B "https://www.google.com" "Go to Google. aa."
 `}/>
 
 <div className="align-center">

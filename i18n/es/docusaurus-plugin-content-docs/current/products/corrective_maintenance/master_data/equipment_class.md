@@ -1,5 +1,5 @@
 ---
-title: 🟣 Clase Equipo
+title: 🔵 Clase Equipo
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
