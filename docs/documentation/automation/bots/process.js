@@ -117,6 +117,6 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
     await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, manualData, ...bots[botcode].text].join('  \n'), 'utf8');
   }
 
-  await fs.promises.writeFile(`${__dirname}/table.md`, table.join('  \n'), 'utf8');
+  await fs.promises.writeFile(`${__dirname}/_table.mdx`, table.join('  \n'), 'utf8');
 
 })();
