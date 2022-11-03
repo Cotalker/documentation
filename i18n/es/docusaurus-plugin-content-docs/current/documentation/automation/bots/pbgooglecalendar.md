@@ -1,9 +1,6 @@
 # Google Calendar Integration  
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
-<br/>
-
 ## Overview {#overview}
 
 This stage-bot integrates Cotalker with Google Calendars. Create meetings or events and send ICS invitations to any email. 
