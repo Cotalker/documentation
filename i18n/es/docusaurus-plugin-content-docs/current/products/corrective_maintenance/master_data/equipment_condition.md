@@ -1,5 +1,5 @@
 ---
-title: 🟣 Estado Físico del Equipo
+title: 🔵 Estado Físico del Equipo
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

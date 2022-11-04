@@ -6,7 +6,10 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'Cotalker', // Usually your GitHub org/user name.
   projectName: 'Cotalker', // Usually your repo name.
-  themes: ['@docusaurus/theme-live-codeblock'],
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-live-codeblock','@docusaurus/theme-mermaid'],
   plugins: [
     [require.resolve('@cmfcmf/docusaurus-search-local'), {
       // blogRouteBasePath: '/blog', // must correspond to the base route path configured for the blog plugin
@@ -15,7 +18,7 @@ module.exports = {
       // indexDocs: true, // whether to index docs pages
       // indexPages: false, // whether to index static pages
       // // /404.html is never indexed
-      // language: "en" // language of your documentation, see next section
+      // language: "en" // language of your docunpentation, see next section
     }]
   ],
   themeConfig: {

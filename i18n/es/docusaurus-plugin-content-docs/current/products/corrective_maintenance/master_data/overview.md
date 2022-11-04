@@ -25,8 +25,6 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
 
 </div>
 
-<div className="align-center">
-
 <Mermaid chart={`
     graph TD;
         U(Usuario):::user1 --> C(Cargos):::user0
@@ -36,12 +34,12 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         SE2(Sector de Equipamiento - 2):::equip1B --> SE3
         SE1(Sector de Equipamiento - 1):::equip1B --> SE2
         SE3 --> EQ(Equipo):::thing1A
-        CE(Clase Equipo):::equip1B --> EQ
+        CE(Clase Equipo):::thing1B --> EQ
         CO(Centro Operativo):::thing1A --> EQ
         TCO(Tipo Centro Operativo):::thing1B --> CO
         CO --> M(Material):::thing1A
         S(Servicio):::thing1A
-        EQ --> State(Estado):::equip1B
+        EQ --> State(Estado):::thing1B
         EQ --> FEq(Familia del Equipo):::equip1B
         EQ --> CEq(Categoría de Equipo):::equip1A
         FEq --> CEq
@@ -57,31 +55,28 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         classDef equip0 fill:#F1DEFF,stroke-width:0px,color:gray
         classDef thing1A fill:#64D0E7,color:white,stroke-width:0px
         classDef thing1B fill:#55B3C7,stroke-width:0px,color:white
-        click U "users"
-        click C "job_title"
-        click PT "workstation"
-        click R "rol"
-        click SE3 "equipment_sector"
-        click SE2 "equipment_sector"
-        click SE1 "equipment_sector"
-        click CE "equipment_class"
-        click CO "center"
-        click TCO "center_type"
-        click M "material"
-        click S "service"
-        click State "equipment_condition"
-        click EQ "equipment"
-        click FEq "equipment_family"
-        click CEq "equipment_category"
-        click CL "checklist"
-        click GF "failure_catalog"
-        click Sin "failure_symptoms"
-        click Prior "failure_priority"
-        click CF "failure_cause"
+        click U "users" "Se puede crear. Tiene formulario propio."
+        click C "job_title" "No se puede crear."
+        click PT "workstation" "Se puede crear. Tiene formulario propio."
+        click R "rol" "No se puede crear."
+        click SE3 "equipment_sector" "Se puede crear. Tiene formulario propio."
+        click SE2 "equipment_sector" "Se puede crear. Tiene formulario propio."
+        click SE1 "equipment_sector" "Se puede crear. Tiene formulario propio."
+        click CE "equipment_class" "Se puede crear. No tiene formulario propio."
+        click CO "center" "Se puede crear. Tiene formulario propio."
+        click TCO "center_type" "Se puede crear. No tiene formulario propio."
+        click M "material" "Se puede crear. Tiene formulario propio."
+        click S "service" "Se puede crear. Tiene formulario propio."
+        click State "equipment_condition" "Se puede crear. No tiene formulario propio."
+        click EQ "equipment" "Se puede crear. Tiene formulario propio."
+        click FEq "equipment_family" "Se puede crear. No tiene formulario propio."
+        click CEq "equipment_category" "Se puede crear. Tiene formulario propio."
+        click CL "checklist" "Se puede crear. Tiene formulario propio."
+        click GF "failure_catalog" "Se puede crear. Tiene formulario propio."
+        click Sin "failure_symptoms" "Se puede crear. No tiene formulario propio."
+        click Prior "failure_priority" "No se puede crear."
+        click CF "failure_cause" "Se puede crear. No tiene formulario propio."
 `}/>
-
-
-</div>
 
 <div className="align-center">
 
