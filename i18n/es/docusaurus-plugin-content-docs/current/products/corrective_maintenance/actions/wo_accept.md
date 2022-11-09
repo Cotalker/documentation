@@ -11,7 +11,7 @@ import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs
 import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
 
 ## Resumen {#overview}
-Una vez que un [aviso](/docs/products/corrective_maintenance/actions/create_notification) anunciando un incidente que requiere mantenimiento es creado, una orden de trabajo es generada y enviada a todo el personal de mantenimiento relacionado . El personal de mantenimiento puede elegir aceptar o rechazar la orden de trabajo.
+Una vez que un [**aviso**](/docs/products/corrective_maintenance/actions/create_notification) de mantenimiento es creado, una _orden de trabajo_ es generada automáticamente y entra en el estado _Reportado_. Todo el personal de mantenimiento relacionado con el equipo que presenta una falla es agregada al flujo de la _orden de trabajo_. El personal de mantenimiento puede elegir _aceptar_ o _rechazar_ la orden de trabajo a través del formulario **Aceptar la orden de trabajo**.
 
 ## Requisitos {#requirements}
 
@@ -87,7 +87,7 @@ El resto del personal de mantenimiento a quien le llegó la orden de trabajo son
 
 Cuando un usuario rechaza la orden de trabajo, éste es removido del flujo. La orden de trabajo sigue abierta, dando a los otros usuarios la posibilidad de aceptarla.
 
-_En el ejemplo señalado abajo, la orden de trabajo ha pasado al estado **pendiente**._
+_En el ejemplo señalado abajo, la orden de trabajo ha pasado al estado **Pendiente**._
 
 <Tabs>
 <TabItem value="desktop" label="Escritorio" default>
@@ -101,7 +101,7 @@ _En el ejemplo señalado abajo, la orden de trabajo ha pasado al estado **pendie
 </TabItem>
 <TabItem value="mobile" label="Versión Móvil">
 
-<div className="img_sizing_50">
+<div className="img_sizing_extra_small">
 
 ![results](/img/productos_es/products_cm_wo_accept_03m.png)
 

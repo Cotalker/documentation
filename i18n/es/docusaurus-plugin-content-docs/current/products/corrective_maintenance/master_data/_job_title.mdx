@@ -1,15 +1,11 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
-import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
 import Mermaid from '@theme/Mermaid';
 
 
 ## ¿Qué es un cargo? {#overview}
-Es el título de trabajo, que agrupa a los [usuarios](/docs/products/corrective_maintenance/master_data/users) y les otorga atributos especiales de acuerdo a su cargo.
-
-Los atributos especiales están designados por los _roles de acceso_ asociados al cargo, los cuales permiten al usuario ver y/o editar tareas como también acceder a los formularios de un flujo de trabajo.
+Es el título de trabajo, que agrupa a los [_usuarios_](/docs/products/corrective_maintenance/master_data/users) y les otorga atributos especiales de acuerdo a su cargo.
 
 ## Cargos Estándar según Acciones {#actions-forms}
 Para ejecutar acciones (por medio del formulario correspondiente) en el proceso de [mantenimiento correctivo](/docs/products/corrective_maintenance/landing/overview) los usuarios deben tener el respectivo _rol de acceso_. Cada _cargo_ incluye un conjunto de _roles de acceso_, permitiendo a los usuarios tener acceso a una serie de acciones. 
@@ -28,19 +24,20 @@ Acciones/Cargo: | **Levantador** | **Técnico** | **Supervisor** | **Administrad
 
 <br/>
 
+## Configuración de Cargos {#setup}
+Los cargos son designados por medio de la configuración de cada [**usuario**](/docs/products/corrective_maintenance/master_data/users).
 
-:::info Crear o Editar Cargo
-Los _cargos_ son predefinidos.
+Los _cargos_ están predefinidos y corresponde a los [cargos estándar](#action-forms) que están indicados arriba.
 
-Para poder crear o editar un cargo, se requiere de un permiso para ingresar al [Panel Administrativo](/docs/documentation/admin/admin_jobtitles) de la plataforma Cotalker.
+Para poder crear o editar un cargo, se requiere de un permiso para ingresar al [Panel Administrativo](/docs/documentation/admin/admin_jobtitles) de la plataforma Cotalker. _Consulta con un representante Cotalker para obtener más información._
 
-_Consulta con un representante Cotalker para obtener más información._
+:::info Detalles técnicos
+Para información más detallada sobre la congfiguración de cargos, [presiona aquí](/docs/documentation/admin/admin_jobtitles).
 :::
 
 ## Mapa de Data Maestra {#map}
 
-<div className="align-center">
-
+<div className="margin-left--lg">
 <Mermaid chart={`
     graph LR;
         U(Usuario) --> C(Cargos)
@@ -49,5 +46,4 @@ _Consulta con un representante Cotalker para obtener más información._
         PT --> R(Rol)
         style C fill:#f799e3
 `}/>
-
 </div>

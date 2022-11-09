@@ -121,9 +121,9 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 </Tabs>
 
 ## Resultados Esperados {#results}
-Al enviar el **Aviso**, se genera automáticamente la orden de trabajo correspondiente con toda la información entregada. Esta aparece como _Reportada_ en la sección _Órdenes de Trabajo_.
+Al enviar el **Aviso**, se genera automáticamente la _orden de trabajo_ correspondiente con toda la información entregada. Esta aparece como **Reportada** en la sección **Órdenes de Trabajo**.
 
-Personal administrativo y de mantenimiento son agregados al flujo.
+Personal administrativo y de mantenimiento correspondientes son agregados al flujo según su [_cargo_](/docs/products/corrective_maintenance/master_data/job_title) y [_puesto de trabajo_](/docs/products/corrective_maintenance/master_data/workstation).
 
 <Tabs>
 <TabItem value="desktop" label="Escritorio" default>
@@ -137,7 +137,7 @@ Personal administrativo y de mantenimiento son agregados al flujo.
 </TabItem>
 <TabItem value="mobile" label="Versión Móvil">
 
-<div className="img_sizing_50">
+<div className="img_sizing_extra_small">
 
 ![results](/img/productos_es/products_cm_wo_00a.png)
 
@@ -147,14 +147,9 @@ Personal administrativo y de mantenimiento son agregados al flujo.
 </Tabs>
 
 ## Siguientes pasos {#next-steps}
-Según sus cargos, los usuarios podrán realizar las siguientes acciones después de que el aviso fue creado y la orden de trabajo generada:
-- _Técnico_: Indica si va a [**aceptar la orden de trabajo**](/docs/products/corrective_maintenance/actions/wo_accept) o no.  
-- _Supervisor_, _Administrador_, _Jefe_: Pueden hacer un [**cierre rápido**](/docs/products/corrective_maintenance/actions/wo_fast_close) o hacer una [**solicitud de rechazo**](/docs/products/corrective_maintenance/actions/wo_reject_request) respecto a la orden.
+El personal de mantenimiento asociado al flujo puede proceder a [**aceptar o rechazar la orden de trabajo**](/docs/products/corrective_maintenance/actions/wo_accept).  
 
+:::info Pasos Alternativos
+Los usuarios con los cargos de `Supervisor`, `Administrador` o `Jefe` pueden además hacer un [**cierre rápido**](/docs/products/corrective_maintenance/actions/wo_fast_close) o una [**solicitud de rechazo**](/docs/products/corrective_maintenance/actions/wo_reject_request) respecto a la orden de trabajo.
+:::
 
-
-<!-- ## Temas relacionados {#related}
-- [**Mantenimiento Correctivo**](/docs/products/corrective_maintenance/landing/overview). Producto que conduce y conecta a los usuarios en un proceso de mantenimiento correctivo.
-- [**Aceptar Orden de Trabajo**](/docs/products/corrective_maintenance/actions/wo_accept): Personal de mantenimiento acepta la orden de trabajo.
-- [**Cierre Rápido**](/docs/products/corrective_maintenance/actions/wo_fast_close): Utilizado para cerrar la tarea inmediatamente indicando que se completó exitosamente.
-- [**Solicitud de Rechazo**](/docs/products/corrective_maintenance/actions/wo_reject_request): Petición para descartar la tarea por falta de tiempo o por ser innecesaria. -->
