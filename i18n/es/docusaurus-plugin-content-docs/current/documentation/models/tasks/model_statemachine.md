@@ -2,15 +2,11 @@
 title: State Machine Data Model
 sidebar_label: COTSMStateMachine
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 :::caution Advertencia
 Esta página aún no se encuentra traducida al español.
 :::
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<span className="hero__subtitle"><em>COTSMStateMachine</em></span>
-<br/>
-<br/>
 
 ## Description {#description}
 
@@ -28,9 +24,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/admin/workflows
             "6179f1f6bb1f957abdd723b5" //COTPropertyType (Collection)
         ],
         "asset": {
-            "type": "generic",
             "propertyType": "6179f1d155753e932b4cb08c", //COTProperyType (Collection)
-            "property": "6179f1d8a1d9328faf5e2855" //COTProperty (Element)
         },
         "code": "taskmanagerflow_05",
         "company": "6179f1ee6ec8b62d2406ec46",  //COTCompany
@@ -50,7 +44,7 @@ _State machines_, also know as [_workflows_](/docs/documentation/admin/workflows
         "hooks": {
             "onCreate": []  //COTParametrizedBot (Routine)
         },
-        "initialState": "6179f1b9ff2235eb2120565e",  //COTProperty (State Element)
+        "initialState": "6179f1b9ff2235eb2120565e",  //COTSMState
         "isActive": true,
         "taskGroup": "6179f1b04f04ff1c7f7cf01a", //COTTaskGroup (Workflow Group)
         "name": "Task Manager Flow",
@@ -66,10 +60,8 @@ _State machines_, also know as [_workflows_](/docs/documentation/admin/workflows
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
 | **allowedExtensions** | An array of collections used as additional fields for the workflow. | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes)[ ] | The additional fields created by these collections are similar to the additional fields created by the collections in the `dynamicPropertyTypes` field. But the later should be preferred. See ["Best Practices"](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#workflow-additional-fields) for more information.
-| **asset** | Indicates the asset the task represents through a property and its property type. | object |
-| **asset.property** | The asset's property (element) ID. | [ObjectId<COTProperty\> ](/docs/documentation/models/databases/model_properties) |
-| **asset.propertyType** | The asset's property type (collection) ID. | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
-| **asset.type** | Use the `generic` type for tasks that need to be repeated. Use `unique` for one-time tasks. | string | Enum: [ "generic", "unique" ]
+| **asset** | Indicates the asset used to represent the tasks created through the workflow (state machine). | object |
+| **asset.propertyType** | The collection (property type) associated with the asset. The indicated collection can store relavant task data. Furthermore, the collection's additional fields are shared with all the tasks beloning to the task group. | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
 | **code** | The state machine's unique identification name. | string | Maximum 60 characters; only lowercase letters, numbers, and underscore allowed; must be unique.
 | **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Date the workflow was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
@@ -82,13 +74,13 @@ _State machines_, also know as [_workflows_](/docs/documentation/admin/workflows
 | **dynamicPropertyTypes.status5** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
 | **hooks** | Used for running routines triggered by an event. | object |
 | **hooks.onCreate** | Routine that runs on the creation of a task. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
-| **initialState** | Indicates the state the workflow begins in. | [ObjectId<COTProperty\>](/docs/documentation/models/databases/model_properties) |
+| **initialState** | Indicates the state the workflow begins in. | [ObjectId<COTSMState\>](/docs/documentation/models/tasks/model_state) |
 | **isActive** | Indicates whether the workflow is active or not. | boolean |
 | **modifiedAt** | Indicates the last time the workflow was modified. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **name** | The workflow's display name | string | 
 | **propertyType** | Indicates the _collection (property type)_ that contains the _elements_ that represent the [workflow's states](/docs/documentation/admin/workflows/settings_panels/create_edit_state). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
 | **requiredSurvey** | Represents a [_start form_](/docs/documentation/admin/workflows/admin_workflow_required_survey), used for initializing a workflow. | object |
-| **requiredSurvey.parametrizedBot** | Configuration of the [routine](/docs/documentation/automation/admin_routine) that accompanies the _start form_. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
+| **requiredSurvey.<br/>parametrizedBot** | Configuration of the [routine](/docs/documentation/automation/admin_routine) that accompanies the _start form_. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
 | **requiredSurvey.permissions** | List of [start form permissions](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#states) users need to initiate the workflow. | string[ ] | Users need at least one of the permissions listed. Users are designated permissions through their [access roles](/docs/documentation/admin/admin_accessrole#default-permissions).
 | **requiredSurvey.surveyId** | Workflow start form ID | [ObjectId<COTSurvey\>](/docs/documentation/models/surveys/model_surveys) |
 | **taskGroup** | The workflow group thats hosts all the tasks created upon the workflow. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) |
@@ -98,6 +90,8 @@ _State machines_, also know as [_workflows_](/docs/documentation/admin/workflows
 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Note |
 | --- | --- | --- | --- |
+| **asset.property** | The asset's property (element) ID. | [ObjectId<COTProperty\> ](/docs/documentation/models/databases/model_properties) | DEPRECATED
+| **asset.type** | Use the `generic` type for tasks that need to be repeated. Use `unique` for one-time tasks. | string | DEPRECATED
 | **taskChannelType** | Refers to the [relationship](/docs/documentation/admin/tips/chat_channels_workflows) task's and their channels.<br/>Enum: ["bound", "unbound", "unbound-hierarchy"]<br/>SHOULD ALWAYS BE ON `BOUND` | string | DEPRECATED.
 
 ## Additional Resources {#resources}
