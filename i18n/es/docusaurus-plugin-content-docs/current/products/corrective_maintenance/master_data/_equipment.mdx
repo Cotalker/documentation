@@ -6,6 +6,7 @@ import Condition, {toc as Title4TOC} from '/i18n/es/docusaurus-plugin-content-do
 import Category, {toc as Title5TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_category.mdx'; 
 import Class, {toc as Title6TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_class.mdx'; 
 import User, {toc as Title7TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_users.mdx'; 
+import Failure, {toc as Title8TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_catalog.mdx'; 
 
 
 ## ¿Qué es un equipo? {#what-is}
@@ -58,6 +59,17 @@ Luego de eligir la _familia de equipo_, se debe indicar la _categoría_. En el e
 <div>
 
 De manera opcional, puedes registrar la marca y el modelo del nuevo equipo.
+
+</div>
+</details>
+
+<details>
+<summary>Grupos de Falla</summary>
+<div>
+
+Escoge el o los _grupos de falla_ asociados al equipo.
+
+<Failure/>
 
 </div>
 </details>
@@ -128,7 +140,7 @@ Si necesitas una nueva [**familia**](/docs/products/corrective_maintenance/maste
 
 ## Mapa de Data Maestra {#master-data}
 
-<div className="align-center">
+<div className="text-center">
 
 <Mermaid chart={`
     graph LR;

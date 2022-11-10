@@ -16,7 +16,7 @@ A través de los [**formularios mencionados**](#forms) en esta sección puedes i
 
 Conversa con un representante Cotalker para ver otras formas de agregar y editar tu _data maestra_ en la plataforma.
 
-## 📍 Mapa de Data Maestra {#map}
+## 📍 Mapa de Data Maestra {#data-map}
 Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra para facilitar su configuración.
 
 <div className="align-center">
