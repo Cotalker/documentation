@@ -29,6 +29,8 @@ El _puesto de trabajo_ asociado a los técnicos que velan sobre incidentes ocurr
 <summary>Sector de Equipamiento</summary>
 <div>
 
+Cuando toque configurar un _sector de equipamiento_, se le tendrá que asignar un _puesto de trabajo_.
+
 <Equipment/>
 
 </div>
@@ -47,14 +49,14 @@ El _puesto de trabajo_ asociado a los técnicos que velan sobre incidentes ocurr
 
 ## Mapa de Data Maestra {#data-map}
 
-<div className="align-center">
+<div className="text-center">
 
 <Mermaid chart={`
     graph TD;
         U(Usuario) --> C(Cargos)
         U --> PT(Puestos de Trabajo)
         PT --> R(Rol)
-        PT --> SE3(Sector de Equipamiento - 3)
+        SE3(Sector de Equipamiento - 3) --> PT
         SE2(Sector de Equipamiento - 2) --> SE3
         SE1(Sector de Equipamiento - 1) --> SE2
         style PT fill:#f799e3
