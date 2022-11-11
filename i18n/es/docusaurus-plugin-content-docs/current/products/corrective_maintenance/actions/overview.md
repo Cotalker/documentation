@@ -1,6 +1,5 @@
 ---
-title: 🔧 Acciones y Formularios
-displayed_sidebar: products_landing
+title: 📋 Acciones y Formularios
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

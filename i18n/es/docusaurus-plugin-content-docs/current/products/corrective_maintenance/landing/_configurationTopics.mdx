@@ -1,14 +1,15 @@
 import Highlight from '@theme/Highlight'
 
-Formulario | Descripción
---- | ---
-[**<Highlight text="Crear Puesto de Trabajo" color="#FFDD4C" textcolor="gray"/>**](/docs/products/corrective_maintenance/master_data/workstation) | Designación de usuarios en relación con un Sector de Equipamiento.
-[**<Highlight text="Crear Usuario" color="#FFDD4C" textcolor="gray"/>**](/docs/products/corrective_maintenance/master_data/users) | Crear perfiles de usuarios con acceso a la plataforma.
-[**<Highlight text="Crear Nueva Falla" color="#CA7FFF" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/failure_catalog) | Crea grupos, síntomas y causas de fallas.
-[**<Highlight text="Crear Sector de Equipamiento" color="#CA7FFF" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/equipment_sector) | Categoría o lugares de equipos de la compañía. Crea diferentes nivles de sectores.
-[**<Highlight text="Crear Categoría de Equipos" color="#CA7FFF" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/equipment_category) | Crea familias y categorías de equipos.
-[**<Highlight text="Crear Checklist" color="#CA7FFF" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/checklist) | Crea un _checklist_ que se puede usar con todos los equipos dentro de una misma familia.
-[**<Highlight text="Crear Centro" color="#64D0E7" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/center) | Lugar físico donde pueden haber materiales y/o equipos. Crea el centro y tipo de centro.
-[**<Highlight text="Crear Equipo" color="#64D0E7" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/equipment) | Agrega un objeto que requiere un histórico de mantenimiento independiente.
-[**<Highlight text="Crear Material" color="#64D0E7" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/material) | Agrega un elemento que permite la realización de los trabajos de mantenimiento.
-[**<Highlight text="Crear Servicio" color="#64D0E7" textcolor="white"/>**](/docs/products/corrective_maintenance/master_data/service) | Agrega una actividad proporcionada por un prestador de servicios.
+
+Paso | Elemento | Descripción
+:---: | --- | --- 
+**<Highlight text="1." color="#FFDD4C" textcolor="gray"/>** | [**Puesto de Trabajo**](/docs/products/corrective_maintenance/master_data/workstation) | Es el elemento que se usa posteriormente para asociar a un _usuario_ con un _sector de equipamiento_. |
+**<Highlight text="2." color="#FFDD4C" textcolor="gray"/>** | [**Usuario**](/docs/products/corrective_maintenance/master_data/users) | Crear perfiles de _usuarios_ con acceso a la plataforma según _cargos_ y _puestos de trabajo_. <br/>_Se requiere que los puestos de trabajo estén previamente creados._
+**<Highlight text="3." color="#CA7FFF" textcolor="white"/>** | [**Catálogo de Falla**](/docs/products/corrective_maintenance/master_data/failure_catalog) | Crea _grupos_, _síntomas_ y _causas_ de fallas.
+**<Highlight text="4." color="#CA7FFF" textcolor="white"/>** | [**Sector de Equipamiento**](/docs/products/corrective_maintenance/master_data/equipment_sector) | Son las categorías funcionales, relativas al proceso, o espaciales de los equipos de la compañía. <br/>El formulario permite crear diferentes nivles de sectores. <br/>_Se requiere que los puestos de trabajo estén previamente creados._
+**<Highlight text="5." color="#CA7FFF" textcolor="white"/>** | [**Categoría de Equipos**](/docs/products/corrective_maintenance/master_data/equipment_category) | El formulario permite la creación de _familias_ y _categorías_ de equipos.
+**<Highlight text="6." color="#CA7FFF" textcolor="white"/>** | [**Checklist**](/docs/products/corrective_maintenance/master_data/checklist) | Crea un _checklist_ que se puede usar con todos los equipos dentro de una misma familia. <br/>_Se requiere que la familia de equipo esté prevemiente creada._
+**<Highlight text="7." color="#64D0E7" textcolor="white"/>** | [**Centro**](/docs/products/corrective_maintenance/master_data/center) | Lugar físico donde pueden haber materiales y/o equipos. A través del formulario, crea el _centro_ y _tipo de centro_.
+**<Highlight text="8." color="#64D0E7" textcolor="white"/>** | [**Equipo**](/docs/products/corrective_maintenance/master_data/equipment) | Agrega un objeto que requiere un histórico de mantenimiento independiente.<br/>Requiere la creación previa de _categoría_ y _familia_ de equipo, _catálogo de fallas_, _sector de equipamiento_, _centro y tipo de centro_, y _usuario_.<br/>El formulario permite la creación de nuevos _estados físicos_ y _clases_ de equipos.
+**<Highlight text="9." color="#64D0E7" textcolor="white"/>** | [**Material**](/docs/products/corrective_maintenance/master_data/material) | Agrega un elemento que puede ser utilizado en la realización de los trabajos de mantenimiento y después ser descontado del stock.<br/>Se requiere de la existencia del _centro_ y _tipo de centro_.
+**<Highlight text="10." color="#64D0E7" textcolor="white"/>** | [**Servicio**](/docs/products/corrective_maintenance/master_data/service) | Agrega una actividad proporcionada por un prestador de servicios. Puede ser utilizada en órdenes de trabajo y sus costos calculados en el informe final.

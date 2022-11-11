@@ -31,7 +31,7 @@ _Products_ described in this documentation are mentioned below. Click on _produc
 <div className="row">
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/corrective_maintenance/cm_overview">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/corrective_maintenance/landing/overview">
 
 <span className="hero__subtitle"><b>🛠 Corrective Maintenance:</b></span>
 

@@ -8,6 +8,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Esta página aún no se encuentra traducida al español.
 :::
 
+<span className="hero__subtitle"><em>COTSMStateMachine</em></span>
+<br/>
+<br/>
+
 ## Description {#description}
 
 The _COTSMStateMachine_ data model explained below stores a [state machine's (workflow's) settings](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit).
@@ -66,12 +70,12 @@ _State machines_, also know as [_workflows_](/docs/documentation/admin/workflows
 | **company** | Indicates the company the survey is found in. | [ObjectId<COTCompany\>](/docs/documentation/models/company/model_company) |
 | **createdAt** | Date the workflow was created. | ISODate | YYYY-MM-DDTHH:mm:ss.SSSZ
 | **dynamicPropertyTypes** | Indicates the collections (property types) set as _statuses_ in the [additional fields](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) section of workflow settings. Users will be able to select elements from the collections to give further details about the task. | object | This option can be used to filter tasks, establish permissions, set priorities, among others.
-| **dynamicPropertyTypes.isActive** | Lists the statuses associated with a _collection (property type)_. | string[ ] | Enum: [ "status1", "status2", "status3", "status4", "status5"]
-| **dynamicPropertyTypes.status1** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
-| **dynamicPropertyTypes.status2** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
-| **dynamicPropertyTypes.status3** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
-| **dynamicPropertyTypes.status4** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
-| **dynamicPropertyTypes.status5** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
+| **dynamicPropertyTypes<br/>.isActive** | Lists the statuses associated with a _collection (property type)_. | string[ ] | Enum: [ "status1", "status2", "status3", "status4", "status5"]
+| **dynamicPropertyTypes<br/>.status1** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
+| **dynamicPropertyTypes<br/>.status2** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
+| **dynamicPropertyTypes<br/>.status3** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
+| **dynamicPropertyTypes<br/>.status4** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
+| **dynamicPropertyTypes<br/>.status5** | Collection used as an [additional field](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
 | **hooks** | Used for running routines triggered by an event. | object |
 | **hooks.onCreate** | Routine that runs on the creation of a task. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
 | **initialState** | Indicates the state the workflow begins in. | [ObjectId<COTSMState\>](/docs/documentation/models/tasks/model_state) |

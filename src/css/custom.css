@@ -450,6 +450,13 @@ code { font-family: Fira Code, monospace; }
   display: block;
 }
 
+.img_sizing_extra_small {
+  width: 30%;  
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .img_sizing_50 {
   width: 50%;  
   margin-left: auto;

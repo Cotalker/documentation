@@ -1,5 +1,5 @@
 ---
-title: Cotización de Servicios
+title: 🖋 Cotización de Servicios
 displayed_sidebar: products
 ---
 

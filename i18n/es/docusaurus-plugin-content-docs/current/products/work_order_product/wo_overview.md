@@ -1,5 +1,5 @@
 ---
-title: Órdenes de Trabajo
+title: 🧾 Órdenes de Trabajo
 displayed_sidebar: products
 ---
 
@@ -15,10 +15,10 @@ Con el producto **Órdenes de trabajo**, puedes crear flujos de trabajo para sus
 **Órdenes de trabajo**, como producto independiente, se compone del [Flujo de órdenes de trabajo](/docs/products/workflows/work_orders/related-product/wo/overview_intro) y el [Flujo de cotizaciones](/docs/products/workflows/budget_management/related-product/wo/overview).
 
 :::note Nota
-Los productos de [**Mantenimiento correctivo**](/docs/products/corrective_maintenance/cm_overview) y[ **Mantenimiento preventivo**](/docs/products/preventive_maintenance/pm_overview) incluyen **Órdenes de trabajo** en su proceso.
+Los productos de [**Mantenimiento correctivo**](/docs/products/corrective_maintenance/landing/overview) y[ **Mantenimiento preventivo**](/docs/products/preventive_maintenance/pm_overview) incluyen **Órdenes de trabajo** en su proceso.
 :::
 
-## Cómo funciona? {#how}
+## ¿Cómo funciona? {#how}
 
 **Órdenes de trabajo** facilita el desarrollo de actividades. Como se indicó anteriormente, **Órdenes de trabajo** se puede usar de forma independiente o junto a otros productos de mantenimiento.
 

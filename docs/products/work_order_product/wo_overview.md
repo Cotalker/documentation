@@ -19,7 +19,7 @@ With the **Work Orders** product, your _work orders_ are transformed into workfl
 **Work Orders**, as a stand-alone product, is composed of the [Work Orders Workflow](/docs/products/workflows/work_orders/related-product/wo/overview_intro) and the [Quotes Workflow](/docs/products/workflows/budget_management/related-product/wo/overview). 
 
 :::note
-The [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview) and[ **Preventive Maintenance**](/docs/products/preventive_maintenance/pm_overview) products include the **Work Orders** product in their process.
+The [**Corrective Maintenance**](/docs/products/corrective_maintenance/landing/overview) and[ **Preventive Maintenance**](/docs/products/preventive_maintenance/pm_overview) products include the **Work Orders** product in their process.
 :::
 
 ## How does it work? {#how}

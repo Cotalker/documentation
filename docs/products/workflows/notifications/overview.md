@@ -15,7 +15,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Introduction {#intro}
 
-In a _corrective maintenance_ process, the first step is probably the most important. That's why our [**Corrective Maintenance**](/docs/products/corrective_maintenance/cm_overview) product comes equipped with the **notifications** workflow. Through this workflow, field workers can easily and instantly inform of any malfunctions or failures.
+In a _corrective maintenance_ process, the first step is probably the most important. That's why our [**Corrective Maintenance**](/docs/products/corrective_maintenance/landing/overview) product comes equipped with the **notifications** workflow. Through this workflow, field workers can easily and instantly inform of any malfunctions or failures.
 
 To report a failure, field workers submit a pre-designed form through the Cotalker platform. On the form, users can write a brief description of the problem, choose the damaged equipment from a list, indicate the location, and even add a photo to help evaluate the situation.
 

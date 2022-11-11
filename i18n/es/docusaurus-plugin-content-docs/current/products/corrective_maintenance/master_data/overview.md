@@ -16,7 +16,7 @@ A través de los [**formularios mencionados**](#forms) en esta sección puedes i
 
 Conversa con un representante Cotalker para ver otras formas de agregar y editar tu _data maestra_ en la plataforma.
 
-## 📍 Mapa de Data Maestra {#map}
+## 📍 Mapa de Data Maestra {#data-map}
 Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra para facilitar su configuración.
 
 <div className="align-center">
@@ -24,30 +24,30 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
 <span className="badge badge--warning">☞ Presiona sobre los ítems de data maestra para obtener mayor información.</span>
 
 </div>
+<br/>
 
 <Mermaid chart={`
-    graph TD;
+    graph LR;
+        U & SE3 --> PT(Puestos de Trabajo):::user1
         U(Usuario):::user1 --> C(Cargos):::user0
-        U --> PT(Puestos de Trabajo):::user1
         PT --> R(Rol):::user0
-        PT --> SE3(Sector de Equipamiento - 3):::equip1A
-        SE2(Sector de Equipamiento - 2):::equip1B --> SE3
-        SE1(Sector de Equipamiento - 1):::equip1B --> SE2
-        SE3 --> EQ(Equipo):::thing1A
-        CE(Clase Equipo):::thing1B --> EQ
-        CO(Centro Operativo):::thing1A --> EQ
-        TCO(Tipo Centro Operativo):::thing1B --> CO
-        CO --> M(Material):::thing1A
-        S(Servicio):::thing1A
-        EQ --> State(Estado):::thing1B
+        SE3(Sector de Equipamiento - 3):::equip1A --> SE2(Sector de Equipamiento - 2):::equip1B
+        SE2 --> SE1(Sector de Equipamiento - 1):::equip1B
+        SE1 & SE2 --> U
+        EQ(Equipo):::thing1A --> SE3
         EQ --> FEq(Familia del Equipo):::equip1B
-        EQ --> CEq(Categoría de Equipo):::equip1A
-        FEq --> CEq
+        FEq --> CEq(Categoría de Equipo):::equip1A
         FEq --> CL(Checklist):::equip1A
         EQ --> GF(Grupo de Falla):::equip1A
         GF --> Sin(Síntoma):::equip1B
         Sin --> Prior(Prioridad):::equip0
         GF --> CF(Causa de Falla):::equip1B
+        EQ --> TCO(Tipo Centro Operativo):::thing1B
+        TCO --> CO(Centro Operativo):::thing1A
+        M(Material):::thing1A --> CO
+        EQ --> State(Estado):::thing1B
+        EQ --> CE(Clase Equipo):::thing1B
+        M ~~~ S(Servicio):::thing1A
         classDef user1 fill:#FFDD4C,color:gray,stroke-width:0px
         classDef user0 fill:#FFF6CC,stroke-width:0px,color:gray
         classDef equip1A fill:#CA7FFF,color:white,stroke-width:0px
@@ -96,8 +96,12 @@ Tipo | Tiene formulario propio | Se pueden crear más
 </div>
 
 
-## ❓ Cómo Acceder a los Formularios {#access}
-Selecciona **Datos maestros** en el menú principal. Luego aparece un sub-menú con todos los formularios disponibles para agregar data maestra.
+## ❓ ¿Cómo procedo para ingresar mi data maestra?
+Puedes utilizar **formularios** para ingresar tu data maestra. Los formularios permiten agregar y unir la data maestra como sale representada en la [figura arriba](#data-map).
+
+Para acceder a los **formularios**, selecciona **Datos maestros** en el _menú principal_. Luego aparece un sub-menú con todos los formularios disponibles para agregar data maestra. 
+
+_**Datos Maestros** en menú principal:_
 
 <div className="margin-left--lg img_sizing">
 
@@ -105,9 +109,16 @@ Selecciona **Datos maestros** en el menú principal. Luego aparece un sub-menú 
 
 </div>
 
-Abajo está la lista de [formularios](#forms) disponibles para agregar tu data maestra.
+:::tip Recomendaciones
+Antes de ingresar tu data maestra, debes tomarte un momento para pensar en tu proceso de mantenimiento correctivo. Considera lo siguiente:
+- ¿Cuáles son los equipos o activos que quieres que sean incluídos en el proceso de mantenimiento correctivo?
+- ¿Qué fallas podrían presentar estos equipos o activos?
+- ¿En qué lugares se encuentra estos equipos o activos?
+- ¿Quiénes son los responsables de estos equipos o activos?
 
-## 📋 Formularios para Agregar Data Maestra {#forms}
-Desde el submenú podrás agregar la siguiente data maestra a través de su respectivo formulario.
+_Se recomienda ingresar tu data maestra en el orden en que los ítemes en el sub-menú._
+:::
+
+## 📋 Formularios para ingresar tu data maestra {#recommended}
 
 <Configuration/>

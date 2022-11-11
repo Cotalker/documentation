@@ -15,7 +15,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Introducción {#intro}
 
-En un proceso de _mantenimiento correctivo_, el primer paso es probablemente el más importante. Es por eso que nuestro producto [**Mantenimiento correctivo**](/docs/products/corrective_maintenance/cm_overview) viene equipado con el flujo de trabajo de **notificaciones**. A través de este flujo de trabajo, los trabajadores de campo pueden informar fácil e instantáneamente sobre cualquier mal funcionamiento o falla.
+En un proceso de _mantenimiento correctivo_, el primer paso es probablemente el más importante. Es por eso que nuestro producto [**Mantenimiento correctivo**](/docs/products/corrective_maintenance/landing/overview) viene equipado con el flujo de trabajo de **notificaciones**. A través de este flujo de trabajo, los trabajadores de campo pueden informar fácil e instantáneamente sobre cualquier mal funcionamiento o falla.
 
 Para reportar una falla, los trabajadores de campo envían un formulario prediseñado a través de la plataforma Cotalker. En el formulario, los usuarios pueden escribir una breve descripción del problema, elegir el equipo dañado de una lista, indicar la ubicación e incluso agregar una foto para ayudar a evaluar la situación.
 
