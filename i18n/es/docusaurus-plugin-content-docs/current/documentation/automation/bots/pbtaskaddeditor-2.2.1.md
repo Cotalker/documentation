@@ -16,7 +16,7 @@ Arrangement with the IDs of the users to add to the Task in case the criterion i
 Required: no  
 Data Type: CotUserId   
 ### 4. Access role (key: accessRole)  
-Id of the access role that users must have in case the criterion is 'accessRole'  
+Name of the access role that users must have in case the criterion is 'accessRole'  
 Required: no  
 Data Type: string   
 ### 5. Property (key: property)  
