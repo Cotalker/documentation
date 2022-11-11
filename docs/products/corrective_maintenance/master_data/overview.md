@@ -115,8 +115,9 @@ _**Datos Maestros** en menú principal:_
 :::tip Recomendaciones
 Antes de ingresar tu data maestra, debes tomarte un momento para pensar en tu proceso de mantenimiento correctivo. Considera lo siguiente:
 - ¿Cuáles son los equipos o activos que quieres que sean incluídos en el proceso de mantenimiento correctivo?
-- ¿Qué fallas podrían presentar estos equipos o activos?
-- ¿En qué lugares se encuentra estos equipos o activos?
+- ¿Cómo se pueden agrupar o clasificar?
+- ¿Qué fallas podrían presentar?
+- ¿En qué lugares se encuentran?
 - ¿Quiénes son los responsables de estos equipos o activos?
 
 _Se recomienda ingresar tu data maestra en el orden en que los ítemes en el sub-menú._
