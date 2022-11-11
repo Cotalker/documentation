@@ -19,10 +19,10 @@ Una vez que un [**aviso**](/docs/products/corrective_maintenance/actions/create_
 <summary>Usuario</summary>
 <div>
 
-El sistema se encargará de agregar automáticamente a la _orden de trabajo_ a todos los [_usuarios_](/docs/products/corrective_maintenance/master_data/users) con el [_puesto de trabajo_](/docs/products/corrective_maintenance/master_data/workstation) y [_cargos_](/es/docs/products/corrective_maintenance/master_data/job_title) correspondientes.
+El sistema se encargará de agregar automáticamente a la _orden de trabajo_ a todos los [_usuarios_](/docs/products/corrective_maintenance/master_data/users) con el [_puesto de trabajo_](/docs/products/corrective_maintenance/master_data/workstation) y [_cargos_](/docs/products/corrective_maintenance/master_data/job_title) correspondientes.
 
 #### Cargos {#job-titles}
-Sólo los [_usuarios_](/docs/products/corrective_maintenance/master_data/users) con los siguientes [_cargos_](/es/docs/products/corrective_maintenance/master_data/job_title) podrán estar en esta etapa y enviar el formulario para aceptar o rechazar la orden de trabajo:  
+Sólo los [_usuarios_](/docs/products/corrective_maintenance/master_data/users) con los siguientes [_cargos_](/docs/products/corrective_maintenance/master_data/job_title) podrán estar en esta etapa y enviar el formulario para aceptar o rechazar la orden de trabajo:  
 `supervisor`, `técnico`, `jefe` o `administrador`
 
 ####  Puesto de Trabajo {#workstation}

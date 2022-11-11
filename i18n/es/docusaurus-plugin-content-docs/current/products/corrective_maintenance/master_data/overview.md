@@ -47,7 +47,7 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         M(Material):::thing1A --> CO
         EQ --> State(Estado):::thing1B
         EQ --> CE(Clase Equipo):::thing1B
-        M --- S(Servicio):::thing1A
+        M ~~~ S(Servicio):::thing1A
         classDef user1 fill:#FFDD4C,color:gray,stroke-width:0px
         classDef user0 fill:#FFF6CC,stroke-width:0px,color:gray
         classDef equip1A fill:#CA7FFF,color:white,stroke-width:0px
