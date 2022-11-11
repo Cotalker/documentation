@@ -8,6 +8,9 @@ import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs
 import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
 import Mermaid from '@theme/Mermaid';
 
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 ## 📌 Resumen {#overview}
 La _data maestra_ de tu compañía agregada a Cotalker permite la automatización de tareas, su selección desde los formularios correspondientes y el registro de data relevante.
@@ -28,16 +31,15 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
 
 <Mermaid chart={`
     graph LR;
+        U & SE3 --> PT(Puestos de Trabajo):::user1
         U(Usuario):::user1 --> C(Cargos):::user0
-        U --> PT(Puestos de Trabajo):::user1
         PT --> R(Rol):::user0
-        PT --> SE3(Sector de Equipamiento - 3):::equip1A
-        SE2(Sector de Equipamiento - 2):::equip1B --> SE3
-        SE1(Sector de Equipamiento - 1):::equip1B --> SE2
+        SE3(Sector de Equipamiento - 3):::equip1A --> SE2(Sector de Equipamiento - 2):::equip1B
+        SE2 --> SE1(Sector de Equipamiento - 1):::equip1B
+        SE1 & SE2 --> U
         EQ(Equipo):::thing1A --> SE3
         EQ --> FEq(Familia del Equipo):::equip1B
-        EQ --> CEq(Categoría de Equipo):::equip1A
-        FEq --> CEq
+        FEq --> CEq(Categoría de Equipo):::equip1A
         FEq --> CL(Checklist):::equip1A
         EQ --> GF(Grupo de Falla):::equip1A
         GF --> Sin(Síntoma):::equip1B
@@ -48,7 +50,7 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         M(Material):::thing1A --> CO
         EQ --> State(Estado):::thing1B
         EQ --> CE(Clase Equipo):::thing1B
-        S(Servicio):::thing1A
+        M ~~~ S(Servicio):::thing1A
         classDef user1 fill:#FFDD4C,color:gray,stroke-width:0px
         classDef user0 fill:#FFF6CC,stroke-width:0px,color:gray
         classDef equip1A fill:#CA7FFF,color:white,stroke-width:0px

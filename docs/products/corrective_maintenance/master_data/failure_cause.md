@@ -7,5 +7,8 @@ import Cause, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/c
 
 <Cause/>
 
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 export const toc = [...Title1TOC];

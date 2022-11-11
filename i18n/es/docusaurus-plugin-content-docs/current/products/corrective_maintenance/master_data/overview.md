@@ -28,13 +28,13 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
 
 <Mermaid chart={`
     graph LR;
+        U & SE3 --> PT(Puestos de Trabajo):::user1
         U(Usuario):::user1 --> C(Cargos):::user0
-        U --> PT(Puestos de Trabajo):::user1
         PT --> R(Rol):::user0
-        EQ(Equipo):::thing1A --> SE3
-        SE3(Sector de Equipamiento - 3):::equip1A --> PT
-        SE3 --> SE2(Sector de Equipamiento - 2):::equip1B
+        SE3(Sector de Equipamiento - 3):::equip1A --> SE2(Sector de Equipamiento - 2):::equip1B
         SE2 --> SE1(Sector de Equipamiento - 1):::equip1B
+        SE1 & SE2 --> U
+        EQ(Equipo):::thing1A --> SE3
         EQ --> FEq(Familia del Equipo):::equip1B
         FEq --> CEq(Categoría de Equipo):::equip1A
         FEq --> CL(Checklist):::equip1A

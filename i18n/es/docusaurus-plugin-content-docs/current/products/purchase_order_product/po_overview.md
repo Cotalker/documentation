@@ -1,5 +1,5 @@
 ---
-title: Órdenes de Compra
+title: 📦 Órdenes de Compra
 displayed_sidebar: products
 ---
 

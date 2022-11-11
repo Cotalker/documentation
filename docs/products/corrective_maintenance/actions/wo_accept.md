@@ -1,6 +1,6 @@
 ---
 title: Aceptar Orden de Trabajo
-displayed_sidebar: products_landing
+
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

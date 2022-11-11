@@ -1,7 +1,7 @@
 ---
 title: Formulario
 sidebar_label: Crear Nuevo Aviso
-displayed_sidebar: products_landing
+
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

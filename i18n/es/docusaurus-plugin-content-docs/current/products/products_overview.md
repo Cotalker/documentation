@@ -31,7 +31,7 @@ Los _Productos_ descritos en esta documentación se mencionan a continuación. H
 <div className="row">
 
 <div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/corrective_maintenance/cm_overview">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/corrective_maintenance/landing/overview">
 
 <span className="hero__subtitle"><b>🛠 Mantenimiento Correctivo:</b></span>
 
