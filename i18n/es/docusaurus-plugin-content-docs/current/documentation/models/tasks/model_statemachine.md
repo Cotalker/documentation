@@ -84,9 +84,9 @@ _State machines_, also know as [_workflows_](/docs/documentation/admin/workflows
 | **name** | The workflow's display name | string | 
 | **propertyType** | Indicates the _collection (property type)_ that contains the _elements_ that represent the [workflow's states](/docs/documentation/admin/workflows/settings_panels/create_edit_state). | [ObjectId<COTPropertyType\>](/docs/documentation/models/databases/model_propertytypes) |
 | **requiredSurvey** | Represents a [_start form_](/docs/documentation/admin/workflows/admin_workflow_required_survey), used for initializing a workflow. | object |
-| **requiredSurvey<br/>.parametrizedBot** | Configuration of the [routine](/docs/documentation/automation/admin_routine) that accompanies the _start form_. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
-| **requiredSurvey<br/>.permissions** | List of [start form permissions](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#states) users need to initiate the workflow. | string[ ] | Users need at least one of the permissions listed. Users are designated permissions through their [access roles](/docs/documentation/admin/admin_accessrole#default-permissions).
-| **requiredSurvey<br/>.surveyId** | Workflow start form ID | [ObjectId<COTSurvey\>](/docs/documentation/models/surveys/model_surveys) |
+| **requiredSurvey.<br/>parametrizedBot** | Configuration of the [routine](/docs/documentation/automation/admin_routine) that accompanies the _start form_. | [COTParametrizedBot[ ]](/docs/documentation/models/automations/model_parametrizedbot) |
+| **requiredSurvey.permissions** | List of [start form permissions](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#states) users need to initiate the workflow. | string[ ] | Users need at least one of the permissions listed. Users are designated permissions through their [access roles](/docs/documentation/admin/admin_accessrole#default-permissions).
+| **requiredSurvey.surveyId** | Workflow start form ID | [ObjectId<COTSurvey\>](/docs/documentation/models/surveys/model_surveys) |
 | **taskGroup** | The workflow group thats hosts all the tasks created upon the workflow. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) |
 
 
