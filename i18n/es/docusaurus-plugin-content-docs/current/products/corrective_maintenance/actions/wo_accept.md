@@ -30,11 +30,17 @@ Los usuarios con los cargos de _supervisor_ o _técnico_ tienen que además esta
 
 Por su parte, los usuarios con los cargos de _administrador_ o _jefe_ no necesitan estar asociados al _puesto de trabajo_ ni a la orden de trabajo.
 
-
-
 </div>
 </details>
 
+<details>
+<summary>Estado</summary>
+<div>
+
+La orden de trabajo debe estar en el estado **Reportado** para poder ser aceptada.
+
+</div>
+</details>
 
 ## Pasos para Aceptar una Orden de Trabajo {#steps}
 
@@ -83,6 +89,12 @@ Por su parte, los usuarios con los cargos de _administrador_ o _jefe_ no necesit
 El primer usuario en aceptar la orden es asignado a la tarea de mantenimiento y tendrá que cerrar la orden una vez que el trabajo es completado.
 Al ser aceptada, la orden de trabajo pasa al siguiente estado (_Pendiente_). 
 
+<div className="img_sizing">
+
+![results](/img/productos_es/products_cm_wo_accept_04.png)
+
+</div>
+
 El resto del personal de mantenimiento a quien le llegó la orden de trabajo son removidos del flujo, quedando sólo el trabajador asignado y supervisores.
 
 Cuando un usuario rechaza la orden de trabajo, éste es removido del flujo. La orden de trabajo sigue abierta, dando a los otros usuarios la posibilidad de aceptarla.
@@ -118,6 +130,6 @@ Después de aceptar la orden, los usuarios involucrados en el flujo podrán [**c
 :::info Pasos Alternativos
 En vez aceptar o rechazar la orden a través del formulario visto arriba, los _supervisores_, _administradores_ y _jefes_ podrán además:
 - Hacer un [**Cierre Rápido**](/docs/products/corrective_maintenance/actions/wo_fast_close), saltándose la etapa de validación.
-- Hacer una [**Solicitar de Rechazo**](/docs/products/corrective_maintenance/actions/wo_reject_request) para cerrar la orden sin completar el trabajo.
+- Hacer una [**Solicitud de Rechazo**](/docs/products/corrective_maintenance/actions/wo_reject_request) para cerrar la orden sin completar el trabajo.
 :::
 
