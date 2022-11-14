@@ -121,9 +121,19 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 </Tabs>
 
 ## Resultados Esperados {#results}
-Al enviar el **Aviso**, se genera automáticamente la _orden de trabajo_ correspondiente con toda la información entregada. 
+Al enviar el **Aviso**, el sistema genera automáticamente una _orden de trabajo_ con toda la información entregada. 
 
-El sistema notifica que el aviso pasa al siguiente estado (En Proceso) y da a conocer el número y nombre de la nueva orden de trabajo:
+En el caso de que **ya existe un aviso** en curso con la misma _falla_ en el mismo _equipo_, el _aviso_ será automáticamente rechazado y orden de trabajo no será creada. Un mensaje del sistema, similar al que aparece abajo, indicará la situación:
+
+<div className="img_sizing">
+
+![results](/img/productos_es/product_cm_notification_03.png)
+
+</div>
+
+Si no hay duplicación de _avisos_, entonces el sistema procede a crear la orden de trabajo.
+
+El sistema notifica que el _aviso_ pasa al siguiente estado (En Proceso) y da a conocer el número y nombre de la nueva orden de trabajo:
 
 <div className="img_sizing">
 
@@ -132,9 +142,6 @@ El sistema notifica que el aviso pasa al siguiente estado (En Proceso) y da a co
 </div>
 
 Personal administrativo y de mantenimiento correspondientes son agregados al flujo según su [_cargo_](/docs/products/corrective_maintenance/master_data/job_title) y [_puesto de trabajo_](/docs/products/corrective_maintenance/master_data/workstation).
-
-
-
 
 Podrás encontrar la nueva orden de trabajo en el estado **Reportado** en la sección de **Órdenes de trabajo**:
 

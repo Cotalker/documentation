@@ -594,6 +594,7 @@ module.exports = {
               },
               items: [
                 'products/corrective_maintenance/actions/create_notification',
+                'products/corrective_maintenance/actions/wo_create',
                 'products/corrective_maintenance/actions/wo_accept',
                 'products/corrective_maintenance/actions/wo_close',
                 'products/corrective_maintenance/actions/wo_validate',
