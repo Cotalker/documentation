@@ -658,403 +658,403 @@ module.exports = {
         'products/service_orders/so_overview',
         'products/service_quotations/sq_overview'
       ],
-      collapsed: true,
-    },
-  ],
-  workflow_notifications: [
-    {
-      type: 'doc',
-      id: 'products/corrective_maintenance/cm_overview',
-      label: 'Back to Product Overview...'
-    },
-    {
-      type: 'category',
-      label: 'Notifications Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/notifications/overview',
-      },
       collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/notifications/examples',
-        'products/workflows/notifications/workflow',
-        {
-          type: 'category',
-          label: 'Survey Forms',
-          link: {
-            type: 'doc',
-            id: 'products/workflows/notifications/surveys',
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/workflows/notifications/surveys-report',
-            'products/workflows/notifications/surveys-validate',
-          ]
-        }
-      ],
-    }
-  ],
-  workflow_preventive_plan: [
-    {
-      type: 'doc',
-      id: 'products/preventive_maintenance/pm_overview',
-      label: 'Back to Preventive Maintenance...'
-    },
-    {
-      type: 'category',
-      label: 'Preventive Plans Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/preventive_plans/overview',
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/preventive_plans/sample',
-        'products/workflows/preventive_plans/workflow',
-        {
-          type: 'category',
-          label: 'Surveys & Input',
-          link: {
-            type: 'doc',
-            id: 'products/workflows/preventive_plans/surveys'
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/workflows/preventive_plans/surveys-create-plan',
-            'products/workflows/preventive_plans/surveys-plan-runner',
-            'products/workflows/preventive_plans/surveys-update-metrics',
-          ]
-        },
-      ]
-    }
-  ],
-  workflow_workorders_wo: [
-    {
-      type: 'doc',
-      id: 'products/work_order_product/wo_overview',
-      label: 'Back to Work Orders...'
-    },
-    {
-      type: 'category',
-      label: 'Work Orders Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/work_orders/related-product/wo/overview_intro',
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/work_orders/related-product/wo/examples',
-        'products/workflows/work_orders/related-product/wo/workflow',
-        {
-          type: 'category',
-          label: 'Survey Forms',
-          link: {
-            type: 'doc',
-            id: 'products/workflows/work_orders/related-product/wo/surveys'
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/workflows/work_orders/related-product/wo/surveys-create-wo',
-            'products/workflows/work_orders/related-product/wo/surveys-accept-wo',
-            'products/workflows/work_orders/related-product/wo/surveys-close-wo',
-            'products/workflows/work_orders/related-product/wo/surveys-acceptance',
-            'products/workflows/work_orders/related-product/wo/surveys-feedback',
-            'products/workflows/work_orders/related-product/wo/mass_validation'
-          ]
-        },
-      ]
     },
   ],
-  workflow_workorders_cm: [
-    {
-      type: 'doc',
-      id: 'products/corrective_maintenance/cm_overview',
-      label: 'Back to Corrective Maintenance...'
-    },
-    {
-      type: 'category',
-      label: 'Work Orders Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/work_orders/related-product/cm/overview_intro',
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/work_orders/related-product/cm/examples',
-        'products/workflows/work_orders/related-product/cm/workflow',
-        {
-          type: 'category',
-          label: 'Survey Forms',
-          link: {
-            type: 'doc',
-            id: 'products/workflows/work_orders/related-product/cm/surveys'
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/workflows/work_orders/related-product/cm/surveys-create-wo',
-            'products/workflows/work_orders/related-product/cm/surveys-accept-wo',
-            'products/workflows/work_orders/related-product/cm/surveys-close-wo',
-            'products/workflows/work_orders/related-product/cm/surveys-acceptance',
-            'products/workflows/work_orders/related-product/cm/surveys-feedback',
-            'products/workflows/work_orders/related-product/cm/mass_validation'
-          ]
-        },
-      ]
-    },
-  ],
-  workflow_workorders_pm: [
-    {
-      type: 'doc',
-      id: 'products/preventive_maintenance/pm_overview',
-      label: 'Back to Preventive Maintenance...'
-    },
-    {
-      type: 'category',
-      label: 'Work Orders Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/work_orders/related-product/pm/overview_intro',
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/work_orders/related-product/pm/examples',
-        'products/workflows/work_orders/related-product/pm/workflow',
-        {
-          type: 'category',
-          label: 'Survey Forms',
-          link: {
-            type: 'doc',
-            id: 'products/workflows/work_orders/related-product/pm/surveys'
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/workflows/work_orders/related-product/pm/surveys-accept-wo',
-            'products/workflows/work_orders/related-product/pm/surveys-checklist-pm',
-            'products/workflows/work_orders/related-product/pm/surveys-close-wo',
-            'products/workflows/work_orders/related-product/pm/surveys-acceptance',
-            'products/workflows/work_orders/related-product/pm/surveys-feedback',
-            'products/workflows/work_orders/related-product/pm/mass_validation'
-          ]
-        },
-      ]
-    },
-  ],
-  workflow_quotes_cm: [
-    {
-      type: 'doc',
-      id: 'products/corrective_maintenance/cm_overview',
-      label: 'Back to Corrective Maintenance...'
-    },
-    {
-      type: 'category',
-      label: 'Quotes Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/budget_management/related-product/cm/overview'
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/budget_management/related-product/cm/surveys',
-        'products/workflows/budget_management/related-product/cm/approval',
-      ],
-    }
-  ],
-  workflow_quotes_pm: [
-    {
-      type: 'doc',
-      id: 'products/preventive_maintenance/pm_overview',
-      label: 'Back to Preventive Maintenance...'
-    },
-    {
-      type: 'category',
-      label: 'Quotes Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/budget_management/related-product/pm/overview'
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/budget_management/related-product/pm/surveys',
-        'products/workflows/budget_management/related-product/pm/approval',
-      ],
-    }
-  ],
-  workflow_quotes_wo: [
-    {
-      type: 'doc',
-      id: 'products/work_order_product/wo_overview',
-      label: 'Back to Work Orders...'
-    },
-    {
-      type: 'category',
-      label: 'Quotes Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/workflows/budget_management/related-product/wo/overview'
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/workflows/budget_management/related-product/wo/surveys',
-        'products/workflows/budget_management/related-product/wo/approval',
-      ],
-    }
-  ],
-  workflow_purchaseorders: [
-    {
-      type: 'doc',
-      id: 'products/purchase_order_product/po_overview',
-      label: 'Back to Product Overview...'
-    },
-    {
-      type: 'category',
-      label: 'Purchase Order Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/purchase_order_product/workflow_overview'
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/purchase_order_product/examples',
-        'products/purchase_order_product/workflow',
-        'products/purchase_order_product/release-strategy',
-        {
-          type: 'category',
-          label: 'Survey Forms',
-          link: {
-            type: 'doc',
-            id: 'products/purchase_order_product/surveys',
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/purchase_order_product/surveys-create-po',
-            'products/purchase_order_product/surveys-release',
-            'products/purchase_order_product/surveys-receipt',
-            'products/purchase_order_product/surveys-billing',
-            'products/purchase_order_product/surveys-close-po',
-            'products/purchase_order_product/surveys_pdf',
-          ]
-        },
-      ],
-    }
-  ],
-  workflow_serviceorders: [
-    {
-      type: 'doc',
-      id: 'products/service_orders/so_overview',
-      label: 'Back to Product Overview...'
-    },
-    {
-      type: 'category',
-      label: 'Service Order Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/service_orders/workflow_overview'
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/service_orders/examples',
-        'products/service_orders/workflow',
-        {
-          type: 'category',
-          label: 'Forms and Documents',
-          link: {
-            type: 'doc',
-            id: 'products/service_orders/surveys',
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/service_orders/survey-create',
-            'products/service_orders/survey-release',
-            'products/service_orders/survey-pdf-original',
-            'products/service_orders/survey-close',
-          ]
-        },
-      ],
-    }
-  ],
-  workflow_servicequotations: [
-    {
-      type: 'doc',
-      id: 'products/service_quotations/sq_overview',
-      label: 'Back to Product Overview...'
-    },
-    {
-      type: 'category',
-      label: 'Service Quotation Workflow',
-      link: {
-        type: 'doc',
-        id: 'products/service_quotations/workflow_overview'
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/service_quotations/examples',
-        'products/service_quotations/workflow',
-        {
-          type: 'category',
-          label: 'Step-by-step process',
-          link: {
-            type: 'doc',
-            id: 'products/service_quotations/surveys',
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/service_quotations/survey-request',
-            'products/service_quotations/survey-accept',
-            'products/service_quotations/survey-create',
-            'products/service_quotations/survey-approve',
-          ]
-        },
-      ],
-    }
-  ],
-  Setup: [
-    {
-      type: 'category',
-      label: 'Back to Setup Overview...',
-      link: {
-        type: 'doc',
-        id: 'products/setup/setup_overview',
-      },
-      collapsed: false,
-      collapsible: false,
-      items: [
-        'products/setup/users',
-        'products/setup/master_data',
-        {
-          type: 'category',
-          label: 'Customizations',
-          link: {
-            type: 'doc',
-            id: 'products/setup/customization',
-          },
-          collapsed: false,
-          collapsible: false,
-          items: [
-            'products/setup/customization_examples/workflow_cm',
-            'products/setup/customization_examples/survey_pm',
-          ]
-        },
-        'products/setup/integrations',
-      ]
-    },
-  ],
+  // workflow_notifications: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/corrective_maintenance/cm_overview',
+  //     label: 'Back to Product Overview...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Notifications Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/notifications/overview',
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/notifications/examples',
+  //       'products/workflows/notifications/workflow',
+  //       {
+  //         type: 'category',
+  //         label: 'Survey Forms',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/workflows/notifications/surveys',
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/workflows/notifications/surveys-report',
+  //           'products/workflows/notifications/surveys-validate',
+  //         ]
+  //       }
+  //     ],
+  //   }
+  // ],
+  // workflow_preventive_plan: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/preventive_maintenance/pm_overview',
+  //     label: 'Back to Preventive Maintenance...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Preventive Plans Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/preventive_plans/overview',
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/preventive_plans/sample',
+  //       'products/workflows/preventive_plans/workflow',
+  //       {
+  //         type: 'category',
+  //         label: 'Surveys & Input',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/workflows/preventive_plans/surveys'
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/workflows/preventive_plans/surveys-create-plan',
+  //           'products/workflows/preventive_plans/surveys-plan-runner',
+  //           'products/workflows/preventive_plans/surveys-update-metrics',
+  //         ]
+  //       },
+  //     ]
+  //   }
+  // ],
+  // workflow_workorders_wo: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/work_order_product/wo_overview',
+  //     label: 'Back to Work Orders...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Work Orders Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/work_orders/related-product/wo/overview_intro',
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/work_orders/related-product/wo/examples',
+  //       'products/workflows/work_orders/related-product/wo/workflow',
+  //       {
+  //         type: 'category',
+  //         label: 'Survey Forms',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/workflows/work_orders/related-product/wo/surveys'
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/workflows/work_orders/related-product/wo/surveys-create-wo',
+  //           'products/workflows/work_orders/related-product/wo/surveys-accept-wo',
+  //           'products/workflows/work_orders/related-product/wo/surveys-close-wo',
+  //           'products/workflows/work_orders/related-product/wo/surveys-acceptance',
+  //           'products/workflows/work_orders/related-product/wo/surveys-feedback',
+  //           'products/workflows/work_orders/related-product/wo/mass_validation'
+  //         ]
+  //       },
+  //     ]
+  //   },
+  // ],
+  // workflow_workorders_cm: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/corrective_maintenance/cm_overview',
+  //     label: 'Back to Corrective Maintenance...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Work Orders Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/work_orders/related-product/cm/overview_intro',
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/work_orders/related-product/cm/examples',
+  //       'products/workflows/work_orders/related-product/cm/workflow',
+  //       {
+  //         type: 'category',
+  //         label: 'Survey Forms',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/workflows/work_orders/related-product/cm/surveys'
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/workflows/work_orders/related-product/cm/surveys-create-wo',
+  //           'products/workflows/work_orders/related-product/cm/surveys-accept-wo',
+  //           'products/workflows/work_orders/related-product/cm/surveys-close-wo',
+  //           'products/workflows/work_orders/related-product/cm/surveys-acceptance',
+  //           'products/workflows/work_orders/related-product/cm/surveys-feedback',
+  //           'products/workflows/work_orders/related-product/cm/mass_validation'
+  //         ]
+  //       },
+  //     ]
+  //   },
+  // ],
+  // workflow_workorders_pm: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/preventive_maintenance/pm_overview',
+  //     label: 'Back to Preventive Maintenance...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Work Orders Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/work_orders/related-product/pm/overview_intro',
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/work_orders/related-product/pm/examples',
+  //       'products/workflows/work_orders/related-product/pm/workflow',
+  //       {
+  //         type: 'category',
+  //         label: 'Survey Forms',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/workflows/work_orders/related-product/pm/surveys'
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/workflows/work_orders/related-product/pm/surveys-accept-wo',
+  //           'products/workflows/work_orders/related-product/pm/surveys-checklist-pm',
+  //           'products/workflows/work_orders/related-product/pm/surveys-close-wo',
+  //           'products/workflows/work_orders/related-product/pm/surveys-acceptance',
+  //           'products/workflows/work_orders/related-product/pm/surveys-feedback',
+  //           'products/workflows/work_orders/related-product/pm/mass_validation'
+  //         ]
+  //       },
+  //     ]
+  //   },
+  // ],
+  // workflow_quotes_cm: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/corrective_maintenance/cm_overview',
+  //     label: 'Back to Corrective Maintenance...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Quotes Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/budget_management/related-product/cm/overview'
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/budget_management/related-product/cm/surveys',
+  //       'products/workflows/budget_management/related-product/cm/approval',
+  //     ],
+  //   }
+  // ],
+  // workflow_quotes_pm: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/preventive_maintenance/pm_overview',
+  //     label: 'Back to Preventive Maintenance...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Quotes Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/budget_management/related-product/pm/overview'
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/budget_management/related-product/pm/surveys',
+  //       'products/workflows/budget_management/related-product/pm/approval',
+  //     ],
+  //   }
+  // ],
+  // workflow_quotes_wo: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/work_order_product/wo_overview',
+  //     label: 'Back to Work Orders...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Quotes Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/workflows/budget_management/related-product/wo/overview'
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/workflows/budget_management/related-product/wo/surveys',
+  //       'products/workflows/budget_management/related-product/wo/approval',
+  //     ],
+  //   }
+  // ],
+  // workflow_purchaseorders: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/purchase_order_product/po_overview',
+  //     label: 'Back to Product Overview...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Purchase Order Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/purchase_order_product/workflow_overview'
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/purchase_order_product/examples',
+  //       'products/purchase_order_product/workflow',
+  //       'products/purchase_order_product/release-strategy',
+  //       {
+  //         type: 'category',
+  //         label: 'Survey Forms',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/purchase_order_product/surveys',
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/purchase_order_product/surveys-create-po',
+  //           'products/purchase_order_product/surveys-release',
+  //           'products/purchase_order_product/surveys-receipt',
+  //           'products/purchase_order_product/surveys-billing',
+  //           'products/purchase_order_product/surveys-close-po',
+  //           'products/purchase_order_product/surveys_pdf',
+  //         ]
+  //       },
+  //     ],
+  //   }
+  // ],
+  // workflow_serviceorders: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/service_orders/so_overview',
+  //     label: 'Back to Product Overview...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Service Order Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/service_orders/workflow_overview'
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/service_orders/examples',
+  //       'products/service_orders/workflow',
+  //       {
+  //         type: 'category',
+  //         label: 'Forms and Documents',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/service_orders/surveys',
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/service_orders/survey-create',
+  //           'products/service_orders/survey-release',
+  //           'products/service_orders/survey-pdf-original',
+  //           'products/service_orders/survey-close',
+  //         ]
+  //       },
+  //     ],
+  //   }
+  // ],
+  // workflow_servicequotations: [
+  //   {
+  //     type: 'doc',
+  //     id: 'products/service_quotations/sq_overview',
+  //     label: 'Back to Product Overview...'
+  //   },
+  //   {
+  //     type: 'category',
+  //     label: 'Service Quotation Workflow',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/service_quotations/workflow_overview'
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/service_quotations/examples',
+  //       'products/service_quotations/workflow',
+  //       {
+  //         type: 'category',
+  //         label: 'Step-by-step process',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/service_quotations/surveys',
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/service_quotations/survey-request',
+  //           'products/service_quotations/survey-accept',
+  //           'products/service_quotations/survey-create',
+  //           'products/service_quotations/survey-approve',
+  //         ]
+  //       },
+  //     ],
+  //   }
+  // ],
+  // Setup: [
+  //   {
+  //     type: 'category',
+  //     label: 'Back to Setup Overview...',
+  //     link: {
+  //       type: 'doc',
+  //       id: 'products/setup/setup_overview',
+  //     },
+  //     collapsed: false,
+  //     collapsible: false,
+  //     items: [
+  //       'products/setup/users',
+  //       'products/setup/master_data',
+  //       {
+  //         type: 'category',
+  //         label: 'Customizations',
+  //         link: {
+  //           type: 'doc',
+  //           id: 'products/setup/customization',
+  //         },
+  //         collapsed: false,
+  //         collapsible: false,
+  //         items: [
+  //           'products/setup/customization_examples/workflow_cm',
+  //           'products/setup/customization_examples/survey_pm',
+  //         ]
+  //       },
+  //       'products/setup/integrations',
+  //     ]
+  //   },
+  // ],
 }
