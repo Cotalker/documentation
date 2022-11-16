@@ -1,7 +1,7 @@
 ---
 title: Formulario
 sidebar_label: Crear Nuevo Aviso
-
+displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -11,13 +11,18 @@ import Related, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs
 
 [_Volver atrás._](/docs/products/corrective_maintenance/actions/create_notification)
 
-<div className="img_sizing_small">
+<div className="container">
+<div className="row">
+<div className="col col--6">
+
+<div className="img_sizing_narrow">
 
 ![create notification form](/img/productos_es/products_form_notify_cm.png)
 
 </div>
+</div>
 
-<div className="margin-left--lg">
+<div className="col col--6">
 
 - **<span className="badge badge--danger">1.</span> Fecha del incidente**: Automaticamente generada al abrir el formulario pero puede ser modificada.  <br/>
 _A partir de esta fecha se fija automáticamente la fecha de término como parte de un Service-Level Agreement (SLA) dependiendo de la prioridad de la falla. El sistema enviará un correo electrónico a los usuarios involucrados si no se cumplen con los plazos._
@@ -26,11 +31,13 @@ _A partir de esta fecha se fija automáticamente la fecha de término como parte
   - [**Sector de Equipamiento**](/docs/products/corrective_maintenance/master_data/equipment_sector)
   - [**Equipo**](/docs/products/corrective_maintenance/master_data/equipment)
   - [**Falla**](/docs/products/corrective_maintenance/master_data/failure_catalog)
-- **<span className="badge badge--danger">4.</span> Evidencia fotográfica**: Se puede sacar una foto directamente o adjuntar una imagen almacenada en una galería o carpeta.
+- **<span className="badge badge--danger">4.</span> Evidencia fotográfica**: Se puede sacar una foto directamente con el dispositivo o adjuntar una imagen almacenada en una galería o carpeta.
 - **<span className="badge badge--danger">5.</span> Enviar**: Al enviar el formulario se inicia el flujo de trabajo de [Mantenimiento Correctivo](/docs/products/corrective_maintenance/landing/overview).
 
 </div>
 
+</div>
+</div>
 
 ## Temas Relacionados {#related-topics}
 <Related/>

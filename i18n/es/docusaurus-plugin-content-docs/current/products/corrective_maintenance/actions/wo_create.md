@@ -72,6 +72,10 @@ Para poder crear una Orden de Trabajo manualmente, los usuarios deben tener uno 
 </TabItem>
 </Tabs>
 
+:::note Más detalles
+📋 [Formulario Crear Orden de Trabajo](/docs/products/corrective_maintenance/forms/form_create_wo)
+:::
+
 ## Resultados Esperados {#results}
 Al crear la orden de trabajo, un mensaje de sistema es enviando al área de chat con el nombre, número e información de la orden de trabajo:
 

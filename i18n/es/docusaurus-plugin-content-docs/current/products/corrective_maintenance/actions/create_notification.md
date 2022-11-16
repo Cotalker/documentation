@@ -40,10 +40,6 @@ El [**equipo**](/docs/products/corrective_maintenance/master_data/equipment) que
 
 1. Seleccionar Aviso.
 
-<!-- <span className="hero__subtitle"><b>1. Seleccionar Aviso.</b></span>
-<br/>
-<br/> -->
-
 <div className="margin-left--lg">
 
 ![first-step](/img/productos_es/products_cm_create_notification_01.png)
@@ -57,10 +53,6 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 
 2. Apretar el botón de acciones.
 
-<!-- <span className="hero__subtitle"><b>2. Apretar el botón de acciones.</b></span>
-<br/>
-<br/> -->
-
 <div className="margin-left--lg">
 
 ![second-step](/img/productos_es/products_cm_create_notification_02.png)
@@ -69,10 +61,6 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 <br/>
 
 3. Apretar el botón Crear Aviso.
-
-<!-- <span className="hero__subtitle"><b>3. Apretar el botón Crear Aviso.</b></span>
-<br/>
-<br/> -->
 
 <div className="margin-left--lg">
 
@@ -83,20 +71,12 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 
 4. Rellenar y enviar el formulario.
 
-<!-- <span className="hero__subtitle"><b>4. Rellenar y enviar el formulario.</b></span>
-<br/>
-<br/> -->
-
 <div className="margin-left--lg">
 
 ![fourth-step](/img/productos_es/products_cm_create_notification_04.png)
 
-:::note Más detalles
-📋 [Formulario Crear Nuevo Aviso](/docs/products/corrective_maintenance/forms/form_notify)
-:::
-
 </div>
-<br/>
+
  
 </TabItem>
 
@@ -113,12 +93,12 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 
 </div>
 
+</TabItem>
+</Tabs>
+
 :::note Más detalles
 📋 [Formulario Crear Nuevo Aviso](/docs/products/corrective_maintenance/forms/form_notify)
 :::
-
-</TabItem>
-</Tabs>
 
 ## Resultados Esperados {#results}
 Al enviar el **Aviso**, el sistema genera automáticamente una _orden de trabajo_ con toda la información entregada. 
