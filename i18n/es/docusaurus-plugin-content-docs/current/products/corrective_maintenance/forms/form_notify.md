@@ -7,9 +7,12 @@ displayed_sidebar: products
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Related, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
 
-## Crear Nuevo Aviso {#notification}
-
 [_Volver atrás._](/docs/products/corrective_maintenance/actions/create_notification)
+
+<span className="align-center hero__title">Crear Nuevo Aviso</span>
+
+
+## Descripción del Formulario {#description}
 
 <div className="container">
 <div className="row">

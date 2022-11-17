@@ -1,16 +1,16 @@
 ---
-title: Formulario
+title: Formulario - Close Orden de Trabajo
 displayed_sidebar: products
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Related, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
 
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
+
 [Volver atrás...](/docs/products/corrective_maintenance/actions/wo_create)
-
-<span className="align-center hero__title">Crear Orden de Trabajo</span>
-
-## Descripción del Formulario {#description}
 
 <div className="container">
 <div className="row">
