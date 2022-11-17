@@ -1,6 +1,7 @@
 ---
 title: Preventive Plans Workflow
 sidebar_label: Workflow Description
+displayed_sidebar: products
 ---
 
 :::caution Advertencia

@@ -76,6 +76,10 @@ La orden de trabajo deber estar en el estado **Pendiente**.
 </TabItem>
 </Tabs>
 
+:::note Más detalles
+📋 [Formulario Cerrar Orden de Trabajo](/docs/products/corrective_maintenance/forms/form_close_wo)
+:::
+
 ## Resultados Esperados {#results}
 Independiente de si el trabajo pudo completarse o no, al cerrar la orden de trabajo ésta pasa al estado Validación. Los costos de los servicios son sumados y la cantidad de materiales son descontados del stock.
 
