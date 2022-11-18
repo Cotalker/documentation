@@ -1,4 +1,7 @@
-# Change Task Status  
+---  
+title: Change Task Status-2.1.0  
+displayed_sidebar: documentation  
+---  
   
 **Change the status of a Task**  
 key: PBChangeState  

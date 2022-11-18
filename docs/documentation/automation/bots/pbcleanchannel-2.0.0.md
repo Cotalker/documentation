@@ -1,4 +1,7 @@
-# Clean channels  
+---  
+title: Clean channels-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Delete the messages that have the indicated channels**  
 key: PBCleanChannel  

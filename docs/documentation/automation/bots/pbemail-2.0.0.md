@@ -1,4 +1,7 @@
-# Send email  
+---  
+title: Send email-2.0.0  
+displayed_sidebar: documentation  
+---  
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#ovewrview}

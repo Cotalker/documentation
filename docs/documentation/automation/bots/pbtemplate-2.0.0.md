@@ -1,4 +1,7 @@
-# Generate HTML  
+---  
+title: Generate HTML-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Generates an HTML from a template and an object with data**  
 key: PBTemplate  
@@ -8,7 +11,7 @@ Data that will be used to build the HTML
 Required: true  
 Data Type: object   
 ### 2. Template (key: template)  
-Name of the template to use to build the email  
+Name of the template to use to build the HTML  
 Required: no  
 Data Type: string   
 ### 3. File name (key: fileName)  
