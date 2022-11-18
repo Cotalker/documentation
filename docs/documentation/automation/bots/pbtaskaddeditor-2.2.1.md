@@ -14,8 +14,8 @@ Data Type: string
 Arrangement with the IDs of the users to add to the Task in case the criterion is 'user' or 'boss'  
 Required: no  
 Data Type: array CotUserId  
-### 3. Users (key: user)  
-Arrangement with the IDs of the users to add to the Task in case the criterion is 'user'  
+### 3. Single User (key: user)  
+ID of the user to add to the Task in case the criterion is 'user'  
 Required: no  
 Data Type: CotUserId   
 ### 4. Access role (key: accessRole)  

@@ -200,7 +200,7 @@ Data Type: object
 ### 3. Source Code (key: src)  
 Must return an Object. e.g., return { hello: 'world' };. Variables 'input', 'output', 'data' and 'env' can be read.  
 Required: true  
-Data Type: code   
+Data Type: code javascript  
 ## Next Stages  
 ### 1. SUCCESS  
   

@@ -16,7 +16,7 @@ const args = process.argv.slice(2);
 
 if (args.length !== 2) {
   console.log(`usage: node process.js ENV AUTH  
-ENV: prod | local  
+ENV: prod | local | dev
 AUTH: "Bearer abcde..."  
 `);
   process.exit(1);
@@ -26,6 +26,7 @@ const getEnv = () => {
   switch (args[0]) {
     case 'prod': return 'https://www.cotalker.com';
     case 'local': return 'http://cotalker'; 
+    case 'dev': return 'https://dev.cotalker.com';
     default: {
       console.log('Unknown ENV'); 
       process.exit(1)

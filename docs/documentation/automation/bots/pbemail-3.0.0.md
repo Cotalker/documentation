@@ -1,3 +1,7 @@
+---  
+title: Send email-3.0.0  
+displayed_sidebar: documentation  
+---  
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#ovewrview}
@@ -142,4 +146,61 @@ p {
 
 ---
 _Below you will find the complete list of options available on the Send Email (v3.0.0) stage bot:_
----
+---  
+**Send an email**  
+key: PBEmail  
+## Inputs  
+### 1. Subject (key: subject)  
+Subject of the email  
+Required: true  
+Data Type: string   
+### 2. From (key: from)  
+Email of the sender  
+Required: no  
+Data Type: string   
+### 3. Data (key: content)  
+Data that will be used to build the HTML. In the template they are referenced as: '{{ content.key }}'. In case of using the default template, the keys are 'recipientName', 'recipientEmail', 'companyName', 'title', 'messageA', 'messageB', 'action' and 'code'  
+Required: true  
+Data Type: object   
+### 4. Attachments (key: attachments)  
+Email attachments  
+Required: no  
+Data Type: array string  
+### 5. To (key: targets)  
+Array with the emails of the recipient  
+Required: true  
+Data Type: array string  
+### 6. CC (key: cc)  
+Array with the emails of the person receiving a copy  
+Required: no  
+Data Type: array string  
+### 7. BCC (key: bcc)  
+Array with the emails of those who receive a hidden copy  
+Required: no  
+Data Type: array string  
+### 8. HTML Template (key: htmlTemplate)  
+Template to use for HTML generation. It must be written in HTML language. If it is empty, the default template will be used. Documentation about how data is referenced in https://mustache.github.io/  
+Required: no  
+Data Type: code html  
+### 9. CSS Template (key: cssTemplate)  
+(Optional) Style to apply in the HTML. It must be written in CSS language  
+Required: no  
+Data Type: code css  
+### 10. Individual shipping (key: singleRecipient)  
+Indicates whether the mail should be sent individually to the recipients  
+Required: no  
+Data Type: boolean   
+## Next Stages  
+### 1. SUCCESS  
+  
+### 2. ERROR  
+  
+## Outputs  
+### 1. Status (key: status)  
+  
+Required: no  
+Data Type: boolean   
+### 2. Errors (key: errors)  
+  
+Required: no  
+Data Type: array string
