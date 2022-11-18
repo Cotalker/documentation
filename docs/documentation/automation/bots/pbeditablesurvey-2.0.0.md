@@ -1,4 +1,7 @@
-# Change Form to edit mode  
+---  
+title: Change Form to edit mode-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Change a set of forms to edit mode**  
 key: PBEditableSurvey  

@@ -1,0 +1,165 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+## Overview {#ovewrview}
+The **Send Email** stage routine is a bot that automatically generates and sends customized emails within a routine.
+
+:::tip
+Check out the [Create a bot tutorial](/docs/tutorials/basic/create_bot#first-stage) to find a section on how to set up the Send Email bot.
+:::
+
+## Templates {#template}
+An HTML template is required to generate the email's basic design structure. You can choose between _default_ and _customized_. Whichever 
+
+To use a custom template, you must select _HTML Template_ from the **Add Optional Inputs** section. Additionally, a _CSS Template_ can also be added further customize design.
+
+If you don't provide your own HTML template, the system will expect you to use the _default email template_.
+
+Whichever template you choose, you must include in the **Object** section the values with which you will fill out the template's variables. Use JSON format.
+
+## Default Email Template {#default}
+The default email template has 8 items in which you can include variable content. To add your customized content, include a JSON object with the 8 default keys and the values you wish them to display.
+
+This is the basic structure for the default email template's data object:
+
+```json
+{
+    "recipientName": string,
+    "recipientEmail": string,
+    "companyName": string,
+    "title": string,
+    "action": string,
+    "code": string,
+    "messageA": string,
+    "messageB": string
+}
+```
+
+_Below is an example of an email using the default template displayed on a recipient's email client:_
+
+<div className="img_sizing_small">
+
+![template](/img/bot_send_email_00.png)
+
+</div>
+<br/>
+
+_Check the **inputs** below to see how the corresponding fields will appear on the email._
+
+
+
+```json
+{
+                "key": "PBEmail",
+                "type": "normal",
+                "display": "Send email",
+                "description": "Send an email",
+                "version": "3.0.0",
+                "dataType": [
+                    {
+                        "key": "subject",
+                        "display": "Subject",
+                        "description": "Subject of the email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "key": "from",
+                        "display": "From",
+                        "description": "Email of the sender",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "key": "content",
+                        "display": "Data",
+                        "description": "Data that will be used to build the HTML. In the template they are referenced as: '{{ content.key }}'. In case of using the default template, the keys are 'recipientName', 'recipientEmail', 'companyName', 'title', 'messageA', 'messageB', 'action' and 'code'",
+                        "required": true,
+                        "type": "object"
+                    },
+                    {
+                        "key": "attachments",
+                        "display": "Attachments",
+                        "description": "Email attachments",
+                        "required": false,
+                        "type": "array",
+                        "subType": "string"
+                    },
+                    {
+                        "key": "targets",
+                        "display": "To",
+                        "description": "Array with the emails of the recipient",
+                        "required": true,
+                        "type": "array",
+                        "subType": "string"
+                    },
+                    {
+                        "key": "cc",
+                        "display": "CC",
+                        "description": "Array with the emails of the person receiving a copy",
+                        "required": false,
+                        "type": "array",
+                        "subType": "string"
+                    },
+                    {
+                        "key": "bcc",
+                        "display": "BCC",
+                        "description": "Array with the emails of those who receive a hidden copy",
+                        "required": false,
+                        "type": "array",
+                        "subType": "string"
+                    },
+                    {
+                        "key": "htmlTemplate",
+                        "display": "HTML Template",
+                        "description": "Template to use for HTML generation. It must be written in HTML language. If it is empty, the default template will be used. Documentation about how data is referenced in https://mustache.github.io/",
+                        "required": false,
+                        "type": "code",
+                        "subType": "html"
+                    },
+                    {
+                        "key": "cssTemplate",
+                        "display": "CSS Template",
+                        "description": "(Optional) Style to apply in the HTML. It must be written in CSS language",
+                        "required": false,
+                        "type": "code",
+                        "subType": "css"
+                    },
+                    {
+                        "key": "singleRecipient",
+                        "display": "Individual shipping",
+                        "description": "Indicates whether the mail should be sent individually to the recipients",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "nextType": [
+                    {
+                        "key": "SUCCESS",
+                        "display": "SUCCESS",
+                        "description": "",
+                        "context": "normal"
+                    },
+                    {
+                        "key": "ERROR",
+                        "display": "ERROR",
+                        "description": "",
+                        "context": "normal"
+                    }
+                ],
+                "resultType": [
+                    {
+                        "key": "status",
+                        "display": "Status",
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "errors",
+                        "display": "Errors",
+                        "description": "",
+                        "type": "array",
+                        "subType": "string"
+                    }
+                ]
+            },
+```

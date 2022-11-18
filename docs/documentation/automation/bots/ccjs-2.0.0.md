@@ -1,8 +1,8 @@
-# Custom Javascript Code  
+---  
+title: Custom Javascript Code-2.0.0  
+displayed_sidebar: documentation  
+---  
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
-<br/>
 
 ## Overview {#overview}
 

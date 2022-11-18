@@ -1,4 +1,7 @@
-# Generate HTML  
+---  
+title: Generate HTML-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Generates an HTML from a template and an object with data**  
 key: PBTemplate  

@@ -57,9 +57,11 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
 }
 
 (async () => {
+  const firstLine = "| Stage Type Name (Bot) | Description | Key |"
+  const secondLine = "| ---- | ---- | ---- |"
   const doc = await getBotRawDocumentation();
   const bots = {};
-  const table = [];
+  const table = [firstLine, secondLine];
 
   doc.data.parametrizedBots.sort((a, b) => {
     const name = a.key.localeCompare(b.key);
@@ -69,13 +71,17 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
 
   for (const bot of doc.data.parametrizedBots) {
     // | [Custom Javascript Code](/docs/documentation/automation/bots/ccjs) | Sandboxed JS runner. Returns an object. | _CCJS_ |
-    const key = `${bot.key.toLocaleLowerCase()}${bot.version ? '-'+bot.version : '' }`;
-    const parensVersion = bot.version ? ` (${bot.version})` : '';
+    const key = `${bot.key.toLocaleLowerCase()}${bot.version ? '-'+bot.version : '-1.0.0' }`;
+    const parensVersion = bot.version ? ` (${bot.version})` : ' (1.0.0)';
    
     table.push(`| [${bot.display}${parensVersion}](/docs/documentation/automation/bots/${key}) | ${bot.description} | _${bot.key}_ |`);
     bots[key] = { text:[], key: bot.key.toLocaleLowerCase() , version: bot.version || '' };
    
-    bots[key].text.push(`# ${bot.display}`);
+    bots[key].text.push(`---`);
+    bots[key].text.push(`title: ${bot.display}${bot.version ? '-'+bot.version : '-1.0.0' }`);
+    bots[key].text.push(`displayed_sidebar: documentation`);
+    bots[key].text.push(`---`);
+
     bots[key].text.push(`**${bot.description}**`);
     bots[key].text.push(`key: ${bot.key}`);
 
@@ -108,13 +114,17 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
     } catch (e) {}
     let manualData = '';
     try {
-      await fs.promises.access(`${__dirname}/${bot.key.toLowerCase()}-manual.md`);
-      manualData = await fs.promises.readFile(`${__dirname}/${bot.key.toLowerCase()}-manual.md`);
+      await fs.promises.access(`${__dirname}/manual/_${botcode}-manual.mdx`);
+      manualData = await fs.promises.readFile(`${__dirname}/manual/_${botcode}-manual.mdx`);
     } catch (e) {
 
     }
     const first = bots[botcode].text.shift();
-    await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, manualData, ...bots[botcode].text].join('  \n'), 'utf8');
+    const second = bots[botcode].text.shift();
+    const third = bots[botcode].text.shift();
+    const fourth = bots[botcode].text.shift();
+
+    await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, second, third, fourth, manualData, ...bots[botcode].text].join('  \n'), 'utf8');
   }
 
   await fs.promises.writeFile(`${__dirname}/_table.mdx`, table.join('  \n'), 'utf8');

@@ -1,4 +1,7 @@
-# Get Channel Messages  
+---  
+title: Get Channel Messages-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 ****  
 key: PBGetChannelMessages  
