@@ -1,4 +1,7 @@
-# Update Channel  
+---  
+title: Update Channel-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Update a Channel**  
 key: PBUpdateChannel  

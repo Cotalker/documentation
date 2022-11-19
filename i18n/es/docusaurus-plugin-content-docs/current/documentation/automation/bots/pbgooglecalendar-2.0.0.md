@@ -1,4 +1,7 @@
-# Google Calendar Integration  
+---  
+title: Google Calendar Integration-2.0.0  
+displayed_sidebar: documentation  
+---  
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}

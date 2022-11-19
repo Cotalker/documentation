@@ -1,4 +1,7 @@
-# Copy messages  
+---  
+title: Copy messages-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Copy messages from one Channel to another**  
 key: PBCopySurvey  

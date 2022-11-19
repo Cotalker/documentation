@@ -133,7 +133,7 @@ Go to [COTBot](/docs/documentation/models/automations/model_bots) for a complete
 ## Update State Machine {#patch-statemachine}
 _Updates or edits the indicated bot._
 
-<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /bots/&#123;id&#125;/sm/smstatemachine/&#123;stateMachineId&#125;</span>
+<span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /bots/&#123;id&#125;</span>
 
 #### Endpoint URL {#patch-statemachine-url}
 `https://www.cotalker.com/api/v1/bots/{id}`

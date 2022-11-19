@@ -1,4 +1,7 @@
-# Edit users of a Task  
+---  
+title: Edit users of a Task-2.1.0  
+displayed_sidebar: documentation  
+---  
   
 **Add or remove users from a Task**  
 key: PBTaskAddEditor  

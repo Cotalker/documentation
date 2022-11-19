@@ -1,4 +1,7 @@
-# Iterate  
+---  
+title: Iterate-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Iterate over an Array**  
 key: FCEach  

@@ -1,4 +1,7 @@
-# Generate QR code  
+---  
+title: Generate QR code-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Generate a QR code**  
 key: PBQRCode  

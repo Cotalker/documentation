@@ -1,4 +1,7 @@
-# Edit Channel Users  
+---  
+title: Edit Channel Users-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Add or remove users from a Channel**  
 key: PBChannelAddUser  

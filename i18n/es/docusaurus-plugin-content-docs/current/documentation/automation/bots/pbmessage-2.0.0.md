@@ -1,4 +1,7 @@
-# Send message  
+---  
+title: Send message-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Send a message to a set of channels**  
 key: PBMessage  

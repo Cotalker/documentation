@@ -1,4 +1,7 @@
-# Create PDF  
+---  
+title: Create PDF-2.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Create a PDF from a local file or a URL**  
 key: PBPdf  
