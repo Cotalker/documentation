@@ -1,4 +1,7 @@
-# XLSX/CSV to JSON  
+---  
+title: XLSX/CSV to JSON-1.0.0  
+displayed_sidebar: documentation  
+---  
   
 **Convert Excel and CSV files to JSON (Object Arrays)**  
 key: PBSheet  

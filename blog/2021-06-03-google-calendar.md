@@ -33,7 +33,7 @@ This integration allows you to create Google Calendar events and send invitation
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/automation/bots/pbgooglecalendar">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/bots/pbgooglecalendar-2.0.0">See Documentation</a>
 <br/>
 
 </div>

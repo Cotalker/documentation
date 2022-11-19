@@ -1,8 +1,8 @@
-# Custom Javascript Code  
+---  
+title: Custom Javascript Code-2.0.1  
+displayed_sidebar: documentation  
+---  
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<img alt="title image" className="img_title" src={useBaseUrl('img/design/Main_menu.svg')} />
-<br/>
 
 ## Overview {#overview}
 
@@ -200,7 +200,7 @@ Data Type: object
 ### 3. Source Code (key: src)  
 Must return an Object. e.g., return { hello: 'world' };. Variables 'input', 'output', 'data' and 'env' can be read.  
 Required: true  
-Data Type: code   
+Data Type: code javascript  
 ## Next Stages  
 ### 1. SUCCESS  
   

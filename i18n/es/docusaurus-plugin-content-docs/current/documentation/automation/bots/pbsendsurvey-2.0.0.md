@@ -1,7 +1,8 @@
-# Submit Form  
+---  
+title: Submit Form-2.0.0  
+displayed_sidebar: documentation  
+---  
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<img alt="design" className="img_title" src={useBaseUrl('img/design/Dashboards.svg')} />
 
 ## Overview {#overview}
 

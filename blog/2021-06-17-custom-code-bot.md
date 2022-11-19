@@ -30,7 +30,7 @@ Cotalker's routine automation potential just stepped up a level with its brand n
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/automation/bots/ccjs">See Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/bots/ccjs-2.0.1">See Documentation</a>
 <br/>
 
 </div>

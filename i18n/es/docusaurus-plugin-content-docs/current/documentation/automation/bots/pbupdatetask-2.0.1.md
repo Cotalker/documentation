@@ -1,4 +1,7 @@
-# Update Task  
+---  
+title: Update Task-2.0.1  
+displayed_sidebar: documentation  
+---  
   
 **Update a Task**  
 key: PBUpdateTask  
