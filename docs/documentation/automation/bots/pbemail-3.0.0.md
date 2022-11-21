@@ -22,9 +22,9 @@ The **Send Email** stage routine is a bot that automatically generates and sends
 </div>
 <div className="col col--6">
 
-- **<span className="badge badge--success">A.</span> Subject**: String sent as the subject of the email.
-- **<span className="badge badge--success">B.</span> Object**: JSON object with email template keys and variable values. Use either the default or a customized template. [Template info below](#template).
-- **<span className="badge badge--success">C.</span> + Add Item**: Add recipient emails to an array.
+- **<span className="badge badge--success">A.</span> [Subject](#1-subject-key-subject)**: String sent as the subject of the email.
+- **<span className="badge badge--success">B.</span> [Data (Object)](#3-data-key-content)**: JSON object with email template keys and variable values. Use either the default or a customized template. [Template info below](#template).
+- **<span className="badge badge--success">C.</span> [+ Add Item](#5-to-key-targets)**: Add recipient emails to an array.
 - **<span className="badge badge--success">D.</span> Add Optional Inputs**: Optional inputs include:
   - [From](#2-from-key-from)
   - [Attachments](#4-attachments-key-attachments)
@@ -40,20 +40,20 @@ The **Send Email** stage routine is a bot that automatically generates and sends
 </div>
 
 ## Templates {#template}
-An HTML template is required to generate the email's basic design structure. You can choose between [_default_](#default) and [_customized_](#custom). Whichever option you choose, you must add the template's variables in the **Object** section in JSON format.
+An HTML template is required to generate the email's basic design structure. You can choose between [_default_](#default) and [_customized_](#custom). Whichever option you choose, you must add the template's variables in the **Data (Object)** section in JSON format.
 
 To use a custom template, you must select _HTML Template_ from the **Add Optional Inputs** section. Additionally, a _CSS Template_ can also be added for further customized design.
 
 If you don't provide your own HTML template, the system will expect you to use the _default email template_.
 
 :::tip
-Within the **Object** section, you can use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Scripting Language) to extract _context data_ and use it within the JSON object that contains the variables so that your automated emails are generated with the relative data. [Context data](/docs/documentation/automation/cotlang/triggers_and_contexts) can include things like assets, users, and other task details found within the database.
+Within the **Data (Object)** section, you can use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Scripting Language) to extract _context data_ and use it within the JSON object that contains the variables so that your automated emails are generated with the relative data. [Context data](/docs/documentation/automation/cotlang/triggers_and_contexts) can include things like assets, users, and other task details found within the database.
 :::
 
 ### Default Email Template {#default}
 When no template is provided, you must use the default template object to include variable content on your automated emails.
 
-The default email template has 8 items in which you can include variable content. To add your customized content, include a JSON object in the **Object** section with the 8 default keys and the values you wish them to display.
+The default email template has 8 items in which you can include variable content. To add your customized content, include a JSON object in the **Data (Object)** section with the 8 default keys and the values you wish them to display.
 
 _This is the basic structure of the data object corresponding to the default email template:_
 
@@ -100,20 +100,12 @@ _Below is an example of what an email looks like using the default template:_
 </div>
 </div>
 
-:::note
-COTLang can be included on the strings to include context data into your strings.
-:::
-
 ### Custom HTML Template {#custom}
 If you wish to provide a custom template for your emails, add the **HTML Template** option from the **Add Optional Inputs** section.
 
 Add your HTML code in the HTML Template code box.
 
 The variables in your template must follow the `{{content.key}}` format.
-
-:::tip
-☞ Read the [mustache documentation](https://mustache.github.io/mustache.5.html) for more details and options for displaying variable content on your HTML template.
-:::
 
 _Below is a simple example of an HTML template:_
 
@@ -130,7 +122,7 @@ _Below is a simple example of an HTML template:_
 </html>
 ```
 
-_In the **Object** section, the customized template's variables can be filled out with static and automated content, as shown in the example below:_
+_In the **Data (Object)** section, the customized template's variables can be filled out with static and automated content, as shown in the example below:_
 
 ```json
 {
@@ -141,9 +133,13 @@ _In the **Object** section, the customized template's variables can be filled ou
 }
 ```
 
+:::tip
+☞ Read the [mustache documentation](https://mustache.github.io/mustache.5.html) for more details and options for displaying variable and conditional content on your HTML template.
+:::
+
 ### CSS Template
 
-Through **Add Optional Input**, you can modify your HTML template's design with a **CSS Template**.
+Through **Add Optional Inputs**, you can modify your HTML template's design with a **CSS Template**.
 
 _Simply insert CSS code, as shown below:_ 
 
