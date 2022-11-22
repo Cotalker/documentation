@@ -2,9 +2,9 @@
 title: Copy messages-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Copy messages from one Channel to another**  
 key: PBCopySurvey  
+  
 ## Inputs  
 ### 1. Messages (key: messages)  
 Arrangement with the Id's of the messages to be copied  

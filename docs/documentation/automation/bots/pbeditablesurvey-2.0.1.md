@@ -2,9 +2,9 @@
 title: Change Form to edit mode-2.0.1  
 displayed_sidebar: documentation  
 ---  
-  
 **Change a set of forms to edit mode**  
 key: PBEditableSurvey  
+  
 ## Inputs  
 ### 1. Search criteria (key: type)  
 Search criteria of the forms to be edited. Allowed values: 'uuids', 'survey', 'firstSurvey' and 'lastSurvey'  

@@ -2,9 +2,9 @@
 title: PDF Extractor-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Convert data and tables from PDFs to JSON**  
 key: PBPDFExtractor  
+  
 ## Inputs  
 ### 1. Contract Code (key: contractCode)  
 Contract for paid usage API  

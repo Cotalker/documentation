@@ -2,9 +2,9 @@
 title: Get Task from a Channel-2.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Gets the Task associated with a Channel (if any)**  
 key: PBChannelToTaskSE  
+  
 ## Inputs  
 ### 1. Channel (key: channelId)  
 Channel Id  

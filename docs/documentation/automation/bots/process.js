@@ -82,7 +82,7 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
     bots[key].text.push(`title: ${bot.display}${bot.version ? '-'+bot.version : '-1.0.0' }`);
     bots[key].text.push(`displayed_sidebar: documentation`);
     bots[key].text.push(`---`);
-
+    
     bots[key].text.push(`**${bot.description}**`);
     bots[key].text.push(`key: ${bot.key}`);
 
@@ -124,8 +124,10 @@ const generateInputOutputDoc = (bot, inputs, count, isNext) => {
     const second = bots[botcode].text.shift();
     const third = bots[botcode].text.shift();
     const fourth = bots[botcode].text.shift();
+    const fifth = bots[botcode].text.shift();
+    const sixth = bots[botcode].text.shift();
 
-    await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, second, third, fourth, manualData, ...bots[botcode].text].join('  \n'), 'utf8');
+    await fs.promises.writeFile(`${__dirname}/${fileName}`, [first, second, third, fourth, fifth, sixth, manualData, ...bots[botcode].text].join('  \n'), 'utf8');
   }
 
   await fs.promises.writeFile(`${__dirname}/_table.mdx`, table.join('  \n'), 'utf8');

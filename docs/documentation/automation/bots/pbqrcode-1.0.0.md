@@ -2,9 +2,9 @@
 title: Generate QR code-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Generate a QR code**  
 key: PBQRCode  
+  
 ## Inputs  
 ### 1. Content (key: qrcode)  
 QR code content  

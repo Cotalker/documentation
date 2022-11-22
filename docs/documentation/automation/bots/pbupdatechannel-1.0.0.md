@@ -2,9 +2,9 @@
 title: Update Channel-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Update a Channel**  
 key: PBUpdateChannel  
+  
 ## Inputs  
 ### 1. Channel (key: channelId)  
 Channel Id  

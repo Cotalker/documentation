@@ -2,9 +2,9 @@
 title: Send gif-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Send a gif to a Channel**  
 key: PBGiphy  
+  
 ## Inputs  
 ### 1. Search (key: search)  
 Array with the words used to find the gif  

@@ -2,9 +2,9 @@
 title: Update Task-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Update a Task**  
 key: PBUpdateTask  
+  
 ## Inputs  
 ### 1. Task (key: _id)  
 Task Id  

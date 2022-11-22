@@ -2,9 +2,9 @@
 title: Get Channel Messages-2.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 ****  
 key: PBGetChannelMessages  
+  
 ## Inputs  
 ### 1. Channel (key: channel)  
   

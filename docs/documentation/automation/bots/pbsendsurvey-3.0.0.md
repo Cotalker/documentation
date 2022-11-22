@@ -2,6 +2,9 @@
 title: Submit Form-3.0.0  
 displayed_sidebar: documentation  
 ---  
+**Send a Form to a Channel**  
+key: PBSendSurvey  
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
@@ -126,8 +129,6 @@ For more information on question types see:
 ---------
 
   
-**Send a Form to a Channel**  
-key: PBSendSurvey  
 ## Inputs  
 ### 1. Survey Id (key: surveyId)  
   

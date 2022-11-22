@@ -2,6 +2,9 @@
 title: WhatsApp Integration-1.0.0  
 displayed_sidebar: documentation  
 ---  
+**Send message via WhatsApp**  
+key: PBWhatsApp  
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
@@ -52,8 +55,6 @@ _Your message will look something like this:_
 
 
   
-**Send message via WhatsApp**  
-key: PBWhatsApp  
 ## Inputs  
 ### 1. Contract code (key: contractCode)  
 The code can be found in the contract addendum: 'Whatsapp and SMS Integrations'  

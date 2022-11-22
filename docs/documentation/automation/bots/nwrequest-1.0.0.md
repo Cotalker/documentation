@@ -2,9 +2,9 @@
 title: Network request-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Makes a network request**  
 key: NWRequest  
+  
 ## Inputs  
 ### 1. URL (key: url)  
 URL to which the network request will be sent  

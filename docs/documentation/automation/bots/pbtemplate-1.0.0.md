@@ -2,9 +2,9 @@
 title: Generate HTML-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Generates an HTML from a template and an object with data**  
 key: PBTemplate  
+  
 ## Inputs  
 ### 1. Data (key: content)  
 Data that will be used to build the HTML  

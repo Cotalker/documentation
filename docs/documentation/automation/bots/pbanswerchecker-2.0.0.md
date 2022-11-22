@@ -2,9 +2,9 @@
 title: Search for answers-2.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Search for form responses**  
 key: PBAnswerChecker  
+  
 ## Inputs  
 ### 1. Query (key: query)  
 Query used to search for answers  

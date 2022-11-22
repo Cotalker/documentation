@@ -2,9 +2,9 @@
 title: Change Task Status-2.1.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Change the status of a Task**  
 key: PBChangeState  
+  
 ## Inputs  
 ### 1. Task (key: tid)  
 Task Id  

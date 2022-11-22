@@ -2,6 +2,9 @@
 title: Send email-2.0.0  
 displayed_sidebar: documentation  
 ---  
+**Send an email**  
+key: PBEmail  
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#ovewrview}
@@ -25,8 +28,6 @@ _Check the **inputs** below to see how the corresponding fields will appear on t
 
 
   
-**Send an email**  
-key: PBEmail  
 ## Inputs  
 ### 1. Subject (key: subject)  
 Subject of the email  

@@ -2,9 +2,9 @@
 title: Create PDF-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Create a PDF from a local file or a URL**  
 key: PBPdf  
+  
 ## Inputs  
 ### 1. Local file (key: localFile)  
 Address of the local file from which the PDF will be created  

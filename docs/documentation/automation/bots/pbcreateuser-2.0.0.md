@@ -2,9 +2,9 @@
 title: Create User-2.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Create a new User**  
 key: PBCreateUser  
+  
 ## Inputs  
 ### 1. Email (key: email)  
 User Email  

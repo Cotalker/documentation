@@ -2,9 +2,9 @@
 title: Run legacy bot-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Makes a network request to execute a legacy bot**  
 key: NWBotV2V3  
+  
 ## Inputs  
 ### 1. URI (key: uri)  
   

@@ -2,9 +2,9 @@
 title: Update User-2.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Update a User**  
 key: PBUpdateUser  
+  
 ## Inputs  
 ### 1. User (key: userId)  
 User Id  

@@ -2,9 +2,9 @@
 title: Switch-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Conditionally executes the next stage based on the left and right hand of the operator**  
 key: FCSwitchOne  
+  
 ## Inputs  
 ### 1. Left side (key: lexpression)  
 Left operator side  

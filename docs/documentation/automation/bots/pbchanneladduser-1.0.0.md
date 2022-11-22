@@ -2,9 +2,9 @@
 title: Edit Channel Users-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Add or remove users from a Channel**  
 key: PBChannelAddUser  
+  
 ## Inputs  
 ### 1. Criteria (key: type)  
 User selection criteria. Allowed values: 'user', 'boss', 'property' and 'accessRole'  

@@ -2,9 +2,9 @@
 title: Hide messages-2.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Hide messages from a Channel**  
 key: PBHideMessages  
+  
 ## Inputs  
 ### 1. Messages (key: messages)  
 Array with messages to hide  

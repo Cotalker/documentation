@@ -2,9 +2,9 @@
 title: Clean channels-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Delete the messages that have the indicated channels**  
 key: PBCleanChannel  
+  
 ## Inputs  
 ### 1. Channels (key: channelIds)  
 Array with the IDs of the channels  

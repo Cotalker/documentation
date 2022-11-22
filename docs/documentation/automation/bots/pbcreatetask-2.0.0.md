@@ -2,9 +2,9 @@
 title: Create Task-2.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Create a new Task**  
 key: PBCreateTask  
+  
 ## Inputs  
 ### 1. Id (key: tid)  
 Id of the Task to be created (If one is not indicated, the system will generate it automatically)  

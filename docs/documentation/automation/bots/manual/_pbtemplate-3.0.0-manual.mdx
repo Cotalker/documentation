@@ -1,10 +1,11 @@
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
-The HTML Template bot creates an HTML file that can be used during the [routine](/docs/documentation/automation/admin_routine) by another [stage bot](/docs/documentation/automation/existing_routines) to generate a document. 
+The _Generate HTML_ bot creates an HTML file that can be used during the [routine](/docs/documentation/automation/admin_routine) by another [stage bot](/docs/documentation/automation/existing_routines) to structure and stylize information. 
 
 :::tip
-The [Create PDF (PBPdf)](/docs/documentation/automation/bots/pbpdf-3.0.0) stage bot can use the files created by _HTML Template_ to structure and design the PDF files it generates.
+The [Create PDF (PBPdf)](/docs/documentation/automation/bots/pbpdf-3.0.0) stage bot can use the files created by _Generate HTML_ to produce PDF files with a standardized design and format that include relative task data. For example, it can be used to create invoices or purchase orders that automatically include client data, items, costs, and much more.
 :::
 
 ## Settings Layout {#layout}
@@ -27,9 +28,9 @@ The [Create PDF (PBPdf)](/docs/documentation/automation/bots/pbpdf-3.0.0) stage 
 
 - **<span className="badge badge--success">2.</span> [HTML Template (Code)](#2-html-template-key-htmltemplate)**: <br/>Customized HTML template goes here. The default template is used if no customized code is inserted.
 
-- **<span className="badge badge--success">3.</span> [CSS Template (Code)](#3-css-template-key-csstemplate)**: <br/>Customized CSS template used to stylize the HTML template.
+- **<span className="badge badge--success">3.</span> [CSS Template (Code)](#3-css-template-key-csstemplate)**: <br/>Customized CSS template used for stylizing the HTML template.
 
-- **<span className="badge badge--success">4.</span> [File Name](#4-file-name-key-filename)**: <br/>The file name used to store the HTML template. The template can be summoned by its file name on HTML-compatible stages within the routine.
+- **<span className="badge badge--success">4.</span> [File Name](#4-file-name-key-filename)**: <br/>The file name used to store the HTML template. The template is summoned by its file name on HTML-compatible stages within the routine.
 
 _<br/>To display items 2–4, you must select **+Add Optional Inputs**._
 
@@ -39,12 +40,17 @@ _<br/>To display items 2–4, you must select **+Add Optional Inputs**._
 </div>
 
 ## Templates {#templates}
-The _HTML Template_ stage bot enables other stages within the routine to use either the default or a customized HTML template to generate their own documents.
+The _Generate HTML_ stage bot enables other stages within the routine to use either the default or a customized HTML template to generate their own documents.
 
 Whether the default or a customized template is used, the **Data (Objects)** section must contain a JSON object with template keys and values.
 
 :::tip
 Within the **Data (Object)** section, you can use [COTLang](/docs/documentation/automation/cotlang/admin_cotlang) (Cotalker Scripting Language) to extract _context data_ and use it within the JSON object that contains the variables so that your templates are generated with the relative data. [Context data](/docs/documentation/automation/cotlang/triggers_and_contexts) can include things like assets, users, and other task details found within the database.
+:::
+
+:::caution Attention
+You **must** save the HTML file by using the [**File Name**](#4-file-name-key-filename) option. Otherwise, the template will not be available for use by other stage bots during the routine.  
+_Note: The file is stored in memory only during the routine._
 :::
 
 ### Default template {#default}
@@ -115,7 +121,6 @@ p {
   color: red;
 }
 ```
-
 
 ---
 _Below you will find the complete list of options available on the Generate HTML (v3.0.0) stage bot:_

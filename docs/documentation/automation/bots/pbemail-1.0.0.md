@@ -2,9 +2,9 @@
 title: Send email-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Send an email**  
 key: PBEmail  
+  
 ## Inputs  
 ### 1. Subject (key: subject)  
 Subject of the email  

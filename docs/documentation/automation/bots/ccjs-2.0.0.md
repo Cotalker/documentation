@@ -2,6 +2,9 @@
 title: Custom Javascript Code-2.0.0  
 displayed_sidebar: documentation  
 ---  
+**FAAS JS runner.**  
+key: CCJS  
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#overview}
@@ -186,8 +189,6 @@ return {
 
 
 -----------  
-**FAAS JS runner.**  
-key: CCJS  
 ## Inputs  
 ### 1. Source Code (key: src)  
 Must return an Object. e.g., return { hello: 'world' };. Variables 'value' and 'output' can be read.  

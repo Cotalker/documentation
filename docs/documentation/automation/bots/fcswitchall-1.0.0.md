@@ -2,9 +2,9 @@
 title: Multiple switch-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Execute all stages conditionally and in parallel according to the operator's left and right hand**  
 key: FCSwitchAll  
+  
 ## Inputs  
 ### 1. Left side (key: lexpression)  
 Operator left side  

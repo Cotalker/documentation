@@ -2,9 +2,9 @@
 title: Edit users of a Task-2.2.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Add or remove users from a Task**  
 key: PBTaskAddEditor  
+  
 ## Inputs  
 ### 1. Criteria (key: type)  
 User selection criteria. Allowed values: 'user', 'boss', 'property' and 'accessRole'  

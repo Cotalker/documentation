@@ -2,9 +2,9 @@
 title: Payments-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 ****  
 key: PBPayments  
+  
 ## Inputs  
 ### 1. Type (key: type)  
   

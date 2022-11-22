@@ -2,9 +2,9 @@
 title: Create Channel-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Create a new Channel**  
 key: PBCreateChannel  
+  
 ## Inputs  
 ### 1. Group (key: group)  
   

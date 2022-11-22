@@ -2,9 +2,9 @@
 title: Conditional-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Execute the next stage conditionally based on the operator's left and right hand**  
 key: FCIfElse  
+  
 ## Inputs  
 ### 1. Left side (key: left)  
 Left operator side  

@@ -2,6 +2,9 @@
 title: Send email-3.0.0  
 displayed_sidebar: documentation  
 ---  
+**Send an email**  
+key: PBEmail  
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview {#ovewrview}
@@ -87,12 +90,12 @@ _Below is an example of what an email looks like using the default template:_
 <br/>
 
 - **<span className="badge badge--danger">1.</span>** `recipientName`
-- **<span className="badge badge--danger">2.</span>** `recipientEmail`
-- **<span className="badge badge--danger">3.</span>** `title`
-- **<span className="badge badge--danger">4.</span>** `messageA`
-- **<span className="badge badge--danger">5.</span>** `messageB`
-- **<span className="badge badge--danger">6.</span>** `action`
-- **<span className="badge badge--danger">7.</span>** `code`
+- **<span className="badge badge--danger">2.</span>** `title`
+- **<span className="badge badge--danger">3.</span>** `messageA`
+- **<span className="badge badge--danger">4.</span>** `messageB`
+- **<span className="badge badge--danger">5.</span>** `action`
+- **<span className="badge badge--danger">6.</span>** `code`
+- **<span className="badge badge--danger">7.</span>** `recipientEmail`
 - **<span className="badge badge--danger">8.</span>** `companyName`
 
 </div>
@@ -154,8 +157,6 @@ p {
 ---
 _Below you will find the complete list of options available on the Send Email (v3.0.0) stage bot:_
 ---  
-**Send an email**  
-key: PBEmail  
 ## Inputs  
 ### 1. Subject (key: subject)  
 Subject of the email  

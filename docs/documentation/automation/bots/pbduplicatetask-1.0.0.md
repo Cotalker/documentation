@@ -2,9 +2,9 @@
 title: Duplicate Task-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 ****  
 key: PBDuplicateTask  
+  
 ## Inputs  
 ### 1. Target Id (key: targetId)  
   

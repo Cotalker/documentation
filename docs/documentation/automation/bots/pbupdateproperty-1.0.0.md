@@ -2,9 +2,9 @@
 title: Update Property-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Update a Property**  
 key: PBUpdateProperty  
+  
 ## Inputs  
 ### 1. Property (key: propertyId)  
 Property Id  

@@ -2,9 +2,9 @@
 title: Send message-1.0.0  
 displayed_sidebar: documentation  
 ---  
-  
 **Send a message to a set of channels**  
 key: PBMessage  
+  
 ## Inputs  
 ### 1. Content (key: content)  
 Content of the message to be sent  
