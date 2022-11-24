@@ -38,10 +38,10 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         EQ --> FEq(Familia del Equipo):::equip1B
         FEq --> CEq(Categoría de Equipo):::equip1A
         FEq --> CL(Checklist):::equip1A
-        EQ --> GF(Grupo de Falla):::equip1A
-        GF --> Sin(Síntoma):::equip1B
-        Sin --> Prior(Prioridad):::equip0
-        GF --> CF(Causa de Falla):::equip1B
+        EQ --> GF(Grupo de Falla):::fail1A
+        GF --> Sin(Síntoma):::fail1A
+        Sin --> Prior(Prioridad):::fail1B
+        GF --> CF(Causa de Falla):::fail1A
         EQ --> TCO(Tipo Centro Operativo):::thing1B
         TCO --> CO(Centro Operativo):::thing1A
         M(Material):::thing1A --> CO
@@ -52,6 +52,8 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         classDef user0 fill:#FFF6CC,stroke-width:0px,color:gray
         classDef equip1A fill:#CA7FFF,color:white,stroke-width:0px
         classDef equip1B fill:#8E5EB1,stroke-width:0px,color:white
+        classDef fail1A fill:#BF6988,stroke-width:0px,color:white
+        classDef fail1B fill:#C98EA3,stroke-width:0px,color:white
         classDef equip0 fill:#F1DEFF,stroke-width:0px,color:gray
         classDef thing1A fill:#64D0E7,color:white,stroke-width:0px
         classDef thing1B fill:#55B3C7,stroke-width:0px,color:white

@@ -7,10 +7,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Resumen {#overview}
-Una orden de trabajo indica un equipo o activo que necesita mantención y es enviada a al personal de mantenimiento responsable. 
+Una orden de trabajo indica un equipo o activo que necesita mantención y es enviada al personal de mantenimiento responsable. 
 
 :::info Importante
-En caso de un [**aviso**](/docs/products/corrective_maintenance/actions/create_notification) de mantenimiento correctivo, la orden de trabajo es generada automáticamente. Es decir, este paso es realizado por el sistema y los usuarios no tendrán que enviar este formulario.
+Un [**aviso**](/docs/products/corrective_maintenance/actions/create_notification) de mantenimiento correctivo puede genear automáticamente una orden de trabajo cuando hay personal de mantenimiento asignado al [_puesto de trabajo_](/docs/products/corrective_maintenance/master_data/workstation) correspondiente. Es decir, este paso es realizado por el sistema y los usuarios no tendrán que enviar este formulario.
+
+Pero en caso contrario, el supervisor tendrá que crear la orden de trabajo manualmente después de recibir aviso.
 :::
 
 ## Requisitos {#requirements}
