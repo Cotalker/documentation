@@ -1,16 +1,7 @@
----
-title: Formulario
-displayed_sidebar: products
----
-
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
-import Related, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
-
-[Volver atrás...](/docs/products/corrective_maintenance/actions/wo_create)
 
 <span className="align-center hero__title">Crear Orden de Trabajo</span>
-
-## Descripción del Formulario {#description}
+<br/>
 
 <div className="container">
 <div className="row">
@@ -27,9 +18,10 @@ import Related, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs
 
 - **<span className="badge badge--danger">1.</span> Título Descriptivo**: Escribe un título de referencia. Una vez enviado el formulario, el título de la orden de trabajo será generada automáticamente según el número de tarea, equipo y su sector de equipamiento.
 - **<span className="badge badge--danger">2.</span> Descripción**: Esta descripción servirá de referencia para el personal de mantenimiento.
-- **<span className="badge badge--danger">3.</span> Equipamiento**: Indica el _equipo_ que requiere mantenimiento, eligiendo desde su lugar o sector más general al más específico donde está ubicado o pertenece. Al elegir una opción para este campo, un nuevo campo aparecerá con la siguiente opción.
+- **<span className="badge badge--danger">3.</span> Equipamiento**: Indica el _equipo_ que requiere mantenimiento, eligiendo desde su lugar o sector más general al más específico donde está ubicado o pertenece. Al elegir una opción para este campo, un nuevo campo aparecerá con las siguientes opciones.
   - **[Sector de equipamiento 1–3](/docs/products/corrective_maintenance/master_data/equipment_sector)**
   - **[Equipo](/docs/products/corrective_maintenance/master_data/equipment)**
+  - **[Técnico Asignado](/docs/products/corrective_maintenance/user_types/overview#technician)** (_Aparece sólo cuando no hay técnico asignado al sector de equipamiento. Además señala la carga laboral actual de cada técnico para poder elegir mejor a quien designar._)
 - **<span className="badge badge--danger">4.</span> [Prioridad](/docs/products/corrective_maintenance/master_data/failure_priority)**: Establece la prioridad que se le quiere dar a la orden.
 - **<span className="badge badge--danger">5.</span> Fecha esperada de resolución**: Establece cuando el trabajo debe ser entregado. En caso de que la la orden no es cerrada antes de la fecha, un mensaje de alerta será enviado al canal a la tarea y correos electrónicos a los usuarios involucrados. 
 - **<span className="badge badge--danger">6.</span> Evidencia**: Se puede sacar una foto directamente con el dispositivo o adjuntar una imagen almacenada en una galería o carpeta.
@@ -42,8 +34,5 @@ import Related, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs
 </div>
 </div>
 
-## Temas Relacionados {#related-topics}
-
-<Related/>
 
 

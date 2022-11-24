@@ -585,6 +585,7 @@ module.exports = {
           collapsed: true,
           collapsible: true,
           items: [
+            'products/corrective_maintenance/user_types/overview',
             {
               type: 'category',
               label: 'Actions & Forms',

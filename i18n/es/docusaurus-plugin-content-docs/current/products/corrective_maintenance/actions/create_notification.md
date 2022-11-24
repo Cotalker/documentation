@@ -1,11 +1,12 @@
 ---
 title: Crear un Aviso
-
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+import NotificationForm, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/forms/_form_notify.mdx'; 
 
 ## Resumen {#overview}
 Por medio de un formulario, [usuarios](/docs/products/corrective_maintenance/master_data/users) pueden crear **avisos** que alertan supervisores de fallas en equipos o activos e inician un proceso de mantenimiento correctivo.  
@@ -96,9 +97,15 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 </TabItem>
 </Tabs>
 
-:::note Más detalles
-📋 [Formulario Crear Nuevo Aviso](/docs/products/corrective_maintenance/forms/form_notify)
-:::
+<details>
+<summary>📋 Detalles del Formulario</summary>
+<div>
+
+<NotificationForm/>
+
+</div>
+</details>
+
 
 ## Resultados Esperados {#results}
 Al enviar el **Aviso**: 

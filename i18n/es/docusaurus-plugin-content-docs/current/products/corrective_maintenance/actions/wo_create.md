@@ -5,6 +5,7 @@ title: Crear Orden de Trabajo
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CreateOT, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/forms/_form_create_wo.mdx';
 
 ## Resumen {#overview}
 Una orden de trabajo indica un equipo o activo que necesita mantención y es enviada al personal de mantenimiento responsable. 
@@ -74,9 +75,14 @@ Para poder crear una Orden de Trabajo manualmente, los usuarios deben tener uno 
 </TabItem>
 </Tabs>
 
-:::note Más detalles
-📋 [Formulario Crear Orden de Trabajo](/docs/products/corrective_maintenance/forms/form_create_wo)
-:::
+<details>
+<summary>📋 Detalles del Formulario</summary>
+<div>
+
+<CreateOT/>
+
+</div>
+</details>
 
 ## Resultados Esperados {#results}
 Al crear la orden de trabajo, un mensaje de sistema es enviando al área de chat con el nombre, número e información de la orden de trabajo:
