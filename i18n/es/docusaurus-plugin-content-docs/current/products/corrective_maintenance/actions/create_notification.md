@@ -97,8 +97,10 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 </TabItem>
 </Tabs>
 
+## Detalles del Formulario {#details}
+
 <details>
-<summary>📋 Detalles del Formulario</summary>
+<summary>📋 Formulario Crear Aviso</summary>
 <div>
 
 <NotificationForm/>

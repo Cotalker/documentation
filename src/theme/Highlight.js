@@ -5,8 +5,8 @@ const Highlight = ({text, color, textcolor}) => (<span style={{
   borderRadius: '3px',
   color: textcolor,
   padding: '0.2rem',
-  'margin-right': '3px',
-  'margin-left': '3px'
+  marginRight: '3px',
+  marginLeft: '3px'
 }}> {text} </span> );
 
 export default Highlight;

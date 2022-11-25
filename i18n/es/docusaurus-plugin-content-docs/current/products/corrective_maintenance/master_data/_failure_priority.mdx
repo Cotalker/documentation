@@ -1,13 +1,24 @@
 import Mermaid from '@theme/Mermaid';
 
-## ¿Qué son prioridades? {#what-is}
-La colección de prioridades indica los niveles de urgencia que puede tener una falla. La prioridad va asociada al [**síntoma**](/docs/products/corrective_maintenance/master_data/failure_symptoms).
+## ¿Qué son las prioridades? {#what-is}
+Las _prioridades_ indican el nivel de urgencia de cada falla que es reportada. 
 
-## Nomenclatura {#naming}
-Las prioridades están predefinidas y son las siguientes:
-- Alta
-- Baja
-- Media
+A cada [_síntoma de falla_](/docs/products/corrective_maintenance/master_data/failure_symptoms) se le asocia una _prioridad_, la cual vienen programada con un _Service-Level Agreement_ (SLA), es decir un tiempo acordado de resolución del problema.
+
+De modo que al levantar un [_aviso_](/docs/products/corrective_maintenance/actions/create_notification) e indicar el _síntoma_, la _prioridad_ se establece automáticamente y se activa el tiempo de resolución (SLA). Consecuentemente, si no se cierra la orden de trabajo según la SLA, una alerta es enviada a los responsables en el canal de la tarea y por email.
+
+## Prioridades y Tiempos de Respuesta {#naming}
+Las prioridades vienen predefinidas y están programadas con las siguientes SLAs o tiempos de respuesta:
+
+<div className="align-center">
+
+Prioridad | Tiempo de Resolución (SLA)
+--- | ---
+Alta | 2 horas
+Media | 8 horas
+Baja | 72 horas
+
+</div>
 
 ## Mapa de Data Maestra {#data-map}
 

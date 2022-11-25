@@ -1,6 +1,4 @@
 import Mermaid from '@theme/Mermaid';
-import Symptoms, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_symptoms.mdx'; 
-import Cause, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_cause.mdx'; 
 
 ## ¿Qué es un grupo de falla? {#what-is}
 Es la categoría que agrupa a varias averías de un mismo tipo, según cómo puede fallar un equipo. Un grupo de fallas va a agrupar tanto a los [_Síntomas_](/docs/products/corrective_maintenance/master_data/failure_symptoms) como a las [_Causas_](/docs/products/corrective_maintenance/master_data/failure_cause) posibles de una avería.
@@ -11,16 +9,19 @@ Es la categoría que agrupa a varias averías de un mismo tipo, según cómo pue
 3. Elije la opción _Crear nueva falla_.
 4. Rellena el formulario.
 
+**Nota**: También se pueden crear nuevas fallas a través de los formularios de [_síntomas_](/docs/products/corrective_maintenance/master_data/failure_symptoms) y [_causas_](/docs/products/corrective_maintenance/master_data/failure_cause).
+
+
 ## Nomenclatura {#naming}
-Quizás el equipo genera un ruido extraño o tiene una temperatura alta. Estos son _Síntomas_ de falla que pertenecen a un mismo _grupo de fallas_: avería mecánica. Por otro lado, la verdadera causa de estas averías puede haber sido debido a una excesiva vibración o por un componente que estaba deteriorado. Estas son _Causas_ de falla que pertenecen al mismo grupo de fallas mecánicas. Otro grupo de fallas podría ser averías eléctricas o estructurales.
+Quizás el equipo genera un ruido extraño o tiene una temperatura alta. Estos son _Síntomas_ de falla que pertenecen a un mismo _grupo de fallas_: avería **mecánica**. Por otro lado, la verdadera causa de estas averías puede haber sido debido a una excesiva vibración o por un componente que estaba deteriorado. Estas son _Causas_ de falla que pertenecen al mismo grupo de fallas mecánicas. Otro grupo de fallas podría ser averías **eléctricas** o **estructurales**.
 
 ## Data Maestra Asociada {#requirements}
 
 <details>
-<summary>Síntomas</summary>
+<summary>Síntoma de Falla</summary>
 <div>
 
-<Symptoms/>
+Los _síntomas_ existen dentro de un grupo de falla y se pueden crear desde la sección [Síntoma de Falla](/docs/products/corrective_maintenance/master_data/failure_symptoms).
 
 </div>
 </details>
@@ -29,7 +30,7 @@ Quizás el equipo genera un ruido extraño o tiene una temperatura alta. Estos s
 <summary>Causa de Falla</summary>
 <div>
 
-<Cause/>
+Los _causas_ existen dentro de un grupo de falla y se pueden crear desde la sección [Causa de Falla](/docs/products/corrective_maintenance/master_data/failure_cause). 
 
 </div>
 </details>

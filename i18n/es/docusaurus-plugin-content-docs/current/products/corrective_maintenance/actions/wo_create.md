@@ -13,7 +13,7 @@ Una orden de trabajo indica un equipo o activo que necesita mantención y es env
 :::info Importante
 Un [**aviso**](/docs/products/corrective_maintenance/actions/create_notification) de mantenimiento correctivo puede genear automáticamente una orden de trabajo cuando hay personal de mantenimiento asignado al [_puesto de trabajo_](/docs/products/corrective_maintenance/master_data/workstation) correspondiente. Es decir, este paso es realizado por el sistema y los usuarios no tendrán que enviar este formulario.
 
-Pero en caso contrario, el supervisor tendrá que crear la orden de trabajo manualmente después de recibir aviso.
+Pero en caso contrario, el supervisor tendrá que crear la orden de trabajo manualmente y designar personalmente a los técnicos.
 :::
 
 ## Requisitos {#requirements}
@@ -75,8 +75,10 @@ Para poder crear una Orden de Trabajo manualmente, los usuarios deben tener uno 
 </TabItem>
 </Tabs>
 
+## Detalles del Formulario {#details}
+
 <details>
-<summary>📋 Detalles del Formulario</summary>
+<summary>📋 Formulario Crear Orden de Trabajo</summary>
 <div>
 
 <CreateOT/>

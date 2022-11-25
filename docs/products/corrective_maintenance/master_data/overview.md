@@ -49,7 +49,7 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         TCO --> CO(Centro Operativo):::thing1A
         M(Material):::thing1A --> CO
         EQ --> State(Estado):::thing1B
-        EQ --> CE(Clase Equipo):::thing1B
+        EQ --> CE(Clase de Activo):::thing1B
         M ~~~ S(Servicio):::thing1A
         classDef user1 fill:#FFDD4C,color:gray,stroke-width:0px
         classDef user0 fill:#FFF6CC,stroke-width:0px,color:gray
@@ -65,7 +65,7 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         click SE3 "equipment_sector" "Se puede crear. Tiene formulario propio."
         click SE2 "equipment_sector" "Se puede crear. Tiene formulario propio."
         click SE1 "equipment_sector" "Se puede crear. Tiene formulario propio."
-        click CE "equipment_class" "Se puede crear. No tiene formulario propio."
+        click CE "asset_class" "Se puede crear. No tiene formulario propio."
         click CO "center" "Se puede crear. Tiene formulario propio."
         click TCO "center_type" "Se puede crear. No tiene formulario propio."
         click M "material" "Se puede crear. Tiene formulario propio."
