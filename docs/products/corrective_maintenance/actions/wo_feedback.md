@@ -1,5 +1,5 @@
 ---
-title: Feedback al Orden de Trabajo
+title: Feedback
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

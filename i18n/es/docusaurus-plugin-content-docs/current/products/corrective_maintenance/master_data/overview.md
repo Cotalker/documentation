@@ -88,10 +88,10 @@ Tipo | Tiene formulario propio | Se pueden crear más
 :---: | :---: | :---:
 <Highlight text="Relacionado con Usuarios" color="#FFDD4C" textcolor="gray"/> | ✓ | ✓ 
 <Highlight text="Relacionado con Usuarios" color="#FFF6CC" textcolor="gray"/> | ✗ | ✗ 
-<Highlight text="Relacionado con Equipos" color="#CA7FFF" textcolor="white"/> | ✓ | ✓
-<Highlight text="Relacionado con Equipos" color="#8E5EB1" textcolor="white"/> | ✗ | ✓
 <Highlight text="Relacionado con Fallas" color="#FF7F9F" textcolor="white"/> | ✓ | ✓
 <Highlight text="Relacionado con Fallas" color="#FCB2C4" textcolor="white"/> | ✗ | ✗
+<Highlight text="Relacionado con Equipos" color="#CA7FFF" textcolor="white"/> | ✓ | ✓
+<Highlight text="Relacionado con Equipos" color="#8E5EB1" textcolor="white"/> | ✗ | ✓
 <Highlight text="Relacionado con Activos" color="#64D0E7" textcolor="white"/> | ✓ | ✓
 <Highlight text="Relacionado con Activos" color="#55B3C7" textcolor="white"/> | ✗ | ✗
 

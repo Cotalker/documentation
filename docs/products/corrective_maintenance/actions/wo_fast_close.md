@@ -1,5 +1,5 @@
 ---
-title: Cierre Rápido
+title: Fast Close
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

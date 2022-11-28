@@ -1,10 +1,14 @@
 ---
-title: Crear Orden de Trabajo
+title: Create Work Order
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 ## Resumen {#overview}
 Una orden de trabajo indica un equipo o activo que necesita mantención y es enviada a al personal de mantenimiento responsable. 

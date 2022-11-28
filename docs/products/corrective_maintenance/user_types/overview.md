@@ -1,6 +1,10 @@
 ---
-title: Perfiles de Usuarios
+title: User Profiles
 ---
+
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 ## Resumen {#overview}
 Dentro del proceso de Mantenimiento Correctivo existen 5 _cargos_ o perfiles de usuarios estándar. Cada _cargo_ representa un rol y entrega los permisos que autorizan a los usuarios acceder a las herramientas e información correspondientes.
