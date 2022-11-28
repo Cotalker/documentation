@@ -4,7 +4,7 @@ import Sector, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/
 import CenterOp, {toc as Title3TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_center.mdx'; 
 import Condition, {toc as Title4TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_condition.mdx'; 
 import Category, {toc as Title5TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_category.mdx'; 
-import Class, {toc as Title6TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_equipment_class.mdx'; 
+import Class, {toc as Title6TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_asset_class.mdx'; 
 import User, {toc as Title7TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_users.mdx'; 
 import Failure, {toc as Title8TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_catalog.mdx'; 
 
@@ -119,10 +119,10 @@ Junto con la información física del _equipo_ podrás especificar el _estado_ e
 </details>
 
 <details>
-<summary>Clase Equipo</summary>
+<summary>Clase de Activo</summary>
 <div>
 
-Junto con especificar información contable (como el costo, fecha de capitalización, depreciaciones, saldo y vida útil) se debe indicar la _clase del equipo_. Si la _clase_ no existe se puede crear desde el mismo formulario para crear un _Equipo_.
+Junto con especificar información contable (como el costo, fecha de capitalización, depreciaciones, saldo y vida útil) se debe indicar la _clase del activo_. Si la _clase_ no existe se puede crear desde el mismo formulario para crear un _Equipo_.
 
 <Class/>
 
@@ -145,7 +145,7 @@ Si necesitas una nueva [**familia**](/docs/products/corrective_maintenance/maste
 <Mermaid chart={`
     graph LR;
         U(Usuario) --> EQ(Equipo)
-        CE(Clase Equipo) --> EQ
+        CE(Clase de Activo) --> EQ
         EQ --> State(Estado)
         EQ --> FEq(Familia del Equipo)
         EQ --> CEq(Categoría de Equipo)

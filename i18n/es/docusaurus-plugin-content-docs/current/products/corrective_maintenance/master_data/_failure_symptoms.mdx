@@ -1,26 +1,40 @@
 import Mermaid from '@theme/Mermaid';
+import FailureCatalog, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_catalog.mdx';
+import Priority, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_priority.mdx';
 
 ## ¿Qué es un síntoma? {#symptoms}
 Es la falla visual que identifica el usuario al levantar un incidente. Muchas veces es confundido con la [_causa de falla_](/docs/products/corrective_maintenance/master_data/failure_cause), sin embargo, el síntoma se origina por la causa raíz del problema.
 
 ## ¿Cómo crear un nuevo síntoma? {#create}
-Se puede crear un nuevo _síntoma_ a través del formulario encontrado en [**Grupo de Falla**](/docs/products/corrective_maintenance/master_data/failure_catalog).
+1. Selecciona la opción **Síntoma de Falla** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear síntoma de falla_.
+4. Rellena el formulario, indicando el _Grupo de Falla_ asociado y la _prioridad_.
 
 ## Nomenclatura {#naming}
-Quizás el equipo no enciende, o tiene olor a quemado, o enciende intermitente. Estos corresponden a los síntomas del problema, que pertenecen a un mismo grupo de fallas: avería de tipo eléctrica. Otro grupo de falla puede ser averías mecánicas, donde los síntomas podrían ser un ruido extraño, temperatura alta, o excesiva vibración.
+Quizás el **equipo no enciende**, o tiene **olor a quemado**, o **enciende intermitente**. Estos corresponden a los síntomas del problema, que pertenecen a un mismo _grupo de fallas_: avería de tipo eléctrica. Otro grupo de falla puede ser averías mecánicas, donde los síntomas podrían ser un **ruido extraño**, **temperatura alta**, o **excesiva vibración**.
+
 
 ## Data Maestra Asociada {#requirements}
+
+<details>
+<summary>Grupo de Falla</summary>
+<div>
+
+Cada _síntoma_ debe estar incluido dentro de un _grupo de falla_.
+
+<FailureCatalog/>
+
+</div>
+</details>
 
 <details>
 <summary>Prioridad</summary>
 <div>
 
-A cada síntoma le debes asignar una _prioridad_, la cual es usada además para levantar alertas por el no cumplimiento del tiempo a resolver la falla reportada (SLA).
+Al crear un síntoma, se le debe asignar una _prioridad_.
 
-Las _prioridades_ son predefinidas y son las siguientes tres:
-- _Alta_
-- _Baja_
-- _Media_
+<Priority/>
 
 </div>
 </details>

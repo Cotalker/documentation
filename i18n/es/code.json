@@ -2,19 +2,19 @@
   "Learn how to setup Workflows": {
     "message": "Aprende como configurar Flujos de Trabajo"
   },
-  "Workflows are a central piece in the automation of your company. Create a simple Project Manager (.git)": {
+  "Workflows are a central piece in the automation of your company. Create a simple Project Manager.": {
     "message": "Los Flujos de Trabajo son una pieza central en la automatización de tu empresa. Crea un Administrador de Proyectos simple (.git)"
   },
   "Get to know the tools": {
     "message": "Familiarízate con las Herramientas"
   },
-  "Learn how to create users as state machines using Cotalker's UI or through the API.": {
+  "Learn how to create and manage users, workflows, survey forms, access roles, database elements, and more using Cotalker's UI or through the API.": {
     "message": "Aprende como crear usuarios como estados de máquina utilizando Cotalker a través de su interfaz gráfico o también comandos API."
   },
   "Become a Cotalker Admin": {
     "message": "Conviértete en un Administrador Cotalker"
   },
-  "Learn to setup and extend Cotalker, and get certified as an Administrator.": {
+  "Learn to configure and extend Cotalker's capacities. Get certified as an Administrator.": {
     "message": "Aprende a configurar y extender Cotalker y certifícate como Administrador."
   },
   "Get Started": {

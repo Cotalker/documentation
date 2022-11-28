@@ -585,6 +585,7 @@ module.exports = {
           collapsed: true,
           collapsible: true,
           items: [
+            'products/corrective_maintenance/user_types/overview',
             {
               type: 'category',
               label: 'Actions & Forms',
@@ -624,14 +625,14 @@ module.exports = {
                 'products/corrective_maintenance/master_data/failure_cause',
                 'products/corrective_maintenance/master_data/failure_priority',
                 'products/corrective_maintenance/master_data/equipment_sector',
-                'products/corrective_maintenance/master_data/equipment_category',
                 'products/corrective_maintenance/master_data/equipment_family',
+                'products/corrective_maintenance/master_data/equipment_category',
+                'products/corrective_maintenance/master_data/asset_class',
                 'products/corrective_maintenance/master_data/checklist',
-                'products/corrective_maintenance/master_data/center',
                 'products/corrective_maintenance/master_data/center_type',
+                'products/corrective_maintenance/master_data/center',
                 'products/corrective_maintenance/master_data/equipment',
                 'products/corrective_maintenance/master_data/equipment_condition',
-                'products/corrective_maintenance/master_data/equipment_class',
                 'products/corrective_maintenance/master_data/material',
                 'products/corrective_maintenance/master_data/service'
               ]

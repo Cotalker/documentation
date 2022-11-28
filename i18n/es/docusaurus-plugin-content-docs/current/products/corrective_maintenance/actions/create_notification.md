@@ -1,11 +1,12 @@
 ---
 title: Crear un Aviso
-
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+import NotificationForm, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/forms/_form_notify.mdx'; 
 
 ## Resumen {#overview}
 Por medio de un formulario, [usuarios](/docs/products/corrective_maintenance/master_data/users) pueden crear **avisos** que alertan supervisores de fallas en equipos o activos e inician un proceso de mantenimiento correctivo.  
@@ -28,7 +29,7 @@ El [**usuario**](/docs/products/corrective_maintenance/master_data/users) debe t
 
 El [**equipo**](/docs/products/corrective_maintenance/master_data/equipment) que ha sufrido un incidente debe estar correctamente agregado a la data maestra. El _equipo_ debe estar también asociado a lo siguiente:
 - [**Sectores de Equipamiento**](/docs/products/corrective_maintenance/master_data/equipment_sector): Los sectores de equipamiento agrupan equipos según criterios funcionales, relativos al proceso o espaciales. Por defecto, existen tres niveles de sectores de equipamientos.
-- [**Fallas**](/docs/products/corrective_maintenance/master_data/failure_catalog): Descripción de la avería específica de cómo puede fallar un equipo según su grupo. Las fallas que se pueden reportar deben estar asociadas a _grupo de fallas_, _causas_, _síntomas_ y _prioridad_. 
+- [**Fallas**](/docs/products/corrective_maintenance/master_data/failure_catalog): Descripción de la avería específica de cómo puede fallar un equipo según su grupo. Las fallas se pueden reportar tanto como _síntomas_ o como _causas_. 
 
 </div>
 </details>
@@ -96,14 +97,24 @@ _La sección **Aviso** se encuentra en el menú principal, normalmente dentro de
 </TabItem>
 </Tabs>
 
-:::note Más detalles
-📋 [Formulario Crear Nuevo Aviso](/docs/products/corrective_maintenance/forms/form_notify)
-:::
+## Detalles del Formulario {#details}
+
+<details>
+<summary>📋 Formulario Crear Aviso</summary>
+<div>
+
+<NotificationForm/>
+
+</div>
+</details>
+
 
 ## Resultados Esperados {#results}
-Al enviar el **Aviso**, el sistema genera automáticamente una _orden de trabajo_ con toda la información entregada. 
+Al enviar el **Aviso**: 
 
-En el caso de que **ya existe un aviso** en curso con la misma _falla_ en el mismo _equipo_, el _aviso_ será automáticamente rechazado y orden de trabajo no será creada. Un mensaje del sistema, similar al que aparece abajo, indicará la situación:
+- **Si hay personal de mantenimiento** asignado al _puesto de trabajo_ relacionado con el equipo que presenta una falla, el sistema genera automáticamente una _orden de trabajo_ con toda la información entregada. 
+- **Si no hay personal de mantenimiento** asignado al _puesto de trabajo_ relacionado con el equipo que presenta una falla, el supervisor tendrá que manualmente crear la orden de trabajo y asignar el personal de mantenimiento.
+- En el caso de que **ya existe un aviso** en curso con la misma _falla_ en el mismo _equipo_, el _aviso_ será automáticamente rechazado y orden de trabajo no será creada. Un mensaje del sistema, similar al que aparece abajo, indicará la situación:
 
 <div className="img_sizing">
 
@@ -111,9 +122,9 @@ En el caso de que **ya existe un aviso** en curso con la misma _falla_ en el mis
 
 </div>
 
-Si no hay duplicación de _avisos_, entonces el sistema procede a crear la orden de trabajo.
+Entonces, cuando no hay duplicación de _avisos_, y hay un trabajador asignado al _puesto de trabajo_, el sistema procede a crear la orden de trabajo.
 
-El sistema notifica que el _aviso_ pasa al siguiente estado (En Proceso) y da a conocer el número y nombre de la nueva orden de trabajo:
+Luego, el sistema notifica que el _aviso_ pasa al siguiente estado (En Proceso) y da a conocer el número y nombre de la nueva orden de trabajo:
 
 <div className="img_sizing">
 

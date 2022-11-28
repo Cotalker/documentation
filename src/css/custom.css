@@ -324,6 +324,13 @@ code { font-family: Fira Code, monospace; }
   code { font-family: Fira Code VF, monospace; }
 }
 
+.small_text {
+  font-size: xx-small;
+}
+
+.text-color-pink {
+  color: #FFC7D5;
+}
 
 /* p, td, th, li {
   font-family: 'Jost', sans-serif;

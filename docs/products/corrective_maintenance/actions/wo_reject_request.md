@@ -1,5 +1,5 @@
 ---
-title: Solicitud de Rechazo
+title: Rejection Request
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

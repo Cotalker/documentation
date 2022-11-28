@@ -1,5 +1,5 @@
 ---
-title: 🟣 Grupo de Falla
+title: 🟠 Grupo de Falla
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

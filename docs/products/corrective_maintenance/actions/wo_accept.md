@@ -1,5 +1,5 @@
 ---
-title: Aceptar Orden de Trabajo
+title: Accept Work Order
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

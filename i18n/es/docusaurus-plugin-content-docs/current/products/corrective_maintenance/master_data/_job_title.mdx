@@ -5,7 +5,7 @@ import Mermaid from '@theme/Mermaid';
 
 
 ## ¿Qué es un cargo? {#overview}
-Es el título de trabajo, que agrupa a los [_usuarios_](/docs/products/corrective_maintenance/master_data/users) y les otorga atributos especiales de acuerdo a su cargo.
+Es el título de trabajo o [_perfil de usuario_](/docs/products/corrective_maintenance/user_types/overview) que se asigna a un [_usuario_](/docs/products/corrective_maintenance/master_data/users). Los _cargos_ ayudan a agrupar a los usuarios y les otorga atributos especiales de acuerdo a su rol.
 
 ## Cargos Estándar según Acciones {#actions-forms}
 Para ejecutar acciones (por medio del formulario correspondiente) en el proceso de [mantenimiento correctivo](/docs/products/corrective_maintenance/landing/overview) los usuarios deben tener el respectivo _rol de acceso_. Cada _cargo_ incluye un conjunto de _roles de acceso_, permitiendo a los usuarios tener acceso a una serie de acciones. 
@@ -15,6 +15,7 @@ La siguiente tabla indica los _cargos_ disponibles y las acciones que permiten e
 Acciones/Cargo: | **Levantador** | **Técnico** | **Supervisor** | **Administrador** | **Jefe**
 --- | :---: | :---: | :---: | :---: | :---:
 [**Crear Aviso**](/docs/products/corrective_maintenance/actions/create_notification) | ✓ | ✓ | ✓ | ✓| ✓
+[**Crear OT**](/docs/products/corrective_maintenance/actions/wo_create) | | | ✓ | ✓| ✓
 [**Aceptar OT**](/docs/products/corrective_maintenance/actions/wo_accept) | | ✓ | ✓ | ✓| ✓
 [**Cerrar OT**](/docs/products/corrective_maintenance/actions/wo_close) | | ✓ | ✓ | ✓| ✓
 [**Recepción OT**](/docs/products/corrective_maintenance/actions/wo_validate) | | | ✓ | ✓| ✓

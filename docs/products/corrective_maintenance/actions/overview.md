@@ -1,5 +1,5 @@
 ---
-title: 📋 Acciones y Formularios
+title: 📋 Actions & Form
 
 ---
 

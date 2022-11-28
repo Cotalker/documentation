@@ -1,13 +1,28 @@
 import Mermaid from '@theme/Mermaid';
+import FailureCatalog, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/master_data/_failure_catalog.mdx'; 
 
 ## ¿Qué es una causa? {#cause}
 Es el motivo del deterioro detectado en un equipo. Al reportar una falla, el usuario podría identificar la causa raíz del problema. Complementando, el técnico que va a resolver la falla, podrá corroborar esta información.
 
 ## ¿Cómo crear una nueva causa? {#create}
-Se puede crear una nueva _causa_ a través del formulario encontrado en [**Grupo de Falla**](/docs/products/corrective_maintenance/master_data/failure_catalog).
+1. Selecciona la opción **Causa de Falla** en la sección _Datos Maestros_ en el _menú principal_.
+2. Presiona el botón de acciones.
+3. Elije la opción _Crear causa de falla_.
+4. Rellena el formulario.
 
 ## Nomenclatura {#naming}
-Si se detecta el síntoma de falla como excesiva vibración del motor de un equipo, la causa de esta avería podría ser un ajuste inadecuado de un componente. El _síntoma_ y la _causa de falla_, pertenecen al mismo grupo de fallas mecánicas. Por ejemplo, otra causa podría ser un elemento deteriorado o lubricante degradado.
+Si se detecta el síntoma de falla como excesiva vibración del motor de un equipo, la causa de esta avería podría ser un **ajuste inadecuado** de un componente. El _síntoma_ y la _causa de falla_, pertenecen al mismo grupo de fallas mecánicas. Por ejemplo, otra causa podría ser un **elemento deteriorado** o **lubricante degradado**.
+
+## Data Maestra Asociada {#requirements}
+
+<details>
+<summary>Grupo de Falla</summary>
+<div>
+
+<FailureCatalog/>
+
+</div>
+</details>
 
 ## Mapa de Data Maestra {#data-map}
 

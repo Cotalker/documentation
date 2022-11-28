@@ -1,0 +1,35 @@
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
+
+<span className="align-center hero__title">Crear Nuevo Aviso</span>
+<br/>
+
+<div className="container">
+<div className="row">
+<div className="col col--6">
+
+<div className="img_sizing_narrow">
+
+![create notification form](/img/productos_es/products_form_notify_cm.png)
+
+</div>
+</div>
+
+<div className="col col--6">
+
+- **<span className="badge badge--danger">1.</span> Fecha del incidente**: Automáticamente generada al abrir el formulario pero puede ser modificada.  <br/>
+_A partir de esta fecha se fija el tiempo de resolución o SLA dependiendo de la [prioridad](/docs/products/corrective_maintenance/master_data/failure_priority) del síntoma de falla._
+- **<span className="badge badge--danger">2.</span> Descripción**: Breve descripción escrita sobre el incidente que el personal de mantenimiento podrá revisar en la orden de trabajo.
+- **<span className="badge badge--danger">3.</span> ¿Cómo identificarás el equipo?**: Para indicar cuál es el equipo puedes:
+  - Escanear su [código QR](/docs/documentation/client/database#element-view), lo cual rellenará automáticamente los campos de _sector de equipamiento_ y _equipo_. 
+  - Elegirlo de la lista, indicando manualmente los _sectores de equipamiento_ y el _equipo_.
+- **<span className="badge badge--danger">4.</span> [Sector de Equipamiento](/docs/products/corrective_maintenance/master_data/equipment_sector)**: Indica hasta tres niveles de _sectores_. Los primeros dos tienen un [supervisor](/docs/products/corrective_maintenance/user_types/overview#supervisor) asignado. Si no se elige el tercer nivel o el tercer nivel no tiene un [técnico](/docs/products/corrective_maintenance/user_types/overview#technician) asociado, entonces la OT no se generará automáticamente después de enviar el _aviso_ y el supervisor designado tendrá que manualmente [crear la OT](/docs/products/corrective_maintenance/actions/wo_create) y elegir el técnico.
+- **<span className="badge badge--danger">5.</span> [Equipo](/docs/products/corrective_maintenance/master_data/equipment)**: Sólo se podrán elegir _equipos_ que están dentro del tercer _sector de equipamiento_.
+- **<span className="badge badge--danger">6.</span> [Síntoma](/docs/products/corrective_maintenance/master_data/failure_symptoms)**: Elige primero el [grupo de falla](/docs/products/corrective_maintenance/master_data/failure_catalog) y luego el _síntoma_ detectado. Cada síntoma está asociado a una [prioridad](/docs/products/corrective_maintenance/master_data/failure_priority), la cual fijará el tiempo de resolución (SLA).
+- **<span className="badge badge--danger">7.</span> [Causa](/docs/products/corrective_maintenance/master_data/failure_cause)**: Opcionalmente, se puede indicar la causa de la falla.
+- **<span className="badge badge--danger">8.</span> Evidencia fotográfica**: Se puede sacar una foto directamente con el dispositivo o adjuntar una imagen almacenada en una galería o carpeta.
+- **<span className="badge badge--danger">9.</span> Enviar**: Al enviar el formulario se inicia el flujo de trabajo de [Mantenimiento Correctivo](/docs/products/corrective_maintenance/landing/overview). La OT se genera automáticamente, siempre y cuando se indica un _sector de equipamiento_ con un _técnico_ asignado.
+
+</div>
+
+</div>
+</div>

@@ -34,27 +34,29 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         U & SE3 --> PT(Puestos de Trabajo):::user1
         U(Usuario):::user1 --> C(Cargos):::user0
         PT --> R(Rol):::user0
+        EQ --> GF(Grupo de Falla):::fail1A
+        GF --> Sin(Síntoma):::fail1A
+        Sin --> Prior(Prioridad):::fail1B
+        GF --> CF(Causa de Falla):::fail1A
         SE3(Sector de Equipamiento - 3):::equip1A --> SE2(Sector de Equipamiento - 2):::equip1B
         SE2 --> SE1(Sector de Equipamiento - 1):::equip1B
         SE1 & SE2 --> U
         EQ(Equipo):::thing1A --> SE3
-        EQ --> FEq(Familia del Equipo):::equip1B
+        EQ --> FEq(Familia del Equipo):::equip1A
         FEq --> CEq(Categoría de Equipo):::equip1A
+        EQ --> CE(Clase de Activo):::equip1A
         FEq --> CL(Checklist):::equip1A
-        EQ --> GF(Grupo de Falla):::equip1A
-        GF --> Sin(Síntoma):::equip1B
-        Sin --> Prior(Prioridad):::equip0
-        GF --> CF(Causa de Falla):::equip1B
-        EQ --> TCO(Tipo Centro Operativo):::thing1B
+        EQ --> TCO(Tipo Centro Operativo):::thing1A
         TCO --> CO(Centro Operativo):::thing1A
         M(Material):::thing1A --> CO
         EQ --> State(Estado):::thing1B
-        EQ --> CE(Clase Equipo):::thing1B
         M ~~~ S(Servicio):::thing1A
         classDef user1 fill:#FFDD4C,color:gray,stroke-width:0px
         classDef user0 fill:#FFF6CC,stroke-width:0px,color:gray
         classDef equip1A fill:#CA7FFF,color:white,stroke-width:0px
         classDef equip1B fill:#8E5EB1,stroke-width:0px,color:white
+        classDef fail1A fill:#FF7F9F,stroke-width:0px,color:white
+        classDef fail1B fill:#FCB2C4,stroke-width:0px,color:white
         classDef equip0 fill:#F1DEFF,stroke-width:0px,color:gray
         classDef thing1A fill:#64D0E7,color:white,stroke-width:0px
         classDef thing1B fill:#55B3C7,stroke-width:0px,color:white
@@ -65,7 +67,7 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         click SE3 "equipment_sector" "Se puede crear. Tiene formulario propio."
         click SE2 "equipment_sector" "Se puede crear. Tiene formulario propio."
         click SE1 "equipment_sector" "Se puede crear. Tiene formulario propio."
-        click CE "equipment_class" "Se puede crear. No tiene formulario propio."
+        click CE "asset_class" "Se puede crear. No tiene formulario propio."
         click CO "center" "Se puede crear. Tiene formulario propio."
         click TCO "center_type" "Se puede crear. No tiene formulario propio."
         click M "material" "Se puede crear. Tiene formulario propio."
@@ -81,7 +83,7 @@ Abajo hay un esquema mostrando las conexiones y dependencias de la data maestra 
         click CF "failure_cause" "Se puede crear. No tiene formulario propio."
 `}/>
 
-<div className="align-center">
+<div className="align-center small_text">
 
 **Leyenda:**
 
@@ -89,11 +91,12 @@ Tipo | Tiene formulario propio | Se pueden crear más
 :---: | :---: | :---:
 <Highlight text="Relacionado con Usuarios" color="#FFDD4C" textcolor="gray"/> | ✓ | ✓ 
 <Highlight text="Relacionado con Usuarios" color="#FFF6CC" textcolor="gray"/> | ✗ | ✗ 
+<Highlight text="Relacionado con Fallas" color="#FF7F9F" textcolor="white"/> | ✓ | ✓
+<Highlight text="Relacionado con Fallas" color="#FCB2C4" textcolor="white"/> | ✗ | ✗
 <Highlight text="Relacionado con Equipos" color="#CA7FFF" textcolor="white"/> | ✓ | ✓
 <Highlight text="Relacionado con Equipos" color="#8E5EB1" textcolor="white"/> | ✗ | ✓
-<Highlight text="Relacionado con Equipos" color="#F1DEFF" textcolor="gray"/> | ✗ | ✗
 <Highlight text="Relacionado con Activos" color="#64D0E7" textcolor="white"/> | ✓ | ✓
-<Highlight text="Relacionado con Activos" color="#55B3C7" textcolor="white"/> | x | ✓
+<Highlight text="Relacionado con Activos" color="#55B3C7" textcolor="white"/> | ✗ | ✗
 
 
 </div>

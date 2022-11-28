@@ -5,6 +5,7 @@ title: Cerrar Orden de Trabajo
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CloseWO, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/forms/_form_close_wo.mdx'; 
 
 ## Resumen {#overview}
 La opción **Cerrar Orden de Trabajo** permite al personal de mantenimiento dar aviso de que su labor ha concluido y el trabajo está listo para ser validado por un supervisor.
@@ -72,9 +73,16 @@ La orden de trabajo deber estar en el estado **Pendiente**.
 </TabItem>
 </Tabs>
 
-:::note Más detalles
-📋 [Formulario Cerrar Orden de Trabajo](/docs/products/corrective_maintenance/forms/form_close_wo)
-:::
+## Detalles del Formulario {#details}
+
+<details>
+<summary>📋 Formulario Cerrar Orden de Trabajo</summary>
+<div>
+
+<CloseWO/>
+
+</div>
+</details>
 
 ## Resultados Esperados {#results}
 Independiente de si el trabajo pudo completarse o no, al cerrar la orden de trabajo ésta pasa al estado Validación. Los costos de los servicios son sumados y la cantidad de materiales son descontados del stock.

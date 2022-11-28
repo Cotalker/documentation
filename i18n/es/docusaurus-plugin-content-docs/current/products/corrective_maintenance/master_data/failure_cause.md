@@ -1,5 +1,5 @@
 ---
-title: 🟣 Causa de Falla
+title: 🟠 Causa de Falla
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
