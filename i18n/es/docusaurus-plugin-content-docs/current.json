@@ -107,8 +107,8 @@
       "message": "⚙️ Data Maestra",
       "description": "The label for category Configure Master Data in sidebar products_landing"
     },
-    "sidebar.products.category.Maintenance Report": {
-      "message": "📊 Reporte Mantenimiento",
+    "sidebar.products.category.Reports": {
+      "message": "📊 Reportes",
       "description": "The label for category Maintenance Report in sidebar products_landing"
     }
 

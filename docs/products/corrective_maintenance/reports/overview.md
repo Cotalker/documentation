@@ -1,6 +1,11 @@
 ---
-title: Reporte de Mantenimiento
+title: Reportes
 ---
+
+## Reporte de Activos
+
+
+## Reporte de Mantenimiento
 
 Cotalker te genera automáticamente un reporte de mantenimiento. Este reporte consiste en _dashboards_ (paneles de control) para visualizar la data de tus _avisos_, _planes preventivos_ y _órdenes de trabajo_. 
 

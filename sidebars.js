@@ -639,16 +639,14 @@ module.exports = {
             },
             {
               type: 'category',
-              label: 'Maintenance Report',
+              label: 'Reports',
               link: {
                 type: 'doc',
                 id: 'products/corrective_maintenance/reports/overview',
               },
               items: [
-                'products/corrective_maintenance/reports/filters',
-                'products/corrective_maintenance/reports/confidence_indicators',
-                'products/corrective_maintenance/reports/reported_incidents',
-                'products/corrective_maintenance/reports/cm_workflow',
+                'products/corrective_maintenance/reports/asset_report',
+                'products/corrective_maintenance/reports/maintenance_report',
               ]
             }
           ]

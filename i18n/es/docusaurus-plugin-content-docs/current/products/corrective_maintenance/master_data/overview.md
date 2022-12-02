@@ -119,10 +119,9 @@ Antes de ingresar tu data maestra, debes tomarte un momento para pensar en tu pr
 - ¿Qué fallas podrían presentar?
 - ¿En qué lugares se encuentran?
 - ¿Quiénes son los responsables de estos equipos o activos?
-
-_Se recomienda ingresar tu data maestra en el orden en que los ítemes en el sub-menú._
 :::
 
 ## 📋 Formularios para ingresar tu data maestra {#recommended}
+Se recomienda ingresar tu data maestra en el orden en que los ítemes en el sub-menú.
 
 <Configuration/>

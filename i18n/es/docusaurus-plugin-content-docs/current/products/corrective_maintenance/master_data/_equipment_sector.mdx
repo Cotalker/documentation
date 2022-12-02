@@ -3,6 +3,8 @@ import Mermaid from '@theme/Mermaid';
 ## ¿Qué es un sector de equipamiento? {#what-is}
 Lugar donde se realizan los mantenimientos de los equipos o activos de tu empresa, dicho de otro modo, estructura los equipos de mantenimiento de acuerdo con criterios funcionales, relativos al proceso o espaciales.
 
+Se pueden ingresar hasta tres niveles de sectores o sub-sectores, pero **sólo se requiere del primer sector** para que el flujo funcione. Todos los sectores de primer y segundo tendrán su propio supervisor asignado. En cada sector de tercer nivel se puede asignar a los técnicos que automáticamente recibirán los avisos correspondientes al sector.
+
 ## ¿Cómo crear un nuevo sector? {#create}
 1. Selecciona la opción **Sector de Equipamiento** en la sección **Datos Maestros** en el _menú principal_.
 2. Presiona el _botón de acciones_.
@@ -22,6 +24,8 @@ Un _sector de equipamiento_ podría ser tu "Proceso de maquinado", donde se encu
 
 En el nivel 1 y 2 tendrás que definir un [**usuario**](/docs/products/corrective_maintenance/master_data/users) con al menos el cargo de _supervisor_. El  _supervisor_ responsable es quien está encargado de proceder a crear las órdenes de trabajo para resolver las fallas. 
 
+En caso de que el 3er sector tiene al menos un técnico asignado, las órdenes de trabajo se generarán automáticamente con cada aviso.
+
 </div>
 </details>
 
@@ -32,6 +36,8 @@ En el nivel 1 y 2 tendrás que definir un [**usuario**](/docs/products/correctiv
 <div>
 
 Por otro lado, para el _nivel 3_ (nivel más específico), necesitarás asociar al menos un [**puesto de trabajo**](/docs/products/corrective_maintenance/master_data/workstation). Los _puestos de trabajo_ sirven para identificar a los técnicos y supervisores asociados al lugar de trabajo. Un _usuario_ podrá tener más de un _puesto de trabajo_ asociado si es necesario. La idea de definir estos _puestos de trabajo_, es poder crear automáticamente las órdenes de trabajo cuando se levante un incidente en el nivel más específico.
+
+Si no hay técnicos asociados al tercer sector por medio de un puesto de trabajo, los avisos no generarán automáticamente las órdenes de trabajo. Por lo cual, los supervisores de los sectores 1 o 2 tendrán que crearlas personalmente.
 
 </div>
 </details>

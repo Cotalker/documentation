@@ -140,6 +140,11 @@
   font-size: 28px;
 }
 
+.override-info {
+  --ifm-alert-background-color: var( --ifm-color-secondary-contrast-background ) !important;
+  --ifm-alert-border-color: var(--ifm-color-secondary-dark) !important;
+}
+
 /* .alert--secondary {
   color: var(--secondary-custom);
 } */
