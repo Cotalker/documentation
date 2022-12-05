@@ -1,0 +1,21 @@
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
+
+<div className="alert alert--secondary">
+
+### C. Additional Fields (Status) {#additional-fields-status}
+_Displays extra fields in the general information section._
+
+_Example:_
+<img alt="elements" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_05.png')} />
+<br/>
+
+These _additional fields_ that are added to tasks' general information correspond to the [additional fields of the preselected collections](/docs/documentation/admin/database/admin_collections#additional-fields).
+
+The _collections_ that determine the _additional fields_ are selected in the [Create/Edit Workflow](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) settings panel. Up to five _collections_ can be used to add _additional fields_ to the **General information** section.
+
+The collections that provide the _additional fields_ are found in the `status{1,5}` fields of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_tasks).
+
+_Additional fields_ are optional and vary according to your organization's needs.
+
+</div>
+<br/>

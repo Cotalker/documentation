@@ -122,6 +122,6 @@ Antes de ingresar tu data maestra, debes tomarte un momento para pensar en tu pr
 :::
 
 ## 📋 Formularios para ingresar tu data maestra {#recommended}
-Se recomienda ingresar tu data maestra en el orden en que los ítemes en el sub-menú.
+Se recomienda ingresar tu data maestra en el orden en que los ítems en el sub-menú.
 
 <Configuration/>

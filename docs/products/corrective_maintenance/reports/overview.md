@@ -2,20 +2,11 @@
 title: Reportes
 ---
 
-## Reporte de Activos
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
+Cotalker genera dos tipos de reportes de mantenimiento correctivo:
+- [**Reportes de Activos**](/docs/products/corrective_maintenance/reports/asset_report): Data específica por activo o equipo con fallas reportadas. Los reportes se clasifican en _historiales de órdenes de trabajo_ y _recursos consumidos_.
+- [**Reporte de Mantenimiento**](/docs/products/corrective_maintenance/reports/maintenance_report): Paneles de control (dashboards) con datos de todos los flujos de mantenimiento.
 
-## Reporte de Mantenimiento
-
-Cotalker te genera automáticamente un reporte de mantenimiento. Este reporte consiste en _dashboards_ (paneles de control) para visualizar la data de tus _avisos_, _planes preventivos_ y _órdenes de trabajo_. 
-
-Estos _dashboards_ o paneles de control son generados con la mundialmente conocida aplicación de _Business Intelligence_, [Metabase](https://www.metabase.com/).
-
-Para acceder al reporte, simplemente selecciona **Reporte mantenimiento** desde el _menú principal_.
-
-<div className="margin-left--lg">
-
-![access dashboards](/img/productos_es/product_report_00.png)
-
-</div>
-<br/>

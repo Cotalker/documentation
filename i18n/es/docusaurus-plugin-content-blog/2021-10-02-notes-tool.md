@@ -1,6 +1,6 @@
 ---
 title: Try Out the New Notes Tool
-description: Easily create notes that you can share and edit in real-time with other users on the Cotalker platform. With Notes, users can collaborate with all sorts of information to build your company's knowledge base. The Notes tool uses markdown syntax to help you focus on writing the text and forget about formatting. Notes can be incorporated into tasks, shared through hyperlinks, managed in the Notes dashboard, and submitted through surveys. Furthermore, notes associated with tasks are included in search queries, making your shared knowledge accessible to all users within your company's Cotalker platform.
+description: Easily create notes that you can share and edit in real time with other users on the Cotalker platform. With Notes, users can collaborate with all sorts of information to build your company's knowledge base. The Notes tool uses markdown syntax to help you focus on writing the text and forget about formatting. Notes can be incorporated into tasks, shared through hyperlinks, managed in the Notes dashboard, and submitted through surveys. Furthermore, notes associated with tasks are included in search queries, making your shared knowledge accessible to all users within your company's Cotalker platform.
 image: img/updates/update_notes.png
 draft: false
 ---
@@ -31,7 +31,7 @@ Build knowledge collaboratively
 </div>
 <div className="card__body">
 
-📝 Easily create _notes_ that you can share and edit in real-time with other users on the Cotalker platform. With **Notes**, users can collaborate with all sorts of information to build your company's knowledge base. 
+📝 Easily create _notes_ that you can share and edit in real time with other users on the Cotalker platform. With **Notes**, users can collaborate with all sorts of information to build your company's knowledge base. 
 
 The **Notes** tool uses [markdown syntax](/docs/documentation/client/notes_markdown) to help you focus on writing the text and forget about formatting. _Notes_ can be incorporated into _tasks_, shared through hyperlinks, managed in the _Notes dashboard_, and submitted through _surveys_. Furthermore, _notes_ associated with _tasks_ are included in _search queries_, making your shared knowledge accessible to all users within your company's Cotalker platform.
 

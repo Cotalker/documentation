@@ -1,0 +1,40 @@
+import useBaseUrl from '@docusaurus/useBaseUrl'; 
+
+<div className="alert alert--secondary">
+
+<div className="container">
+<div className="row">
+<div className="col col--6">
+
+<img alt="channel layout" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/task_details_00a.png')} />
+<br/>
+
+</div>
+<div className="col col--6">
+
+_Actions:_
+- **<span className="badge badge--primary">1.</span> Save**: Saves current changes made to the task's settings.
+- **<span className="badge badge--primary">2.</span> Delete**: Deletes the task and removes it from the task group.
+
+_Identification:_
+- **<span className="badge badge--success">A.</span> Task number**: Automatically assigned number given in sequential order.
+- **<span className="badge badge--success">B.</span> Task name**: The name given to the task by its creator. The creator can be a human user or bot.
+- **<span className="badge badge--success">C.</span> Additional information**: Field used to give a brief description of the task.
+
+_Settings:_
+- **<span className="badge badge--danger">A.</span> General information**: Basic task settings. Composed of Standard and customized fields.
+  - **<span className="badge badge--warning">a.</span>** [_**Standard task settings**_](/docs/documentation/client/tasks/task_details/standard-task-details) available on all tasks.
+  - **<span className="badge badge--warning">b.</span>** [_**Additional fields or statuses**_](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) that add extra information to the task.
+- **<span className="badge badge--danger">B.</span> _Extra Tabs_**: Extra tabs help contain extra task information. Extra tabs represent the [_additional fields_](/docs/documentation/admin/workflows/settings_panels/workflow_create_edit#additional-fields) that correspond to either the collection set as the _asset_ or collections set as _extensions_. The name of the extra tab is the same as the collection used.
+- **<span className="badge badge--danger">C.</span> Notes**: Displays the list of task notes. Permits viewing and creating notes.
+- **<span className="badge badge--danger">D.</span> Images, Videos, Files**: Displays thumbnails of files shared within the task workspace.
+
+
+</div>
+</div>
+</div>
+
+</div>
+<br/>
+
+
