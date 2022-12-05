@@ -4,6 +4,10 @@ title: Using the Documentation
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
+:::caution Advertencia
+Esta página aún no se encuentra traducida al español.
+:::
+
 :::info [Visit our documentation repoistory on GitHub](https://github.com/Cotalker/documentation)
 - [**GitHub discussions**](https://github.com/Cotalker/documentation/discussions): Enter the forum for help or anything not mentioned in the documentation.
 - [**Raise documentation issues**](https://github.com/Cotalker/documentation/issues): if something is unclear, wrong, or missing from the documentation.
