@@ -31,7 +31,7 @@
 
 .card {
   width: 80%;
-  padding: 20px 0 0 20px;
+  padding: 0 10px 0 10px;
   border-radius: 2px;
   display: inline-block;
   position: relative;
