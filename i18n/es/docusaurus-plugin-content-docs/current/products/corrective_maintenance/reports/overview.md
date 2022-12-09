@@ -1,5 +1,5 @@
 ---
-title: Reportes
+title: 📊 Reportes
 ---
 
 Cotalker genera dos tipos de reportes de mantenimiento correctivo:

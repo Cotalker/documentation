@@ -658,6 +658,7 @@ module.exports = {
         'products/service_quotations/sq_overview'
       ],
       collapsed: false,
+      collapsible: false,
     },
   ],
   // workflow_notifications: [
