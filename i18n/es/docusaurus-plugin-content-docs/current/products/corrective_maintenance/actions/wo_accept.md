@@ -7,8 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_relatedTopics.mdx'; 
-import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/_configurationTopics.mdx'; 
+import Related, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/components/_relatedTopics.mdx'; 
+import Configuration, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/corrective_maintenance/landing/components/_masterData.mdx'; 
 
 ## Resumen {#overview}
 Una vez que un [**aviso**](/docs/products/corrective_maintenance/actions/create_notification) de mantenimiento es creado, una _orden de trabajo_ es generada automáticamente y entra en el estado _Reportado_. Todo el personal de mantenimiento relacionado con el equipo que presenta una falla es agregada al flujo de la _orden de trabajo_. El personal de mantenimiento puede elegir _aceptar_ o _rechazar_ la orden de trabajo a través del formulario **Aceptar la orden de trabajo**.
