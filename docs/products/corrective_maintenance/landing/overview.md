@@ -4,6 +4,10 @@ title: 🛠 Mantenimiento Correctivo
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
+
 <span className="hero__subtitle">¿Qué tipo de usuario eres?</span>
 <br/>
 <br/>
