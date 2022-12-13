@@ -61,6 +61,6 @@ Once the supervisor receives the notification, they have to validate the report 
 ---
 
 ## Related Topics {#related-topics}
-- [**Surveys**](/docs/documentation/client/surveys): _Getting Started_ user documentation.
+- [**Surveys**](/docs/documentation/client/surveys/overview): _Getting Started_ user documentation.
 - [**Surveys Overview**](/docs/documentation/admin/survey/survey_overview): _Administrative Panel_ documentation.
 - [**Create Survey Tutorial**](/docs/tutorials/basic/create_survey): Tutorial on how to create a survey to gather data from users and share it on a channel.

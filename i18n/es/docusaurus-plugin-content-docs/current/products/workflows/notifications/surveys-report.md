@@ -61,6 +61,6 @@ Una vez que el supervisor recibe la notificación, debe validar el informe con e
 ---
 
 ## Recursos relacionados {#related-topics}
-- [**Formularios**](/docs/documentation/client/surveys): _Getting Started_ documentación del usuario.
+- [**Formularios**](/docs/documentation/client/surveys/overview): _Getting Started_ documentación del usuario.
 - [**Resumen de formularios**](/docs/documentation/admin/survey/survey_overview): documentación del _panel administrativo_.
 - [**Tutorial de creación de formularios**](/docs/tutorials/basic/create_survey): tutorial sobre cómo crear un formulario para recopilar datos de los usuarios y compartirlos en un canal.

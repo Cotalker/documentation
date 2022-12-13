@@ -42,7 +42,7 @@ For more in-depth information for administrators, please refer to the [Admin Doc
 - **Basic Tools**
   - [Search Tool](/docs/documentation/client/client_search): search for users, tasks, channels, properties, and actions
   - [Actions Button](/docs/documentation/client/actions_button): create tasks, channels, and link to URLs
-  - [Surveys](/docs/documentation/client/surveys): learn how to fill out surveys and their main functions
+  - [Surveys](/docs/documentation/client/surveys/overview): learn how to fill out surveys and their main functions
   - [Tasks](/docs/documentation/client/tasks/overview): view and interact with tasks
   - [Database](/docs/documentation/client/database): see how asset types organize information
   - [Dashboard](/docs/documentation/client/dashboard): view company data on dashboards created with Metabase

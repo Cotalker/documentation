@@ -35,7 +35,7 @@ Ahmed is a field service manager. He manages a group of employees while they wor
 - _elements_ are also associated with his account, in this case, with the department he belongs to, i.e., Field Service 1;
 - _related users_ indicates the users that are in his team and under his command.
 
-His user profile doesn't only store his personal data, but it can be used within automated workflows [routines](/docs/documentation/automation/admin_routine) and for gathering information used in [survey forms](/docs/documentation/client/surveys).
+His user profile doesn't only store his personal data, but it can be used within automated workflows [routines](/docs/documentation/automation/admin_routine) and for gathering information used in [survey forms](/docs/documentation/client/surveys/overview).
 
 </div>
 <div className="col col--6">

@@ -21,8 +21,8 @@ Tasks can be created and updated either manually or automatically:
   - [actions button](#actions-button)
   - [task details](#task-details)
 - automatically: 
-  - [surveys](/docs/documentation/client/surveys) within the Cotalker environment
-  - [public surveys](/docs/documentation/client/surveys) outside the Cotalker environment
+  - [surveys](/docs/documentation/client/surveys/overview) within the Cotalker environment
+  - [public surveys](/docs/documentation/client/surveys/overview) outside the Cotalker environment
   - [other automations](/docs/documentation/automation/existing_routines) available and configurable within the Cotalker environment
 
 

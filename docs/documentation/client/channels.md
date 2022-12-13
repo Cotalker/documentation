@@ -9,7 +9,7 @@ Channel Workspaces allow quick and transparent communication between people work
 
 - Chat channels exist within [regular and workflow groups](#layout).
 - If the chat channel is found within a [workflow group](/docs/documentation/client/groups#workflow-groups) and is associated with a [task](/docs/documentation/client/tasks/overview), you can configure the task, change its state, and interact with those involved.
-- All channel workspaces can contain [surveys](/docs/documentation/client/surveys) that users can fill out and send.
+- All channel workspaces can contain [surveys](/docs/documentation/client/surveys/overview) that users can fill out and send.
 - Depending on access roles, users can include other users in the channel workspace.
 
 :::note How to create new channels

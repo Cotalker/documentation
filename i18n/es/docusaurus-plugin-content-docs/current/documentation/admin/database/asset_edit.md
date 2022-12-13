@@ -198,7 +198,7 @@ _Click on Channel rows to open their corresponding settings panel._
 <div className="col col--5">Displays the name of the survey in which the element is associated with the survey answer.</div>
 <div className="col col--4"><em>
 
-[More on surveys.](/docs/documentation/client/surveys)
+[More on surveys.](/docs/documentation/client/surveys/overview)
 
 </em></div>
 </div>

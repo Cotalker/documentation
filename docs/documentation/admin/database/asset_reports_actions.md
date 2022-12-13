@@ -37,7 +37,7 @@ _From the Asset Viewer you can open, create, or delete reports and actions:_
 ### Open Reports/Actions {#open}
 Reports and actions accessed through the Asset Viewer are divided into three categories:
 - [**Tasks**](/docs/documentation/admin/database/asset_tasks): Displays [tasks](/docs/documentation/client/tasks/overview) according to predefined filters
-- [**Actions**](/docs/documentation/admin/database/asset_actions): Opens a [survey](/docs/documentation/client/surveys)
+- [**Actions**](/docs/documentation/admin/database/asset_actions): Opens a [survey](/docs/documentation/client/surveys/overview)
 - [**Forms**](/docs/documentation/admin/database/asset_forms): Displays data gathered from an SQL database query.
 
 
@@ -59,7 +59,7 @@ Once the _create_ icon is selected, the following window appears:
 _Admins can create Reports & Actions in the following three categories:_
 
 - [**A. Tasks**](/docs/documentation/admin/database/asset_tasks): Displays [tasks](/docs/documentation/client/tasks/taskview) according to predefined filters
-- [**B. Actions**](/docs/documentation/admin/database/asset_actions): Opens a [survey](/docs/documentation/client/surveys)
+- [**B. Actions**](/docs/documentation/admin/database/asset_actions): Opens a [survey](/docs/documentation/client/surveys/overview)
 - [**C. Forms**](/docs/documentation/admin/database/asset_forms): Displays data gathered from an SQL database query.
 
 Choosing a category from the tabs above displays the corresponding settings fields.

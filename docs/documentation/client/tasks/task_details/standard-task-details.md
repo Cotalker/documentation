@@ -35,7 +35,7 @@ The [COTTask](/docs/documentation/models/tasks/model_tasks) data model contains 
     - **Editor**: An _editor_ has read & write access on all _task detail_ fields and can participate in the chat area.
     - **Visibility**: Users with the _visibility_ tag can view limited task details. They can participate in the chat area and view notes, but they cannot change the task's state.
 - **<span className="badge badge--danger">6.</span> SLAs**: Displays the ObjectId of any active [Service-Level Agreements (SLAs)](/docs/documentation/automation/sla) programmed with the task.
-- **<span className="badge badge--danger">7.</span> Answers**: Displays the ObjectId of answered [survey forms](/docs/documentation/client/surveys) associated with the task.
+- **<span className="badge badge--danger">7.</span> Answers**: Displays the ObjectId of answered [survey forms](/docs/documentation/client/surveys/overview) associated with the task.
 - **<span className="badge badge--danger">8.</span> Creation Date**: Specifies the date the task was created.
 - **<span className="badge badge--danger">9.</span> Start Date**: Indicates the date the task begins.
 - **<span className="badge badge--danger">10.</span> End Date**: Indicates the task's deadline.
