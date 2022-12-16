@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 The **Bulk Loader** automates survey form submissions. It automatically fills out a survey form multiple times using the data gathered from a spreadsheet provided by you. 
 
-For example, if you have a survey form to enter user information, you can use the _Bulk Loader_ to submit multiple user forms using the data provided on the survey. Every column in the spreadsheet represents a survey field or question. And in this example, every row represents a user with the data to be included in each field. Thus, you can add huge amounts of data to your database by automating survey submissions with the spreadsheets you provide. 
+For example, if you have a survey form to enter user information, you can use the _Bulk Loader_ to submit multiple user forms using the data provided on the spreadsheet. Every column in the spreadsheet represents a survey field or question. And in this example, every row represents a user with the data to be included in each field. Thus, you can add huge amounts of data to your database by automating survey submissions with the spreadsheets you provide. 
 
 :::caution Attention
 This feature is only available on [workflow start forms](/docs/documentation/admin/workflows/admin_workflow_required_survey#required-survey-for-a-new-task), i.e., survey forms that initiate a task.
