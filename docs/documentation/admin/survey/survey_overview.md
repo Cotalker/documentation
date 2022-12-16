@@ -5,7 +5,11 @@ sidebar_label: Overview
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Surveys.svg')} />
+<div className="img_title">
+
+![design](/img/design/Surveys.svg)
+
+</div>
 <br/>
 
 ## Summary {#survey-overview}
