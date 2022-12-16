@@ -35,7 +35,21 @@ module.exports = {
           items: [
             'documentation/client/client_search',
             'documentation/client/actions_button',
-            'documentation/client/surveys',
+            {
+              type: 'category',
+              label: 'Surveys',
+              link: {
+                type: 'doc',
+                id: 'documentation/client/surveys/overview'
+              },
+              items: [
+                'documentation/client/surveys/access',
+                'documentation/client/surveys/automations',
+                'documentation/client/surveys/dynamic',
+                'documentation/client/surveys/location',
+                'documentation/client/surveys/bulkloader',
+              ]
+            },
             {
               type: 'category',
               label: 'Tasks',

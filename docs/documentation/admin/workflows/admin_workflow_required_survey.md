@@ -6,10 +6,13 @@ sidebar_label: Start Forms
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
+<div className="img_title">
+
+![design](/img/design/Workflows.svg)
+
+</div>
 <br/>
 
-<div className="alert alert--secondary">
 
 ## Summary {#summary}
 
@@ -18,8 +21,6 @@ By default, _users_ can create a _task_ or change its state through the _tasks v
 - ensure that the _users_ provide all necessary information when creating _tasks_,  
 - and manage _workflow_ state changes.
 
-</div>
-<br/>
 
 :::tip
 Workflow Start Forms can also be [shared](/docs/documentation/admin/workflows/admin_workflow_public_survey) outside the Cotalker environment, allowing visitors to create new tasks.

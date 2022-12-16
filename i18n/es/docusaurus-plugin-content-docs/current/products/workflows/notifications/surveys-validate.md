@@ -56,6 +56,6 @@ Una vez validados, los supervisores pueden completar el [formulario Crear orden 
 ---
 
 ## Recursos relacionados {#related-topics}
-- [**Formularios**](/docs/documentation/client/surveys): Documentación de usuario.
+- [**Formularios**](/docs/documentation/client/surveys/overview): Documentación de usuario.
 - [**Resumen de Formularios**](/docs/documentation/admin/survey/survey_overview): Documentación del _Panel Administratiavo_.
 - [**Tutorial para Crear Formularios**](/docs/tutorials/basic/create_survey): Tutorial sobre cómo crear una encuesta para recopilar datos de los usuarios y compartirlos en un canal.

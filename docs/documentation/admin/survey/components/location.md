@@ -36,7 +36,7 @@ _This mode can only submit the user's current GPS location._
 <br/>
 
 ### Free Selection on Map Mode {#free}
-_This mode allows users to freely select a location. For more details on how it is used, [click here](/docs/documentation/client/surveys#location)._
+_This mode allows users to freely select a location. For more details on how it is used, [click here](/docs/documentation/client/surveys/location)._
 
 <img alt="survey+gps" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_location_01.png')} />
 <br/>
