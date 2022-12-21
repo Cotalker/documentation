@@ -36,7 +36,7 @@ Survey forms are an intricate factor used in gathering data from users. Since da
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/admin/survey/survey_overview#access">Admin Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/survey/settings#access">Admin Documentation</a>
 <br/>
 
 <a className="button button--info button--block" href="/docs/documentation/automation/surveys/survey_editable_code">Developer Mode Documentation</a>

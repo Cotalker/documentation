@@ -9,7 +9,7 @@ import Mermaid from '@theme/Mermaid';
 
 ## Description {#description}
 
-Surveys are made up of _questions_ and each _question_ is represented by a [form component](/docs/documentation/admin/survey/survey_overview#form-components). In a question's data model ([COTQuestions](/docs/documentation/models/surveys/model_questions)), the [form component](/docs/documentation/admin/survey/survey_overview#form-components) type is indicated by the _Question Content Type_.
+Surveys are made up of _questions_ and each _question_ is represented by a [form component](/docs/documentation/admin/survey/components_overview). In a question's data model ([COTQuestions](/docs/documentation/models/surveys/model_questions)), the [form component](/docs/documentation/admin/survey/components_overview) type is indicated by the _Question Content Type_.
 
 :::note
 The **COTQuestionContentType** is also used on survey answers within the [COTAnswerData](/docs/documentation/models/surveys/model_answer_data) model.

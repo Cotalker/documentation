@@ -43,11 +43,11 @@ Data Model (Context) | Description | Endpoint
 --- | --- | ---
 [COTAnswer](/docs/documentation/models/surveys/model_answers) | Answers represent the submitted survey response | /answers
 [COTAnswerData](/docs/documentation/models/surveys/model_answer_data) | Contains an answer's submitted data and is found in COTAnswer | N/A
-[COTQuestion](/docs/documentation/models/surveys/model_questions) | The individual survey [component](/docs/documentation/admin/survey/survey_overview#form-components) | /questions
+[COTQuestion](/docs/documentation/models/surveys/model_questions) | The individual survey [component](/docs/documentation/admin/survey/components_overview) | /questions
 [COTQuestionContentType](/docs/documentation/models/surveys/model_questionContentType) | The question's or survey component's content type. | N/A
 [COTQuestionExec](/docs/documentation/models/surveys/model_questionExec) | Javascript automation that runs within the survey and is found in COTQuestion | N/A
 [COTSurvey](/docs/documentation/models/surveys/model_surveys) | Surveys gather different types of input from users | /surveys
-[COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) | Each survey chat holds _questions_ that correspond to a survey [_component_](/docs/documentation/admin/survey/survey_overview#form-components) | /surveychats
+[COTSurveyChat](/docs/documentation/models/surveys/model_surveychats) | Each survey chat holds _questions_ that correspond to a survey [_component_](/docs/documentation/admin/survey/components_overview) | /surveychats
 
 
 ### 4. Database {#database}
@@ -84,6 +84,11 @@ Data Model (Context) | Description | Endpoint
 --- | --- | ---
 [Search Engine Model](/docs/documentation/models/search/searchengine) | Settings for data search made through an API request. | /search/search
 [Search Category Results Model](/docs/documentation/models/search/searchresult) | Returned search results. | /search/search
+
+### 8. Notes {#notes}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[COTNote](/docs/documentation/models/notes/model_notes) | Access to notes found within the Cotalker platform, i.e., documents written with Cotalker's [Notes](/docs/documentation/client/notes) tool. | /notes
 
 ## Interactions {#interactions}
 

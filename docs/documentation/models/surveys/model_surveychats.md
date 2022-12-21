@@ -11,7 +11,7 @@ import Mermaid from '@theme/Mermaid';
 <span className="hero__subtitle">COTSurveyChat</span>
 
 ## Description {#description}
-Each Survey Chat data model (COTSurveyChat) represents a [component](/docs/documentation/admin/survey/survey_overview#form-components) on a survey form. Usually, through the `contentArray` field, two [COTQuestion](/docs/documentation/models/surveys/model_questions) ObjectIds are paired together. One pertains to the component's _title_ or displayed text, the other to the area for data input.
+Each Survey Chat data model (COTSurveyChat) represents a [component](/docs/documentation/admin/survey/components_overview) on a survey form. Usually, through the `contentArray` field, two [COTQuestion](/docs/documentation/models/surveys/model_questions) ObjectIds are paired together. One pertains to the component's _title_ or displayed text, the other to the area for data input.
 
 <Mermaid chart={`
 	graph LR;

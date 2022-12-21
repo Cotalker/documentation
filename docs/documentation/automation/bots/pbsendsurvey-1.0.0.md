@@ -118,7 +118,7 @@ If the same _survey_ "name" and "age" is used as a _survey-survey,_ with the ide
 
 :::note
 For more information on question types see: 
-- [Survey Components](/docs/documentation/admin/survey/survey_overview#form-components)
+- [Survey Components](/docs/documentation/admin/survey/components_overview)
 - [Question Data Model](/docs/documentation/models/surveys/model_questions)
 :::
 

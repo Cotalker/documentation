@@ -8,9 +8,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <br/>
 
-<span className="hero__title">Overview</span>
-<br/>
-<br/>
 
 ## Introduction {#intro}
 _Surveys_ are a significant feature inside the Cotalker environment that help gather data from _users_. Usually created by _admins_, _surveys_ have a form-like aspect that makes it easier for _users_ to fill them out.

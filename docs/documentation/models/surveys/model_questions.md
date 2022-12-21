@@ -84,15 +84,15 @@ _Questions_ make up survey forms; their wide variety allows different forms for 
 | Field | Description | [Type](/docs/documentation/models/overview_model#data-types) | Notes |
 | ---- | ---- | ---- | ---- |
 | **code** | Depends on the `contentType` | string[ ] | Check `code` details for content types that include [QR scan & NFC](/docs/documentation/models/surveys/model_questionContentType#text-input) and [Map Locations](/docs/documentation/models/surveys/model_questionContentType#gps).
-| **command** | [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings | object |
+| **command** | [Conditional Display](/docs/documentation/admin/survey/components_overview#conditional-display) settings | object |
 | **command.commands** | Indicates which questions are commanded or depend on this question, i.e. questions using the `command.isCommanded` field.  | string[ ] | The strings in the array corresponde to the questions `identifier`.
-| **commmand.isCommanded** | Indicates if the question has [Conditional Display](/docs/documentation/admin/survey/survey_overview#conditional-display) settings. | string | The string corresponds to the commanding question's `identifier`. |
+| **commmand.isCommanded** | Indicates if the question has [Conditional Display](/docs/documentation/admin/survey/components_overview#conditional-display) settings. | string | The string corresponds to the commanding question's `identifier`. |
 | **command.restItentifiers** | string[ ] | 
 | **command.values** | Sets the expected answers to activate the hidden question. | object[ ] |
 | **command.values.op** | Select the comparison criteria, i.e., the operator of the conditional. | string | Options are: `=`, `eq`: Is equal to; `gte`: Greater than or equal; `lte`: Less than or equal; `regex`: Regular expression.
 | **command.values.target** | Write the `identifier` related to the commanding answer. | string | For multiple answers, use the following syntax: *(example1)\|(example2)*
 | **company** | Company identification code | ObjectId<COTCompany\> |
-| **contentType** | Indicates COTQuestionContentType, i.e. [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) | string | [List of question content types](/docs/documentation/models/surveys/model_questionContentType)
+| **contentType** | Indicates COTQuestionContentType, i.e. [survey component type](/docs/documentation/admin/survey/components_overview) | string | [List of question content types](/docs/documentation/models/surveys/model_questionContentType)
 | **display** | Displayed question title or _field label_ | string[ ] | Its contents depend on the `contentType` and whether the data model corresponds to the _title_ section of the question.
 | **exec** | [Javascript-automated questions (QuestionExec)](/docs/documentation/automation/surveys/question_exec) | object | 
 | **exec.filter** | Currently not in use. | object<COTQuestionExecFilter\> |
@@ -112,7 +112,7 @@ _Questions_ make up survey forms; their wide variety allows different forms for 
 | **required** | Users must answer the question in order to submit the form | boolean |
 | **responses** | Contains submitted data | string[ ] | Appended to model only in some contexts |
 | **skipCodeValidation** | Internal flag for legacy surveys | boolean | |
-| **subtype** | Indicates the component's input type. | string | Options depend on the [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) or `contentType` |
+| **subtype** | Indicates the component's input type. | string | Options depend on the [survey component type](/docs/documentation/admin/survey/components_overview) or `contentType` |
 | **textAlign** | Indicates alignment for displayed text | string |
 
 
