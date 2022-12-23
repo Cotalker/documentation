@@ -178,8 +178,12 @@ For security reasons, it is **EXTREMELY IMPORTANT** to assign _access roles_ wit
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><strong>Password</strong>:</div>
-<div className="col col--3">Enter new password here.</div>
-<div className="col col--6"><em>The field initially appears empty even if there is an existing password.</em></div>
+<div className="col col--3">Enter the user's new password here. The field initially appears empty even if there is an existing password.</div>
+<div className="col col--6"><em>
+
+Password rules can be set for each company by configuring the `passwordRules` field in [COTCompany](/docs/documentation/models/company/model_company).
+
+</em></div>
 </div>
 <div className="row table-row-1">
 <div className="col col--3"><strong>Repeat password</strong>:</div>

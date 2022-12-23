@@ -47,7 +47,7 @@ _Each platform offers a similar experience through its design so that users can 
   <br/>
 
   :::note
-  If you don't have a registered email and password or can't log in with your Google or Microsoft account into your company's Cotalker platform, please consult with your company admin.
+  - If you don't have a registered email and password or can't log in with your Google or Microsoft account into your company's Cotalker platform, please consult with your company admin.
   :::
 
   :::tip Free Trial Demo

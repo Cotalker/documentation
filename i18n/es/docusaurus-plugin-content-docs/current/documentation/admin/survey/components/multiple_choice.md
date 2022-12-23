@@ -19,7 +19,7 @@ _Initial **multiple choice** component settings panel:_
 <img alt="form template" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_survey_multiplechoice_00.png')} />
 <br/>
 
-Apart from the [general fields](/docs/documentation/admin/survey/survey_overview#field-descriptions), the initial **multiple choice** component settings panel lets you choose the **type**. There are four different _types_ of **multiple choice** components you can choose from: 
+Apart from the [general fields](/docs/documentation/admin/survey/survey_overview/#general-tab), the initial **multiple choice** component settings panel lets you choose the **type**. There are four different _types_ of **multiple choice** components you can choose from: 
 - [Collection](#collection-type): Make the elements of a collection the choices or options available.
 - [Users](#users-type): Users in the company's Cotalker database can be selected as answers. Useful for delegating or summoning purposes.
 - [Item list](#list-of-items-type): Make a simple list of possible answers.

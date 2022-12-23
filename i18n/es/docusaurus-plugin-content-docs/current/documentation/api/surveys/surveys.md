@@ -118,7 +118,7 @@ Header | Description | Required | Values
 Parameter | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
 **debug** | Adds the `debug` field with error notifications. | string | Optional | Option: `true`
-**populate** | Returns the survey with the `chat` field which contains all the survey's [_survey chats_](/docs/documentation/models/surveys/model_surveychats), i.e., all of the the [survey's components](/docs/documentation/admin/survey/survey_overview#form-components). | boolean | Optional |
+**populate** | Returns the survey with the `chat` field which contains all the survey's [_survey chats_](/docs/documentation/models/surveys/model_surveychats), i.e., all of the the [survey's components](/docs/documentation/admin/survey/components_overview). | boolean | Optional |
 
 #### Request Sample {#get-by-id-request}
 ```bash

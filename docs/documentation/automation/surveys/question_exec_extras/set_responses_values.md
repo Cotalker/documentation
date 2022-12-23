@@ -48,7 +48,7 @@ _Sample:_
 Field | Description | Values 
 --- | --- | ---
 **cmd**  | Indicates the command type. | SET_RESPONSES
-**target** | Indicates survey question where the value will be placed. | 'self' \| '[Identifier of the survey question](/docs/documentation/admin/survey/survey_overview#field-descriptions)'
+**target** | Indicates survey question where the value will be placed. | 'self' \| '[Identifier of the survey question](/docs/documentation/admin/survey/survey_overview/#general-tab)'
 **value** | The value to be placed in the target field. | The value must correspond to the question's [content type](/docs/documentation/models/surveys/model_questionContentType). Value type examples are shown below.
 
 ## Value Types {#value-types}

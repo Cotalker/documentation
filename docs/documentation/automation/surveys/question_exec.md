@@ -23,7 +23,7 @@ _Question Code Automations_ permit adding Javascript code to a survey question. 
 
 ## Setup {#setup}
 To add your custom code:
-1. Select the [**Automation** tab](/docs/documentation/admin/survey/survey_overview#automation) within the [survey component](/docs/documentation/admin/survey/survey_overview#form-template)
+1. Select the [**Automation** tab](/docs/documentation/admin/survey/components_overview#automation) within the [survey component](/docs/documentation/admin/survey/settings#form-template)
 2. Choose a [_lifecycle stage_](#component-lifecycle-stages).
 3. Choose the appropriate [_parameters_](#parameters).
 4. Put your [Question Code function](#function) on the editor box at the bottom of the settings panel.
@@ -164,7 +164,7 @@ Field | Values
 Field | Values 
 --- | --- 
 **cmd**  | SET_RESPONSES
-**target** | 'self' \| '[Survey question identifier](/docs/documentation/admin/survey/survey_overview#field-descriptions)'
+**target** | 'self' \| '[Survey question identifier](/docs/documentation/admin/survey/survey_overview/#general-tab)'
 **value** | [Click here to view value type format.](/docs/documentation/automation/surveys/question_exec_extras/set_responses_values)
 
 </div>

@@ -11,7 +11,7 @@ Determine with customized rules whether a submitted survey can be edited using c
 
 This feature is useful when submitted forms affect task characteristics or contain information that should not be modified.
 
-The code is inserted in the [survey's settings panel in the Access section](/docs/documentation/admin/survey/survey_overview#access).
+The code is inserted in the [survey's settings panel in the Access section](/docs/documentation/admin/survey/settings#access).
 
 :::info
 By default, surveys are not editable, except for surveys created before the release of this feature (June 2022).

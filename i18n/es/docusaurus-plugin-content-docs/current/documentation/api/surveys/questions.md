@@ -11,7 +11,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Overview {#overview}
-[_Questions_](/docs/documentation/models/surveys/model_questions) make up the parts of [_survey or form components_](/docs/documentation/admin/survey/survey_overview#form-components). They are contained within [surveys](/docs/documentation/models/surveys/model_surveys) through [survey chats](/docs/documentation/models/surveys/model_surveychats).
+[_Questions_](/docs/documentation/models/surveys/model_questions) make up the parts of [_survey or form components_](/docs/documentation/admin/survey/components_overview). They are contained within [surveys](/docs/documentation/models/surveys/model_surveys) through [survey chats](/docs/documentation/models/surveys/model_surveychats).
 
 :::tip additional resources
 These are just some of the most basic API requests. For a complete list of endpoints, consult our [API documentation on Swagger](https://www.cotalker.com/swagger/core/?key=woubtjf4olr0t4zgutuwn6scbcm6hd3qh1cgl5obmohpbm3mfublnwcvv67lodgjvd3h86s9ppshtvmf95gepsqh6nizq9liu7f#/).
@@ -165,7 +165,7 @@ _Only required fields are listed below. For a complete schema description, pleas
 
 Element | Description | Type | Required | Notes
 --- | --- | --- | --- | ---
-**contentType** | Indicates _COTQuestionContentType_, i.e. [survey component type](/docs/documentation/admin/survey/survey_overview#form-components) | string | Required | [List of question content types](/docs/documentation/models/surveys/model_questionContentType)
+**contentType** | Indicates _COTQuestionContentType_, i.e. [survey component type](/docs/documentation/admin/survey/components_overview) | string | Required | [List of question content types](/docs/documentation/models/surveys/model_questionContentType)
 **display** | Displayed question title or _field label_ | string[ ] | Required | Its contents depend on the `contentType` and whether the data model corresponds to the _title_ section of the question.
 
 #### Request Sample {#post-new-request}

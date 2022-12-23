@@ -186,7 +186,7 @@ For more information, go to the [Routine builder](/docs/documentation/automation
 _Survey-triggered routines_ unassociated with task states should be initiated through [global bots](/docs/documentation/admin/admin_bots#functions). If, for example, you wish to plan a Cotalker video call meeting, use a bot to schedule it since there are no state changes involved.
 
 ### Required Fields in Surveys {#required-fields}
-When a _survey_ gathers information used by a [bot](/docs/documentation/admin/admin_bots#functions), the fields that provide the data for the _routine_ should be set to _required_. Fields are set to as _required_ by pressing the _required_ icon found in the [form component tabs](/docs/documentation/admin/survey/survey_overview#icon-descriptions).
+When a _survey_ gathers information used by a [bot](/docs/documentation/admin/admin_bots#functions), the fields that provide the data for the _routine_ should be set to _required_. Fields are set to as _required_ by pressing the _required_ icon found in the [form component tabs](/docs/documentation/admin/survey/components_overview#icon-descriptions).
 
 ### Surveys Associated to Task States {#survey-task-states}
 If a [_survey that commands a bot_](/docs/documentation/admin/admin_bots#functions) is to be made available only within a specific task state, the element that represents the state must be associated with the survey. In case the survey has to be available in more than one task state, a separate collection with elements that are to be required to view the survey should be created.
