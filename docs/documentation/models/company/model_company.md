@@ -77,6 +77,9 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 | **offline** | Sets offline mode for mobile apps | object | Only available in enterprise edition |
 | **offline.isActive** | Turns offline mode on or off | boolean | |
 | **offline.maxSyncTimeMs** | Indicates object synchronization time | number | |
+| **passwordRotation** |  | object | |
+| **passwordRotation.enabled** | Activate to make users change their password after the number of days indicated in the following field. | boolean | After the indicated time, users will be prompted at login to renew their password. |
+| **passwordRotation.days** | Indicates the number of days after which users will have to change their password. | number | |
 | **passwordRules** | Establishes the security rules user passwords must comply with. | object | By default, no rules are applied. |
 | **passwordRules.minLength** | The mínimum amount of characters a password must have. | number |
 | **passwordRules.lowerCase** | The mínimum amount of lower case letters a password must have. | number |

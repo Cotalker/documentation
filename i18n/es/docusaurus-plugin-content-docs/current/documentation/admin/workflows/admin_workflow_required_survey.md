@@ -10,10 +10,13 @@ Esta página aún no se encuentra traducida al español.
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Workflows.svg')} />
+<div className="img_title">
+
+![design](/img/design/Workflows.svg)
+
+</div>
 <br/>
 
-<div className="alert alert--secondary">
 
 ## Summary {#summary}
 
@@ -22,8 +25,7 @@ By default, _users_ can create a _task_ or change its state through the _tasks v
 - ensure that the _users_ provide all necessary information when creating _tasks_,  
 - and manage _workflow_ state changes.
 
-</div>
-<br/>
+Furthermore, configuring a survey to initiate a workflow gives users the ability to use the [_bulk loader_](/docs/documentation/client/surveys/bulkloader), i.e., submitting multiple surveys at once by gathering data from a spreadsheet provided by the user. Thus, allowing users to initiate multiple instances of a workflow, each one configured accordingly.
 
 :::tip
 Workflow Start Forms can also be [shared](/docs/documentation/admin/workflows/admin_workflow_public_survey) outside the Cotalker environment, allowing visitors to create new tasks.

@@ -33,7 +33,7 @@ _Below are the settings panel's field description:_
 <div className="container box">
 
 <div className="row table-row-title">
-<div className="col col--12"><b>
+<div className="col col--12 not-heading"><b>
 
 #### General information {#general-information}
 
@@ -52,7 +52,7 @@ _Below are the settings panel's field description:_
 </div>
 
 <div className="row table-row-title">
-<div className="col col--12"><b>
+<div className="col col--12 not-heading"><b>
 
 #### Billing information {#billing-information}
 
@@ -77,54 +77,57 @@ _Below are the settings panel's field description:_
 </div>
 
 <div className="row table-row-title">
-<div className="col col--12"><b>
+<div className="col col--12 not-heading"><b>
 
-#### Appearance {#apperance}
+#### Language {#language}
 
 </b></div>
 </div>
-<div className="row table-row-2">
+<div className="row table-row-1">
 <div className="col col--3"><b>Default language</b>:</div>
 <div className="col col--5">You can choose between English or Spanish.</div>
-<div className="col col--4"><em>Determines the language the platform displays its responses. This option is independant of the device or web browser language. For example, bot names will be displayed in the chosen language but generic displays will be in the web browser’s language.</em></div>
+<div className="col col--4"><em>Determines the language the platform displays its responses. This option is independent of the device or web browser language. For example, bot names will be displayed in the chosen language but generic displays will be in the web browser’s language.</em></div>
 </div>
-
-<div className="row table-row-1">
-<div className="col col--3"><b>Email Image</b>:</div>
-<div className="col col--5">Work in progress.</div>
-<div className="col col--4"><em></em></div>
-</div>
-
-<!-- CURRENTLY NOT AVAILABLE
 
 <div className="row table-row-title">
-<div className="col col--12"><b>
+<div className="col col--12 not-heading"><b>
 
-#### Features {#features}
+#### App customization {#app-customization}
 
 </b></div>
 </div>
+<div className="row table-row-1">
+<div className="col col--12">
 
-<div className="row table-row-2">
-<div className="col col--3"><b>Show terms of service</b>:</div>
-<div className="col col--5">The TOS will be displayed the first time the user enters Cotalker.</div>
-<div className="col col--4"><em>When active, the TOS are taken the assigned URL. Otherwise, default Cotalker URL will be displayed.</em></div>
+_Please refer to our [Branding data model section](/docs/documentation/models/company/company_branding) for specific backend information._
+
+</div>
 </div>
 
+<div className="row table-row-title">
+<div className="col col--12 not-heading"><b>
+
+#### Security {#security}
+
+</b></div>
+</div>
 <div className="row table-row-1">
-<div className="col col--3"><b>Terms of service's URL</b>:</div>
-<div className="col col--5">The URL displayed in the Terms of Service.</div>
+<div className="col col--3"><b>Enable password rotation</b>:</div>
+<div className="col col--5">Switch on to make users change their password after the number of days indicated in the following field.</div>
+<div className="col col--4"><em>After the indicated time, users will be prompted at login to renew their password.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Password rotation interval (days)</b>:</div>
+<div className="col col--5">Indicates the number of days after which users will have to change their password.</div>
 <div className="col col--4"><em></em></div>
 </div>
 
-<div className="row table-row-2">
-<div className="col col--3"><b>Show contact list</b>:</div>
-<div className="col col--5">
+<div className="row table-row-title">
+<div className="col col--12 not-heading"><b>
 
-If active, the _contacts_ icon will appear in the **Main Menu Bar**.
+#### Advanced {#advanced}
 
-</div>
-<div className="col col--4"><em>If not active, you can still see other users throught previous conversations.</em></div>
+</b></div>
 </div>
 
 <div className="row table-row-1">
@@ -140,29 +143,19 @@ This option will limit users' ability to see other users in their contact lists,
 
 </em></div>
 </div>
-
 <div className="row table-row-2">
-<div className="col col--3"><b>Read user's contacts list</b>:</div>
-<div className="col col--5">Ask the user if the application can access their contacts.</div>
-<div className="col col--4"><em>For mobile Users.</em></div>
-</div>
-
-<div className="row table-row-1">
-<div className="col col--3"><b>Read user's geolocation</b>:</div>
-<div className="col col--5">Ask the user if the application can access their geolocation.</div>
-<div className="col col--4"><em>For mobile Users.</em></div>
-</div>
-
-<div className="row table-row-2">
-<div className="col col--3"><b>Initial section</b></div>
-<div className="col col--5">Enables to force starting the session from a specific group.</div>
-<div className="col col--4"><em>Only groups in the Main Menu Bar are available.</em></div>
-</div>
-
-<div className="row table-row-1">
-<div className="col col--3"><b>News properties' categories</b>:</div>
-<div className="col col--5">Work in progress.</div>
+<div className="col col--3"><b>Hide home button</b>:</div>
+<div className="col col--5">Hides the home button from the main menu bar.</div>
 <div className="col col--4"><em></em></div>
-</div> -->
-
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Hide summary button</b>:</div>
+<div className="col col--5">Hides the summary button from the main menu bar.</div>
+<div className="col col--4"><em></em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Default selected task tab</b>:</div>
+<div className="col col--5">Determines the tab that is initially displayed when a task is opened.</div>
+<div className="col col--4"><em></em></div>
+</div>
 </div>
