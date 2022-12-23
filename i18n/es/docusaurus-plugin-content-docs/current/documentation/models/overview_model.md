@@ -89,6 +89,11 @@ Data Model (Context) | Description | Endpoint
 [Search Engine Model](/docs/documentation/models/search/searchengine) | Settings for data search made through an API request. | /search/search
 [Search Category Results Model](/docs/documentation/models/search/searchresult) | Returned search results. | /search/search
 
+### 8. Notes {#notes}
+Data Model (Context) | Description | Endpoint
+--- | --- | ---
+[COTNote](/docs/documentation/models/notes/model_notes) | Access to notes found within the Cotalker platform, i.e., documents written with Cotalker's [Notes](/docs/documentation/client/notes) tool. | /notes
+
 ## Interactions {#interactions}
 
 <Mermaid chart={`

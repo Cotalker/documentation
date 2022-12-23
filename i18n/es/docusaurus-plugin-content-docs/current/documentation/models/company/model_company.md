@@ -81,6 +81,16 @@ The _Companies_ Data Model (COTCompany) is the underlying configuration for the 
 | **offline** | Sets offline mode for mobile apps | object | Only available in enterprise edition |
 | **offline.isActive** | Turns offline mode on or off | boolean | |
 | **offline.maxSyncTimeMs** | Indicates object synchronization time | number | |
+| **passwordRotation** |  | object | |
+| **passwordRotation.enabled** | Activate to make users change their password after the number of days indicated in the following field. | boolean | After the indicated time, users will be prompted at login to renew their password. |
+| **passwordRotation.days** | Indicates the number of days after which users will have to change their password. | number | |
+| **passwordRules** | Establishes the security rules user passwords must comply with. | object | By default, no rules are applied. |
+| **passwordRules.minLength** | The mínimum amount of characters a password must have. | number |
+| **passwordRules.lowerCase** | The mínimum amount of lower case letters a password must have. | number |
+| **passwordRules.upperCase** | The mínimum amount of upper case letters a password must have. | number |
+| **passwordRules.numbers** | The mínimum amount of numbers a password must have. | number |
+| **passwordRules.symbols** | The mínimum amount of symbols or special characters a password must have. | number | Accepted symbols: <br/>`! @ # $ % ^ & ( ) _ [ ]`
+| **passwordRules.zxcvbn** | Password strength score required for creating valid user passwords. | number <br/>0 \| 1 \| 2 \| 3 \| 4  | `0` = disabled<br/>`1-4` = Define the strength the password must have.<br/>More information on [password security](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/wheeler).
 | **permissions** | | object | |
 | **permissions.showTos** | Displays "terms of service" document when new users log in for the first time | object | |
 | **permissions.showTos.value** | Determines whether or not to display the "terms of service" | boolean | If no URL is indicated, Cotalker will display its generic terms of service. |
