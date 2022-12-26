@@ -6,7 +6,11 @@ sidebar_label: Configuration
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing" src={useBaseUrl('img/design/Company.svg')} />
+<div className="img_title">
+
+![title image](/img/design/Company.svg)
+
+</div>
 
 ## Overview {#company-overview}
 From the <span className="badge badge--primary">Configuration</span> section in the **Administration Panel**, you can edit [general](#general-information) and [billing](#billing-information) company information, and even change some [appearance](#apperance) values in the Cotalker environment.
@@ -16,8 +20,11 @@ From the <span className="badge badge--primary">Configuration</span> section in 
 
 To access the <span className="badge badge--primary">Configuration</span> section:
 
-<img alt="company" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_company_00.png')} />
-<br/>
+<div className="img_sizing">
+
+![title image](/img/admin_company_00.png)
+
+</div>
 
 1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
 2. Select <span className="badge badge--primary">Configuration</span> from the **Administrative Panel**.
@@ -95,7 +102,7 @@ _Below are the settings panel's field description:_
 <div className="row table-row-1">
 <div className="col col--12">
 
-_Please refer to our [Branding data model section](/docs/documentation/models/company/company_branding) for specific backend information._
+_Please refer to our [Branding Settings](/docs/documentation/admin/special_configurations/branding) for specific backend information._
 
 </div>
 </div>

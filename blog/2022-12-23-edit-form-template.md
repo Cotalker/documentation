@@ -1,8 +1,8 @@
 ---
 title: Edit Form Template
-description: Our design team has refactored element UI, creating the new Asset Viewer. The new Asset Viewer can be accessed by all users, either through the Database Viewer or the Administrative Panel, according to their access roles. Through the Asset Viewer, users will be able to view and edit element settings, along with opening Reports & Actions, and obtaining QR codes for their assets. 
-image: img/updates/update_refactor_asset.png
-draft: true
+description: If you have the proper permissions, you can edit a survey form's template by pressing the Edit button on the survey's header. This new feature allows modifying existing forms without the need of going into the Administrative Panel. Thus making it easier and more accessible for non-admin users to make the corresponding changes in your survey form templates.
+image: img/updates/update_edit_template.png
+draft: false
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
@@ -13,30 +13,26 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle"><em>
 
-New look includes new features!
+Edit survey forms on the go!
 
 </em></span>
 
 </div>
 <div className="card__image">
 
-<img alt="feature image" className="img_card item shadow--tl" src={useBaseUrl('img/updates/update_refactor_asset.png')} />
+<img alt="feature image" className="img_card item shadow--tl" src={useBaseUrl('img/updates/update_edit_template.png')} />
 <br/>
 
 </div>
 <div className="card__body">
 
-Our design team has refactored element UI, creating the new **Asset Viewer**. The new Asset Viewer can be accessed by all users, either through the _Database Viewer_ or the _Administrative Panel_, according to their access roles. Through the Asset Viewer, users will be able to view and edit **Element settings**, along with opening **Reports & Actions**, and obtaining **QR codes** for their assets.
+If you have the proper permissions, you can edit a survey form's template by pressing the Edit button on the survey's header. This new feature allows modifying existing forms without the need of going into the Administrative Panel. Thus making it easier and more accessible for non-admin users to make the corresponding changes in your survey form templates.
 
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="/docs/documentation/admin/database/asset_viewer">Admin Documentation</a>
+<a className="button button--info button--block" href="/docs/documentation/admin/survey/edit_template">Admin Documentation</a>
 <br/>
-
-<a className="button button--info button--block" href="/docs/documentation/client/database">User Documentation</a>
-<br/>
-
 
 </div>
 </div>
