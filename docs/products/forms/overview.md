@@ -2,10 +2,6 @@
 title: Welcome to Cotalker Forms
 ---
 
-import What, {toc as Title1TOC} from '/docs/products/forms/landing/_what.mdx'; 
-import UseCases, {toc as Title2TOC} from '/docs/products/forms/landing/_usecases.mdx'; 
-
-
 <span className="hero__subtitle">¿Qué tipo de usuario eres?</span>
 <br/>
 <br/>
@@ -13,32 +9,35 @@ import UseCases, {toc as Title2TOC} from '/docs/products/forms/landing/_usecases
 <div className="container">
 <div className="row">
 
-<div className="col col--4 margin-bottom--lg">
+<div className="col col--6 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/forms/landing/menus/executor">
 
-## Soy ejecutor de tareas.
+## 🛠 Soy realizador de tareas.
 
 Utilizo formularios para registrar o enviar datos relevantes para una tarea.
 
 </a>
 </div>
 
-<div className="col col--4 margin-bottom--lg">
+<div className="col col--6 margin-bottom--lg">
 <a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/forms/landing/menus/coordinator">
 
-## Soy coordinador de tareas.
+## 📇 Soy coordinador de tareas.
 
-Superviso y verifico la realización de tareas.
+Agendo tareas, delego responsables e indico los formularios que se deben utilizar.
 
 </a>
 </div>
 
-<div className="col col--4 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/forms/landing/menu/admin">
+</div>
+<div className="row">
 
-## Soy administrador de tareas.
+<div className="col col--6 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/forms/landing/menus/admin">
 
-Ingreso nuevos usuarios, agrego ubicaciones técnicas y creo formularios utilizados para los flujos de trabajo.
+## 💻 Soy administrador de tareas.
+
+Ingreso nuevos usuarios, agrego ubicaciones técnicas y creo formularios.
 
 </a>
 </div>

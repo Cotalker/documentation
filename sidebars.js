@@ -678,7 +678,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: '📋 Cotalker Forms',
+          label: 'Cotalker Forms',
           link: {
             type: 'doc',
             id: 'products/forms/overview',
