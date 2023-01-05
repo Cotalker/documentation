@@ -707,7 +707,21 @@ module.exports = {
               collapsed: true,
               collapsible: true,
               items: [
-                'products/forms/configuration/users/overview',
+                {
+                  type: 'category',
+                  label: 'Users',
+                  link: {
+                    type: 'doc',
+                    id: 'products/forms/configuration/users/overview',
+                  },
+                  collapsed: true,
+                  collapsible: true,
+                  items: [
+                    'products/forms/configuration/users/create_user',
+                    'products/forms/configuration/users/user_types',
+                    'products/forms/configuration/users/deactivate_user'
+                  ]
+                },
                 'products/forms/configuration/locations/overview',
                 'products/forms/configuration/forms/overview',
               ]

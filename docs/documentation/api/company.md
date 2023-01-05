@@ -69,7 +69,7 @@ The response follows the [COTCompany](/docs/documentation/models/company/model_c
 ---
 
 ## Update a Company {#patch-company}
-_Updates or edits an existing job title._
+_Updates or edits an existing company's settings._
 
 <span className="hero__subtitle"><span className="badge badge--warning">PATCH</span> /companies/&#123;id&#125;</span>
 

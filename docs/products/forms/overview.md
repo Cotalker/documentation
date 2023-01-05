@@ -14,7 +14,7 @@ title: Welcome to Cotalker Forms
 
 ## 🛠 Soy realizador de tareas.
 
-Utilizo formularios para registrar o enviar datos relevantes para una tarea.
+Utilizo formularios al ejecutar una tarea para enviar y registrar datos relevantes.
 
 </a>
 </div>

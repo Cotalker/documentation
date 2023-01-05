@@ -1,30 +1,19 @@
 ---
-title: User types
+title: Usuarios
 ---
 
+import UserTypes, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/configuration/users/_user_types.mdx'; 
 
 
-## Realizador
-- Ejecuta tareas y envía formularios para comunicar y registrar la data correspondiente.
-_También puede:_
-- Validar tareas
+## Resumen {#overview}
+_Cotalker Forms_ te permite [**crear usuarios**](/docs/products/forms/configuration/users/create_user) y designarles [**cargos**](/docs/products/forms/configuration/users/user_types).
 
-## Coordinador
-- Agendar tareas, 
-- Delegar **realizadores**, es decir, responsables de tareas, 
-- Indicar los formularios que el **realizador** tiene que completar al realizar la tarea.
-_También puede:_
-- Validar tareas
-- Enviar formularios de tareas
+## Crear Usuarios {#create-users}
+Los usuarios con el cargo de _administrador_ pueden:
 
-## Administrador 
-- Crea los formularios requeridos, 
-- Agrega las ubicaciones técnicas correspondientes
-- Ingresa los usuarios involucrados en las tareas.
-_También puede:_
-- Agendar tareas, 
-- Delegar **realizadores**, es decir, responsables de tareas, 
-- Indicar los formularios que el **realizador** tiene que completar al realizar la tarea.
-- Validar tareas
-- Enviar formularios de tareas
+- [**Crear Nuevos Usuarios**](/docs/products/forms/configuration/users/create_user) a través de un formulario.
+- [**Editar Usuarios**](/docs/documentation/admin/users.md) a través del Panel Administrativo.
 
+## Cargos o Tipos de Usuarios {#user-types}
+
+<UserTypes/>
