@@ -19,7 +19,7 @@ _Para abrir el formulario:_
 <TabItem value="desktop" label="Escritorio" default>
 
 1. Selecciona **Usuarios** desde **Configuración** en el _menu principal_.
-2. Presiona el botón de tareas desde el panel de **Usuarios**.
+2. Presiona el botón de acciones desde el panel de **Usuarios**.
 
 <div className="img_sizing">
 
@@ -47,7 +47,7 @@ _Para abrir el formulario:_
 <TabItem value="mobile" label="Versión Móvil" default>
 
 1. Selecciona **Usuarios** desde **Configuración** en el _menu principal_.
-2. Presiona el botón de tareas desde el panel de **Usuarios**.
+2. Presiona el botón de acciones desde el panel de **Usuarios**.
 3. Elije la opción **Nuevo usuario**.
 4. Completa y envía el formulario.
 

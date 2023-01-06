@@ -12,7 +12,7 @@ _Cotalker Forms_ te permite [**crear usuarios**](/docs/products/forms/configurat
 Los usuarios con el cargo de _administrador_ pueden:
 
 - [**Crear Nuevos Usuarios**](/docs/products/forms/configuration/users/create_user) a través de un formulario.
-- [**Editar Usuarios**](/docs/documentation/admin/users.md) a través del Panel Administrativo.
+- [**Editar Usuarios**](/docs/documentation/admin/users) a través del Panel Administrativo.
 
 ## Cargos o Tipos de Usuarios {#user-types}
 

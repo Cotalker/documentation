@@ -47,8 +47,8 @@ _Each platform offers a similar experience through its design so that users can 
   <br/>
 
   :::note
-  - If you don't have a registered email and password or can't log in with your Google or Microsoft account into your company's Cotalker platform, please consult with your company admin.
-  - If configured, you may be occasionally asked to renew your password.
+    - If you don't have a registered email and password or can't log in with your Google or Microsoft account into your company's Cotalker platform, please consult with your company admin.
+    - If configured, you may be occasionally asked to renew your password.
   :::
 
   :::tip Free Trial Demo

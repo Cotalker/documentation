@@ -695,7 +695,10 @@ module.exports = {
               },
               collapsed: true,
               collapsible: true,
-              items: []
+              items: [
+                'products/forms/tasks/task_create',
+                'products/forms/tasks/task_execute'
+              ]
             },
             {
               type: 'category',

@@ -8,22 +8,22 @@ import UserTypes, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-do
 
 
 ## Introducción {#intro}
-Sólo usuarios con el cargo de [_administrador_](/docs/products/forms/configuration/users/user_types#admin) pueden crear usuarios.
-
 Se pueden crear usuarios según diferentes [_cargos_](/docs/products/forms/configuration/users/user_types) o roles, habilitándolos para realizar sus funciones correspondientes y limitando su acceso a data y acciones.
 
 Cada usuario ingresado será registrado dentro de la sección _Usuarios_.
 
 Los nuevos usuarios recibirán instrucciones por correo electrónico para ingresar a Cotalker.
 
-## Formulario para Crear Usuarios
-_Para abrir el formulario:_
+## Requisitos {#requirements}
+Sólo usuarios con el cargo de [_administrador_](/docs/products/forms/configuration/users/user_types#admin) pueden crear usuarios.
+
+## Pasos para Crear un Usuario {#steps}
 
 <Tabs>
 <TabItem value="desktop" label="Escritorio" default>
 
 1. Selecciona **Usuarios** desde **Configuración** en el _menu principal_.
-2. Presiona el botón de tareas desde el panel de **Usuarios**.
+2. Presiona el botón de acciones desde el panel de **Usuarios**.
 
 <div className="img_sizing">
 
@@ -51,7 +51,7 @@ _Para abrir el formulario:_
 <TabItem value="mobile" label="Versión Móvil" default>
 
 1. Selecciona **Usuarios** desde **Configuración** en el _menu principal_.
-2. Presiona el botón de tareas desde el panel de **Usuarios**.
+2. Presiona el botón de acciones desde el panel de **Usuarios**.
 3. Elije la opción **Nuevo usuario**.
 4. Completa y envía el formulario.
 
@@ -79,11 +79,17 @@ _Para abrir el formulario:_
 
 - **<span className="badge badge--danger">1.</span> Nombres**: Escribe el nombre o nombres del usuario.
 - **<span className="badge badge--danger">2.</span> Apellidos**: Escribe el apellido o apellidos del usuario
-- **<span className="badge badge--danger">3.</span> E-Mail**: Ingresa el email del usuario. El email se utilizará como identificador del usuario y por lo tanto **no** podrá ser cambiado o editado.
+- **<span className="badge badge--danger">3.</span> E-Mail**: Ingresa el email del usuario. (Ver advertencia abajo.)
 - **<span className="badge badge--danger">4.</span> Cargo**: Elige uno de los [cargos](/docs/products/forms/configuration/users/user_types) disponibles.  
 <UserTypes/>
 
-**Nota**: _Los campos `Nombres`, `Apellidos` y `Cargo` se pueden editar desde el [Panel Administrativo](/docs/documentation/admin/users)._
+:::caution Atención
+El email se utilizará como identificador del usuario y por lo tanto **no** podrá ser cambiado o editado después que se envíe el formulario.
+
+**Nota**: _La data ingresada en los campos `Nombres`, `Apellidos` y `Cargo` se puede editar desde el [Panel Administrativo](/docs/documentation/admin/users)._
+:::
+
+
 
 
 </div>
@@ -103,5 +109,5 @@ Al enviar el formulario, el perfil de usuario es creado y podrás ver los siguie
 </div>
 
 :::info Importante
-Un correo electrónico es enviado al usuario con sus credencials para que pueda ingresar a Cotalker.
+Un correo electrónico es enviado al usuario con sus credenciales para que pueda [ingresar a Cotalker](/docs/documentation/client/platform_access/first_steps).
 :::
