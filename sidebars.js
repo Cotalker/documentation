@@ -697,7 +697,8 @@ module.exports = {
               collapsible: true,
               items: [
                 'products/forms/tasks/task_create',
-                'products/forms/tasks/task_execute'
+                'products/forms/tasks/task_execute',
+                'products/forms/tasks/task_validate'
               ]
             },
             {
