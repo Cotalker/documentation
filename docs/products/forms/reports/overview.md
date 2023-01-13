@@ -8,7 +8,7 @@ import ReportsOverview, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-cont
 Our English version is not yet available.
 :::
 
-## Introducción {#oveview}
+## Resumen {#oveview}
 
 <ReportsOverview/>
 

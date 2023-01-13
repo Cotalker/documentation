@@ -16,11 +16,23 @@ import ReportsOverview, {toc as Title10TOC} from '/i18n/es/docusaurus-plugin-con
 import DashboardOverview, {toc as Title11TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/dashboard/_dashboard_overview.mdx';
 
 
-<span className="hero__subtitle">Soy Realizador de Tareas</span>
+<span className="hero__subtitle">🛠 Soy Realizador de Tareas</span>
 
-_El realizador de tareas tiene acceso a las siguientes funciones:_
+## ¿Qué es Cotalker Forms? {#what}
 
-## Tareas {#tasks}
+<What/>
+
+## ¿Me puedes dar un ejemplo? {#use-case}
+
+<UseCases/>
+
+## ¿Qué puedo configurar? {#config}
+_Sólo los administradores tienen acceso a configurar Cotalker Forms._ 
+
+
+
+## ¿Cómo utilizo la función de tareas? {#tasks}
+_El realizador tiene acceso a todas las funciones de tareas descritas abajo:_
 
 ### Realizar Tareas {#execute}
 
@@ -34,8 +46,11 @@ Ir a la sección [**Realizar Tarea**](/docs/products/forms/tasks/task_execute) p
 
 Ir a la sección [**Validar Tarea**](/docs/products/forms/tasks/task_validate) para ver más detalles.
 
+## ¿Puedo ver reportes? {#reports}
+_Sólo los administradores pueden ver los reportes._
 
-## Reporte Gestor de Formularios {#dashboards}
+## ¿Se puede visualizar la data? {#dashboards}
+_Realizadores, coordinadores y administradores pueden visualizar la data._
 
 <DashboardOverview/>
 

@@ -1,5 +1,5 @@
 ---
-title: Configuration
+title: 🔧 Configuración
 ---
 
 ## Resumen {#overview}
