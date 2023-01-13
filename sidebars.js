@@ -756,28 +756,8 @@ module.exports = {
                 },
               ]
             },
-            {
-              type: 'category',
-              label: 'Reports',
-              link: {
-                type: 'doc',
-                id: 'products/forms/reports/overview',
-              },
-              collapsed: true,
-              collapsible: true,
-              items: []
-            },
-            {
-              type: 'category',
-              label: 'Dashboards',
-              link: {
-                type: 'doc',
-                id: 'products/forms/dashboard/overview',
-              },
-              collapsed: true,
-              collapsible: true,
-              items: []
-            },
+            'products/forms/reports/overview',
+            'products/forms/dashboard/overview',
           ],
         },
         'products/preventive_maintenance/pm_overview',

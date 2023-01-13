@@ -1,5 +1,5 @@
 ---
-title: Reports
+title: 🗂 Reportes
 ---
 
 import ReportsOverview, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/reports/_reports_overview.mdx';

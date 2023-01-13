@@ -1,5 +1,5 @@
 ---
-title: Realizar Tarea
+title: ▶️ Realizar Tarea
 ---
 
 import Tabs from '@theme/Tabs';

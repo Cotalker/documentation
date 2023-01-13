@@ -1,5 +1,5 @@
 ---
-title: Validar Tarea
+title: ✓ Validar Tarea
 ---
 
 import Tabs from '@theme/Tabs';
