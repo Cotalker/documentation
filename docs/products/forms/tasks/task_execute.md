@@ -6,12 +6,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import Workflow, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/tasks/_task_workflow.mdx';
+import Execute, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/tasks/_task_execute_intro.mdx';
+
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 ## Introducción {#intro}
 
-Las tareas asignadas a usuarios son realizadas a través de un simple proceso. El usuario designado fácilmente puede ver las tareas que le han sido asignadas y completarlas a través del formulario correspondiente. 
-
-El flujo de trabajo o proceso consta de hasta 5 pasos o estados. 
+<Execute/>
 
 <details>
 <summary>Detalle de Flujo de Trabajo</summary>

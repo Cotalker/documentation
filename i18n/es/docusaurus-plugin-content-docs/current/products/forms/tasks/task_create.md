@@ -4,18 +4,11 @@ title: Crear Tarea
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import Create, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/tasks/_task_create_intro.mdx';
 
 ## Introducción {#intro}
-Fácilmente crea tareas que se generan automáticamente con:
-- un usuario responsable
-- fecha de inicio y de término (SLA)
-- formulario para ingresar información de la tarea
-- ubicación donde se realiza la tarea
-- posibilidad de agregar validación de la tarea por un tercero
-- posibilidad de informar sobre el desarrollo de la tarea al responsable de la ubicación
-- registro de información para reportes y análisis de data
-- estados de flujo de trabajo
+
+<Create/>
 
 ## Requisitos {#requirements}
 Para la creación de una tarea se requiere al menos lo siguiente:

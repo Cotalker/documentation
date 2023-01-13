@@ -726,8 +726,34 @@ module.exports = {
                     'products/forms/configuration/users/deactivate_user'
                   ]
                 },
-                'products/forms/configuration/locations/overview',
-                'products/forms/configuration/forms/overview',
+                {
+                  type: 'category',
+                  label: 'Location',
+                  link: {
+                    type: 'doc',
+                    id: 'products/forms/configuration/locations/overview',
+                  },
+                  collapsed: true,
+                  collapsible: true,
+                  items: [
+                    'products/forms/configuration/locations/location_create',
+                    'products/forms/configuration/locations/location_edit',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'Forms',
+                  link: {
+                    type: 'doc',
+                    id: 'products/forms/configuration/forms/overview',
+                  },
+                  collapsed: true,
+                  collapsible: true,
+                  items: [
+                    'products/forms/configuration/forms/form_create',
+                    'products/forms/configuration/forms/form_edit'
+                  ]
+                },
               ]
             },
             {
@@ -746,7 +772,7 @@ module.exports = {
               label: 'Dashboards',
               link: {
                 type: 'doc',
-                id: 'products/forms/configuration/overview',
+                id: 'products/forms/dashboard/overview',
               },
               collapsed: true,
               collapsible: true,

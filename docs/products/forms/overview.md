@@ -2,6 +2,22 @@
 title: Welcome to Cotalker Forms
 ---
 
+import What, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/landing/_what.mdx'; 
+import UseCases, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/landing/_usecases.mdx'; 
+
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
+
+## ❓ ¿Qué es Cotalker Forms? {#what}
+
+<What/>
+
+## ✅ Caso de Uso {#use-case}
+
+<UseCases/>
+
+
 <span className="hero__subtitle">¿Qué tipo de usuario eres?</span>
 <br/>
 <br/>

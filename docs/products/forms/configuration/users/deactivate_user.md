@@ -5,6 +5,10 @@ title: Desactivar Usuario
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
+
 _Para desactivar un usuario:_
 
 <Tabs>

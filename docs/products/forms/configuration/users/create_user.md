@@ -6,6 +6,9 @@ import TabItem from '@theme/TabItem';
 import Tabs from '@theme/Tabs';
 import UserTypes, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/configuration/users/_user_types.mdx'; 
 
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 ## Introducción {#intro}
 Se pueden crear usuarios según diferentes [_cargos_](/docs/products/forms/configuration/users/user_types) o roles, habilitándolos para realizar sus funciones correspondientes y limitando su acceso a data y acciones.

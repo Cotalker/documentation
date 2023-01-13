@@ -4,6 +4,9 @@ title: Cargos
 
 import UserTypes, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/configuration/users/_user_types.mdx'; 
 
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 ## Introducción {#intro}
 Los **cargos** o _tipos de usuarios_ indican qué funciones o roles cumplen los _usuarios_. Específicamente, los _cargos_ limitan los permisos que se le otorgan a los _usuarios_.

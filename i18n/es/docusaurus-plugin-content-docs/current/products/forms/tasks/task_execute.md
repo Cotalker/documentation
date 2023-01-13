@@ -6,12 +6,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import Workflow, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/tasks/_task_workflow.mdx';
+import Execute, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/tasks/_task_execute_intro.mdx';
 
 ## Introducción {#intro}
 
-Las tareas asignadas a usuarios son realizadas a través de un simple proceso. El usuario designado fácilmente puede ver las tareas que le han sido asignadas y completarlas a través del formulario correspondiente. 
-
-El flujo de trabajo consta de hasta 5 pasos o estados. 
+<Execute/>
 
 <details>
 <summary>Detalle de Flujo de Trabajo</summary>
@@ -23,6 +22,10 @@ El flujo de trabajo consta de hasta 5 pasos o estados.
 </details>
 
 ## Requisitos {#requirements}
+
+El usuario debe tener al menos el cargo de [_realizador_](/docs/products/forms/configuration/users/user_types#executor) para ver y ejecutar tareas. 
+
+[_Coordinadores_](/docs/products/forms/configuration/users/user_types#coordinator) y [_administradores_](/docs/products/forms/configuration/users/user_types#admin) también pueden ver y ejecutar tareas.
 
 ## Pasos para Realizar una Tarea
 
@@ -66,9 +69,29 @@ El flujo de trabajo consta de hasta 5 pasos o estados.
 
 
 ## Resultados Esperados
+Dependiendo de la [_configuración de la tarea_](/docs/products/forms/tasks/task_create), la tarea puede o no requerir validación por un tercero.
 
 ### Sin validación
+Si la tarea fue configurada para no tener _validación_, entonces pasa a estar _terminanda_ una vez que se envía el formulario.
+
+<div className="img_sizing">
+
+![validation](/img/productos_es/product_forms_tasks_validate_01.png)
+
+_La imagen arriba muestra el mensaje de sistema correspondiente para indicar que la tarea no requiere validación y está terminada._
+
+</div>
+
 
 
 
 ### Con validación
+Si la tarea fue configurada con _validación_, entonces el usuario designado como validador debe enviar el formulario de validación para poder seguir a la siguiente etapa.
+
+<div className="img_sizing">
+
+![validation](/img/productos_es/product_forms_tasks_validate_02.png)
+
+_La imagen arriba muestra el mensaje de sistema correspondiente para indicar que la tarea requiere validación y muestra el formulario que debe enviar el validador._
+
+</div>

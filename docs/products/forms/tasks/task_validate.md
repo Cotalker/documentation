@@ -6,11 +6,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import Workflow, {toc as Title1TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/tasks/_task_workflow.mdx';
+import Validate, {toc as Title2TOC} from '/i18n/es/docusaurus-plugin-content-docs/current/products/forms/tasks/_task_validate_intro.mdx';
+
+:::caution WE'RE SORRY... 😢
+Our English version is not yet available.
+:::
 
 ## Introducción {#intro}
-Si se activa la opción de **validación**, se agrega un paso más al flujo de trabajo que requiere que un usuario autorizada verifique y valide el trabajo realizado.
 
-Si no es aprobada, la tarea puede volver a realizarse, volviendo al inicio del flujo, o es rechazada de lleno y se cierra la tarea.
+<Validate/>
 
 <details>
 <summary>Detalle de Flujo de Trabajo</summary>
