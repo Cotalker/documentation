@@ -1,51 +1,50 @@
 ---
-title: Welcome to Cotalker Forms
-sidebar_label: 📋 Cotalker Forms
+title: Bienvenido a Cotalker Forms
 ---
 
-:::caution Advertencia
-Esta página aún no se encuentra traducida al español.
-:::
 
-import What, {toc as Title1TOC} from '/docs/products/forms/landing/_what.mdx'; 
-import UseCases, {toc as Title2TOC} from '/docs/products/forms/landing/_usecases.mdx'; 
+<span className="hero__subtitle">¿Qué tipo de usuario eres?</span>
+<br/>
+<br/>
 
+<div className="container">
+<div className="row">
 
-## ¿Qué es Cotalker Forms?
+<div className="col col--6 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/forms/landing/menus/executor">
 
-<What/>
+## 🛠 Soy realizador de tareas.
 
-<details>
-<summary>Casos de uso</summary>
-<div>
-<UseCases/>
-</div>
-</details>
-
-
-## ¿Qué tipo de usuario eres?
-
-<div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/related-product/cm/overview">
-
-<span className="hero__subtitle"><b>Soy un usuario final.</b></span> 
-
-Quiero utilizar Cotalker Forms para registrar tareas, progresos, estados, u otra información.
+Utilizo formularios al ejecutar una tarea para enviar y registrar datos relevantes.
 
 </a>
 </div>
 
-<div className="col col--12 margin-bottom--lg">
-<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/workflows/budget_management/related-product/cm/overview">
+<div className="col col--6 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/forms/landing/menus/coordinator">
 
-<span className="hero__subtitle"><b>Soy un usuario administrador.</b></span> 
+## 📇 Soy coordinador de tareas.
 
-Quiero configurar Cotalker Forms para que los usuarios finales puedan realizar sus tareas.
+Agendo tareas, delego responsables e indico los formularios que se deben utilizar.
 
 </a>
 </div>
 
+</div>
+<div className="row">
 
+<div className="col col--6 margin-bottom--lg">
+<a className="card2 padding--lg cardContainer_qNfC" href="/docs/products/forms/landing/menus/admin">
+
+## 💻 Soy administrador de tareas.
+
+Ingreso nuevos usuarios, agrego ubicaciones técnicas y creo formularios.
+
+</a>
+</div>
+
+</div>
+</div>
 
 
 

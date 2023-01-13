@@ -1,0 +1,24 @@
+_El flujo de trabajo contiene un **formulario de tarea** y opcionalmente un **formulario de validación**. Ambos formularios y los estados por los cuales pasa la tarea están representados en el diagrama abajo:_
+
+<div className="container">
+<div className="row">
+<div className="col col--6">
+
+<div className="img_sizing_small">
+
+![workflow chart](/img/productos_es/product_forms_workflow_chart.png)
+
+</div>
+
+</div>
+<div className="col col--6">
+
+1. **Pendiente**: La tarea está a la espera del envío del formulario. Es este puede ser el estado inicial o el recomienzo de la tarea después de no pasar la validación.
+2. **SLA Vencido**: En caso de que el formulario no es enviado antes de la fecha de término, pasa a este estado. El formulario aún puede enviarse.
+3. **En Validación**: En caso de que haya sido indicado, la tarea pasará a este estado para ser validada por un tercero.
+4. **Terminado**: Cuando la tarea es completada, con o sin validación, pasa a este estado.
+5. **Rechazado**: En caso de no pasar la validación, la tarea puede pasar a este estado.
+
+</div>
+</div>
+</div>

@@ -110,6 +110,27 @@
     "sidebar.products.category.Reports": {
       "message": "📊 Reportes",
       "description": "The label for category Maintenance Report in sidebar products_landing"
-    }
-
+    },
+  "sidebar.products.category.Cotalker Forms": {
+      "message": "📋 Cotalker Forms",
+      "description": "the lablel for Cotalker Forms in product menu."
+  },
+  "sidebar.products.category.Tasks": {
+      "message": "✅ Tareas",
+      "description": "the label for Cotalker Form Tasks"
+  },
+  "sidebar.products.category.Configuration": {
+      "message": "🔧 Configuración",
+      "description": "the label for Cotalker Form Configurations"
+  },
+  "sidebar.products.category.Users": {
+    "message": "👥 Usuarios",
+    "description": "the label for Cotalker Form User Configuration"
+  },
+  "sidebar.products.category.Location": {
+    "message": "📍 Ubicaciones"
+  },
+  "sidebar.products.category.Forms": {
+    "message": "📋 Formularios"
+  }
 }
