@@ -39,7 +39,13 @@ Parameter | Description | Type | Required | Notes
 **taskGroupId** | Allows displaying notes associated with a task. | [ObjectId<COTTaskGroup\>](/docs/documentation/models/tasks/model_taskgroup) | Optional | Must be used inconjunction with the `taskId` parameter.
 **taskId** | Allows displaying notes associated with a task. | [ObjectId<COTTask\>](/docs/documentation/models/tasks/model_tasks) | Optional | Must be used inconjunction with the `taskGroupId` parameter.
 
-#### Response Sample {#response-post-note-sample}
+#### Request Sample {#resquest-get-notes-sample}
+```bash
+curl --location --request GET 'https://www.cotalker.com/api/v3/notes' \
+--header 'Authorization: Bearer $ACCESS_TOKEN'
+```
+
+#### Response Sample {#response-get-notes-sample}
 The request returns the notes in [COTNote](/docs/documentation/models/notes/model_notes) data model structure.
 
 ---
