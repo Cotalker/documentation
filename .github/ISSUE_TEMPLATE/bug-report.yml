@@ -4,7 +4,8 @@ title: 'Bug report: '
 labels:
      - Bug report
 assignees:
-     - acedward
+     - CVargasGando
+     - guillevalin
 body:
 - type: markdown
   attributes:
