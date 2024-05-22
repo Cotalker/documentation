@@ -1,0 +1,63 @@
+name: Feature Request
+description: Use this template to discuss a new feature request
+title: 'Feature Request: '
+labels:
+     - Feature Request
+assignees:
+     - CVargasGando
+     - guillevalin
+body:
+- type: markdown
+  attributes:
+    value: |
+     
+     If you are looking for support, please check out our [Documentation](https://doc.cotalker.com/)
+     or consider asking a question on [Discussions](https://github.com/Cotalker/documentation/discussions)
+     If you have found a bug then fill out the template below.
+     
+     > :warning: **Please do not include any non-public information about your company, users and settings when posting an issue. Avoid entering data associated with access keys, passwords, data for internal use, user information or any other that you consider sensitive.**
+
+- type: dropdown
+  id: affected_system
+  attributes:
+    label: Affected system
+    description: Please let us know which of our systems is affecting your Cotalker experience
+    multiple: true
+    options:
+    - Cotalker Web Application
+    - Cotalker Android Application
+    - Cotalker iOS Application
+    - Cotalker Api
+  validations:
+    required: true
+
+- type: input
+  id: affected_system_other
+  attributes:
+    label: Affected system (other)
+    description: Please indicate any additional system affected by this issue
+
+- type: textarea
+  id: details
+  attributes:
+    label: Details
+    description: Further details about the feature request
+    placeholder: |
+      When I try to send a message I would like to...
+  validations:
+    required: true
+
+- type: textarea
+  id: expected_result
+  attributes:
+    label: Business outcome
+    description: Please tell us what would you like to accomplish with this new feature and why it's important to you
+    placeholder: |
+      After pressing the "Send" button the message should...
+  validations:
+    required: true
+
+
+- type: markdown
+  attributes:
+    value: "Thanks for adding a feature request!"
