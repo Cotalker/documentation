@@ -67,7 +67,7 @@ html[data-theme='dark'] {
 }
 
 .heroBanner {
-  padding: 100px 0 200px 0;
+  padding: 60px 0 120px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -75,12 +75,12 @@ html[data-theme='dark'] {
   background-size: cover;
   background-position: left bottom;
   background-repeat: no-repeat;
-  height: 500px;
+  height: 300px;
 }
 
 @media screen and (max-width: 1300px) {
   .heroBanner {
-    padding: 50px 0 150px 0;
+    padding: 30px 0 90px 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -88,13 +88,13 @@ html[data-theme='dark'] {
     background-size: cover;
     background-position: left bottom;
     background-repeat: no-repeat;
-    height: 400px;
+    height: 250px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .heroBanner {
-    padding: 150px 0 300px 0;
+    padding: 80px 0 120px 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -102,7 +102,7 @@ html[data-theme='dark'] {
     background-size: cover;
     background-position: left top;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 200px;
   }
 }
 
@@ -125,13 +125,13 @@ html[data-theme='dark'] {
 
 @media screen and (max-width: 425px) {
   .heroBanner {
-    padding: 0px 0px 100px 0px;
+    padding: 0px 0px 60px 0px;
     background: var(--home-background-img-sm);
     background-size: 100%;
-    background-position: 0 50px;
+    background-position: 0 30px;
     background-repeat: no-repeat;
     background-attachment:fixed;
-    height: 710px;
+    height: 450px;
     width: auto;
   }
   .heroTitle {
@@ -144,13 +144,13 @@ html[data-theme='dark'] {
 
 @media screen and (max-width: 375px) {
   .heroBanner {
-    padding: 0px 0px 100px 0px;
+    padding: 0px 0px 60px 0px;
     background: var(--home-background-img-sm);
     background-size: 100%;
-    background-position: 0 50px;
+    background-position: 0 30px;
     background-repeat: no-repeat;
     background-attachment:fixed;
-    height: 630px;
+    height: 400px;
     width: auto;
   }
   .heroTitle {
@@ -163,15 +163,15 @@ html[data-theme='dark'] {
 
 @media screen and (max-width: 320px) {
   .heroBanner {
-    padding: 0px 0px 100px 0px;
+    padding: 0px 0px 60px 0px;
     background: var(--home-background-img-sm);
     background-size: 100%;
     /* background-position-x: center;
     background-position-y: top; */
-    background-position: 0 50px;
+    background-position: 0 30px;
     background-repeat: no-repeat;
     background-attachment:fixed;
-    height: 535px;
+    height: 350px;
     width: auto;
   }
   .heroTitle {
