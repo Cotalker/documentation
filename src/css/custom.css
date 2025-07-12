@@ -560,5 +560,20 @@ code { font-family: Fira Code, monospace; }
     width: 70%;
   }
 }
+.cardContainer_qNfC h3 {
+  color: var(--ifm-heading-color);
+  margin-bottom: 1rem;
+}
 
+.cardContainer_qNfC p {
+  color: var(--ifm-font-color-base);
+  margin-bottom: 0;
+}
 
+.cardContainer_qNfC:hover h3 {
+  color: var(--ifm-heading-color);
+}
+
+.cardContainer_qNfC:hover p {
+  color: var(--ifm-font-color-base);
+}
