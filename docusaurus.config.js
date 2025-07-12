@@ -1,6 +1,5 @@
 module.exports = {
   title: 'Cotalker Technical Documentation',
-  tagline: 'Products, Tutorials, Admin, API and Support',
   url: 'https://doc.cotalker.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -31,42 +30,44 @@ module.exports = {
         srcDark: 'img/logo_dark.svg',
       },
       items: [
-        {
-          to: 'docs/products/products_overview',
-          activeBasePath: 'docs',
-          label: 'Products',
-          position: 'left',
-        },
+        // {
+        //   to: 'docs/products/products_overview',
+        //   activeBasePath: 'docs',
+        //   label: 'Products',
+        //   position: 'left',
+        // },
         {
           to: 'docs/getting_started/intro_overview',
-          activeBasePath: 'docs',
-          label: 'Getting Started',
+          label: 'Basic',
           position: 'left',
         },      
         {
           to: 'docs/documentation/documentation_overview',
-          activeBasePath: 'docs',
-          label: 'Admin Docs',
+          label: 'Advanced',
           position: 'left',
         },
         {
-          to: 'docs/documentation/api/overview_api',
-          activeBasePath: 'docs',
-          label: 'API',
+          type: 'dropdown',
+          label: 'Developer',
           position: 'left',
+          className: 'developer-dropdown',
+          items: [
+            {
+              to: 'docs/documentation/api/overview_api',
+              label: 'API Reference',
+            },
+            {
+              to: 'docs/documentation/models/overview_model',
+              label: 'Data Models',
+            },
+          ],
         },
-        {
-          to: 'docs/documentation/models/overview_model',
-          activeBasePath: 'docs',
-          label: 'Data Models',
-          position: 'left',
-        },
-        {
-          to: 'docs/tutorials/tutorial_overview',
-          activeBasePath: 'docs',
-          label: 'Tutorials',
-          position: 'left',
-        },
+        // {
+        //   to: 'docs/tutorials/tutorial_overview',
+        //   activeBasePath: 'docs',
+        //   label: 'Tutorials',
+        //   position: 'left',
+        // },
         {
           to: 'blog',
           label: `What's New`,
@@ -80,16 +81,15 @@ module.exports = {
         // },
         {
           to: 'docs/support/support_overview',
-          activeBasePath: 'docs',
-          label: 'Support & Help',
+          label: 'Support',
           position: 'left',
         },
         // --- Language Dropdown Menu ----
         // --- Uncomment code to activate i18n options ---
-        {
-          type: 'localeDropdown',
-          position: 'left',
-        },
+        // {
+        //   type: 'localeDropdown',
+        //   position: 'left',
+        // },
       ],
     },
     prism: {
@@ -157,18 +157,18 @@ module.exports = {
   ],
   // --- Language Options ---
   // --- Uncomment code to activate i18n options
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es'],
-    localeConfigs: {
-      en: {
-        label: 'English',
-        direction: 'ltr',
-      },
-      es: {
-        label: 'Español',
-        direction: 'ltr',
-      },
-    },
-  },
+  // i18n: {
+  //   defaultLocale: 'en',
+  //   locales: ['en', 'es'],
+  //   localeConfigs: {
+  //     en: {
+  //       label: 'English',
+  //       direction: 'ltr',
+  //     },
+  //     es: {
+  //       label: 'Español',
+  //       direction: 'ltr',
+  //     },
+  //   },
+  // },
 };
