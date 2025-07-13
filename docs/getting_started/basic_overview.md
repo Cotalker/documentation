@@ -19,7 +19,7 @@ The _Basic Docs_ include:
 
 - [**Essential Concepts**](/docs/documentation/client/basic_concepts): Fundamental concepts and vocabulary used in the Cotalker environment
 - [**Accessing the Platform**](/docs/documentation/client/platform_access/system_requirements): System requirements and first steps to access Cotalker
-- [**User-Interface Basics**](/docs/documentation/client/layout): Understanding the layout, main menu, toolbar, groups, and channels
+- [**Platform User Interface**](/docs/documentation/client/layout): Understanding the layout, main menu, toolbar, groups, and channels
 - [**Basic Tools**](/docs/documentation/client/client_search): Essential tools for daily platform usage including search and action buttons
 - [**Surveys**](/docs/documentation/client/surveys/access): How to access, use automations, and work with dynamic surveys
 - [**Tasks**](/docs/documentation/client/tasks/overview): Understanding task management and workflows
