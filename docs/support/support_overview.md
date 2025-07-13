@@ -7,18 +7,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/Support_and_help.svg')} />
 <br/>
 
-## We’re here to help {#were-here-to-help}
-
-We have two main ways for getting support or help on this page:
-- **Contact Forms:** For direct consultations, involving internal or private information and requirements, clients should use one of our [contact forms](#contacts).
-- **Documentation Repository:** For general discussions, administrators, implementors, and users in general, are invited to post their questions and share their solutions in our [Documentation Repository](#repository).
-
 :::tip
-- Answers for many topics can be found in the [**frequently asked questions**](/docs/getting_started/temp/faq).
 - You also might find answers in our documentation using the **search bar** in the top right corner.
 :::
 
-## Contact Forms {#contacts}
+<!-- ## Contact Forms {#contacts}
 _For direct messaging with our staff, check out the following contacts:_
 
 <div className="alert alert--secondary">
@@ -41,32 +34,25 @@ _For direct messaging with our staff, check out the following contacts:_
 [Contact Technical Team](/docs/support/technical)
 
 -------
+-->
 
-### Report a Bug {#report-a-bug}
+## Report a Bug {#report-a-bug}
+
+<div className="alert alert--secondary">
+
 * _Inconsistent behaviors_
 * _Documentation does not reflect reality_
 * _App crashes or freezes_
 * _API or subsystem not responding_
 
-[Contact Q&A Team](/docs/support/bug_report)
-
--------
-
-### Feature Requests {#feature-request}
-* _Ideas, features, and improvements_
-
-[Contact Product Team](/docs/support/feature_request)
-
--------
-
-### Report abuse {#report-abuse}
-_Please report any misuse of our platform [here](/docs/support/report_abuse), and we will be in touch with you shortly._
+**Contact our Support Team:** soporte@cotalker.com
 
 </div>
+
 <br/>
 
-## Documentation Repository {#repository}
-_Open discussions on all-things-Cotalker:_
+## For Implementation Partners {#implementation-partners}
+_Advanced resources for partners and implementers:_
 
 <div className="alert alert--secondary">
 
