@@ -1,6 +1,6 @@
 ---
-title: Basic Concepts / Glossary
-sidebar_label: Basic Concepts
+title: Essential Concepts / Glossary
+sidebar_label: Essential Concepts
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Tasks, {toc as Title1TOC} from '/docs/documentation/client/glossary/_task.mdx';

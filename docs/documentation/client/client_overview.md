@@ -27,7 +27,7 @@ For more in-depth information for administrators, please refer to the [Admin Doc
 
 ## Table of Contents {#table-of-contents}
 
-- [**Basic Concepts / Glossary**](/docs/documentation/client/basic_concepts): introductory notes on the fundamental concepts you will encounter in the Cotalker environment
+- [**Essential Concepts / Glossary**](/docs/documentation/client/basic_concepts): introductory notes on the fundamental concepts you will encounter in the Cotalker environment
 
 - **Accessing the Platform**:
   - [System Requirements](/docs/documentation/client/platform_access/system_requirements): minimum and recommended requirements for using Cotalker on your computer or mobile device.
