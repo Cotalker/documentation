@@ -1,13 +1,18 @@
 ---
-title: Overview
+title: Basic Overview
 sidebar_label: Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="design" className="img_sizing_small" src={useBaseUrl('img/design/overview.svg')} />
+<img alt="introduction" className="img_sizing item shadow--tl" src={useBaseUrl('img/intro_cotalker_00.png')} />
+<br/>
+
+<span className="hero__title">Welcome to Cotalker!</span>
 <br/>
 <br/>
+
+_This section covers the essential concepts and tools you need to get started with Cotalker._
 
 ## Introductory note {#intro}
 

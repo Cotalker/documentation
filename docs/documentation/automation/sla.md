@@ -2,6 +2,7 @@
 id: sla
 title: Adding an SLA Routine to your Workflow
 sidebar_label: SLA Routine
+displayed_sidebar: documentation
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

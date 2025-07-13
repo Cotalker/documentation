@@ -2,6 +2,7 @@
 id: admin_routine
 title: Routine Builder
 sidebar_label: Routine Builder
+displayed_sidebar: documentation
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Highlight from '@theme/Highlight';

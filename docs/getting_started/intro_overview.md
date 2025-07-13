@@ -6,15 +6,9 @@ sidebar_label: What is Cotalker?
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/getting_started.svg')} />
-<br/>
-
-## Cotalker is... {#cotalker-is}
-
 - a low-code platform that digitalizes and automates workflows for assets and fieldworkers. 
 - a cross-business areas solution, hosting different solutions in just one place.
 - easily adapted to any business, making it possible to digitalize any process.
-
 
 <div className="alert alert--secondary">
 

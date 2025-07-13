@@ -1,5 +1,5 @@
 ---
-title: Admin Basics
+title: Administrator Fundamentals
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

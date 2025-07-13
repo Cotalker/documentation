@@ -1,5 +1,6 @@
 module.exports = {
   getting_started: [
+    'getting_started/basic_overview',
     'getting_started/intro_overview',
     'documentation/client/basic_concepts',
     {
@@ -13,7 +14,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'User-Interface Basics',
+      label: 'Platform User Interface',
       collapsed: true,
       items: [
         'documentation/client/layout',
@@ -228,6 +229,16 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Automation Tools',
+      items: [
+        'documentation/automation/admin_routine',
+        'documentation/automation/existing_routines',
+        'documentation/automation/sla',
+      ],
+      collapsed: true,
+    },
+    {
+      type: 'category',
       label: 'COTLang Guide',
       link: {
         type: 'doc',
@@ -246,7 +257,6 @@ module.exports = {
       label: 'Special Configurations',
       items: [
         'documentation/admin/special_configurations/azure_config',
-        'documentation/admin/special_configurations/branding',
       ],
       collapsed: true,
     },
@@ -312,6 +322,24 @@ module.exports = {
 
   // ],
   developer: [
+    'developer/developer_overview',
+    {
+      type: 'category',
+      label: 'DevTools',
+      collapsed: true,
+      items: [
+        'documentation/automation/code_editor',
+        {
+          type: 'category',
+          label: 'Survey Automations',
+          items: [
+            'documentation/automation/surveys/question_exec',
+            'documentation/automation/surveys/survey_editable_code',
+            'documentation/automation/surveys/survey_hidden_code',
+          ]
+        },
+      ]
+    },
     {
       type: 'category',
       label: 'API Reference',
@@ -515,26 +543,7 @@ module.exports = {
         'documentation/sql_bi/model',
       ]
     },
-    {
-      type: 'category',
-      label: 'Automation Tools',
-      collapsed: true,
-      items: [
-        'documentation/automation/code_editor',
-        'documentation/automation/admin_routine',
-        'documentation/automation/existing_routines',
-        {
-          type: 'category',
-          label: 'Survey Automations',
-          items: [
-            'documentation/automation/surveys/question_exec',
-            'documentation/automation/surveys/survey_editable_code',
-            'documentation/automation/surveys/survey_hidden_code',
-          ]
-        },
-        'documentation/automation/sla',
-      ]
-    }
+    'documentation/admin/special_configurations/branding',
   ],
   support: [
     'support/support_overview',

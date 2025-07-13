@@ -1,5 +1,5 @@
 ---
-title: Admin Docs Overview
+title: Advanced Overview
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
@@ -7,22 +7,21 @@ import Highlight from '@theme/Highlight';
 <img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/Documentation.svg')} />
 <br/>
 
-<span className="hero__title">Welcome Admins!</span>
+<span className="hero__title">Welcome Power Users!</span>
 <br/>
 <br/>
 
 _If you're an admin and looking for information on how to use this documentation, you've come to the right place._
 
-The _Admin Docs_ are the core of the [**Cotalker Technical Documentation**](https://doc.cotalker.com).
-
 <div className="alert alert--primary">
 
-The _Admin Docs_ include:
+The _Advanced Docs_ include:
 
-- [**Admin Basics**](/docs/documentation/admin_basic_concepts)
+- [**Administrator Fundamentals**](/docs/documentation/admin_basic_concepts)
 - [**Administrative Panel**](/docs/documentation/admin/admin_overview): Descriptions of the administrative panel configuration settings.
-- [**Automations**](/docs/documentation/automation/overview): In-depth process automation guide .
-- [**BI & SQL**](/docs/documentation/sql_bi/overview): Business Intelligence & SQL tools guide for admins.
+- [**Automation Tools**](/docs/documentation/automation/admin_routine): Routine builder, stage types, and SLA routines.
+- [**COTLang Guide**](/docs/documentation/automation/cotlang/triggers_and_contexts): Programming language for advanced automation and customization.
+- [**Special Configurations**](/docs/documentation/admin/special_configurations/azure_config): Advanced system configurations and integrations.
 
 </div>
 <br/>
@@ -30,9 +29,8 @@ The _Admin Docs_ include:
 
 You might also want to visit these other sections:
 
-- [**Getting Started**](/docs/getting_started/intro_overview): Platform basics
-- [**What's New**](/blog): Latest features and updates
-- [**API**](/docs/documentation/api/overview_api): API reference guide for admins and developers, complete with descriptions and examples.
-- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/cotlang/triggers_and_contexts#context-language) when extracting data.
-- [**Tutorials**](/docs/tutorials/tutorial_overview): Real-life examples
-- [**Support & Help**](/docs/support/support_overview): Contacts and other useful resources
+- [**Essential Concepts**](/docs/documentation/client/basic_concepts): Fundamental concepts and vocabulary used in the Cotalker environment
+- [**Basic Tools**](/docs/documentation/client/actions_button): Essential tools for daily platform usage
+- [**Automation Tools**](/docs/documentation/automation/admin_routine): Routine builder, stage types, and SLA routines
+- [**API Reference**](/docs/documentation/api/overview_api): API reference guide for admins and developers, complete with descriptions and examples.
+- [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker. Useful for working with [API Reference](/docs/documentation/api/overview_api) tools and understanding [contexts](/docs/documentation/automation/cotlang/triggers_and_contexts#context-language) when extracting data.

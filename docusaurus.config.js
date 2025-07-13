@@ -37,21 +37,94 @@ module.exports = {
         //   position: 'left',
         // },
         {
-          to: 'docs/getting_started/intro_overview',
+          type: 'dropdown',
           label: 'Basic',
           position: 'left',
+          className: 'basic-dropdown',
+          to: 'docs/getting_started/basic_overview',
+          items: [
+            {
+              to: 'docs/getting_started/intro_overview',
+              label: 'What is Cotalker?',
+            },
+            {
+              to: 'docs/documentation/client/basic_concepts',
+              label: 'Essential Concepts',
+            },
+            {
+              to: 'docs/documentation/client/platform_access/system_requirements',
+              label: 'Accessing the Platform',
+            },
+            {
+              to: 'docs/documentation/client/layout',
+              label: 'Platform User Interface',
+            },
+            {
+              to: 'docs/documentation/client/client_search',
+              label: 'Basic Tools',
+            },
+            {
+              to: 'docs/documentation/client/surveys/access',
+              label: 'Surveys',
+            },
+            {
+              to: 'docs/documentation/client/tasks/overview',
+              label: 'Tasks',
+            },
+            {
+              to: 'docs/documentation/client/database',
+              label: 'Database',
+            },
+            {
+              to: 'docs/documentation/client/dashboard',
+              label: 'Dashboard',
+            },
+            {
+              to: 'docs/documentation/client/reports',
+              label: 'Reports',
+            },
+          ],
         },      
         {
-          to: 'docs/documentation/documentation_overview',
+          type: 'dropdown',
           label: 'Advanced',
           position: 'left',
+          className: 'advanced-dropdown',
+          to: 'docs/documentation/documentation_overview',
+          items: [
+            {
+              to: 'docs/documentation/admin_basic_concepts',
+              label: 'Administrator Fundamentals',
+            },
+            {
+              to: 'docs/documentation/admin/admin_overview',
+              label: 'Administrative Panel',
+            },
+            {
+              to: 'docs/documentation/automation/admin_routine',
+              label: 'Automation Tools',
+            },
+            {
+              to: 'docs/documentation/automation/cotlang/triggers_and_contexts',
+              label: 'COTLang Guide',
+            },
+            {
+              to: 'docs/documentation/admin/special_configurations/azure_config',
+              label: 'Special Configurations',
+            },
+          ],
         },
         {
           type: 'dropdown',
           label: 'Developer',
           position: 'left',
           className: 'developer-dropdown',
+          to: 'docs/developer/developer_overview',
           items: [
+            {
+              to: 'docs/documentation/automation/code_editor',
+              label: 'DevTools',
+            },
             {
               to: 'docs/documentation/api/overview_api',
               label: 'API Reference',
@@ -65,8 +138,8 @@ module.exports = {
               label: 'BI & SQL',
             },
             {
-              to: 'docs/documentation/automation/code_editor',
-              label: 'Automation Tools',
+              to: 'docs/documentation/admin/special_configurations/branding',
+              label: 'Branding Settings',
             },
           ],
         },
