@@ -180,28 +180,119 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'General',
+          title: 'Basic',
           items: [
             {
-              label: 'Cotalker',
-              to: 'https://www.cotalker.com',
+              label: 'What is Cotalker?',
+              to: 'docs/getting_started/intro_overview',
+            },
+            {
+              label: 'Essential Concepts',
+              to: 'docs/documentation/client/basic_concepts',
+            },
+            {
+              label: 'Platform Access',
+              to: 'docs/documentation/client/platform_access/system_requirements',
+            },
+            {
+              label: 'User Interface',
+              to: 'docs/documentation/client/layout',
+            },
+            {
+              label: 'Basic Tools',
+              to: 'docs/documentation/client/client_search',
+            },
+            {
+              label: 'Surveys',
+              to: 'docs/documentation/client/surveys/access',
             },
           ],
         },
         {
-          title: 'Clients',
+          title: 'Advanced',
           items: [
             {
-              label: 'Web Client',
-              to: 'https://web.cotalker.com',
+              label: 'Administrator Fundamentals',
+              to: 'docs/documentation/admin_basic_concepts',
             },
             {
-              label: 'Android', 
-              to: 'https://play.google.com/store/apps/details?id=com.cotalker.universal'
+              label: 'Administrative Panel',
+              to: 'docs/documentation/admin/admin_overview',
             },
             {
-              label: 'iOS', 
-              to: 'https://apps.apple.com/app/cotalker/id1525633301'
+              label: 'Automation Tools',
+              to: 'docs/documentation/automation/admin_routine',
+            },
+            {
+              label: 'COTLang Guide',
+              to: 'docs/documentation/automation/cotlang/triggers_and_contexts',
+            },
+            {
+              label: 'Special Configurations',
+              to: 'docs/documentation/admin/special_configurations/azure_config',
+            },
+          ],
+        },
+        {
+          title: 'Developer',
+          items: [
+            {
+              label: 'DevTools',
+              to: 'docs/documentation/automation/code_editor',
+            },
+            {
+              label: 'API Reference',
+              to: 'docs/documentation/api/overview_api',
+            },
+            {
+              label: 'Data Models',
+              to: 'docs/documentation/models/overview_model',
+            },
+            {
+              label: 'BI & SQL',
+              to: 'docs/documentation/sql_bi/overview',
+            },
+            {
+              label: 'Branding Settings',
+              to: 'docs/documentation/admin/special_configurations/branding',
+            },
+          ],
+        },
+        {
+          title: 'Support',
+          items: [
+            {
+              label: 'Report a Bug',
+              to: 'docs/support/support_overview',
+            },
+            {
+              label: 'Implementation Partners',
+              to: 'docs/support/support_overview#implementation-partners',
+            },
+            {
+              label: 'soporte@cotalker.com',
+              href: 'mailto:soporte@cotalker.com',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Cotalker Website',
+              href: 'https://www.cotalker.com',
+            },
+            {
+              label: 'Web Platform',
+              href: 'https://web.cotalker.com',
+            },
+            {
+              label: 'Android App',
+              href: 'https://play.google.com/store/apps/details?id=com.cotalker.universal'
+            },
+            {
+              label: 'iOS App',
+              href: 'https://apps.apple.com/app/cotalker/id1525633301'
             }
           ],
         },
@@ -218,6 +309,7 @@ module.exports = {
           editUrl:
             'https://github.com/Cotalker/documentation/tree/main/',
           sidebarCollapsible: true,
+          sidebarCollapsed: false,
           breadcrumbs: false,
         },
         theme: {
