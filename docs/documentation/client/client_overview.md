@@ -38,8 +38,8 @@ For more in-depth information for administrators, please refer to the [Admin Doc
   - [System Requirements](/docs/documentation/client/platform_access/system_requirements): minimum and recommended requirements for using Cotalker on your computer or mobile device.
   - [Logging In](/docs/documentation/client/platform_access/first_steps): standard procedures for logging into the different platform versions: web client, Android, and iOS.
 
-- **User-Interface Basics**
-  - [User-Interface Layout](/docs/documentation/client/layout): overview of platform seccions: Main Menu, Tool Bar, Groups Panel, and Channel Workspace
+- **Platform User Interface**
+      - [User Interface Layout](/docs/documentation/client/layout): overview of platform seccions: Main Menu, Tool Bar, Groups Panel, and Channel Workspace
   - [Main Menu Bar](/docs/documentation/client/main_menu): general description of the options available on the main menu
   - [Tool Bar](/docs/documentation/client/tool_bar): overview of search tool and contact button
   - [Groups](/docs/documentation/client/groups): explanation of groups, group types, and the tools found in group panel.
