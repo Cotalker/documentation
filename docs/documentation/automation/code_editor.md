@@ -1,5 +1,6 @@
 ---
 title: Embedded Code Editor
+displayed_sidebar: developer
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl'; 

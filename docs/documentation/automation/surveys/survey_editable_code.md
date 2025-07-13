@@ -1,7 +1,7 @@
 ---
 title: Developer Mode Survey Editability
 sidebar_label: Developer Mode Editability
-displayed_sidebar: documentation
+displayed_sidebar: developer
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
