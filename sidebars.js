@@ -1,119 +1,54 @@
 module.exports = {
   getting_started: [
     'getting_started/intro_overview',
-    'getting_started/doc_guide',
+    'documentation/client/basic_concepts',
     {
       type: 'category',
-      label: 'The Basics',
-      items: [
-        'documentation/client/client_overview',
-        'documentation/client/basic_concepts',
-        {
-          type: 'category',
-          label: 'Accessing the Platform',
-          collapsed: true,
-          items: [
-            'documentation/client/platform_access/system_requirements',
-            'documentation/client/platform_access/first_steps',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'User-Interface Basics',
-          items: [
-            'documentation/client/layout',
-            'documentation/client/main_menu',
-            'documentation/client/tool_bar',
-            'documentation/client/groups',
-            'documentation/client/channels'
-          ],
-          collapsed: true,
-        },
-        {
-          type: 'category',
-          label: 'Basic Tools',
-          items: [
-            'documentation/client/client_search',
-            'documentation/client/actions_button',
-            {
-              type: 'category',
-              label: 'Surveys',
-              link: {
-                type: 'doc',
-                id: 'documentation/client/surveys/overview'
-              },
-              items: [
-                'documentation/client/surveys/access',
-                'documentation/client/surveys/automations',
-                'documentation/client/surveys/dynamic',
-                'documentation/client/surveys/location',
-                'documentation/client/surveys/bulkloader',
-              ]
-            },
-            {
-              type: 'category',
-              label: 'Tasks',
-              link: {
-                type: 'doc',
-                id: 'documentation/client/tasks/overview',
-              },
-              items: [
-                'documentation/client/tasks/access_task',
-                {
-                  type: 'category',
-                  label: 'User Interface',
-                  items: [
-                    'documentation/client/tasks/taskview',
-                    'documentation/client/tasks/group_view',
-                    {
-                      type: 'category',
-                      label: 'Task Workspace',
-                      link: {
-                        type: 'doc',
-                        id: 'documentation/client/tasks/task_workspace',
-                      },
-                      items: [
-                        'documentation/client/tasks/task_notes',
-                        'documentation/client/tasks/task_chat',
-                        'documentation/client/tasks/task_details'
-                      ],
-                      collapsed: true
-                    },
-                  ],
-                  collapsed: true
-                },
-                {
-                  type: 'category',
-                  label: 'How-To',
-                  items: [
-                    'documentation/client/tasks/create_task',
-                    'documentation/client/tasks/update_task',
-                    'documentation/client/tasks/filter_tasks'
-                  ],
-                  collapsed: true
-                },
-              ]
-            },
-            'documentation/client/database',
-            'documentation/client/dashboard',
-            'documentation/client/reports',
-            {
-              type: 'category',
-              label: 'Notes',
-              items: [
-                'documentation/client/notes',
-                'documentation/client/notes_markdown',
-              ],
-              collapsed: true,
-            },
-          ],
-          collapsed: true,
-        },
-        'documentation/client/offline',
-      ],
+      label: 'Accessing the Platform',
       collapsed: true,
+      items: [
+        'documentation/client/platform_access/system_requirements',
+        'documentation/client/platform_access/first_steps',
+      ]
     },
-    'getting_started/support',
+    {
+      type: 'category',
+      label: 'User-Interface Basics',
+      collapsed: true,
+      items: [
+        'documentation/client/layout',
+        'documentation/client/main_menu',
+        'documentation/client/tool_bar',
+        'documentation/client/groups',
+        'documentation/client/channels'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Basic Tools',
+      collapsed: true,
+      items: [
+        'documentation/client/client_search',
+        'documentation/client/actions_button',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Surveys',
+      collapsed: true,
+      items: [
+        'documentation/client/surveys/access',
+        'documentation/client/surveys/automations',
+        'documentation/client/surveys/dynamic',
+        'documentation/client/surveys/location',
+        'documentation/client/surveys/bulkloader',
+      ]
+    },
+    'documentation/client/tasks/overview',
+    'documentation/client/database',
+    'documentation/client/dashboard',
+    'documentation/client/reports',
+    'documentation/client/notes',
   ],
   documentation: [
     'documentation/documentation_overview',
@@ -293,51 +228,19 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Automation Tools',
+      label: 'COTLang Guide',
+      link: {
+        type: 'doc',
+        id: 'documentation/automation/cotlang/admin_cotlang'
+      },
       items: [
-        {
-          type: 'category',
-          label: 'COTLang Guide',
-          link: {
-            type: 'doc',
-            id: 'documentation/automation/cotlang/admin_cotlang'
-          },
-          items: [
-            'documentation/automation/cotlang/cotlang_guide',
-            'documentation/automation/cotlang/triggers_and_contexts',
-            'documentation/automation/cotlang/extract_survey_element'
-          ],
-          collapsed: true,
-          collapsible: true
-        },
-        ,
-        'documentation/automation/code_editor',
-        'documentation/automation/admin_routine',
-        'documentation/automation/existing_routines',
-        {
-          type: 'category',
-          label: 'Survey Automations',
-          items: [
-            'documentation/automation/surveys/question_exec',
-            'documentation/automation/surveys/survey_editable_code',
-            'documentation/automation/surveys/survey_hidden_code',
-          ]
-        },
-        //'documentation/automation/scheduling',
-        'documentation/automation/sla',
-        
+        'documentation/automation/cotlang/cotlang_guide',
+        'documentation/automation/cotlang/triggers_and_contexts',
+        'documentation/automation/cotlang/extract_survey_element'
       ],
       collapsed: true,
     },
-    {
-      type: 'category',
-      label: 'BI & SQL',
-      items: [
-        'documentation/sql_bi/overview',
-        'documentation/sql_bi/model',
-      ],
-      collapsed: true,
-    },
+
     {
       type: 'category',
       label: 'Special Configurations',
@@ -408,180 +311,230 @@ module.exports = {
   //   },
 
   // ],
-  api: [
-    'documentation/api/overview_api',
-    'documentation/api/auth',
+  developer: [
     {
       type: 'category',
-      label: 'Automations',
-      items: [
-        'documentation/api/automations/bots',
-        'documentation/api/automations/scheduler',
-        'documentation/api/automations/pbscripts',
-        'documentation/api/automations/webhooks',
-      ],
+      label: 'API Reference',
+      link: {
+        type: 'doc',
+        id: 'documentation/api/overview_api',
+      },
       collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Company & Users',
       items: [
-        'documentation/api/company',
-        'documentation/api/users/users',
-        'documentation/api/users/accessroles',
-        'documentation/api/users/jobtitles',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Database',
-      items: [
-        'documentation/api/databases/property_types',
-        'documentation/api/databases/properties',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Groups & Messages',
-      items: [
-        'documentation/api/communication/channels',
-        'documentation/api/communication/messages',
-        'documentation/api/communication/groups',
-        'documentation/api/communication/files',
-      ],
-      collapsed: true,
-    },
-    'documentation/api/notes/notes',
-    'documentation/api/search',
-    {
-      type: 'category',
-      label: 'Survey Forms',
-      items: [
-        'documentation/api/surveys/surveys',
-        'documentation/api/surveys/survey_chats',
-        'documentation/api/surveys/questions',
-        'documentation/api/surveys/answers',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: 'Workflows & Tasks',
-      items: [
-        'documentation/api/tasks/tasks',
-        'documentation/api/tasks/tasks-v1',
-        'documentation/api/tasks/statemachines',
-      ],
-      collapsed: true,
-    }
-  ],
-  models: [
-    'documentation/models/overview_model',
-    {
-      type: 'category',
-      label: '1. Company & Users',
-      items: [
+        'documentation/api/auth',
         {
           type: 'category',
-          label: 'COTCompany',
-          link: {
-            type: 'doc',
-            id: 'documentation/models/company/model_company',
-          },
+          label: 'Automations',
           items: [
-            'documentation/models/company/company_branding',
-            'documentation/models/company/company_searchengine'
-          ],
-          collapsed: true
-        },
-        
-        'documentation/models/users/model_users',
-        'documentation/models/users/model_jobtitles',
-        'documentation/models/users/model_accessroles',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: '2. Groups & Messages',
-      items: [
-        'documentation/models/communication/model_channels',
-        'documentation/models/communication/model_groups',
-        'documentation/models/communication/model_messages',
-        'documentation/models/communication/model_messageContent',
-        'documentation/models/communication/file',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: '3. Survey Forms',
-      items: [
-        'documentation/models/surveys/model_answers',
-        'documentation/models/surveys/model_answer_data',
-        'documentation/models/surveys/model_questions',
-        'documentation/models/surveys/model_questionContentType',
-        'documentation/models/surveys/model_questionExec',
-        'documentation/models/surveys/model_surveys',
-        'documentation/models/surveys/model_surveychats',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: '4. Database',
-      items: [
-        'documentation/models/databases/model_properties',
-        'documentation/models/databases/model_propertytypes',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: '5. Tasks & Workflows',
-      items: [
-        'documentation/models/tasks/model_sla',
-        'documentation/models/tasks/model_state',
-        'documentation/models/tasks/model_statemachine',
-        'documentation/models/tasks/model_tasks',
-        'documentation/models/tasks/model_taskgroup',
-      ],
-      collapsed: true,
-    },
-    {
-      type: 'category',
-      label: '6. Automations',
-      items: [
-        'documentation/models/automations/model_bots',
-        'documentation/models/automations/model_parametrizedbot',
-        'documentation/models/automations/model_pbscripts',
-        'documentation/models/automations/model_scheduler',
-        {
-          type: 'category',
-          label: 'Webhooks',
-          items: [
-            'documentation/models/webhooks/event',
-            'documentation/models/webhooks/survey_execution',
-            'documentation/models/webhooks/webhook',
-            'documentation/models/webhooks/webhooklog',
+            'documentation/api/automations/bots',
+            'documentation/api/automations/scheduler',
+            'documentation/api/automations/pbscripts',
+            'documentation/api/automations/webhooks',
           ],
           collapsed: true,
         },
-      ],
-      collapsed: true,
+        {
+          type: 'category',
+          label: 'Company & Users',
+          items: [
+            'documentation/api/company',
+            'documentation/api/users/users',
+            'documentation/api/users/accessroles',
+            'documentation/api/users/jobtitles',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Database',
+          items: [
+            'documentation/api/databases/property_types',
+            'documentation/api/databases/properties',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Groups & Messages',
+          items: [
+            'documentation/api/communication/channels',
+            'documentation/api/communication/messages',
+            'documentation/api/communication/groups',
+            'documentation/api/communication/files',
+          ],
+          collapsed: true,
+        },
+        'documentation/api/notes/notes',
+        'documentation/api/search',
+        {
+          type: 'category',
+          label: 'Survey Forms',
+          items: [
+            'documentation/api/surveys/surveys',
+            'documentation/api/surveys/survey_chats',
+            'documentation/api/surveys/questions',
+            'documentation/api/surveys/answers',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: 'Workflows & Tasks',
+          items: [
+            'documentation/api/tasks/tasks',
+            'documentation/api/tasks/tasks-v1',
+            'documentation/api/tasks/statemachines',
+          ],
+          collapsed: true,
+        }
+      ]
     },
     {
       type: 'category',
-      label: '7. Search',
-      items: [
-        'documentation/models/search/searchengine',
-        'documentation/models/search/searchresult'
-      ],
+      label: 'Data Models',
+      link: {
+        type: 'doc',
+        id: 'documentation/models/overview_model',
+      },
       collapsed: true,
+      items: [
+        {
+          type: 'category',
+          label: '1. Company & Users',
+          items: [
+            {
+              type: 'category',
+              label: 'COTCompany',
+              link: {
+                type: 'doc',
+                id: 'documentation/models/company/model_company',
+              },
+              items: [
+                'documentation/models/company/company_branding',
+                'documentation/models/company/company_searchengine'
+              ],
+              collapsed: true
+            },
+            
+            'documentation/models/users/model_users',
+            'documentation/models/users/model_jobtitles',
+            'documentation/models/users/model_accessroles',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: '2. Groups & Messages',
+          items: [
+            'documentation/models/communication/model_channels',
+            'documentation/models/communication/model_groups',
+            'documentation/models/communication/model_messages',
+            'documentation/models/communication/model_messageContent',
+            'documentation/models/communication/file',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: '3. Survey Forms',
+          items: [
+            'documentation/models/surveys/model_answers',
+            'documentation/models/surveys/model_answer_data',
+            'documentation/models/surveys/model_questions',
+            'documentation/models/surveys/model_questionContentType',
+            'documentation/models/surveys/model_questionExec',
+            'documentation/models/surveys/model_surveys',
+            'documentation/models/surveys/model_surveychats',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: '4. Database',
+          items: [
+            'documentation/models/databases/model_properties',
+            'documentation/models/databases/model_propertytypes',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: '5. Tasks & Workflows',
+          items: [
+            'documentation/models/tasks/model_sla',
+            'documentation/models/tasks/model_state',
+            'documentation/models/tasks/model_statemachine',
+            'documentation/models/tasks/model_tasks',
+            'documentation/models/tasks/model_taskgroup',
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: '6. Automations',
+          items: [
+            'documentation/models/automations/model_bots',
+            'documentation/models/automations/model_parametrizedbot',
+            'documentation/models/automations/model_pbscripts',
+            'documentation/models/automations/model_scheduler',
+            {
+              type: 'category',
+              label: 'Webhooks',
+              items: [
+                'documentation/models/webhooks/event',
+                'documentation/models/webhooks/survey_execution',
+                'documentation/models/webhooks/webhook',
+                'documentation/models/webhooks/webhooklog',
+              ],
+              collapsed: true,
+            },
+          ],
+          collapsed: true,
+        },
+        {
+          type: 'category',
+          label: '7. Search',
+          items: [
+            'documentation/models/search/searchengine',
+            'documentation/models/search/searchresult'
+          ],
+          collapsed: true,
+        },
+        'documentation/models/notes/model_notes'
+      ]
     },
-    'documentation/models/notes/model_notes'
+    {
+      type: 'category',
+      label: 'BI & SQL',
+      link: {
+        type: 'doc',
+        id: 'documentation/sql_bi/overview',
+      },
+      collapsed: true,
+      items: [
+        'documentation/sql_bi/model',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Automation Tools',
+      collapsed: true,
+      items: [
+        'documentation/automation/code_editor',
+        'documentation/automation/admin_routine',
+        'documentation/automation/existing_routines',
+        {
+          type: 'category',
+          label: 'Survey Automations',
+          items: [
+            'documentation/automation/surveys/question_exec',
+            'documentation/automation/surveys/survey_editable_code',
+            'documentation/automation/surveys/survey_hidden_code',
+          ]
+        },
+        'documentation/automation/sla',
+      ]
+    }
   ],
   support: [
     'support/support_overview',

@@ -60,6 +60,14 @@ module.exports = {
               to: 'docs/documentation/models/overview_model',
               label: 'Data Models',
             },
+            {
+              to: 'docs/documentation/sql_bi/overview',
+              label: 'BI & SQL',
+            },
+            {
+              to: 'docs/documentation/automation/code_editor',
+              label: 'Automation Tools',
+            },
           ],
         },
         // {
