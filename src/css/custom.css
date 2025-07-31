@@ -578,3 +578,7 @@ code { font-family: Fira Code, monospace; }
 .cardContainer_qNfC:hover p {
   color: var(--ifm-font-color-base);
 }
+
+.img_format {
+  border-radius: 6px;
+}

@@ -16,7 +16,7 @@ import Highlight from '@theme/Highlight';
 
 _Assign tasks, follow workflows, fill out forms, chat, share files, automate triggered events, and much more._
 
-<img alt="introduction" className="img_sizing item shadow--tl" src={useBaseUrl('img/intro_cotalker_00.png')} />
+<img alt="introduction" className="img_format item shadow--tl" src={useBaseUrl('img/intro_cotalker_00.png')} />
 <br/>
 
 </div>

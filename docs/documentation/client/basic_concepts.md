@@ -51,7 +51,7 @@ The [channel workspace](/docs/documentation/client/channels) is a frontend for i
 In channels associated with tasks, you can view and change a task's state or status, assign users and determine deadlines.
 
 _Channel with messages and file sharing:_
-<img alt="chat messages" className="img_sizing item shadow--tl" src={useBaseUrl('img/concepts_chat_00.png')} />
+<img alt="chat messages" className="img_format item shadow--tl" src={useBaseUrl('img/concepts_chat_00.png')} />
 <br/>
 <br/>
 
