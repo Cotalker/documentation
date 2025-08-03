@@ -22,7 +22,7 @@ The _Developer Docs_ include:
 - [**API Reference**](/docs/documentation/api/overview_api): Complete API reference guide with descriptions and examples for all endpoints
 - [**Data Models**](/docs/documentation/models/overview_model): Description of data models used in Cotalker, useful for API integration and data extraction
 - [**BI & SQL**](/docs/documentation/sql_bi/overview): Business Intelligence tools and SQL query capabilities
-- [**Branding Settings**](/docs/documentation/admin/special_configurations/branding_settings): Customization options for branding and visual identity
+- [**Branding Settings**](/docs/documentation/admin/special_configurations/branding): Customization options for branding and visual identity
 
 </div>
 <br/>

@@ -1,21 +1,21 @@
 {
-  "Learn how to setup Workflows": {
-    "message": "Aprende como configurar Flujos de Trabajo"
+  "Basic": {
+    "message": "Básico"
   },
-  "Workflows are a central piece in the automation of your company. Create a simple Project Manager.": {
-    "message": "Los Flujos de Trabajo son una pieza central en la automatización de tu empresa. Crea un Administrador de Proyectos simple (.git)"
+  "End users who navigate workflows, manage and execute tasks, respond to forms, or perform field operations": {
+    "message": "Usuarios finales que navegan flujos de trabajo, gestionan y ejecutan tareas, responden formularios o realizan operaciones de campo"
   },
-  "Get to know the tools": {
-    "message": "Familiarízate con las Herramientas"
+  "Advanced": {
+    "message": "Avanzado"
   },
-  "Learn how to create and manage users, workflows, survey forms, access roles, database elements, and more using Cotalker's UI or through the API.": {
-    "message": "Aprende como crear usuarios como estados de máquina utilizando Cotalker a través de su interfaz gráfico o también comandos API."
+  "Power users who can manage users, permissions and roles, create end-to-end workflows, routines, automations, build forms and model their own data collections": {
+    "message": "Usuarios avanzados que pueden gestionar usuarios, permisos y roles, crear flujos de trabajo completos, rutinas, automatizaciones, construir formularios y modelar sus propias colecciones de datos"
   },
-  "Become a Cotalker Admin": {
-    "message": "Conviértete en un Administrador Cotalker"
+  "Developer": {
+    "message": "Desarrollador"
   },
-  "Learn to configure and extend Cotalker's capacities. Get certified as an Administrator.": {
-    "message": "Aprende a configurar y extender Cotalker y certifícate como Administrador."
+  "The user who implements advanced network calls and custom code in workflows, developing middlewares to execute complex functions and specific integrations.": {
+    "message": "El usuario que implementa llamadas de red avanzadas y código personalizado en flujos de trabajo, desarrollando middlewares para ejecutar funciones complejas e integraciones específicas."
   },
   "Get Started": {
     "message": "Comienza Aquí"
@@ -183,7 +183,7 @@
   "Cotalker Technical Documentation": {
     "message": "Documentación Técnica de Cotalker"
   },
-  "Products, Tutorials, Admin, API and Support": {
-    "message": "Productos, Tutoriales, Admin, API y Soporte"
+  "Cotalker Documentation": {
+    "message": "Documentación de Cotalker"
   }
 }

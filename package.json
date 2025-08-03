@@ -14,7 +14,6 @@
     "create-translations": "zx tools/script.mjs"
   },
   "dependencies": {
-    "@cmfcmf/docusaurus-search-local": "^1.2.0",
     "@docusaurus/core": "^2.4.3",
     "@docusaurus/plugin-content-docs": "^2.4.3",
     "@docusaurus/preset-classic": "^2.4.3",
@@ -22,6 +21,7 @@
     "@docusaurus/theme-mermaid": "^2.4.3",
     "@docusaurus/theme-translations": "^2.4.3",
     "classnames": "^2.3.2",
+    "docusaurus-lunr-search": "^3.6.0",
     "zx": "^7.0.7"
   },
   "browserslist": {
