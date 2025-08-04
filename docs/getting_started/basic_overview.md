@@ -1,14 +1,9 @@
 ---
-title: Basic Overview
+title: Welcome to Cotalker!
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-<img alt="title image" className="img_title" src={useBaseUrl('img/design/title_pages/getting_started.svg')} />
-<br/>
-
-<span className="hero__title">Welcome to Cotalker!</span>
-<br/>
 <br/>
 
 _If you're new to Cotalker and looking for information on how to get started, you've come to the right place._

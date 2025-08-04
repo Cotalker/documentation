@@ -1,5 +1,5 @@
 module.exports = {
-  getting_started: [
+  getting_started: [  // Basic 
     'getting_started/basic_overview',
     'getting_started/intro_overview',
     'documentation/client/basic_concepts',
@@ -45,13 +45,57 @@ module.exports = {
         'documentation/client/surveys/bulkloader',
       ]
     },
+    {
+      type: 'category',
+      label: 'Tasks',
+      link: {
+        type: 'doc',
+        id: 'documentation/client/tasks/overview',
+      },
+      items: [
+        'documentation/client/tasks/access_task',
+        {
+          type: 'category',
+          label: 'User Interface',
+          items: [
+            'documentation/client/tasks/taskview',
+            'documentation/client/tasks/group_view',
+            {
+              type: 'category',
+              label: 'Task Workspace',
+              link: {
+                type: 'doc',
+                id: 'documentation/client/tasks/task_workspace',
+              },
+              items: [
+                'documentation/client/tasks/task_notes',
+                'documentation/client/tasks/task_chat',
+                'documentation/client/tasks/task_details'
+              ],
+              collapsed: true
+            },
+          ],
+          collapsed: true
+        },
+        {
+          type: 'category',
+          label: 'How-To',
+          items: [
+            'documentation/client/tasks/create_task',
+            'documentation/client/tasks/update_task',
+            'documentation/client/tasks/filter_tasks'
+          ],
+          collapsed: true
+        },
+      ]
+    },
     'documentation/client/tasks/overview',
     'documentation/client/database',
     'documentation/client/dashboard',
     'documentation/client/reports',
     'documentation/client/notes',
   ],
-  documentation: [
+  documentation: [ // Advanced Concepts
     'documentation/documentation_overview',
     'documentation/admin_basic_concepts',
     {
@@ -304,24 +348,7 @@ module.exports = {
       collapsed: false,
     }
   ],
-  // certification: [
-  //   'certification/certification_overview',
-  //   {
-  //     type: 'category',
-  //     label: '[1.a] Basic Admin',
-  //     items: [
-  //       'certification/basic_admin/certification_admin_ws1',
-  //       'certification/basic_admin/certification_admin_ws2',
-  //       'certification/basic_admin/certification_admin_ws3',
-  //       'certification/basic_admin/certification_admin_ws4',
-  //       'certification/basic_admin/certification_admin_ws5',
-  //       'certification/basic_admin/certification_admin_ws6'
-  //     ],
-  //     collapsed: true,
-  //   },
-
-  // ],
-  developer: [
+  developer: [ // Developer
     'developer/developer_overview',
     {
       type: 'category',
@@ -545,7 +572,7 @@ module.exports = {
     },
     'documentation/admin/special_configurations/branding',
   ],
-  support: [
+  support: [ // Support
     'support/support_overview',
     // 'support/commercial',
     // 'support/technical',
