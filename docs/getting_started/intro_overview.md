@@ -6,9 +6,9 @@ sidebar_label: What is Cotalker?
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';
 
-- a low-code platform that digitalizes and automates workflows for assets and fieldworkers. 
-- a cross-business areas solution, hosting different solutions in just one place.
-- easily adapted to any business, making it possible to digitalize any process.
+- A SAAS platform for automation and digitalization that solves productivity, traceability and efficiency challenges through continuous transformation.
+- A product that consistently evolves and improves while maintaining a simple interface that supports complex business rules.
+- Enables organizations to continuously transform their processes and workflows.
 
 <div className="alert alert--secondary">
 
@@ -16,7 +16,7 @@ import Highlight from '@theme/Highlight';
 
 _Assign tasks, follow workflows, fill out forms, chat, share files, automate triggered events, and much more._
 
-<img alt="introduction" className="img_format item shadow--tl" src={useBaseUrl('img/intro_cotalker_00.png')} />
+<img alt="introduction" className="img_format item" src={useBaseUrl('img/intro_cotalker_00.png')} />
 <br/>
 
 </div>
@@ -65,21 +65,6 @@ Furthermore, there are different ways to manage, control, and view the data – 
 
 </div>
 <br/>
-
-## Solutions {#solutions}
-
-Cotalker provides three sets of solutions – divided into workflows – that are highly correlated with each other:
-- **Mobility**: Get in control of fieldwork with Cotalker's workflows. 
-- **Collaboration Tools**: Configure a Workplace for your company's workers. 
-- **Knowledge Management**: Focus on obtaining all the information dispersed among workers and transforming it into an asset for your company, even reaching final customers.
-
-Some of the solutions that Cotalker provides to its clients are:
-- Internal Helpdesk: databank using a knowledge base.
-- Support Tickets: ticket raising using workflows.
-- SLA management: automatically and through conversations.
-- Corrective Maintenace: forms that work offline and automatic notifications.
-- Preventive Maintenance: manage and automate work orders.
-- Applicant Tracking System: Follow up and share applicant information for job openings.
 
 For more information about our solutions, visit [www.cotalker.com](https://cotalker.com).
 

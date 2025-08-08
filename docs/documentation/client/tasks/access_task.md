@@ -67,29 +67,10 @@ Depending on its configuration, you can choose a _task_ either from the [**task 
 
 </div>
 
-:::note
-Task view displays vary depending on the configuration. See [Task Views](/docs/documentation/client/tasks/taskview) for more details.
-:::
-
----
-
-### Choose a Task from the Group Panel {#group-panel}
-
-<img alt="taskview" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_access_03.png')} />
-<br/>
-
-<div className="margin margin-left--lg">
-
-- **<span className="badge badge--danger">3.</span>** From the **group panel**, choose the task you wish to access.
-- **<span className="badge badge--danger">4.</span>** The _workspace_ opens up.
-
-</div>
-
-
 </div>
 <br/>
 
-## Accessing the Task View from the Group Panel {#group-to-task}
+<!-- ## Accessing the Task View from the Group Panel {#group-to-task}
 If you are not automatically taken to the _task view_ when you choose a _task group_, you can access _task views_ as shown below: 
 
 
@@ -101,4 +82,4 @@ If you are not automatically taken to the _task view_ when you choose a _task gr
 - **<span className="badge badge--danger">A.</span>** Either through the _task button_, found on top of the _group panel_.  
 - **<span className="badge badge--danger">B.</span>** Or by pressing the _kebab menu icon_ in the upper-right corner of the _channel workspace_.  
 
-</div>
+</div> -->

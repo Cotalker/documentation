@@ -104,7 +104,7 @@ For those who are constantly on the go or doing fieldwork, our _mobile apps_ –
 </div>
 
 <div className="col col--6">
-  <img alt="desktop versions" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/platform_versions_01.jpg')} />
+  <img alt="desktop versions" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/platform_versions_01.jpg')} />
   <br/>
 
 </div>
@@ -119,7 +119,7 @@ For those who are constantly on the go or doing fieldwork, our _mobile apps_ –
 
 2. Once installed, click on the Cotalker App icon.
 
-  <img alt="desktop versions" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/platform_versions_01a.jpg')} />
+  <img alt="desktop versions" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/platform_versions_01a.jpg')} />
   <br/>
 
 </div>

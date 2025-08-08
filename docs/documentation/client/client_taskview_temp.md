@@ -106,7 +106,7 @@ Customizing the way tasks are displayed is crucial. You can sort or filter them 
 When creating a filter for the first time, press the *filter button* in the top menu bar. A small *cog icon* will appear. Press it to open the *filter dialog box*. 
 
 _Your screen should look something like this:_
-<img alt="filter" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_05.png')} />
+<img alt="filter" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/client_tasks_05.png')} />
 <br/>
 
 Once you are done adjusting the filters in the dialog box, it's possible to *save the filter* as a preset, so the next time the _task view_ is accessed, the saved filter will be shown as an option next to the *filter button*.

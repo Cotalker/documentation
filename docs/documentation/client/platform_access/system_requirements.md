@@ -11,16 +11,16 @@ There are different Cotalker platforms available, allowing users access to Cotal
 
 ## Cotalker Web Client {#web-client}
 **Minimum**: Chrome v.100  
-**Recommended**: Chrome v.103
+**Recommended**: Chrome v.139
 
 :::note
 Cotalker works also on Firefox, Safari, Edge (Chromium version), and Chrome-based browsers, but we recommend its use on the latest Google Chrome version. Because testing is only carried out on Google Chrome, we cannot guarantee that all features function correctly on other web browsers.  
 :::
 
 ## Cotalker Android {#android}
-**Minimum**: Android 7.0 (SDK 24)  
-**Recommended**: Android 11 (SDK 30)  
+**Minimum**: Android 12 (SDK 31)  
+**Recommended**: Android 13 (SDK 33)  
 
 ## Cotalker iOS {#ios}
-**Minimum**: iOS12 (SDK 15)  
-**Recommended**: iOS 15 (SDK 15)  
+**Minimum**: iOS 15 (SDK 15)  
+**Recommended**: iOS 16 (SDK 16)  

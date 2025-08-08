@@ -14,19 +14,6 @@ _Depending on workflow configurations, users can create tasks through one of the
 
 ### Creating tasks from the task view {#create-from-task-view}
 
-_Regular task creation:_
-<img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_07.png')} />
-<br/>
-
-<div className="margin-left--lg">
-
-1. From the task view toolbar, press the <span className="badge badge--secondary">+</span> icon.
-2. A new task card opens up. 
-3. Write the task's name and press Enter to create the task.
-
-</div>
-<br/>
-
 _Task start survey:_
 <img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_tasks_07a.png')} />
 <br/>
@@ -38,12 +25,6 @@ _Task start survey:_
 3. Fill out the survey and press Enter to create the task.
 
 </div>
-<br/>
-
-### Creating tasks from the group panel {#create-from-group-panel}
-_By pressing the actions buttons found at in the group panel, a workflow start form opens up to initialize a new task._
-
-<img alt="create task" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_actionsbutton_01.png')} />
 <br/>
 
 ### Creating tasks from the channel workspace {#create-from-channel-workspace}

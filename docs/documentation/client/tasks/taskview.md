@@ -25,12 +25,13 @@ From the task view title bar you can access the different _tasks views_ and _fil
 <img alt="menu bar" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/task_menubar.png')} />
 <br/>
 
-- **<span className="badge badge--danger">1.</span> Restore**: Refresh task information and display.
-- **<span className="badge badge--danger">2.</span> [Filter](/docs/documentation/client/tasks/filter_tasks)**: Order and sort tasks
-- **<span className="badge badge--danger">3.</span> [List View](#list-view)**: Vertical display
-- **<span className="badge badge--danger">4.</span> [Calendar View](#calendar-view)**: Display tasks by days, weeks, or months
-- **<span className="badge badge--danger">5.</span> [Kanban View](#kanban-view)**: Horizontal display
-- **<span className="badge badge--danger">6.</span> [Table View](#table-view)**: Sort by state
+- **<span className="badge badge--danger">1.</span> Collapse**: Collapse tasks
+- **<span className="badge badge--danger">2.</span> Refresh**: Refresh task information and display
+- **<span className="badge badge--danger">3.</span> Filter**: Filter by criteria
+- **<span className="badge badge--danger">4.</span> Sort**: Sort tasks
+- **<span className="badge badge--danger">5.</span> Group**: Group by criteria
+- **<span className="badge badge--danger">6.</span> Views**: List view, Calendar view, Kanban view, Table view
+
 
 
 ## Available Task Views {#views}

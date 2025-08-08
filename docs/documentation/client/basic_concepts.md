@@ -14,10 +14,6 @@ import Workflows, {toc as Title2TOC} from '/docs/documentation/client/glossary/_
 
 In this section, we introduce basic concepts and vocabulary used in the Cotalker environment. 
 
-- For general setup instructions, see the [Admin Docs](/docs/documentation/documentation_overview).
-- For step-by-step, real-world examples, check out our [Tutorial](/docs/tutorials/tutorial_overview) section.
-- For basic tools and section descriptions, go to [The Basics](/docs/documentation/client/client_overview).
-
 </div>
 <br/>
 
@@ -51,16 +47,7 @@ The [channel workspace](/docs/documentation/client/channels) is a frontend for i
 In channels associated with tasks, you can view and change a task's state or status, assign users and determine deadlines.
 
 _Channel with messages and file sharing:_
-<img alt="chat messages" className="img_format item shadow--tl" src={useBaseUrl('img/concepts_chat_00.png')} />
-<br/>
-<br/>
-
-_Channel with filled out form and automated bot response:_
-<img alt="chat survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/concepts_chat_01.png')} />
-<br/>
-
-_Channel with task info side panel:_
-<img alt="chat survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/concepts_chat_02.png')} />
+<img alt="chat messages" className="img_format img_sizing item shadow--tl" src={useBaseUrl('img/concepts_chat_02.png')} />
 <br/>
 
 </div>
@@ -112,14 +99,14 @@ As you can see, the versatility of elements is quite significant.
 
 <div className="alert alert--secondary">
 
-## Surveys {#surveys}
+## Forms {#surveys}
 <span className="hero__subtitle">Create forms for getting data or initiating processes..</span>
 
 Surveys are the base tool for workflows. Among other things, surveys allow users to start processes, make reports, change data, assign tasks, and execute any custom process adapted to your workflow.
 
 _Workflow Start Form:_
 
-<img alt="surveys" className="img_sizing item shadow--tl" src={useBaseUrl('img/concepts_survey_00.png')} />
+<img alt="surveys" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/concepts_survey_00.png')} />
 
 </div>
 <br/>
