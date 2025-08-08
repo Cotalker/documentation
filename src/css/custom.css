@@ -313,6 +313,36 @@ html[data-theme='dark'] {
   color: #c3c7ff;
 }
 
+/* Footer main items in bold, sub-items normal */
+.footer__link-item {
+  font-weight: bold;
+}
+
+/* Sub-items: Use CSS selector to target links that contain common sub-item patterns */
+.footer__link-item[href*="/api/"],
+.footer__link-item[href*="/models/"],
+.footer__link-item[href*="/admin/"],
+.footer__link-item[href*="/surveys/"],
+.footer__link-item[href*="/forms/"],
+.footer__link-item[href*="/corrective_maintenance/"],
+.footer__link-item[href*="system_requirements"],
+.footer__link-item[href*="first_steps"],
+.footer__link-item[href*="main_menu"],
+.footer__link-item[href*="triggers_and_contexts"],
+.footer__link-item[href*="question_exec"] {
+  font-weight: normal;
+}
+
+/* Exception: Main category pages should remain bold even if they match the patterns above */
+.footer__link-item[href$="/api/overview_api"],
+.footer__link-item[href$="/models/overview_model"],
+.footer__link-item[href$="/admin/admin_overview"],
+.footer__link-item[href$="/surveys/access"],
+.footer__link-item[href$="/forms/overview"],
+.footer__link-item[href$="/corrective_maintenance/landing/overview"] {
+  font-weight: bold;
+}
+
 /*---- Fonts Family  ----*/
 h1, h2, h3, h4, h5{
   /* font-family: 'Jost', sans-serif; */
