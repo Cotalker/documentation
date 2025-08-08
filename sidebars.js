@@ -1,7 +1,7 @@
 module.exports = {
   getting_started: [  // Basic 
-    'getting_started/basic_overview',
     'getting_started/intro_overview',
+    'getting_started/basic_overview',
     'documentation/client/basic_concepts',
     {
       type: 'category',
@@ -19,7 +19,6 @@ module.exports = {
       items: [
         'documentation/client/layout',
         'documentation/client/main_menu',
-        'documentation/client/tool_bar',
         'documentation/client/groups',
         'documentation/client/channels'
       ]
@@ -89,11 +88,9 @@ module.exports = {
         },
       ]
     },
-    'documentation/client/tasks/overview',
     'documentation/client/database',
     'documentation/client/dashboard',
     'documentation/client/reports',
-    'documentation/client/notes',
   ],
   documentation: [ // Advanced Concepts
     'documentation/documentation_overview',

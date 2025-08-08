@@ -33,11 +33,15 @@ module.exports = {
           label: 'Basic',
           position: 'left',
           className: 'basic-dropdown',
-          to: 'docs/getting_started/basic_overview',
+          to: 'docs/getting_started/intro_overview',
           items: [
             {
               to: 'docs/getting_started/intro_overview',
               label: 'What is Cotalker?',
+            },
+            {
+              to: 'docs/getting_started/basic_overview',
+              label: 'Welcome to Cotalker!',
             },
             {
               to: 'docs/documentation/client/basic_concepts',
@@ -183,12 +187,24 @@ module.exports = {
               to: 'docs/documentation/client/basic_concepts',
             },
             {
-              label: 'Platform Access',
+              label: 'Accessing the Platform',
               to: 'docs/documentation/client/platform_access/system_requirements',
             },
             {
-              label: 'User Interface',
+              label: '  • System Requirements',
+              to: 'docs/documentation/client/platform_access/system_requirements',
+            },
+            {
+              label: '  • First Steps',
+              to: 'docs/documentation/client/platform_access/first_steps',
+            },
+            {
+              label: 'Platform User Interface',
               to: 'docs/documentation/client/layout',
+            },
+            {
+              label: '  • Main Menu',
+              to: 'docs/documentation/client/main_menu',
             },
             {
               label: 'Basic Tools',
@@ -197,6 +213,26 @@ module.exports = {
             {
               label: 'Surveys',
               to: 'docs/documentation/client/surveys/access',
+            },
+            {
+              label: '  • Survey Automations',
+              to: 'docs/documentation/client/surveys/automations',
+            },
+            {
+              label: 'Tasks',
+              to: 'docs/documentation/client/tasks/overview',
+            },
+            {
+              label: 'Database',
+              to: 'docs/documentation/client/database',
+            },
+            {
+              label: 'Dashboard',
+              to: 'docs/documentation/client/dashboard',
+            },
+            {
+              label: 'Reports',
+              to: 'docs/documentation/client/reports',
             },
           ],
         },
@@ -212,11 +248,43 @@ module.exports = {
               to: 'docs/documentation/admin/admin_overview',
             },
             {
+              label: '  • Workflows',
+              to: 'docs/documentation/admin/workflows/admin_workflow_overview',
+            },
+            {
+              label: '  • Groups',
+              to: 'docs/documentation/admin/groups/overview_groups',
+            },
+            {
+              label: '  • Database',
+              to: 'docs/documentation/admin/database/admin_database_overview',
+            },
+            {
+              label: '  • Surveys',
+              to: 'docs/documentation/admin/survey/survey_overview',
+            },
+            {
+              label: '  • Company',
+              to: 'docs/documentation/admin/users',
+            },
+            {
+              label: '  • Automations',
+              to: 'docs/documentation/admin/admin_bots',
+            },
+            {
+              label: '  • Security',
+              to: 'docs/documentation/admin/admin_accessrole',
+            },
+            {
               label: 'Automation Tools',
               to: 'docs/documentation/automation/admin_routine',
             },
             {
               label: 'COTLang Guide',
+              to: 'docs/documentation/automation/cotlang/admin_cotlang',
+            },
+            {
+              label: '  • Triggers & Contexts',
               to: 'docs/documentation/automation/cotlang/triggers_and_contexts',
             },
             {
@@ -233,12 +301,48 @@ module.exports = {
               to: 'docs/documentation/automation/code_editor',
             },
             {
+              label: '  • Survey Automations',
+              to: 'docs/documentation/automation/surveys/question_exec',
+            },
+            {
               label: 'API Reference',
               to: 'docs/documentation/api/overview_api',
             },
             {
+              label: '  • Authentication',
+              to: 'docs/documentation/api/auth',
+            },
+            {
+              label: '  • Automations',
+              to: 'docs/documentation/api/automations/bots',
+            },
+            {
+              label: '  • Company & Users',
+              to: 'docs/documentation/api/users/users',
+            },
+            {
+              label: '  • Database',
+              to: 'docs/documentation/api/databases/properties',
+            },
+            {
+              label: '  • Groups & Messages',
+              to: 'docs/documentation/api/communication/channels',
+            },
+            {
               label: 'Data Models',
               to: 'docs/documentation/models/overview_model',
+            },
+            {
+              label: '  • Company & Users',
+              to: 'docs/documentation/models/company/model_company',
+            },
+            {
+              label: '  • Groups & Messages',
+              to: 'docs/documentation/models/communication/model_channels',
+            },
+            {
+              label: '  • Automations',
+              to: 'docs/documentation/models/automations/model_bots',
             },
             {
               label: 'BI & SQL',
@@ -251,25 +355,12 @@ module.exports = {
           ],
         },
         {
-          title: 'Support',
+          title: 'Support & Resources',
           items: [
             {
-              label: 'Report a Bug',
+              label: 'Support Overview',
               to: 'docs/support/support_overview',
             },
-            {
-              label: 'Implementation Partners',
-              to: 'docs/support/support_overview#implementation-partners',
-            },
-            {
-              label: 'soporte@cotalker.com',
-              href: 'mailto:soporte@cotalker.com',
-            },
-          ],
-        },
-        {
-          title: 'Resources',
-          items: [
             {
               label: 'Cotalker Website',
               href: 'https://www.cotalker.com',
@@ -285,7 +376,15 @@ module.exports = {
             {
               label: 'iOS App',
               href: 'https://apps.apple.com/app/cotalker/id1525633301'
-            }
+            },
+            {
+              label: 'Documentation Guide',
+              to: 'docs/getting_started/doc_guide',
+            },
+            {
+              label: 'soporte@cotalker.com',
+              href: 'mailto:soporte@cotalker.com',
+            },
           ],
         },
       ],
