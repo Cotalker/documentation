@@ -41,7 +41,6 @@ module.exports = {
         'documentation/client/surveys/automations',
         'documentation/client/surveys/dynamic',
         'documentation/client/surveys/location',
-        'documentation/client/surveys/bulkloader',
       ]
     },
     {
@@ -52,42 +51,26 @@ module.exports = {
         id: 'documentation/client/tasks/overview',
       },
       items: [
-        'documentation/client/tasks/access_task',
+        'documentation/client/tasks/taskview',
+        'documentation/client/tasks/group_view',
         {
           type: 'category',
-          label: 'User Interface',
+          label: 'Task Workspace',
+          link: {
+            type: 'doc',
+            id: 'documentation/client/tasks/task_workspace',
+          },
           items: [
-            'documentation/client/tasks/taskview',
-            'documentation/client/tasks/group_view',
-            {
-              type: 'category',
-              label: 'Task Workspace',
-              link: {
-                type: 'doc',
-                id: 'documentation/client/tasks/task_workspace',
-              },
-              items: [
-                'documentation/client/tasks/task_notes',
-                'documentation/client/tasks/task_chat',
-                'documentation/client/tasks/task_details'
-              ],
-              collapsed: true
-            },
+            'documentation/client/tasks/task_chat',
+            'documentation/client/tasks/task_details'
           ],
           collapsed: true
         },
-        {
-          type: 'category',
-          label: 'How-To',
-          items: [
-            'documentation/client/tasks/create_task',
-            'documentation/client/tasks/update_task',
-            'documentation/client/tasks/filter_tasks'
-          ],
-          collapsed: true
-        },
+        'documentation/client/tasks/create_update_task',
+        'documentation/client/tasks/filter_tasks'
       ]
     },
+    'documentation/client/surveys/bulkloader',
     'documentation/client/database',
     'documentation/client/dashboard',
     'documentation/client/reports',

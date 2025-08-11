@@ -73,17 +73,3 @@ For more details about _task views_ and their display options, go to the [**Task
 </div>
 
 <br/>
-<div className="alert alert--secondary">
-
-#### Group Panel Layout {#group-panel}
-
-<img alt="group panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_groups_01.png')} />
-<br/>
-
-- a.) [Task Viewer](/docs/documentation/client/tasks/taskview): Appears within workflow groups. Permits viewing tasks with display filters.
-- b.) [Group Search Tool](/docs/documentation/client/client_search#group-search): Search within the group.
-- c.) Channel and Subgroup list: Access [channels](/docs/documentation/client/channels) and subgroups.
-- d.) [Actions Button](/docs/documentation/client/actions_button): Depending on the group's configuration, create channels, tasks, or access a URL.
-
-</div>
-<br/>
