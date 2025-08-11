@@ -45,9 +45,7 @@ _This is the layout of the workflow groups settings panel:_
 <br/>
 
 ## Related Topics {#related-topics}
-- [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)
 - [**Set up Start Forms**](/docs/documentation/admin/workflows/admin_workflow_required_survey)
 - [**Set up a Public Survey**](/docs/documentation/admin/workflows/admin_workflow_public_survey)
 - [**Routine Builder**](/docs/documentation/automation/admin_routine)
 - [**SLAs**](/docs/documentation/automation/sla)
-- [**Create a Survey that Starts a Workflow**](/docs/tutorials/intermediate/create_survey_sm)
