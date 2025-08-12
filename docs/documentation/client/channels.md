@@ -80,18 +80,17 @@ _To access a channel from the group view:_
 
 ### In Standard Groups {#standard-layout}
 
-<img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_00.png')} />
+<img alt="layout" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/client_channels_00.png')} />
 <br/>
 
 <div className="margin-left--lg">
 
 1. **Title Bar**: Displays channel name and users. Press the title bar to slide open the settings panel.
 2. **Chat Area**: Displays messages, files, images, emojis, system messages, bot interactions, and more. [Click here for more details.](#chat-message-options)
-3. **Attachment Icon**: Press to add files you wish to share. Or you can simply drag and drop files in the chat area.
-4. **Actions Button**: Direct access to actions allowed in the channel. Actions can include filling out a survey or changing a task's state. [Click here for more details.](#task-menus-within-channel)
-5. **Text Input Area**: Send text messages to chat; emojis can be added. HTML code can also be used to format text. Some channels can be configured to accept slash commands, e.g., `/command` can be programmed to summon a bot that will carry out a preconfigured automated routine.
-6. **General information**: Appears on the settings panel. Lists users on the channel and permits changing the workspace's avatar. The settings panel is accessed by clicking the workspace's _title bar_.
-7. **Images, Videos, Files**: Access files, images, and videos shared on the channel.
+3. **Actions Button**: Direct access to actions allowed in the channel. Actions can include filling out a survey or changing a task's state. [Click here for more details.](#task-menus-within-channel)
+4. **Text Input Area**: Send text messages to chat. You can also attach files, images, and emojis directly from this area. HTML code can be used to format text. Some channels can be configured to accept slash commands, e.g., `/command` can be programmed to summon a bot that will carry out a preconfigured automated routine.
+5. **General information**: Appears on the settings panel. Lists users on the channel and permits changing the workspace's avatar. The settings panel is accessed by clicking the workspace's _title bar_.
+6. **Images, Videos, Files**: Access files, images, and videos shared on the channel.
 
 </div>
 
@@ -110,18 +109,11 @@ Right-click (or long-press on mobile devices) chat message bubbles in the channe
 - **Reply**: Send a message with the original message and author embedded. Only the first three lines of the original message will be displayed. You can reply to more than one message at a time. You can respond to anything sent through the chat, i.e., files, media, surveys, etc.
 - **Copy**: Copy text messages to your clipboard.
 - **Delete**: Delete a message _you_ have sent. This option is available only up to 24 hours after you have sent the message.
+- **Mentions**: You can mention other users in your company by typing `@` followed by their name. This will send them a notification about your message. You can also mention `@all` to notify everyone in the channel.
 
-_Examples of replies to text, video, and surveys, respectively:_
-<img alt="chat response text" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_03.png')} />
 <br/>
-
-_Examples of emoji reactions:_
-<img alt="chat response text" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/client_channels_emoji_list.png')} />
+<img alt="chat response text" className="img_sizing_small img_format item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_03.png')} />
 <br/>
-
-<img alt="chat response text" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/client_groups_chatresponse_emoji.png')} />
-<br/>
-
 </div>
 <br/>
 
@@ -138,21 +130,8 @@ _The actions button is found near the bottom of the channel workspace:_
 </div>
 <br/>
 
-<div className="alert alert--secondary">
 
-### Settings Side Panel {#task-side-panel}
-Click anywhere on the title bar found on the top of the channel workspace to slide open the settings panel.
 
-_The following image shows how to open the side panel:_
-<img alt="task change state menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_channels_taskpanel_00.png')} />
-<br/>
-
-From the settings panel: 
-- View and edit task and channel settings.
-- View shared media and files.
-
-</div>
-<br/>
 
 :::tip
 Changing task states or configurations requires appropriate access roles. Ask your admin for more details in case you need access to these options.
