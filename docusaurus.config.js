@@ -317,10 +317,6 @@ module.exports = {
               to: 'docs/documentation/api/automations/bots',
             },
             {
-              label: '  • Company & Users',
-              to: 'docs/documentation/api/users/users',
-            },
-            {
               label: '  • Database',
               to: 'docs/documentation/api/databases/properties',
             },
@@ -331,10 +327,6 @@ module.exports = {
             {
               label: 'Data Models',
               to: 'docs/documentation/models/overview_model',
-            },
-            {
-              label: '  • Company & Users',
-              to: 'docs/documentation/models/company/model_company',
             },
             {
               label: '  • Groups & Messages',
