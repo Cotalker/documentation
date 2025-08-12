@@ -1,7 +1,7 @@
 ---
 title: Developer Mode Survey Access
 sidebar_label: Developer Mode Access
-displayed_sidebar: documentation
+displayed_sidebar: developer
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

@@ -1,5 +1,6 @@
 ---
 title: Branding Settings
+displayed_sidebar: developer
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

@@ -188,6 +188,5 @@ You can enter values directly to the _additional fields_ when creating or editin
 
 ## Related Topics {#related-topics}
 
-- [Tutorial on how to create a collection and its elements.](/docs/tutorials/basic/create_database)
 - [Collections (Property Types) Data Model](/docs/documentation/models/databases/model_propertytypes)
 - [Elements (Properties) Data Model](/docs/documentation/models/databases/model_properties)

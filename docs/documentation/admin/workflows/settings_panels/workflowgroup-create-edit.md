@@ -296,7 +296,3 @@ Options are:
 It is recommended to sort tasks in the group panel by _states_ so that users can visually identify the state their tasks are found in. Task (workflow) states are represented by the elements (properties) found in the collection (property types) associated with the workflow.
 
 Sorting tasks by states can be set in the [layout section of the settings panel](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit#layout-section) by choosing the _collection_ where the workflow states are found in.
-
-
-## Related Topics {#related-topics}
-- [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)

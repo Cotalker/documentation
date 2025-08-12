@@ -49,11 +49,11 @@ In the channel, all _users_ associated with the task can reference the data subm
 Available surveys can be found through [_group panel_](/docs/documentation/client/actions_button) and [_channel workspace_](/docs/documentation/client/channels#task-menus-within-channel) action buttons.
 
 _Opening a survey from the group panel usually means a task will be created once it is submitted:_
-<img alt="group panel survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_survey_04.png')} />
+<img alt="group panel survey" className="img_sizing img_format item" src={useBaseUrl('img/client_survey_04.png')} />
 <br/>
 
 _Opening a survey from a task's channel workspace can be used to change the state of the task._
-<img alt="group panel survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_survey_05.png')} />
+<img alt="group panel survey" className="img_sizing item img_format" src={useBaseUrl('img/client_survey_05.png')} />
 <br/>
 
 
@@ -63,7 +63,7 @@ _Surveys_ can also be dynamic. Depending on the answer given to a question, new 
 <div className="alert alert--secondary">
 
 _In the example below, anserwing "yes" to a question displays new questions to gather further data to initiate a work order._
-<img alt="dynamic survey" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_survey_02.png')} />
+<img alt="dynamic survey" className="img_sizing item img_format" src={useBaseUrl('img/client_survey_02.png')} />
 <br/>
 
 </div>
@@ -77,7 +77,7 @@ Automations can also be built into the survey, allowing automatic actions or dat
 
 _Below is a simple example of a bot that sends to the channel an automatic message and a GIF image from an external website after a new employee submits a personal information survey._
 
-<img alt="surveys with bots" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_survey_03.png')} />
+<img alt="surveys with bots" className="img_sizing item img_format" src={useBaseUrl('img/client_survey_03.png')} />
 <br/>
 
 _Notice how, in the example above, the bot takes data from the survey answers to carry out its routine._

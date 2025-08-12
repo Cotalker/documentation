@@ -1,5 +1,5 @@
 ---
-title: Admin Basics
+title: Administrator Fundamentals
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -21,7 +21,7 @@ An example of these _data models_ is the _user_ – the basic unit of a company 
 ## Workflows {#workflows}
 
 A [**workflow**](/docs/documentation/admin/workflows/admin_workflow_overview) requires the creation of a _state machine_ to configure the process. It is built upon relations (represented by arrows) and states (represented by nodes), as you can see in the following image:
-<img alt="workflow example" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/admin_overview_statemachine.png')} />
+<img alt="workflow example" className="img_sizing_narrow item" src={useBaseUrl('img/concepts_workflow_00.png')} />
 <br/>
 
 

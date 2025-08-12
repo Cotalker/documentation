@@ -73,6 +73,5 @@ _The [asset viewer](/docs/documentation/admin/database/asset_viewer) opens up wh
 
 ## Related Topics {#related-topics}
 
-- [Tutorial on how to create a collection and its elements.](/docs/tutorials/basic/create_database)
 - [Collections (Property Types) Data Model](/docs/documentation/models/databases/model_propertytypes)
 - [Elements (Properties) Data Model](/docs/documentation/models/databases/model_properties)

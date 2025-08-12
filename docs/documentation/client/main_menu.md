@@ -19,17 +19,9 @@ On the **Web Platform**, the Main Menu Bar adjusts itself according to window le
 _To Access the Main Menu Bar in auto-hide mode, simply hover over it with the mouse:_
 
 <img alt="main menu" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_mainmenu_01.gif')} />
-<br/>
-<br/>
 
-On **mobile devices** and **narrow desktop windows**, the Main Menu Bar covers the entire width and is shown first when entering the platform. Once in another section, to go back to the Main Menu, either press the menu icon that appears on the upper left corner or press the the _back_ button on your mobile device.
-
-<img alt="main menu" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/platform_mainmenu_02.gif')} />
 <br/>
 <br/>
-
-<div className="alert alert--secondary">
-<div className="container">
 
 ## Web Platform Layout {#main-menu-bar-layout}
 
@@ -43,7 +35,7 @@ On **mobile devices** and **narrow desktop windows**, the Main Menu Bar covers t
 </div>
 <div className="col col--6">
 
-1. **Close Main Menu Bar**: _available when window size sets Main Menu to auto-hide mode_
+1. **Settings**: _opens account settings_
 2. **User Info**: _includes avatar, display name, email, and online status (set status to online/busy, set away time)_
 3. **Profile Settings**: _change photo, name, phone, password, sign out_
 4. **Home**: _opens panel with most recent conversations_
@@ -54,11 +46,9 @@ On **mobile devices** and **narrow desktop windows**, the Main Menu Bar covers t
 </div>
 </div>
 
-</div>
-</div>
 <br/>
 
-<div className="alert alert--secondary">
+<!-- <div className="alert alert--secondary">
 <div className="container">
 
 ## Mobile App Platform {#main-menu-mobile}
@@ -85,4 +75,4 @@ On **mobile devices** and **narrow desktop windows**, the Main Menu Bar covers t
 </div>
 
 </div>
-</div>
+</div> -->

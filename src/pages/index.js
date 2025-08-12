@@ -9,44 +9,49 @@ import Translate, {translate} from '@docusaurus/Translate';
 
 const features = [
   {
-    title: <Translate>Learn how to setup Workflows</Translate>,
+    title: <Translate>Basic</Translate>,
     imageUrl: styles.featureImageWorkflow,
     description: (
       <Translate>
-        Workflows are a central piece in the automation of your company. Follow the tutorial to build a simple Project Manager.
+        End users who navigate workflows, manage and execute tasks, respond to forms, or perform field operations
       </Translate>
     ),
+    link: '/docs/getting_started/intro_overview',
   },
   {
-    title: <Translate>Get to know the tools</Translate>,
+    title: <Translate>Advanced</Translate>,
     imageUrl: styles.featureImageTools,
     description: (
       <Translate>
-        Learn how to create and manage users, workflows, survey forms, access roles, database elements, and more using Cotalker's UI or through the API.
+        Power users who can manage users, permissions and roles, create end-to-end workflows, routines, automations, build forms and model their own data collections
       </Translate>
     ),
+    link: '/docs/documentation/documentation_overview',
   },
   {
-    title: <Translate>Become a Cotalker Admin</Translate>,
+    title: <Translate>Developer</Translate>,
     imageUrl: styles.featureImageAdmin,
     description: (
       <Translate>
-        Learn to configure and extend Cotalker's capacities. Get certified as an Administrator.
+        The user who implements advanced network calls and custom code in workflows, developing middlewares to execute complex functions and specific integrations.
       </Translate>
     ),
+    link: '/docs/documentation/api/overview_api',
   },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({imageUrl, title, description, link}) {
   return (
-    <div className="col col--3 col--offset-1 card">
-      <div>
-        <div className={imageUrl}></div>
-      </div>
-      <div className="text--center">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+    <div className="col col--3 col--offset-1">
+      <a className="card2 padding--lg cardContainer_qNfC" href={link} style={{ textDecoration: 'none', color: 'inherit', height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+          <div className={imageUrl}></div>
+        </div>
+        <div className="text--center" style={{ flex: 1 }}>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+      </a>
     </div>
   );
 }
@@ -60,14 +65,12 @@ function Home() {
       description="Cotalker Documentation">
       <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
+          <img src={useBaseUrl('img/home_wemaketheworkflow.svg')} alt="Cotalker" width={200} />
           <h1 className={classnames('hero__title', styles.heroTitle)}>
             {/* {siteConfig.title} */}
-            <Translate>Cotalker Technical Documentation</Translate>
+            <Translate>Cotalker Documentation</Translate>
           </h1>
-          <h2 className={classnames('hero__subtitle', styles.heroSubTitle)}>
-              {/* {siteConfig.tagline} */}
-              <Translate>Products, Tutorials, Admin, API and Support</Translate>
-          </h2>
+
           <div className={classnames(styles.buttons)}>
             <Link
               className={classnames(

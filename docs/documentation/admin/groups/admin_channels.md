@@ -125,8 +125,6 @@ _Sets the users that can participate in the channel._
 <div className="col col--4">Indicates bots that have permission to run in the channel. Only needed if the bot does not have global access.</div>
 <div className="col col--5"><em>
 
-See [this tutorial](/docs/tutorials/intermediate/create_survey_bot) on how to make a bot that works within the channel.
-
 </em></div>
 </div>
 </div>

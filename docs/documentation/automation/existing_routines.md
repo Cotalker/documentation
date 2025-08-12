@@ -2,6 +2,7 @@
 id: existing_routines
 title: Routine Stage Types
 sidebar_label: Routine Stage Types
+displayed_sidebar: documentation
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl'; 
 import Highlight from '@theme/Highlight';

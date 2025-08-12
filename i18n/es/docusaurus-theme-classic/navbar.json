@@ -1,7 +1,23 @@
 {
-  "item.label.Getting Started": {
-    "message": "Primeros Pasos",
-    "description": "Navbar item with label Getting Started"
+  "item.label.Basic": {
+    "message": "Básico",
+    "description": "Navbar item with label Basic"
+  },
+  "item.label.Advanced": {
+    "message": "Avanzado", 
+    "description": "Navbar item with label Advanced"
+  },
+  "item.label.Developer": {
+    "message": "Desarrollador",
+    "description": "Navbar item with label Developer"
+  },
+  "item.label.API Reference": {
+    "message": "Referencia API",
+    "description": "Navbar item with label API Reference"
+  },
+  "item.label.Data Models": {
+    "message": "Modelos de Datos",
+    "description": "Navbar item with label Data Models"
   },
   "item.label.What's New": {
     "message": "Novedades",

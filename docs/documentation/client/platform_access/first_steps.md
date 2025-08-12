@@ -42,7 +42,7 @@ _Each platform offers a similar experience through its design so that users can 
 
 2. You will be asked to sign in with your credentials. You can also easily and securely log in using a Google or Microsoft account associated with your company.
 
-  <img alt="log in" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_00a.png')} />
+  <img alt="log in" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/platform_versions_00a.png')} />
   <br/>
   <br/>
 
@@ -63,7 +63,7 @@ _Each platform offers a similar experience through its design so that users can 
 
 3. Configure your personal information, then press <span className="badge badge--info">start</span>.
 
-  <img alt="personal info" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_00b.png')} />
+  <img alt="personal info" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/platform_versions_00b.png')} />
   <br/>
   <br/>
 
@@ -78,7 +78,7 @@ _Each platform offers a similar experience through its design so that users can 
 
 4. Congratulations! You're in! Now take a moment to play around and take a good look at the Cotalker environment. We'll explain the [platform layout](/docs/documentation/client/layout) in the following section.
 
-<img alt="desktop versions" className="img_sizing item shadow--tl" src={useBaseUrl('img/platform_versions_00.png')} />
+<img alt="desktop versions" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/platform_versions_00.png')} />
 <br/>
 
 </div>
@@ -104,7 +104,7 @@ For those who are constantly on the go or doing fieldwork, our _mobile apps_ –
 </div>
 
 <div className="col col--6">
-  <img alt="desktop versions" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/platform_versions_01.jpg')} />
+  <img alt="desktop versions" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/platform_versions_01.jpg')} />
   <br/>
 
 </div>
@@ -119,7 +119,7 @@ For those who are constantly on the go or doing fieldwork, our _mobile apps_ –
 
 2. Once installed, click on the Cotalker App icon.
 
-  <img alt="desktop versions" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/platform_versions_01a.jpg')} />
+  <img alt="desktop versions" className="img_sizing_50 item shadow--tl" src={useBaseUrl('img/platform_versions_01a.jpg')} />
   <br/>
 
 </div>

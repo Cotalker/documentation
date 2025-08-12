@@ -13,7 +13,6 @@ Action buttons allow users to carry out all sorts of actions related to groups, 
 The _Actions button_ is a green button floating near the bottom of the [group panel](/docs/documentation/client/groups#group-panel). It can perform the following actions:
 - In [_workflow groups_](/docs/documentation/client/groups#workflow-groups), create [tasks](/docs/documentation/client/tasks/overview) with surveys.
 - In [_standard groups_](/docs/documentation/client/groups#regular-groups), create new [channels](/docs/documentation/client/channels).
-- In all groups, there can be links to any URL.
 
 _The Group Panel's **actions button** will look something like the image below:_
 <img alt="fab" className="img_sizing item shadow--lw" src={useBaseUrl('img/client_actionsbutton_01.png')} />

@@ -1,6 +1,7 @@
 ---
 title: Data Models Overview
 sidebar_label: Overview
+displayed_sidebar: developer
 ---
 import Mermaid from '@theme/Mermaid';
 

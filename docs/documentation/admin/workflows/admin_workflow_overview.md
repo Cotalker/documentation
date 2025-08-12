@@ -44,20 +44,6 @@ Workflows are hosted inside a [_workflow group_](/docs/documentation/client/grou
 - [**Routine Builder**](/docs/documentation/automation/admin_routine)
 - [**SLAs**](/docs/documentation/automation/sla)
 
-
-
-## Related Tutorials {#tutorials}
-- [Create a Workflow Tutorial](/docs/tutorials/basic/create_state_machines)
-- [Create a Survey that Starts a Workflow](/docs/tutorials/intermediate/create_survey_sm)
-
-
-
-
-
-
-
-
-
 <br/>
 <br/>
 

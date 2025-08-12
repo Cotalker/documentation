@@ -7,7 +7,7 @@ Surveys can also ask users to input map locations. Depending on the question's c
 
 _Below is an example of a survey question that allows users to freely choose a location._
 
-<img alt="survey+gps" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_survey_location_00.png')} />
+<img alt="survey+gps" className="img_sizing_small item img_format" src={useBaseUrl('img/client_survey_location_00.png')} />
 <br/>
 
 <div className="margin-left--lg">

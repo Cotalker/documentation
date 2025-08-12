@@ -27,13 +27,17 @@ Through the Chat Area, depending on user permissions and workflow configurations
 <img alt="task chat" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/task_chat_00.png')} />
 <br/>
 
-- **<span className="badge badge--warning">1.</span> System Message**: Whenever a task undergoes a change, like a change of state or setting, a system message appears on the chat indicating the change. Some automations also send system messages to alert users of actions that are taking place automatically.
-- **<span className="badge badge--primary">2.</span> User Message**: Users associated with the task can send messages and files into the chat area. Some tasks may be configured to have users can [initiate a bot's routine with a slash command](/docs/tutorials/basic/create_bot#result) in the chat area.
-- **<span className="badge badge--danger">3.</span> Send File**: You can send various types of files that can be downloaded or viewed by users through the chat area.
-- **<span className="badge badge--danger">4.</span> Actions Button**: Opens the _Actions Menu (7)_. If configured, users can change the task's state either manually or by filling out a form.
-- **<span className="badge badge--danger">5.</span> Text Input Area**: Users can write, place emojis, and even paste images through this area.
-- **<span className="badge badge--danger">6.</span> Emoji**: Add emojis to your messages.
-- **<span className="badge badge--success">7.</span> Actions Menu**: Actions, such as state change or opening a survey form, can appear on this menu. The actions vary, depending on the workflow's configuration.
+- **<span className="badge badge--warning">1.</span> System Message**: Whenever a task undergoes a change, like a change of state or setting, a 
+system message appears on the chat indicating the change. Some automations also send system messages to alert users of actions that are taking place 
+automatically.
+- **<span className="badge badge--primary">2.</span> User Message**: Users associated with the task can send messages and files into the chat area. 
+Some tasks may be configured to have users can [initiate a bot's routine with a slash command](/docs/tutorials/basic/create_bot#result) in the chat 
+area.
+- **<span className="badge badge--danger">3.</span> Action Button**: Opens the actions menu, allowing users to perform actions like changing the task state or opening a survey form.
+- **<span className="badge badge--danger">4.</span> Text Input Area**: Area where users can type messages, insert emojis, or paste images.
+- **<span className="badge badge--danger">5.</span> Emojis**: Add emojis to your messages to express emotions or reactions.
+- **<span className="badge badge--danger">6.</span> Attach File**: Attach and send files for other users to download or view.
+- **<span className="badge badge--danger">7.</span> Attach Photo**: Attach and send photos directly in the chat area.
 
 
 ## New Message Notifications {#new-message}
