@@ -59,7 +59,7 @@ _To access a channel from the group view:_
 
 ### In Workflow Groups {#task-layout}
 
-<img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_task_channel_workspace_01.png')} />
+<img alt="layout" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/client_task_channel_workspace_01.png')} />
 <br/>
 
 <div className="margin-left--lg">

@@ -55,7 +55,7 @@ _To access a channel from the group view:_
 
 ### In Workflow Groups {#task-layout}
 
-<img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/client_task_channel_workspace_01.png')} />
+<img alt="layout" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/client_task_channel_workspace_01.png')} />
 <br/>
 
 <div className="margin-left--lg">
@@ -64,9 +64,11 @@ _To access a channel from the group view:_
 2. **Chat**: Access the task's _channel workspace_.
 3. **Details**: Open the task's [settings panel](/docs/documentation/client/tasks/task_details).
 4. **Chat Area**: Displays messages, files, images, emojis, system messages, bot interactions, and more. [Click here for more details.](#chat-message-options)
-5. **Attachment Icon**: Press to add files you wish to share. Or you can simply drag and drop files in the chat area.
-6. **Actions Button**: Direct access to allowed task actions. Actions can include filling out a survey or changing a task's state. [Click here for more details.](#task-menus-within-channel)
-7. **Text Input Area**: Send text messages to chat; emojis can be added. HTML code can also be used to format text. Some channels can be configured to accept slash commands, e.g., `/command` can be programmed to summon a bot that will carry out a preconfigured automated routine.
+5. **Actions Buttons**: Provides direct access to available task actions, such as filling out a survey or changing the task's state. [Click here for more details.](#task-menus-within-channel)
+6. **Text Input Area**: Enter and send text messages to the chat. Some channels can be configured to accept slash commands, e.g., `/command` can be programmed to summon a bot that will carry out a preconfigured automated routine.
+7. **Emojis**: Add emoji reactions or include emojis in your messages to express yourself.
+8. **Attach File**: Press to attach and share files from your device in the chat.
+9. **Attach Photo**: Press to attach and share photos directly in the chat.
 
 
 </div>

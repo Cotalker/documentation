@@ -22,7 +22,7 @@ Each view permits different ways to visualize and handle tasks.
 ## Menu Bar Icons {#menu-bar-icons}
 From the task view title bar you can access the different _tasks views_ and _filters_.
 
-<img alt="menu bar" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/task_menubar.png')} />
+<img alt="menu bar" className="img_sizing_small item" src={useBaseUrl('img/task_menubar.png')} />
 <br/>
 
 - **<span className="badge badge--danger">1.</span> Collapse**: Collapse tasks
@@ -39,25 +39,25 @@ From the task view title bar you can access the different _tasks views_ and _fil
 ### List View {#list-view}
 _Displays tasks in a vertical view, sorting them in groups according to the filters being used. The List View has a space designated for the [task workspace](/docs/documentation/client/tasks/task_workspace)._
 
-<img alt="list view" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_listview.png')} />
+<img alt="list view" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/task_listview.png')} />
 <br/>
 
 ### Calendar View {#calendar-view}
 _Displays tasks in a calendar. The calendar can be set to day, week, or month view._
 
-<img alt="calendar button" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_calendarview.png')} />
+<img alt="calendar button" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/task_calendarview.png')} />
 <br/>
 
 ### Kanban View {#kanban-view}
 _Displays tasks as cards and sorts them horizontally according to the filters being used. The [task workspace](/docs/documentation/client/tasks/task_workspace) can be accessed in this view._
 
-<img alt="kanban button" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_kanbanview.png')} />
+<img alt="kanban button" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/task_kanbanview.png')} />
 <br/>
 
 ### Table View {#table-view}
 _Tasks are displayed in a table and divided by task status (workflow state)._
 
-<img alt="table button" className="img_sizing item shadow--tl" src={useBaseUrl('img/task_tableview.png')} />
+<img alt="table button" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/task_tableview.png')} />
 <br/>
 
 
