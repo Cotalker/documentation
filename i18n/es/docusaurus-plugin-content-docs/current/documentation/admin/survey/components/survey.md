@@ -37,36 +37,42 @@ Standard fields are described in the [**general field descriptions**](/docs/docu
 
 ### Survey Component Setup {#setup}
 
-_Here's a form template of a survey used to request goods:_
+_Here's a form template used to request goods as a sub-form. This form only requires selecting the material and the quantity:_
 
-<img alt="first survey" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/admin_survey_survey_00.png')} />
+<img alt="first survey" className="img_sizing_small img_format item shadow--tl" src={useBaseUrl('img/admin_survey_survey_00.png')} />
 <br/>
 
-_Below, the survey –called **Request material**– is incorporated as a **survey component** within another survey:_
+_Then the form –called **(WS) Add Material**– is incorporated as a survey component within the main form called **Material Request**:_
 
-<img alt="embed survey" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/admin_survey_survey_01.png')} />
+<img alt="embed survey" className="img_sizing_small img_format item shadow--tl" src={useBaseUrl('img/admin_survey_survey_01.png')} />
 <br/>
 
 ### End-User Interface {#end-user}
-_To answer a sub-survey within a form, users must:_
+_To answer a sub-form within a form, users must:_
 
-<img alt="add survey" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/admin_survey_survey_02.png')} />
+<img alt="add survey" className="img_sizing survey_format item" src={useBaseUrl('img/admin_survey_survey_02.png')} />
 <br/>
 
 <div className="margin-left--lg">
 
-1. Press the <span className="badge badge--warning">+ Add</span> to open the sub-survey.
+1. Press the <span className="badge badge--warning">+ Add</span> button to open the sub-form.
+2. The sub-form is embedded within the main form.
+3. Click delete to remove this sub-form.
+4. Click "collapse" to stop editing this sub-form and collapse the information.
+5. To open another instance of the sub-form, users can press the <span className="badge badge--warning">+ Add New</span> button as needed and permitted by the form's configuration.
 
 </div>
 
-<img alt="fill out survey" className="img_sizing_small item shadow--tl" src={useBaseUrl('img/admin_survey_survey_03.png')} />
+<div className="margin-left--lg">
+
+When submitting the main form, it is sent with all the information from the sub-forms within. Each sub-form can also be re-edited or deleted at any time, even from its collapsed view.
+
+</div>
+
+<img alt="form with multiple sub-forms" className="img_sizing_small survey_format item shadow--tl" src={useBaseUrl('img/admin_survey_survey_03.png')} />
 <br/>
 
 <div className="margin-left--lg">
-
-2. The sub-survey is embedded within the main survey form.
-3. To open another instance of the sub-survey, users can press the <span className="badge badge--warning">+ Add</span> as needed and permited by the form's configuration.
-
 </div>
 
 ---
