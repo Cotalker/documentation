@@ -141,8 +141,11 @@ module.exports = {
             {
               type: 'category',
               label: 'Database',
+              link: {
+                type: 'doc',
+                id: 'documentation/admin/database/admin_database_overview',
+              },
               items: [
-                'documentation/admin/database/admin_database_overview',
                 'documentation/admin/database/admin_collections',
                 {
                   type: 'category',
