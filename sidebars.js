@@ -141,8 +141,11 @@ module.exports = {
             {
               type: 'category',
               label: 'Database',
+              link: {
+                type: 'doc',
+                id: 'documentation/admin/database/admin_database_overview',
+              },
               items: [
-                'documentation/admin/database/admin_database_overview',
                 'documentation/admin/database/admin_collections',
                 {
                   type: 'category',
@@ -163,17 +166,9 @@ module.exports = {
                       items: [
                         'documentation/admin/database/asset_qr',
                         {
-                          type: 'category',
+                          type: 'doc',
+                          id: 'documentation/admin/database/asset_reports_actions',
                           label: 'Reports & Actions',
-                          link: {
-                            type: 'doc',
-                            id: 'documentation/admin/database/asset_reports_actions',
-                          },
-                          items: [
-                            'documentation/admin/database/asset_tasks',
-                            'documentation/admin/database/asset_actions',
-                            'documentation/admin/database/asset_forms',
-                          ]
                         },
                         'documentation/admin/database/asset_edit'
                       ],
