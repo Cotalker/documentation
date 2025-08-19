@@ -9,7 +9,7 @@ import Highlight from '@theme/Highlight';
 <br/>
 <br/>
 
-The **Asset Viewer** provides USERS with access to customized **reports and actions** related to the asset being displayed.
+The **Asset Viewer** provides users with access to customized **reports and actions** related to the asset being displayed.
 
 _Reports and actions can be set to:_
 - Display tasks associated with the asset ([Tasks](#tasks))
