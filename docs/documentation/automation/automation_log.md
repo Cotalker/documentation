@@ -14,22 +14,77 @@ Whenever you test a routine (Run Routine) from the _Routine Builder_, the test w
 
 Logs can be accessed directly through the _Administrative Panel_ or anywhere a routine can be built, like workflows, SLAs, or other automations.
 
-## Automation Log List {#log-list}
+## Logs List {#log-list}
 
-<img alt="automation log" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_00.png')} />
+<img alt="automation log" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_00.png')} />
 <br/>
+
+
+<ul>
+  <li>
+    <span className="badge badge--danger">1</span> <strong>Automation logs list:</strong> list of logs for bot, start form, survey trigger, state change, SLAs and custom owner.
+  </li>
+  <li>
+    <span className="badge badge--danger">2</span> <strong>Survey Mapper logs list:</strong> list of logs for survey mapper
+  </li>
+</ul>
+
+
+
+### Filter Bar {#filter-bar}
+The automation log includes a comprehensive filter bar to help you quickly locate specific log entries. The filter options make it easier to search through logs by narrowing down results based on various criteria:
+
+
+<img alt="automation log" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_08.png')} />
+<br/>
+
+<span className="badge badge--danger">1</span> <strong>Owner Type Filter</strong>: Select from the following automation types:
+   <ul>
+      <li><strong>Bot</strong>: Filters logs from bot automations</li>
+      <li><strong>Start Form</strong>: Shows logs from start form automations</li>
+      <li><strong>Survey Trigger</strong>: Displays logs from survey-triggered automations</li>
+      <li><strong>State Change</strong>: Shows logs from workflow state change automations</li>
+      <li><strong>SLA</strong>: Filters logs from SLA-related automations</li>
+      <li><strong>Custom</strong>: Displays logs from custom automation types</li>
+   </ul>
+
+
+<span className="badge badge--danger">2</span> <strong>Workflow Filter</strong>: This dropdown displays all active workflows in your company, allowing you to filter logs by specific workflow processes.
+
+<br/><br/>
+
+<span className="badge badge--danger">3</span> <strong>Dynamic Context Filter</strong>: Based on your selection in the Owner Type filter, this field will dynamically populate with relevant options:
+   <ul>
+      <li>If "Survey Trigger" is selected, it displays survey triggers</li>
+      <li>If "State Change" is selected, it shows available state changes</li>
+      <li>If "SLA" is selected, it lists available SLAs</li>
+   </ul>
+
+<span className="badge badge--danger">4</span> <strong>Date Range Filter</strong>: Filter logs by specifying a start date and end date range, helping you locate logs from specific time periods.
+
+<br/><br/>
+
+<span className="badge badge--danger">5</span> <strong>Refresh Search Button</strong>: Apply the selected filters to update the log list with results matching your filter criteria.
+
+<br/><br/>
+
+<span className="badge badge--danger">6</span> <strong>Clear Filter Button</strong>: Reset all filter selections to their default state, removing any applied filters and displaying the complete log list.
+
+<br/><br/>
+These filters work together to provide a more comfortable and efficient log search experience, allowing you to quickly identify and review specific automation executions.
 
 ### List Details {#settings-panel}
 The initial settings panel displays the list of automations in descending chronological order. It is divided into the following four columns:
 
+- **Owner**: The type of automation log (e.g., Bot, Start Form, Survey Trigger, etc.).
 - **Result**: Possible results are _executed_ or _failed_.
 - **Duration**: Time it takes for an automation to execute. Results return in seconds and milliseconds.
 - **Execution Date**: The date and time the automation executed. The date is in DD/MM/YY format.
-- **Options**: Viewing is the only option, but more alternatives are available once the log is [opened](#automation-log-details).
+- **View**: Click to open the log view and access more information.
 
 :::note
 - Each automation will be stored in the log list for no more than seven days.
-- The automation log list refreshes every minute but can be manually refreshed by pressing the refresh icon found in the upper-right corner.
+- The logs list refreshes every minute but can be manually refreshed by pressing the refresh icon found in the upper-right corner.
 :::
 
 ### Log Details {#automation-log-details}
@@ -37,7 +92,7 @@ Once an automation has been chosen for viewing, a new settings panel will appear
 
 _The settings panel will look something like the following image:_
 
-<img alt="automation log" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_01.png')} />
+<img alt="automation log" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_01.png')} />
 <br/>
 
 The information displayed in the settings panel is divided into the five sections –_log, schedule, context, routine, results_– explained below:
@@ -121,27 +176,27 @@ When errors are caught, the **Error** section appears at the bottom of the setti
 ### Log Lists in Other Places {#other}
 
 _Routine Builders in Workflow States:_
-<img alt="automation log" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_03.png')} />
+<img alt="automation log" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_03.png')} />
 <br/>
 
 _In SLAs:_
-<img alt="sla logs" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_02.png')} />
+<img alt="sla logs" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_02.png')} />
 <br/>
 
 _In other automations:_
-<img alt="sla logs" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_04.png')} />
+<img alt="sla logs" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_04.png')} />
 <br/>
 
 ## Run Routine "Tester" {#tester}
 
-<img alt="run routine" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
+<img alt="run routine" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
 <br/>
 
 The <span className="badge badge--primary">Run Routine</span> button is part of the [*Routine Builder*](/docs/documentation/automation/admin_routine). It opens up a window that will help you test and debug your routines while you are building them. The **Run Routine** window has two sections: [_Context_](#context-editor) and [_Automation Log_](#run-routine-automation-log).
 
 _The **Run Routine** window will look something like this:_
 
-<img alt="run routine" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_07.png')} />
+<img alt="run routine" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/automations_log_07.png')} />
 <br/>
 
 ### Context Editor {#context-editor}
