@@ -20,7 +20,7 @@ For example, let's say that in many of your workflows you need to send a system 
 
 To access the <span className="badge badge--primary">Routines</span> section:
 
-<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_00.png')} />
+<img alt="access" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_routines_00.png')} />
 <br/>
 
 1. Press <span className="badge badge--primary">Administrator</span> in the **Main Menu Bar**.
@@ -33,16 +33,25 @@ To access the <span className="badge badge--primary">Routines</span> section:
 
 Create or edit a routine from the **Routines** settings panel:
 
-<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_00a.png')} />
+<img alt="access" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_routines_00a.png')} />
 <br/>
 
-_Press either:_  
-1. Create a new routine
-2. Edit an existing routine
+To begin working with routines, you have three main options:
+
+1. **Create a new routine from scratch:**  
+   Select this option if you want to design a completely new automation sequence. You will be able to define all the steps, inputs, and actions according to your specific needs.
+
+2. **Copy an existing routine:**  
+   If you want to use an existing routine as a template, choose this option. This allows you to duplicate a routine, make any necessary modifications, and save it as a new routine. This is useful when you need a similar routine with slight changes, saving you time and effort.
+
+3. **Edit an existing routine:**  
+   Use this option to modify the configuration of a routine that has already been created. You can update its steps, inputs, or any other settings to better fit your current requirements.
+
+Choose the option that best fits your workflow. After making your selection, the routine settings panel will open, allowing you to configure or update the routine as needed.
 
 After choosing an option, the following settings panel opens up:
 
-<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_01.png')} />
+<img alt="access" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_routines_01.png')} />
 <br/>
 
 1. **Save**: Saves the current configuration
@@ -57,7 +66,7 @@ After choosing an option, the following settings panel opens up:
 
 ### A. General {#general}
 
-<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_02.png')} />
+<img alt="access" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_routines_02.png')} />
 <br/>
 
 <div className="container box">
@@ -96,7 +105,7 @@ Options are: `Flowcontrol`, `Network`, or `Normal`
 
 ### B. Inputs {#inputs}
 
-<img alt="access" className="img_sizing" src={useBaseUrl('img/admin_routines_03.png')} />
+<img alt="access" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_routines_03.png')} />
 <br/>
 
 <div className="container box">
