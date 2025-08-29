@@ -22,16 +22,10 @@ _Routines_ are used to configure various actions within a company. For example, 
 
 <div className="alert alert--secondary">
 
-#### Routine builder in settings panels:
-
-
-<img alt="routine builder" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_00.png')} />
-<br/>
-<br/>
 
 #### Routine builder in workflows:
 
-<img alt="routine builder" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_01.png')} />
+<img alt="routine builder" className="img_sizing_narrow img_format item shadow--tl" src={useBaseUrl('img/automations_routines_01.png')} />
 <br/>
 <br/>
 
@@ -114,7 +108,7 @@ Since **stage type** fields have a COTLang underlying, certain characters must b
 
 _For example, if you choose the **Send gif** stage type, the following fields appear:_
 
-<img alt="type fields" className="img_sizing_narrow item shadow--tl" src={useBaseUrl('img/automations_routines_02.png')} />
+<img alt="type fields" className="img_sizing_small img_format item shadow--tl" src={useBaseUrl('img/automations_routines_02.png')} />
 <br/>
 
 - **Options**: In this example, the **Send gif** stage type has three options or fields: _Search_, _Channel_, and _User_.
@@ -127,7 +121,7 @@ _For example, if you choose the **Send gif** stage type, the following fields ap
 
 ## Run Routine {#run-routine}
 
-<img alt="run routine" className="img_sizing item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
+<img alt="run routine" className="img_sizing_small img_format item shadow--tl" src={useBaseUrl('img/automations_log_06.png')} />
 <br/>
 
 The <span className="badge badge--primary">Run Routine</span> button is a blue button found in the *Routine Builder*. This button opens up an automation log that will help you test and debug your routines while still building them.
