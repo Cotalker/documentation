@@ -96,11 +96,10 @@ module.exports = {
                   type: 'category',
                   label: 'Settings Panels',
                   items: [
-                    'documentation/admin/workflows/settings_panels/workflowgroups-initial',
+                    'documentation/admin/workflows/settings_panels/workflowgroups-initial-copy',
                     'documentation/admin/workflows/settings_panels/workflowgroup-create-edit',
                     'documentation/admin/workflows/settings_panels/workflowgroup_channels',
                     'documentation/admin/workflows/settings_panels/workflows-setup',
-                    'documentation/admin/workflows/settings_panels/workflow_create_edit',
                     'documentation/admin/workflows/settings_panels/create_edit_state',
                   ],
                   collapsed: true,

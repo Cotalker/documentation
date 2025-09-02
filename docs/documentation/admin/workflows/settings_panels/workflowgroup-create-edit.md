@@ -6,22 +6,21 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <span className="hero__subtitle">Settings Panel Guide</span>
 
-_Basic workflow group settings_
+_Create and configure workflow groups. A workflow group contains workflows with their states, forms, and automations._
 
 ## Create a Workflow Group {#create-workflow-group}
 
-From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press <span className="badge badge--primary">+</span>.
+From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press <span className="badge badge--primary">+</span>.
 
 <img alt="create new workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00a.png')} />
 <br/>
 
 ## Edit a Workflow Group {#edit-workflow-group}
 
-From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/settings_panels/workflowgroups-initial), press the corresponding icon from the _workflow group list_.
+From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press the corresponding icon from the _workflow group list_.
 
 <img alt="edit workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_edit_00a.png')} />
 <br/>
-
 
 <div className="alert alert--secondary">
 
@@ -35,13 +34,13 @@ _Options:_
 1. **Deactivate**: Deactivate the element.
 2. **Save**: Save current configuration.
 
-_Settings_:
-- [**A. General information**](#general-information-section)
-- [**B. Icon**](#icon-section)
-- [**C. Help**](#help-section)
-- [**D. Layout**](#layout-section)
-- [**E. Secondary actions**](#secondary-actions-section)
-- [**F. Settings**](#settings)
+_Settings:_
+- [**A. General Information**](#general-information-section)
+- [**B. Data Model**](#data-model-section)
+- [**C. Tags and Additional Fields**](#tags-additional-fields-section)
+- [**D. Icon**](#icon-section)
+- [**E. SLAs**](#slas-section)
+- [**F. Advanced Settings**](#advanced-settings-section)
 
 </div>
 <br/>
@@ -57,12 +56,12 @@ _Basic setup and display options._
 <div className="container box">
 <div className="row table-row-1">
 <div className="col col--3"><b>Name:</b></div>
-<div className="col col--5">The group's display name.</div>
+<div className="col col--5">The workflow group's display name.</div>
 <div className="col col--4"><em>It doesn't have to be unique.</em></div>
 </div>
 <div className="row table-row-2">
 <div className="col col--3"><b>Code:</b></div>
-<div className="col col--5">Group identification name. Must be unique. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter.</div>
+<div className="col col--5">Workflow group identification name. Must be unique. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter.</div>
 <div className="col col--4"><em>The code cannot be edited once it is saved.</em></div>
 </div>
 <div className="row table-row-1">
@@ -71,11 +70,144 @@ _Basic setup and display options._
 <div className="col col--4"><em>If you don't type a number, the system will assign one.</em></div>
 </div>
 <div className="row table-row-2">
-<div className="col col--3"><b>Parent Group:</b></div>
-<div className="col col--5">The group can be positioned within another group as a child. The parent group must already exist.</div>
+<div className="col col--3"><b>Description:</b></div>
+<div className="col col--5">Brief description of the workflow group's purpose.</div>
+<div className="col col--4"><em>Optional field for documentation purposes.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Data Collection:</b></div>
+<div className="col col--5">
+Choose the collection that will act as the asset. This collection is used to define the tasks on the workflow. 
+
+<br/>
+
+The collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) are shared with each task, giving tasks the necessary slots to store relevant data.
+</div>
+<div className="col col--4"><em>
+Task references are stored in the collection.
+</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>State List:</b></div>
+<div className="col col--5">Select the collection that has the available workflow states. The states are stored as elements in the collection.</div>
+<div className="col col--4"><em>The collection –with its elements– must be previously created.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Workflow States:</b></div>
+<div className="col col--5">Indicates in which state the workflow starts off by default.</div>
+<div className="col col--4"><em>
+Available options are the elements present in the collection selected in the **State list** field.
+</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Start Form:</b></div>
+<div className="col col--5">
+Indicates that a survey will initialize the workflow. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.
+
+Once selected, the <span className="badge badge--secondary">Share</span> button will appear.
+</div>
+<div className="col col--4"><em>
+Go to [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
+</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Start Form Permissions:</b></div>
+<div className="col col--5">Select permissions users need to create a subtask. Users are required to have at least one of the selected permissions.</div>
+<div className="col col--4"><em>
+Users are assigned permissions through their [access roles](/docs/documentation/admin/admin_accessrole).
+</em></div>
+</div>
+</div>
+<br/>
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### B. Data Model {#data-model-section}
+_Configure the data structure and elements for this workflow group._
+
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><b>Elements:</b></div>
+<div className="col col--5">Configure the data elements and properties for this workflow group.</div>
+<div className="col col--4"><em>This section will be configured later.</em></div>
+</div>
+</div>
+<br/>
+
+</div>
+<br/>
+
+<div className="alert alert--secondary">
+
+### C. Tags and Additional Fields {#tags-additional-fields-section}
+_Configure Tag fields and additional fields for tasks._
+
+<img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_05.png')} />
+<br/>
+
+<div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><b>Status (Nº 1-5):</b></div>
+<div className="col col--5">
+
+Adds a _collection_ as an [additional field or status](/docs/documentation/admin/database/admin_collections#additional-fields) on all tasks belonging to the workflow. 
+
+The _elements_ within the _collection_ are used as the available values (options) for each _status_. 
+
+<br/>
+
+_Status_ options can indicate things like task priority, corresponding company department, or [permissions for unassociated users](/docs/documentation/api/tasks#patch-taskgroup-permissions).
+
+<br/>
+
+_Status_ values can also be used to filter, group, or sort the tasks in the task view.
+
+
+</div>
 <div className="col col--4"><em>
 
-[Learn more about parent groups](/docs/documentation/admin/tips/parent_group)
+_Status_ fields are displayed on the [general information of task details](/docs/documentation/client/tasks/task_details).
+
+<br/>
+
+_Status_ values appear on task descriptions when displayed on [list](/docs/documentation/client/tasks/taskview#list-view) or [kanban](/docs/documentation/client/tasks/taskview#kanban-view) views.
+
+<br/>
+
+These collections correspond to the five _status_ fields belonging to the `dynamicPropertyTypes` object of the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
+
+
+</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Additional fields:</b></div>
+<div className="col col--5">
+
+_Collections_ used to add extra information to tasks. The [_additional fields contained within the selected collections_](/docs/documentation/admin/database/admin_collections#additional-fields) will be used as additional fields on the task. Up to fifty collections can be selected.
+
+<br/>
+
+The added [collections with their respective additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) can indicate things like task priority, corresponding company department, etc. 
+
+<br/>
+
+The _additional fields_ can also be used to filter, group, or sort the tasks in the _task view_. 
+
+</div>
+<div className="col col--4"><em>
+
+These _additional fields_ will appear within [_extra tabs_ on task details](/docs/documentation/admin/workflows/settings_panels/workflowgroup_channels#details-layout). 
+
+<br/>
+
+These _collections_ correspond to the `allowedExtensions` field in the [COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine) data model.
+
+<br/>
+
+These _additional fields_ differ from the _statuses_ shown above (status 1-5). [See "best practices" below for information on the preference of _statuses_ over _additional fields_](#workflow-additional-fields).
 
 </em></div>
 </div>
@@ -85,10 +217,9 @@ _Basic setup and display options._
 </div>
 <br/>
 
-
 <div className="alert alert--secondary">
 
-### B. Icon Fields {#icon-section}
+### D. Icon Fields {#icon-section}
 _Configures the group icon shown on the Main Menu Bar or Group Panel._
 
 <img alt="icon" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_02.png')} />
@@ -118,137 +249,22 @@ _Configures the group icon shown on the Main Menu Bar or Group Panel._
 
 <div className="alert alert--secondary">
 
-### C. Help Fields {#help-section}
-_Sets up onboarding when users log in to the app or website._
+### E. SLAs {#slas-section}
+_Configure Service Level Agreements for workflow automation._
 
-<img alt="help" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_03.png')} />
+<img alt="SLAs" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_07.png')} />
 <br/>
 
 <div className="container box">
 <div className="row table-row-1">
-<div className="col col--3"><b>Activate help for this group:</b></div>
-<div className="col col--5">This function is for mobile apps only.</div>
-<div className="col col--4"><em>Currently unavailable.</em></div>
+<div className="col col--3"><b>Create SLA:</b></div>
+<div className="col col--5">
+A service-level agreement (SLA) can be incorporated into the workflow. When a task does not change from one state to another at a pre-determined time, a routine can be built to take a course of action, like sending a reminder to whoever was assigned the task.
 </div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Display in onboarding:</b></div>
-<div className="col col--5">Will display onboarding instructions when users log into the app or website.</div>
-<div className="col col--4"></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Instructions:</b></div>
-<div className="col col--5">Text that will be displayed.</div>
-<div className="col col--4"><em>Instructions will be displayed below the animation.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Frequently asked questions' URL</b></div>
-<div className="col col--5">This function is for mobile apps.</div>
-<div className="col col--4"><em>Currently unavailable.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Animation:</b></div>
-<div className="col col--5">Animated image shown in group onboarding. JSON animation format only.</div>
 <div className="col col--4"><em>
-
-We recommend using [Lottie File](https://lottiefiles.com/).
+For information on how to **add an SLA routine** to your workflow, go to the [SLA Routine](/docs/documentation/automation/sla) section.
 </em></div>
 </div>
-
-</div>
-<br/>
-
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-### D. Layout Fields {#layout-section}
-_Configures how channels are displayed in a workflow group._
-
-<img alt="layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_04.png')} />
-<br/>
-
-<div className="container box">
-<div className="row table-row-1">
-<div className="col col--3"><b>Additional sorting:</b></div>
-<div className="col col--5">Permits you to configure the order in which workflow group channels are displayed.</div>
-<div className="col col--4"><em>The default option is to sort channels by name, and then by the last message sent.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Collection:</b></div>
-<div className="col col--5">Channels will be sorted by the elements (properties) contained within the selected collection (property type).</div>
-<div className="col col--4"><em>If the channels are not related to the selected property type, they will not be sorted.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Order elements by:</b></div>
-<div className="col col--5">Elements will be sorted by the selected option.</div>
-<div className="col col--4"><em>Available options are: Created At, Weight, Modified At, and Name</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Order channels by:</b></div>
-<div className="col col--5">Channels will be sorted by the selected option.</div>
-<div className="col col--4"><em>Available options are: Created At, Last Message, Modified, At and Name</em></div>
-</div>
-
-</div>
-<br/>
-
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-### E. Secondary Actions {#secondary-actions-section}
-
-_This section allows you to set up the ***secondary actions*** which are made available for end-users through a group's ***actions button***. With secondary actions users can access URLs, which can be configured to go to different channels or even open external websites._
-
-_Learn more about the [workflow group actions button](/docs/documentation/admin/tips/action_button)._
-
-<img alt="add new action" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_05a.png')} />
-<br/>
-
-**+ ADD NEW ACTION**: creates an _action_ that can be accessed through the _actions button_.
-
-
-
-Pressing this button opens up a **New action** pad. Press the pad to open the new action's settings panel.
-<img alt="add new action" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_05b.png')} />
-<br/>
-
-<div className="container box">
-<div className="row table-row-1">
-<div className="col col--3"><b>Name:</b></div>
-<div className="col col--5">Name given to the action. The name will appear as an option in the Actions Menu.</div>
-<div className="col col--4"><em>You can use any characters.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Url:</b></div>
-<div className="col col--5">Indicates de URL that will be accessed. URLs can point to external or internal pages. They can also point to sections within the app, surveys, and tasks by indicating their URL.</div>
-<div className="col col--4"><em>You can obtain the URLs for surveys, tasks, and other app objects by going directly to them and copying the address directly from your navigator's URL bar.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Use authentication:</b></div>
-<div className="col col--5">Sends the user's authentication token to external sites.</div>
-<div className="col col--4"><em>This is needed for external sites that require Cotalker authentication. For security reasons, use only on trusted sites.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Open link in a new tab:</b></div>
-<div className="col col--5">If activated, the URL will be opened in a new tab in your browser. Otherwise, it will open inside the Cotalker app window.</div>
-<div className="col col--4"><em></em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Select icon:</b></div>
-<div className="col col--5">You can choose between personalized or pre-designed icons.</div>
-<div className="col col--4"><em>The color cannot be changed.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Path:</b></div>
-<div className="col col--5">Must be filled with Scalable Vector Graphics (SVG) code.</div>
-<div className="col col--4"><em>If the icon was selected from the list of pre-designed icons, the path will be completed automatically. If a personalized SVG is desired, its code must be inserted manually.</em></div>
-</div>
-
 </div>
 <br/>
 
@@ -257,34 +273,40 @@ Pressing this button opens up a **New action** pad. Press the pad to open the ne
 
 <div className="alert alert--secondary">
 
-### F. Settings {#settings}
-_Set display settings._
-
-<img alt="settings" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_06.png')} />
-<br/>
+### F. Advanced Settings {#advanced-settings-section}
+_Configure advanced workflow options and permissions._
 
 <div className="container box">
+<div className="row table-row-1">
+<div className="col col--3"><b>View Configuration:</b></div>
+<div className="col col--5">Configure how the workflow group is displayed to users.</div>
+<div className="col col--4"><em>This section will be configured later.</em></div>
+</div>
 <div className="row table-row-2">
-<div className="col col--3"><b>Initial view:</b></div>
-<div className="col col--4">
-
-Set whether a _workflow group_ opens initially from a [_task view_](/docs/documentation/client/tasks/taskview) or [_group view_](/docs/documentation/client/tasks/group_view).  
-_Task view_ is the default value.
-
+<div className="col col--3"><b>User Bot Information:</b></div>
+<div className="col col--5">Configure bot interactions and automated responses.</div>
+<div className="col col--4"><em>This section will be configured later.</em></div>
 </div>
-<div className="col col--5"><em>
-
-Options are:  
-`Start with group view`: opens the workflow group's **group panel**.  
-`Start with task view`: opens the workflow group in **task view**.  
-
-<br/>
-
-[Click here](/docs/documentation/admin/tips/task_view) for more information on configuring the initial workflow group display.
-
-</em></div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Unique Forms:</b></div>
+<div className="col col--5">Configure unique form settings for this workflow.</div>
+<div className="col col--4"><em>This section will be configured later.</em></div>
 </div>
-
+<div className="row table-row-2">
+<div className="col col--3"><b>Workflow Permissions:</b></div>
+<div className="col col--5">Set permissions for who can access and modify this workflow.</div>
+<div className="col col--4"><em>This section will be configured later.</em></div>
+</div>
+<div className="row table-row-1">
+<div className="col col--3"><b>Task Permissions Configuration:</b></div>
+<div className="col col--5">Configure permissions for task creation and modification.</div>
+<div className="col col--4"><em>This section will be configured later.</em></div>
+</div>
+<div className="row table-row-2">
+<div className="col col--3"><b>Permissions by Properties:</b></div>
+<div className="col col--5">Set specific permissions based on task properties.</div>
+<div className="col col--4"><em>This section will be configured later.</em></div>
+</div>
 </div>
 <br/>
 
@@ -292,7 +314,23 @@ Options are:
 <br/>
 
 ## Best Practices {#best-practices}
+
+### Using Status Fields vs Additional Fields {#status-vs-additional-fields}
+When using **status fields** and **additional fields** in your workflows, note the differences:
+
+The five **status fields** (Status 1-5) correspond to the `dynamicPropertyTypes` field in the workflow's data model ([COTSMStateMachine](/docs/documentation/models/tasks/model_statemachine)) and are displayed as [standard task settings](/docs/documentation/client/tasks/task_details/standard-task-details) on the [task details](/docs/documentation/client/tasks/task_details) panel. 
+
+The **additional fields** can contain multiple _collections_ and are stored in the `allowedExtensions` field of the [COTSMStateMachine data model](/docs/documentation/models/tasks/model_statemachine). These _additional fields_ are displayed as extra tabs in the [task details](/docs/documentation/client/tasks/task_details) panel.
+
+As best practice, it is recommended to use the **status fields** (1-5) because their structure permits greater consistency between the elements.
+
 ### Sorting Tasks {#sorting-tasks}
 It is recommended to sort tasks in the group panel by _states_ so that users can visually identify the state their tasks are found in. Task (workflow) states are represented by the elements (properties) found in the collection (property types) associated with the workflow.
 
-Sorting tasks by states can be set in the [layout section of the settings panel](/docs/documentation/admin/workflows/settings_panels/workflowgroup-create-edit#layout-section) by choosing the _collection_ where the workflow states are found in.
+## Related Topics {#related-topics}
+- [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)
+- [**Create a Survey that Starts a Workflow Tutorial**](/docs/tutorials/intermediate/create_survey_sm)
+- [**Set up Start Forms**](/docs/documentation/admin/workflows/admin_workflow_required_survey)
+- [**Set up a Public Survey**](/docs/documentation/admin/workflows/admin_workflow_public_survey)
+- [**Routine Builder**](/docs/documentation/automation/admin_routine)
+- [**SLAs**](/docs/documentation/automation/sla)

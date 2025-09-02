@@ -1,6 +1,6 @@
 ---
 title: Initial Settings Panel
-sidebar_label: Initial Settings Panel
+sidebar_label: Initial Settings Panel (Workflow Groups)
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
