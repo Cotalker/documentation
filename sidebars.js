@@ -92,27 +92,11 @@ module.exports = {
               label: 'Workflows',
               items: [
                 'documentation/admin/workflows/admin_workflow_overview',
-                {
-                  type: 'category',
-                  label: 'Settings Panels',
-                  items: [
-                    'documentation/admin/workflows/settings_panels/workflowgroup-create-edit',
-                    'documentation/admin/workflows/settings_panels/workflowgroup_channels',
-                    'documentation/admin/workflows/settings_panels/create_edit_state',
-                  ],
-                  collapsed: true,
-                },
-                {
-                  type: 'category',
-                  label: 'Basic Operations',
-                  items: [
-                    // 'documentation/admin/workflows/admin_workflow_configure',
-                    'documentation/admin/workflows/admin_workflow_required_survey',
-                    'documentation/admin/workflows/admin_workflow_public_survey',
-                    'documentation/admin/tips/task_view'
-                  ],
-                  collapsed: true,
-                },
+                'documentation/admin/workflows/settings_panels/workflowgroup-create-edit',
+                'documentation/admin/workflows/settings_panels/workflowgroup_channels',
+                'documentation/admin/workflows/settings_panels/create_edit_state',
+                'documentation/admin/workflows/admin_workflow_required_survey',
+                'documentation/admin/workflows/admin_workflow_public_survey',
               ],
               collapsed: true,
             },

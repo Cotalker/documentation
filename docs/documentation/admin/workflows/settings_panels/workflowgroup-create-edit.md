@@ -235,7 +235,7 @@ _Configures the group icon shown on the Main Menu Bar or Group Panel._
 ### E. SLAs {#slas-section}
 _Configure Service Level Agreements for workflow automation._
 
-<img alt="SLAs" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_07.png')} />
+<img alt="SLAs" className="img_sizing img_format img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_07.png')} />
 <br/>
 
 <div className="container box">
@@ -245,7 +245,7 @@ _Configure Service Level Agreements for workflow automation._
 A service-level agreement (SLA) can be incorporated into the workflow. When a task does not change from one state to another at a pre-determined time, a routine can be built to take a course of action, like sending a reminder to whoever was assigned the task.
 </div>
 <div className="col col--4"><em>
-For information on how to **add an SLA routine** to your workflow, go to the [SLA Routine](/docs/documentation/automation/sla) section.
+For information on how to <strong>add an SLA routine</strong> to your workflow, go to the <a href="/docs/documentation/automation/sla">SLA Routine</a> section.
 </em></div>
 </div>
 </div>
@@ -259,38 +259,57 @@ For information on how to **add an SLA routine** to your workflow, go to the [SL
 ### F. Advanced Settings {#advanced-settings-section}
 _Configure advanced workflow options and permissions._
 
-<div className="container box">
-<div className="row table-row-1">
-<div className="col col--3"><b>View Configuration:</b></div>
-<div className="col col--5">Configure how the workflow group is displayed to users.</div>
-<div className="col col--4"><em>This section will be configured later.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>User Bot Information:</b></div>
-<div className="col col--5">Configure bot interactions and automated responses.</div>
-<div className="col col--4"><em>This section will be configured later.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Unique Forms:</b></div>
-<div className="col col--5">Configure unique form settings for this workflow.</div>
-<div className="col col--4"><em>This section will be configured later.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Workflow Permissions:</b></div>
-<div className="col col--5">Set permissions for who can access and modify this workflow.</div>
-<div className="col col--4"><em>This section will be configured later.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Task Permissions Configuration:</b></div>
-<div className="col col--5">Configure permissions for task creation and modification.</div>
-<div className="col col--4"><em>This section will be configured later.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Permissions by Properties:</b></div>
-<div className="col col--5">Set specific permissions based on task properties.</div>
-<div className="col col--4"><em>This section will be configured later.</em></div>
-</div>
-</div>
+<img alt="access to edit workflows" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_08.png')} />
+<br/><br/>
+
+<table>
+  <tbody>
+    <tr>
+      <td><b>Available visualization mode</b></td>
+      <td>Specifies how users can view tasks within the task panel. The available options (shown as icons in the menu bar) are: Calendar view, Table view, Kanban view, and List view.</td>
+    </tr>
+    <tr>
+      <td><b>Default view</b></td>
+      <td>Sets the default view in the task section. Options include: List, Kanban, Calendar and Table.</td>
+    </tr>
+    <tr>
+      <td><b>Hide closed tasks after</b></td>
+      <td>Closed tasks will disappear from the task panel after the specified number of days, but will remain accessible in the workflows channel panel.</td>
+    </tr>
+    <tr>
+      <td><b>Default selected task tab</b></td>
+      <td>Defines which task tab is selected by default when opening the task panel.</td>
+    </tr>
+    <tr>
+      <td><b>User bot name</b></td>
+      <td>Code name of the automatically created bot associated with the workflow group. The name is generated using the workflow group's code as a reference.</td>
+    </tr>
+    <tr>
+      <td><b>Access roles</b></td>
+      <td>Access roles that allow the bot to act on the workflow.</td>
+    </tr>
+    <tr>
+      <td><b>Unique Forms</b></td>
+      <td>Configure unique form settings for this workflow.</td>
+    </tr>
+    <tr>
+      <td><b>Workflow visualization permissions</b></td>
+      <td>Defines which users or roles can view the workflow and its tasks.</td>
+    </tr>
+    <tr>
+      <td><b>Task import permissions</b></td>
+      <td>Defines which users or roles can import tasks into the workflow.</td>
+    </tr>
+    <tr>
+      <td><b>Visualize all tasks permissions</b></td>
+      <td>Defines which users or roles can view all tasks in the workflow, regardless of assignment.</td>
+    </tr>
+    <tr>
+      <td><b>Permissions by properties</b></td>
+      <td>Set specific permissions based on task properties. Includes functionality to add custom properties.</td>
+    </tr>
+  </tbody>
+</table>
 <br/>
 
 </div>
@@ -310,157 +329,6 @@ As best practice, it is recommended to use the **status fields** (1-5) because t
 ### Sorting Tasks {#sorting-tasks}
 It is recommended to sort tasks in the group panel by _states_ so that users can visually identify the state their tasks are found in. Task (workflow) states are represented by the elements (properties) found in the collection (property types) associated with the workflow.
 
----
-
-## Workflows Setup {#workflows-setup}
-
-_Configure the workflow group. Create and edit workflows within a workflow group._
-
-### Access the Workflows Setup Panel {#access-workflows-setup}
-
-From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press the corresponding icon from the _workflow group list_.
-
-<img alt="access workflow setup" className="img_sizing img_format img_formatitem shadow--tl" src={useBaseUrl('img/admin_workflow_setup_00.png')} />
-<br/>
-
-<div className="alert alert--secondary">
-
-### Workflows Setup Panel Layout {#workflows-setup-panel-layout}
-
-After choosing to set up workflows, the following **Workflows** settings panel opens up:
-
-<img alt="settings panel layout" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_setup_01.png')} />
-<br/>
-
-_Options and Settings:_
-1. Display workflow diagrams in panel (4)
-2. Add workflow: create a new workflow in the workflow group
-3. [Configuration](#workflows-configuration): configure workflow group
-4. Workflow diagrams: edit workflow
-5. Workflow list: edit workflow
-
-</div>
-<br/>
-
-<div className="alert alert--secondary">
-
-### Workflows Configuration {#workflows-configuration}
-
-<img alt="configuration" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_setup_02.png')} />
-<br/>
-
-<div className="container box">
-<div className="row table-row-1">
-<div className="col col--3"><b>Flow Type:</b></div>
-<div className="col col--5">
-
-Determines how tasks transition from one state to another, i.e., either _freely_ or through a _state-machine_ process.
-
-</div>
-<div className="col col--4"><em>
-
-- **State-machine**: Task state transitions much be predetermined in the setup.
-- **Free**: Tasks can freely change from one state to another.
-
-</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Initial Workflow:</b></div>
-<div className="col col--5">
-
-Choose the _initial workflow_ from the existing workflows in the group.
-
-</div>
-<div className="col col--4"><em></em></div>
-</div>
-
-<div className="row table-row-1">
-<div className="col col--3"><b>Available Views:</b></div>
-<div className="col col--5">
-
-Indicates how users can view tasks within the _task view_. The options will be made available through icons in the task view menu bar.
-
-</div>
-<div className="col col--4"><em>
-
-Options are _Calendar view_, _Table view_, _Kanban view_, and _List view_.
-
-</em></div>
-</div>
-
-<div className="row table-row-2">
-<div className="col col--3"><b>Default view:</b></div>
-<div className="col col--5">
-
-Indicates the default view in the _task view_ section. Options are _Calendar view_, _Gantt view_, _Table view_, _Kanban view_, and _List view_.
-
-</div>
-<div className="col col--4"><em></em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Default filter:</b></div>
-<div className="col col--5">
-
-Filter used by default to sort tasks in the _task view_.
-
-</div>
-<div className="col col--4"><em>
-
-Options are determined by the global filters that have been created.
-
-</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Hide closed tasks after:</b></div>
-<div className="col col--5">Closed tasks will disappear from the task view after the amount of days indicated.</div>
-<div className="col col--4"><em>Closed tasks will remain in the workflows channel panel.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>User bot name:</b></div>
-<div className="col col--5">Code name of automatically-created bot associated with the workflow group.</div>
-<div className="col col--4"><em>The name is automatically generated using the workflow group's code name as reference.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Access roles:</b></div>
-<div className="col col--5">Access roles that allow the bot to act upon the workflow.</div>
-<div className="col col--4"><em></em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Read Permissions:</b></div>
-<div className="col col--5">
-
-Permissions that allow users to view task settings in the details tab.
-
-</div>
-<div className="col col--4"><em>
-
-List of available Read Permissions
-
-</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Write Permissions:</b></div>
-<div className="col col--5">
-
-Permissions that allow users to edit task settings in the details tab.
-
-</div>
-<div className="col col--4"><em>
-
-List of available Write Permissions
-
-</em></div>
-</div>
-
-</div>
-<br/>
-
-:::note Attention
-You may add as many permissions as you want, but do not change the previously assigned _permissions_. Nor should you change the _initial workflow_. These changes could alter the functionality of existing workflows.  If you want to unassign a _permission_ or change the initial _workflow_, please check with the support team.
-:::
-
-</div>
-<br/>
 
 ## Related Topics {#related-topics}
 - [**Create a Workflow Tutorial**](/docs/tutorials/basic/create_state_machines)
