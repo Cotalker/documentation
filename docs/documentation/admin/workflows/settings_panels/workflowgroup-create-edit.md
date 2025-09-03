@@ -51,75 +51,57 @@ _Settings:_
 ### A. General Information {#general-information-section}
 _Basic setup and display options._
 
-<img alt="general info" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_01.png')} />
-<br/>
-
-<div className="container box">
-<div className="row table-row-1">
-<div className="col col--3"><b>Name:</b></div>
-<div className="col col--5">The workflow group's display name.</div>
-<div className="col col--4"><em>It doesn't have to be unique.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Code:</b></div>
-<div className="col col--5">Workflow group identification name. Must be unique. Only lowercase letters, numbers, and underscores are accepted. The first character must be a letter.</div>
-<div className="col col--4"><em>The code cannot be edited once it is saved.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Weight:</b></div>
-<div className="col col--5">A relative number that positions the group on the list. Smaller numbers accommodate the group near the top, larger numbers towards the end.</div>
-<div className="col col--4"><em>If you don't type a number, the system will assign one.</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Description:</b></div>
-<div className="col col--5">Brief description of the workflow group's purpose.</div>
-<div className="col col--4"><em>Optional field for documentation purposes.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Data Collection:</b></div>
-<div className="col col--5">
-Choose the collection that will act as the asset. This collection is used to define the tasks on the workflow. 
+<img alt="general info" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_01a.png')} />
 
 <br/>
 
-The collection's [additional fields](/docs/documentation/admin/database/admin_collections#additional-fields) are shared with each task, giving tasks the necessary slots to store relevant data.
-</div>
-<div className="col col--4"><em>
-Task references are stored in the collection.
-</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>State List:</b></div>
-<div className="col col--5">Select the collection that has the available workflow states. The states are stored as elements in the collection.</div>
-<div className="col col--4"><em>The collection –with its elements– must be previously created.</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Workflow States:</b></div>
-<div className="col col--5">Indicates in which state the workflow starts off by default.</div>
-<div className="col col--4"><em>
-Available options are the elements present in the collection selected in the **State list** field.
-</em></div>
-</div>
-<div className="row table-row-2">
-<div className="col col--3"><b>Start Form:</b></div>
-<div className="col col--5">
-Indicates that a survey will initialize the workflow. Remember to previously create the survey and choose it from the dropdown menu where all existing surveys will appear as options.
+**Basic Workflow Configuration Fields:**
+This section displays the primary configuration fields for setting up a workflow group:
 
-Once selected, the <span className="badge badge--secondary">Share</span> button will appear.
-</div>
-<div className="col col--4"><em>
-Go to [Start Forms](/docs/documentation/admin/workflows/admin_workflow_required_survey) for more setup information.
-</em></div>
-</div>
-<div className="row table-row-1">
-<div className="col col--3"><b>Start Form Permissions:</b></div>
-<div className="col col--5">Select permissions users need to create a subtask. Users are required to have at least one of the selected permissions.</div>
-<div className="col col--4"><em>
-Users are assigned permissions through their [access roles](/docs/documentation/admin/admin_accessrole).
-</em></div>
-</div>
-</div>
+- **Workflow Name**: The display name for the workflow group
+- **Code**: Unique identification code for the workflow (lowercase letters, numbers, and underscores only)
+- **Weight**: Relative positioning number for list ordering (smaller numbers appear first)
+- **Description**: Brief explanation of the workflow group's purpose
+- **Data Collection**: Selection of the collection that will act as the asset for task definitions
+- **State List**: Collection containing the available workflow states
+
 <br/>
+
+<img alt="general info" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_01b.png')} />
+
+<br/>
+
+**Workflow States Diagram and Start Form Configuration:**
+This section shows the visual workflow diagram and start form settings:
+
+- **Workflow States Diagram**: Visual representation of the workflow flow and its states. Use the **+** button to create new states
+- **Start Form**: The selected survey form that will initialize the workflow. This survey must be previously created and can be chosen from the dropdown menu where all existing surveys appear as options. For more details, see the [Start Form section](../../workflows/admin_workflow_required_survey.md). Once selected, the Share button will appear. The actions button provides four key functions:
+  1. **Edit Form**: Opens the editor for the selected start form
+  2. **Mapping**: Opens the mapper panel for this form
+  3. **Share**: Provides sharing options for the form
+  4. **Edit Routine**: Opens the routine builder for workflow automation
+- **Start Form Permissions**: Select permissions users need to create a subtask. Users are required to have at least one of the selected permissions. Users are assigned permissions through their access roles
+- **Automatic Task Creation with Start Form**: Checkbox option to enable automatic task generation when the start form is submitted
+
+<br/>
+
+<img alt="general info" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_01c.png')} />
+
+<br/>
+
+**States List Management:**
+This section displays the complete list of workflow states with management options:
+
+- **State Name**: Display name for each workflow state
+- **State ID**: Unique identifier that can be copied for reference
+- **Type**: State classification (New, In Progress, or Closed)
+- **Settings Button**: Configuration options for editing each individual state
+
+Each state entry provides quick access to essential state information and editing capabilities for workflow management.
+
+<br/>
+
+
 
 </div>
 <br/>
