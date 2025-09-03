@@ -8,31 +8,32 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 _Create and configure workflow groups. A workflow group contains workflows with their states, forms, and automations._
 
-## Create a Workflow Group {#create-workflow-group}
+## Create a Workflow {#create-workflow-group}
 
-From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press <span className="badge badge--primary">+</span>.
+From the [Initial Settings Panel (Workflows)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press <span className="badge badge--primary">+</span>.
 
-<img alt="create new workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00a.png')} />
+<img alt="create new workflow" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00a.png')} />
 <br/>
 
-## Edit a Workflow Group {#edit-workflow-group}
+## Edit a Workflow {#edit-workflow-group}
 
-From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press the corresponding icon from the _workflow group list_.
+From the [Initial Settings Panel (Workflows)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press the corresponding icon from the _workflow list_.
 
-<img alt="edit workflow group" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_edit_00a.png')} />
+<img alt="edit workflow" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_edit_00a.png')} />
 <br/>
 
 <div className="alert alert--secondary">
 
 ## Settings Panel Layout {#panel-layout}
-After choosing to create or edit a workflow group, the following settings panel opens up:
+After choosing to create or edit a workflow, the following settings panel opens up:
 
-<img alt="settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00.png')} />
+<img alt="settings panel" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_00.png')} />
 <br/>
 
 _Options:_
-1. **Deactivate**: Deactivate the element.
-2. **Save**: Save current configuration.
+1. **Dev Mode**: Enabled advance developet options. Once enabled, it cannot be disabled.
+2. **Deactivate**: Deactivate the element.
+3. **Save**: Save current configuration.
 
 _Settings:_
 - [**A. General Information**](#general-information-section)
@@ -50,7 +51,7 @@ _Settings:_
 ### A. General Information {#general-information-section}
 _Basic setup and display options._
 
-<img alt="general info" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_01.png')} />
+<img alt="general info" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_01.png')} />
 <br/>
 
 <div className="container box">
@@ -145,7 +146,7 @@ _Configure the data structure and elements for this workflow group._
 ### C. Tags and Additional Fields {#tags-additional-fields-section}
 _Configure Tag fields and additional fields for tasks._
 
-<img alt="additional fields" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_05.png')} />
+<img alt="additional fields" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_05.png')} />
 <br/>
 
 <div className="container box">
@@ -222,7 +223,7 @@ These _additional fields_ differ from the _statuses_ shown above (status 1-5). [
 ### D. Icon Fields {#icon-section}
 _Configures the group icon shown on the Main Menu Bar or Group Panel._
 
-<img alt="icon" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_02.png')} />
+<img alt="icon" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_02.png')} />
 <br/>
 
 <div className="container box">
@@ -252,7 +253,7 @@ _Configures the group icon shown on the Main Menu Bar or Group Panel._
 ### E. SLAs {#slas-section}
 _Configure Service Level Agreements for workflow automation._
 
-<img alt="SLAs" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_07.png')} />
+<img alt="SLAs" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_edit_07.png')} />
 <br/>
 
 <div className="container box">
@@ -337,7 +338,7 @@ _Configure the workflow group. Create and edit workflows within a workflow group
 
 From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/workflows/admin_workflow_overview#layout), press the corresponding icon from the _workflow group list_.
 
-<img alt="access workflow setup" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_setup_00.png')} />
+<img alt="access workflow setup" className="img_sizing img_format img_formatitem shadow--tl" src={useBaseUrl('img/admin_workflow_setup_00.png')} />
 <br/>
 
 <div className="alert alert--secondary">
@@ -346,7 +347,7 @@ From the [Initial Settings Panel (Workflow Groups)](/docs/documentation/admin/wo
 
 After choosing to set up workflows, the following **Workflows** settings panel opens up:
 
-<img alt="settings panel layout" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_setup_01.png')} />
+<img alt="settings panel layout" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_setup_01.png')} />
 <br/>
 
 _Options and Settings:_
@@ -363,7 +364,7 @@ _Options and Settings:_
 
 ### Workflows Configuration {#workflows-configuration}
 
-<img alt="configuration" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflow_setup_02.png')} />
+<img alt="configuration" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflow_setup_02.png')} />
 <br/>
 
 <div className="container box">
