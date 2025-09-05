@@ -111,14 +111,72 @@ Each state entry provides quick access to essential state information and editin
 ### B. Data Model {#data-model-section}
 _Configure the data structure and elements for this workflow group._
 
+The Data Model section allows you to define custom data elements that will be associated with tasks in this workflow group. These elements extend the standard task information with additional properties specific to your business needs.
+
+**1. Elements Overview**
+
+The main Data Model interface displays a list of available element types on the left side. To add elements to your workflow, simply drag and drop the desired element type from the available options into the elements list. Once added, each element can be configured individually by clicking on it.
+<br/>
+
+<img alt="data model list" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_datamodel_01.png')} />
+
+<br/>
+
 <div className="container box">
 <div className="row table-row-1">
 <div className="col col--3"><b>Elements:</b></div>
-<div className="col col--5">Configure the data elements and properties for this workflow group.</div>
-<div className="col col--4"><em>This section will be configured later.</em></div>
+<div className="col col--5">Drag and drop elements from the available types to build your custom data model.</div>
+<div className="col col--4"><em>Configure each element's properties using the General and Advanced tabs.</em></div>
 </div>
 </div>
 <br/>
+
+#### Available Element Types
+
+The system provides eight different data types that can be added to your workflow:
+
+- **Boolean**: True/false values for binary choices
+- **Date**: Date and time fields for temporal information
+- **Property**: References to existing database properties
+- **File**: File attachments and document uploads
+- **Link**: URL links to external resources
+- **Number**: Numeric values for quantities, measurements, etc.
+- **Text**: Free-form text fields for descriptions and notes
+- **User**: User references for assignments and responsibilities
+
+<br/> 
+
+**2. General Configuration**
+
+<img alt="general config" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_datamodel_02.png')} />
+<br/>
+When you click on any element in the list, the General configuration tab opens. This section contains the fundamental settings for each element:
+
+- **Name**: The display name that users will see for this field
+- **Code**: A unique identifier used internally by the system
+- **Description**: Additional information about the element's purpose
+- **Required**: Whether this field must be filled when creating or updating tasks
+- **Element-Specific Fields**: The available configuration fields will vary depending on the data type of the element you select. Each element type (such as Text, Number, Date, User, etc.) presents its own set of relevant options and properties. 
+
+These settings define how the element appears and behaves in the user interface.
+
+**3. Advanced Configuration (Workflow Version 2 Only)**
+
+<img alt="advanced configuration" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_create_datamodel_03.png')} />
+
+For workflows running on version 2, the Advanced tab provides additional configuration options that control element visibility and behavior:
+
+- **Visible**: Controls whether this element appears in the task detail view and table view. When disabled, the field exists in the data model but is hidden from users.
+
+- **Editable**: Determines if users can modify this field's value in the task detail view. When disabled, the field becomes read-only after initial creation.
+
+- **Indexable**: Enables filtering and searching capabilities for this field across different views. When enabled, users can filter tasks based on this element's values in list views and reports.
+
+These advanced settings provide fine-grained control over how elements behave in the user interface and help optimize the user experience based on specific workflow requirements.
+
+#### Multi-language Support
+
+All workflow versions support multi-language configuration for element names and descriptions. This allows you to provide localized labels that match your organization's language preferences, ensuring that users see field names in their preferred language.
 
 </div>
 <br/>
