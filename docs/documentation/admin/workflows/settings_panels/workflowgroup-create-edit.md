@@ -31,7 +31,7 @@ After choosing to create or edit a workflow, the following settings panel opens 
 <br/>
 
 _Options:_
-1. **Dev Mode**: Enabled advance developet options. Once enabled, it cannot be disabled.
+1. **Dev Mode**: Enables advanced developer options. Once enabled, it cannot be disabled.
 2. **Deactivate**: Deactivate the element.
 3. **Save**: Save current configuration.
 
