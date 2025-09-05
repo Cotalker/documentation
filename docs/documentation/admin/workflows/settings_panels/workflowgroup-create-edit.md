@@ -248,7 +248,7 @@ These _collections_ correspond to the `allowedExtensions` field in the [COTSMSta
 
 <br/>
 
-These _additional fields_ differ from the _statuses_ shown above (status 1-5). [See "best practices" below for information on the preference of _statuses_ over _additional fields_](#workflow-additional-fields).
+These _additional fields_ differ from the _statuses_ shown above (status 1-5). [See "best practices" below for information on the preference of _statuses_ over _additional fields_](#status-vs-additional-fields).
 
 </em></div>
 </div>
