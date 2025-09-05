@@ -17,12 +17,12 @@ To access a workflow-group channel's settings panel:
 
 1. From the workflow groups (initial) setting panel, select the channel manager icon of the corresponding workflow.
 
-<img alt="channel manager" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_00.png')} />
+<img alt="channel manager" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_00.png')} />
 <br/>
 
 2. A list of all the channels available in the workflow group opens up. Choose the channel you wish to edit. The [task details panel](#layout) opens up.
 
-<img alt="channel manager" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_01.png')} />
+<img alt="channel manager" className="img_sizing img_format item shadow--tl" src={useBaseUrl('img/admin_workflowgroup_channel_01.png')} />
 <br/>
 
 ## Task Details Layout {#details-layout}
