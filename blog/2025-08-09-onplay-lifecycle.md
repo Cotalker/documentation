@@ -36,7 +36,7 @@ Previously, automations within forms executed automatically upon completion. Wit
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="http://localhost:3000/docs/documentation/automation/surveys/question_exec#component-lifecycle-stages">Component Lifecycles</a>
+<a className="button button--info button--block" href="/docs/documentation/automation/surveys/question_exec#component-lifecycle-stages">Component Lifecycles</a>
 <br/>
 
 </div>
