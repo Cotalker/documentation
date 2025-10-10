@@ -72,6 +72,7 @@ module.exports = {
     },
     'documentation/client/surveys/bulkloader',
     'documentation/client/database',
+    'documentation/client/documentation_view',
     'documentation/client/dashboard',
     'documentation/client/reports',
   ],
