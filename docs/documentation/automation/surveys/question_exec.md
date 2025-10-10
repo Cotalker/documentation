@@ -46,6 +46,7 @@ _See the image below:_
 - **onDisplay**: Code executes when a survey is in editing mode, i.e., when a user opens the survey from the channel, and it is displayed for answering. 
 - **Validate**: Code executes before internal validations and before sending the survey. This permits adding additional levels of validation (business guidelines, protocols, etc.). 
 - **Postsave**: If custom and internal validations are passed, the code executes after sending the survey.
+- **OnPlay** <span className="badge badge--success">NEW</span>: Code executes when a user presses a custom button within the form. This allows manual triggering of automations instead of automatic execution.
 
 :::caution
 - Lifecycles can be complex, especially when dealing with asynchronous functions. Avoid using repetitions.

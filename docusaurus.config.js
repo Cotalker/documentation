@@ -145,11 +145,11 @@ module.exports = {
         //   label: 'Tutorials',
         //   position: 'left',
         // },
-        // {
-        //   to: 'blog',
-        //   label: `What's New`,
-        //   position: 'left',
-        // },
+        {
+          to: 'blog',
+          label: `What's New`,
+          position: 'left',
+        },
         // {
         //   to: 'docs/certification/certification_overview',
         //   activeBasePath: 'docs',
