@@ -35,7 +35,7 @@ The Documentation section is not just a new feature, it's a tool to empower you.
 </div>
 <div className="card__footer text-center align-padding-center">
 
-<a className="button button--info button--block" href="http://localhost:3000/docs/documentation/client/documentation_view">Documentation Section</a>
+<a className="button button--info button--block" href="/docs/documentation/client/documentation_view">Documentation Section</a>
 <br/>
 
 </div>
