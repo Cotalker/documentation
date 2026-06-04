@@ -2,13 +2,16 @@
 title: Bulk Actions
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 Sometimes you need to do the same thing to many tasks at once — fill out the same form, update the same field, or remove a batch of them. Instead of opening each task one by one, the _task view_ lets you act on a whole **selection** of tasks together. This page covers **bulk actions**: applying a form to every selected task in a single step.
 
 ## Selecting multiple tasks {#selecting-tasks}
 
 Bulk operations start with a selection. In the _task view_, pick the tasks you want to act on — tick them individually, or select an entire group. Once one or more tasks are selected, the bulk options become available in the view's header.
 
-<!-- TODO screenshot: task view with several tasks selected and the Bulk Actions menu in the header -->
+<img alt="Selecting several tasks in the task view" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_selection.webp')} />
+<br/>
 
 ## Running a bulk action form {#bulk-action-forms}
 
@@ -20,6 +23,12 @@ To run one:
 2. Open the **Bulk Actions** menu in the _task view_ header. It lists the bulk action forms available for that task group.
 3. Choose a form. It opens just like a normal form.
 4. Fill it in and submit. The action is applied to **all** the selected tasks, and the selection clears once it completes.
+
+<img alt="The Bulk Actions menu listing an available bulk action form" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_menu.webp')} />
+<br/>
+
+<img alt="Running a bulk action form across the selected tasks" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_form.webp')} />
+<br/>
 
 :::note
 If the menu shows _"No bulk action forms available"_, it means no form has been set up as a bulk action form for that task group yet. See [Setting up a bulk action form](#setup) below.
@@ -50,8 +59,6 @@ Beyond running forms, the _task view_ offers two more operations on a selection:
 - **Bulk delete** — remove all selected tasks at once.
 
 Both follow the same pattern: make your selection first, then choose the operation from the header.
-
-<!-- TODO screenshot: the bulk edit dialog acting on a selection -->
 
 :::note
 Bulk operations act on the tasks of the **currently selected group**. Make sure you're in the right group before selecting and applying an action.
