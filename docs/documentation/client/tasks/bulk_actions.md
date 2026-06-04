@@ -20,11 +20,11 @@ A **bulk action form** is a form (survey) that runs against every task in your s
 To run one:
 
 1. Select the tasks you want to act on.
-2. Open the **Bulk Actions** menu in the _task view_ header. It lists the bulk action forms available for that task group.
+2. Open the **Actions** menu in the _task view_ header. It lists the bulk action forms available for that task group.
 3. Choose a form. It opens just like a normal form.
 4. Fill it in and submit. The action is applied to **all** the selected tasks, and the selection clears once it completes.
 
-<img alt="The Bulk Actions menu listing an available bulk action form" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_menu.webp')} />
+<img alt="The Actions menu listing an available bulk action form" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_menu.webp')} />
 <br/>
 
 <img alt="Running a bulk action form across the selected tasks" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_form.webp')} />
@@ -36,19 +36,19 @@ If the menu shows _"No bulk action forms available"_, it means no form has been 
 
 ## Setting up a bulk action form {#setup}
 
-A bulk action form is simply a survey that has been **flagged as a bulk form**. This is configured in the _Administrative Panel_, not in the task view:
+A bulk action form is simply a survey that has been **flagged as a bulk action form**. This is configured in the _Administrative Panel_, not in the task view:
 
 1. In the admin _Surveys_ section, open the survey you want to use (or create a new one).
-2. Enable the **Bulk form** setting on the survey.
+2. Enable the **Bulk action form** setting on the survey.
 3. Save.
 
 Once flagged, the survey:
 
-- appears under the dedicated **Bulk Forms** list in the admin _Surveys_ section, and
-- becomes selectable from the **Bulk Actions** menu in the _task view_ for the relevant task groups.
+- appears under the dedicated **Bulk** list in the admin _Surveys_ section, and
+- becomes selectable from the **Actions** menu in the _task view_ for the relevant task groups.
 
 :::tip
-A survey marked as a bulk form is **removed from the normal single-task action menu** — it's intended for acting on a selection, not on one task at a time. Keep separate surveys for single-task and bulk use.
+A survey marked as a bulk action form is **removed from the normal single-task action menu** — it's intended for acting on a selection, not on one task at a time. Keep separate surveys for single-task and bulk use.
 :::
 
 ## Other bulk operations {#other-bulk-operations}

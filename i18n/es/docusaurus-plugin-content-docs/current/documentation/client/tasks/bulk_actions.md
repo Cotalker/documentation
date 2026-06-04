@@ -20,11 +20,11 @@ Un **formulario de acción masiva** es un formulario (survey) que corre sobre to
 Para ejecutar uno:
 
 1. Selecciona las tareas sobre las que quieres actuar.
-2. Abre el menú **Bulk Actions** en el encabezado del _task view_. Lista los formularios de acción masiva disponibles para ese grupo de tareas.
+2. Abre el menú **Acciones** en el encabezado del _task view_. Lista los formularios de acción masiva disponibles para ese grupo de tareas.
 3. Elige un formulario. Se abre igual que un formulario normal.
 4. Complétalo y envíalo. La acción se aplica a **todas** las tareas seleccionadas, y la selección se limpia cuando termina.
 
-<img alt="El menú Bulk Actions mostrando un formulario de acción masiva disponible" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_menu.webp')} />
+<img alt="El menú Acciones mostrando un formulario de acción masiva disponible" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_menu.webp')} />
 <br/>
 
 <img alt="Ejecución de un formulario de acción masiva sobre las tareas seleccionadas" className="img_sizing item shadow--tl" src={useBaseUrl('img/bulk_actions_form.webp')} />
@@ -36,19 +36,19 @@ Si el menú muestra _"No hay formularios de acciones masivas disponibles"_, sign
 
 ## Configurar un formulario de acción masiva {#configurar}
 
-Un formulario de acción masiva es simplemente un survey que fue **marcado como bulk form**. Esto se configura en el _Panel Administrativo_, no en el task view:
+Un formulario de acción masiva es simplemente un survey que fue **marcado como formulario de acción masiva**. Esto se configura en el _Panel Administrativo_, no en el task view:
 
 1. En la sección _Surveys_ del admin, abre el survey que quieres usar (o crea uno nuevo).
-2. Activa la opción **Bulk form** en el survey.
+2. Activa la opción **Formulario de acción masiva** en el survey.
 3. Guarda.
 
 Una vez marcado, el survey:
 
-- aparece en la lista dedicada de **Bulk Forms** en la sección _Surveys_ del admin, y
-- queda seleccionable desde el menú **Bulk Actions** en el _task view_ para los grupos de tareas correspondientes.
+- aparece en la lista de **Masivos** en la sección _Surveys_ del admin, y
+- queda seleccionable desde el menú **Acciones** en el _task view_ para los grupos de tareas correspondientes.
 
 :::tip
-Un survey marcado como bulk form se **quita del menú de acciones de tarea individual** — está pensado para actuar sobre una selección, no sobre una tarea a la vez. Mantén surveys separados para uso individual y para uso masivo.
+Un survey marcado como formulario de acción masiva se **quita del menú de acciones de tarea individual** — está pensado para actuar sobre una selección, no sobre una tarea a la vez. Mantén surveys separados para uso individual y para uso masivo.
 :::
 
 ## Otras operaciones masivas {#otras-operaciones-masivas}
