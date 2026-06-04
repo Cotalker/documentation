@@ -326,6 +326,52 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'CLI (cotctl)',
+      link: {
+        type: 'doc',
+        id: 'developer/cli/overview',
+      },
+      collapsed: true,
+      items: [
+        'developer/cli/installation',
+        'developer/cli/authentication',
+        'developer/cli/demo-company',
+        {
+          type: 'category',
+          label: 'Commands',
+          collapsed: true,
+          items: [
+            'developer/cli/commands/login-logout',
+            'developer/cli/commands/profiles',
+            'developer/cli/commands/validate',
+            'developer/cli/commands/apply',
+            'developer/cli/commands/export-import',
+            'developer/cli/commands/scaffolding',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Resource YAML reference',
+          collapsed: true,
+          items: [
+            'developer/cli/resources/surveys',
+            'developer/cli/resources/workflows',
+            'developer/cli/resources/properties',
+            'developer/cli/resources/roles',
+            'developer/cli/resources/users',
+            'developer/cli/resources/jobtitles',
+          ],
+        },
+        'developer/cli/tutorials',
+        'developer/cli/troubleshooting',
+        'developer/cli/ci-cd',
+        'developer/cli/ai-authoring',
+        'developer/cli/skills',
+        'developer/cli/mcp-integration',
+      ],
+    },
+    {
+      type: 'category',
       label: 'API Reference',
       link: {
         type: 'doc',
