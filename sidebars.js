@@ -67,7 +67,8 @@ module.exports = {
           collapsed: true
         },
         'documentation/client/tasks/create_update_task',
-        'documentation/client/tasks/filter_tasks'
+        'documentation/client/tasks/filter_tasks',
+        'documentation/client/tasks/bulk_actions'
       ]
     },
     'documentation/client/surveys/bulkloader',
