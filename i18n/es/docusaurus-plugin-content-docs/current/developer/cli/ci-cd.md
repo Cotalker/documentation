@@ -25,19 +25,21 @@ Esta es la parte a hacer bien. En un pipeline no hay navegador para iniciar sesi
 
 </div>
 
-Hay dos formas de autenticarte en CI, según lo que soporte tu entorno:
+Tanto `cotctl login` (navegador) como `cotctl login --no-browser` (email/contraseña) son **interactivos** — abren un navegador o piden credenciales por prompt — así que por sí solos no sirven para un job desatendido. La forma confiable de autenticarte en CI es con un **API token pre-generado**.
 
-**Opción A — login con `--no-browser` usando credenciales secretas.** El enfoque más limpio cuando tenés una cuenta de servicio con email/contraseña:
+**1. Generá el token una vez.** Un administrador emite un API token desde el panel de administración de Cotalker (o el Partner Platform) y guardás su valor como un secret encriptado de CI — por ejemplo `COTCTL_API_TOKEN`.
+
+**2. Autenticate de forma no interactiva con `--paste-token`.** `cotctl login --paste-token` crea un perfil a partir de un token pre-generado en vez de pedir credenciales. En CI, pipeá el secret hacia él:
 
 ```bash
-cotctl login \
+echo "$COTCTL_API_TOKEN" | cotctl login \
   --url https://web.cotalker.com \
   --subdomain acme \
-  --no-browser
-# credenciales provistas vía las variables de entorno respaldadas por secrets de CI
+  --profile acme \
+  --paste-token
 ```
 
-**Opción B — proveer un token vía un secret.** Si generás un token por fuera, exponelo al job como una variable de entorno respaldada por un secret (por ejemplo `$COTCTL_TOKEN`) en vez de hardcodearlo. Referenciá la variable; nunca el valor literal.
+Nada queda hardcodeado, y no hay prompt interactivo que cuelgue el job.
 
 ## Un ejemplo trabajado (GitHub Actions)
 
@@ -68,15 +70,14 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     env:
-      COTCTL_EMAIL: ${{ secrets.COTCTL_EMAIL }}
-      COTCTL_PASSWORD: ${{ secrets.COTCTL_PASSWORD }}
+      COTCTL_API_TOKEN: ${{ secrets.COTCTL_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: npm install -g @cotctl/cli
-      - run: cotctl login --url https://web.cotalker.com --subdomain acme --no-browser
+      - run: echo "$COTCTL_API_TOKEN" | cotctl login --url https://web.cotalker.com --subdomain acme --profile acme --paste-token
       - run: cotctl apply --dir config/ -c acme -y
 ```
 

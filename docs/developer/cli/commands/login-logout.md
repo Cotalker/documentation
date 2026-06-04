@@ -77,7 +77,7 @@ The positional `<profile>` is optional if you pass `-c <profile>` instead.
 
 <div className="alert alert--secondary">
 
-**Important nuance.** `logout` only removes the profile *locally* — it does **not** invalidate the token on the Cotalker server. It is equivalent to [`cotctl profile delete`](./profiles.md). To actually revoke a token server-side, do so from the Cotalker web interface.
+**`logout` revokes your token server-side.** For modern API-token profiles, `cotctl logout` **revokes the ApiToken on the Cotalker server** and then removes the local profile, so the token can no longer be used. (Legacy JWT profiles have nothing to revoke — they simply expire — so they're only removed locally.) This is the key difference from [`cotctl profile delete`](./profiles.md), which removes the profile **locally only** and leaves any token valid.
 
 </div>
 

@@ -3,8 +3,6 @@ title: Cotalker CLI (cotctl)
 sidebar_label: Overview
 displayed_sidebar: developer
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import Highlight from '@theme/Highlight';
 
 <span className="hero__title">Cotalker CLI — cotctl</span>
 <br/>

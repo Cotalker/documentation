@@ -112,14 +112,15 @@ acme          https://www.cotalker.com         acme         admin@acme.com
 devteam       https://staging.cotalker.com     devteam      dev@cotalker.com
 ```
 
-**Eliminar uno.** Cuando ya no necesitás un entorno, eliminá su perfil. Esto lo quita de tu archivo local — **no** invalida el token en el servidor:
+**Eliminar uno.** Cuando ya no necesitás un entorno, cerrá sesión en él. Para los perfiles modernos de tipo API-token esto **revoca el token en el servidor** y luego quita el perfil local:
 
 ```bash
 cotctl logout acme
+# Remote ApiToken revoked.
 # Logged out from profile "acme".
 ```
 
-`cotctl profile delete <name>` hace lo mismo, con una confirmación.
+Si solo querés olvidar un perfil localmente **sin** revocar su token, usá `cotctl profile delete <name>`.
 
 ## No tenés que preocuparte por la renovación del token
 

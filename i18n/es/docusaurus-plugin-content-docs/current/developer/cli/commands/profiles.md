@@ -32,7 +32,7 @@ cotctl profile delete <name>
 
 <div className="alert alert--secondary">
 
-**Solo local.** Eliminar un perfil lo quita de `~/.cotctl/config.json` pero **no** invalida el token en el servidor — exactamente igual que [`cotctl logout`](./login-logout.md). Los dos comandos son equivalentes. Para revocar un token del lado del servidor, usá la interfaz web de Cotalker.
+**Solo local — esto *no* revoca el token.** Eliminar un perfil lo quita de `~/.cotctl/config.json` pero deja cualquier token válido en el servidor. Es distinto de [`cotctl logout`](./login-logout.md), que revoca el ApiToken en el servidor (para perfiles API-token) antes de quitar el perfil. Usá `profile delete` cuando solo querés olvidar un perfil; usá `logout` cuando también querés invalidar su token.
 
 </div>
 

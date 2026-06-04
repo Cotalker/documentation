@@ -77,7 +77,7 @@ El argumento posicional `<profile>` es opcional si en su lugar pasás `-c <profi
 
 <div className="alert alert--secondary">
 
-**Matiz importante.** `logout` solo quita el perfil *localmente* — **no** invalida el token en el servidor de Cotalker. Es equivalente a [`cotctl profile delete`](./profiles.md). Para revocar realmente un token del lado del servidor, hacelo desde la interfaz web de Cotalker.
+**`logout` revoca tu token en el servidor.** Para los perfiles modernos de tipo API-token, `cotctl logout` **revoca el ApiToken en el servidor de Cotalker** y luego quita el perfil local, así el token ya no puede usarse. (Los perfiles JWT legacy no tienen nada que revocar — simplemente expiran — así que solo se quitan localmente.) Esta es la diferencia clave con [`cotctl profile delete`](./profiles.md), que quita el perfil **solo localmente** y deja cualquier token válido.
 
 </div>
 
