@@ -53,12 +53,12 @@ Un survey marcado como formulario de acción masiva se **quita del menú de acci
 
 ## Otras operaciones masivas {#otras-operaciones-masivas}
 
-Además de ejecutar formularios, el _task view_ ofrece dos operaciones más sobre una selección:
+Además de ejecutar formularios, el _task view_ ofrece dos operaciones masivas más sobre una selección, disponibles como botones en el encabezado de selección:
 
-- **Bulk edit** — actualiza el/los mismo(s) campo(s) en todas las tareas seleccionadas desde un solo diálogo.
-- **Bulk delete** — elimina todas las tareas seleccionadas a la vez.
+- **Editar** — abre un diálogo para actualizar el/los mismo(s) campo(s) en todas las tareas seleccionadas a la vez.
+- **Borrar** — elimina todas las tareas seleccionadas a la vez.
 
-Ambas siguen el mismo patrón: haz tu selección primero, y después elige la operación desde el encabezado.
+Ambas siguen el mismo patrón: haz tu selección primero, y después elige **Editar** o **Borrar** desde el encabezado.
 
 :::note
 Las operaciones masivas actúan sobre las tareas del **grupo actualmente seleccionado**. Asegúrate de estar en el grupo correcto antes de seleccionar y aplicar una acción.

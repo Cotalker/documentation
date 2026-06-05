@@ -53,12 +53,12 @@ A survey marked as a bulk action form is **removed from the normal single-task a
 
 ## Other bulk operations {#other-bulk-operations}
 
-Beyond running forms, the _task view_ offers two more operations on a selection:
+Beyond running forms, the _task view_ offers two more bulk operations on a selection, available as buttons in the selection header:
 
-- **Bulk edit** — update the same field(s) across all selected tasks in one dialog.
-- **Bulk delete** — remove all selected tasks at once.
+- **Edit** — opens a dialog to update the same field(s) across all selected tasks at once.
+- **Delete** — removes all selected tasks at once.
 
-Both follow the same pattern: make your selection first, then choose the operation from the header.
+Both follow the same pattern: make your selection first, then choose **Edit** or **Delete** from the header.
 
 :::note
 Bulk operations act on the tasks of the **currently selected group**. Make sure you're in the right group before selecting and applying an action.
