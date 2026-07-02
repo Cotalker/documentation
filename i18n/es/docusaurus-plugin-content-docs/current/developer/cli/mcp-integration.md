@@ -22,7 +22,7 @@ cotctl mcp install
 
 <div className="alert alert--info">
 
-**La vía gestionada no necesita endpoint.** `cotctl mcp install` ya conoce el endpoint de documentación de Cotalker por defecto, así que no tienes que indicarlo — solo ejecútalo. Solo necesitas una URL explícita si registras el servidor manualmente con `claude mcp add` (abajo), o si quieres apuntar a un entorno distinto del default (puedes sobrescribirlo con la variable de entorno `COTCTL_MCP_URL`).
+**La vía gestionada no necesita endpoint.** `cotctl mcp install` ya conoce el endpoint de documentación de Cotalker por defecto, así que no tienes que indicarlo — solo ejecútalo. Solo necesitas una URL explícita si registras el servidor manualmente con `claude mcp add` (abajo), o si quieres apuntar a un entorno distinto del predeterminado (puedes sobrescribirlo con la variable de entorno `COTCTL_MCP_URL`).
 
 </div>
 
