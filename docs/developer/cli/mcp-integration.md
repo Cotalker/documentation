@@ -22,7 +22,7 @@ cotctl mcp install
 
 <div className="alert alert--info">
 
-**Where's the endpoint?** The MCP endpoint URL is specific to your Cotalker environment — your Cotalker contact can provide it. `cotctl mcp install` handles the connection details for you, so the managed command is the recommended route.
+**The managed path needs no endpoint.** `cotctl mcp install` already knows the default Cotalker documentation endpoint, so you don't have to supply one — just run it. You only need an explicit URL if you register the server manually with `claude mcp add` (below), or want to point at a non-default environment (override it with the `COTCTL_MCP_URL` environment variable).
 
 </div>
 
