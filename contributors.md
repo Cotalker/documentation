@@ -79,6 +79,24 @@ Let's make this readme better together.
 *  Check web-browser console for errors
 *  Update the roadmap file
 
+# Language & translations
+
+Every page ships in **English and Spanish together, in the same PR**. English is the source of truth; the Spanish mirror lives under `i18n/es/docusaurus-plugin-content-docs/current/...` at the same relative path.
+
+#### Structural parity is 1:1
+The Spanish page MUST mirror the English one heading for heading, in the same order: same sections, same nesting. A reader switching locale should land on the same content. Do NOT translate a page half-way and leave the rest in English.
+
+#### Spanish register: neutral LATAM, tú / impersonal
+New or rewritten Spanish content MUST use **neutral Latin-American Spanish** in the **tú / impersonal** register (`escribe`, `valida`, `puedes`) — never voseo (`escribí`, `validá`, `podés`). Prefer plain Spanish over unnecessary anglicisms: use `predeterminado`, not `default`, in prose.
+
+Legacy pages still written in voseo are migrated **only when the page itself is reworked** — don't open a PR just to flip the register. But once you touch a page substantively, bring the whole page to tú so it reads consistently.
+
+#### New pages: generate the stub, then translate in the same PR
+When you add a brand-new English page, run `npm run create-translations` (see **Quick Start** below). It copies any un-mirrored English file into `i18n/es/...` and prepends a "not yet translated" warning callout. That stub is a **build safety net only**, not a deliverable — replace it with the real Spanish translation in the same PR. A page whose Spanish side is still the auto-generated stub is not done.
+
+#### The `es` locale is not published yet — parity still applies
+The Spanish locale exists under `i18n/es/` but is not currently served (the `i18n` block in `docusaurus.config.js` is commented out). This does NOT relax the parity rule: keep English and Spanish in lockstep so the locale can be switched on at any time without a translation backlog.
+
 # Quick Start
 
 __Install dependencies__  
