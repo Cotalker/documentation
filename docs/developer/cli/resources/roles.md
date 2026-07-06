@@ -4,6 +4,8 @@ sidebar_label: Roles
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/roles.ts, src/lib/permission-warnings.ts @ 4f7248a (2026-07-06) -->
+
 An **access role** bundles a set of permissions under a name. Roles are the foundation of access control in Cotalker — every other resource that grants access (workflows, property types, job titles, users) refers to roles by name. That's why `cotctl apply --dir` applies roles *first*: everything else depends on them.
 
 ## The shape of a role
@@ -51,7 +53,13 @@ name: "ordenes-compra:write"
 name: "Órdenes de Compra: Manager"
 ```
 
-This composability is what lets you assign exactly the right access to each job title. `cotctl` prints non-blocking warnings for names that stray from the `{flow}:{action}` convention.
+This composability is what lets you assign exactly the right access to each job title.
+
+<div className="alert alert--info">
+
+**The convention warnings are about `permissions`, not `name`.** On apply, `cotctl` prints non-blocking warnings when the entries inside a role's `permissions[]` list stray from the `{flow}:{action}` shape — the role's own `name` is not what's checked. The warnings never block the apply; they're a nudge toward consistent permission strings.
+
+</div>
 
 ## Renaming a role
 

@@ -4,6 +4,8 @@ sidebar_label: apply
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/apply.ts @ 4f7248a (2026-07-06) -->
+
 `cotctl apply` es el comando que realmente modifica un entorno de Cotalker. Toma tu YAML y hace que la plataforma coincida con él — creando recursos que no existen y actualizando los que sí. Es el verbo que más vas a usar, así que vale la pena entenderlo bien.
 
 Hay dos formas de ejecutarlo, según si desplegás un archivo o una carpeta entera:
@@ -45,14 +47,29 @@ cotctl apply -f <file.yaml> -c <profile> [options]
 
 ### Opciones
 
-| Opción | Descripción |
-|---|---|
-| `-f, --file <path>` | **(requerido)** Ruta al archivo YAML |
-| `-c, --company <profile>` | **(requerido)** Perfil a usar |
-| `--dry-run` | Valida y muestra lo que *se enviaría*, sin aplicar |
-| `-y, --yes` | Salta las confirmaciones (los warnings igual se imprimen a stderr) |
-| `--skip-semantic-validation` | **Solo Survey** — salta los checks semánticos |
-| `--skip-remote-validation` | **Solo Survey** — salta los checks remotos |
+El `apply` unificado es deliberadamente escueto — un núcleo común más algunos flags específicos por kind que solo surten efecto cuando el `kind` del archivo coincide:
+
+| Opción | Aplica a | Descripción |
+|---|---|---|
+| `-f, --file <path>` | todos | **(requerido)** Ruta al archivo YAML |
+| `-c, --company <profile>` | todos | **(requerido)** Perfil a usar |
+| `--dry-run` | todos | Valida y muestra lo que *se enviaría*, sin aplicar |
+| `-y, --yes` | todos | Salta las confirmaciones (los warnings igual se imprimen a stderr) |
+| `--skip-semantic-validation` | solo Survey | Salta los checks semánticos — error fatal con cualquier otro kind |
+| `--skip-remote-validation` | solo Survey | Salta los checks de identificadores remotos — error fatal con cualquier otro kind |
+| `--allow-reactivate` | User, JobTitle | Permite `isActive: true` sobre un registro actualmente inactivo (de lo contrario, bloqueado) |
+| `--notify-email` | solo User | Envía el correo de bienvenida al crear (incompatible con un `password` en el YAML) |
+| `--lax-code` | solo JobTitle | Solo en *update*, degrada el check de formato de `code` a advertencia cuando el registro existente ya tiene un code no conforme |
+| `--rollback` | solo Workflow | Ante un error a mitad del apply, desactiva los recursos creados durante el apply parcial |
+| `--legacy-replace-workflows` | solo Workflow | Válvula de escape 0.7.x que restaura la semántica destructiva de reemplazo previa a 0.7.0. Imprime una advertencia a stderr; se eliminará en 0.8.0 |
+
+Los flags `--skip-*` son solo para Survey por diseño: pasarlos con cualquier otro kind (o con un directorio que contenga archivos no-Survey) es un error fatal, no un no-op silencioso.
+
+<div className="alert alert--secondary">
+
+**Algunos flags viven en los apply por entidad, no aquí.** `--quiet`, `--diff`, `--json` y `--fail-on-destructive` **no** son opciones del `cotctl apply` unificado. Existen solo en `cotctl surveys apply`, `cotctl properties apply` y `cotctl workflows apply` — las formas por entidad pensadas para CI. Recurre a ellas cuando necesites salida legible por máquina o un gate de cambios destructivos; ver [CI/CD](../ci-cd.md).
+
+</div>
 
 ### Ejemplos
 
@@ -69,15 +86,17 @@ cotctl apply -f role.yaml -c acme
 cotctl apply -f property-type.yaml -c acme
 ```
 
-Un apply exitoso confirma lo que pasó:
+Un apply exitoso confirma lo que pasó, una línea por recurso:
 
 ```
-Survey "my_survey" created successfully (id: 507f1f77bcf86cd799439011)
+Survey "my_survey" created successfully
 ```
+
+Una actualización imprime `updated successfully` en su lugar. `cotctl` no muestra el `_id` generado — nunca gestionas IDs a mano (ver la nota siguiente).
 
 <div className="alert alert--info">
 
-**Nunca gestionás IDs a mano.** Al crear, no incluís `_id`/`id` — el backend los genera. Al actualizar, `cotctl` recupera el recurso existente y resuelve los IDs correctos por vos (haciendo match de las preguntas de la encuesta por su `identifier`). Tu YAML se mantiene limpio y legible.
+**Nunca gestionas IDs a mano.** Al crear, no incluyes `_id`/`id` — el backend los genera. Al actualizar, `cotctl` recupera el recurso existente y resuelve los IDs correctos por ti (haciendo match de las preguntas de la encuesta por su `identifier`). Tu YAML se mantiene limpio y legible.
 
 </div>
 
@@ -93,6 +112,34 @@ Como las preguntas se matchean por `identifier`, no por posición, las ediciones
 | Reordenar preguntas | Reordená `questions[]` | Cambia el orden, IDs preservados |
 
 Dos cosas son inmutables una vez creadas: el `code` de una encuesta, y el `identifier` de una pregunta. `apply` se negará a renombrar cualquiera de los dos — para "renombrar", creás un recurso nuevo. Y si aplicás un YAML de encuesta sin su sección `questions` (por ejemplo, para cambiar `isActive`), las preguntas existentes se preservan automáticamente.
+
+## Previsualiza primero: `--dry-run`
+
+`--dry-run` valida el archivo e imprime lo que *pasaría* sin enviar nada. Sobre el `apply` unificado reporta la acción prevista por recurso:
+
+```
+--- DRY RUN ---
+
+  Would CREATE Survey: my_survey
+```
+
+Los apply por entidad (`surveys apply`, `properties apply`, `workflows apply`) muestran además un **diff campo por campo** sobre esto, y marcan cualquier cambio **destructivo** — una pregunta eliminada, un estado quitado, una desactivación — para que lo detectes antes de que ocurra. En CI puedes convertir esa señal en un gate estricto con `--fail-on-destructive`, que sale con `2` cuando un dry-run encuentra un cambio destructivo. Esos flags de diff y de gating están documentados en [CI/CD](../ci-cd.md); el `apply` unificado que se muestra aquí conserva la previsualización simple.
+
+## Apply de workflows: semántica de merge
+
+Desde 0.7.0, aplicar un `Workflow` es un **merge**, no un reemplazo total. `cotctl` obtiene el workflow actual, fusiona tu YAML sobre él y escribe el resultado de vuelta (un GET-merge-PUT). Las consecuencias prácticas:
+
+- **Un campo que omites se preserva.** Deja una sección fuera de tu YAML y el valor en vivo se mantiene — puedes aplicar un workflow parcial para tocar una sola cosa con seguridad.
+- **Un arreglo vacío explícito borra.** Escribir `someList: []` es un "déjalo vacío" deliberado, y *sí* limpiará el valor en vivo. Omitir la clave y escribir `[]` significan cosas distintas.
+- **Los estados no pueden desaparecer en silencio.** Quitar un estado del YAML no lo borra; los estados faltantes se rechazan para que no pierdas uno por accidente.
+
+<div className="alert alert--secondary">
+
+**Omite para conservar, `[]` para vaciar.** Esta es la única regla que suele confundir. Si no quieres cambiar una lista, deja la clave fuera por completo. El comportamiento completo campo por campo está en [Semántica de merge de workflows](../resources/workflows/merge-semantics.md).
+
+</div>
+
+El flag `--legacy-replace-workflows` restaura el comportamiento antiguo previo a 0.7.0, donde los campos omitidos se borraban. Existe solo como válvula de escape temporal para 0.7.x, imprime una advertencia a stderr al usarse y se eliminará en 0.8.0 — no deberías necesitarlo.
 
 ## Modo directorio
 
@@ -134,21 +181,26 @@ cotctl apply --dir ordenes-compra/ -c dev --dry-run
 cotctl apply --dir ordenes-compra/ -c dev
 ```
 
-```
-Applying directory: ordenes-compra/ → dev
+Antes de aplicar, `cotctl` muestra lo que encontró y pide confirmación; luego reporta una línea por recurso y un recuento final:
 
-AccessRole (6 documents)
-  ✓ created  ordenes-compra:start-form
-  ...
-PropertyType (3 documents)
-  ✓ created  oc_transaccion
-  ...
-Workflow (1 document)
-  ✓ created  ordenes_compra
-
-─────────────────────────────────────────────────────────────────
-13 created, 0 updated, 0 errors
 ```
+Applying directory: ordenes-compra/
+Profile: dev
+
+Found 10 YAML files:
+  6 AccessRole files (6 documents)
+  3 PropertyType files (3 documents)
+  1 Workflow file (1 document)
+
+Apply 10 resources to dev? (Y/n)
+  [created] roles.yaml — AccessRole: ordenes-compra:start-form
+  [created] property-types.yaml — PropertyType: oc_transaccion
+  [created] workflow.yaml — Workflow: ordenes_compra
+
+Applied directory "ordenes-compra/": 13 created, 0 updated, 0 error(s), 0 skipped
+```
+
+Bajo `--dry-run` las líneas por recurso muestran `[CREATE]` / `[UPDATE]` en vez de `[created]` / `[updated]`, y un archivo con error muestra `[error] <file> — <entity> <identifier>: <message>`.
 
 ### Es seguro correrlo dos veces
 

@@ -4,6 +4,8 @@ sidebar_label: AI-assisted authoring
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/bot-types.ts @ 4f7248a (2026-07-06) -->
+
 So far this guide has treated `cotctl` as a tool *you* drive by hand. But `cotctl` is also the foundation for something bigger: **authoring Cotalker configurations with the help of an AI agent.** This page explains how that ecosystem fits together — and why it makes you, as a partner, dramatically faster.
 
 ## The idea in one picture
@@ -55,6 +57,20 @@ cotctl mcp install
 ```
 
 Conveniently, installing the Skills already offers to set this up for you. The full details — indices, scopes, multiple servers — are on the [MCP integration](./mcp-integration.md) page.
+
+### Grounding on live bot versions
+
+Skills and the RAG teach the agent *conventions*, but some facts are specific to your environment right now — most notably, which **bot versions** the backend has registered. When the agent (or you) is about to write YAML that wires up a bot, it's worth checking the live catalog first, so the pinned `version` is a real one rather than a guess:
+
+```bash
+# What versions does this bot type actually have, and what's the default?
+cotctl bot-types versions PBCreateTask -c dev
+
+# Or the whole catalog at once
+cotctl bot-types list -c dev
+```
+
+This is the same catalog `cotctl` validates against at apply time, so consulting it up front turns "the apply rejected my bot version" into a one-line lookup before you ever write the file. It's the manual counterpart to the RAG: `bot-types` grounds you in the live version catalog, the RAG grounds you in the documentation.
 
 ## The authoring loop, end to end
 

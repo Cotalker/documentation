@@ -4,6 +4,8 @@ sidebar_label: Integración MCP
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/mcp.ts @ 4f7248a (2026-07-06) -->
+
 `cotctl` puede conectar asistentes de IA — como Claude — a la documentación técnica de Cotalker, de modo que mientras creás recursos puedas hacer preguntas y obtener respuestas fundamentadas en la documentación real y actualizada. Esta página explica la idea y cómo configurarla.
 
 ## ¿Qué es MCP, y por qué le importaría a un partner?
@@ -52,6 +54,35 @@ claude mcp add --transport http cotalker-api \
 ```
 
 Cada servidor registrado anuncia qué cubre, que es cómo el asistente decide dónde buscar.
+
+## Instalar sin prompts
+
+`cotctl mcp install` es interactivo por defecto, pero puedes manejarlo enteramente por flags — útil en scripts de setup o en un bootstrap de dotfiles. Pasar `--indices` salta el prompt de selección de índices, lo que vuelve no interactivo todo el comando:
+
+| Flag | Descripción |
+|---|---|
+| `--name <name>` | Nombre del servidor (default `cotalker-rag`) |
+| `--scope <local\|global>` | Dónde escribir la config, en vez de preguntar |
+| `--indices <a,b,c>` | Nombres de índices separados por coma — salta el prompt de selección |
+| `--url <url>` | URL personalizada del servidor MCP, sobrescribiendo el default del build |
+
+```bash
+cotctl mcp install --name cotalker-cli --scope local --indices cotctl
+```
+
+## Gestionar tus conexiones
+
+Más allá de `install`, el grupo de comandos `mcp` te deja inspeccionar y ordenar lo configurado:
+
+- **`cotctl mcp list`** — muestra cada servidor MCP configurado, agrupado por scope (local `.mcp.json` y global `~/.claude/settings.json`), con la URL de cada servidor y los índices a los que está acotado. Agrega `--scope` para filtrar.
+- **`cotctl mcp indices`** — lista los índices que anuncia el servidor y muestra, por scope, cuáles de tus servidores configurados usan cada uno (y qué índices no se usan en ninguna parte). Agrega `--json` para salida legible por máquina, o `--url` para consultar un endpoint distinto del default.
+- **`cotctl mcp remove [name]`** — quita un servidor configurado. Ejecútalo sin nombre para un selector interactivo; pasa un `name` (y `--scope` para desambiguar si existe en ambos) para apuntar a uno directamente. `-y` salta la confirmación.
+
+```bash
+cotctl mcp list
+cotctl mcp indices
+cotctl mcp remove cotalker-cli --scope local -y
+```
 
 ## Ver también
 

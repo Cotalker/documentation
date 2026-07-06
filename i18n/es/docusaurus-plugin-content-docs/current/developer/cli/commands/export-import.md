@@ -4,9 +4,21 @@ sidebar_label: Exportar e importar
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ 4f7248a (2026-07-06) -->
+
 Hasta ahora hablamos de empujar YAML *hacia* un entorno. Con la misma frecuencia, vas a querer extraer configuración existente *de* uno — para poner bajo control de versiones la configuración existente de un cliente, copiar un recurso entre entornos, o simplemente ver cómo está construido algo. Ese ciclo — **exportar → editar → aplicar** — es uno de los patrones más útiles de `cotctl`.
 
-Esta página usa encuestas como ejemplo, porque tienen las opciones de exportación más ricas. La misma forma `list` / `get` / `export` / `apply` se repite en los otros grupos de entidades (`roles`, `property-types`, `properties`, `users`, `jobtitles`, `workflows`).
+Esta página usa encuestas como ejemplo, porque tienen las opciones de exportación más ricas. La misma forma `list` / `get` / `export` / `apply` se repite en los otros grupos de entidades: `roles`, `property-types`, `properties`, `users`, `jobtitles`, `workflows`, y los más nuevos `bots`, `bot-types`, `routines`, `schedules` y `slas`.
+
+<div className="alert alert--info">
+
+**No todos los grupos tienen los cuatro verbos.** La forma es un patrón, no una garantía — algunos grupos difieren:
+
+- **`bot-types` es de solo lectura.** Expone solo `list` y `versions <BotType>` (el catálogo en vivo de tipos de ParametrizedBot). No hay `bot-types apply`; los bots se redactan con `cotctl bots`.
+- **Los `slas` necesitan su máquina de estado.** `slas get`, `slas export` y las rutas por código requieren `--state-machine <smCode>`, porque no hay una búsqueda global por código para los SLAs.
+- **Algunos grupos agregan verbos.** `routines` tiene `test <code>` (ejecuta una rutina de inmediato — efectos secundarios reales); `schedules` tiene `activate` / `deactivate` / `logs`.
+
+</div>
 
 <div className="alert alert--info">
 

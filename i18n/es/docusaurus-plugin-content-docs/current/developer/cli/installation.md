@@ -4,6 +4,8 @@ sidebar_label: Instalación
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/package.json @ 4f7248a (2026-07-06) -->
+
 En esta página vas a instalar `cotctl` en tu máquina y confirmar que funciona. Toma unos dos minutos. Si alguna vez instalaste un paquete global de npm, esto te va a resultar familiar.
 
 ## Antes de empezar: los requisitos
@@ -57,7 +59,7 @@ cotctl --version
 Deberías ver un número de versión, por ejemplo:
 
 ```
-0.8.0
+0.11.0
 ```
 
 Si ves una versión, listo — la herramienta está instalada correctamente. Si en cambio obtenés un error "command not found", puede que el directorio de binarios globales de npm no esté en tu `PATH`; la página de [Solución de problemas](./troubleshooting.md) explica cómo resolverlo.

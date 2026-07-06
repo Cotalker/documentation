@@ -4,6 +4,8 @@ sidebar_label: Authentication
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ 4f7248a (2026-07-06) -->
+
 Now that `cotctl` is installed, it needs to know *which Cotalker environment to talk to* and *who you are*. This page explains how authentication works, walks you through your first login, and introduces **profiles** — the concept that lets you safely juggle several environments.
 
 ## How cotctl thinks about authentication: profiles
@@ -61,6 +63,10 @@ Use with: cotctl surveys list -c acme
 | `--api-url <url>` | API URL, if you need to override autodiscovery |
 | `--no-browser` | Use email/password instead of the browser flow |
 | `--profile <name>` | Custom profile name (defaults to the `--subdomain` value) |
+| `--paste-token` | Register a pre-generated ApiToken instead of authenticating — the path for CI and for users who can't mint their own token |
+| `--machine-id <id>` | Override the machine identifier stamped into the token's code, so you can tell tokens apart per machine |
+
+The [login & logout reference](./commands/login-logout.md) covers `--paste-token` and `--machine-id` in full.
 
 ## The `-c` flag: telling commands which company to act on
 

@@ -4,6 +4,8 @@ sidebar_label: Users
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/schemas/user.schema.ts, src/commands/users.ts, docs/users/apply-behavior.md @ 4f7248a (2026-07-06) -->
+
 A **user** is a person in a company. Users are the most connected resource in Cotalker — each one references a [job title](./jobtitles.md), one or more [access roles](./roles.md), and can sit in an org-chart hierarchy with other users. Because of those dependencies, users are applied **last** (after job titles and roles exist).
 
 ## The shape of a user
@@ -26,7 +28,7 @@ isActive: true
 | `kind` | Yes | Always `User` |
 | `email` | Yes | The upsert key. Globally unique, auto-lowercased. **Immutable after creation** |
 | `name` | Yes | Sub-object: `names` (required), `lastName`, `secondLastName` |
-| `job` | Yes | A JobTitle **code** that exists and is **active** |
+| `job` | No | A JobTitle **code** that exists and is **active**. Optional — bot and integration users often have none |
 | `accessRoles` | No | AccessRole **names** (case-sensitive) |
 | `phone`, `isActive`, `settings` | No | Optional profile fields |
 
@@ -41,7 +43,7 @@ name:
 
 ## Job and roles
 
-`job` points to a job title by **code**, and that job title must be active — `cotctl` only resolves active ones. `accessRoles` lists role **names**, and like everywhere else, they're case-sensitive (`Manager` ≠ `manager`).
+`job` points to a job title by **code**, and that job title must be active — `cotctl` only resolves active ones. It is **optional**: bot and integration users often don't have a job title at all, and the schema and backend both accept a user without one. `accessRoles` lists role **names**, and like everywhere else, they're case-sensitive (`Manager` ≠ `manager`).
 
 <div className="alert alert--info">
 
@@ -90,9 +92,26 @@ On update, `extra` is **merged** — keys you provide win, keys already on the s
 
 </div>
 
-## A note on passwords
+## Applying users: passwords, onboarding, and reactivation
 
-`password` is write-only — you can set it on apply, but it's never exported. For onboarding flows and the details of how passwords and reactivation behave, see the command reference.
+`password` is write-only — you can set it on apply, but it's never exported. How onboarding plays out depends on whether you set a password and whether you pass `--notify-email`:
+
+| You set… | Result |
+|---|---|
+| No `password`, with `--notify-email` | **Recommended.** The backend generates a password and emails the credentials to the new user |
+| A `password`, with `--notify-email` | **Rejected** (exit `2`) — the welcome email would leak a masked password, so `cotctl` blocks the combination |
+| A `password`, no `--notify-email` | The password is set; `cotctl` warns it's in plaintext in your YAML |
+| No `password` on an **update** | The existing password is left untouched — it's never cleared |
+
+**Reactivation is guarded.** An inactive user reappearing with `isActive: true` (or omitted, since the default is `true`) is **not** brought back automatically — `apply` stops with exit `2` and tells you to re-run with `--allow-reactivate`. Two situations can't be overridden at all: a `isReadOnly` user is never modified, and a `role: super` user can't be deactivated (both exit `1`).
+
+To deactivate a user without deleting anything:
+
+```bash
+cotctl users deactivate juan.perez@acme.com -c acme
+```
+
+As everywhere in `cotctl`, exit codes are meaningful here: `0` success, `1` a runtime error mid-apply (network, an API error, an unresolvable hierarchy email), and `2` a pre-apply validation failure (bad YAML, an unknown job code, a reactivation without the flag, the password/notify-email conflict).
 
 ## See also
 

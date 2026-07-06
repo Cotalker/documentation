@@ -4,19 +4,21 @@ sidebar_label: validate
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/validate.ts @ 4f7248a (2026-07-06) -->
+
 `cotctl validate` revisa tu YAML *antes* de desplegarlo. Tomar el hábito de validar primero es una de las cosas de mayor valor que podés hacer como partner: detecta errores en tu máquina, en segundos, en vez de como un cambio a medio aplicar en el entorno de un cliente.
 
 Hay tres cosas que podrías querer validar, y `validate` tiene un modo para cada una:
 
 | Modo | Flag | Red | Para qué sirve |
 |---|---|---|---|
-| Archivo | `-f <file>` | Offline | Revisar un único archivo YAML de encuesta |
+| Archivo | `-f <file>` | Offline | Revisar un único archivo YAML de cualquier kind soportado |
 | Directorio | `--dir <path>` | Offline | Verificación cruzada de una carpeta entera antes de `apply --dir` |
 | Workflow | `--workflow <nameCode>` | Online | Correr el checklist de preparación para producción contra un workflow en vivo |
 
-## Modo archivo — una encuesta, offline
+## Modo archivo — un archivo, offline
 
-La verificación más rápida. Valida un único YAML de encuesta contra el esquema, sin llamada a la API:
+La verificación más rápida. Valida un único archivo YAML contra el esquema de su `kind`, sin llamada a la API:
 
 ```bash
 cotctl validate -f my-survey.yaml
@@ -34,15 +36,19 @@ Si algo está mal, te dice qué y dónde:
   - code: code must start with a lowercase letter and contain only lowercase letters, numbers, and underscores
 ```
 
-Por debajo corren tres capas de verificación:
+El modo archivo no es solo para encuestas. Lee el campo `kind` y corre el esquema correspondiente, así que valida cualquiera de los siete kinds que soporta `apply` — `Survey`, `AccessRole`, `PropertyType`, `Property`, `JobTitle`, `Workflow`, `User`. (Un archivo sin `kind` se trata como Survey, por compatibilidad hacia atrás.)
 
-| Capa | Qué revisa | Cómo saltarla |
-|---|---|---|
-| Estructura (Zod) | Tipos, campos requeridos, enums | Siempre activa |
-| Semántica | `function run()` en exec hooks, botones en la etapa equivocada, campos deprecados | `--skip-semantic-validation` |
-| Remota | Unicidad de identificadores en la empresa, que las entidades referenciadas existan | Requiere `--remote` + `-c <profile>` |
+Un mismo archivo puede contener **varios documentos** separados por `---`. `validate` revisa cada uno y **acumula** los errores — no se detiene en el primer documento con problemas — y luego reporta un recuento por kind como `2 Survey documents, 1 User document validated successfully`, para que arregles todo en una sola pasada.
 
-Las dos primeras son offline. Las verificaciones remotas llegan a la API, así que requieren un perfil:
+Por debajo corren hasta tres capas de verificación — pero solo la primera aplica a todos los kinds:
+
+| Capa | Qué revisa | Aplica a | Cómo saltarla |
+|---|---|---|---|
+| Estructura (Zod) | Tipos, campos requeridos, enums | **Todos los kinds** | Siempre activa |
+| Semántica | `function run()` en exec hooks, botones en la etapa equivocada, campos deprecados | **Solo Survey** | `--skip-semantic-validation` |
+| Remota | Unicidad de identificadores en la empresa, que las entidades referenciadas existan | **Solo Survey** | Requiere `--remote` + `-c <profile>` |
+
+Los kinds distintos de Survey reciben solo la capa estructural (Zod). Las capas semántica y remota son específicas de Survey. Las verificaciones remotas llegan a la API, así que requieren un perfil — y `--remote` no se puede combinar con `--dir`:
 
 ```bash
 cotctl validate -f my-survey.yaml --remote -c acme

@@ -4,19 +4,21 @@ sidebar_label: validate
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/validate.ts @ 4f7248a (2026-07-06) -->
+
 `cotctl validate` checks your YAML *before* you deploy it. Getting into the habit of validating first is one of the highest-value things you can do as a partner: it catches mistakes on your machine, in seconds, instead of as a half-applied change in a customer's environment.
 
 There are three things you might want to validate, and `validate` has a mode for each:
 
 | Mode | Flag | Network | What it's for |
 |---|---|---|---|
-| File | `-f <file>` | Offline | Check a single Survey YAML file |
+| File | `-f <file>` | Offline | Check a single YAML file of any supported kind |
 | Directory | `--dir <path>` | Offline | Cross-check a whole folder of resources before `apply --dir` |
 | Workflow | `--workflow <nameCode>` | Online | Run the production-readiness checklist against a live workflow |
 
-## File mode — one survey, offline
+## File mode — one file, offline
 
-The quickest check. Validates a single Survey YAML against the schema, with no API call:
+The quickest check. It validates a single YAML file against the schema for its `kind`, with no API call:
 
 ```bash
 cotctl validate -f my-survey.yaml
@@ -34,15 +36,19 @@ If something's wrong, it tells you what and where:
   - code: code must start with a lowercase letter and contain only lowercase letters, numbers, and underscores
 ```
 
-Under the hood, three layers of checking run:
+File mode isn't survey-only. It reads the `kind` field and runs the matching schema, so it validates any of the seven kinds `apply` supports — `Survey`, `AccessRole`, `PropertyType`, `Property`, `JobTitle`, `Workflow`, `User`. (A file with no `kind` is treated as a Survey, for backward compatibility.)
 
-| Layer | What it checks | How to skip |
-|---|---|---|
-| Structure (Zod) | Types, required fields, enums | Always on |
-| Semantic | `function run()` in exec hooks, buttons in the wrong stage, deprecated fields | `--skip-semantic-validation` |
-| Remote | Identifier uniqueness across the company, that referenced entities exist | Needs `--remote` + `-c <profile>` |
+A single file can hold **several documents** separated by `---`. `validate` checks each one and **accumulates** the errors — it doesn't stop at the first bad document — then reports a per-kind tally like `2 Survey documents, 1 User document validated successfully`, so you can fix everything in one pass.
 
-The first two are offline. Remote checks reach the API, so they require a profile:
+Under the hood, up to three layers of checking run — but only the first applies to every kind:
+
+| Layer | What it checks | Applies to | How to skip |
+|---|---|---|---|
+| Structure (Zod) | Types, required fields, enums | **All kinds** | Always on |
+| Semantic | `function run()` in exec hooks, buttons in the wrong stage, deprecated fields | **Survey only** | `--skip-semantic-validation` |
+| Remote | Identifier uniqueness across the company, that referenced entities exist | **Survey only** | Needs `--remote` + `-c <profile>` |
+
+Non-Survey kinds get the structural (Zod) layer only. The semantic and remote layers are Survey-specific. Remote checks reach the API, so they require a profile — and `--remote` can't be combined with `--dir`:
 
 ```bash
 cotctl validate -f my-survey.yaml --remote -c acme
