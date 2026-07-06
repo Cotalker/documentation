@@ -4,6 +4,8 @@ sidebar_label: Installation
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/package.json @ 4f7248a (2026-07-06) -->
+
 In this page you'll get `cotctl` installed on your machine and confirm it's working. It takes about two minutes. If you've ever installed a global npm package before, this will feel familiar.
 
 ## Before you start: the requirements
@@ -57,7 +59,7 @@ cotctl --version
 You should see a version number printed back, for example:
 
 ```
-0.8.0
+0.11.0
 ```
 
 If you see a version, you're done — the tool is installed correctly. If instead you get a "command not found" error, the global npm bin directory may not be on your `PATH`; the [Troubleshooting](./troubleshooting.md) page covers how to fix that.

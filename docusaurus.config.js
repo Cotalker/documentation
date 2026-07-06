@@ -122,6 +122,10 @@ module.exports = {
               label: 'DevTools',
             },
             {
+              to: 'docs/developer/cli/overview',
+              label: 'CLI (cotctl)',
+            },
+            {
               to: 'docs/documentation/api/overview_api',
               label: 'API Reference',
             },

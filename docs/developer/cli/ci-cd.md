@@ -4,6 +4,8 @@ sidebar_label: CI/CD
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/{apply,surveys,properties,workflows}.ts @ 4f7248a (2026-07-06) -->
+
 Everything `cotctl` does on your laptop, it can do unattended in a pipeline. Running it in CI/CD is what turns "a partner deploys changes by hand" into "changes are validated and deployed automatically on every merge" — repeatable, reviewable, and not dependent on anyone remembering the steps. This page shows the recommended shape and, importantly, how to handle credentials safely.
 
 ## The recommended pipeline shape
@@ -39,7 +41,7 @@ echo "$COTCTL_API_TOKEN" | cotctl login \
   --paste-token
 ```
 
-Nothing is hardcoded, and there's no interactive prompt to hang on.
+Nothing is hardcoded. The command does show a paste prompt, but it reads the piped value from stdin, so the job never hangs.
 
 ## A worked example (GitHub Actions)
 
@@ -82,6 +84,52 @@ jobs:
 ```
 
 Note `cotctl apply ... -y` — the `-y` flag skips the interactive confirmation prompts, which is exactly what you want in an unattended job.
+
+## The CI-oriented flags live on the scoped applies
+
+This is the detail that catches people wiring up their first pipeline. The flags that make an apply *pipeline-friendly* — machine-readable output, quiet mode, diff control, and the destructive-change gate — are **not** options of the unified `cotctl apply` (or `apply --dir`). They live only on the **entity-scoped** applies:
+
+| Flag | On | What it does |
+|---|---|---|
+| `--json` | `surveys apply`, `properties apply`, `workflows apply` | Emits results as JSON, one object per line, to stdout |
+| `--quiet` / `-q` | those three, plus `bots`/`routines`/`schedules apply` | Suppresses the `would-create`/`would-update` chatter; errors still surface |
+| `--diff <off\|compact\|verbose>` | `surveys apply`, `properties apply`, `workflows apply` | Controls how much per-field diff detail is printed (default `compact`) |
+| `--fail-on-destructive` | `surveys apply`, `properties apply`, `workflows apply` | Exits `2` when a `--dry-run` detects a destructive change |
+
+So a strict per-resource gate uses the scoped form:
+
+```bash
+# Fail the job if deploying this workflow would destroy anything
+cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
+```
+
+`cotctl apply --dir` remains the right tool for deploying a **mixed** directory in dependency order — it just doesn't carry those four flags. A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on-destructive` check, then deploy the whole set with `apply --dir`.
+
+## Exit codes
+
+`cotctl` maps outcomes to three exit codes, and a good pipeline branches on them:
+
+| Code | Meaning |
+|---|---|
+| `0` | Success — including a clean `--dry-run` and a user-cancelled prompt |
+| `1` | Runtime error — network failure, an API `4xx`/`5xx`, a missing file or profile |
+| `2` | Validation failure (the YAML was rejected before anything was sent) — **or**, on a scoped apply with `--fail-on-destructive`, a destructive change was detected |
+
+Because `2` is distinct from `1`, you can treat "destructive change / invalid YAML" differently from "the API was down". The unified `apply` uses `0`/`1`/`2` for success/runtime/validation; the `2`-for-destructive meaning is specific to the scoped applies with `--fail-on-destructive`.
+
+## stdout vs. stderr
+
+`cotctl` keeps the two streams disciplined so your pipeline can parse output reliably:
+
+- **stdout** carries the result — the human table, or, under `--json`, the JSON-Lines payload and nothing else. When you pass `--json`, the human banner is suppressed so stdout stays machine-parseable.
+- **stderr** carries warnings, progress notes, and prompts.
+
+So the safe pattern in CI is to **capture stdout for parsing and let stderr flow to the log**:
+
+```bash
+cotctl workflows apply -f workflow.yaml -c acme --dry-run --json > result.jsonl
+# parse result.jsonl; warnings and progress already went to the job log via stderr
+```
 
 ## Token lifetime in CI
 

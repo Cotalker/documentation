@@ -4,6 +4,8 @@ sidebar_label: Overview
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/index.ts @ 4f7248a (2026-07-06) -->
+
 <span className="hero__title">Cotalker CLI — cotctl</span>
 <br/>
 <br/>
@@ -31,18 +33,45 @@ In practice, this gives you four things that matter when you're delivering proje
 
 ## What you can manage with it
 
-Almost every building block you assemble during an implementation has a `cotctl` representation:
+Almost every building block you assemble during an implementation has a `cotctl` representation. The resource command groups are:
 
 | Resource | What it is | Command group |
 |---|---|---|
-| **Surveys** | Forms used to capture data | `cotctl surveys`, `cotctl apply` |
-| **Workflows** | Processes and their state machines | `cotctl workflows`, `cotctl workflows scaffold` |
-| **Property types & properties** | The data model (entities and their fields) | `cotctl property-types`, `cotctl properties` |
+| **Surveys** | Forms used to capture data | `cotctl surveys` |
 | **Access roles** | Permissions and what each role can see/do | `cotctl roles` |
-| **Users** | People in the company, with their hierarchy | `cotctl users` |
+| **Property types** | The data-model schemas (entity shapes) | `cotctl property-types` |
+| **Properties** | Data-model instances of those schemas | `cotctl properties` |
+| **Workflows** | Processes and their state machines | `cotctl workflows` |
 | **Job titles (Cargos)** | Organizational positions | `cotctl jobtitles` |
+| **Users** | People in the company, with their hierarchy | `cotctl users` |
+| **Bots (slash-commands)** | Admin `/command` bots users invoke in chat | `cotctl bots` |
+| **Bot types** | The catalog of ParametrizedBot types and their registered versions (`PBMessage`, `PBCreateTask`, …) — read-only, resolved live from the backend | `cotctl bot-types` |
+| **SLAs** | Service-level agreements attached to state machines | `cotctl slas` |
+| **Schedules** | Cron and one-shot schedules | `cotctl schedules` |
+| **Routines (PBScripts)** | Reusable server-side scripts | `cotctl routines` |
+
+<div className="alert alert--secondary">
+
+**`bots` and `bot-types` are two different things.** `cotctl bot-types` is the read-only *catalog* of ParametrizedBot types and the versions the backend has registered for each — you consult it while authoring YAML to pin the right version. `cotctl bots` is the CRUD for **Bot admin** entities: the slash-commands (`/command`) users run in chat. Older versions folded both under `bots`; the catalog now lives under `bot-types` (see [Troubleshooting](./troubleshooting.md) for the migration note).
+
+</div>
+
+On top of the resource groups sit the commands that operate on them and the tooling around them:
+
+| Command | What it does |
+|---|---|
+| `cotctl login` / `cotctl logout` / `cotctl profile` | Connect to an environment, revoke access, and manage saved profiles |
+| `cotctl apply` | Create or update resources from YAML (single file or a whole directory) |
+| `cotctl validate` | Check YAML — and live workflows — before you deploy |
+| `cotctl skills` / `cotctl mcp` | Install the Claude Code Skills and connect the documentation RAG for [AI-assisted authoring](./ai-authoring.md) |
 
 Don't worry about learning all of these at once. Most partners start with surveys and workflows and pick up the rest as projects require them.
+
+<div className="alert alert--primary">
+
+**Two flagship safety features.** Every apply supports `--dry-run`, which shows a **per-field diff** of exactly what would change without touching the environment. And the entity-scoped applies (`surveys apply`, `properties apply`, `workflows apply`) go further: they **flag destructive changes** — a removed question, a dropped state, a deactivation — and can fail a pipeline on them with `--fail-on-destructive`. You see what a change does before it happens.
+
+</div>
 
 ## A 60-second taste
 
@@ -72,14 +101,14 @@ We recommend reading the first three pages in order — they get you set up and 
 
 Then reach for these as you need them:
 
-- [**Resource YAML reference**](./resources/surveys.md) — the exact schema for each resource type.
+- [**Resource YAML reference**](./resources/surveys.md) — the exact schema for each resource type, including [users](./resources/users.md), [roles](./resources/roles.md), [job titles](./resources/jobtitles.md), bots, routines, schedules and SLAs.
 - [**Tutorials**](./tutorials.md) — complete, end-to-end recipes you can follow along with.
 - [**Troubleshooting**](./troubleshooting.md) — what the common errors mean and how to fix them.
 - [**CI/CD**](./ci-cd.md) — running `cotctl` in automated pipelines.
 
 <div className="alert alert--secondary">
 
-**A note on exit codes.** `cotctl` returns `0` when everything succeeded and `1` on any error (a validation problem, an API error, a missing profile, or a missing file). You don't need this yet, but it's what makes `cotctl` safe to use in scripts and CI gates later on.
+**A note on exit codes.** `cotctl` returns `0` on success and `1` on a runtime error (an API error, a missing profile, a missing file). A third code, `2`, means a **validation failure** — the YAML was rejected before anything was sent — and it's also what `--fail-on-destructive` returns when a dry-run finds a destructive change. You don't need this yet, but it's what makes `cotctl` safe to wire into scripts and CI gates later on. [CI/CD](./ci-cd.md) covers exactly where each code comes from.
 
 </div>
 

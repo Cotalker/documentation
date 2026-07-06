@@ -4,6 +4,8 @@ sidebar_label: Usuarios
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/schemas/user.schema.ts, src/commands/users.ts, docs/users/apply-behavior.md @ 4f7248a (2026-07-06) -->
+
 Un **usuario** es una persona en una empresa. Los usuarios son el recurso más conectado de Cotalker — cada uno referencia un [cargo](./jobtitles.md), uno o más [roles de acceso](./roles.md), y puede ubicarse en una jerarquía de organigrama con otros usuarios. Por esas dependencias, los usuarios se aplican **al final** (después de que existan los cargos y roles).
 
 ## La forma de un usuario
@@ -26,7 +28,7 @@ isActive: true
 | `kind` | Sí | Siempre `User` |
 | `email` | Sí | La clave de upsert. Único globalmente, auto-minúsculas. **Inmutable tras la creación** |
 | `name` | Sí | Sub-objeto: `names` (requerido), `lastName`, `secondLastName` |
-| `job` | Sí | Un **code** de JobTitle que exista y esté **activo** |
+| `job` | No | Un **code** de JobTitle que exista y esté **activo**. Opcional — los usuarios bot y de integración suelen no tener |
 | `accessRoles` | No | **Nombres** de AccessRole (sensibles a mayúsculas) |
 | `phone`, `isActive`, `settings` | No | Campos de perfil opcionales |
 
@@ -41,7 +43,7 @@ name:
 
 ## Cargo y roles
 
-`job` apunta a un cargo por **code**, y ese cargo debe estar activo — `cotctl` solo resuelve los activos. `accessRoles` lista **nombres** de rol, y como en todas partes, son sensibles a mayúsculas (`Manager` ≠ `manager`).
+`job` apunta a un cargo por **code**, y ese cargo debe estar activo — `cotctl` solo resuelve los activos. Es **opcional**: los usuarios bot y de integración a menudo no tienen cargo, y tanto el esquema como el backend aceptan un usuario sin él. `accessRoles` lista **nombres** de rol, y como en todas partes, son sensibles a mayúsculas (`Manager` ≠ `manager`).
 
 <div className="alert alert--info">
 
@@ -90,9 +92,26 @@ Al actualizar, `extra` se **fusiona** — las claves que proveés ganan, las que
 
 </div>
 
-## Una nota sobre contraseñas
+## Aplicar usuarios: contraseñas, onboarding y reactivación
 
-`password` es de solo escritura — podés establecerla en el apply, pero nunca se exporta. Para flujos de onboarding y los detalles de cómo se comportan las contraseñas y la reactivación, mirá la referencia de comandos.
+`password` es de solo escritura — puedes establecerla en el apply, pero nunca se exporta. Cómo se desarrolla el onboarding depende de si estableces una contraseña y de si pasas `--notify-email`:
+
+| Estableces… | Resultado |
+|---|---|
+| Sin `password`, con `--notify-email` | **Recomendado.** El backend genera una contraseña y envía las credenciales por correo al nuevo usuario |
+| Con `password`, con `--notify-email` | **Rechazado** (salida `2`) — el correo de bienvenida filtraría una contraseña enmascarada, así que `cotctl` bloquea la combinación |
+| Con `password`, sin `--notify-email` | La contraseña se establece; `cotctl` advierte que queda en texto plano en tu YAML |
+| Sin `password` en un **update** | La contraseña existente se deja intacta — nunca se borra |
+
+**La reactivación está protegida.** Un usuario inactivo que reaparece con `isActive: true` (u omitido, ya que el valor predeterminado es `true`) **no** se reactiva automáticamente — `apply` se detiene con salida `2` y te indica reejecutar con `--allow-reactivate`. Dos situaciones no se pueden anular en absoluto: un usuario `isReadOnly` nunca se modifica, y un usuario `role: super` no se puede desactivar (ambos salen con `1`).
+
+Para desactivar un usuario sin borrar nada:
+
+```bash
+cotctl users deactivate juan.perez@acme.com -c acme
+```
+
+Como en todo `cotctl`, los códigos de salida son significativos aquí: `0` éxito, `1` un error de ejecución a mitad del apply (red, un error de API, un email de jerarquía irresoluble), y `2` un fallo de validación previo al apply (YAML inválido, un code de cargo desconocido, una reactivación sin el flag, el conflicto password/notify-email).
 
 ## Ver también
 

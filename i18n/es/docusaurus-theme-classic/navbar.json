@@ -11,6 +11,10 @@
     "message": "Desarrollador",
     "description": "Navbar item with label Developer"
   },
+  "item.label.CLI (cotctl)": {
+    "message": "CLI (cotctl)",
+    "description": "Navbar item with label CLI (cotctl)"
+  },
   "item.label.API Reference": {
     "message": "Referencia API",
     "description": "Navbar item with label API Reference"

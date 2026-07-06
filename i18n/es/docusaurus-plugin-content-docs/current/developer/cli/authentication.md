@@ -4,6 +4,8 @@ sidebar_label: Autenticación
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ 4f7248a (2026-07-06) -->
+
 Ahora que `cotctl` está instalado, necesita saber *con qué entorno de Cotalker hablar* y *quién sos vos*. Esta página explica cómo funciona la autenticación, te guía en tu primer login, e introduce los **perfiles** — el concepto que te permite manejar varios entornos con seguridad.
 
 ## Cómo piensa cotctl la autenticación: perfiles
@@ -61,10 +63,14 @@ Use with: cotctl surveys list -c acme
 | `--api-url <url>` | URL de la API, si necesitás sobrescribir el autodescubrimiento |
 | `--no-browser` | Usa email/contraseña en vez del flujo de navegador |
 | `--profile <name>` | Nombre de perfil personalizado (por defecto, el valor de `--subdomain`) |
+| `--paste-token` | Registra un ApiToken pre-generado en vez de autenticarte — la vía para CI y para usuarios que no pueden acuñar su propio token |
+| `--machine-id <id>` | Sobrescribe el identificador de máquina grabado en el code del token, para distinguir tokens por máquina |
+
+La [referencia de login y logout](./commands/login-logout.md) cubre `--paste-token` y `--machine-id` en detalle.
 
 ## El flag `-c`: decirle a los comandos sobre qué empresa actuar
 
-Este es el hábito más importante a construir. **Todo comando que toca la API requiere un flag `-c` (o `--company`)** que nombre el perfil a usar. A propósito no hay default — esto evita que ejecutes un comando contra el entorno equivocado de un cliente.
+Este es el hábito más importante a construir. **Todo comando que toca la API requiere un flag `-c` (o `--company`)** que nombre el perfil a usar. A propósito no hay perfil predeterminado — esto evita que ejecutes un comando contra el entorno equivocado de un cliente.
 
 ```bash
 cotctl surveys list -c acme

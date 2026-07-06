@@ -4,16 +4,20 @@ sidebar_label: Workflows
 displayed_sidebar: developer
 ---
 
-Un **workflow** modela un proceso: una tarea que se mueve a través de una serie de estados, desde la creación hasta el cierre. Los workflows son el recurso más potente — y el más estructurado — de Cotalker. La buena noticia es que rara vez escribís uno desde cero: [`cotctl workflows scaffold`](../commands/scaffolding.md) genera un esqueleto correcto, y esta página explica qué contiene ese esqueleto para que lo personalices con confianza.
+<!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ 4f7248a (2026-07-06) -->
+
+Un **workflow** modela un proceso: una tarea que se mueve a través de una serie de estados, desde la creación hasta el cierre. Los workflows son el recurso más potente — y el más estructurado — de Cotalker. Rara vez escribes uno desde cero: [`cotctl workflows scaffold`](../commands/scaffolding.md) genera un esqueleto correcto, y esta página explica qué contiene ese esqueleto para que lo personalices con confianza.
+
+Esta es el mapa. Cubre la jerarquía, los campos raíz reales y los comandos; las subpáginas cubren las partes lo bastante sutiles como para morderte — semántica de merge, inmutabilidad, expresiones COTLang.
 
 ## La jerarquía
 
 Un único documento YAML de workflow gestiona una estructura anidada:
 
 ```
-Workflow                 (el proceso: nombre, permisos, settings)
-└── stateMachines[]      (uno o más flujos independientes)
-    └── states[]         (los pasos por los que pasa una tarea)
+Workflow                 (el proceso: nombre, permisos, ajustes)
+└── stateMachines[]      (una o más máquinas de estado independientes)
+    └── states[]         (los pasos por los que se mueve una tarea)
         └── next[]       (las transiciones permitidas entre estados)
 ```
 
@@ -28,32 +32,44 @@ nameDisplay: Purchase Orders
 isActive: true
 hideClosedAfterDays: 30
 readPermissions:
-  - Admin                        # nombres de AccessRole
+  - purchase_orders:view         # codes de permiso literales (ver abajo)
 writePermissions:
-  - Admin
-  - Manager
+  - purchase_orders:start-form
 stateMachines:
   - # ...
 ```
 
+### Campos raíz
+
+El esquema define estos campos de nivel superior:
+
 | Campo | Requerido | Notas |
 |---|---|---|
 | `kind` | Sí | Siempre `Workflow` |
-| `nameCode` | Sí | Único por empresa. **Inmutable tras la creación.** Mín. 3 caracteres, minúsculas/guiones bajos |
-| `nameDisplay` | No | Nombre para mostrar. Si se omite, apply corre en "modo SM-only" (ver abajo) |
+| `nameCode` | Sí | Único por empresa. **Inmutable tras la creación.** Mín. 3 caracteres, `^[a-z]+([_a-z0-9]+)*$` |
+| `nameDisplay` | No | Nombre visible. Si se omite, apply corre en "modo SM-only" (ver abajo) |
+| `nameTranslations` | No | `es` / `en` / `pt` / `fr` |
+| `color`, `icon` | No | Apariencia visual |
+| `weight` | No | Orden de despliegue (por defecto `0`) |
 | `isActive` | No | Por defecto `true` |
-| `hideClosedAfterDays` | No | Días antes de ocultar tareas cerradas. **Por defecto 7, que suele ser demasiado corto** — considerá 30 |
-| `readPermissions` / `writePermissions` | No | **Nombres** de AccessRole — quién puede leer / crear tareas |
+| `hideClosedAfterDays` | No | Días antes de ocultar tareas cerradas (0–1825). **Por defecto 7, que suele ser muy corto** — considera 30 |
+| `readPermissions` | No | Codes de permiso — quién puede leer tareas |
+| `writePermissions` | No | Codes de permiso — quién puede crear tareas |
+| `taskImportPermissions` | No | Codes de permiso — quién puede importar tareas |
+| `taskFollowerPermissions` | No | Codes de permiso — quién puede agregarse como follower |
+| `taskEditorPermissions` | No | Codes de permiso — quién puede editar tareas |
+| `availableViews`, `defaultView` | No | Qué vistas de UI (ej. kanban, lista) están disponibles |
+| `stateMachines` | No | La lista de máquinas de estado |
 
-<div className="alert alert--secondary">
+<div className="alert alert--danger">
 
-**Los permisos se matchean por nombre, y los typos fallan en silencio.** Las listas de permisos usan *nombres* de AccessRole, que `cotctl` resuelve a IDs en el apply. Si un nombre no existe en el servidor, se **descarta silenciosamente** — sin error. Después de aplicar, verificá con `cotctl workflows get <nameCode>` que cada permiso haya quedado.
+**Los campos de permisos son codes de permiso literales — no nombres de AccessRole.** Los cinco arreglos de permisos (`readPermissions`, `writePermissions`, `taskImportPermissions`, `taskFollowerPermissions`, `taskEditorPermissions`) contienen **strings de code de permiso** como `web-admin-write` o `purchase_orders:view`, y `cotctl` los envía al servidor **verbatim** — *no* los resuelve a IDs de AccessRole. Esto es distinto de los formularios, cuyo campo `permissions` *sí* toma nombres de AccessRole. Pon acá el code de permiso mismo, exactamente como aparece en el rol que lo otorga. (Workflows antiguos pueden aún cargar ObjectIds crudos en estos campos por una versión previa de `cotctl`; la exportación los expone con un marcador legacy para que los reemplaces.)
 
 </div>
 
-## Máquinas de estado
+## Máquinas de estado, estados y transiciones
 
-Cada entrada en `stateMachines[]` es un flujo independiente. Declara qué datos la mueven y dónde arranca:
+Cada entrada de `stateMachines[]` es un flujo independiente. Declara qué datos la impulsan y dónde comienza:
 
 ```yaml
 stateMachines:
@@ -63,68 +79,69 @@ stateMachines:
     asset:
       type: unique                 # "unique" o "generic" — inmutable
       propertyType: pt_po_assets
-    initialState: po_draft         # un código de propiedad de estado
+    initialState: po_draft
     states:
-      - # ...
+      - property: po_draft         # un code de Property que ya debe existir
+        type: new                  # "new" | "in-progress" | "closed" — inmutable
+        next:
+          - target: po_approved
+            canChange: manual
+          - target: po_rejected
+            canChange: survey
+            requiredSurvey: survey_rejection_reason
 ```
 
-El `propertyType` y el `asset.type` son **inmutables tras la creación** — definen la forma fundamental del flujo, así que planificalos de antemano.
-
-## Estados y transiciones
-
-Cada estado corresponde a una [Property](./properties.md) y declara su tipo de ciclo de vida y sus transiciones salientes:
-
-```yaml
-states:
-  - property: po_draft        # un código de Property que ya debe existir
-    type: new                 # "new" | "in-progress" | "closed" — inmutable
-    next:
-      - target: po_approved
-        canChange: manual
-      - target: po_rejected
-        canChange: survey
-        requiredSurvey: survey_rejection_reason
-```
-
-El `canChange` de una transición controla cómo se dispara:
+Cada estado corresponde a una [Property](./properties.md). Su `type` es uno de `new`, `in-progress`, `closed`. El `canChange` de una transición controla cómo se dispara:
 
 | `canChange` | Significado |
 |---|---|
-| `manual` (default) | Un usuario la dispara desde la UI de la tarea |
-| `survey` | El usuario debe completar una encuesta primero — poné `requiredSurvey` con su código |
-| `none` | Solo la automatización/el sistema puede dispararla (ej. auto-cierre) |
+| `manual` (por defecto) | Un usuario la dispara desde la UI de la tarea |
+| `survey` | El usuario debe completar un formulario primero — fija `requiredSurvey` con su code |
+| `none` | Solo la automatización/sistema puede dispararla (ej. cierre automático) |
 
-<div className="alert alert--primary">
+Las máquinas de estado también admiten un `requiredSurvey` (un StartForm que condiciona la creación de tareas), y los estados admiten slots `subtask` y `surveyTriggers` — todos ellos pueden llevar **bots** de automatización. Esos slots tienen reglas de preservar/reemplazar/borrar que debes entender antes de editar un workflow en vivo; la página de [Semántica de merge](./workflows/merge-semantics.md) las cubre.
 
-**Los estados son permanentes.** Una vez creado, un estado no puede borrarse ni desactivarse, y su `type` no puede cambiar. Quitar un estado de tu YAML no lo borra — el apply bloqueará el cambio. Diseñá tu conjunto de estados deliberadamente.
+### Modo SM-only
 
-</div>
+Si omites `nameDisplay`, apply corre en **modo SM-only**: toca solo las máquinas de estado y los estados, dejando intactos los ajustes de despliegue y los permisos del workflow. Es exactamente lo que quieres al agregar una segunda máquina de estado a un workflow que ya existe, sin resetear nada.
 
-## Automatización: bots
+## Qué cubren las subpáginas
 
-Las transiciones y los estados pueden disparar **bots** — pequeñas rutinas de automatización que corren cuando una transición se dispara o se envía un formulario (enviar una notificación, crear una tarea de seguimiento, llamar a una API). Los bots son un tema avanzado, con su propio catálogo de tipos; por ahora, lo que importa es una regla de seguridad:
+- **[Semántica de merge](./workflows/merge-semantics.md)** — el contrato GET-merge-PUT (0.7.0+): por qué un campo omitido se preserva pero un `[]` explícito borra, a qué campos aplica y los errores silenciosos que previene. **Léela antes de editar un workflow en vivo.**
+- **[COTLang](./workflows/cotlang.md)** — el lenguaje de expresiones para el `data` de los bots, y los caracteres reservados que lo rompen.
+- **[Inmutabilidad y versionado](./workflows/immutability-and-versioning.md)** — qué no puede cambiar tras la creación, por qué los estados son permanentes y las reglas de versión de bots que `cotctl` valida.
+- **[Ejemplo completo](./workflows/complete-example.md)** — un workflow completo de órdenes de compra, anotado.
 
-<div className="alert alert--secondary">
+## Gestionar workflows con `cotctl`
 
-**Las tres formas de un campo `bots` — y por qué importa.** Cuando escribís un slot `bots` en YAML, la forma que elegís cambia el comportamiento:
-
-| YAML | Efecto en el apply |
+| Comando | Qué hace |
 |---|---|
-| Campo **ausente** | **Preservar** los bots que el servidor ya tiene en ese slot |
-| `bots: []` | **Borrar** los bots de ese slot (destructivo) |
-| `bots: [{...}]` | **Reemplazar** por el bot que declaraste |
+| `cotctl workflows list` | Lista workflows (activos por defecto; `--all` incluye inactivos) |
+| `cotctl workflows get <nameCode>` | Muestra un workflow con sus máquinas de estado y estados |
+| `cotctl workflows export <nameCode>` | Exporta un workflow como YAML |
+| `cotctl workflows apply -f <archivo>` | Crea o actualiza un workflow desde YAML |
+| `cotctl workflows scaffold` | Genera un esqueleto de workflow correcto |
+| `cotctl workflows deactivate <nameCode>` | Desactiva el workflow (sus máquinas de estado quedan activas) |
 
-Si los bots se configuraron fuera de `cotctl` (por ejemplo, en el builder web), un `bots: []` accidental los borrará. Ante la duda, hacé `cotctl workflows export` primero para ver qué hay.
+### Aplicar de forma segura
 
-</div>
+```bash
+# Previsualiza contra el servidor, mostrando un diff detallado
+cotctl workflows apply -f workflow.yaml -c acme --dry-run --diff verbose
 
-## Modo SM-only
+# En CI: falla ante cualquier cambio destructivo que detecte el dry-run
+cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
+```
 
-Si omitís `nameDisplay`, el apply corre en **modo SM-only**: toca solo las máquinas de estado y los estados, dejando intactos los settings de display y los permisos del workflow. Es justo lo que querés al agregar una segunda máquina de estado a un workflow que ya existe, sin resetear nada.
+- `--dry-run` valida y muestra qué pasaría sin aplicar.
+- `--diff <off|compact|verbose>` fija el detalle del antes/después (por defecto `compact`).
+- `--fail-on-destructive` sale con código `2` cuando el dry-run encuentra un cambio de severidad peligrosa (requiere `--dry-run`).
+- `--rollback` desactiva lo creado durante un apply parcial si falla a mitad de camino.
+- `--yes` omite las confirmaciones; `--json` emite un objeto de resultado por línea.
 
-## Una nota de dependencias
+## Una nota de dependencia
 
-El `requiredSurvey` de una transición referencia una encuesta por código. Por el orden de apply, cuando usás `apply --dir`, los workflows se aplican *antes* que las encuestas. Si una transición necesita una encuesta, aplicá las encuestas primero, luego el workflow:
+El `requiredSurvey` de una transición referencia un formulario por code. Bajo `apply --dir`, los workflows se aplican *antes* que los formularios, así que el formulario de una transición ya debe existir — aplica primero los formularios cuando los corras por separado:
 
 ```bash
 cotctl surveys apply -f surveys.yaml -c acme
@@ -133,6 +150,7 @@ cotctl workflows apply -f workflow.yaml -c acme
 
 ## Ver también
 
-- [Scaffolding](../commands/scaffolding.md) — generá el esqueleto del workflow
-- [Propiedades](./properties.md) y [Roles](./roles.md) — los recursos que un workflow referencia
+- [Scaffolding](../commands/scaffolding.md) — genera el esqueleto del workflow
+- [Properties](./properties.md) y [Roles](./roles.md) — los recursos que un workflow referencia
 - [validate](../commands/validate.md) — el checklist de preparación para producción de workflows en vivo
+- [Modelos de datos](../data-models.md) — Task y TaskGroup, las entidades que un workflow produce

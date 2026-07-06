@@ -4,6 +4,8 @@ sidebar_label: Skills
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/skills.ts, src/skills/index.ts @ 4f7248a (2026-07-06) -->
+
 Un **Skill** es un paquete instalable que le da al agente de IA Claude Code conocimiento y herramientas especializadas para un área específica. `cotctl` trae un conjunto de Skills — uno por tipo de recurso — que convierten a un agente de propósito general en un especialista en authoring de Cotalker. Esta página es la referencia del comando `cotctl skills` que los gestiona. Para el panorama de cómo encajan los Skills con el RAG y el agente, mirá [Authoring asistido por IA](./ai-authoring.md).
 
 ## Listar lo disponible
@@ -12,7 +14,7 @@ Un **Skill** es un paquete instalable que le da al agente de IA Claude Code cono
 cotctl skills list
 ```
 
-Esto muestra cada Skill disponible y su estado de instalación, que puede ser `[not installed]`, `[local]`, `[global]` o `[local, global]`.
+Esto muestra cada Skill disponible y su estado de instalación, que puede ser `[not installed]`, `[local]`, `[global]` o `[local, global]`. Agrega `--json` para salida legible por máquina — una entrada por Skill disponible, cada una con su estado de instalación por scope.
 
 ## Instalar Skills
 
@@ -27,9 +29,10 @@ Ejecutalo **sin un nombre** para obtener un checklist interactivo y elegir lo qu
 | `--all` | Instala todos los Skills disponibles |
 | `--local` | Instala en `.claude/skills/` (solo este proyecto) |
 | `--global` | Instala en `~/.claude/skills/` (todos los proyectos) |
+| `-y, --yes` | Salta el prompt interactivo de scope (usa `--local` por defecto) |
 | `--no-mcp` | Salta el paso de configuración del RAG/MCP de Cotalker |
 
-Si no pasás `--local` ni `--global`, `cotctl` te pregunta interactivamente qué scope usar.
+Si no pasas `--local` ni `--global`, `cotctl` te pregunta interactivamente qué scope usar — salvo que pases `-y`, que toma la opción predeterminada más segura `--local` sin preguntar (útil en scripts).
 
 <div className="alert alert--info">
 
@@ -43,10 +46,14 @@ Cada Skill especializa al agente en un área de recursos:
 
 | Skill | Qué le da al agente |
 |---|---|
-| `cotctl-surveys` | Crear y modificar YAML de encuestas |
-| `cotctl-workflows` | Crear, scaffoldear y modificar workflows |
+| `cotctl-surveys` | Crear y modificar YAML de formularios |
+| `cotctl-workflows` | Crear, scaffoldear y modificar workflows y máquinas de estado |
 | `cotctl-properties` | Generar tipos de propiedad y propiedades |
 | `cotctl-roles` | Crear y gestionar roles de acceso y permisos |
+| `cotctl-users` | Crear, gestionar, exportar y aplicar YAML de usuarios |
+| `cotctl-jobtitles` | Crear, gestionar, exportar y aplicar YAML de cargos (Job titles) |
+| `cotctl-routines` | Crear, editar, listar, exportar y aplicar rutinas (PBScripts) |
+| `cotctl-bots` | Crear, gestionar, exportar y aplicar YAML de Bot admin (slash-commands) |
 | `cotctl-apply` | Aplicar recursos a entornos de Cotalker |
 | `cotctl-export` | Exportar y consultar recursos |
 | `cotalker-docs` | Conocimiento general de la plataforma Cotalker |

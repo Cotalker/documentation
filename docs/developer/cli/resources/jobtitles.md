@@ -4,6 +4,8 @@ sidebar_label: Job titles
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/schemas/job-title.schema.ts, src/commands/jobtitles.ts @ 4f7248a (2026-07-06) -->
+
 A **job title** (Cargo) is the bridge between a person and what they can do. It links a [user](./users.md) to a set of [access roles](./roles.md), property-type extensions, and inherited properties. Assign a user a job title, and they inherit everything the job title grants. Because job titles depend on roles and the data model, they're applied after those — and before users.
 
 ## The shape of a job title
@@ -25,12 +27,19 @@ elements:
 | Field | Required | Notes |
 |---|---|---|
 | `kind` | Yes | Always `JobTitle` |
-| `code` | Yes | Unique per company, 3–50 chars, lowercase/underscores. **Immutable after creation** |
+| `code` | Yes | Unique per company, 3–50 chars. Must start with a lowercase letter, then lowercase letters, digits and underscores (`^[a-z]+([_a-z0-9]+)*$`). **Immutable after creation** |
 | `display` | Yes | Human-readable label (mutable) |
+| `id` | No | The 24-character record ID. Optional — normally omitted, since `code` is the upsert key |
 | `isActive` | No | Defaults to `true` |
 | `accessRoles` | No | AccessRole **names** (case-sensitive), max 50 |
 | `allowedExtensions` | No | PropertyType **codes**, max 50 |
 | `elements` | No | Property **codes** inherited by users |
+
+<div className="alert alert--secondary">
+
+**When an old code doesn't match the current rule.** The `code` format is enforced strictly on create. On *update*, if the existing record's `code` already violates the current rule (an old cargo created before the rule tightened), `--lax-code` downgrades that check to a warning so you can still edit the record's other fields. It never relaxes the check on create, and never lets you introduce a new non-conforming code.
+
+</div>
 
 The three list fields each reference a different resource by name or code:
 
@@ -67,6 +76,8 @@ cotctl jobtitles deactivate store_manager -c acme
 ```
 
 Reactivating is deliberately guarded: applying `isActive: true` to a currently-inactive job title requires the explicit `--allow-reactivate` flag, so you never bring one back by accident.
+
+There is **no delete** for job titles — deactivation is the only removal path, in keeping with Cotalker's soft-delete model.
 
 ## Apply job titles before users
 
