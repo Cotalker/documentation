@@ -70,7 +70,7 @@ La [referencia de login y logout](./commands/login-logout.md) cubre `--paste-tok
 
 ## El flag `-c`: decirle a los comandos sobre qué empresa actuar
 
-Este es el hábito más importante a construir. **Todo comando que toca la API requiere un flag `-c` (o `--company`)** que nombre el perfil a usar. A propósito no hay default — esto evita que ejecutes un comando contra el entorno equivocado de un cliente.
+Este es el hábito más importante a construir. **Todo comando que toca la API requiere un flag `-c` (o `--company`)** que nombre el perfil a usar. A propósito no hay perfil predeterminado — esto evita que ejecutes un comando contra el entorno equivocado de un cliente.
 
 ```bash
 cotctl surveys list -c acme

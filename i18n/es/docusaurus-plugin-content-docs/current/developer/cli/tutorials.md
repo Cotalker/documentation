@@ -24,12 +24,12 @@ cotctl profile list
 
 **Cómo se ve el éxito:** `cotctl profile list` muestra una fila `acme` con tu URL y usuario. Ya puedes ejecutar cualquier comando con `-c acme`.
 
-## Receta 2 — Crea una encuesta nueva desde cero
+## Receta 2 — Crea un formulario nuevo desde cero
 
 **Qué necesitas:** un perfil funcionando y una idea del formulario que quieres construir.
 
 ```bash
-# 1. Escribe el YAML (ver la referencia de Encuestas para la estructura)
+# 1. Escribe el YAML (ver la referencia de Formularios para la estructura)
 vim my-survey.yaml
 
 # 2. Valídalo offline — detecta errores antes de tocar el entorno
@@ -50,13 +50,13 @@ Survey "my_survey" created successfully
 
 <div className="alert alert--info">
 
-Esta secuencia validate → dry-run → apply es la opción predeterminada segura para *cualquier* recurso, no solo encuestas. Adopta el hábito desde ahora.
+Esta secuencia validate → dry-run → apply es la opción predeterminada segura para *cualquier* recurso, no solo formularios. Adopta el hábito desde ahora.
 
 </div>
 
-## Receta 3 — Modifica una encuesta existente
+## Receta 3 — Modifica un formulario existente
 
-**Qué necesitas:** el `code` de una encuesta que ya existe.
+**Qué necesitas:** el `code` de un formulario que ya existe.
 
 ```bash
 # 1. Expórtala como punto de partida
@@ -72,7 +72,7 @@ cotctl apply -f survey.yaml -c acme
 
 **Cómo se ve el éxito:** `Survey "existing_survey" updated successfully`. Puedes agregar, quitar, editar y reordenar preguntas libremente — `cotctl` las empareja por `identifier` y preserva sus IDs.
 
-## Receta 4 — Promueve una encuesta entre entornos
+## Receta 4 — Promueve un formulario entre entornos
 
 **Qué necesitas:** perfiles para el entorno de origen y el de destino.
 
@@ -84,7 +84,7 @@ cotctl surveys export my_survey -c acme-prod -o survey.yaml
 cotctl apply -f survey.yaml -c devteam
 ```
 
-**Cómo se ve el éxito:** la encuesta se crea en el entorno de destino. El YAML exportado contiene IDs del origen, pero se ignoran al crear — el destino genera los suyos.
+**Cómo se ve el éxito:** el formulario se crea en el entorno de destino. El YAML exportado contiene IDs del origen, pero se ignoran al crear — el destino genera los suyos.
 
 ## Receta 5 — Construye y despliega un workflow desde un scaffold
 
@@ -154,7 +154,7 @@ cotctl bots apply -f bot.yaml -c acme -y
 
 </div>
 
-Para ir más allá — un comando de encuesta que dispara un formulario, más un grafo embebido que llama a una Rutina — ver `examples/bots/bot-with-survey-command.yaml`.
+Para ir más allá — un comando que dispara un formulario, más un grafo embebido que llama a una Rutina — ver `examples/bots/bot-with-survey-command.yaml`.
 
 ## Receta 7 — Automatización programada: una Rutina en un cron
 
@@ -289,7 +289,7 @@ cotctl slas apply -f sla.yaml -c acme --task-group wf_po
 **Qué significa "inmutable" en la práctica.** El PATCH del backend acepta solo `display`, `reset`, `repeat`, `pb`, `start`, `end` y `data`. Todo lo demás queda congelado tras la creación:
 
 - **No puedes apagar un SLA a través de la API.** No existe `cotctl slas deactivate`; `isActive: false` se descarta silenciosamente. Para que un SLA deje de dispararse, edita `start.states` para que apunte a un estado que nada alcanza, o pide a backend-dev que elimine el documento a nivel de base de datos.
-- **`description` se descarta en el UPDATE.** Solo se persiste en el CREATE — cambiarla después no hace nada (cotctl te avisa cuando lo intentas). Acértala a la primera.
+- **`description` se descarta en el UPDATE.** Solo se persiste en el CREATE — cambiarla después no hace nada (cotctl te avisa cuando lo intentas). Aciértala a la primera.
 - **`code` y `stateMachine` son identidad.** Cambiar cualquiera de los dos crea un SLA nuevo en vez de editar el existente.
 
 Así que "cambiar un SLA" significa editar los campos mutables; cualquier otra cosa es borrar y recrear a nivel de base de datos.

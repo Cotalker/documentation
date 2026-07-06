@@ -74,7 +74,7 @@ Los flags `--skip-*` son solo para Survey por diseño: pasarlos con cualquier ot
 ### Ejemplos
 
 ```bash
-# Crear o actualizar una encuesta
+# Crear o actualizar un formulario
 cotctl apply -f my-survey.yaml -c acme
 
 # Previsualizar lo que se enviaría — no cambia nada
@@ -96,11 +96,11 @@ Una actualización imprime `updated successfully` en su lugar. `cotctl` no muest
 
 <div className="alert alert--info">
 
-**Nunca gestionas IDs a mano.** Al crear, no incluyes `_id`/`id` — el backend los genera. Al actualizar, `cotctl` recupera el recurso existente y resuelve los IDs correctos por ti (haciendo match de las preguntas de la encuesta por su `identifier`). Tu YAML se mantiene limpio y legible.
+**Nunca gestionas IDs a mano.** Al crear, no incluyes `_id`/`id` — el backend los genera. Al actualizar, `cotctl` recupera el recurso existente y resuelve los IDs correctos por ti (haciendo match de las preguntas del formulario por su `identifier`). Tu YAML se mantiene limpio y legible.
 
 </div>
 
-### Qué podés cambiar al actualizar una encuesta
+### Qué podés cambiar al actualizar un formulario
 
 Como las preguntas se matchean por `identifier`, no por posición, las ediciones se comportan de forma intuitiva:
 
@@ -111,7 +111,7 @@ Como las preguntas se matchean por `identifier`, no por posición, las ediciones
 | Editar una pregunta | Cambiá sus campos, mantené el `identifier` | Actualizada, ID preservado |
 | Reordenar preguntas | Reordená `questions[]` | Cambia el orden, IDs preservados |
 
-Dos cosas son inmutables una vez creadas: el `code` de una encuesta, y el `identifier` de una pregunta. `apply` se negará a renombrar cualquiera de los dos — para "renombrar", creás un recurso nuevo. Y si aplicás un YAML de encuesta sin su sección `questions` (por ejemplo, para cambiar `isActive`), las preguntas existentes se preservan automáticamente.
+Dos cosas son inmutables una vez creadas: el `code` de un formulario, y el `identifier` de una pregunta. `apply` se negará a renombrar cualquiera de los dos — para "renombrar", creás un recurso nuevo. Y si aplicás un YAML de formulario sin su sección `questions` (por ejemplo, para cambiar `isActive`), las preguntas existentes se preservan automáticamente.
 
 ## Previsualiza primero: `--dry-run`
 

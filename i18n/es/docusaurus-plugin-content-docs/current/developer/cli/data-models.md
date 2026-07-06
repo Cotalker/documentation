@@ -6,7 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/docs/cotalker-models/{README,user,channel,task,task-group,property,message}.md @ 4f7248a (2026-07-06) -->
 
-Cuando escribes un script exec, configuras el `data` de un bot o lees una respuesta de API, estás tocando las entidades núcleo de Cotalker. Esta página es un recorrido, pensado para partners, por las seis que más importan — qué es cada una, los campos con los que realmente trabajarás y cómo se conectan. Es una referencia para tener abierta mientras creas encuestas y workflows, no algo para leer una sola vez.
+Cuando escribes un script exec, configuras el `data` de un bot o lees una respuesta de API, estás tocando las entidades núcleo de Cotalker. Esta página es un recorrido, pensado para partners, por las seis que más importan — qué es cada una, los campos con los que realmente trabajarás y cómo se conectan. Es una referencia para tener abierta mientras creas formularios y workflows, no algo para leer una sola vez.
 
 ## Cómo encajan entre sí
 
@@ -14,7 +14,7 @@ Seis modelos cargan casi todo con lo que trabaja un partner:
 
 - Un **TaskGroup** es el contenedor de un workflow. Cada **Task** pertenece a exactamente un TaskGroup.
 - Una **Task** es una unidad de trabajo que se mueve por una máquina de estado. Está vinculada a un **Channel** donde ocurre la conversación.
-- Los **Message** viven dentro de un Channel — incluidos los formularios de encuesta que la gente completa.
+- Los **Message** viven dentro de un Channel — incluidos los formularios que la gente completa.
 - Los **User** pueblan todo esto: envían mensajes, se asignan a tareas y tienen roles y cargos.
 - Las **Property** son los datos genéricos y tipados adjuntos a Users, Channels y Tasks — el mecanismo detrás de los campos personalizados de una tarea (sus "extensions").
 
@@ -66,7 +66,7 @@ Una única unidad de trabajo que se mueve por la máquina de estado de un workfl
 - **Fechas:** `startDate`, `endDate`, `resolutionDate`, `closedAt`.
 - **Datos dinámicos:** `extensions` (ver abajo).
 
-**`extensions` — el concepto clave.** Los datos personalizados de una tarea se agrupan por PropertyType: `extensions[codePropertyType][fieldKey] = valor`. Por debajo, cada extension es un documento [Property](#property) separado, dueño de la tarea. Qué PropertyTypes están disponibles lo fija la máquina de estado (`asset.propertyType` más sus extensions permitidas). Esto es lo que leen y escriben los [`bounds` de encuestas](./resources/surveys/logic-and-validation.md#bounds-escribir-respuestas-en-la-tarea) y los bots de workflow.
+**`extensions` — el concepto clave.** Los datos personalizados de una tarea se agrupan por PropertyType: `extensions[codePropertyType][fieldKey] = valor`. Por debajo, cada extension es un documento [Property](#property) separado, dueño de la tarea. Qué PropertyTypes están disponibles lo fija la máquina de estado (`asset.propertyType` más sus extensions permitidas). Esto es lo que leen y escriben los [`bounds` de formularios](./resources/surveys/logic-and-validation.md#bounds-escribir-respuestas-en-la-tarea) y los bots de workflow.
 
 **Se relaciona con:** pertenece a exactamente un TaskGroup; gobernada por una máquina de estado; vinculada a un Channel; asignada a Users; sus datos dinámicos viven en Properties.
 
@@ -115,16 +115,16 @@ Una pieza de datos configurable y tipada, adjunta a un User, Task o Channel — 
 
 ## Message
 
-Un único mensaje dentro de un canal — contenido plano, un formulario de encuesta, un comando. En un script exec es `message#self`.
+Un único mensaje dentro de un canal — contenido plano, un formulario, un comando. En un script exec es `message#self`.
 
 **Campos que tocarás:**
 
 - **Ubicación:** `_id`, `channel`, `sentBy` (el ID de User del autor), `createdAt`.
-- **Contenido:** `contentType`, `content`, `contentArray[]` (preguntas de encuesta, cuando es un formulario), `tag`.
-- **Formularios:** `form`, `formId`, `answer`, `responses[]` (respuestas de encuesta enviadas).
+- **Contenido:** `contentType`, `content`, `contentArray[]` (las preguntas, cuando el mensaje es un formulario), `tag`.
+- **Formularios:** `form`, `formId`, `answer`, `responses[]` (respuestas del formulario enviadas).
 - **Interacción:** `reactions`, `reply[]`, `mentions.users[]`, `readBy[]`, `isActive`.
 
-**Se relaciona con:** vive en un Channel; autoreado por un User (`sentBy`); los mensajes de formulario cargan preguntas de encuesta en `contentArray` y respuestas en `responses`.
+**Se relaciona con:** vive en un Channel; autoreado por un User (`sentBy`); los mensajes de formulario cargan las preguntas del formulario en `contentArray` y respuestas en `responses`.
 
 <div className="alert alert--secondary">
 
@@ -139,6 +139,6 @@ Un único mensaje dentro de un canal — contenido plano, un formulario de encue
 
 ## Ver también
 
-- [Encuestas](./resources/surveys.md) y [Scripting con exec](./resources/surveys/exec-scripting.md) — donde lees estos modelos
+- [Formularios](./resources/surveys.md) y [Scripting con exec](./resources/surveys/exec-scripting.md) — donde lees estos modelos
 - [Workflows](./resources/workflows.md) — de donde vienen las Tasks y TaskGroups
 - [Properties](./resources/properties.md) — gestionar definiciones de Property con `cotctl`

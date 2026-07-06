@@ -103,7 +103,7 @@ Al actualizar, `extra` se **fusiona** — las claves que proveés ganan, las que
 | Con `password`, sin `--notify-email` | La contraseña se establece; `cotctl` advierte que queda en texto plano en tu YAML |
 | Sin `password` en un **update** | La contraseña existente se deja intacta — nunca se borra |
 
-**La reactivación está protegida.** Un usuario inactivo que reaparece con `isActive: true` (u omitido, ya que el default es `true`) **no** se reactiva automáticamente — `apply` se detiene con salida `2` y te indica reejecutar con `--allow-reactivate`. Dos situaciones no se pueden anular en absoluto: un usuario `isReadOnly` nunca se modifica, y un usuario `role: super` no se puede desactivar (ambos salen con `1`).
+**La reactivación está protegida.** Un usuario inactivo que reaparece con `isActive: true` (u omitido, ya que el valor predeterminado es `true`) **no** se reactiva automáticamente — `apply` se detiene con salida `2` y te indica reejecutar con `--allow-reactivate`. Dos situaciones no se pueden anular en absoluto: un usuario `isReadOnly` nunca se modifica, y un usuario `role: super` no se puede desactivar (ambos salen con `1`).
 
 Para desactivar un usuario sin borrar nada:
 

@@ -61,10 +61,10 @@ Cada servidor registrado anuncia qué cubre, que es cómo el asistente decide d�
 
 | Flag | Descripción |
 |---|---|
-| `--name <name>` | Nombre del servidor (default `cotalker-rag`) |
+| `--name <name>` | Nombre del servidor (predeterminado `cotalker-rag`) |
 | `--scope <local\|global>` | Dónde escribir la config, en vez de preguntar |
 | `--indices <a,b,c>` | Nombres de índices separados por coma — salta el prompt de selección |
-| `--url <url>` | URL personalizada del servidor MCP, sobrescribiendo el default del build |
+| `--url <url>` | URL personalizada del servidor MCP, sobrescribiendo el valor predeterminado del build |
 
 ```bash
 cotctl mcp install --name cotalker-cli --scope local --indices cotctl
@@ -75,7 +75,7 @@ cotctl mcp install --name cotalker-cli --scope local --indices cotctl
 Más allá de `install`, el grupo de comandos `mcp` te deja inspeccionar y ordenar lo configurado:
 
 - **`cotctl mcp list`** — muestra cada servidor MCP configurado, agrupado por scope (local `.mcp.json` y global `~/.claude/settings.json`), con la URL de cada servidor y los índices a los que está acotado. Agrega `--scope` para filtrar.
-- **`cotctl mcp indices`** — lista los índices que anuncia el servidor y muestra, por scope, cuáles de tus servidores configurados usan cada uno (y qué índices no se usan en ninguna parte). Agrega `--json` para salida legible por máquina, o `--url` para consultar un endpoint distinto del default.
+- **`cotctl mcp indices`** — lista los índices que anuncia el servidor y muestra, por scope, cuáles de tus servidores configurados usan cada uno (y qué índices no se usan en ninguna parte). Agrega `--json` para salida legible por máquina, o `--url` para consultar un endpoint distinto del predeterminado.
 - **`cotctl mcp remove [name]`** — quita un servidor configurado. Ejecútalo sin nombre para un selector interactivo; pasa un `name` (y `--scope` para desambiguar si existe en ambos) para apuntar a uno directamente. `-y` salta la confirmación.
 
 ```bash

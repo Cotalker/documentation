@@ -54,7 +54,7 @@ Cada etapa nombra un tipo de bot (`PBCreateTask`, `PBReport`, …), y cada tipo 
 
 - **Tipo de bot desconocido** → una **advertencia** (el catálogo puede no listar un tipo recién creado aún). Chequea el nombre con `cotctl bots list`.
 - **Una `version` fijada que no está registrada** → un **error**, listando las versiones disponibles para que lo arregles de una.
-- **Sin `version` y el tipo no tiene default** (ej. `PBReport`, `PBCalendar`) → un **error**: el runtime no tiene fallback, así que debes fijar una.
+- **Sin `version` y el tipo no tiene versión predeterminada** (ej. `PBReport`, `PBCalendar`) → un **error**: el runtime no tiene fallback, así que debes fijar una.
 
 ### `bot.version` — el motor COTLang
 

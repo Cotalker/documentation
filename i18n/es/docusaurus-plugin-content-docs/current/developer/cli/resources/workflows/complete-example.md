@@ -15,7 +15,7 @@ kind: Workflow
 nameCode: purchase_orders          # inmutable tras la creación
 nameDisplay: Purchase Orders
 color: "#FF5722"
-hideClosedAfterDays: 30            # fíjalo — no dependas del default de 7 días
+hideClosedAfterDays: 30            # fíjalo — no dependas del valor predeterminado de 7 días
 
 # CODES de permiso (no nombres de AccessRole). Pon el code de permiso
 # literal que otorga cada capacidad; cotctl los envía verbatim.
@@ -34,7 +34,7 @@ stateMachines:
       propertyType: pt_po_assets     # los datos adjuntos de la tarea — inmutable si ya hay tareas
     initialState: po_draft           # un code de property de estado
 
-    # StartForm: una encuesta que condiciona la creación de la tarea, con un
+    # StartForm: un formulario que condiciona la creación de la tarea, con un
     # bot que envía email al creador al ingresar.
     requiredSurvey:
       surveyCode: survey_po_intake
@@ -93,7 +93,7 @@ stateMachines:
 - **Los permisos son codes, no nombres de rol.** `purchase_orders:view` es el code de permiso mismo — ver [por qué importa](../workflows.md#campos-raíz). Equivocarse en esto es el error más común de workflows.
 - **Los campos de asset y `propertyType` son inmutables.** Definen la forma de los datos que carga cada tarea; planifícalos antes de que exista la primera tarea. Ver [Inmutabilidad y versionado](./immutability-and-versioning.md).
 - **Dos estados terminales** (`po_rejected`, `po_closed`) no tienen `next[]` — una tarea ahí se queda quieta.
-- **Rechazo condicionado por encuesta:** ambas transiciones hacia `po_rejected` usan `canChange: survey` con un `requiredSurvey`, así que siempre se captura un motivo.
+- **Rechazo condicionado por formulario:** ambas transiciones hacia `po_rejected` usan `canChange: survey` con un `requiredSurvey`, así que siempre se captura un motivo.
 - **`initialState` nombra un code de property**, no un ID — `cotctl` lo resuelve tras crear los estados.
 - **Los slots de bots** (`requiredSurvey.bots`, `bots` de transición) siguen las [reglas de merge](./merge-semantics.md): omitir para preservar, `[]` para borrar, una lista para reemplazar. Los IDs dentro de `stage.data` se pasan intactos.
 

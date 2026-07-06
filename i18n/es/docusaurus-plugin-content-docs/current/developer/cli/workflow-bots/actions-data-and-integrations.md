@@ -219,7 +219,7 @@ Detalles a cuidar:
 
 - `url` se valida contra una lista blanca de patrones de URI; las URLs que no coinciden se rechazan.
 - El sondeo hasta que el archivo esté `uploaded` (con las tres URLs de imagen) puede tardar varios segundos.
-- Combínalo con `PBTemplate` para renderizar el HTML primero (ver [Mensajería y encuestas](./actions-messaging-and-surveys.md#pbtemplate)).
+- Combínalo con `PBTemplate` para renderizar el HTML primero (ver [Mensajería y formularios](./actions-messaging-and-surveys.md#pbtemplate)).
 
 ## PBPDFExtractor
 

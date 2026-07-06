@@ -14,20 +14,20 @@ _¡Bienvenido! Esta guía te lleva desde cero hasta desplegar tu primera configu
 
 ## ¿Qué es cotctl y por qué usarlo?
 
-Cuando configurás Cotalker desde el panel de administración web, hacés clic en formularios para crear encuestas, workflows, roles, etc. Eso funciona bien para cambios puntuales, pero tiene límites: los cambios no quedan versionados, son difíciles de reproducir entre entornos y no se pueden automatizar.
+Cuando configurás Cotalker desde el panel de administración web, hacés clic para crear formularios, workflows, roles, etc. Eso funciona bien para cambios puntuales, pero tiene límites: los cambios no quedan versionados, son difíciles de reproducir entre entornos y no se pueden automatizar.
 
 `cotctl` resuelve eso. Es una **herramienta de línea de comandos que gestiona los recursos de Cotalker de forma declarativa a partir de archivos YAML** — muy parecido a cómo `kubectl` gestiona Kubernetes, o Terraform gestiona infraestructura. En vez de hacer clics, *describís* el recurso que querés en un archivo de texto, y `cotctl` hace que la plataforma coincida con esa descripción.
 
 En la práctica, esto te da cuatro cosas que importan cuando entregás proyectos para clientes:
 
-- **Declarativo.** Escribís *qué querés* (una encuesta con estas preguntas, un workflow con estos estados) y `cotctl apply` decide si crearlo o actualizarlo. No gestionás el "cómo".
+- **Declarativo.** Escribís *qué querés* (un formulario con estas preguntas, un workflow con estos estados) y `cotctl apply` decide si crearlo o actualizarlo. No gestionás el "cómo".
 - **Versionable.** Tu YAML vive en tu propio repositorio Git. Cada cambio en la configuración de un cliente es revisable en un pull request y reversible con un `git revert`.
 - **Reproducible.** Los mismos archivos se despliegan primero a staging y luego a producción, contra cualquier empresa a la que tengas acceso. Se acabó el "funcionaba en la demo".
 - **Automatizable.** Al ser un comando, corre desatendido en un pipeline de CI/CD — los despliegues se vuelven repetibles y no dependen de que alguien recuerde los pasos.
 
 <div className="alert alert--primary">
 
-**El modelo mental.** Una empresa en Cotalker es un conjunto de *recursos* (encuestas, workflows, propiedades, roles, usuarios…). Con `cotctl` mantenés una descripción YAML de esos recursos en Git y los aplicás (`apply`) a un entorno. El YAML es la fuente de verdad; el entorno es el resultado.
+**El modelo mental.** Una empresa en Cotalker es un conjunto de *recursos* (formularios, workflows, propiedades, roles, usuarios…). Con `cotctl` mantenés una descripción YAML de esos recursos en Git y los aplicás (`apply`) a un entorno. El YAML es la fuente de verdad; el entorno es el resultado.
 
 </div>
 
@@ -37,7 +37,7 @@ Casi todo bloque de construcción que se ensambla durante una implementación ti
 
 | Recurso | Qué es | Grupo de comandos |
 |---|---|---|
-| **Encuestas** | Formularios para capturar datos | `cotctl surveys` |
+| **Formularios** | Capturan datos estructurados de las personas | `cotctl surveys` |
 | **Roles de acceso** | Permisos y qué puede ver/hacer cada rol | `cotctl roles` |
 | **Tipos de propiedad** | Los esquemas del modelo de datos (la forma de las entidades) | `cotctl property-types` |
 | **Propiedades** | Instancias del modelo de datos sobre esos esquemas | `cotctl properties` |
@@ -65,7 +65,7 @@ Sobre los grupos de recursos están los comandos que operan sobre ellos y las he
 | `cotctl validate` | Revisar el YAML — y los workflows en vivo — antes de desplegar |
 | `cotctl skills` / `cotctl mcp` | Instalar las Skills de Claude Code y conectar el RAG de documentación para la [redacción asistida por IA](./ai-authoring.md) |
 
-No hace falta aprenderlos todos de una. La mayoría de los partners empieza con encuestas y workflows, y va sumando el resto según lo pidan los proyectos.
+No hace falta aprenderlos todos de una. La mayoría de los partners empieza con formularios y workflows, y va sumando el resto según lo pidan los proyectos.
 
 <div className="alert alert--primary">
 

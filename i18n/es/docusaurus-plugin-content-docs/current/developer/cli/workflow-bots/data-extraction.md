@@ -9,7 +9,7 @@ displayed_sidebar: developer
 Esta familia cubre dos tipos de herramientas de datos de bajo nivel:
 
 - **`JP*` — JSON Patch crudo (RFC 6902)** sobre un canal, propiedad o usuario. Aceptan *cualquier* operación sobre *cualquier* ruta, sin lista blanca. Son potentes pero filosos: para ediciones cotidianas prefiere los equivalentes `PB*` (`PBUpdateChannel`, `PBUpdateProperty`, `PBUpdateUser`), que validan y son más fáciles de leer.
-- **`ST*` — herramientas de encuesta** que leen una respuesta y producen un string con formato. Útiles para armar etiquetas de despliegue y formatear fechas a partir de respuestas.
+- **`ST*` — herramientas de formulario** que leen una respuesta y producen un string con formato. Útiles para armar etiquetas de despliegue y formatear fechas a partir de respuestas.
 
 Todos los bots `JP*` llaman a su endpoint de parche con `admin: 'true'` y comparten las mismas dos ramas: `DEFAULT` al éxito, `ERROR` ante falla de API. Ten en cuenta que una falla de parche *no lanza excepción*: solo devuelve `ERROR` sin más detalle.
 

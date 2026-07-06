@@ -1,12 +1,12 @@
 ---
-title: Una encuesta completa, anotada
+title: Un formulario completo, anotado
 sidebar_label: Ejemplo completo
 displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/docs/surveys/complete-example.md @ 4f7248a (2026-07-06) -->
 
-Todo lo de las páginas de encuestas se junta acá: una encuesta real de registro de empleado. Léela de principio a fin, luego aplícala a tu empresa demo y respóndela una vez — la forma más rápida de que las piezas encajen.
+Todo lo de las páginas de formularios se junta acá: un formulario real de registro de empleado. Léelo de principio a fin, luego aplícalo a tu empresa demo y respóndelo una vez — la forma más rápida de que las piezas encajen.
 
 ```yaml
 kind: Survey
@@ -97,11 +97,11 @@ questions:
 
 ## Qué notar
 
-- **Cada identifier lleva el prefijo `re_`**, derivado del code de la encuesta `registro_empleado`. Es la convención que mantiene los identifiers únicos en toda la empresa — ver [por qué importa](../surveys.md#identificadores-la-única-regla-que-hay-que-internalizar).
+- **Cada identifier lleva el prefijo `re_`**, derivado del code del formulario `registro_empleado`. Es la convención que mantiene los identifiers únicos en toda la empresa — ver [por qué importa](../surveys.md#identificadores-la-única-regla-que-hay-que-internalizar).
 - **La pregunta 1 (`text`)** pone su contenido en `label` y lo renderiza como Markdown — no se captura respuesta.
 - **La pregunta 5 (`conditionalDisplay`)** aparece solo cuando el departamento es Engineering, y `resetOnHide: true` limpia lo escrito si el usuario cambia de opinión.
 - **La pregunta 7 (`exec.preload`)** lee `user#me` para precargar el email y devuelve dos comandos — uno para fijar el valor, otro para bloquear el campo. Ver [Scripting con exec](./exec-scripting.md).
-- **Las traducciones** aparecen en dos niveles: `nameTranslations` para el nombre de la encuesta y `translations.label` por pregunta.
+- **Las traducciones** aparecen en dos niveles: `nameTranslations` para el nombre del formulario y `translations.label` por pregunta.
 
 ## Pruébala
 
@@ -119,4 +119,4 @@ cotctl surveys apply -f registro_empleado.yaml -c demo
 ## Ver también
 
 - [Tipos de pregunta](./question-types.md) · [Scripting con exec](./exec-scripting.md) · [Lógica y validación](./logic-and-validation.md)
-- [Encuestas](../surveys.md) — la página de inicio
+- [Formularios](../surveys.md) — la página de inicio

@@ -32,7 +32,7 @@ Ejecutalo **sin un nombre** para obtener un checklist interactivo y elegir lo qu
 | `-y, --yes` | Salta el prompt interactivo de scope (usa `--local` por defecto) |
 | `--no-mcp` | Salta el paso de configuración del RAG/MCP de Cotalker |
 
-Si no pasás `--local` ni `--global`, `cotctl` te pregunta interactivamente qué scope usar — salvo que pases `-y`, que toma el default más seguro `--local` sin preguntar (útil en scripts).
+Si no pasas `--local` ni `--global`, `cotctl` te pregunta interactivamente qué scope usar — salvo que pases `-y`, que toma la opción predeterminada más segura `--local` sin preguntar (útil en scripts).
 
 <div className="alert alert--info">
 
@@ -46,7 +46,7 @@ Cada Skill especializa al agente en un área de recursos:
 
 | Skill | Qué le da al agente |
 |---|---|
-| `cotctl-surveys` | Crear y modificar YAML de encuestas |
+| `cotctl-surveys` | Crear y modificar YAML de formularios |
 | `cotctl-workflows` | Crear, scaffoldear y modificar workflows y máquinas de estado |
 | `cotctl-properties` | Generar tipos de propiedad y propiedades |
 | `cotctl-roles` | Crear y gestionar roles de acceso y permisos |

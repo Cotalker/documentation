@@ -1,12 +1,12 @@
 ---
-title: 'Bots de workflow: mensajería y encuestas'
-sidebar_label: 'Acciones: mensajería y encuestas'
+title: 'Bots de workflow: mensajería y formularios'
+sidebar_label: 'Acciones: mensajería y formularios'
 displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/docs/workflows/bots/pb-message.md, pb-bulk-message.md, pb-email.md, pb-send-custom-notification.md, pb-whats-app.md, pb-send-survey.md, pb-copy-survey.md, pb-editable-survey.md, pb-answer-checker.md, pb-action-button.md, pb-template.md @ 4f7248a (2026-07-06) -->
 
-Estos bots `PB*` son la forma en que un workflow **habla** —con canales, bandejas de entrada, teléfonos— y cómo envía, reabre e inspecciona encuestas. La mayoría comparte la convención `SUCCESS`/`ERROR`; las excepciones se señalan por bot.
+Estos bots `PB*` son la forma en que un workflow **habla** —con canales, bandejas de entrada, teléfonos— y cómo envía, reabre e inspecciona formularios. La mayoría comparte la convención `SUCCESS`/`ERROR`; las excepciones se señalan por bot.
 
 Recordatorio rápido de enrutamiento: `PBMessage` publica en un canal, `PBSendCustomNotification` envía un **push** móvil (más un mensaje de canal opcional), `PBEmail` envía correo y `PBWhatsApp` envía una plantilla de WhatsApp. Para muchos destinatarios, `PBBulkMessage` supera a un bucle de `PBMessage`.
 
@@ -144,7 +144,7 @@ Detalles a cuidar:
 
 ## PBSendSurvey
 
-Envía una encuesta a un canal en modo borrador (`editMode: true`, el default) o enviado. Soporta respuestas precargadas y sub-encuestas.
+Envía un formulario a un canal en modo borrador (`editMode: true`, el default) o enviado. Soporta respuestas precargadas y subformularios.
 
 Parámetros clave: `recipientId`, `taskGroupId`; `surveyId` **o** `surveyCode`; `channelId` **o** `taskId`; opcionalmente `senderId`, `editMode`, `prefilled`, `meta`.
 
@@ -181,7 +181,7 @@ Detalles a cuidar:
 
 ## PBCopySurvey
 
-Lee todos los mensajes de una instancia de encuesta en un canal origen y los reenvía a un canal destino, remapeando los ids de formulario (y, opcionalmente, generando un uuid de respuesta nuevo). Se usa para clonar una encuesta en un canal recién creado.
+Lee todos los mensajes de una instancia de formulario en un canal origen y los reenvía a un canal destino, remapeando los ids de formulario (y, opcionalmente, generando un uuid de respuesta nuevo). Se usa para clonar un formulario en un canal recién creado.
 
 Parámetros clave: `formId` (el `form.id` compartido por los mensajes origen), `formChannel`, `targetChannel`; opcionalmente `sentBy`, `createNewAnswer`, `editMode` (default `false`).
 
@@ -200,13 +200,13 @@ Parámetros clave: `formId` (el `form.id` compartido por los mensajes origen), `
     ERROR: ""
 ```
 
-Las preguntas encuesta-en-encuesta anidadas tienen sus UUIDs remapeados para que la copia mantenga referencias internas consistentes. Los timestamps y los `_id` de mensaje se eliminan antes de reenviar.
+Las preguntas formulario-en-formulario anidadas tienen sus UUIDs remapeados para que la copia mantenga referencias internas consistentes. Los timestamps y los `_id` de mensaje se eliminan antes de reenviar.
 
 ## PBEditableSurvey
 
-Reabre mensajes de encuesta ya enviados para edición (los devuelve a borrador) usando uno de cuatro modos de selección.
+Reabre mensajes de formulario ya enviados para edición (los devuelve a borrador) usando uno de cuatro modos de selección.
 
-Parámetros clave: `type` (`uuids`/`survey`/`firstSurvey`/`lastSurvey`), `channel`; más `uuids` (para `type=uuids`) o `surveyId` (para los modos de encuesta).
+Parámetros clave: `type` (`uuids`/`survey`/`firstSurvey`/`lastSurvey`), `channel`; más `uuids` (para `type=uuids`) o `surveyId` (para los modos de formulario).
 
 ```yaml
 - key: s1
@@ -224,7 +224,7 @@ Parámetros clave: `type` (`uuids`/`survey`/`firstSurvey`/`lastSurvey`), `channe
 Detalles a cuidar:
 
 - `firstSurvey` y `lastSurvey` están declarados pero **no implementados**: devuelven `'NYI.'` por callback (enrutan a `ERROR`). Evítalos.
-- Solo mira 2 años atrás; una primera pregunta encuesta-en-encuesta no se captura.
+- Solo mira 2 años atrás; una primera pregunta formulario-en-formulario no se captura.
 
 ## PBAnswerChecker
 

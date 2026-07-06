@@ -1,5 +1,5 @@
 ---
-title: Tipos de pregunta de encuesta
+title: Tipos de pregunta de formulario
 sidebar_label: Tipos de pregunta
 displayed_sidebar: developer
 ---
@@ -120,7 +120,7 @@ Para `jobTitle`, agrega una lista `jobs`:
   identifiers: ["re_area"]          # otras respuestas enviadas como parámetros de filtro
 ```
 
-`source` y `url` son ambos requeridos y no pueden ir vacíos. `identifiers` lista otras preguntas de la misma encuesta cuyas respuestas actuales se envían al endpoint como filtros — omítelo (o usa `[]`) para no enviar ninguna. Usa `source: cotalker` para endpoints internos de Cotalker.
+`source` y `url` son ambos requeridos y no pueden ir vacíos. `identifiers` lista otras preguntas del mismo formulario cuyas respuestas actuales se envían al endpoint como filtros — omítelo (o usa `[]`) para no enviar ninguna. Usa `source: cotalker` para endpoints internos de Cotalker.
 
 ## Fecha, ubicación, multimedia
 
@@ -184,26 +184,26 @@ Renderiza un pad de firma para una firma trazada a mano.
 
 ## Composición
 
-### `survey` — incrustar una subencuesta
+### `survey` — incrustar un subformulario
 
-Anida otra encuesta dentro de esta.
+Anida otro formulario dentro de este.
 
 ```yaml
 - type: survey
   identifier: re_eval_sub
   label: "Supplier evaluation"
-  surveyCode: eval_proveedor    # code de la encuesta a incrustar
-  embedded: false               # true la abre inline
+  surveyCode: eval_proveedor    # code del formulario a incrustar
+  embedded: false               # true lo abre inline
 ```
 
 <div className="alert alert--primary">
 
-**Aplica primero la hija.** `surveyCode` debe coincidir exactamente (sin distinguir mayúsculas) con el `code` de una encuesta existente. Si la encuesta referenciada aún no existe, `apply` falla con *"Referenced survey ... not found. Apply the child survey first."*. `cotctl` resuelve el code a un ID al aplicar y de vuelta al code al exportar, así que tu YAML sigue siendo portable.
+**Aplica primero la hija.** `surveyCode` debe coincidir exactamente (sin distinguir mayúsculas) con el `code` de un formulario existente. Si el formulario referenciado aún no existe, `apply` falla con *"Referenced survey ... not found. Apply the child survey first."*. `cotctl` resuelve el code a un ID al aplicar y de vuelta al code al exportar, así que tu YAML sigue siendo portable.
 
 </div>
 
 ## Ver también
 
-- [Encuestas](../surveys.md) — la página de inicio y los campos raíz
+- [Formularios](../surveys.md) — la página de inicio y los campos raíz
 - [Lógica y validación](./logic-and-validation.md) — visibilidad condicional basada en respuestas de `listquestion`
-- [Ejemplo completo](./complete-example.md) — varios tipos en una encuesta funcional
+- [Ejemplo completo](./complete-example.md) — varios tipos en un formulario funcional

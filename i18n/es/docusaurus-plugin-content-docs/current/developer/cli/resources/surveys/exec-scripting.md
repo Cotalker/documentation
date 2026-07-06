@@ -1,12 +1,12 @@
 ---
-title: Scripting con exec en encuestas
+title: Scripting con exec en formularios
 sidebar_label: Scripting con exec
 displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/docs/surveys/exec-hooks.md, exec-contexts.md, exec-commands.md, exec-network-request.md, src/schemas/survey.schema.ts (~255-279) @ 4f7248a (2026-07-06) -->
 
-El scripting con exec es cómo una encuesta hace cosas que un formulario estático no puede: precargar un campo desde el usuario actual, validar una respuesta contra una regla de negocio, llamar a una API externa cuando se presiona un botón. Cada pregunta puede llevar un bloque `exec` con pequeñas funciones JavaScript que se ejecutan en puntos definidos de su ciclo de vida.
+El scripting con exec es cómo un formulario de Cotalker hace cosas que un formulario estático no puede: precargar un campo desde el usuario actual, validar una respuesta contra una regla de negocio, llamar a una API externa cuando se presiona un botón. Cada pregunta puede llevar un bloque `exec` con pequeñas funciones JavaScript que se ejecutan en puntos definidos de su ciclo de vida.
 
 El código corre en el **frontend, dentro de un Web Worker**, con un **timeout de 60 segundos**. Cada script es una `function run()` (o `async function run()`) que **siempre devuelve un arreglo de comandos** — aunque sea vacío.
 
@@ -28,8 +28,8 @@ El código corre en el **frontend, dentro de un Web Worker**, con un **timeout d
 
 | Hook | Se dispara | Uso típico |
 |---|---|---|
-| `preload` | Al crear/cargar la encuesta | Precargar campos, traer datos remotos |
-| `onDisplay` | Al abrir la encuesta para editar | Ajustar la UI, marcar required/read-only según condición |
+| `preload` | Al crear/cargar el formulario | Precargar campos, traer datos remotos |
+| `onDisplay` | Al abrir el formulario para editar | Ajustar la UI, marcar required/read-only según condición |
 | `onPlay` | Al presionar un botón personalizado | Búsquedas, acciones lanzadas por el usuario |
 | `validate` | Antes de enviar | Validación propia — **debe devolver un `RESULT`** |
 | `postsave` | Después de guardar | Post-procesamiento, logging |
@@ -64,24 +64,24 @@ Un script solo ve los datos que declaras en su campo `context`. Declara los cont
 |---|---|
 | `user#me` | El objeto [User](../../data-models.md#user) que responde |
 | `user#company` | El ID de la empresa como **string** (`user.company._id`) |
-| `channel#self` | El [Channel](../../data-models.md#channel) que corre la encuesta |
+| `channel#self` | El [Channel](../../data-models.md#channel) que corre el formulario |
 | `task#self` | La [Task](../../data-models.md#task) vinculada al canal |
-| `message#self` | El [Message](../../data-models.md#message) que disparó la encuesta |
+| `message#self` | El [Message](../../data-models.md#message) que disparó el formulario |
 | `property#channel` | Las properties del canal (un **arreglo**) |
 | `property#user` | Las properties del usuario (un **arreglo**) |
 | `responses#self` | La respuesta actual de esta pregunta |
 
-También puedes leer otras respuestas de la misma encuesta con `responses#<identifier>`, las respuestas de una encuesta padre con `responses#parent#<identifier>` y las de una subencuesta con `responses#<identifier>@<code_subencuesta>`.
+También puedes leer otras respuestas del mismo formulario con `responses#<identifier>`, las respuestas de un formulario padre con `responses#parent#<identifier>` y las de un subformulario con `responses#<identifier>@<code_subformulario>`.
 
 <div className="alert alert--secondary">
 
-**En una encuesta de transición, `task#self` no viene poblada.** Cuando una encuesta se abre desde una transición de cambio de estado (`canChange: survey`), solo los contexts del lado del canal (`channel#self`, `property#channel`) traen datos — la tarea aún no está adjunta. Lee lo que necesites desde esos o desde `responses#self`.
+**En un formulario de transición, `task#self` no viene poblada.** Cuando un formulario se abre desde una transición de cambio de estado (`canChange: survey`), solo los contexts del lado del canal (`channel#self`, `property#channel`) traen datos — la tarea aún no está adjunta. Lee lo que necesites desde esos o desde `responses#self`.
 
 </div>
 
 ## Comandos: qué devuelve un script
 
-`run()` devuelve un arreglo de objetos comando que le indican a la encuesta qué hacer.
+`run()` devuelve un arreglo de objetos comando que le indican al formulario qué hacer.
 
 | Comando | Forma | Efecto |
 |---|---|---|
@@ -94,7 +94,7 @@ Nota que `SET_READONLY` y `SET_REQUIRED` reciben los **strings** `'true'`/`'fals
 
 ### Validación con `RESULT`
 
-En un hook `validate`, `RESULT` es **obligatorio**. Si tu arreglo no contiene uno, la encuesta trata la pregunta como inválida y bloquea el envío. Un `result: false` bloquea el envío y muestra `value` como mensaje — y corta la ejecución, así que ningún otro comando del arreglo corre. Un `result: true` deja continuar el envío.
+En un hook `validate`, `RESULT` es **obligatorio**. Si tu arreglo no contiene uno, el formulario trata la pregunta como inválida y bloquea el envío. Un `result: false` bloquea el envío y muestra `value` como mensaje — y corta la ejecución, así que ningún otro comando del arreglo corre. Un `result: true` deja continuar el envío.
 
 ```yaml
     validate:
@@ -143,10 +143,10 @@ Escribir JavaScript inline dentro de YAML es incómodo de escribir y revisar. Ex
 cotctl surveys export my_survey -c acme --extract-scripts ./scripts/
 ```
 
-En el siguiente `apply`, `cotctl` vuelve a incrustar el contenido del archivo — así obtienes herramientas de editor reales y diffs limpios mientras la encuesta sigue siendo un único recurso portable.
+En el siguiente `apply`, `cotctl` vuelve a incrustar el contenido del archivo — así obtienes herramientas de editor reales y diffs limpios mientras el formulario sigue siendo un único recurso portable.
 
 ## Ver también
 
-- [Encuestas](../surveys.md) — la página de inicio
+- [Formularios](../surveys.md) — la página de inicio
 - [Lógica y validación](./logic-and-validation.md) — alternativas declarativas (visibilidad condicional, puntaje)
 - [Modelos de datos](../../data-models.md) — la forma de los objetos de context que leen tus scripts

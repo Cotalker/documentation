@@ -52,7 +52,7 @@ El merge cubre los campos que suele co-gestionar el web builder, donde una sobre
 
 - **Workflow (Group):** `nameDisplay`, `nameTranslations`, `color`, `icon`, `weight`, `isActive`.
 - **TaskGroup:** los cinco arreglos de permisos, `hideClosedAfterDays`, `availableViews`, `defaultView`.
-- **Máquina de estado — `requiredSurvey`:** cuando omites el bloque `requiredSurvey` completo, el StartForm del servidor (encuesta, bots, permisos) queda totalmente intacto. Si escribes un bloque parcial, cada subcampo sigue la regla gana-YAML-si-no-preservar.
+- **Máquina de estado — `requiredSurvey`:** cuando omites el bloque `requiredSurvey` completo, el StartForm del servidor (formulario, bots, permisos) queda totalmente intacto. Si escribes un bloque parcial, cada subcampo sigue la regla gana-YAML-si-no-preservar.
 - **Estado — `subtask`:** sus `bots` (y `target`) se preservan a menos que los declares.
 - **Estado — `surveyTriggers[]`:** preservar/reemplazar/borrar a **nivel de arreglo** (omitir preserva la lista completa; `[]` la borra; una lista la reemplaza — no hay merge por entrada).
 - **Transiciones — `next[]`:** cada transición se empareja con el servidor por su `target` resuelto. Para una transición emparejada, sus `bots`, `requiredSurvey` y `permissions` se preservan a menos que se declaren; `canChange` sigue tu YAML. Una transición cuyo `target` no coincide con ninguno existente se trata como nueva.
@@ -60,7 +60,7 @@ El merge cubre los campos que suele co-gestionar el web builder, donde una sobre
 
 ## Los errores silenciosos que previene (y los que aún debes vigilar)
 
-El merge existe porque `cotctl` pre-0.7.0 emitía cuerpos casi completos con defaults `[]` hardcodeados, que borraban en silencio config gestionada en la UI. Esa clase de bug desapareció para `cotctl`. Dos cosas aún ameritan cuidado:
+El merge existe porque `cotctl` pre-0.7.0 emitía cuerpos casi completos con valores predeterminados `[]` fijos, que borraban en silencio config gestionada en la UI. Esa clase de bug desapareció para `cotctl`. Dos cosas aún ameritan cuidado:
 
 1. **Un `bots: []` extraviado.** Es la única forma destructiva que aún puedes tipear por accidente. Ante la duda, `cotctl workflows export <nameCode>` primero y mira qué contiene el slot de verdad antes de tocarlo.
 2. **Degradación de `canChange`.** El esquema YAML solo permite `manual`, `survey`, `none`, pero el backend también acepta los valores legacy `task-ui` y `*`. Reaplicar un workflow cuya transición usaba uno de esos lo degrada en silencio a `manual`. Preserva el original escribiendo el mismo valor, o aplica con `--legacy-replace-workflows`.

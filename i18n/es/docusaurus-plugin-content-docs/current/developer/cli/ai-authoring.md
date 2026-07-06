@@ -27,7 +27,7 @@ Escribir el YAML de recursos a mano es preciso pero lento, y es fácil olvidar u
    YAML correcto → cotctl validate → cotctl apply
 ```
 
-- **Skills** le enseñan al agente *cómo* escribir cada tipo de recurso (una encuesta, un workflow, un rol…), codificando las convenciones de Cotalker para que la salida esté bien formada.
+- **Skills** le enseñan al agente *cómo* escribir cada tipo de recurso (un formulario, un workflow, un rol…), codificando las convenciones de Cotalker para que la salida esté bien formada.
 - **RAG** (a través de un servidor MCP) groundea al agente en la documentación *actual* de Cotalker, así responde desde material de referencia real en vez de adivinar nombres de campos.
 
 Juntos, vos describís lo que querés en lenguaje natural, el agente produce YAML groundeado, y terminás con el mismo ciclo confiable `validate` → `apply` que ya conocés.
@@ -63,7 +63,7 @@ Convenientemente, instalar los Skills ya ofrece configurar esto por vos. Los det
 Los Skills y el RAG le enseñan al agente *convenciones*, pero algunos datos son específicos de tu entorno en este momento — sobre todo, qué **versiones de bot** tiene registradas el backend. Cuando el agente (o tú) está por escribir YAML que conecta un bot, conviene revisar el catálogo en vivo primero, para que la `version` fijada sea real y no una suposición:
 
 ```bash
-# ¿Qué versiones tiene realmente este tipo de bot, y cuál es el default?
+# ¿Qué versiones tiene realmente este tipo de bot, y cuál es la predeterminada?
 cotctl bot-types versions PBCreateTask -c dev
 
 # O todo el catálogo de una vez

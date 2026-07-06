@@ -49,7 +49,7 @@ parametrizedBot:                   # automatización opcional que corre al dispa
 | `description` | No | Texto libre |
 | `isActive` | No | Predeterminado `true`. Borrado lógico reaplicando con `isActive: false` |
 | `global` | No | Predeterminado `false`. Con `true`, el bot está disponible en todas las empresas — habitual en producción, sin advertencia al aplicar |
-| `commands` | No | Comandos slash y comandos de encuesta. Mira la regla de tres vías más abajo |
+| `commands` | No | Comandos slash y comandos de formulario. Mira la regla de tres vías más abajo |
 | `parametrizedBot` | No | El grafo de automatización, misma forma que los bots embebidos en [workflows](./workflows.md) |
 | `extraData` | No | Flags de funcionalidad de formato libre (`messages`, `messagesWithSubsurveys`) |
 
@@ -61,7 +61,7 @@ parametrizedBot:                   # automatización opcional que corre al dispa
 
 ## Comandos
 
-Cada entrada en `commands[]` es una acción que un operador puede disparar. Un comando puede ser un comando slash puro, un comando de encuesta, o ambos:
+Cada entrada en `commands[]` es una acción que un operador puede disparar. Un comando puede ser un comando slash puro, un comando de formulario, o ambos:
 
 ```yaml
 commands:
@@ -70,20 +70,20 @@ commands:
     isSlash: true
     slashCmd: "hola"
 
-  # comando de encuesta: el operador escribe /registrar, se presenta una
+  # comando de formulario: el operador escribe /registrar, se presenta una
   # Survey y luego corre el bot cuando se responde
   - description: "Inicia el registro"
     isSlash: true
     slashCmd: "registrar"
     isSurvey: true
     surveyIds:
-      - "6a000000000000000000abcd"   # un ObjectId de Survey — NO un código de encuesta
+      - "6a000000000000000000abcd"   # un ObjectId de Survey — NO un código de formulario
 ```
 
 Algunas cosas suelen confundir:
 
 - **`slashCmd` es el texto literal**, sin la barra inicial — el chat la antepone. No hay reglas de formato; espacios y acentos se comparan tal cual. Es obligatorio siempre que `isSlash: true`.
-- **`surveyIds` toma ObjectIds de Survey, no códigos.** Aquí los códigos no se resuelven. Obtén el `_id` con `cotctl surveys list -c <perfil>`. El campo es una lista porque un comando puede presentar varias encuestas, aunque en la práctica suele ser una.
+- **`surveyIds` toma ObjectIds de Survey, no códigos.** Aquí los códigos no se resuelven. Obtén el `_id` con `cotctl surveys list -c <perfil>`. El campo es una lista porque un comando puede presentar varios formularios, aunque en la práctica suele ser uno.
 - **`showHelp`** (predeterminado `true`) controla si el comando aparece en la ayuda automática del chat. **`isActive`** en un comando (predeterminado `true`) oculta solo ese slash manteniendo el bot vivo — tanto el `isActive` del bot como el del comando deben ser `true` para que un comando sea alcanzable.
 - **`arguments[]`** existe para el parseo de comandos slash pero es exótico — prácticamente sin uso en producción. Trátalo como una salida de emergencia poco frecuente.
 
@@ -176,5 +176,5 @@ Mira [Tipos de bot](./bot-types.md) para los comandos del catálogo.
 - [Tipos de bot](./bot-types.md) — el catálogo de bloques de construcción de stages (`bots` ≠ `bot-types`)
 - [Rutinas](./routines.md) — los PBScripts que invoca un stage `PBScript`
 - [Workflows](./workflows.md) — la referencia completa de ParametrizedBot
-- [Encuestas](./surveys.md), [Usuarios](./users.md) — lo que referencia un bot
+- [Formularios](./surveys.md), [Usuarios](./users.md) — lo que referencia un bot
 - [apply](../commands/apply.md) — los bots se aplican al final

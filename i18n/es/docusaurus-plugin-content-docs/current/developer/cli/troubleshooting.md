@@ -19,7 +19,7 @@ La mayoría de los errores de `cotctl` son claros y te dicen cómo resolverlos. 
 
 ### `--company/-c is required`
 
-- **Causa:** el comando necesita un perfil y no pasaste ninguno. No hay default, por diseño.
+- **Causa:** el comando necesita un perfil y no pasaste ninguno. No hay perfil predeterminado, por diseño.
 - **Solución:** agregá `-c <profile>`. Ejecutá `cotctl profile list` para ver los nombres disponibles.
 
 ### `Profile '<name>' not found`
@@ -61,21 +61,21 @@ La mayoría de los errores de `cotctl` son claros y te dicen cómo resolverlos. 
 
 ### Conflicto de identificador en validación remota / `Duplicate key error`
 
-- **Causa:** un `identifier` de pregunta ya existe en otra encuesta de la empresa — los identificadores son únicos a nivel de empresa, no por encuesta.
-- **Solución:** renombrá el identifier, prefijándolo con el código de la encuesta (ej. `re_nombre` en vez de `nombre`).
+- **Causa:** un `identifier` de pregunta ya existe en otro formulario de la empresa — los identificadores son únicos a nivel de empresa, no por formulario.
+- **Solución:** renombrá el identifier, prefijándolo con el código del formulario (ej. `re_nombre` en vez de `nombre`).
 
 ### Un exec hook no corre, o `Illegal return statement`
 
 - **Causa:** al `src` del script le falta su envoltura `function run()`, así que un `return` de nivel superior es inválido.
 - **Solución:** envolvé la lógica en `function run() { ... }` (o `async function run()`).
 
-## Encuestas: preguntas huérfanas
+## Formularios: preguntas huérfanas
 
 Esta vale la pena entenderla porque es fácil de evitar y molesta de deshacer.
 
-- **Síntoma:** después de aplicar una encuesta con `questions: []`, ya no podés re-crear preguntas con los mismos identificadores.
+- **Síntoma:** después de aplicar un formulario con `questions: []`, ya no podés re-crear preguntas con los mismos identificadores.
 - **Causa:** aplicar un array de preguntas *vacío* deja las preguntas viejas atrás como registros huérfanos, y sus identificadores (únicos por empresa) ahora bloquean la re-creación.
-- **Solución / prevención:** nunca apliques `questions: []` para "limpiar" una encuesta. Para desactivar una encuesta, poné `isActive: false` *sin* tocar la sección de preguntas — `cotctl` preserva las preguntas existentes automáticamente cuando la sección está ausente. (Recuperarse de un huérfano existente requiere limpieza en el backend, así que acá la jugada es la prevención.)
+- **Solución / prevención:** nunca apliques `questions: []` para "limpiar" un formulario. Para desactivar un formulario, poné `isActive: false` *sin* tocar la sección de preguntas — `cotctl` preserva las preguntas existentes automáticamente cuando la sección está ausente. (Recuperarse de un huérfano existente requiere limpieza en el backend, así que acá la jugada es la prevención.)
 
 ## Bots, schedules y rutinas
 
@@ -83,8 +83,8 @@ Estos recursos llegaron en las versiones 0.9–0.11 y tienen algunos modos de fa
 
 ### `version must be specified` / `is not a registered version`
 
-- **Causa:** el tipo de bot en tu YAML fija una `version` que el backend no tiene registrada, u omite `version` para un tipo que no tiene default. `cotctl` valida las versiones de bot al aplicar contra el catálogo **en vivo**, y una versión desconocida es un error (código de salida `2`) — el mensaje lista las versiones que *sí* están registradas.
-- **Solución:** consulta el catálogo en vivo y fija una versión real. `cotctl bot-types versions <BotType>` muestra cada versión registrada y el default de un tipo; `cotctl bot-types list` muestra todo el catálogo. (Un *tipo* de bot no reconocido — a diferencia de una versión — es solo una advertencia, ya que el catálogo puede no listar todavía un bot recién agregado en el backend.)
+- **Causa:** el tipo de bot en tu YAML fija una `version` que el backend no tiene registrada, u omite `version` para un tipo que no tiene versión predeterminada. `cotctl` valida las versiones de bot al aplicar contra el catálogo **en vivo**, y una versión desconocida es un error (código de salida `2`) — el mensaje lista las versiones que *sí* están registradas.
+- **Solución:** consulta el catálogo en vivo y fija una versión real. `cotctl bot-types versions <BotType>` muestra cada versión registrada y la versión predeterminada de un tipo; `cotctl bot-types list` muestra todo el catálogo. (Un *tipo* de bot no reconocido — a diferencia de una versión — es solo una advertencia, ya que el catálogo puede no listar todavía un bot recién agregado en el backend.)
 
 ### `looks like a Quartz-style expression` / cron inválido
 
@@ -105,7 +105,7 @@ Estos recursos llegaron en las versiones 0.9–0.11 y tienen algunos modos de fa
 ### Un apply por entidad sale con `2` ante un cambio "destructivo"
 
 - **Causa:** ejecutaste `cotctl surveys apply`, `cotctl properties apply` o `cotctl workflows apply` con `--fail-on-destructive`, y el dry-run marcó un cambio destructivo (una pregunta eliminada, un estado quitado, una desactivación). Es el flag cumpliendo su función: el código de salida `2` significa "se detectó un cambio destructivo", distinto de `1` (error de ejecución) y `0` (éxito).
-- **Solución:** si el cambio es intencional, quita `--fail-on-destructive` (o aplica sin `--dry-run`) para continuar. Si no lo es, acabas de atrapar un error antes de que llegara al entorno — revisa el diff. Este gate existe solo en los apply por entidad, no en el `cotctl apply` unificado.
+- **Solución:** si el cambio es intencional, quita `--fail-on-destructive` (o aplica sin `--dry-run`) para continuar. Si no lo es, acabas de atrapar un error antes de que llegara al entorno — revisa el diff. Este control existe solo en los apply por entidad, no en el `cotctl apply` unificado.
 
 ## ¿Todavía atascado?
 

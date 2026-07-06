@@ -1,18 +1,18 @@
 ---
-title: Encuestas (YAML)
-sidebar_label: Encuestas
+title: Formularios (YAML)
+sidebar_label: Formularios
 displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/commands/surveys.ts, src/schemas/survey.schema.ts, docs/surveys/yaml-structure.md @ 4f7248a (2026-07-06) -->
 
-Una **encuesta** (survey) es un formulario — la forma en que Cotalker captura datos estructurados de las personas. Las encuestas suelen ser el primer recurso que los partners aprenden a gestionar con `cotctl`, porque son autocontenidas y útiles de inmediato. Una encuesta es un `code`, un `name` y una lista de `questions`, y todo lo demás — quién puede responder, visibilidad condicional, puntaje, hooks de automatización — se apoya sobre esa columna vertebral.
+Un **formulario** (survey) es la forma en que Cotalker captura datos estructurados de las personas. Los formularios suelen ser el primer recurso que los partners aprenden a gestionar con `cotctl`, porque son autocontenidos y útiles de inmediato. Un formulario es un `code`, un `name` y una lista de `questions`, y todo lo demás — quién puede responder, visibilidad condicional, puntaje, hooks de automatización — se apoya sobre esa columna vertebral.
 
-Esta página es el mapa. Cubre la estructura mínima que escribirás a diario y los cuatro comandos para gestionar encuestas; las subpáginas profundizan en las partes que lo ameritan.
+Esta página es el mapa. Cubre la estructura mínima que escribirás a diario y los cuatro comandos para gestionar formularios; las subpáginas profundizan en las partes que lo ameritan.
 
-## La forma de una encuesta
+## La forma de un formulario
 
-En su forma más simple, una encuesta son tres cosas:
+En su forma más simple, un formulario son tres cosas:
 
 ```yaml
 kind: Survey
@@ -45,11 +45,11 @@ questions:
 
 <div className="alert alert--primary">
 
-**`code` es inmutable, y también lo es cada `identifier` de pregunta.** Una vez creada la encuesta, no pueden cambiar — elígelos con cuidado. Para "renombrar" cualquiera de los dos, creas un recurso nuevo. Por eso una convención de nombres clara desde el inicio rinde frutos.
+**`code` es inmutable, y también lo es cada `identifier` de pregunta.** Una vez creado el formulario, no pueden cambiar — elígelos con cuidado. Para "renombrar" cualquiera de los dos, creas un recurso nuevo. Por eso una convención de nombres clara desde el inicio rinde frutos.
 
 </div>
 
-Más allá de estos, las encuestas llevan muchos campos opcionales para visibilidad en canales, edición post-envío, filtros de quién responde y reasignación. Recurrirás a ellos según lo pida cada proyecto; exporta una encuesta real para verlos todos.
+Más allá de estos, los formularios llevan muchos campos opcionales para visibilidad en canales, edición post-envío, filtros de quién responde y reasignación. Recurrirás a ellos según lo pida cada proyecto; exporta un formulario real para verlos todos.
 
 ## Preguntas
 
@@ -70,13 +70,13 @@ Más allá de estos, las encuestas llevan muchos campos opcionales para visibili
 
 ### Identificadores: la única regla que hay que internalizar
 
-El `identifier` de una pregunta debe ser **único en toda la empresa**, no solo dentro de esta encuesta. La convención que te mantiene fuera de problemas es **prefijar cada identificador con el code de la encuesta**:
+El `identifier` de una pregunta debe ser **único en toda la empresa**, no solo dentro de este formulario. La convención que te mantiene fuera de problemas es **prefijar cada identificador con el code del formulario**:
 
 ```yaml
 # BIEN — prefijado, no colisiona
 identifier: re_nombre
 
-# MAL — genérico, colisionará con otras encuestas
+# MAL — genérico, colisionará con otros formularios
 identifier: nombre
 ```
 
@@ -84,28 +84,28 @@ Unas pocas palabras están reservadas y no pueden usarse como identificadores: `
 
 ## Qué cubren las subpáginas
 
-El modelo de encuesta tiene cuatro áreas lo bastante profundas como para merecer su propia página:
+El modelo de formulario tiene cuatro áreas lo bastante profundas como para merecer su propia página:
 
 - **[Tipos de pregunta](./surveys/question-types.md)** — el catálogo de 13 tipos, con el YAML mínimo y los campos específicos que necesita cada uno (`options` para listas, `filters` para propiedades, `source` para selectores respaldados por API, etc.).
-- **[Scripting con exec](./surveys/exec-scripting.md)** — los seis hooks de ciclo de vida que ejecutan JavaScript dentro de una encuesta, los contexts que tu script puede leer, los comandos que devuelve y cómo hacer requests de red autenticados.
+- **[Scripting con exec](./surveys/exec-scripting.md)** — los seis hooks de ciclo de vida que ejecutan JavaScript dentro de un formulario, los contexts que tu script puede leer, los comandos que devuelve y cómo hacer requests de red autenticados.
 - **[Lógica y validación](./surveys/logic-and-validation.md)** — visibilidad condicional, puntaje, vincular respuestas a campos de la tarea (`bounds`) y las tres capas de validación que `cotctl` corre antes de que algo llegue al servidor.
-- **[Ejemplo completo](./surveys/complete-example.md)** — una encuesta completa y anotada que puedes leer de principio a fin.
+- **[Ejemplo completo](./surveys/complete-example.md)** — un formulario completo y anotado que puedes leer de principio a fin.
 
-## Gestionar encuestas con `cotctl`
+## Gestionar formularios con `cotctl`
 
-Las encuestas tienen su propio grupo de comandos. Cada comando recibe un perfil con la flag global `-c <perfil>`.
+Los formularios tienen su propio grupo de comandos. Cada comando recibe un perfil con la flag global `-c <perfil>`.
 
 | Comando | Qué hace |
 |---|---|
-| `cotctl surveys list` | Lista encuestas (activas por defecto; `--all` incluye inactivas, `--code <code>` hace búsqueda exacta) |
-| `cotctl surveys get <code>` | Muestra una encuesta; `--populate` incluye la lista completa de preguntas (y cambia la salida por defecto a YAML) |
-| `cotctl surveys export <code>` | Exporta una encuesta como YAML o JSON |
-| `cotctl surveys apply -f <archivo>` | Crea o actualiza una encuesta desde un archivo YAML |
+| `cotctl surveys list` | Lista formularios (activos por defecto; `--all` incluye inactivos, `--code <code>` hace búsqueda exacta) |
+| `cotctl surveys get <code>` | Muestra un formulario; `--populate` incluye la lista completa de preguntas (y cambia la salida por defecto a YAML) |
+| `cotctl surveys export <code>` | Exporta un formulario como YAML o JSON |
+| `cotctl surveys apply -f <archivo>` | Crea o actualiza un formulario desde un archivo YAML |
 | `cotctl surveys deactivate <code>` | Borrado suave (nunca se elimina en duro) |
 
 ### Aplicar de forma segura
 
-`apply` empareja preguntas por `identifier` y no por posición, así que puedes agregar, editar, quitar y reordenar preguntas libremente — los IDs se preservan. Quitar una pregunta la desactiva en vez de eliminarla en duro, y se te pedirá confirmación. Si aplicas un YAML de encuesta sin su sección `questions`, las preguntas existentes quedan intactas.
+`apply` empareja preguntas por `identifier` y no por posición, así que puedes agregar, editar, quitar y reordenar preguntas libremente — los IDs se preservan. Quitar una pregunta la desactiva en vez de eliminarla en duro, y se te pedirá confirmación. Si aplicas un YAML de formulario sin su sección `questions`, las preguntas existentes quedan intactas.
 
 Dos flags vuelven a `apply` seguro de correr en serio:
 
@@ -124,10 +124,10 @@ cotctl surveys apply -f survey.yaml -c acme --dry-run --fail-on-destructive
 
 ### Un consejo práctico
 
-La forma más rápida de aprender la estructura completa es exportar una encuesta real y leerla:
+La forma más rápida de aprender la estructura completa es exportar un formulario real y leerlo:
 
 ```bash
-cotctl surveys export <alguna_encuesta> -c acme -o example.yaml
+cotctl surveys export <algun_formulario> -c acme -o example.yaml
 ```
 
 Agrega `--extract-scripts <dir>` para sacar los scripts exec inline a archivos `.js` separados referenciados con `file://` — mucho más cómodo de editar y de diferenciar.
@@ -136,5 +136,5 @@ Agrega `--extract-scripts <dir>` para sacar los scripts exec inline a archivos `
 
 - [apply](../commands/apply.md) — el pipeline de apply compartido y sus reglas de orden
 - [Exportar e importar](../commands/export-import.md) — formatos de exportación y `--extract-scripts`
-- [Workflows](./workflows.md) — las encuestas se referencian desde transiciones y StartForms de workflows
-- [Modelos de datos](../data-models.md) — las entidades que una encuesta lee y escribe
+- [Workflows](./workflows.md) — los formularios se referencian desde transiciones y StartForms de workflows
+- [Modelos de datos](../data-models.md) — las entidades que un formulario lee y escribe

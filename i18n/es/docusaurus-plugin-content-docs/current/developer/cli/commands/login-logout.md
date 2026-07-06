@@ -30,7 +30,7 @@ Lo clave a recordar: `--url` es la dirección del **webclient** (lo que escribir
 | `--machine-id` | No | Hostname saneado | Identificador incrustado en el code del ApiToken, para distinguir tokens por máquina |
 | `--paste-token` | No | `false` | Pega un ApiToken pre-generado en vez de autenticarte (ver abajo) |
 
-### Flujo con navegador (el default)
+### Flujo con navegador (el predeterminado)
 
 ```bash
 cotctl login --url https://web.cotalker.com --subdomain acme
@@ -69,7 +69,7 @@ cotctl login --url https://web.cotalker.com --subdomain acme --paste-token
 
 ### Distinguir tokens con `--machine-id`
 
-Cada ApiToken lleva un `code` que incluye un identificador de máquina — por defecto tu hostname saneado — para que reconozcas de qué máquina vino un token en el panel de administración. Sobrescríbelo con `--machine-id <id>` cuando el default no sea distintivo (por ejemplo, varios runners de CI efímeros que comparten hostname).
+Cada ApiToken lleva un `code` que incluye un identificador de máquina — por defecto tu hostname saneado — para que reconozcas de qué máquina vino un token en el panel de administración. Sobrescríbelo con `--machine-id <id>` cuando el valor predeterminado no sea distintivo (por ejemplo, varios runners de CI efímeros que comparten hostname).
 
 <div className="alert alert--info">
 
@@ -79,7 +79,7 @@ Cada ApiToken lleva un `code` que incluye un identificador de máquina — por d
 
 ### Una nota sobre permisos
 
-Para aplicar recursos (encuestas, workflows, etc.) necesitás permisos de administración en Cotalker. Si más adelante un comando devuelve un `403`, es la plataforma diciéndote que el usuario logueado no tiene el permiso requerido — pedile al administrador de la empresa que lo otorgue.
+Para aplicar recursos (formularios, workflows, etc.) necesitás permisos de administración en Cotalker. Si más adelante un comando devuelve un `403`, es la plataforma diciéndote que el usuario logueado no tiene el permiso requerido — pedile al administrador de la empresa que lo otorgue.
 
 ## `cotctl logout`
 

@@ -63,7 +63,7 @@ El esquema define estos campos de nivel superior:
 
 <div className="alert alert--danger">
 
-**Los campos de permisos son codes de permiso literales — no nombres de AccessRole.** Los cinco arreglos de permisos (`readPermissions`, `writePermissions`, `taskImportPermissions`, `taskFollowerPermissions`, `taskEditorPermissions`) contienen **strings de code de permiso** como `web-admin-write` o `purchase_orders:view`, y `cotctl` los envía al servidor **verbatim** — *no* los resuelve a IDs de AccessRole. Esto es distinto de las encuestas, cuyo campo `permissions` *sí* toma nombres de AccessRole. Pon acá el code de permiso mismo, exactamente como aparece en el rol que lo otorga. (Workflows antiguos pueden aún cargar ObjectIds crudos en estos campos por una versión previa de `cotctl`; la exportación los expone con un marcador legacy para que los reemplaces.)
+**Los campos de permisos son codes de permiso literales — no nombres de AccessRole.** Los cinco arreglos de permisos (`readPermissions`, `writePermissions`, `taskImportPermissions`, `taskFollowerPermissions`, `taskEditorPermissions`) contienen **strings de code de permiso** como `web-admin-write` o `purchase_orders:view`, y `cotctl` los envía al servidor **verbatim** — *no* los resuelve a IDs de AccessRole. Esto es distinto de los formularios, cuyo campo `permissions` *sí* toma nombres de AccessRole. Pon acá el code de permiso mismo, exactamente como aparece en el rol que lo otorga. (Workflows antiguos pueden aún cargar ObjectIds crudos en estos campos por una versión previa de `cotctl`; la exportación los expone con un marcador legacy para que los reemplaces.)
 
 </div>
 
@@ -96,7 +96,7 @@ Cada estado corresponde a una [Property](./properties.md). Su `type` es uno de `
 | `canChange` | Significado |
 |---|---|
 | `manual` (por defecto) | Un usuario la dispara desde la UI de la tarea |
-| `survey` | El usuario debe completar una encuesta primero — fija `requiredSurvey` con su code |
+| `survey` | El usuario debe completar un formulario primero — fija `requiredSurvey` con su code |
 | `none` | Solo la automatización/sistema puede dispararla (ej. cierre automático) |
 
 Las máquinas de estado también admiten un `requiredSurvey` (un StartForm que condiciona la creación de tareas), y los estados admiten slots `subtask` y `surveyTriggers` — todos ellos pueden llevar **bots** de automatización. Esos slots tienen reglas de preservar/reemplazar/borrar que debes entender antes de editar un workflow en vivo; la página de [Semántica de merge](./workflows/merge-semantics.md) las cubre.
@@ -141,7 +141,7 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 
 ## Una nota de dependencia
 
-El `requiredSurvey` de una transición referencia una encuesta por code. Bajo `apply --dir`, los workflows se aplican *antes* que las encuestas, así que la encuesta de una transición ya debe existir — aplica primero las encuestas cuando las corras por separado:
+El `requiredSurvey` de una transición referencia un formulario por code. Bajo `apply --dir`, los workflows se aplican *antes* que los formularios, así que el formulario de una transición ya debe existir — aplica primero los formularios cuando los corras por separado:
 
 ```bash
 cotctl surveys apply -f surveys.yaml -c acme

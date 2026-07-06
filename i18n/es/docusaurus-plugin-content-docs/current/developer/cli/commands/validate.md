@@ -36,7 +36,7 @@ Si algo está mal, te dice qué y dónde:
   - code: code must start with a lowercase letter and contain only lowercase letters, numbers, and underscores
 ```
 
-El modo archivo no es solo para encuestas. Lee el campo `kind` y corre el esquema correspondiente, así que valida cualquiera de los siete kinds que soporta `apply` — `Survey`, `AccessRole`, `PropertyType`, `Property`, `JobTitle`, `Workflow`, `User`. (Un archivo sin `kind` se trata como Survey, por compatibilidad hacia atrás.)
+El modo archivo no es solo para formularios. Lee el campo `kind` y corre el esquema correspondiente, así que valida cualquiera de los siete kinds que soporta `apply` — `Survey`, `AccessRole`, `PropertyType`, `Property`, `JobTitle`, `Workflow`, `User`. (Un archivo sin `kind` se trata como Survey, por compatibilidad hacia atrás.)
 
 Un mismo archivo puede contener **varios documentos** separados por `---`. `validate` revisa cada uno y **acumula** los errores — no se detiene en el primer documento con problemas — y luego reporta un recuento por kind como `2 Survey documents, 1 User document validated successfully`, para que arregles todo en una sola pasada.
 

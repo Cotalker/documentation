@@ -6,7 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/docs/workflows/bots/README.md, data-context.md, company-specific.md @ 4f7248a (2026-07-06) -->
 
-Un **bot** es una unidad de automatización que corre dentro de un workflow. Cuando una tarea cambia de estado, o se responde una encuesta, el motor de workflows ejecuta los bots que configuraste en esa transición —uno tras otro— y enruta a la siguiente etapa según la rama que devuelve cada bot. Los bots son la forma en que un workflow *hace* cosas: crear una tarea, enviar un mensaje, llamar a una API externa, ramificar según un valor.
+Un **bot** es una unidad de automatización que corre dentro de un workflow. Cuando una tarea cambia de estado, o se responde un formulario, el motor de workflows ejecuta los bots que configuraste en esa transición —uno tras otro— y enruta a la siguiente etapa según la rama que devuelve cada bot. Los bots son la forma en que un workflow *hace* cosas: crear una tarea, enviar un mensaje, llamar a una API externa, ramificar según un valor.
 
 Esta sección es el catálogo pensado para lectura humana. Cada bot que Cotalker soporta está agrupado aquí por familia, con una descripción de una línea, un ejemplo YAML mínimo y los parámetros que se usan a diario. Para la lista exhaustiva de parámetros de un bot puntual, usa `cotctl bot-types versions <BotType>` (ver [Consultar versiones](#consultar-versiones-y-el-catalogo-en-vivo)) o busca en la referencia respaldada por RAG.
 
@@ -33,7 +33,7 @@ bots:
 
 Dos reglas que suelen confundir:
 
-- **cotctl no resuelve ObjectIds dentro de `stage.data`.** Debes pasar ObjectIds reales. Las únicas resoluciones automáticas son `surveyTriggers[].survey` (código → ObjectId) y los permisos AccessRole por nombre. Dentro de `data`, un código de encuesta en `surveyId` *no* se resuelve: pasa el ObjectId.
+- **cotctl no resuelve ObjectIds dentro de `stage.data`.** Debes pasar ObjectIds reales. Las únicas resoluciones automáticas son `surveyTriggers[].survey` (código → ObjectId) y los permisos AccessRole por nombre. Dentro de `data`, un código de formulario en `surveyId` *no* se resuelve: pasa el ObjectId.
 - **Cada bot declara sus propias ramas de salida** (`SUCCESS`/`ERROR`, `IF`/`ELSE`, `FOUND`/`NOT-FOUND`, `DEFAULT`, …). Declara en `next` cada rama que el bot puede devolver, o el motor podría no encontrar la etapa siguiente.
 
 ## Elegir el bot correcto
@@ -48,9 +48,9 @@ Recurre a un bot de primera línea antes de escribir JavaScript propio. La tabla
 | Duplicar una tarea | `PBDuplicateTask` | `PBCreateTask` manual | `ignoreChildren: true` omite hijas |
 | Enviar un mensaje a un canal | `PBMessage` | `PBSendCustomNotification` (ese es para push) | |
 | Enviar mensajes a muchos canales | `PBBulkMessage` | bucle `FCEach` + `PBMessage` | ~90% menos llamadas de red |
-| Enviar una encuesta | `PBSendSurvey` | `PBMessage` | `editMode: true` para borradores |
-| Reabrir una encuesta enviada | `PBEditableSurvey` | `PBSendSurvey` con `editMode` | |
-| Copiar una encuesta a otro canal | `PBCopySurvey` | `PBSendSurvey` | |
+| Enviar un formulario | `PBSendSurvey` | `PBMessage` | `editMode: true` para borradores |
+| Reabrir un formulario enviado | `PBEditableSurvey` | `PBSendSurvey` con `editMode` | |
+| Copiar un formulario a otro canal | `PBCopySurvey` | `PBSendSurvey` | |
 | Enviar un correo | `PBEmail` | `NWRequest` a SES/SMTP | `3.0.1` recomendada |
 | Push + mensaje al canal | `PBSendCustomNotification` | `PBMessage` | |
 | Plantilla de WhatsApp | `PBWhatsApp` | `NWRequest` a un BSP | requiere un `contractCode` válido |
@@ -86,7 +86,7 @@ Si nada encaja, las vías de escape son los bots que ejecutan código —ver [Re
 | Extracción de datos (`JP*`, `ST*`) | [Extracción de datos y parcheo](./data-extraction.md) | JSON Patch crudo y herramientas de string sobre respuestas |
 | Red y código (`NW*`, bots de script) | [Red y código](./network-and-code.md) | Peticiones HTTP y las vías de escape de JS bloqueadas |
 | Tareas y canales (`PB*`) | [Acciones: tareas y canales](./actions-tasks-and-channels.md) | Crear/modificar tareas, canales, editores, ocultar mensajes |
-| Mensajería y encuestas (`PB*`) | [Acciones: mensajería y encuestas](./actions-messaging-and-surveys.md) | Mensajes, correo, WhatsApp, encuestas, botones |
+| Mensajería y formularios (`PB*`) | [Acciones: mensajería y formularios](./actions-messaging-and-surveys.md) | Mensajes, correo, WhatsApp, formularios, botones |
 | Datos e integraciones (`PB*`) | [Acciones: datos e integraciones](./actions-data-and-integrations.md) | Propiedades, usuarios, PDF, planillas, pagos, LLM, calendarios |
 
 ## Qué datos ve un bot (`$VALUE` / `data`)
@@ -111,7 +111,7 @@ data:
   taskGroupId: "{{meta.taskGroup}}"
 ```
 
-**`state.surveyTriggers[i].bots` — una encuesta respondida dentro de un estado en curso.** Aquí el motor esparce la **tarea en la raíz** y pone la respuesta bajo `sentAnswer`:
+**`state.surveyTriggers[i].bots` — un formulario respondido dentro de un estado en curso.** Aquí el motor esparce la **tarea en la raíz** y pone la respuesta bajo `sentAnswer`:
 
 | Campo | Origen |
 |-------|--------|
@@ -149,7 +149,7 @@ Un puñado de bots (`CB*`) se cargan **solo para ciertos tenants** y fallan en c
 | `CBValidateStart` | muellesdepenco | Valida que el inicio real caiga dentro de la ventana planificada |
 | `CBValidateTM` | muellesdepenco | Valida que un nuevo tiempo muerto quepa en el turno planificado |
 
-Estos bots dependen de variables de entorno propias del tenant, ids de encuesta fijados en el código y servicios externos (SAP, PostgreSQL, SOAP). Trátalos como integraciones internas, no como bloques reutilizables, y confirma su comportamiento con el equipo dueño antes de diseñar un workflow alrededor de ellos.
+Estos bots dependen de variables de entorno propias del tenant, ids de formulario fijados en el código y servicios externos (SAP, PostgreSQL, SOAP). Trátalos como integraciones internas, no como bloques reutilizables, y confirma su comportamiento con el equipo dueño antes de diseñar un workflow alrededor de ellos.
 
 ## Consultar versiones y el catálogo en vivo {#consultar-versiones-y-el-catalogo-en-vivo}
 
