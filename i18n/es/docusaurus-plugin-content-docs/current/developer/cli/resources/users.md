@@ -47,13 +47,13 @@ name:
 
 <div className="alert alert--info">
 
-**El rol por defecto.** Si creás un usuario sin `accessRoles`, el backend le asigna un rol `default` automáticamente. Lo vas a ver aparecer en exportaciones posteriores — eso es esperado, no un bug.
+**El rol por defecto.** Si creas un usuario sin `accessRoles`, el backend le asigna un rol `default` automáticamente. Lo vas a ver aparecer en exportaciones posteriores — eso es esperado, no un bug.
 
 </div>
 
 ## Jerarquía
 
-Podés ubicar a un usuario en el organigrama con `hierarchy`. Las tres listas contienen **emails**, resueltos en el momento del apply:
+Puedes ubicar a un usuario en el organigrama con `hierarchy`. Las tres listas contienen **emails**, resueltos en el momento del apply:
 
 ```yaml
 hierarchy:
@@ -68,11 +68,11 @@ hierarchy:
 
 <div className="alert alert--primary">
 
-**`subordinate` es singular.** La clave es `subordinate`, no `subordinates`. Como el esquema de usuario es permisivo, escribir el plural *no produce error* — el usuario se aplica sin subordinados, silenciosamente. Verificá dos veces esta clave cada vez que construyas una jerarquía.
+**`subordinate` es singular.** La clave es `subordinate`, no `subordinates`. Como el esquema de usuario es permisivo, escribir el plural *no produce error* — el usuario se aplica sin subordinados, silenciosamente. Verifica dos veces esta clave cada vez que construyas una jerarquía.
 
 </div>
 
-Cuando aplicás un batch de usuarios que se referencian entre sí (el jefe de A es B, ambos nuevos), `cotctl` lo maneja con un apply de dos pasadas, así las referencias hacia adelante resuelven correctamente.
+Cuando aplicas un batch de usuarios que se referencian entre sí (el jefe de A es B, ambos nuevos), `cotctl` lo maneja con un apply de dos pasadas, así las referencias hacia adelante resuelven correctamente.
 
 ## Metadata personalizada: `extra`
 
@@ -84,11 +84,11 @@ extra:
   rut: "12.345.678-9"
 ```
 
-Al actualizar, `extra` se **fusiona** — las claves que proveés ganan, las que ya están en el servidor se conservan. No podés borrar una clave de `extra` a través del YAML.
+Al actualizar, `extra` se **fusiona** — las claves que provees ganan, las que ya están en el servidor se conservan. No puedes borrar una clave de `extra` a través del YAML.
 
 <div className="alert alert--secondary">
 
-**`extra` suele contener PII** (documentos de identidad, etc.), y aparece tal cual en las exportaciones. Revisá este campo antes de commitear un YAML de usuario exportado al control de versiones.
+**`extra` suele contener PII** (documentos de identidad, etc.), y aparece tal cual en las exportaciones. Revisa este campo antes de commitear un YAML de usuario exportado al control de versiones.
 
 </div>
 
@@ -115,6 +115,6 @@ Como en todo `cotctl`, los códigos de salida son significativos aquí: `0` éxi
 
 ## Ver también
 
-- [Cargos](./jobtitles.md) — el `job` que un usuario referencia (aplicá estos primero)
+- [Cargos](./jobtitles.md) — el `job` que un usuario referencia (aplica estos primero)
 - [Roles](./roles.md) — los `accessRoles` que un usuario referencia
 - [apply](../commands/apply.md) — los usuarios se aplican al final

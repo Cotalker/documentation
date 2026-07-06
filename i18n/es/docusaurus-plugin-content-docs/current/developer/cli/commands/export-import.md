@@ -22,13 +22,13 @@ Esta página usa formularios como ejemplo, porque tienen las opciones de exporta
 
 <div className="alert alert--info">
 
-**Nota de nomenclatura.** Los viejos comandos `cotctl get surveys` y `cotctl export survey` fueron eliminados. Usá las formas con alcance de entidad — `cotctl surveys list`, `cotctl surveys export`, etc.
+**Nota de nomenclatura.** Los viejos comandos `cotctl get surveys` y `cotctl export survey` fueron eliminados. Usa las formas con alcance de entidad — `cotctl surveys list`, `cotctl surveys export`, etc.
 
 </div>
 
 ## Encontrar lo que hay: `list`
 
-Antes de exportar, normalmente necesitás encontrar el recurso. `list` muestra lo que existe, con búsqueda y paginación:
+Antes de exportar, normalmente necesitas encontrar el recurso. `list` muestra lo que existe, con búsqueda y paginación:
 
 ```bash
 cotctl surveys list -c acme
@@ -51,11 +51,11 @@ Para inspeccionar un único recurso sin escribir un archivo:
 cotctl surveys get order_request -c acme
 ```
 
-Agregá `--populate` para incluir la lista completa de preguntas (la salida pasa a YAML automáticamente, ya que una tabla no puede mostrar preguntas anidadas), o `-o json` para obtener JSON.
+Agrega `--populate` para incluir la lista completa de preguntas (la salida pasa a YAML automáticamente, ya que una tabla no puede mostrar preguntas anidadas), o `-o json` para obtener JSON.
 
 ## Extraerlo: `export`
 
-`export` es lo que trae un recurso como archivo YAML que podés versionar y volver a aplicar:
+`export` es lo que trae un recurso como archivo YAML que puedes versionar y volver a aplicar:
 
 ```bash
 cotctl surveys export order_request -c acme -o ./order_request.yaml
@@ -63,7 +63,7 @@ cotctl surveys export order_request -c acme -o ./order_request.yaml
 
 <div className="alert alert--secondary">
 
-**`-o` es una ruta, no un formato.** Un error común al principio es `-o yaml`. El flag `-o`/`--output` es la *ruta de archivo* donde escribir; usá `--format` para elegir el formato. Pasar una palabra clave de formato a `-o` es un error inmediato con un mensaje que te lo indica exactamente.
+**`-o` es una ruta, no un formato.** Un error común al principio es `-o yaml`. El flag `-o`/`--output` es la *ruta de archivo* donde escribir; usa `--format` para elegir el formato. Pasar una palabra clave de formato a `-o` es un error inmediato con un mensaje que te lo indica exactamente.
 
 </div>
 
@@ -71,7 +71,7 @@ Hay dos formatos de exportación disponibles:
 
 | `--format` | Descripción |
 |---|---|
-| `simplified` (default) | Legible para humanos, con un array `questions[]` limpio — lo que querés para control de versiones |
+| `simplified` (default) | Legible para humanos, con un array `questions[]` limpio — lo que quieres para control de versiones |
 | `raw` | La representación cruda de la API |
 
 ```bash
@@ -109,7 +109,7 @@ cotctl validate -f order_request.yaml
 cotctl apply -f order_request.yaml -c acme
 ```
 
-Así es también como **promovés entre entornos** — exportás de staging, aplicás a producción (con el perfil `-c` correspondiente).
+Así es también como **promueves entre entornos** — exportas de staging, aplicas a producción (con el perfil `-c` correspondiente).
 
 ## Desactivar en vez de eliminar
 
@@ -124,5 +124,5 @@ Pone `isActive: false` tras una confirmación (`-y` salta la confirmación en sc
 ## Ver también
 
 - [apply](./apply.md) — la otra mitad del ciclo
-- [validate](./validate.md) — revisá el YAML exportado antes de re-aplicar
+- [validate](./validate.md) — revisa el YAML exportado antes de re-aplicar
 - [Referencia YAML de recursos](../resources/surveys.md) — qué contienen los archivos exportados

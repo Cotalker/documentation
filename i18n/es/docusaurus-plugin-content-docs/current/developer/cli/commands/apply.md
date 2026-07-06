@@ -8,7 +8,7 @@ displayed_sidebar: developer
 
 `cotctl apply` es el comando que realmente modifica un entorno de Cotalker. Toma tu YAML y hace que la plataforma coincida con él — creando recursos que no existen y actualizando los que sí. Es el verbo que más vas a usar, así que vale la pena entenderlo bien.
 
-Hay dos formas de ejecutarlo, según si desplegás un archivo o una carpeta entera:
+Hay dos formas de ejecutarlo, según si despliegas un archivo o una carpeta entera:
 
 | Modo | Flag | Propósito |
 |---|---|---|
@@ -17,7 +17,7 @@ Hay dos formas de ejecutarlo, según si desplegás un archivo o una carpeta ente
 
 <div className="alert alert--primary">
 
-**Siempre validá primero.** `apply` escribe en un entorno real. Hacé de `cotctl validate` (y `--dry-run`) parte de tu memoria muscular antes de cada apply — especialmente contra producción.
+**Siempre valida primero.** `apply` escribe en un entorno real. Haz de `cotctl validate` (y `--dry-run`) parte de tu memoria muscular antes de cada apply — especialmente contra producción.
 
 </div>
 
@@ -37,7 +37,7 @@ Hay dos formas de ejecutarlo, según si desplegás un archivo o una carpeta ente
 
 Si `kind:` falta o no se reconoce, `apply` se detiene y lista las opciones válidas (más la forma con alcance de entidad de cada una, como `cotctl roles apply`). Nunca adivina.
 
-**Crear vs. actualizar es automático.** `apply` busca el recurso por su `code` (o `name`). Si no existe, se crea; si existe, se actualiza. No elegís — solo describís el estado deseado.
+**Crear vs. actualizar es automático.** `apply` busca el recurso por su `code` (o `name`). Si no existe, se crea; si existe, se actualiza. No eliges — solo describes el estado deseado.
 
 ## Modo archivo único
 
@@ -100,18 +100,18 @@ Una actualización imprime `updated successfully` en su lugar. `cotctl` no muest
 
 </div>
 
-### Qué podés cambiar al actualizar un formulario
+### Qué puedes cambiar al actualizar un formulario
 
 Como las preguntas se matchean por `identifier`, no por posición, las ediciones se comportan de forma intuitiva:
 
-| Querés… | Hacé esto | Resultado |
+| Quieres… | Haz esto | Resultado |
 |---|---|---|
-| Agregar una pregunta | Agregala a `questions[]` | Creada |
-| Quitar una pregunta | Borrala de `questions[]` | Desactivada (no borrada), tras una confirmación |
-| Editar una pregunta | Cambiá sus campos, mantené el `identifier` | Actualizada, ID preservado |
-| Reordenar preguntas | Reordená `questions[]` | Cambia el orden, IDs preservados |
+| Agregar una pregunta | Agrégala a `questions[]` | Creada |
+| Quitar una pregunta | Bórrala de `questions[]` | Desactivada (no borrada), tras una confirmación |
+| Editar una pregunta | Cambia sus campos, mantén el `identifier` | Actualizada, ID preservado |
+| Reordenar preguntas | Reordena `questions[]` | Cambia el orden, IDs preservados |
 
-Dos cosas son inmutables una vez creadas: el `code` de un formulario, y el `identifier` de una pregunta. `apply` se negará a renombrar cualquiera de los dos — para "renombrar", creás un recurso nuevo. Y si aplicás un YAML de formulario sin su sección `questions` (por ejemplo, para cambiar `isActive`), las preguntas existentes se preservan automáticamente.
+Dos cosas son inmutables una vez creadas: el `code` de un formulario, y el `identifier` de una pregunta. `apply` se negará a renombrar cualquiera de los dos — para "renombrar", creas un recurso nuevo. Y si aplicas un YAML de formulario sin su sección `questions` (por ejemplo, para cambiar `isActive`), las preguntas existentes se preservan automáticamente.
 
 ## Previsualiza primero: `--dry-run`
 
@@ -143,13 +143,13 @@ El flag `--legacy-replace-workflows` restaura el comportamiento antiguo previo a
 
 ## Modo directorio
 
-Para cualquier cosa más allá de un solo archivo — y especialmente para un workflow scaffoldeado, que abarca roles, tipos de propiedad, propiedades y el workflow en sí — apuntá `apply` a la carpeta y dejá que maneje el orden:
+Para cualquier cosa más allá de un solo archivo — y especialmente para un workflow scaffoldeado, que abarca roles, tipos de propiedad, propiedades y el workflow en sí — apunta `apply` a la carpeta y deja que maneje el orden:
 
 ```bash
 cotctl apply --dir <path> -c <profile> [options]
 ```
 
-### Por qué importa el orden (y por qué no tenés que pensarlo)
+### Por qué importa el orden (y por qué no tienes que pensarlo)
 
 Los recursos dependen entre sí: un workflow referencia roles y tipos de propiedad, que deben existir antes. `apply --dir` agrupa los documentos por kind y los aplica en este orden canónico automáticamente:
 
@@ -216,7 +216,7 @@ El apply de directorio es **idempotente** — re-ejecutarlo es esperado y seguro
 
 ## Una palabra sobre rate limits y permisos
 
-El backend limita la tasa de escrituras (aproximadamente 20 por ventana de 5 segundos). En scripts de batch grandes, espaciá tus llamadas o manejá las respuestas `429`. Y si algún apply devuelve `403`, el usuario logueado no tiene el permiso de administración requerido — eso es un tema de permisos de Cotalker, no de la CLI.
+El backend limita la tasa de escrituras (aproximadamente 20 por ventana de 5 segundos). En scripts de batch grandes, espacia tus llamadas o maneja las respuestas `429`. Y si algún apply devuelve `403`, el usuario logueado no tiene el permiso de administración requerido — eso es un tema de permisos de Cotalker, no de la CLI.
 
 ## El ciclo estándar
 
@@ -231,5 +231,5 @@ cotctl validate --workflow ordenes_compra -c dev # 3. check de preparación para
 ## Ver también
 
 - [validate](./validate.md) — siempre antes de apply
-- [scaffolding](./scaffolding.md) — generá la carpeta que consume `apply --dir`
+- [scaffolding](./scaffolding.md) — genera la carpeta que consume `apply --dir`
 - [Referencia YAML de recursos](../resources/surveys.md) — el esquema de cada kind

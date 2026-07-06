@@ -10,7 +10,7 @@ El modelo de datos de Cotalker se construye a partir de dos recursos relacionado
 
 Un **tipo de propiedad** es un *esquema* — define la forma de algo, como "una Ubicación tiene una dirección, una ciudad y un país." Una **propiedad** es una *instancia* de ese esquema — como "Santiago, en Av. Providencia 1234, en Chile."
 
-Si trabajaste con bases de datos, un tipo de propiedad es la definición de la tabla y una propiedad es una fila. Definís el tipo una vez, y luego creás tantas propiedades de ese tipo como necesites.
+Si trabajaste con bases de datos, un tipo de propiedad es la definición de la tabla y una propiedad es una fila. Defines el tipo una vez, y luego creas tantas propiedades de ese tipo como necesites.
 
 Como las propiedades dependen de su tipo, el tipo debe existir primero — y `cotctl apply --dir` impone exactamente ese orden (tipos de propiedad antes que propiedades).
 
@@ -45,7 +45,7 @@ schemaNodes:
 
 ### Tipos visibles vs. ocultos
 
-La mayoría de los tipos de propiedad son maquinaria interna (estados de workflow, configuración) y deberían quedar en `hidden: true`. Poné `hidden: false` solo para tipos que los usuarios realmente navegan en la UI de la plataforma — catálogos de ubicaciones, equipos o empleados que aparecen en selectores de formularios. Cuando lo hagas, **debés** listar los roles que pueden navegarlos:
+La mayoría de los tipos de propiedad son maquinaria interna (estados de workflow, configuración) y deberían quedar en `hidden: true`. Pon `hidden: false` solo para tipos que los usuarios realmente navegan en la UI de la plataforma — catálogos de ubicaciones, equipos o empleados que aparecen en selectores de formularios. Cuando lo hagas, **debes** listar los roles que pueden navegarlos:
 
 ```yaml
 hidden: false
@@ -56,7 +56,7 @@ viewPermissions:
 
 <div className="alert alert--info">
 
-**No podés borrar un schema node vía YAML.** Si el servidor tiene campos que tu YAML no, `cotctl` los conserva — la omisión nunca es destructiva acá. Para retirar un nodo, poné `isActive: false` en él.
+**No puedes borrar un schema node vía YAML.** Si el servidor tiene campos que tu YAML no, `cotctl` los conserva — la omisión nunca es destructiva acá. Para retirar un nodo, pon `isActive: false` en él.
 
 </div>
 
@@ -107,19 +107,19 @@ Las hijas deben existir antes que el padre — o aplicarse en el mismo archivo d
 
 <div className="alert alert--primary">
 
-**Dos campos inmutables en una propiedad: `code` y `propertyType`.** Ninguno puede cambiar tras la creación. Para "mover" una propiedad a otro tipo, desactivá la vieja y creá una nueva con el tipo correcto — los datos no se migran automáticamente.
+**Dos campos inmutables en una propiedad: `code` y `propertyType`.** Ninguno puede cambiar tras la creación. Para "mover" una propiedad a otro tipo, desactiva la vieja y crea una nueva con el tipo correcto — los datos no se migran automáticamente.
 
 </div>
 
 ## Desactivar
 
-Preferí el comando dedicado:
+Prefiere el comando dedicado:
 
 ```bash
 cotctl properties deactivate santiago -c acme
 ```
 
-Si una propiedad todavía está referenciada por un workflow o formulario activo, la desactivación se **bloquea** — resolvé la dependencia primero. Notá que desactivar un *tipo* de propiedad no desactiva sus propiedades; quedan activas pero huérfanas, así que desactivá en el orden correcto.
+Si una propiedad todavía está referenciada por un workflow o formulario activo, la desactivación se **bloquea** — resuelve la dependencia primero. Nota que desactivar un *tipo* de propiedad no desactiva sus propiedades; quedan activas pero huérfanas, así que desactiva en el orden correcto.
 
 ## Ver también
 

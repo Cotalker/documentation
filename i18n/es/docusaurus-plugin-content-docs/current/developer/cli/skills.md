@@ -6,7 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/src/commands/skills.ts, src/skills/index.ts @ 4f7248a (2026-07-06) -->
 
-Un **Skill** es un paquete instalable que le da al agente de IA Claude Code conocimiento y herramientas especializadas para un área específica. `cotctl` trae un conjunto de Skills — uno por tipo de recurso — que convierten a un agente de propósito general en un especialista en authoring de Cotalker. Esta página es la referencia del comando `cotctl skills` que los gestiona. Para el panorama de cómo encajan los Skills con el RAG y el agente, mirá [Authoring asistido por IA](./ai-authoring.md).
+Un **Skill** es un paquete instalable que le da al agente de IA Claude Code conocimiento y herramientas especializadas para un área específica. `cotctl` trae un conjunto de Skills — uno por tipo de recurso — que convierten a un agente de propósito general en un especialista en authoring de Cotalker. Esta página es la referencia del comando `cotctl skills` que los gestiona. Para el panorama de cómo encajan los Skills con el RAG y el agente, mira [Authoring asistido por IA](./ai-authoring.md).
 
 ## Listar lo disponible
 
@@ -22,7 +22,7 @@ Esto muestra cada Skill disponible y su estado de instalación, que puede ser `[
 cotctl skills install [name] [options]
 ```
 
-Ejecutalo **sin un nombre** para obtener un checklist interactivo y elegir lo que quieras. Pasá un nombre para instalar uno específico.
+Ejecútalo **sin un nombre** para obtener un checklist interactivo y elegir lo que quieras. Pasa un nombre para instalar uno específico.
 
 | Opción | Descripción |
 |---|---|
@@ -36,7 +36,7 @@ Si no pasas `--local` ni `--global`, `cotctl` te pregunta interactivamente qué 
 
 <div className="alert alert--info">
 
-**Instalar también ofrece conectar el RAG.** Después de instalar, `cotctl` ofrece configurar la conexión MCP al servicio de documentación de Cotalker — la mitad de "grounding en vivo" del setup. Salteala con `--no-mcp`, o configurala más tarde con [`cotctl mcp install`](./mcp-integration.md). Para la mayoría de los partners, aceptarla es lo correcto.
+**Instalar también ofrece conectar el RAG.** Después de instalar, `cotctl` ofrece configurar la conexión MCP al servicio de documentación de Cotalker — la mitad de "grounding en vivo" del setup. Sáltala con `--no-mcp`, o configúrala más tarde con [`cotctl mcp install`](./mcp-integration.md). Para la mayoría de los partners, aceptarla es lo correcto.
 
 </div>
 
@@ -73,7 +73,7 @@ Dónde se instala un Skill determina qué proyectos pueden usarlo:
 | Local | `.claude/skills/` | Solo el proyecto actual |
 | Global | `~/.claude/skills/` | Todos tus proyectos |
 
-Usá **local** cuando trabajás en el repositorio de un cliente específico y querés los Skills versionados junto a él; usá **global** cuando querés tenerlos disponibles en todos lados donde trabajás.
+Usa **local** cuando trabajas en el repositorio de un cliente específico y quieres los Skills versionados junto a él; usa **global** cuando quieres tenerlos disponibles en todos lados donde trabajas.
 
 ## Desinstalar
 
@@ -87,7 +87,7 @@ cotctl skills uninstall [name] [options]
 | `--local` | Desinstala del proyecto actual |
 | `--global` | Desinstala de la configuración global |
 
-Cuando desinstalás con `--all`, `cotctl` también pregunta si querés quitar la configuración del RAG/MCP que se configuró junto a los Skills.
+Cuando desinstalas con `--all`, `cotctl` también pregunta si quieres quitar la configuración del RAG/MCP que se configuró junto a los Skills.
 
 ## Ver también
 

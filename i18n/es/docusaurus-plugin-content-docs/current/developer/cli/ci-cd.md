@@ -12,26 +12,26 @@ Todo lo que `cotctl` hace en tu laptop, lo puede hacer desatendido en un pipelin
 
 Un buen pipeline de `cotctl` refleja el flujo manual: **validar en cada cambio, aplicar en el merge.**
 
-1. **En un pull request** — ejecutá `cotctl validate --dir` (offline, no requiere credenciales). Esto detecta errores de esquema y referencias cruzadas antes de la revisión.
-2. **En el merge a tu rama principal** — ejecutá `cotctl apply --dir -c <profile>` contra el entorno destino, opcionalmente precedido por un `--dry-run`.
+1. **En un pull request** — ejecuta `cotctl validate --dir` (offline, no requiere credenciales). Esto detecta errores de esquema y referencias cruzadas antes de la revisión.
+2. **En el merge a tu rama principal** — ejecuta `cotctl apply --dir -c <profile>` contra el entorno destino, opcionalmente precedido por un `--dry-run`.
 
 Como cada apply es idempotente, re-ejecutar el deploy siempre es seguro.
 
 ## Manejar las credenciales con seguridad
 
-Esta es la parte a hacer bien. En un pipeline no hay navegador para iniciar sesión, así que te autenticás de forma no interactiva — pero **nunca ponés un token en tu repositorio**.
+Esta es la parte a hacer bien. En un pipeline no hay navegador para iniciar sesión, así que te autenticas de forma no interactiva — pero **nunca pones un token en tu repositorio**.
 
 <div className="alert alert--primary">
 
-**La regla: los secrets viven en tu proveedor de CI, nunca en el código.** Guardá las credenciales como secrets encriptados de CI (GitHub Actions secrets, variables de GitLab CI, etc.) y leelas desde variables de entorno en runtime. Nunca commitees un token, y nunca pegues uno en un YAML o script que esté versionado.
+**La regla: los secrets viven en tu proveedor de CI, nunca en el código.** Guarda las credenciales como secrets encriptados de CI (GitHub Actions secrets, variables de GitLab CI, etc.) y léelas desde variables de entorno en runtime. Nunca commitees un token, y nunca pegues uno en un YAML o script que esté versionado.
 
 </div>
 
 Tanto `cotctl login` (navegador) como `cotctl login --no-browser` (email/contraseña) son **interactivos** — abren un navegador o piden credenciales por prompt — así que por sí solos no sirven para un job desatendido. La forma confiable de autenticarte en CI es con un **API token pre-generado**.
 
-**1. Generá el token una vez.** Un administrador emite un API token desde el panel de administración de Cotalker (o el Partner Platform) y guardás su valor como un secret encriptado de CI — por ejemplo `COTCTL_API_TOKEN`.
+**1. Genera el token una vez.** Un administrador emite un API token desde el panel de administración de Cotalker (o el Partner Platform) y guardas su valor como un secret encriptado de CI — por ejemplo `COTCTL_API_TOKEN`.
 
-**2. Autenticate de forma no interactiva con `--paste-token`.** `cotctl login --paste-token` crea un perfil a partir de un token pre-generado en vez de pedir credenciales. En CI, canaliza el secreto hacia él con un pipe:
+**2. Autentícate de forma no interactiva con `--paste-token`.** `cotctl login --paste-token` crea un perfil a partir de un token pre-generado en vez de pedir credenciales. En CI, canaliza el secreto hacia él con un pipe:
 
 ```bash
 echo "$COTCTL_API_TOKEN" | cotctl login \
@@ -83,7 +83,7 @@ jobs:
       - run: cotctl apply --dir config/ -c acme -y
 ```
 
-Notá `cotctl apply ... -y` — el flag `-y` salta las confirmaciones interactivas, que es justo lo que querés en un job desatendido.
+Nota `cotctl apply ... -y` — el flag `-y` salta las confirmaciones interactivas, que es justo lo que quieres en un job desatendido.
 
 ## Los flags orientados a CI viven en los apply por entidad
 
@@ -133,11 +133,11 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --json > result.jsonl
 
 ## Vida útil del token en CI
 
-Los tokens expiran tras 7 días de inactividad. Para pipelines que corren regularmente esto rara vez es un problema, pero para deploys poco frecuentes, preferí una **cuenta de servicio** y reautenticarte al inicio de cada corrida en vez de cachear un token entre corridas.
+Los tokens expiran tras 7 días de inactividad. Para pipelines que corren regularmente esto rara vez es un problema, pero para deploys poco frecuentes, prefiere una **cuenta de servicio** y reautenticarte al inicio de cada corrida en vez de cachear un token entre corridas.
 
-## Usá `--continue-on-error` deliberadamente
+## Usa `--continue-on-error` deliberadamente
 
-Por defecto, un apply de directorio se detiene en la primera falla — normalmente lo que querés, así un deploy roto se detiene ruidosamente. Agregá `--continue-on-error` solo cuando intencionalmente quieras que las entidades restantes se apliquen a pesar de que una falle.
+Por defecto, un apply de directorio se detiene en la primera falla — normalmente lo que quieres, así un deploy roto se detiene ruidosamente. Agrega `--continue-on-error` solo cuando intencionalmente quieras que las entidades restantes se apliquen a pesar de que una falle.
 
 ## Ver también
 

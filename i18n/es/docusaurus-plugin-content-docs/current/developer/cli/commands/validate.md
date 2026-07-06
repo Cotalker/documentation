@@ -6,7 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/src/commands/validate.ts @ 4f7248a (2026-07-06) -->
 
-`cotctl validate` revisa tu YAML *antes* de desplegarlo. Tomar el hábito de validar primero es una de las cosas de mayor valor que podés hacer como partner: detecta errores en tu máquina, en segundos, en vez de como un cambio a medio aplicar en el entorno de un cliente.
+`cotctl validate` revisa tu YAML *antes* de desplegarlo. Tomar el hábito de validar primero es una de las cosas de mayor valor que puedes hacer como partner: detecta errores en tu máquina, en segundos, en vez de como un cambio a medio aplicar en el entorno de un cliente.
 
 Hay tres cosas que podrías querer validar, y `validate` tiene un modo para cada una:
 
@@ -56,7 +56,7 @@ cotctl validate -f my-survey.yaml --remote -c acme
 
 ## Modo directorio — una carpeta entera, offline
 
-Este es el que más vas a usar al trabajar con workflows scaffoldeados. Valida cada archivo YAML de una carpeta **y** revisa que se referencien entre sí correctamente — todo offline. Ejecutalo justo antes de `apply --dir`:
+Este es el que más vas a usar al trabajar con workflows scaffoldeados. Valida cada archivo YAML de una carpeta **y** revisa que se referencien entre sí correctamente — todo offline. Ejecútalo justo antes de `apply --dir`:
 
 ```bash
 cotctl validate --dir ordenes-compra/
@@ -87,7 +87,7 @@ Una corrida limpia termina con un veredicto claro:
 Results: 11 PASS, 0 WARN, 0 FAIL — ready to apply
 ```
 
-Agregá `--json` si querés consumir el resultado en un script.
+Agrega `--json` si quieres consumir el resultado en un script.
 
 ## Modo workflow — preparación para producción, online
 
@@ -97,7 +97,7 @@ Una vez que un workflow está en vivo, este modo corre el checklist de **Marcha 
 cotctl validate --workflow ordenes_compra -c prod
 ```
 
-El checklist está organizado en tres secciones, y podés correr solo una con `--section`:
+El checklist está organizado en tres secciones, y puedes correr solo una con `--section`:
 
 - **Nomenclatura** (`nomenclature`) — convenciones de nombres para códigos, formularios, propiedades y permisos.
 - **Permisos** (`permissions`) — que exista un rol Manager con todos los permisos del flujo, conectado a los formularios vinculados.
@@ -112,15 +112,15 @@ cotctl validate --workflow ordenes_compra --section nomenclature -c prod
 Results: 13 PASS, 1 WARN, 0 FAIL — production ready
 ```
 
-Los checks se califican **WARN** (una recomendación) o **FAIL** (un problema real). El comando sale con `0` cuando todo pasa o solo hay warnings, y con `1` cuando al menos un check falla — que es justo lo que querés como gate en un pipeline.
+Los checks se califican **WARN** (una recomendación) o **FAIL** (un problema real). El comando sale con `0` cuando todo pasa o solo hay warnings, y con `1` cuando al menos un check falla — que es justo lo que quieres como gate en un pipeline.
 
 <div className="alert alert--info">
 
-**Un par de límites conocidos.** Los checks profundos de calidad de código JavaScript sobre exec hooks no están implementados, y el check de estado de error (T3) busca la convención de nombres `_estado_error` — si tu implementación nombra su estado de error de otra forma, esperá un warning aunque exista un estado de error.
+**Un par de límites conocidos.** Los checks profundos de calidad de código JavaScript sobre exec hooks no están implementados, y el check de estado de error (T3) busca la convención de nombres `_estado_error` — si tu implementación nombra su estado de error de otra forma, espera un warning aunque exista un estado de error.
 
 </div>
 
 ## Ver también
 
-- [apply](./apply.md) — desplegá tus recursos una vez que la validación pasa
-- [scaffolding](./scaffolding.md) — generá un esqueleto de workflow para validar y aplicar
+- [apply](./apply.md) — despliega tus recursos una vez que la validación pasa
+- [scaffolding](./scaffolding.md) — genera un esqueleto de workflow para validar y aplicar

@@ -10,7 +10,7 @@ Estos dos comandos abren y cierran tu conexión con un entorno de Cotalker. Si y
 
 ## `cotctl login`
 
-`login` te autentica contra un entorno de Cotalker y guarda el resultado como un **perfil** reutilizable en `~/.cotctl/config.json`. Normalmente lo ejecutás una vez por entorno.
+`login` te autentica contra un entorno de Cotalker y guarda el resultado como un **perfil** reutilizable en `~/.cotctl/config.json`. Normalmente lo ejecutas una vez por entorno.
 
 ```bash
 cotctl login --url <webclient-url> --subdomain <subdomain> [options]
@@ -36,11 +36,11 @@ Lo clave a recordar: `--url` es la dirección del **webclient** (lo que escribir
 cotctl login --url https://web.cotalker.com --subdomain acme
 ```
 
-Esto abre tu navegador en la página de autenticación de Cotalker, aprobás el acceso, y el token se devuelve a la CLI. El flujo expira a los 5 minutos si no lo completás.
+Esto abre tu navegador en la página de autenticación de Cotalker, apruebas el acceso, y el token se devuelve a la CLI. El flujo expira a los 5 minutos si no lo completas.
 
 ### Login con email/contraseña
 
-Cuando no hay navegador disponible — un servidor, un runner de CI — agregá `--no-browser` y se te pedirán las credenciales en la terminal:
+Cuando no hay navegador disponible — un servidor, un runner de CI — agrega `--no-browser` y se te pedirán las credenciales en la terminal:
 
 ```bash
 cotctl login --url https://web.cotalker.com --subdomain acme --no-browser
@@ -48,7 +48,7 @@ cotctl login --url https://web.cotalker.com --subdomain acme --no-browser
 
 ### Entornos on-premise
 
-La mayoría de los entornos exponen un archivo de variables que le permite a `cotctl` autodescubrir la URL de la API. Si un cliente corre Cotalker en su propia infraestructura y ese descubrimiento falla, apuntá `cotctl` a la API explícitamente con `--api-url`:
+La mayoría de los entornos exponen un archivo de variables que le permite a `cotctl` autodescubrir la URL de la API. Si un cliente corre Cotalker en su propia infraestructura y ese descubrimiento falla, apunta `cotctl` a la API explícitamente con `--api-url`:
 
 ```bash
 cotctl login \
@@ -79,7 +79,7 @@ Cada ApiToken lleva un `code` que incluye un identificador de máquina — por d
 
 ### Una nota sobre permisos
 
-Para aplicar recursos (formularios, workflows, etc.) necesitás permisos de administración en Cotalker. Si más adelante un comando devuelve un `403`, es la plataforma diciéndote que el usuario logueado no tiene el permiso requerido — pedile al administrador de la empresa que lo otorgue.
+Para aplicar recursos (formularios, workflows, etc.) necesitas permisos de administración en Cotalker. Si más adelante un comando devuelve un `403`, es la plataforma diciéndote que el usuario logueado no tiene el permiso requerido — pídele al administrador de la empresa que lo otorgue.
 
 ## `cotctl logout`
 
@@ -91,7 +91,7 @@ cotctl logout <profile>
 cotctl logout -c <profile>
 ```
 
-El argumento posicional `<profile>` es opcional si en su lugar pasás `-c <profile>`.
+El argumento posicional `<profile>` es opcional si en su lugar pasas `-c <profile>`.
 
 <div className="alert alert--secondary">
 

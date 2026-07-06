@@ -14,20 +14,20 @@ _¡Bienvenido! Esta guía te lleva desde cero hasta desplegar tu primera configu
 
 ## ¿Qué es cotctl y por qué usarlo?
 
-Cuando configurás Cotalker desde el panel de administración web, hacés clic para crear formularios, workflows, roles, etc. Eso funciona bien para cambios puntuales, pero tiene límites: los cambios no quedan versionados, son difíciles de reproducir entre entornos y no se pueden automatizar.
+Cuando configuras Cotalker desde el panel de administración web, haces clic para crear formularios, workflows, roles, etc. Eso funciona bien para cambios puntuales, pero tiene límites: los cambios no quedan versionados, son difíciles de reproducir entre entornos y no se pueden automatizar.
 
-`cotctl` resuelve eso. Es una **herramienta de línea de comandos que gestiona los recursos de Cotalker de forma declarativa a partir de archivos YAML** — muy parecido a cómo `kubectl` gestiona Kubernetes, o Terraform gestiona infraestructura. En vez de hacer clics, *describís* el recurso que querés en un archivo de texto, y `cotctl` hace que la plataforma coincida con esa descripción.
+`cotctl` resuelve eso. Es una **herramienta de línea de comandos que gestiona los recursos de Cotalker de forma declarativa a partir de archivos YAML** — muy parecido a cómo `kubectl` gestiona Kubernetes, o Terraform gestiona infraestructura. En vez de hacer clics, *describes* el recurso que quieres en un archivo de texto, y `cotctl` hace que la plataforma coincida con esa descripción.
 
-En la práctica, esto te da cuatro cosas que importan cuando entregás proyectos para clientes:
+En la práctica, esto te da cuatro cosas que importan cuando entregas proyectos para clientes:
 
-- **Declarativo.** Escribís *qué querés* (un formulario con estas preguntas, un workflow con estos estados) y `cotctl apply` decide si crearlo o actualizarlo. No gestionás el "cómo".
+- **Declarativo.** Escribes *qué quieres* (un formulario con estas preguntas, un workflow con estos estados) y `cotctl apply` decide si crearlo o actualizarlo. No gestionas el "cómo".
 - **Versionable.** Tu YAML vive en tu propio repositorio Git. Cada cambio en la configuración de un cliente es revisable en un pull request y reversible con un `git revert`.
 - **Reproducible.** Los mismos archivos se despliegan primero a staging y luego a producción, contra cualquier empresa a la que tengas acceso. Se acabó el "funcionaba en la demo".
 - **Automatizable.** Al ser un comando, corre desatendido en un pipeline de CI/CD — los despliegues se vuelven repetibles y no dependen de que alguien recuerde los pasos.
 
 <div className="alert alert--primary">
 
-**El modelo mental.** Una empresa en Cotalker es un conjunto de *recursos* (formularios, workflows, propiedades, roles, usuarios…). Con `cotctl` mantenés una descripción YAML de esos recursos en Git y los aplicás (`apply`) a un entorno. El YAML es la fuente de verdad; el entorno es el resultado.
+**El modelo mental.** Una empresa en Cotalker es un conjunto de *recursos* (formularios, workflows, propiedades, roles, usuarios…). Con `cotctl` mantienes una descripción YAML de esos recursos en Git y los aplicas (`apply`) a un entorno. El YAML es la fuente de verdad; el entorno es el resultado.
 
 </div>
 
@@ -94,9 +94,9 @@ Ese es el ciclo completo: **instalar → login → apply.** Todo lo demás en es
 
 Recomendamos leer las tres primeras páginas en orden — te dejan listo y productivo:
 
-1. [**Instalación**](./installation.md) — poné `cotctl` en tu máquina y confirmá que funciona.
-2. [**Autenticación**](./authentication.md) — conectate a un entorno y entendé los perfiles y el importantísimo flag `-c`.
-3. [**Practicá en una compañía demo**](./demo-company.md) — armá un entorno seguro, no productivo, para que tu primer caso real no sea la compañía en vivo de un cliente.
+1. [**Instalación**](./installation.md) — pon `cotctl` en tu máquina y confirma que funciona.
+2. [**Autenticación**](./authentication.md) — conéctate a un entorno y entiende los perfiles y el importantísimo flag `-c`.
+3. [**Practica en una compañía demo**](./demo-company.md) — arma un entorno seguro, no productivo, para que tu primer caso real no sea la compañía en vivo de un cliente.
 4. [**Comandos**](./commands/apply.md) — los verbos del día a día: `apply`, `validate`, exportar/importar y scaffolding.
 
 Después, recurre a estas cuando las necesites:

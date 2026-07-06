@@ -6,7 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/src/commands/mcp.ts @ 4f7248a (2026-07-06) -->
 
-`cotctl` puede conectar asistentes de IA — como Claude — a la documentación técnica de Cotalker, de modo que mientras creás recursos puedas hacer preguntas y obtener respuestas fundamentadas en la documentación real y actualizada. Esta página explica la idea y cómo configurarla.
+`cotctl` puede conectar asistentes de IA — como Claude — a la documentación técnica de Cotalker, de modo que mientras creas recursos puedas hacer preguntas y obtener respuestas fundamentadas en la documentación real y actualizada. Esta página explica la idea y cómo configurarla.
 
 ## ¿Qué es MCP, y por qué le importaría a un partner?
 
@@ -28,23 +28,23 @@ cotctl mcp install
 
 </div>
 
-Si preferís registrarlo manualmente con un cliente compatible con MCP, la forma es un transporte HTTP que apunta al endpoint de documentación:
+Si prefieres registrarlo manualmente con un cliente compatible con MCP, la forma es un transporte HTTP que apunta al endpoint de documentación:
 
 ```bash
-# Reemplazá la URL por el endpoint MCP de documentación de tu entorno
+# Reemplaza la URL por el endpoint MCP de documentación de tu entorno
 claude mcp add --transport http cotalker-docs https://<your-cotalker-docs-endpoint>/mcp
 ```
 
 ## Enfocarte en documentación específica
 
-Un único endpoint puede servir varios conjuntos de documentación ("índices"). Podés acotar una conexión solo a los que te importan con un parámetro de query `?indices=` — por ejemplo, para consultar solo la documentación de la CLI:
+Un único endpoint puede servir varios conjuntos de documentación ("índices"). Puedes acotar una conexión solo a los que te importan con un parámetro de query `?indices=` — por ejemplo, para consultar solo la documentación de la CLI:
 
 ```bash
 claude mcp add --transport http cotalker-cli \
   "https://<your-cotalker-docs-endpoint>/mcp?indices=cotctl"
 ```
 
-También podés registrar **múltiples** servidores, cada uno acotado a un conjunto distinto — uno para la CLI, otro para la API y los modelos de datos — de modo que el asistente rutee cada pregunta a la fuente más relevante:
+También puedes registrar **múltiples** servidores, cada uno acotado a un conjunto distinto — uno para la CLI, otro para la API y los modelos de datos — de modo que el asistente rutee cada pregunta a la fuente más relevante:
 
 ```bash
 claude mcp add --transport http cotalker-cli \

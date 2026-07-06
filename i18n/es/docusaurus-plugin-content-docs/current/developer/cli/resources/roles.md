@@ -29,7 +29,7 @@ permissions:
 | `kind` | Sí | Siempre `AccessRole` |
 | `name` | Sí | Único por empresa. **Sensible a mayúsculas** — es la clave de upsert |
 | `description` | No | Texto libre |
-| `active` | No | Por defecto `true`. **Notá que el campo es `active`, no `isActive`** |
+| `active` | No | Por defecto `true`. **Nota que el campo es `active`, no `isActive`** |
 | `permissions` | Sí | Al menos un permiso |
 
 <div className="alert alert--secondary">
@@ -63,13 +63,13 @@ Esta componibilidad es lo que te permite asignar exactamente el acceso correcto 
 
 ## Renombrar un rol
 
-Cambiar `name` crea un *nuevo* rol — no renombra el existente. Para renombrar in situ manteniendo todas las referencias intactas, fijá el rol por su `id`:
+Cambiar `name` crea un *nuevo* rol — no renombra el existente. Para renombrar in situ manteniendo todas las referencias intactas, fija el rol por su `id`:
 
 ```bash
 cotctl roles export "Old Name" -c acme -o role.yaml
 ```
 
-Luego descomentá la línea `id` en el archivo exportado, cambiá `name`, y aplicá. (Los permisos del rol pueden editarse al mismo tiempo.)
+Luego descomenta la línea `id` en el archivo exportado, cambia `name`, y aplica. (Los permisos del rol pueden editarse al mismo tiempo.)
 
 ## Desactivar
 
@@ -103,4 +103,4 @@ permissions:
 
 - [apply](../commands/apply.md) — los roles se aplican primero
 - [Cargos](./jobtitles.md) y [Workflows](./workflows.md) — ambos referencian roles por nombre
-- Usá `cotctl roles list -c <profile>` para ver los nombres de rol existentes y su casing exacto
+- Usa `cotctl roles list -c <profile>` para ver los nombres de rol existentes y su casing exacto
