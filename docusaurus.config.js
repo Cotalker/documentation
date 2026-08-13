@@ -2,6 +2,10 @@ module.exports = {
   title: 'Cotalker Technical Documentation',
   url: 'https://doc.cotalker.com',
   baseUrl: '/',
+  // El bucket S3 sirve carpetas con index.html y redirige (302) las URLs sin
+  // slash final; con trailingSlash el sitemap y los links internos apuntan
+  // directo a la versión canónica y Google deja de ver todo como redirección
+  trailingSlash: true,
   favicon: 'img/favicon.ico',
   organizationName: 'Cotalker', // Usually your GitHub org/user name.
   projectName: 'Cotalker', // Usually your repo name.
@@ -10,7 +14,22 @@ module.exports = {
   },
   themes: ['@docusaurus/theme-live-codeblock','@docusaurus/theme-mermaid'],
   plugins: [
-    require.resolve('docusaurus-lunr-search')
+    require.resolve('docusaurus-lunr-search'),
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        // El locale /es/ se deshabilitó y el deploy a S3 (--delete) borró esos
+        // archivos: las URLs legacy /es/* devuelven 403 y Search Console las
+        // acumula como error. Esto genera una página de redirección /es/<ruta>
+        // por cada ruta actual, apuntando a la versión sin prefijo.
+        createRedirects(existingPath) {
+          if (existingPath.startsWith('/es/')) {
+            return undefined;
+          }
+          return [`/es${existingPath}`];
+        },
+      },
+    ],
   ],
   themeConfig: {
     disableDark: 'light',
