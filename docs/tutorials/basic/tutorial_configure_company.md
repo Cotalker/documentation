@@ -21,7 +21,7 @@ Time: 7 minutes
 
 ## Company Requirements {#company-requirements}
 
-As mentioned in the [Overview](../tutorial_overview), we will be working with a make-believe company called _Ruanda_ for this tutorial. The company's first requirements are described below:
+As mentioned in the [Overview](../tutorial_overview.md), we will be working with a make-believe company called _Ruanda_ for this tutorial. The company's first requirements are described below:
 
 - The company resides in Chile, but they work oversees, so its language preference should be set to English.
 

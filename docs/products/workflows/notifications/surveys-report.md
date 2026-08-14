@@ -55,7 +55,7 @@ _Once the form appears, proceed as follows:_
 
 
 :::info Next step
-Once the supervisor receives the notification, they have to validate the report with the [Validate Incident](surveys-validate) form.
+Once the supervisor receives the notification, they have to validate the report with the [Validate Incident](./surveys-validate.md) form.
 :::
 
 ---

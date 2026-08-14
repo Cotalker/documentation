@@ -20,7 +20,7 @@ We will now work to offer a dynamic survey, where the user's department will act
 * User with the `read admin` access role.
 
 #### Survey
-* Having completed the [Survey that Starts a Workflow Tutorial](create_survey_sm).
+* Having completed the [Survey that Starts a Workflow Tutorial](./tutorial_survey_sm.md).
 
 
 ## Steps {#steps}
@@ -37,7 +37,7 @@ We will now work to offer a dynamic survey, where the user's department will act
 2. Look for the **Task Creator** survey and open it.
 
 :::note
-This survey was created in the [Survey that Starts a Workflow Tutorial](create_survey_sm).
+This survey was created in the [Survey that Starts a Workflow Tutorial](./tutorial_survey_sm.md).
 :::
 
 </div>

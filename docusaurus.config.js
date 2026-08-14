@@ -23,6 +23,9 @@ module.exports = {
         // acumula como error. Esto genera una página de redirección /es/<ruta>
         // por cada ruta actual, apuntando a la versión sin prefijo.
         createRedirects(existingPath) {
+          // Guard defensivo: hoy no existen rutas /es/ (i18n está deshabilitado
+          // más abajo), pero si se reactiva el locale este check evita generar
+          // redirects /es/es/* sobre las páginas reales en español
           if (existingPath.startsWith('/es/')) {
             return undefined;
           }
