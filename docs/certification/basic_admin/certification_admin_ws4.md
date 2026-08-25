@@ -14,7 +14,7 @@ Understanding of the basics elements of the Admin:
 
 ### Prerequirements {#prerequirements}
 
-* Have completed [Workshop 2](certification_admin_ws2) and [Workshop 3](certification_admin_ws3) 
+* Have completed [Workshop 2](./certification_admin_ws2.md) and [Workshop 3](./certification_admin_ws3.md) 
 
 
 # Workshop {#workshop}

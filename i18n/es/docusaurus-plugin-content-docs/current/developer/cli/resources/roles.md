@@ -4,6 +4,8 @@ sidebar_label: Roles
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/roles.ts, src/lib/permission-warnings.ts @ 4f7248a (2026-07-06) -->
+
 Un **rol de acceso** agrupa un conjunto de permisos bajo un nombre. Los roles son el fundamento del control de acceso en Cotalker — todo otro recurso que otorga acceso (workflows, tipos de propiedad, cargos, usuarios) se refiere a los roles por nombre. Por eso `cotctl apply --dir` aplica los roles *primero*: todo lo demás depende de ellos.
 
 ## La forma de un rol
@@ -51,7 +53,13 @@ name: "ordenes-compra:write"
 name: "Órdenes de Compra: Manager"
 ```
 
-Esta componibilidad es lo que te permite asignar exactamente el acceso correcto a cada cargo. `cotctl` imprime warnings no bloqueantes para nombres que se desvían de la convención `{flow}:{action}`.
+Esta componibilidad es lo que te permite asignar exactamente el acceso correcto a cada cargo.
+
+<div className="alert alert--info">
+
+**Las advertencias de convención son sobre `permissions`, no sobre `name`.** Al aplicar, `cotctl` imprime advertencias no bloqueantes cuando las entradas dentro de la lista `permissions[]` de un rol se desvían de la forma `{flow}:{action}` — el `name` del rol no es lo que se revisa. Las advertencias nunca bloquean el apply; son un empujón hacia strings de permiso consistentes.
+
+</div>
 
 ## Renombrar un rol
 

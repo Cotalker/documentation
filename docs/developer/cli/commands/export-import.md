@@ -4,9 +4,21 @@ sidebar_label: Export & import
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ 4f7248a (2026-07-06) -->
+
 So far we've talked about pushing YAML *to* an environment. Just as often, you'll want to pull existing configuration *out* of one — to bring a customer's existing setup under version control, to copy a resource between environments, or simply to see how something is built. That round-trip — **export → edit → apply** — is one of the most useful patterns in `cotctl`.
 
-This page uses surveys as the worked example, because they have the richest export options. The same `list` / `get` / `export` / `apply` shape repeats across the other entity groups (`roles`, `property-types`, `properties`, `users`, `jobtitles`, `workflows`).
+This page uses surveys as the worked example, because they have the richest export options. The same `list` / `get` / `export` / `apply` shape repeats across the other entity groups: `roles`, `property-types`, `properties`, `users`, `jobtitles`, `workflows`, and the newer `bots`, `bot-types`, `routines`, `schedules` and `slas`.
+
+<div className="alert alert--info">
+
+**Not every group has all four verbs.** The shape is a pattern, not a guarantee — a few groups differ:
+
+- **`bot-types` is read-only.** It exposes only `list` and `versions <BotType>` (the live catalog of ParametrizedBot types). There's no `bot-types apply`; you author bots with `cotctl bots`.
+- **`slas` need their state machine.** `slas get`, `slas export` and the by-code paths require `--state-machine <smCode>`, because there's no global by-code lookup for SLAs.
+- **Some groups add verbs.** `routines` has `test <code>` (run a routine immediately — real side effects); `schedules` has `activate` / `deactivate` / `logs`.
+
+</div>
 
 <div className="alert alert--info">
 

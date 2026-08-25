@@ -67,7 +67,8 @@ module.exports = {
           collapsed: true
         },
         'documentation/client/tasks/create_update_task',
-        'documentation/client/tasks/filter_tasks'
+        'documentation/client/tasks/filter_tasks',
+        'documentation/client/tasks/bulk_actions'
       ]
     },
     'documentation/client/surveys/bulkloader',
@@ -354,14 +355,66 @@ module.exports = {
           label: 'Resource YAML reference',
           collapsed: true,
           items: [
-            'developer/cli/resources/surveys',
-            'developer/cli/resources/workflows',
+            {
+              type: 'category',
+              label: 'Surveys',
+              link: {
+                type: 'doc',
+                id: 'developer/cli/resources/surveys',
+              },
+              collapsed: true,
+              items: [
+                'developer/cli/resources/surveys/question-types',
+                'developer/cli/resources/surveys/exec-scripting',
+                'developer/cli/resources/surveys/logic-and-validation',
+                'developer/cli/resources/surveys/complete-example',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Workflows',
+              link: {
+                type: 'doc',
+                id: 'developer/cli/resources/workflows',
+              },
+              collapsed: true,
+              items: [
+                'developer/cli/resources/workflows/merge-semantics',
+                'developer/cli/resources/workflows/cotlang',
+                'developer/cli/resources/workflows/immutability-and-versioning',
+                'developer/cli/resources/workflows/complete-example',
+              ],
+            },
+            'developer/cli/resources/bots',
+            'developer/cli/resources/bot-types',
+            'developer/cli/resources/routines',
+            'developer/cli/resources/slas',
+            'developer/cli/resources/schedules',
             'developer/cli/resources/properties',
+            'developer/cli/resources/property-types',
             'developer/cli/resources/roles',
             'developer/cli/resources/users',
             'developer/cli/resources/jobtitles',
           ],
         },
+        {
+          type: 'category',
+          label: 'Workflow bots',
+          link: {
+            type: 'doc',
+            id: 'developer/cli/workflow-bots/index',
+          },
+          collapsed: true,
+          items: [
+            'developer/cli/workflow-bots/flow-control',
+            'developer/cli/workflow-bots/data-extraction',
+            'developer/cli/workflow-bots/network-and-code',
+            'developer/cli/workflow-bots/actions-tasks-and-channels',
+            'developer/cli/workflow-bots/actions-messaging-and-surveys',
+            'developer/cli/workflow-bots/actions-data-and-integrations',
+          ],
+        },
+        'developer/cli/data-models',
         'developer/cli/tutorials',
         'developer/cli/troubleshooting',
         'developer/cli/ci-cd',

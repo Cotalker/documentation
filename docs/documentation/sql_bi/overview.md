@@ -23,7 +23,7 @@ Our software generates a **read-only SQL database** from the data stored in our 
 
 
 :::info Additional information
-- The exact [**data model**](model) varies from company to company but is basically based on _users_, _surveys_, _channels_,  _collections_ (databases), _tasks_, and _sessions_.
+- The exact [**data model**](./model.md) varies from company to company but is basically based on _users_, _surveys_, _channels_,  _collections_ (databases), _tasks_, and _sessions_.
 - For **enterprise plans**, it is possible to search the SQL Database from a third-party BI platform. _Contact your Cotalker sales representative for more information._
 :::
 

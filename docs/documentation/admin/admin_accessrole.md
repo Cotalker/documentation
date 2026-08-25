@@ -28,7 +28,7 @@ As shown in the image below, from the _Access roles_ button in the _Administrati
 <img alt="access roles settings panel" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_00.png')} />
 <br />
 
-_Icon descriptions can be found in the [Overview section](admin_overview)._
+_Icon descriptions can be found in the [Overview section](./admin_overview.md)._
 
 Checkboxes enable you to select from one to all _access roles_, so you can deactivate them together with just one click.
 
@@ -38,7 +38,7 @@ From the _Access roles_ settings panel, you can edit or create a single access r
 <img alt="edit or create" className="img_sizing item shadow--tl" src={useBaseUrl('img/admin_accessroles_01.png')}  />
 <br />
 
-_Button descriptions can be found in the [Overview section](admin_overview)._
+_Button descriptions can be found in the [Overview section](./admin_overview.md)._
 
 ### Field Descriptions
 

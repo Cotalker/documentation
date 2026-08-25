@@ -4,6 +4,8 @@ sidebar_label: Cargos
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/schemas/job-title.schema.ts, src/commands/jobtitles.ts @ 4f7248a (2026-07-06) -->
+
 Un **cargo** (Job title) es el puente entre una persona y lo que puede hacer. Vincula un [usuario](./users.md) a un conjunto de [roles de acceso](./roles.md), extensiones de tipo de propiedad y propiedades heredadas. Asignale un cargo a un usuario, y hereda todo lo que el cargo otorga. Como los cargos dependen de roles y del modelo de datos, se aplican después de esos — y antes que los usuarios.
 
 ## La forma de un cargo
@@ -25,12 +27,19 @@ elements:
 | Campo | Requerido | Notas |
 |---|---|---|
 | `kind` | Sí | Siempre `JobTitle` |
-| `code` | Sí | Único por empresa, 3–50 caracteres, minúsculas/guiones bajos. **Inmutable tras la creación** |
+| `code` | Sí | Único por empresa, 3–50 caracteres. Debe empezar con una letra minúscula, luego minúsculas, dígitos y guiones bajos (`^[a-z]+([_a-z0-9]+)*$`). **Inmutable tras la creación** |
 | `display` | Sí | Etiqueta legible (mutable) |
+| `id` | No | El ID del registro, de 24 caracteres. Opcional — normalmente se omite, ya que `code` es la clave de upsert |
 | `isActive` | No | Por defecto `true` |
 | `accessRoles` | No | **Nombres** de AccessRole (sensibles a mayúsculas), máx. 50 |
 | `allowedExtensions` | No | **Códigos** de PropertyType, máx. 50 |
 | `elements` | No | **Códigos** de Property heredados por los usuarios |
+
+<div className="alert alert--secondary">
+
+**Cuando un code viejo no cumple la regla actual.** El formato de `code` se impone estrictamente al crear. En *update*, si el `code` del registro existente ya viola la regla actual (un cargo viejo creado antes de que la regla se endureciera), `--lax-code` degrada ese check a una advertencia para que igual puedas editar los otros campos del registro. Nunca relaja el check al crear, ni te deja introducir un code nuevo no conforme.
+
+</div>
 
 Los tres campos de lista referencian cada uno un recurso distinto por nombre o código:
 
@@ -67,6 +76,8 @@ cotctl jobtitles deactivate store_manager -c acme
 ```
 
 Reactivar está deliberadamente protegido: aplicar `isActive: true` a un cargo actualmente inactivo requiere el flag explícito `--allow-reactivate`, así nunca traés uno de vuelta por accidente.
+
+**No hay borrado** para los cargos — la desactivación es la única vía de eliminación, en línea con el modelo de soft-delete de Cotalker.
 
 ## Aplicá los cargos antes que los usuarios
 
