@@ -421,6 +421,7 @@ module.exports = {
         'developer/cli/ai-authoring',
         'developer/cli/skills',
         'developer/cli/mcp-integration',
+        'developer/cli/release-notes',
       ],
     },
     {
