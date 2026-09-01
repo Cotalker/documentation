@@ -5,8 +5,9 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/transformers/simplified.transformer.ts, src/schemas/survey.schema.ts, docs/surveys/question-types/*.md @ 4f7248a (2026-07-06) -->
+<!-- the `table` section: repositories/cotctl/docs/surveys/question-types/table.md, src/lib/survey-validator.ts @ 6098bd5 (release-0.11.0, 2026-09-01) -->
 
-Cotalker offers 13 question types. Every question shares the [common fields](../surveys.md#questions) — `type`, `identifier`, `label`, and the optional `help`, `required`, `isReadOnly`, `conditionalDisplay`, `exec`. This page covers what's *specific* to each type: the extra fields it needs and the gotchas worth knowing before you author one.
+Cotalker offers 14 question types. Every question shares the [common fields](../surveys.md#questions) — `type`, `identifier`, `label`, and the optional `help`, `required`, `isReadOnly`, `conditionalDisplay`, `exec`. This page covers what's *specific* to each type: the extra fields it needs and the gotchas worth knowing before you author one.
 
 All snippets use the **simplified** `cotctl` format — the `type:` form you write in a `questions[]` list. `cotctl` translates it to the platform's internal representation on apply.
 
@@ -199,6 +200,60 @@ Nests another survey inside this one.
 <div className="alert alert--primary">
 
 **Apply the child first.** `surveyCode` must match an existing survey's `code` exactly (case-insensitive). If the referenced survey doesn't exist yet, `apply` fails with *"Referenced survey ... not found. Apply the child survey first."* `cotctl` resolves the code to an ID on apply and back to the code on export, so your YAML stays portable.
+
+</div>
+
+### `table` — a grid of repeating rows
+
+Each column is itself a question, and every row's answers are stored under the column identifiers.
+
+```yaml
+- type: table
+  identifier: re_expenses
+  label: "Expense detail"
+  min: 1
+  max: 20
+  columns:
+    - type: textinput
+      identifier: description
+      label: "Description"
+    - type: textnumber
+      identifier: amount
+      label: "Amount"
+    - type: listquestion
+      identifier: status
+      label: "Status"
+      options:
+        - { label: "Approved", value: "approved" }
+        - { label: "Pending", value: "pending" }
+```
+
+`columns` is required, from 1 to 10, in render order. **On a table, `min` and `max` are row counts** — not characters, not selections; the backend caps every table at 50 rows. On a column they keep that column's own meaning.
+
+Column identifiers are unique *within their own table*, not across the survey, so the same identifier may appear in two different tables. Their charset is `^[a-zA-Z0-9_]+$` — stricter than a question identifier, and with no dots, dashes or spaces, which would break the per-cell error paths. A header caps at 50 characters.
+
+Seven types are allowed as a column: `textinput`, `textnumber`, `listquestion`, `datetime`, `person`, `property` and `api`. Plain `text` is not one of them, and a table cannot nest another table. **A selection column is single-select**: leave `max` unset and it becomes 1, and declaring `max: 3` is rejected — the webclient cannot fill a multi-select column inside a table.
+
+<div className="alert alert--warning">
+
+**Four edits are refused once a table has been applied**, and they fail before anything is written — `apply --dry-run` refuses them exactly as `apply` does:
+
+- removing the table, or changing its `identifier`;
+- removing a column, or changing its `identifier`;
+- changing a saved column's type — including `date` → `date_time` and `number` → `rating`, which do not change the type name;
+- reordering, renaming or removing a saved option of a `listquestion` column, or editing its label.
+
+**Renaming is not among them.** The frozen field is the `identifier`, of the table as much as of a column — a `label` changes freely. The one exception is a saved *option*, whose label is frozen alongside its value, because the two are parallel by index and touching either re-labels answers already stored.
+
+Still editable on a saved column: `label`, `help` and `min`/`max`. Adding a **new** column is fine, and so is **appending** options after the existing ones on a `listquestion` column — an append cannot re-label anything, because every saved option keeps its index.
+
+`cotctl` enforces these, not the backend: the API accepts all four and loses the answers silently.
+
+</div>
+
+<div className="alert alert--primary">
+
+**Not visible on mobile yet.** A table renders on web today; mobile support arrives with the next mobile release. `apply` prints a warning when it creates one.
 
 </div>
 
