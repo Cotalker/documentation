@@ -47,13 +47,36 @@ The default still applies when **creating** one. On update, a YAML that omits `p
 
   An explicit `pb.version` was never touched by `apply`, on create or on update, and still is not.
 
+**A `table` question written in the simplified format is now validated exactly like the raw format.**
+
+The simplified schema previously skipped several checks the raw format always enforced — allowed column types, no nested tables, the column count and row limits, the column identifier charset, required column headers, and the per-column-type requirements. A survey YAML with a `table` question that passed `validate` before may now be refused.
+
+- **Who this affects:** anyone whose survey YAMLs carry `table` questions written in the simplified format. The payloads now being refused were already failing, or silently misbehaving, on the server — the missing checks only hid that until now.
+- **What to do:** re-run `validate` over those files before your next apply —
+
+  ```bash
+  cotctl validate -f survey.yaml
+  ```
+
+  A new refusal means the YAML was relying on one of the gaps above, so fix it as the error describes rather than reading it as a regression.
+
 ### Added
 
 - **`table` questions now round-trip through the CLI.** `export` writes a table's `columns` — previously dropped, so an exported YAML described a table with no columns — and `apply` validates and applies them, in both the raw and the simplified YAML formats.
 - **A saved table and its columns are protected from destructive edits.** Removing the table (or changing its identifier), removing a column (or changing its identifier), changing a saved column's type, and reordering, renaming or removing a saved option — each of these would silently orphan or re-label answers already stored, so all four are now refused, in `--dry-run` as much as in a real apply. Renaming a table or a column is still fine — only the identifier is frozen — and so is adding a new column or appending new options.
 - **`apply` warns when a new table won't render on mobile yet.** It works on web today; mobile support is coming in a later app release.
 - **`--allow-unverified-company` on `login`** lets you continue when the environment can't confirm which company a token belongs to — see the company-verification fix below.
+
+  ```bash
+  cotctl login --url web.cotalker.com --subdomain acme --allow-unverified-company
+  ```
+
 - **`-y, --yes` on `login`** overwrites an existing profile without asking, and running `login` without a terminal now fails fast instead of hanging.
+
+  ```bash
+  cotctl login --url web.cotalker.com --subdomain acme --yes
+  ```
+
 - **`apply` reports the PropertyType schema fields it preserved**, instead of merging them back silently:
 
   ```
@@ -62,9 +85,10 @@ The default still applies when **creating** one. On update, a YAML that omits `p
 
   and `--dry-run` shows the same information before anything is sent. Deleting a schema field through YAML still isn't supported — use `isActive: false` to retire one.
 
+- **These release notes are now generated automatically.** Every `cotctl` release opens a draft pull request against this page with the new section already drafted; it is reviewed and curated before it merges, so what you read here has been through a human pass.
+
 ### Changed
 
-- **A `table` question written in the simplified format is now validated exactly like the raw format.** The simplified schema previously skipped several checks the raw format always enforced — allowed column types, no nested tables, the column count and row limits, the column identifier charset, required column headers, and the per-column-type requirements. A survey YAML with a `table` question that passed `validate` before may now be refused if it relied on one of these gaps — the payloads being refused were already failing, or silently misbehaving, on the server.
 - **`cotctl login --url` and `--api-url` now accept a host with no scheme.** `--url web.cotalker.com` resolves to `https://web.cotalker.com`, and the command prints the URL it resolved. An explicit `http://` is honored, for local and on-premise environments without TLS.
 
 ### Fixed
