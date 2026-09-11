@@ -26,7 +26,7 @@ npm install -g @cotctl/cli@latest
 
 </div>
 
-{/* releases:start — the cotctl release job inserts each new release right below this line. Newest first. */}
+<!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
 
 ## 0.12.0 — 2026-09-11
 
