@@ -55,7 +55,37 @@ pb:                                # runs when the window expires
 | `end` | Yes | The closing condition (same shape as `start`) |
 | `data` | Yes | The time window (see below) |
 | `pb` | Yes | The automation that fires on expiry — same shape as bots in [workflows](./workflows.md) |
+| `pb.version` | No | The ParametrizedBot engine version. **Read the section below before leaving it out** |
 | `description` | No | Accepted, but **not updatable** — see the immutability note |
+
+## `pb.version`: pin it, especially on an SLA you did not create
+
+An SLA's automation runs on a ParametrizedBot **engine version**, declared as `pb.version`. It decides one thing that matters a great deal: whether COTLang expressions in a stage's `data` — `$VALUE#...`, `$INPUT#...` — are resolved at all.
+
+```yaml
+pb:
+  version: "v3"          # pin it
+  start: send_alert
+  stages:
+    - key: send_alert
+      name: PBSendMessage
+      data:
+        text: "Overdue since $VALUE#task.startDate"
+```
+
+**On create**, `cotctl` defaults `pb.version` to `v3` when you omit it. **On update, it leaves the server's value alone.** A YAML that omits the key — or carries it as `null` or an empty string — does not change the engine the SLA is already running on.
+
+<div className="alert alert--warning">
+
+**Changed in 0.11.0, and it is easy to miss because nothing fails.** `slas apply` used to force `v3` on every update, which quietly normalised SLAs created outside `cotctl` onto the modern engine. It no longer does.
+
+**Who this affects:** anyone who relied on an apply to upgrade SLAs that were created in the webclient or by an older tool. Those SLAs stay on whatever engine they have — commonly V2.
+
+**Why it matters:** under V2, a COTLang expression in a stage's `data` is **not resolved**, and nothing reports an error. The bot fires, the message goes out, and the placeholder is what the recipient reads.
+
+**What to do:** write `version: "v3"` explicitly in the `pb` block. An explicit value was never overwritten by `apply`, on create or on update, and still is not.
+
+</div>
 
 ## The time window: `data`
 

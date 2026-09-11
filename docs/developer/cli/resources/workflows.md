@@ -101,6 +101,54 @@ Each state corresponds to a [Property](./properties.md). Its `type` is one of `n
 
 State machines also support a `requiredSurvey` (a StartForm that gates task creation), and states support `subtask` and `surveyTriggers` slots — all of which can carry automation **bots**. Those slots have preserve/replace/delete rules you must understand before editing a live workflow; the [Merge semantics](./workflows/merge-semantics.md) page covers them.
 
+### Card labels, task extensions and the default tab
+
+**New in 0.12.0.** Three state-machine settings that could only be configured from the webclient are now declarable from YAML. Before this release `cotctl` could not see any of them — and worse, **every `workflows apply` silently erased the first two**, so an apply meant to rename a transition also wiped configuration somebody had set in the UI. Both halves are fixed: they are preserved when your YAML omits them, and declarable when it does not.
+
+```yaml
+stateMachines:
+  - code: sm_po_main
+    cardLabels:
+      status1: pt_po_priority
+      status3: pt_po_supplier
+    allowedExtensions:
+      - pt_po_photo
+      - pt_po_signature
+    defaultSelectedTaskTab: task
+```
+
+**`cardLabels`** — which PropertyType values a task card shows. The map takes a slot (`status1` through `status5`) to a PropertyType **code**, so declaring a slot is what activates it. Slots may be sparse, and the card renders them in ascending slot order, which the YAML cannot change. An unknown slot key such as `status6` is a validation error, not a key that gets quietly dropped.
+
+**`allowedExtensions`** — the PropertyTypes a task may carry as an extension, by code. The list is replaced wholesale rather than merged, so an entry you leave out stops being an accepted extension.
+
+**`defaultSelectedTaskTab`** — the tab a task opens on. One of `notes`, `channel`, `task`, `documents`, or `null` to clear it. **There is no `detail` tab**; it has been reported as one, and that value is rejected rather than sent.
+
+#### Omitting a key is not the same as emptying it
+
+This is the distinction to get right, and it is the same one [Merge semantics](./workflows/merge-semantics.md) draws for the rest of the document:
+
+| You write | What happens |
+|---|---|
+| The key is **absent** | The server's value is preserved. Nothing changes |
+| `cardLabels: {}` | **Every** label slot is deactivated |
+| A `cardLabels` map with some slots | The slots you name are activated; every slot you omit is deactivated |
+| `allowedExtensions: []` | **Every** accepted extension is removed |
+| `defaultSelectedTaskTab: null` | The setting is cleared |
+
+A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose. Use the entity-scoped `cotctl workflows apply --dry-run` to see it — the unified `apply` does not render that block.
+
+#### What `validate --dir` checks, and what `export` warns about
+
+Every `cardLabels` slot and every `allowedExtensions` entry is resolved against the PropertyTypes declared in the directory (check `X3`), so a typo is caught offline rather than becoming a backend error.
+
+A code that resolves to nothing **aborts the whole workflow apply** with `PropertyType "<code>" not found`. On the way out, `workflows export` warns on stderr when it cannot resolve a stored id back to a code and emits the raw id — re-applying that YAML would abort, naming a PropertyType nobody wrote. The usual cause is a slot left pointing at a PropertyType that was deleted, deactivated, or is invisible to the profile doing the export.
+
+<div className="alert alert--info">
+
+**`workflows export` output changed shape in 0.12.0.** `cardLabels` and `allowedExtensions` are now emitted when they are configured. A workflow that uses neither exports exactly as before, but if you keep exports under version control, expect the two keys to appear in your next diff.
+
+</div>
+
 ### SM-only mode
 
 If you omit `nameDisplay`, apply runs in **SM-only mode**: it touches only the state machines and states, leaving the workflow's display settings and permissions untouched. This is exactly what you want when adding a second state machine to a workflow that already exists, without resetting anything.
@@ -141,7 +189,9 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 
 ## A dependency note
 
-A transition's `requiredSurvey` references a survey by code. Under `apply --dir`, workflows are applied *before* surveys, so a transition's survey must already exist — apply surveys first when running them separately:
+A transition's `requiredSurvey` references a survey by code, and the backend refuses to create the state machine if that survey does not exist yet.
+
+**Under `apply --dir` this is handled for you:** surveys are applied *before* workflows, so the reference resolves by construction. It matters when you run the two commands **separately** — then the order is yours to get right:
 
 ```bash
 cotctl surveys apply -f surveys.yaml -c acme

@@ -105,6 +105,21 @@ There are exactly eight types:
 
 **Omitting a node never deletes it.** When you apply a type, any node that exists on the server but isn't in your YAML is **preserved** — merged back into the update. So a partial YAML can't accidentally drop fields. To retire a node, include it explicitly with `isActive: false`; there's no way to permanently delete a schema node through YAML.
 
+**Omitting the whole section and writing `schemaNodes: []` are different**, and since 0.12.0 `cotctl` tells them apart in what it reports. Nothing is deleted either way — the distinction is whether you *asked*:
+
+| Your YAML | What `cotctl` reports |
+|---|---|
+| No `schemaNodes` key at all — a partial file that only touches `display` or `isActive` | `kept N schemaNodes the YAML does not declare` · `(no deletion was requested)` |
+| `schemaNodes` present, with some nodes left out (including `schemaNodes: []`) | `preserved N schemaNodes not in YAML` · `(will NOT be deleted)` |
+
+Before 0.12.0 both cases produced the second message, so a partial YAML that never mentioned the section was told a deletion had been refused — a deletion nobody had asked for.
+
+<div className="alert alert--info">
+
+**`schemaNodes` has no default.** Earlier versions of this page and of the bundled assistant guidance listed the default as `[]`, which implied the two rows above were equivalent. They are not, and that row is what led people to write the YAML that triggered the confusing message.
+
+</div>
+
 </div>
 
 ## Visible vs. hidden types

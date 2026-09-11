@@ -72,7 +72,7 @@ Two export formats are available:
 | `--format` | Description |
 |---|---|
 | `simplified` (default) | Human-readable, with a clean `questions[]` array — what you want for version control |
-| `raw` | The raw API representation |
+| `raw` | The raw API representation — **and the supported escape hatch for a survey the simplified format cannot express** |
 
 ```bash
 # Default simplified YAML, printed to stdout
@@ -81,6 +81,20 @@ cotctl surveys export order_request -c acme
 # Raw format, written to a file
 cotctl surveys export order_request -c acme --format raw -o ./order_request_raw.yaml
 ```
+
+<div className="alert alert--info">
+
+**`--format raw` is not just for debugging.** The simplified format is a model of a survey, and an older or hand-built survey does not always fit it. When it does not, `export` refuses and **exits `2`**, naming the question that cannot be expressed and pointing you here. `--format raw` exports that survey verbatim and re-applies unchanged, so it is the answer, not a workaround.
+
+A script wrapping `surveys export` can branch on exit `2` and retry with `--format raw` without reading the message — it has exactly one meaning in this command. See [CI/CD](../ci-cd.md#exit-codes). **In 0.12.0 this refusal changed from exit `1` to exit `2`.**
+
+</div>
+
+<div className="alert alert--warning">
+
+**A simplified export can also succeed and leave something out**, which is the worse case: the YAML looks fine, gets committed, and the next `apply` is what removes the missing questions. Since 0.12.0 `cotctl` warns on stderr whenever it drops content — an unexpected chat bubble, a legacy bubble packing several questions into one, or a standalone text question absorbed as another question's label. **Read stderr on an export you are about to commit.** `stdout` stays clean, so piping and `-o` are unaffected.
+
+</div>
 
 ### Keeping scripts out of YAML
 
