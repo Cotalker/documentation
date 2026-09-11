@@ -23,17 +23,28 @@ There are two ways to run it, depending on whether you're deploying one file or 
 
 ## How apply decides what to do
 
-`apply` reads the `kind:` field at the top of your YAML and routes to the right handler. Seven kinds are supported:
+`apply` reads the `kind:` field at the top of your YAML and routes to the right handler. **Twelve** kinds are supported, applied in this order when you point it at a directory:
 
-| `kind:` | What it manages |
-|---|---|
-| `Survey` | Forms |
-| `AccessRole` | Permissions |
-| `PropertyType` | Data model schemas |
-| `Property` | Data model instances |
-| `JobTitle` | Org positions (Cargos) |
-| `Workflow` | Processes and state machines |
-| `User` | People |
+| `kind:` | What it manages | `validate` knows it |
+|---|---|:--:|
+| `AccessRole` | Permissions | ✅ |
+| `PropertyType` | Data model schemas | ✅ |
+| `Property` | Data model instances | ✅ |
+| `JobTitle` | Org positions (Cargos) | ✅ |
+| `Survey` | Forms | ✅ |
+| `Workflow` | Processes and state machines | ✅ |
+| `Routine` | Reusable script routines | ❌ |
+| `Sla` | Service-level agreements | ❌ |
+| `Schedule` | Scheduled runs | ❌ |
+| `User` | People | ✅ |
+| `Bot` | Bots | ❌ |
+| `Webhook` | Event subscriptions | ❌ |
+
+<div className="alert alert--warning">
+
+**The last column is not decoration.** `cotctl validate` recognises only the seven marked ✅, so a directory holding a `Routine`, `Sla`, `Schedule`, `Bot` or `Webhook` file **fails `validate --dir` with `unrecognized kind`** — at the step before the one that would have applied it without complaint. Until the gap closes, keep those five in their own directory or let the validation step tolerate them. See [validate](./validate.md).
+
+</div>
 
 If `kind:` is missing or unrecognized, `apply` stops and lists the valid options (plus the entity-scoped form for each, like `cotctl roles apply`). It never guesses.
 
@@ -52,7 +63,7 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | Option | Applies to | Description |
 |---|---|---|
 | `-f, --file <path>` | all | **(required)** Path to the YAML file |
-| `-c, --company <profile>` | all | **(required)** Profile to use |
+| `-c, --company <profile>` | all | **(required)**, unless an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) supplies it. Profile to use |
 | `--dry-run` | all | Validate and show what *would* be sent, without applying |
 | `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) |
 | `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind |
@@ -61,13 +72,16 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `--notify-email` | User only | Send the welcome email on create (incompatible with a `password` in the YAML) |
 | `--lax-code` | JobTitle only | On *update* only, downgrade the code-format check to a warning when the existing record's code is already non-conforming |
 | `--rollback` | Workflow only | On a mid-apply error, deactivate the resources created during the partial apply |
-| `--legacy-replace-workflows` | Workflow only | 0.7.x escape hatch that restores pre-0.7.0 destructive replace semantics. Prints a stderr warning; slated for removal in 0.8.0 |
+| `-q, --quiet` | all | Suppress the progress lines. Errors and destructive findings still surface |
+| `--legacy-replace-workflows` | Workflow only | Escape hatch that restores pre-0.7.0 destructive replace semantics. Prints a warning to stderr. **Deprecated, with no removal version announced** — earlier releases promised 0.8.0, which never happened |
 
 The `--skip-*` flags are Survey-only by design: passing them with any other kind (or a directory containing non-Survey files) is a hard error, not a silent no-op.
 
 <div className="alert alert--secondary">
 
-**Some flags live on the entity-scoped applies, not here.** `--quiet`, `--diff`, `--json` and `--fail-on-destructive` are **not** options of the unified `cotctl apply`. They exist only on `cotctl surveys apply`, `cotctl properties apply` and `cotctl workflows apply` — the entity-scoped forms built for CI. Reach for those when you need machine-readable output or a destructive-change gate; see [CI/CD](../ci-cd.md).
+**Some flags live on the entity-scoped applies, not here.** `--diff`, `--json` and `--fail-on-destructive` are **not** options of the unified `cotctl apply`. They exist only on `cotctl surveys apply`, `cotctl properties apply` and `cotctl workflows apply` — the entity-scoped forms built for CI. Reach for those when you need machine-readable output or a destructive-change gate; see [CI/CD](../ci-cd.md).
+
+`--quiet` **was** on that list until 0.12.0 and now exists here too, so a directory apply can be silenced. It mutes progress lines only: errors and destructive findings are never suppressed by it, on any kind.
 
 </div>
 
@@ -125,6 +139,29 @@ Two things are immutable once created: a survey's `code`, and a question's `iden
 
 The entity-scoped applies (`surveys apply`, `properties apply`, `workflows apply`) render a **per-field diff** on top of this, and mark any **destructive** change — a removed question, a dropped state, a deactivation — so you can catch it before it lands. In CI you can turn that signal into a hard gate with `--fail-on-destructive`, which exits `2` when a dry-run finds a destructive change. Those richer diff and gating flags are documented under [CI/CD](../ci-cd.md); the unified `apply` shown here keeps the plain preview.
 
+<div className="alert alert--warning">
+
+**The unified `apply` never prints the destructive-findings block — read this before you build a pipeline on it.**
+
+The `⚠ DANGER` / `⚠ WARNING` block is rendered by the shared dry-run formatter, which `apply` does not use. It computes the findings and discards them, and it declares no `--fail-on-destructive` either. For `Survey`, `Workflow` and `Property` that block is the **only** place those findings surface, so:
+
+> `cotctl apply --dir --dry-run` is the quietest preview available — silent about exactly the changes that cannot be undone.
+
+This is the opposite of what most people assume, because `apply --dir` is the form the documentation otherwise recommends. **Preview a sensitive kind with its entity-scoped command**, which does render the block:
+
+```bash
+# Preview that actually flags destructive changes
+cotctl surveys apply -f survey.yaml -c acme --dry-run
+cotctl workflows apply -f workflow.yaml -c acme --dry-run
+cotctl properties apply -f property.yaml -c acme --dry-run
+```
+
+`Webhook` is the one exception: its applier also mirrors each finding into the warning channel, which `apply` does print — so a `context` clear is announced on every path.
+
+This is a known gap in `cotctl`, named here rather than closed.
+
+</div>
+
 ## Workflow apply: merge semantics
 
 Since 0.7.0, applying a `Workflow` is a **merge**, not a wholesale replace. `cotctl` fetches the current workflow, merges your YAML into it, and writes the result back (a GET-merge-PUT). The practical consequences:
@@ -168,7 +205,7 @@ Resources depend on each other: a workflow references roles and property types, 
 | Option | Description |
 |---|---|
 | `--dir <path>` | **(required)** Folder of YAML files |
-| `-c, --company <profile>` | **(required)** Profile to use |
+| `-c, --company <profile>` | **(required)**, unless an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) supplies it |
 | `--dry-run` | Preview every payload without applying |
 | `-y, --yes` | Skip all confirmation prompts |
 | `--continue-on-error` | Keep going if one entity fails (default: stop on first error) |

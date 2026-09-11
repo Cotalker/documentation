@@ -251,6 +251,34 @@ Still editable on a saved column: `label`, `help` and `min`/`max`. Adding a **ne
 
 </div>
 
+<div className="alert alert--warning">
+
+**A column cannot carry a conditional display — rejected since 0.12.0.** `conditionalDisplay` (and `command`, its raw-format spelling) used to validate fine on a column, and then do nothing: the client always renders every cell of a table, so the condition was never evaluated. A YAML that applies today stops applying.
+
+**Move the condition up to the `table` question itself**, which is the level that is actually evaluated:
+
+```yaml
+# ❌ rejected — a column is always rendered
+- type: table
+  identifier: re_expenses
+  columns:
+    - type: textnumber
+      identifier: amount
+      conditionalDisplay: ...
+
+# ✅ the whole table appears or does not
+- type: table
+  identifier: re_expenses
+  conditionalDisplay: ...
+  columns:
+    - type: textnumber
+      identifier: amount
+```
+
+Conditional display on a top-level question is unchanged. `surveys export` also stopped emitting either key inside a column, so an export produced by 0.12.0 re-applies cleanly where an older one would now be refused — **re-export before re-applying an old file**.
+
+</div>
+
 <div className="alert alert--primary">
 
 **Not visible on mobile yet.** A table renders on web today; mobile support arrives with the next mobile release. `apply` prints a warning when it creates one.

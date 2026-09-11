@@ -92,6 +92,30 @@ cotctl schedules logs sched_daily_digest --limit 50
 
 `apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `-q/--quiet`. `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …).
 
+### Reading a failed run
+
+**Add `-v, --verbose`, new in 0.12.0.** Without it a failed stage prints its date and `executed` and nothing else, while the backend's error text sits unread in the response. `-v` prints the full stage output alongside the error:
+
+```bash
+cotctl schedules logs sched_daily_digest -c acme -v
+```
+
+The error line now also appears without `-v` whenever there is one; `-v` is what gets you the whole `output` payload.
+
+<div className="alert alert--warning">
+
+**`--op failed` cannot find a stage that failed inside the bot.** The scheduler marks the *run* as failed only when the run itself fails. A schedule whose PBScript throws every night still records its runs as `executed`, so a health check built on `--op failed` reports green through a schedule that has not worked in weeks.
+
+Until that changes, read the runs rather than filtering them: `cotctl schedules logs <code> -c <profile> -v` and look for the error text, or consume `--json` and filter on the error field yourself. The gap is in the backend, not in `cotctl`.
+
+</div>
+
+<div className="alert alert--info">
+
+**Two more `list` behaviours that do not follow from the flag names.** `--has-cron` tests for the *presence* of a `cron` field, not its value. And `-l, --limit` bounds what the backend returns, so the active filter runs **afterwards**, on your machine — which means a listing can legitimately come back shorter than the limit you asked for.
+
+</div>
+
 ## Activation is a separate operation
 
 <div className="alert alert--primary">

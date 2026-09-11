@@ -36,7 +36,15 @@ If something's wrong, it tells you what and where:
   - code: code must start with a lowercase letter and contain only lowercase letters, numbers, and underscores
 ```
 
-File mode isn't survey-only. It reads the `kind` field and runs the matching schema, so it validates any of the seven kinds `apply` supports — `Survey`, `AccessRole`, `PropertyType`, `Property`, `JobTitle`, `Workflow`, `User`. (A file with no `kind` is treated as a Survey, for backward compatibility.)
+File mode isn't survey-only. It reads the `kind` field and runs the matching schema for **seven** kinds — `Survey`, `AccessRole`, `PropertyType`, `Property`, `JobTitle`, `Workflow`, `User`. (A file with no `kind` is treated as a Survey, for backward compatibility.)
+
+<div className="alert alert--warning">
+
+**`validate` recognises seven kinds; `apply` applies twelve.** The five `apply` handles that `validate` does not are `Routine`, `Sla`, `Schedule`, `Bot` and `Webhook`. A file of one of those kinds is reported as an **unrecognized kind** and fails the run — so the natural pipeline of `validate --dir` followed by `apply --dir` **stops at the validation step** on a directory that `apply` would have deployed without complaint.
+
+Until the gap closes, either keep those five kinds in a directory of their own, or let the validation step tolerate them. This is a gap in `cotctl`, not a problem with your files.
+
+</div>
 
 A single file can hold **several documents** separated by `---`. `validate` checks each one and **accumulates** the errors — it doesn't stop at the first bad document — then reports a per-kind tally like `2 Survey documents, 1 User document validated successfully`, so you can fix everything in one pass.
 
@@ -54,6 +62,8 @@ Non-Survey kinds get the structural (Zod) layer only. The semantic and remote la
 cotctl validate -f my-survey.yaml --remote -c acme
 ```
 
+**Since 0.12.0 the semantic layer also runs in directory mode**, which it did not before. See the warning under *Directory mode* below: a folder that passed clean can start failing, and the failure was always there.
+
 ## Directory mode — a whole folder, offline
 
 This is the one you'll use most when working with scaffolded workflows. It validates every YAML file in a folder **and** checks that they reference each other correctly — all offline. Run it right before `apply --dir`:
@@ -69,6 +79,7 @@ It runs two families of checks. **Schema checks**, per file:
 | S1 | File parses as valid YAML |
 | S2 | `kind` is present and recognized |
 | S3 | Document validates against the schema for its `kind` |
+| S4 | **New in 0.12.0.** A survey's semantic rules — repeated identifiers, reserved identifiers, a `dependsOn` pointing at an identifier that does not exist. FAIL for errors, WARN for warnings |
 
 And **cross-reference checks**, across files — this is what catches a property pointing at a property type that doesn't exist:
 
@@ -76,10 +87,23 @@ And **cross-reference checks**, across files — this is what catches a property
 |---|---|---|
 | X1 | warn | Permission strings (`name:action`) are defined as AccessRoles |
 | X2 | fail | `Property.propertyType` references an existing PropertyType |
-| X3 | fail | Workflow state machine `propertyType` references resolve |
+| X3 | fail | Workflow state machine PropertyType references resolve — `propertyType`, `asset.propertyType`, and since 0.12.0 each `cardLabels` slot and every entry of `allowedExtensions` |
 | X4 | fail | Workflow `states[].property` references an existing Property |
 | X5 | fail | The state machine `initialState` references an existing Property |
 | X6 | warn | Workflow permissions are defined as AccessRoles |
+
+<div className="alert alert--warning">
+
+**Changed in 0.12.0 — a directory that exits `0` today can start exiting `1`.** Two classes of problem now surface here that used to wait until `apply`:
+
+- **A survey's semantic errors** (check `S4` above). Those rules used to live inside the apply, so `validate --dir` passed a survey that the deploy would then refuse.
+- **A `file://` reference that does not resolve**, in any kind — not just surveys. A PropertyType carrying `editable.src: "file://missing.js"` passed as a plain string before.
+
+**Nothing new is wrong with your files.** Run it once before you upgrade a CI gate and fix what it reports; the same failure was already waiting on the next `apply`.
+
+Related, in the same release: `validate --dir` now resolves `file://` references **before** validating a survey's JavaScript, so an external `exec` hook is no longer reported as a syntax error in the literal string `file://...`.
+
+</div>
 
 A clean run ends with a clear verdict:
 
@@ -113,6 +137,12 @@ Results: 13 PASS, 1 WARN, 0 FAIL — production ready
 ```
 
 Checks are graded **WARN** (a recommendation) or **FAIL** (a real problem). The command exits `0` when everything passes or only warns, and `1` when at least one check fails — which is exactly what you want as a gate in a pipeline.
+
+<div className="alert alert--info">
+
+**`validate` exits `1` on a failure, not `2`.** Several other commands reserve `2` for a validation refusal, so this one surprises people wiring up their first gate. It holds for all three modes. [CI/CD](../ci-cd.md#exit-codes) has the full map.
+
+</div>
 
 <div className="alert alert--info">
 

@@ -395,6 +395,7 @@ module.exports = {
             'developer/cli/resources/roles',
             'developer/cli/resources/users',
             'developer/cli/resources/jobtitles',
+            'developer/cli/resources/webhooks',
           ],
         },
         {

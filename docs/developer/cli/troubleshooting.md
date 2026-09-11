@@ -19,8 +19,9 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 
 ### `--company/-c is required`
 
-- **Cause:** the command needs a profile and you didn't pass one. There's no default, by design.
+- **Cause:** the command needs to know which company to act on and you didn't say. There's no default profile, by design.
 - **Fix:** add `-c <profile>`. Run `cotctl profile list` to see the available names.
+- **In a pipeline:** export an [environment credential](./authentication.md#running-without-a-profile-the-environment-credential) instead — `COTCTL_TOKEN` plus `COTCTL_API_URL` — and `-c` becomes unnecessary. Since 0.12.0 the error also tells you **which of the two variables is missing** if you exported only one.
 
 ### `Profile '<name>' not found`
 
