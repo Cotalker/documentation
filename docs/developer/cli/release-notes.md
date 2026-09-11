@@ -28,78 +28,50 @@ npm install -g @cotctl/cli@latest
 
 {/* releases:start — the cotctl release job inserts each new release right below this line. Newest first. */}
 
-{/* DRAFT - copied verbatim from the cotctl CHANGELOG for release-0.12.0.
-    Before merging, rewrite it for implementation partners: give every
-    breaking change a "What to do", drop the internal detail (file paths,
-    PR numbers, contributor-only notes) and translate anything left in
-    Spanish. Then delete this comment. */}
-
 ## 0.12.0 — 2026-09-11
+
+A consolidation release. The headline is that **`cotctl` can now authenticate from the environment**, so a pipeline no longer has to hand-write a profile file. Alongside it, two state-machine settings that could only be configured from the webclient became declarable from YAML — and, in the same pass, stopped being silently erased on every apply.
 
 ### ⚠ Breaking changes
 
-- **`surveys export` now exits `2`, not `1`, when the simplified transformer
-  refuses the survey.** This matches the documented contract every other input
-  failure follows (`0` ok, `1` runtime failure, `2` invalid input) and the
-  branch of `apply` it mirrors. A transport or authentication failure still
-  exits `1`. A pipeline that treats any non-zero exit as a failure is
-  unaffected; one that tests for `== 1` specifically needs updating.
+**`validate --dir` now fails on two things it used to let through.**
 
-- **`workflows apply --dry-run` reports up to two more `preserved` fields per
-  state machine.** Routing `dynamicPropertyTypes` and `allowedExtensions`
-  through the same traced `pickFrom` as their neighbours — the fix above — is
-  what stops them being wiped, and a traced preserve is also a *reported* one.
-  Nothing about the apply changed, but the headline `N preserved` count grows
-  by up to 2 per state machine, so a script that parses that number (or diffs
-  the dry-run output verbatim) sees a change with no change behind it.
+A directory that exits `0` today can start exiting `1`, for either of two reasons. The first is **a survey's semantic errors** — repeated identifiers, a reserved identifier, a `dependsOn` pointing at an identifier that does not exist. Those rules ran only at apply time until now. The second is **a `file://` reference that does not resolve**, in any kind — a PropertyType carrying `editable.src: "file://missing.js"` passed as a plain string before and now fails the run.
 
-- **`conditionalDisplay` and `command` inside a `+table` column are now
-  rejected.** Both spellings are refused at parse time, so a YAML that validates
-  and applies today stops doing either. The refusal is a schema failure, so it
-  exits with each command's validation-failure code — `1` for `validate`,
-  `apply` and `surveys apply` alike. It is **not** the `2` above, which belongs
-  to `surveys export` refusing a survey in the transformer. Migration: move the
-  condition up to the `table` question itself, which is the level that actually
-  gets evaluated. Conditional display on a top-level question is unchanged.
+- **Who this affects:** anyone running `validate --dir` as a CI gate over a directory of YAML.
+- **What to do:** run it once before you upgrade the pipeline, and fix what it reports. Nothing new is wrong with those files — the same failure was already waiting on the next `apply`.
 
-- **`validate --dir` now fails on two things it used to let through.** A
-  directory that exits `0` today can start exiting `1`, for either of two
-  reasons.
+**`conditionalDisplay` and `command` inside a `+table` column are now rejected.**
 
-  The first is **a survey's semantic errors**. Nothing new is wrong with those
-  files — the error was already there, it just did not surface until the survey
-  was applied.
+Neither key was ever evaluated at column level: the client always renders every cell of a table. A YAML that validates and applies today stops doing both.
 
-  The second is **a `file://` reference that does not resolve, in any kind**.
-  This one is not limited to surveys: a PropertyType carrying
-  `editable.src: "file://missing.js"` passed as a valid string in `0.11.0` and
-  now fails the directory run. Any kind that accepts a `file://` reference is
-  checked the same way.
+- **Who this affects:** anyone whose survey YAMLs put a condition on a table *column*.
+- **What to do:** move the condition up to the `table` question itself, which is the level that is actually evaluated. Conditional display on a top-level question is unchanged.
 
-  Migration: fix what the validator now reports, or the same failure lands on
-  the next `apply`.
+**`surveys export` now exits `2`, not `1`, when the simplified format cannot represent the survey.**
 
-- **`surveys export` no longer emits `conditionalDisplay` or `command` inside a
-  column.** Neither key is evaluated at that level, so an export → edit → apply
-  round trip carried a field that did nothing.
+This matches the contract every other input failure follows — `0` ok, `1` runtime failure, `2` invalid input. A transport or authentication failure still exits `1`.
 
-  What they did on apply differed by key, and it is worth stating precisely.
-  `conditionalDisplay` was discarded. `command` was **not**: verified against
-  `release/0.11.0`, `mapQuestionToApi` spread the question without walking
-  `columns`, so a column's `command` did travel in the `PUT`. Because
-  `RawTransformer.toApiBody` replaces `body.chat` wholesale, dropping the key
-  from the export means a raw round trip now removes it from the backend rather
-  than rewriting it. The value is inert, so nothing observable changes — but the
-  removal is real, not a no-op.
+- **Who this affects:** only a pipeline that tests for `== 1` specifically. One that treats any non-zero exit as a failure is unaffected.
+- **What to do:** if you branch on the exit code, add `2`. And note this is a different `2` from the one above: a `+table` column refusal is a schema failure, which exits `1` from `validate`, `apply` and `surveys apply` alike.
 
-  A verbatim diff against an earlier export shows the difference.
+**`surveys export` no longer writes `conditionalDisplay` or `command` inside a column.**
+
+Since neither key does anything at that level, an export → edit → apply round trip was carrying a field with no effect.
+
+- **Who this affects:** anyone who diffs exports against a file produced by an earlier version.
+- **What to do:** expect the two keys to disappear from the next export. On the raw format this also removes an inert `command` value from the backend on the next apply, because a raw round trip replaces the question's content wholesale. Nothing observable changes, but the removal is real.
+
+**`workflows apply --dry-run` reports up to two more `preserved` fields per state machine.**
+
+Nothing about the apply changed. The two fields below stopped being wiped, and a preserved field is also a *reported* one, so the headline `N preserved` count grows.
+
+- **Who this affects:** only a script that parses that number or diffs the dry-run output verbatim.
+- **What to do:** re-baseline the expected output. There is no change in behaviour behind the new count.
 
 ### Added
 
-- **cotctl can now authenticate from the environment, for CI and any other
-  non-interactive run.** Export `COTCTL_TOKEN` (a cotctl ApiToken) and
-  `COTCTL_API_URL` (the API URL of the environment it belongs to), then drop
-  `-c/--company`:
+- **`cotctl` can authenticate from the environment, with no profile on disk.** Export an API token and the API URL of the environment it belongs to, then drop `-c/--company`:
 
   ```bash
   export COTCTL_TOKEN="$CI_COTCTL_TOKEN"
@@ -107,166 +79,28 @@ npm install -g @cotctl/cli@latest
   cotctl apply -f survey.yaml --yes
   ```
 
-  Until now a pipeline had to write `~/.cotctl/config.json` by hand, which meant
-  reproducing an internal file format — and the recipe `docs/` published for it
-  was missing the required `version` key, so it produced a config cotctl
-  rejected as corrupted.
+  Until now a pipeline had to write `~/.cotctl/config.json` by hand, reproducing an internal file format. The configuration is now built in memory and **nothing is written to disk**. The company is read from the token itself, so it cannot disagree with the credential, and one line goes to `stderr` naming where the credential came from.
 
-  The configuration is built in memory and **nothing is written to disk**. The
-  company is read from the token's own `company` claim, so it cannot disagree
-  with the token, and the expiry is read from the token's `exp`. One line goes
-  to `stderr` naming where the credential came from.
+  Four things worth knowing before you wire it up:
 
-- **`-c` still wins.** The variables are consulted only when `-c/--company` is
-  absent — previously an outright error — so no existing invocation changes
-  meaning when `COTCTL_TOKEN` happens to be exported.
+  - **`-c` still wins.** The variables are consulted only when `-c/--company` is absent, so no existing invocation changes meaning if `COTCTL_TOKEN` happens to be exported.
+  - **It fails hard when the token is rejected.** On a `401`, or once the token has expired, `cotctl` stops and names `COTCTL_TOKEN` — it does not fall back to a password prompt, and it never writes your token into a profile behind your back.
+  - **A browser session token is refused.** Only an API token is accepted, and the check costs no network call.
+  - **`COTCTL_COMPANY_ID` is optional and asserts which company the job expects.** A token belonging to another one stops the run before anything happens, naming both ids.
 
-- **An environment credential fails hard when it is rejected.** cotctl does not
-  re-authenticate from the environment: on a 401, or once the token's expiry has
-  passed, it stops with a message naming `COTCTL_TOKEN` instead of the password
-  prompt and the `cotctl login --url … --subdomain …` recipe a profile would get.
-  Writing `COTCTL_TOKEN` into a profile is not something cotctl will do behind
-  your back.
+- **`cotctl login --token` logs in with no terminal attached.** It takes a pre-generated API token as an argument instead of at a prompt, in three forms: the value itself, a file path (`--token @<path>`), or standard input (`--token -`).
 
-- **The credential is checked before it is used, and the checks cost no network
-  call.** A user session JWT copied out of the browser is refused instead of
-  being labelled an ApiToken (the backend signs a `type` claim; a legacy token
-  without one is still accepted). The optional `COTCTL_COMPANY_ID` asserts which
-  company the job expects, and a token belonging to another one stops the run
-  before anything happens, naming both ids — a validation refusal, so `apply`
-  exits `2`. Exporting only one half of the pair now
-  says which half is missing in **both** directions, instead of answering
-  `--company/-c is required` when only `COTCTL_API_URL` is set.
+  ```bash
+  echo "$CI_COTCTL_TOKEN" | cotctl login --token -
+  ```
 
-- **The startup line no longer reads as confirmation when it is not.** An
-  already-expired token is announced as `EXPIRED at …` in yellow rather than as
-  an expiry date in the past, and a `COTCTL_API_URL` written without a scheme
-  says so — the same notice `cotctl login` gives for `--api-url`.
+  **Prefer the indirect forms.** A bare value sits in the process arguments, where any process on the same host can read it. Neither indirect form can hang: `--token -` gives up after 10 seconds and stops reading at 8 KB, and `--token @<path>` warns — it does not fail — when the file is readable beyond its owner.
 
-- **An invalid `COTCTL_TOKEN` no longer leaks part of its value.** The error for
-  a value that is not a JWT interpolated `JSON.parse`'s own message, and Node
-  quotes the first characters of what it was given — decoded token material, in
-  a CI log. The failure is now classified from a fixed set of reasons that
-  cannot contain the input. Same fix covers `cotctl login --paste-token`.
+  **Do not name that CI variable `COTCTL_TOKEN`.** That name is reserved as an environment credential and exporting it changes the behaviour of every later command that omits `-c`.
 
-- **A clear of `context` is now announced before it happens.** A new
-  `webhook.context-clear` destructive-change rule fires whenever an apply would
-  remove a populated `context`, naming the slots being dropped and the
-  consequence (the webhook stops being scoped and starts firing for every event
-  of its trigger). Every path announces it, through whichever surface that path
-  has: the warning channel on `--dry-run`, the confirmation preview on an
-  interactive apply, and the warning channel again on an unattended apply (`-y`,
-  or `apply --dir`, which always skips the prompt). Exactly one of the three
-  fires per run, so there is no path on which the clear goes unannounced —
-  including under `-q`, which mutes only the progress lines. The unattended
-  emission now carries
-  the finding's severity (`warn` / `DANGER`), matching the confirmation preview,
-  so a future `danger` rule cannot be degraded to a warning on the scripted
-  path; and it no longer prints twice on the interactive path.
+  A CI run also needs `--yes`, and on most environments `--allow-unverified-company`: if the token's user cannot read the company record the check cannot conclude, and `--yes` deliberately does not answer that one.
 
-- **`cotctl login --token <jwt|@file|->` logs in with no terminal attached.** It
-  takes the same pre-generated ApiToken as `--paste-token`, supplied as an
-  argument instead of typed at a prompt, so a script or a CI job can authenticate
-  without a TTY. The token can be given in three forms: the value itself
-  (`--token <jwt>`), the path of a file (`--token @<path>`), or standard input
-  (`--token -`).
-
-  The two indirect forms exist because a bare value sits in `argv`, where any
-  process on the same host can read it out of `ps` — GitHub Actions masks
-  `secrets` in the job log, and that is all it masks. The recommended shape for
-  CI is `echo "$CI_COTCTL_TOKEN" | cotctl login --token -`. Do **not** name that
-  variable `COTCTL_TOKEN`: cotctl reserves it as an environment credential
-  source, so exporting it changes the behaviour of every later command that omits
-  `-c`.
-
-  Neither indirect form can hang or run away: `--token -` gives up after 10
-  seconds if the pipe stays open without delivering a token, and stops reading at
-  8 KB, so a pipeline never burns its global timeout on a stalled stdin and a
-  large file is never buffered whole. `--token @<path>` warns — it does not fail
-  — when the file is readable beyond its owner, mirroring the check the profile
-  store already runs on `~/.cotctl/config.json`; a secret mounted with the
-  cluster's own mode still works.
-
-  `--token` and `--paste-token` supply the same thing, so passing both is an
-  error and the command exits 1 before touching the network. `--machine-id` is
-  rejected the same way: it labels the machine that *mints* a token, and
-  `--token` supplies one minted elsewhere. `--no-browser` is accepted but ignored,
-  with a warning. A malformed `@<path>` or a value that is really a file path
-  (missing its `@`) now fails on the local problem, before the API-URL discovery
-  round-trip rather than after it.
-
-  A CI run also needs `--yes` (the profile-overwrite guard fails without a
-  terminal instead of waiting on an answer that cannot arrive) and, on most
-  environments, `--allow-unverified-company`: if the token's user cannot read
-  `GET /api/companies/:id` the company check cannot conclude, and `--yes`
-  deliberately does not answer that one. The full recipe is in
-  `docs/commands/login.md`.
-
-- **A question declaring `dependsOn`, `showWhen`, `resetOnHide` or
-  `resetIdentifiers` at its root now warns.** Those keys only take effect inside
-  `conditionalDisplay`; written one level up they were accepted, never sent, and
-  never mentioned. They still apply — this is a warning, not an error, and no
-  exit code changes. The warning covers the **simplified** format: in the raw
-  format the keys are not part of the question shape, so they are dropped at
-  parse time and nothing is emitted.
-
-- **A `preload` or `onDisplay` stage declaring `src` without `context` now
-  warns.** Those two hooks are not registered without it, so the stage applied
-  cleanly and then did nothing at runtime. The warning is scoped to them on
-  purpose: on every other stage `context` is recommended, not required, and
-  nothing warns. That is four more in the simplified format (`validate`,
-  `onPlay`, `postsave`, `onSubmitSuccess`) and seven in the raw one, which also
-  declares `filter`, `onChange` and `presave`.
-
-- **`apply` accepts `-q, --quiet`.** `surveys apply` already had it, but the
-  generic `apply` did not, so the warnings above could not be silenced on the
-  path that applies a whole directory.
-
-- **`schedules logs` accepts `-v, --verbose`**, which prints the full stage
-  output alongside the error.
-
-- **`schedules` has a command page**, including what `--op failed` does *not*
-  cover: a stage that errors inside the bot does not mark the run as failed, so
-  the filter cannot find it. That gap is in the backend, not in the CLI.
-
-- **Conditional display documents that several `showWhen` entries are ANDed.**
-  The embedded skill said so; the documentation did not, so anyone reading only
-  the docs wrote two equality checks expecting an OR. The `regex` workaround is
-  named alongside it.
-
-- **⚠ The `workflows export` output gains two fields.** A repository that keeps
-  its exports under version control will see them appear in the next diff.
-  Each is emitted only when it is actually configured, so a workflow that uses
-  neither exports exactly as before — but the shape of the document did change,
-  and that is worth knowing before the diff shows up in a review.
-
-- **`defaultSelectedTaskTab` — the tab a task opens on.** The field was
-  invisible to cotctl in both directions: a YAML that declared it had the key
-  stripped by the schema before the request was built, and the export never
-  emitted it, so a workflow configured from the webclient lost the setting the
-  moment anyone rebuilt its YAML from an export. It now round-trips.
-
-  The accepted values are the backend enum — `notes`, `channel`, `task`,
-  `documents` — plus `null`. **There is no `detail` tab**; the field was
-  reported with one, and the backend `IntegratedTaskTabName` has no such
-  member, so a `detail` value is rejected by the schema rather than sent.
-
-  It carries the three intents `requiredSurvey` already uses on a transition:
-  an omitted key preserves the server value, an explicit `null` clears it, and
-  a tab name sets it. On export `null` is omitted — it is the default every
-  workflow starts with, so emitting it would add a line to every export that
-  says nothing, and an absent key round-trips back to `null` anyway.
-
-- **`cardLabels` — the labels a task card shows.** This is the constructive
-  half of the fix above: card labels stopped being deleted, but there was still
-  no way to declare them, so a workflow could only acquire them through the
-  webclient.
-
-  The backend models five fixed slots (`status1`..`status5`) plus an `isActive`
-  list naming which are shown — a shape that is faithful but unpleasant to
-  write by hand. The YAML collapses both halves into one slot → PropertyType
-  **code** map, so declaring a slot is what activates it and `isActive` is
-  derived rather than typed:
+- **A state machine can now declare the labels its task cards show.** Until now `cardLabels` could only be configured from the webclient. The YAML takes a slot → PropertyType **code** map, so declaring a slot is what activates it:
 
   ```yaml
   stateMachines:
@@ -276,41 +110,9 @@ npm install -g @cotctl/cli@latest
         status3: pt_po_supplier
   ```
 
-  Slots may be sparse. The card renders them in ascending slot order
-  (`status1`..`status5`), fixed by the backend schema's key order and not
-  something the YAML can change — `isActive` is a derived set of which slots
-  are populated, not a sequence. `cardLabels: {}` deactivates every label; omitting the key preserves what the
-  webclient configured. A slot the map omits is deactivated but keeps the
-  PropertyType reference the server had stored — the backend replaces this
-  sub-object wholesale, so the undeclared slots travel on the request instead
-  of being destroyed. An unknown slot key (`status6`, `stat1`) is a validation
-  error, not a key Zod silently strips.
+  Slots may be sparse, and the card renders them in ascending slot order. **Omitting the key preserves whatever the webclient configured**; declaring the map deactivates every slot it leaves out, and `cardLabels: {}` deactivates all of them — `--dry-run` now says which labels the card stops showing. An unknown slot key is a validation error, and `validate --dir` resolves each slot against the PropertyTypes declared in the directory, so a typo is caught before the apply turns it into a `400`.
 
-  `validate --dir` now also resolves each `cardLabels` slot against the
-  PropertyTypes declared in the directory (check `X3`), so a typo is caught
-  before the apply turns it into a backend `400`.
-
-  Two more guards around the same field:
-
-  - `workflows export` warns on stderr when a card-label slot points at a
-    PropertyType it cannot resolve to a code. The id is emitted raw, and —
-    unlike `propertyType` / `asset.propertyType`, which really do pass an
-    ObjectId back through — re-applying that YAML aborts the **whole**
-    workflow with `PropertyType "<id>" not found`, naming a PropertyType
-    nobody wrote. The usual cause is a slot left pointing at a PropertyType
-    that was deleted, deactivated, or is invisible to the exporting profile.
-  - `--dry-run` gained the destructive-change rule
-    `state-machine.card-labels-deactivation` (severity `warning`): declaring
-    `cardLabels` deactivates every slot the map omits, and `cardLabels: {}`
-    deactivates all of them, so the run now says which labels the card stops
-    showing instead of leaving it to be inferred.
-
-- **The extensions a state machine's tasks accept can now be pinned from a
-  file.** The webclient was the only possible editor: `cotctl workflows export`
-  never emitted `allowedExtensions`, the schema did not model it, and the apply
-  sent back whatever the server already had. A state machine now declares the
-  PropertyTypes its tasks may carry as an extension the same way it declares its
-  card labels — by **code**, resolved to ids on apply:
+- **A state machine can now pin the extensions its tasks accept.** Same shape, same resolution by code:
 
   ```yaml
   stateMachines:
@@ -320,395 +122,53 @@ npm install -g @cotctl/cli@latest
         - pt_po_signature
   ```
 
-- **Omitting the key still preserves the server's list.** The previous release
-  stopped `workflows apply` wiping `allowedExtensions` on every update; for a
-  YAML that does not mention the field, that behaviour is unchanged. What
-  changes is that a YAML which does declare it now takes precedence.
+  **An absent key and an empty list are different instructions.** Omitting the key preserves the server's list; `allowedExtensions: []` declares an empty list and **removes every extension** the state machine accepted. The list is replaced wholesale rather than merged, so an omitted entry stops being an accepted extension, and `--dry-run` reports how many would be lost.
 
-- **An absent key and `allowedExtensions: []` are different instructions.** The
-  first asks for nothing and preserves; the second declares an empty list and
-  **removes every extension** the state machine accepted. The Zod field
-  deliberately carries no `.default([])`, which is what collapsed those same two
-  cases in `propertyTypeSchema.schemaNodes` and made the tool report a deletion
-  nobody had asked for.
+- **`defaultSelectedTaskTab` — the tab a task opens on — now round-trips.** The field was invisible to `cotctl` in both directions, so a workflow configured from the webclient lost the setting the moment anyone rebuilt its YAML from an export. Accepted values are `notes`, `channel`, `task`, `documents` and `null`. **There is no `detail` tab** — it has been reported as one, and a `detail` value is rejected rather than sent. An omitted key preserves the server value, an explicit `null` clears it.
 
-- **A shrinking list is reported as a destructive change.** `--dry-run` says
-  how many PropertyTypes the apply would lose, and `allowedExtensions: []`
-  against a populated list states it outright. The list is replaced wholesale
-  rather than merged, so an omitted entry stops being an accepted extension.
+- **Clearing a webhook's `context` is announced before it happens.** An apply that would remove a populated `context` now names the slots being dropped and the consequence: the webhook stops being scoped and starts firing for every event of its trigger. Every path announces it — the warning channel on `--dry-run`, the confirmation preview on an interactive apply, and the warning channel again on an unattended one (`-y`, or `apply --dir`). **Including under `-q`**, which mutes only progress lines.
 
-- **A code that does not resolve fails the apply, and `export` warns before
-  that happens.** A code matching no PropertyType aborts the whole workflow with
-  `PropertyType "<code>" not found`, exactly like a card-label slot;
-  `validate --dir` covers the offline half. On the way out, an id the export
-  cannot resolve to a code is emitted as-is and carries a `Warning:` line,
-  because re-applying that YAML would abort. An empty list is never exported: an
-  exported `[]` would read as *remove every extension*.
+- **Two configuration mistakes that used to apply cleanly and then do nothing now warn.** A question declaring `dependsOn`, `showWhen`, `resetOnHide` or `resetIdentifiers` at its root — those keys only take effect inside `conditionalDisplay` — and a `preload` or `onDisplay` stage declaring `src` without `context`, which is what registers the hook. Both are warnings, not errors: no exit code changes.
+
+- **`apply` accepts `-q, --quiet`.** `surveys apply` already had it, so until now the warnings above could not be silenced on the path that applies a whole directory.
+
+- **`schedules logs` accepts `-v, --verbose`**, which prints the full stage output alongside the error.
+
+- **⚠ `workflows export` output gains two fields.** `cardLabels` and `allowedExtensions` are emitted only when they are actually configured, so a workflow that uses neither exports exactly as before — but if you keep exports under version control, the shape of the document changed and it will show up in a review.
 
 ### Changed
 
-- **The preserved-elements section now goes to `stderr`.** `emitPreserved`
-  wrote to stdout while `emitDestructive` — the same kind of diagnostic — wrote
-  to stderr. Both go to stderr now: a diagnostic must not pollute the stream
-  someone redirects. No published command changes visibly: no surface that
-  produces preserved elements goes through this formatter today.
-- **The `preserved` key of the `--json` payload is renamed to
-  `preservedElements`.** `preserved` already existed in the same payload with a
-  different meaning (`diff[].kind === 'preserved'`, "the YAML omits the field
-  and the merge keeps the server's value"). Each entry also carries a `reason`
-  (`element-omitted` | `section-omitted`). The change breaks nobody today
-  because `--json` is not yet wired into the surfaces that produce the field;
-  later it would have.
-
-- **`webhooks apply -q` now mutes progress lines instead of warnings.** The flag
-  used to drop the warning channel entirely, which meant `webhooks apply -y -q`
-  — the canonical CI shape — could clear a webhook's `context` without emitting
-  a single line. `-q` now suppresses the per-webhook `Would CREATE` /
-  `Would UPDATE` / `Created` / `Updated` lines; errors and destructive findings
-  still surface, and so does the final summary on the run that produces one (a
-  clean, non-dry-run apply). Note that this is **quieter** than the same flag in
-  `properties` / `surveys` / `workflows`, where `-q` drops the `Would …` preview
-  lines only — their `Created` / `Updated` lines are gated on `--json`, not on
-  `-q`. Aligning the four is a change of contract and is not part of this
-  release. The flag, its short form and every exit
-  code are unchanged, but a script that parsed those progress lines under `-q`
-  was reading output that the help text never promised.
-
-No observable change in the CLI: this entry touches neither `src/` nor the prose
-that gets published. What it corrects are the guards that watch that prose.
-
-- **The repository root is computed once.** Fourteen specs derived it on their
-  own, under three different names (`ROOT`, `PROJECT_DIR`, `COTCTL_ROOT`) and in
-  two shapes; three of them replaced an absolute path to one developer's
-  machine. They now all import `REPO_ROOT` from `tests/helpers/specs.ts`. The
-  fourteenth ended in a slash and a `slice(REPO_ROOT.length)` silently depended
-  on it: that was replaced with `path.relative`, and a new assertion pins the
-  shape of that label, which until now lived only inside an error message and so
-  nobody read while the test passed.
-- **The published README now has the ghost-flag check.** A nonexistent flag
-  named in `npm/cotctl/README.md` was caught by nothing: the sweep in
-  `tests/docs/flags-table.guard.test.ts` covers the 150 pages of `docs/`, and
-  `npm/` is not inside it. The new check walks the whole page — not just the
-  table rows — against what Commander declares. Measured on the current tree:
-  **zero ghost flags**. The declared set includes `visibleOptions`, because
-  Commander creates `-h` / `--help` lazily and it does not appear in `options`;
-  without that, the guard would report the README's correct `--help` as a
-  ghost.
-- **The `ALSO` clause now requires the escape-hatch verb.** It recognised any
-  conjunction (", or --x"), so a list of flags inside a message that already
-  offered a way out was added to the escape set. It now demands `or with` /
-  `or using` / `or re-run with`. The measured set is unchanged — the same eight
-  flags — and two negative cases pin the difference, which the existing
-  assertions could not express.
-- **The embedded-examples guard goes from 2 pairs to 8, and declares the
-  remaining 9.** Of the 17 examples the binary embeds, 8 are identical to their
-  YAML in `examples/`, 6 have diverged and 3 have no file on disk. The 9 are
-  exempted with their reason written in the file itself. The count-based lock
-  (`toHaveLength(2)`) was replaced by the property that matters: every embedded
-  example is either guarded or exempt, so a new one cannot slip through.
-
-None of this changes what the CLI does; it is grouped here because it touches
-`src/`.
-
-- **The typecheck catches dead imports.** `tsconfig.json` turns on
-  `noUnusedLocals`, which was missing until now and was why an unused import
-  survived a commit: the repository has no ESLint, so nothing was looking. The
-  eleven the flag found were cleaned up.
-- **The batched PropertyType lookup lives in one place.** The dry-run and the
-  real apply repeated the same block; they now share a helper, which is also
-  where the fallback lookup described above lives. The difference between the
-  two paths is kept: the dry-run degrades to an empty map when the query fails,
-  the real apply does not swallow it.
-- **Four more warnings go through `warn()`.** `surveys export`, `properties
-  export` and the two in `mcp` wrote the `Warning: ` prefix by hand.
-- **`apply` silences the warning channel one single way under `--quiet`.** Two
-  call sites passed `undefined`, which lets the helper's own default take over
-  and leaks the warning despite the flag; all four now pass an empty function.
-
-### Removed
-
-- **`StateMachineResource.smToYaml` is gone.** It was an exporter running
-  parallel to `WorkflowResource.toYaml`, with the same shape and no importer
-  anywhere in `src/`: `workflows export` always went through `toYaml`. There is
-  no behaviour change, because no execution path reached it.
-- **What made it look alive was its coverage, not its use.** Twenty-three tests
-  called it, among them the five for `cardLabels export`. Those five were not
-  testing the exporter: both paths invoke the same pure helper
-  (`dynamicPropertyTypesToYaml`) with the same arguments, so what they measured
-  was the transformer through a wrapper.
-- **No test was deleted without first checking its assertion was already made
-  elsewhere.** Of the 23, six were redirected at `WorkflowResource.toYaml` — the
-  ones asserting something no other test covered about the live path — five were
-  rewritten against the transformer, and the remaining twelve were removed
-  because `toYaml` already covered them.
-- **`src/transformers/card-labels.ts` gets a spec of its own**
-  (`tests/transformers/card-labels.test.ts`). Its three functions were only
-  tested indirectly; they are now covered directly, including the invariants no
-  wrapper exposes, such as slot order in the output.
+- **`webhooks apply -q` now mutes progress lines instead of warnings.** The flag used to drop the warning channel entirely, which meant `webhooks apply -y -q` — the canonical CI shape — could clear a webhook's `context` without printing a single line. It now suppresses the per-webhook `Would CREATE` / `Would UPDATE` / `Created` / `Updated` lines; errors and destructive findings still surface. The flag, its short form and every exit code are unchanged, but a script that parsed those progress lines under `-q` was reading output the help text never promised.
 
 ### Fixed
 
-- **The e2e suite can now authenticate from `COTCTL_TOKEN`, and a run whose
-  credential never opened can be made to fail.** These two are one defect: a CI
-  runner has no `~/.cotctl/config.json`, so every gate closed, all 14 spec files
-  reported `skipped`, and the process exited `0` — indistinguishable from a run
-  in which every assertion passed.
+- **`workflows apply` was silently erasing two state-machine settings on every run.** A workflow's card labels and its list of allowed task extensions were sent as fixed empty values on every request, including updates — and since the backend replaces them wholesale, **each apply cleared whatever the webclient had configured**. It happened on workflows whose YAML mentions neither field, so an apply meant to change a name or a transition also erased configuration set from the UI, with nothing in the output saying so. Both now preserve the server value on update, and both became declarable from YAML — see the two entries in *Added* above.
 
-  The gate now reads `COTCTL_TOKEN` + `COTCTL_API_URL` when no
-  `COTCTL_E2E_PROFILE` is set, and `COTCTL_E2E_REQUIRE_CREDENTIAL=1` turns a gate
-  that could not open into a failure naming the actual reason — an absent
-  profile, an expired token, a missing write opt-in. Both are opt-in and neither
-  changes a local run: without the variables, a machine with no profile still
-  skips. The environment path carries its **own** write opt-in,
-  `COTCTL_E2E_ALLOW_ENV_CREDENTIAL=1`: `COTCTL_E2E_ALLOW_WRITES=1` is granted for
-  a named profile, and a token names its own company, so a permission taken for
-  one destination must not open another.
+- **A `2xx` response carrying no document no longer reads as success.** Several endpoints answer `200` with an empty body for a request that did nothing — a patch against a record that was deleted, or one belonging to another company. `cotctl` reported the write as done and exited `0`, which in CI is indistinguishable from success. The writes now assert the document and fail naming the entity and its identifier. The same empty body on the **read** side used to read as a *hit*, which produced a string of user-visible failures now fixed:
 
-  This is repository tooling, not CLI behaviour — nothing a user of `cotctl`
-  runs is affected.
+  - **`schedules apply` never created a schedule** — every apply took the update branch.
+  - **`surveys apply` reported every free question identifier as already taken**, blocking a legitimate apply.
+  - **`surveys apply` refused a rename that never happened**, reporting the existing survey's code as `undefined`.
+  - **`jobtitles apply` issued a patch against a nonexistent record.** It now creates, as the miss implies.
+  - **`webhooks apply` reported `updated` for a write that never happened.**
+  - A workflow apply could address an invalid task-group URL; it now fails naming the group.
 
-- **The documented way to authenticate a pipeline no longer produces a config
-  file cotctl refuses to read.** The `~/.cotctl/config.json` heredoc in
-  `docs/advanced-configuration.md` omitted the required `version` key, and
-  quoted its heredoc delimiter so `$CI_JWT_TOKEN` was written literally instead
-  of being expanded — following it produced a corrupted profile twice over. The
-  recipe now leads with `COTCTL_TOKEN`, and the file-writing variant that
-  remains (for a job addressing several companies) is correct. The same section
-  still described token expiry as "7 days without use", which is the legacy
-  user-JWT rule and not what an ApiToken does.
+  One exception is deliberate: creating a schedule genuinely answers empty by design, so `schedules apply` stays silent there. And `bots apply` still keeps its result when a patch answers empty — the Bot endpoints are documented to do that under some configurations — but it now **warns on `stderr`** naming the bot, so you can tell a real echo apart from a fallback.
 
-- **The report no longer claims a deletion nobody asked for was ignored.** The
-  message distinguished a single case, and there were two. When the YAML
-  **declares** `schemaNodes` and leaves some out (including an explicit
-  `schemaNodes: []`), a deletion *was* requested and `cotctl` refuses: the text
-  is still `preserved N schemaNodes not in YAML` / `(will NOT be deleted)`,
-  unchanged. When the YAML **never mentions the section** — the hand-written
-  partial YAML that only touches `display` or `isActive` — nobody asked for a
-  deletion, and the message now says so:
-  `kept N schemaNodes the YAML does not declare` /
-  `(no deletion was requested)`.
+- **A non-JSON response no longer surfaces as a parser error.** Any response that was not well-formed JSON reached the operator with no status, no URL and no body. Two reported symptoms:
 
-  The cause was `propertyTypeSchema` declaring
-  `schemaNodes: z.array(...).optional().default([])`, so Zod collapsed the
-  omission into `[]` before `applyPropertyTypes` ever saw the document. The
-  `.default([])` was dropped: `undefined` means "the YAML omits it" again, the
-  same sentinel `dry-run-diff` already uses against `isExplicitEmpty()`.
-  Preservation itself did not change — the nodes are still re-injected into the
-  PATCH.
+  - `cotctl slas list` against an environment where the route is not routed showed `Unexpected token '<', "<html>..."`. It now reports `API Error 404: Not Found`, the method and URL invoked, the content type received, and the first 200 characters of the body.
+  - `cotctl workflows export` of a workflow with no state machines showed `Unexpected end of JSON input`. An empty successful body is now an empty result, and a `404` from the state-machine endpoints means *there are none* — the command warns and continues instead of aborting, and the YAML it writes omits the key rather than emitting it empty, so it re-applies without deleting anything.
 
-- **A machine identifier pinned at login is no longer silently replaced.** The
-  automatic re-login triggered when an ApiToken expires re-derived the machine
-  identifier from the hostname and wrote it over whatever the profile held, so
-  a `cotctl login --machine-id ci-runner-3` reverted to the hostname on the
-  first re-authentication — and the minted token's code changed with it,
-  breaking the per-device naming the flag exists to provide.
+  A backend error message that **is** well-formed JSON still arrives unchanged.
 
-  The profile now records **how** the identifier was chosen
-  (`machineIdSource: 'pinned' | 'derived'`). A value passed with
-  `--machine-id` is reused by the re-login; a hostname-derived one keeps being
-  re-derived, so a renamed host is still picked up. Profiles written before
-  this release carry no source and are treated as derived — re-run
-  `cotctl login --machine-id <id>` once to pin the value.
+- **The PropertyType report no longer claims a deletion nobody asked for was ignored.** There are two cases and the message only distinguished one. A YAML that **declares** `schemaNodes` and leaves some out is asking for a deletion, and `cotctl` still refuses it with `preserved N schemaNodes not in YAML`. A YAML that **never mentions the section** — the hand-written partial file that only touches `display` or `isActive` — asked for nothing, and now reads `kept N schemaNodes the YAML does not declare (no deletion was requested)`. Preservation itself is unchanged.
 
-- **The embedded skill and the `docs/` reference no longer advertise a `[]`
-  default for `schemaNodes`.** Both `PropertyType` field tables still declared
-  the `Default` column as `[]`, which implies that omitting the section and
-  writing `schemaNodes: []` are equivalent — precisely the distinction this cut
-  introduces. Anyone reading that row ended up writing the YAML that triggers
-  the refused-deletion message without having asked for any deletion. The
-  skill's table ships compiled inside the binary, so the correction only
-  reaches an agent with this release.
+  The reference documentation for `schemaNodes` also stopped advertising a `[]` default, which implied that omitting the section and writing `schemaNodes: []` were equivalent. They are not, and that row is what led people to the message above.
 
-- **The CHANGELOG section extractor no longer comes back empty because of an
-  unbalanced code fence.** The fence counter toggled across the whole file, so a
-  single odd fence above the target heading made that heading read as part of a
-  code block: the extraction returned zero lines and the release died with
-  `No '## X.Y.Z' section found in CHANGELOG.md`, a message that blames a
-  section which does exist. A first pass now counts the fences, and the counter
-  is only applied before the heading when the file is balanced.
+- **A machine identifier pinned at login is no longer silently replaced.** The automatic re-login triggered when a token expires re-derived the identifier from the hostname and wrote it over whatever the profile held, so `cotctl login --machine-id ci-runner-3` reverted on the first re-authentication — and the minted token's code changed with it. A pinned value is now reused; a hostname-derived one keeps being re-derived, so a renamed host is still picked up. **Profiles written before this release are treated as derived** — re-run `cotctl login --machine-id <id>` once to pin the value.
 
-- **`SOURCE_SHA` no longer masks the exit code of the command that computes
-  it.** `export VAR="$(...)"` returns the status of `export`, not of the
-  substituted command, so a failed `git rev-parse` left the variable empty and
-  the error surfaced later, inside the insertion script. Declaration and
-  assignment were split.
-
-- **The `ApiClient` no longer crashes with a parser error when the response is
-  not JSON.** `handleResponse` called `response.json()` **before** checking
-  `response.ok` and without consulting the `content-type`, so any response that
-  was not well-formed JSON reached the operator as a parser error — no status,
-  no URL, no actual body. The two symptoms reported against shared production:
-
-  - `cotctl slas list` against an environment where the route is not routed —
-    the ingress returns an HTML page and it showed
-    `Error: Unexpected token '<', "<html>..." is not valid JSON`. It now reports
-    `API Error 404: Not Found`, the method and URL invoked, the `content-type`
-    received, and the first 200 characters of the body (with newlines
-    normalized onto a single line).
-  - `cotctl workflows export` of a workflow with no state machines — one of the
-    endpoints answered with an empty body and it showed
-    `Error: Unexpected end of JSON input`. An empty body with `2xx` now returns
-    an empty object, which the resources already degrade to an empty list; an
-    empty body with an error names the request that produced it.
-
-  The backend's message is preserved intact when the body **is** well-formed
-  error JSON, so `API Error 500: connect ECONNREFUSED ...` still arrives
-  unchanged. A non-JSON `2xx` response (a proxy page served with 200) now throws
-  an actionable `ApiResponseFormatError` instead of a parse error; it is not an
-  `ApiError`, so the resources' `err.status === 404` branches cannot mistake a
-  format problem for a missing resource.
-
-- **A write whose `2xx` carried no document no longer reads as a success.**
-  `PATCH /api/v3/webhook/subscription/:id` runs
-  `findOneAndUpdate({ _id, company })` and returns its result unchecked, so
-  patching a webhook that was deleted — or that belongs to another company —
-  answers `200` with an empty body. `cotctl webhooks apply` reported `updated`
-  for a write that never happened. The call-sites that consume the written
-  document now assert it and fail naming the entity and its identifier, instead
-  of carrying an `undefined` id into the next request: the AccessRole,
-  PropertyType, Property, JobTitle, SLA and Webhook create **and** update, the
-  User create, update and hierarchy update, the Survey upsert, the Workflow
-  group / task group / state machine / state writes, and the Routine create /
-  update. `cotctl bots apply` also stopped preferring the empty answer over the
-  known-good existing document — its `?? existing` fallback never fired,
-  because an empty body arrives as `{}`, not `null`.
-
-  Without the assertion these commands printed `created` / `updated` and exited
-  `0` over a write that never happened, which for `apply --dir` in CI is
-  indistinguishable from success.
-
-  The check lives at the call-site on purpose. `POST /api/v3/scheduler/schedule`
-  is declared `@HttpCode(201)` and returns `copy({})` — it discards the created
-  schedule deliberately — so an empty body is *correct* there and
-  `cotctl schedules apply` stays silent. The `ApiClient` keeps handing back an
-  empty object for any empty `2xx`; only a call-site that needs the document
-  treats its absence as a failure, so no list of endpoints has to be maintained.
-
-  **Two families are deliberately still unguarded**, and are follow-ups rather
-  than oversights. The `deactivate` paths of `property-types`, `roles`, `users`,
-  `jobtitles`, `surveys`, `schedules` and `properties` still print
-  `deactivated` over a document-less answer: they live in the command layer
-  rather than in `apply-helpers.ts`, so guarding them changes seven exit-code
-  contracts at once and belongs in its own change. And `src/lib/company-guard.ts`
-  issues a raw `fetch` outside the `ApiClient`, so it never reaches
-  `handleResponse` at all.
-
-- **A lookup whose `2xx` carried no document no longer reads as a hit.** The
-  same empty body on the *read* side reaches an identity resolver as `{}`, which
-  is truthy — so `existing._id` was `undefined` and the write that followed was
-  addressed to `.../undefined`. The six resolvers that accept a pinned `id`
-  (AccessRole, PropertyType, Property, Webhook, Routine, Bot) now treat an empty
-  answer as the miss it is:
-
-  - **Webhook, Routine and Bot** fall back to the `code` / `name` lookup, which
-    is what their pinned-`id` handling already promised for a `404`. A YAML
-    exported from another environment re-applies instead of failing.
-  - **AccessRole, PropertyType and Property** report that the pinned `id` was
-    not found, naming the id. `PropertyType` used to answer
-    `Code is immutable. Cannot change from 'undefined' to '<code>'`, blaming the
-    operator's YAML for a value the backend never sent; `Property` crashed
-    outright reading `name.code` off the empty object.
-
-  `handleResponse` is unchanged — it still hands back an empty object silently,
-  which is what keeps `cotctl schedules apply` quiet for the `POST` that
-  discards its resource by contract.
-
-- **The empty-`2xx` migration is completed outside `apply-helpers.ts`.** The
-  two previous rounds fixed the identity resolvers they found; the consumers
-  that live in the resources, the validators and the commands still read the
-  removed signals. `handleResponse` used to *throw* a JSON parser error for an
-  empty body and *return* `null` for a `{"data": null}` envelope, and code that
-  depended on either now sees a truthy `{}`. What that broke:
-
-  - **`cotctl schedules apply` never created a schedule.** The `/schedule/code/:code`
-    endpoint answers `200` with an empty body for a code that does not exist,
-    and the documented workaround caught the resulting `SyntaxError`. That catch
-    could no longer run, so every apply took the UPDATE branch. The lookup now
-    decides on the absence of an `_id`; the two dead `SyntaxError` catches are
-    gone.
-  - **`cotctl surveys apply` reported every free question identifier as taken.**
-    `GET /api/questions/fid/:id` answers a free identifier with `{"data": null}`,
-    which the remote validator tested with `!question`. Every identifier read as
-    a conflict in another survey, blocking a legitimate apply.
-  - **`cotctl surveys apply` also refused a rename that never happened.** A
-    pinned `id` that resolves to nothing made the immutability check compare the
-    YAML code against `undefined` and report
-    `Existing survey has code 'undefined'`.
-  - **`cotctl jobtitles apply` issued `PATCH /api/v2/jobtitles/undefined`.** The
-    seventh identity resolver, and the only one whose empty answer reached the
-    wire: with the id taken from the code map there is no immutability check to
-    stop it. It now creates, as the miss implies. `applyUsers` takes the same
-    guard — it died on a `TypeError` rather than writing, but its confirmation
-    preview announced `UPDATE` for a user that does not exist.
-  - **The by-code lookups for Property, PropertyType and Routine** honour their
-    `| null` signature again, and `jobtitles get <id>` reports a miss instead of
-    printing an empty record.
-  - **A workflow apply can no longer address `/api/tasks/undefined/...`.**
-    `getTaskGroup` builds every state-machine, state and SLA URL, so it now
-    fails naming the group rather than handing back a document-less object.
-  - Smaller consumers of the same signal: the state-machine merge base (an empty
-    answer would have silently turned an update into a replace), the user
-    hierarchy pass (it would have overwritten `companies[]`), the survey
-    `populated` merge base, the routines apply preview, `validate`'s owned-identifier
-    set, the workflow checklist runner and the export enrichment maps.
-
-  `handleResponse` is still unchanged: it keeps returning an empty object
-  silently, and the call-sites that need a document say so with `hasId`. The new
-  specs stub `fetch` rather than `client.get`, so `handleResponse` actually runs
-  — mocking the client is what hid this class for two rounds.
-
-- **A `404` from the state-machine endpoints now means "there are none".**
-  `workflows export` and `workflows get` no longer abort when those endpoints
-  answer `404` for a workflow that has no state machines: the command warns on
-  `stderr` and continues. The YAML it emits omits the `stateMachines` key — it
-  does not emit it empty — so it re-applies without deleting anything.
-
-- **A workflow with no task group now fails with a message that names it.**
-  `GET /api/tasks/group/:id` answers `404` with an empty body when the
-  workflow's group has no task group. The command still fails — this is not a
-  recoverable state — but it says so in those words instead of surfacing a bare
-  `API Error 404: Not Found`.
-
-- **`cotctl bots apply` is the one write that survives a document-less `2xx`,
-  and it now says so out loud.** Every other write guarded above fails hard
-  (exit `1`) when the response carries no document. A Bot `PATCH` instead keeps
-  `outcome: updated` and exit `0`, reporting the pre-update document as the
-  applied bot — the Bot endpoints are documented to answer empty under some
-  backend configurations, which is the same reason the `POST` path already
-  retries `findByName` instead of failing. The asymmetry itself is unchanged;
-  what changes is that it stops being invisible. The fallback now warns on
-  `stderr` naming the bot, mirroring the warning the `CREATE` path already
-  emitted, so the operator can tell "the `PATCH` echoed the updated document"
-  apart from "the `PATCH` answered empty and cotctl fell back". Documented under
-  *Known limitations* in `docs/bots/yaml-structure.md`.
-
-- **A stale `code` map entry in `cotctl jobtitles apply` no longer creates in
-  silence.** When the code map holds an id whose document was deleted between
-  the listing and the lookup, the apply correctly falls back to `CREATE` — but
-  it did so without a word, because the warning only covered the sibling case of
-  a stale `id` pinned in the YAML. Both paths warn now, and neither warns twice.
-  The genuine `CREATE` — no map entry, no pinned `id` — stays silent, as it
-  should.
-
-- **`webhooks apply`: `context: null` now clears a webhook's `context`.** Until
-  now `context` could only be emptied through the `context: {}` workaround, and
-  the documentation blessed it as the supported way. Omitting the key still
-  preserves the server value — that behaviour is unchanged, and no existing YAML
-  applies differently — but there is now an explicit way to declare "no
-  scoping", matching the `Transition.requiredSurvey` convention introduced for
-  workflows. cotctl translates `null` to `{}` on the wire: the Joi validator
-  behind the PATCH it issues (`subscription-update-validator.schema.ts`, reached
-  from `subscriptions.controller.ts` `@Patch(':subscription_id')`) declares
-  `context` as `Joi.object({ survey, group, taskGroup }).optional()` with no
-  `.allow(null)`, so a literal `null` is rejected with a 400. The create
-  validator (`subscription.validator.schema.ts`) has no `.allow(null)` either,
-  so the same translation is what covers the POST path. `{}` is required rather
-  than merely accepted: delivery matches subscriptions by exact Mongo
-  subdocument equality on `context`, so a webhook missing the field would match
-  no event at all.
-
-  The three intents, now documented as a triad in
-  `docs/webhooks/yaml-structure.md`:
+- **`webhooks apply`: `context: null` now clears a webhook's `context`.** Until now it could only be emptied through a `context: {}` workaround. Omitting the key still preserves the server value, so no existing YAML applies differently.
 
   | YAML | Result |
   |---|---|
@@ -716,395 +176,60 @@ None of this changes what the CLI does; it is grouped here because it touches
   | `context: null` | cleared (recommended) |
   | `context: {}` | cleared (legacy, still supported) |
 
-  `context: null` is accepted on **every** trigger, including the non-task ones
-  that reject a *populated* `context` — clearing a stale value is exactly what
-  that validation asks the operator to do.
+  `context: null` is accepted on **every** trigger, including the non-task ones that reject a *populated* `context` — clearing a stale value is exactly what that validation asks you to do.
 
-- **A login that supplies a token no longer reports having created one.** With
-  `--token` or `--paste-token` the success line read `API token "…" created`
-  followed by a revoke URL, for a token the operator did not mint and a panel
-  they probably cannot reach. Both forms now report `API token "…" accepted` and
-  print no revoke line. When the best-effort metadata read-back fails, the line
-  no longer names the internal `pasted-token` placeholder as if it were the
-  token's code.
+- **`apply` no longer throws away every semantic warning.** It kept only the entries marked as errors, so `validate` was the one command in the CLI that ever showed a warning — and `apply` is where the problem is actually suffered. Exit codes are unchanged: a warning stays a warning.
 
-- **`apply` no longer throws away every semantic warning.** It kept only the
-  entries marked as errors, so `validate` was the single command in the CLI that
-  ever showed a warning — and `apply` is the path where the problem is actually
-  suffered. Every semantic warning now surfaces there too. Exit codes are
-  unchanged: a warning stays a warning.
+- **`validate --dir` accepts a survey with external `exec` hooks again.** A `src: "file://./scripts/validate.js"` reached the new semantic pass as literal text and was reported as a JavaScript syntax error. References are now resolved before validating, exactly as `validate -f` and `apply` already did.
 
-- **`schedules logs` renders the error the backend was already sending.** The log
-  entry was modelled with a `message` field the API does not return, and without
-  the `error` and `output` fields it does return, so a failed stage printed
-  `<date> executed` and nothing else while the detail sat in the response. The
-  error now prints under the existing line whenever there is one. The current
-  line and `--json` are unchanged, so a script parsing either keeps working.
+- **A deactivated PropertyType no longer aborts `workflows apply`.** A faster batched lookup introduced in this release filtered on active records only, so a workflow referencing a deactivated PropertyType — in `propertyType`, `asset.propertyType`, a card-label slot or `allowedExtensions` — started failing with `PropertyType "<code>" not found`. Unresolved codes now fall back to an individual lookup, so the behaviour is back to what it was.
 
-- **The `subfilterValue` error points at the field that fixes it.** It said the
-  value was required "when subfilter is undefined", naming the wrong field and
-  offering no way out; it now says it is required unless the subfilter is `*`.
+- **A workflow apply resolves its PropertyTypes in one query.** It used to ask for each code separately, per state machine: a workflow of 8 state machines with 4 distinct codes each made up to 32 requests where it now makes 1.
 
-- **A taken question identifier now says which question took it.** The message
-  reported that the identifier already existed elsewhere and stopped there, so
-  the operator had to export in raw and dig the id out by hand. It now carries
-  the id, the label, the type and whether the question is still active, plus the
-  export command to run. The owning survey itself cannot be named: the API
-  answers a bare question document with no back-reference, and no endpoint
-  reverses the lookup.
+- **A refused `surveys export` names the question.** Several failure paths aborted the whole export with a message identifying neither the survey position nor the question. On a survey with sixty questions that is a message with nowhere to go. Each one now names the chat index and the identifier, and points at `--format raw`.
 
-- **The embedded survey skill described two behaviours the CLI does not have.**
-  It said that setting `subfilterValue` does not clear the filter error — it
-  does — and it described the error message by the wording this same release
-  replaced. An agent following it would have discarded a configuration that
-  works. These strings ship inside the binary, so a wrong one cannot be
-  corrected until the next release.
+  **`--format raw` is the supported escape hatch for a legacy survey**, not just a debugging aid. It exports the survey verbatim and re-applies unchanged; it was previously mentioned only in passing.
 
-- **The embedded jobtitles skill taught a deprecated full-collection scan.** Its
-  reference rows said both the apply and the export path populate their lookup
-  maps through `loadMap()`. Production uses three different calls, and only one
-  of them is that: the apply path resolves codes in bounded batches, the export
-  path resolves the ids a document actually references, and the full catalogue
-  is loaded only for access roles. An agent following the old rows would have
-  reached for the one call the code deprecated.
+- **A simplified export that silently dropped content now warns.** The worse failure was not the abort above but the *successful* export of an incomplete document: the YAML looks fine, gets committed, and the next apply is what removes the missing questions. Three cases now print to `stderr` naming what was left out, with `stdout` untouched so piping and `-o` are unchanged — a chat bubble of an unexpected content type, a legacy bubble packing several questions into one, and a standalone text question consumed as somebody else's label because of how its identifier is spelled.
 
-- **The `-q` help text in four commands described the behaviour this release
-  replaced.** `apply`, `bots apply`, `schedules apply` and `routines apply` all
-  promised to suppress non-fatal warnings without saying that a destructive
-  finding is not one of them. A flag's own `--help` is where someone building a
-  pipeline checks what it does, and these strings are compiled into the binary.
-  A guard now refuses a help string or a docs row that promises to suppress
-  warnings the sink is built to protect.
+- **A taken question identifier now says which question took it.** The message stopped at "it exists elsewhere", so you had to export in raw and dig the id out by hand. It now carries the id, the label, the type, whether the question is still active, and the export command to run. The owning survey itself cannot be named — the API offers no way to reverse that lookup.
 
-- **`-q` now really does silence `apply`'s Workflow warnings.** The flag tables
-  for `cotctl apply` promised `all` scope, but the `Workflow` case never passed
-  a callback and the helper fell back to its own default, which writes to
-  stderr. So `apply -f wf.yaml -q` kept printing "Unknown bot type …" and "Could
-  not verify bot versions …" — without the `⚠` prefix, because that prefix is
-  added by the callback that was not being passed. Every other kind was already
-  silencing its advisory warnings, and still does. `cotctl workflows apply -f`
-  is unchanged: that command depends on the default on purpose.
+- **`schedules logs` renders the error the backend was already sending.** A failed stage printed a date and `executed` and nothing else, while the detail sat unread in the response. The error now prints under the existing line whenever there is one. The current line and `--json` are unchanged, so a script parsing either keeps working.
 
-  **`-q` never silences a destructive finding**, on any kind. The two are
-  different classes of message on the same channel, and the flag now separates
-  them: progress lines and advisory warnings are muted, a finding that announces
-  data being removed is not. The sharpest case is `apply --dir -q`, which used
-  to drop a webhook's `context`-clear warning on the floor — see the
-  `webhook.context-clear` entry above, whose promise this is what makes true.
+- **`workflows apply` stops offering an escape hatch it rejects.** When the permission catalogue did not answer, the message suggested retrying "or skip with `--skip-remote-validation`" — a survey-only flag that every path reaching a workflow refuses, so anyone following the suggestion got an error. It now says what actually works, and states that a workflow has no bypass flag.
 
-- **Two configurations of a state machine that the YAML never mentions now
-  survive an apply.** `toSmApiBody` emitted
-  `dynamicPropertyTypes: { isActive: [] }` and `allowedExtensions: []` as fixed
-  literals on every request, including the PATCH — the only two fields in the
-  body that ignored the merge base the rest of the transformer honours. Both are
-  in the backend's update whitelist and its merge replaces a value wholesale
-  instead of merging into it, so **each `workflows apply` cleared them**:
+- **A workflow dry run says when it could not resolve the PropertyType codes.** The lookup behind `cardLabels` and `allowedExtensions` used to degrade to nothing and say so nowhere, so the diff reported no change for those fields — a dry run could look clean because the lookup had failed rather than because nothing had changed.
 
-  - the card labels configured from the webclient (`isActive` plus the
-    `status1`..`status5` PropertyType references), and
-  - `allowedExtensions`, the list of PropertyTypes admitted as task extensions.
+- **A login that supplies its own token no longer reports having created one.** With `--token` or `--paste-token` the success line read `API token "…" created` and printed a revoke URL, for a token you did not mint and a panel you may not be able to reach. Both now report `accepted` and print no revoke line.
 
-  It happened silently, on workflows whose YAML mentions neither, so an apply
-  meant to change a name or a transition also erased configuration set from the
-  UI — and nothing in the output said so.
+- **`-q` said something false in seven commands, and now separates two classes of message.** The help text for `apply`, `bots apply`, `schedules apply` and `routines apply` promised to suppress non-fatal warnings without saying that a destructive finding is not one of them; on `properties apply`, `surveys apply` and `workflows apply` it announced "Only output errors" while a `⚠ DANGER` line still reached `stderr` under it. The flag's behaviour is unchanged — only the promise was false.
 
-  Both fields now go through the same `pickFrom` merge as their neighbours: on
-  update the remote value is preserved, on create the body still carries the
-  previous defaults (`{ isActive: [] }` and `[]`). This same release then made
-  **both** declarable rather than preserve-only, through their two entries in
-  `### Added` above: the one that pins a state machine's card labels, and the
-  one that pins the extensions its tasks accept.
+  Behaviour did change in one place: **`-q` now really does silence `apply`'s Workflow warnings**, which kept printing "Unknown bot type …" despite the flag. And the rule that holds everywhere: **`-q` never silences a destructive finding**, on any kind. Progress lines and advisory warnings are muted; a finding that announces data being removed is not.
 
-Neither is about workflows. They are here because the round-trip work above
-put one question — *what does cotctl lose without saying so?* — in front of us
-twice more, in code the branch was already reading, and both answers were
-cheap to close.
+- **The `--legacy-replace` warnings are in English, and no longer announce a removal that already passed.** `apply`, `workflows apply` and `surveys apply` printed their escape-hatch warning in Spanish — the only non-English runtime text in the CLI — and promised the flag would disappear in a version this release is four and five minors past. Both flags are still present and behave identically; the text now states they are deprecated with no removal version announced.
 
-- **A Routine dry-run will not start reporting a permanent phantom change.**
-  `routineDiff` compared the stored `parametrizedBot` against the YAML body
-  without stripping `stages[]._id`, while the equivalent Bot admin diff has
-  stripped it since it shipped. Today the two agree only by accident: the
-  Routine read endpoints project the stage ids out of the response, so there
-  is nothing to differ on. The day that projection is lifted, every
-  `routines apply --dry-run` would have reported `body (parametrizedBot):
-  changed` on every routine, permanently, with no real change behind it — and
-  a phantom diff that never clears is one an operator learns to ignore.
+- **Smaller message fixes.** A `subfilterValue` error named the wrong field and offered no way out; it now says the value is required unless the subfilter is `*`. A `jobtitles apply` that falls back to creating because a record disappeared between listing and lookup now says so instead of doing it in silence. A workflow whose task group is missing now fails with a message naming it instead of a bare `404`. And `surveys apply` no longer prints its warnings in two different shapes — the mobile table warning now looks like every other warning.
 
-  The diff now strips the ids on both sides, and an update grafts the stored
-  ones back onto the outgoing request so stage identity survives, the way it
-  already does for Bots and SLAs. The graft can only ever be fed from a server
-  read: the YAML has nowhere to put an `_id` (`stageSchema` does not declare
-  it, so it is stripped on every parse), which is precisely why the identity
-  was being lost in the first place.
+- **The assistant guidance bundled with the CLI was corrected on five points.** These strings are compiled into the binary, so a wrong one cannot be fixed until the next release. It described two survey behaviours the CLI does not have; it taught a deprecated full-collection scan for job titles; it stated that every command requires a profile, which stopped being true with the environment credential above; it knew neither half of `schedules logs`; and it presented a `validate --dir` → `apply --dir` pipeline over twelve kinds when `validate --dir` recognises seven, so a directory holding routines, SLAs, schedules, bots or webhooks stopped at the validation step.
 
-- **Schedule stability is pinned by tests instead of by a comment.** That
-  Schedules are immune to the same identity churn was checked by hand once and
-  written into a code comment. It is true — but not for the reason the comment
-  implied. cotctl drops a Schedule's `body._id` and every `body.stages[]._id`
-  exactly as it used to for Bots; nothing churns because the backend stores
-  `Schedule.body` as a `Mixed` path, so no subdocument ids are ever minted to
-  lose. The regression tests now state both halves, so if that storage
-  decision changes, what breaks and why is already written down.
+### Known limitations
 
-- **A refused export names the question.** Two failure paths aborted the whole
-  export with a message that identified neither the survey position nor the
-  question — `Empty contentArray in chat`, `Unknown contentType: …` — and five
-  more threw a bare `SyntaxError` from an unguarded `JSON.parse` over a
-  question's `code[]`. On a survey with sixty questions that is a message with
-  nowhere to go. Every one of them now names the chat index and the
-  identifier, and every one of them points at `--format raw`.
+These are named, not fixed. They are worth knowing before you build a pipeline on them.
 
-  **`--format raw` is the documented escape hatch for a legacy survey**, not
-  just a debugging aid. It exports the survey verbatim and re-applies
-  unchanged, and it was previously mentioned only in passing, framed as
-  something for backups.
+- **`apply` never prints the destructive-findings block.** The `⚠ DANGER` / `⚠ WARNING` block a dry run shows under `surveys apply`, `workflows apply` and `properties apply` is not rendered by the generic `apply` — it computes the findings and discards them, and it declares no `--fail-on-destructive` either. For surveys, workflows and properties that block is the only place those findings surface, so **`apply --dir --dry-run` is the quietest preview available**: silent about exactly the changes that cannot be undone. Use the per-entity command when you want a preview that flags them. Webhooks are the exception — their findings also go through the warning channel, which `apply` does print.
 
-- **Three silent discards now warn.** The simplified export could also finish
-  *successfully* on an incomplete document, which is the failure that actually
-  breaks a GitOps flow: the YAML looks fine, gets committed, and the next apply
-  is what removes the missing questions. All three now print to stderr, naming
-  what was left out — stdout stays clean, so piping and `-o` are unchanged:
+- **`schedules list --op failed` cannot find a stage that failed inside the bot.** The scheduler does not mark the run as failed in that case, so a health check built on that filter reports green through a schedule failing every night. The gap is in the backend, not in the CLI.
 
-  - a chat bubble whose `contentType` is not exactly
-    `application/vnd.cotalker.survey` (the raw transformer keeps every bubble);
-  - a legacy bubble packing several questions into one `contentArray`, of
-    which only the first was ever read;
-  - a standalone `+text` question consumed as somebody else's label because
-    its identifier ends in `_label` or `_<digits>` — the pairing is a regex
-    over the identifier, so it can and does misfire.
+- **`schedules list` accepts a single-run filter it never applies.** The flag is parsed and never forwarded, so the listing comes back unfiltered and exits `0`. Filter the `--json` output instead.
 
-  Reading a legacy survey correctly is a separate, larger change; this one only
-  makes sure the tool stops being quiet about what it is dropping.
+- **`-l, --limit` on `schedules list` bounds what the backend returns, and the active filter runs afterwards**, client-side — so a listing can come back shorter than the limit.
 
-- **`workflows apply` stops offering an escape that command rejects.** When the
-  permission catalogue did not answer, the message closed by suggesting a retry
-  "or skip with `--skip-remote-validation`". That flag is survey-only and the
-  three entry points that reach a Workflow reject it, so anyone following the
-  suggestion got an error and exit 1. The message now says what actually works —
-  restore access and retry — and states that a Workflow has no bypass flag.
-- **A workflow `apply` resolves its PropertyTypes in one query.** It used to
-  ask for each code separately, per state machine: a workflow of 8 SMs with 4
-  distinct codes each made up to 32 requests where it now makes 1. The error
-  message is unchanged: it still reads `PropertyType "<code>" not found`, still
-  names the state machine referencing it, and still appears at the same point in
-  the walk.
-- **`surveys apply` and `apply -f` stop having two warning formats.**
-  `applySurvey` was the only applier writing to `stderr` on its own, and it did
-  so two different ways inside the same function: one coloured and indented, the
-  other bare. It now reports through the same `onWarning` channel as every other
-  applier, so both warnings come out alike — with the same `  ⚠ ` that
-  `apply --dir` and the other kinds already used. **The mobile table warning
-  changes shape**: it used to print uncoloured and unindented, and now looks
-  like any other warning. The semantic warnings keep their exact format. What is
-  gained is that the command can silence, capture or format them, which was
-  impossible before.
-- **`validate --dir` runs the surveys' semantic validation.** A survey with
-  repeated identifiers, a reserved identifier, or a `dependsOn` pointing at an
-  identifier that does not exist passed `validate --dir` clean and only failed
-  on apply, because those rules lived inside `applySurvey`. They are now
-  reported as `S4` (FAIL for errors, WARN for warnings) alongside the rest of
-  the per-document checks.
-- **A `+table` column no longer accepts a conditional display nobody
-  evaluates.** `conditionalDisplay` (and its raw form, `command`) validated
-  fine, the transformer discarded it silently, and the client always shows every
-  cell of a table. The YAML is now rejected with the reason written out: the
-  condition belongs on the `table` question, not on the column. Conditional
-  display on top-level questions is unchanged.
+### Migration
 
-- **`validate --dir` accepts a survey with external `exec` hooks again.** The
-  semantic pass introduced in this same cycle ran over the raw document, so a
-  `src: "file://./scripts/validar.js"` reached the validator as literal text and
-  was reported as `Syntax error in JavaScript`, at FAIL severity. The command
-  now resolves `file://` references before validating, exactly as `validate -f`
-  and `apply` already did. The example
-  `examples/surveys/survey-exec-external.yaml`, which the repository publishes,
-  was failing with exit `1` and passes clean again.
-- **A deactivated PropertyType no longer aborts `workflows apply`.** The
-  batched query that replaced the one-by-one lookups filters on
-  `isActive=true`, which the by-code lookup did not: a Workflow referencing a
-  deactivated PropertyType — in `propertyType`, in `asset.propertyType`, in a
-  `cardLabels` slot or in `allowedExtensions` — used to apply and started
-  failing with `PropertyType "<code>" not found`. Codes the batch does not
-  resolve are now looked up one at a time, so the request saving is kept in the
-  common case and the behaviour is back to what it was. The error is the same,
-  on the same state machine and at the same point in the walk, for a code that
-  genuinely does not exist.
-- **`surveys export` stops emitting columns `apply` itself rejects.** Because a
-  `+table` column is a question, both exporters ran it through the same cleaner
-  as the rest: the raw format emitted `command` and the simplified one
-  `conditionalDisplay`, and since both keys are rejected on a column, that
-  exported YAML would not re-apply — exit `1`, the validation-failure code, as
-  the breaking-change entry above states. Both exporters now drop them. On
-  the raw path this also fixes a real write: `mapQuestionToApi` did not walk
-  `columns`, so a column's `command` did reach the backend.
-
-- **`-q` no longer promises to hide a warning it cannot hide.** On `properties
-  apply`, `surveys apply` and `workflows apply` the flag announced "Only output
-  errors", and a `⚠ DANGER` line still reached stderr under it — a warning is
-  not an error, and silencing that class is precisely what `-q` must never do.
-  All three now carry the exception, in the wording `webhooks apply` already
-  used. The flag's behaviour is unchanged; only the promise was false. The guard
-  that watches these strings was rebuilt to **measure what a command actually
-  prints under `-q`** instead of inferring it from a symbol name in the source:
-  the old read credited a file for merely importing that symbol, and saw none of
-  the commands protected by the dry-run formatter rather than by the shared
-  sink, which is how all three shipped.
-
-- **A workflow dry run now says when it could not resolve the PropertyType
-  codes.** The lookup behind a state machine's `cardLabels` and
-  `allowedExtensions` degraded to an empty map on failure and said nothing, so
-  the diff reported no change for those fields — a dry run could look clean
-  because the lookup had failed rather than because nothing had changed. The
-  failure now prints on stderr through the same warning channel as everything
-  else, carrying the underlying error. Nothing else moves: the plan still
-  completes, and a dry run that passes today exits exactly as it did.
-
-- **The `--legacy-replace` warnings are in English, and no longer announce a
-  removal that has already passed.** `apply`, `workflows apply` and `surveys
-  apply` printed their escape-hatch warning in Spanish — the only non-English
-  runtime text in the CLI — and promised the flag would disappear in 0.8.0
-  (0.7.0 for `surveys --legacy-replace`), which this release is four and five
-  minors past. The same false promises were taken out of the `--help` strings in
-  0.11.0 and these runtime copies were missed. Both flags are still present and
-  behave identically; the text now states they are deprecated with no removal
-  version announced, which is what `docs/` has said throughout.
-
-### Docs
-
-- **Five flags the CLI demands and the npm page never mentioned.** The
-  `@cotctl/cli` README now documents `--allow-script-bots`, `--allow-reactivate`,
-  `--lax-code`, `--skip-remote-validation` and `--rollback` in a table stating
-  what happens **without** each one. These are the flags cotctl names in its own
-  message when it stops, so their absence left a reader facing a refusal whose
-  way out was written nowhere npm renders. The table also declares its scope: it
-  is not the complete index of flags, only the ones that appear when the CLI
-  refuses.
-- **The page only updates at the next release.** npm renders the README of the
-  *tarball*, not the one in the repository, so this change does not alter what a
-  visitor to the package page sees today.
-
-- **`transformers/` is not the Survey folder.** The folder description said
-  only "format transformations between layers"; since nine of its specs are
-  Survey ones, the apparent convention contradicted the real one. It is now
-  explicit that the criterion is the layer — pure format conversion, no I/O, no
-  HTTP, no Zod and no state — and not the entity, so `card-labels.ts` is where
-  it belongs and does not move.
-- **Which one wins when `docs/` and `src/skills/` disagree.** Both surfaces
-  describe the same CLI for different audiences, and the duplication is
-  deliberate: `docs/` does not travel in the npm tarball, so an agent that only
-  has the binary installed can read nothing but the embedded skills. The note
-  pins the precedence — the code wins; between the two prose surfaces, `docs/`
-  wins, because it is corrected on merge while a skill stays frozen until the
-  next release — and explains why deduplicating them is not the answer.
-
-- **`docs/commands/validate.md` documents what each side still misses.**
-  Neither command contains the other: `validate --dir` does not touch the API,
-  so it cannot catch an identifier renamed against the environment; and
-  `apply --dir` never runs the cross-reference checks, so a `Property` pointing
-  at a `PropertyType` declared in another file is only caught by validating.
-  Running both is not redundant.
-
-- **`docs/commands/schedules.md` documents all seven subcommands, not one.**
-  The page described `logs` and stopped there: it covered 4 of the 23 flags the
-  command declares. `list`, `get`, `export`, `apply`, `activate` and
-  `deactivate` now each have their own section, with their option table and with
-  the behaviour that does not follow from the flag's name: `--has-cron` tests
-  for the *presence* of `cron`, not its value; `-l, --limit` bounds what the
-  backend returns, so the active filter runs afterwards, client-side, and a
-  listing can come back shorter than the limit; and `--allow-script-bots`
-  controls a `body.stages[]` stage naming `PBScript` / `CCJS` / `ESMCode` and
-  rejects **before any network call**, exiting with `1` and not with the `2`
-  that the same rejection produces from `bots apply`.
-
-- **`--help` advertises a filter the command ignores.** `schedules list` parses
-  a flag for single-run schedules and never forwards it, so it returns the
-  listing unfiltered and exits `0`. The page says so and offers the `--json`
-  alternative, instead of documenting the flag as if it worked.
-
-- **The exit-code section no longer contradicts what it documents.** It
-  described `surveys export`'s `2` and then explained why a script reading it
-  gets the wrong idea — true when comparing the three meanings of `2` across
-  commands, and false inside `surveys export`, where the code says one thing and
-  names its own fix (`--format raw`). The distinction is now the point: one
-  command, one meaning; three commands, three, and only `stderr` tells them
-  apart. The non-uniformity table stays.
-
-- **A guard ties the embedded skills to the command tree.** The prose in
-  `docs/` and the skills compiled into the binary assert the same things about
-  the same CLI for two different audiences, and `docs/` does not travel in the
-  npm tarball, so the duplication has to stay.
-  `tests/docs/skills-docs-parity.guard.test.ts` checks the part that can be
-  derived mechanically — subcommand names against `buildProgram()`, `kind`
-  values against the applier's order, exit codes against the `process.exit()`
-  literals — and states in its header that this reaches one assertion in ten:
-  the rest is prose with no token to compare. `docs/README.md` records which of
-  the two surfaces wins when they disagree.
-
-- **The new rule reached all three surfaces.** The schema has rejected
-  `conditionalDisplay` and `command` on a `+table` column since this same cycle,
-  but the embedded `cotctl-surveys` skill still listed what a column may carry
-  without mentioning it, and neither did
-  `docs/surveys/question-types/table.md`, `docs/surveys/yaml-structure.md` or
-  `docs/surveys/conditional-display.md`. All four pages say so now, with the
-  reason and the alternative: the condition belongs on the `table` question.
-
-- **`apply` never prints the destructive-findings block, and both surfaces now
-  say so.** The `⚠ DANGER` / `⚠ WARNING` block a dry run shows under `surveys
-  apply`, `workflows apply` and `properties apply` is rendered by the shared
-  dry-run formatter, which `apply` does not use — the appliers compute the
-  findings and the command discards them. For `Survey`, `Workflow` and
-  `Property` that block is the only place they surface, and `apply` declares no
-  `--fail-on-destructive` either, so the directory pipeline the documentation
-  recommends is the **quietest preview available**: silent about exactly the
-  changes that cannot be undone. `docs/commands/apply.md` and the embedded
-  `cotctl-apply` skill both state it now and point at the per-entity command for
-  a preview that does flag them. `Webhook` is the exception — its applier also
-  mirrors each finding into the warning channel, which `apply` does print.
-  Behaviour is unchanged: the gap is named here, not closed.
-
-- **The npm page promised a destructive warning beside the one example that
-  cannot produce one.** The Features list says `--dry-run` *"advierte sobre los
-  cambios destructivos"*, and the Quick Start's only preview was `cotctl apply
-  -f ./formulario.yaml --dry-run` — a `Survey` through the generic `apply`,
-  which is exactly the combination that prints nothing: `applySurvey` tags no
-  warning as destructive, and `apply` never renders the structured findings
-  block it computes. The preview step now runs `cotctl surveys apply -f <file>
-  --dry-run`, the command that does render it, and states in one line why the
-  per-entity preview is the one that flags them. The bullet itself is unchanged,
-  because it holds everywhere else; what was wrong was the pairing.
-
-- **`cotctl-users` told an agent that this release's unattended-auth path does
-  not exist.** The skill opened with *"All commands require `-c <profile>`
-  (profile is mandatory at runtime)"*, which stopped being true here: a
-  `COTCTL_TOKEN` + `COTCTL_API_URL` credential runs with `-c` omitted. It was
-  also the skill's only word on the subject, so an agent holding that file alone
-  could neither use the feature nor discover it. The sentence now states the
-  environment path in the same words `cotctl-apply` already used, and the
-  "(required)" cell on `-c, --company` in `cotctl-export` carries the same
-  exception. Both ship inside the binary, which is why neither could wait for a
-  later correction.
-
-- **The embedded skills knew neither half of `schedules logs`.** `-v,
-  --verbose` is new in this release and appeared in no skill — the only
-  "verbose" string under `src/skills/` was an unrelated YAML field — so an agent
-  reading only the binary had no way to reach the full `output` payload. And
-  `cotctl-workflows` taught `--op executed` with no mention of its sibling's
-  trap: the scheduler never sets `op: failed` for a stage that fails *inside*
-  the PBScript, so a health check built on `--op failed` reports green through a
-  schedule failing every night. `docs/commands/schedules.md` has explained this
-  since 0.12.0's docs pass, but `docs/` does not travel in the npm tarball, so
-  the skill was the only place an installed agent could learn it. Both are now
-  in the skill's schedules command block.
-
-- **`cotctl-workflows` taught a pipeline that rejects five of the twelve kinds
-  it lists.** Its Step 4 presents `validate --dir` followed by `apply --dir`,
-  and lists the twelve kinds the applier handles. `validate --dir` recognises
-  seven, so a directory holding `Routine`, `Sla`, `Schedule`, `Bot` or `Webhook`
-  gets `unrecognized kind` for those files and step 3 exits `1` — stopping a
-  pipeline whose step 4 would have applied them without complaint. The warning
-  `cotctl-apply` already carried is now on the pipeline block itself rather than
-  further down the page, with a pointer at the Step 3 detail. Behaviour is
-  unchanged: the gap is named, not closed.
+- **Run `validate --dir` once before you upgrade a CI gate.** Two new classes of failure are reported there now, and both were already waiting on the next apply.
+- **Re-export if you keep YAML under version control.** Workflow exports gain two fields, survey exports drop two keys inside table columns, and neither change is a behaviour change — but both show up as a diff.
+- **Re-pin a machine identifier.** A profile written before this release is treated as hostname-derived, so run `cotctl login --machine-id <id>` once if you rely on the flag.
+- **Check exit-code branches on `surveys export`.** A simplified-format refusal now exits `2` instead of `1`.
 
 ## 0.11.0 — 2026-09-01
 
