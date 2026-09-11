@@ -63,14 +63,19 @@ Use with: cotctl surveys list -c acme
 | `--api-url <url>` | API URL, if you need to override autodiscovery |
 | `--no-browser` | Use email/password instead of the browser flow |
 | `--profile <name>` | Custom profile name (defaults to the `--subdomain` value) |
-| `--paste-token` | Register a pre-generated ApiToken instead of authenticating — the path for CI and for users who can't mint their own token |
-| `--machine-id <id>` | Override the machine identifier stamped into the token's code, so you can tell tokens apart per machine |
+| `--paste-token` | Register a pre-generated ApiToken instead of authenticating, typed at a prompt |
+| `--token <jwt \| @file \| ->` | The same, supplied as an argument instead of at a prompt — this is the one that works with no terminal attached |
+| `--machine-id <id>` | Pin the machine identifier stamped into the token's code, so you can tell tokens apart per machine |
+| `--yes` | Overwrite an existing profile without asking |
+| `--allow-unverified-company` | Continue when the environment cannot confirm which company the token belongs to |
 
-The [login & logout reference](./commands/login-logout.md) covers `--paste-token` and `--machine-id` in full.
+The [login & logout reference](./commands/login-logout.md) covers `--token`, `--paste-token` and `--machine-id` in full.
 
 ## The `-c` flag: telling commands which company to act on
 
-This is the single most important habit to build. **Every command that touches the API requires a `-c` (or `--company`) flag** naming the profile to use. There is deliberately no default — this prevents you from accidentally running a command against the wrong customer's environment.
+This is the single most important habit to build. **Every command that touches the API needs to know which company to act on**, and in interactive use that means a `-c` (or `--company`) flag naming the profile. There is deliberately no default profile — this prevents you from accidentally running a command against the wrong customer's environment.
+
+The one way to omit `-c` is the [environment credential](#running-without-a-profile-the-environment-credential) below, which supplies the company from the token itself. It exists for pipelines, and `-c` always wins over it.
 
 ```bash
 cotctl surveys list -c acme
@@ -85,6 +90,44 @@ Error: --company/-c is required. Use 'cotctl profile list' to see available prof
 ```
 
 That error is a feature, not a nuisance: it's the guardrail that keeps a staging change from landing in production.
+
+## Running without a profile: the environment credential
+
+Everything above assumes a person at a terminal. A pipeline has no browser, no prompt and no `~/.cotctl/config.json` — so since **0.12.0** `cotctl` can take its credential from the environment instead, and `-c` becomes optional:
+
+```bash
+export COTCTL_TOKEN="$CI_COTCTL_TOKEN"
+export COTCTL_API_URL="https://www.cotalker.com"
+
+cotctl apply -f survey.yaml --yes
+```
+
+`COTCTL_TOKEN` is a Cotalker **ApiToken**, and `COTCTL_API_URL` is the API URL of the environment it belongs to. Both are required together: exporting only one tells you which half is missing.
+
+**Nothing is written to disk.** The configuration is built in memory for that run, so a CI runner never has to reproduce the profile file format — which is what pipelines used to do, and what used to go wrong.
+
+Four rules worth knowing before you wire it up:
+
+- **`-c` always wins.** The variables are consulted only when `-c/--company` is absent, so exporting `COTCTL_TOKEN` on a machine that also has profiles changes nothing about your existing commands.
+- **The company comes from the token**, not from a flag, so it cannot disagree with the credential. `cotctl` prints one line to `stderr` naming where the credential came from.
+- **It fails hard when the token is rejected.** On a `401`, or once the token has expired, `cotctl` stops and names `COTCTL_TOKEN`. It does not fall back to a prompt, and it will never write your token into a profile on its own.
+- **A browser session token is refused.** Only an ApiToken is accepted, and the check costs no network call.
+
+### Asserting which company the job expects
+
+`COTCTL_COMPANY_ID` is optional and exists for one purpose: to state which company the pipeline believes it is acting on. A token belonging to a different one stops the run before anything happens, naming both ids.
+
+```bash
+export COTCTL_COMPANY_ID="64a1b2c3d4e5f6a7b8c9d0e1"
+```
+
+This is worth setting on any job that can write. It is the same guardrail `-c` gives a person, expressed as an assertion instead of a choice.
+
+<div className="alert alert--warning">
+
+**Do not name your CI secret `COTCTL_TOKEN` if you are using `cotctl login --token`.** That name is reserved as an environment credential, so exporting it silently changes the behaviour of every later command that omits `-c`. Pick a different variable name and pipe it in — see the [login reference](./commands/login-logout.md).
+
+</div>
 
 ## Working with multiple environments
 
@@ -141,6 +184,8 @@ If a refresh can't be done, `cotctl` tells you exactly what to run:
 ```
 Error: Session expired for profile "acme". Run: cotctl login --url https://web.cotalker.com --subdomain acme
 ```
+
+**None of this applies to an environment credential.** `COTCTL_TOKEN` is never refreshed and never renewed: an expired token stops the run with a message naming the variable, so a pipeline fails loudly instead of quietly re-authenticating as somebody. Rotating that token is the pipeline's job, not the CLI's.
 
 ## Next step
 
