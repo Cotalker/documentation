@@ -70,6 +70,21 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** the script's `src` is missing its `function run()` wrapper, so a top-level `return` is invalid.
 - **Fix:** wrap the logic in `function run() { ... }` (or `async function run()`).
 
+### `filters must be a list`
+
+- **Cause:** a `property` question's `filters` is written as a map — a single filter missing its leading `- `. Before `0.13.0` this passed validation and then broke the apply.
+- **Fix:** start each filter with `- `. See [`property`](./resources/surveys/question-types.md#property--pick-a-property).
+
+### `jobs must be a list`
+
+- **Cause:** a `person` question with `personFilter.allow: jobTitle` has `jobs` as a single value (`jobs: mgr`) instead of a list. Before `0.13.0` this passed validation, and the apply looked up one JobTitle per character of the value.
+- **Fix:** write it as a list, even for one code: `jobs: [mgr]`. Under any other `allow`, `jobs` is not read. See [`person`](./resources/surveys/question-types.md#person--pick-a-user).
+
+### `Survey with code "<code>" not found`
+
+- **Cause:** no survey in the company — active or inactive — carries that code. On a `survey`-type question it means the child survey hasn't been applied yet.
+- **Fix:** check the code with `cotctl surveys list --code <code> -c <profile>`, which looks up the exact code and includes inactive surveys. For a `survey` reference, apply the child first; with `apply --dir`, put it in a file that sorts before the parent's, or earlier in the same file — surveys are applied in path order, not in reference order.
+
 ## Surveys: orphaned questions
 
 This one is worth understanding because it's easy to avoid and annoying to undo.

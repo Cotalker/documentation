@@ -85,9 +85,9 @@ Before `cotctl` sends a survey to the server it validates it in three layers. Ea
 
 **Layer 1 — Structure.** Schema checks: `kind` is `Survey`, `code` matches `^[a-z][a-z0-9_]*$`, `name` is present, each `type` is one of the 13, enum fields (button `type`/`theme`, `editable.mode`, responder `filter`) hold valid values, `button.debounceTime` is at least 1000.
 
-**Layer 2 — Semantic.** Cross-field rules: `listquestion` needs `options` with no duplicate values; `property` needs `filters`; `propertiesChannel`/`propertiesLimit` must have matching lengths; every `exec` `src` must be valid JavaScript; identifiers must match `^[a-zA-Z][a-zA-Z0-9_]*$` and avoid the reserved words. Warnings flag things like a missing `function run()`, a `button` on a non-`onPlay` hook, or a deprecated field (`hint`→`help`, `api`→`source`).
+**Layer 2 — Semantic.** Cross-field rules: `listquestion` needs `options` with no duplicate values; `property` needs `filters`, as a **list** of at least one entry; `person` needs `personFilter`, and under `allow: jobTitle` a `jobs` **list** of at least one code; a `survey` question needs a non-empty string `surveyCode`; `propertiesChannel`/`propertiesLimit` must have matching lengths; every `exec` `src` must be valid JavaScript; identifiers must match `^[a-zA-Z][a-zA-Z0-9_]*$` and avoid the reserved words. Warnings flag things like a missing `function run()`, a `button` on a non-`onPlay` hook, or a deprecated field (`hint`→`help`, `api`→`source`).
 
-**Layer 3 — Remote.** Only with `--remote` and a profile. It calls the server to check what local validation can't: identifiers are unique across the company's surveys, existing identifiers aren't being renamed (they're immutable), referenced `propertyType`s and JobTitle codes actually exist, and a `survey`-type question's `surveyCode` resolves.
+**Layer 3 — Remote.** Only with `--remote` and a profile. It calls the server to check what local validation can't: identifiers are unique across the company's surveys, existing identifiers aren't being renamed (they're immutable), referenced `propertyType`s, JobTitle codes and the `propertiesChannel` / `propertiesLimit` codes actually exist, and a `survey`-type question's `surveyCode` resolves — looked up by code the way `apply` resolves it, so an inactive survey counts.
 
 ```bash
 # Layers 1 + 2

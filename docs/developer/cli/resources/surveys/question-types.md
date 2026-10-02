@@ -79,7 +79,7 @@ Lets the user choose from a Cotalker [Property](../../data-models.md#property) o
       subfilter: "*"          # "*" = any property of that type
 ```
 
-`filters` is required (at least one entry). Add `tree: true` for a hierarchical tree picker, or `creation: true` to let the user create a new property inline. To scope the options, replace `subfilter: "*"` with a real subfilter and set `subfilterValue`.
+`filters` is required and has to be a **list** of 1 to 3 entries, each starting with `- `. A single filter written as a map — without that leading `- ` — fails validation with `filters must be a list`. Add `tree: true` for a hierarchical tree picker, or `creation: true` to let the user create a new property inline. To scope the options, replace `subfilter: "*"` with a real subfilter and set `subfilterValue`.
 
 ### `person` — pick a user
 
@@ -101,13 +101,17 @@ Lets the user choose from a Cotalker [Property](../../data-models.md#property) o
 | `hierarchy.boss` | The responder's manager |
 | `hierarchy.peers` | The responder's peers |
 
-For `jobTitle`, add a `jobs` list:
+`personFilter` itself is required — a `person` question without it fails with `person requires personFilter`. The legacy `allow: no_filter` is still accepted and normalized to `job`, with a deprecation warning.
+
+For `jobTitle`, add a `jobs` **list** of one or more JobTitle codes:
 
 ```yaml
   personFilter:
     allow: jobTitle
     jobs: ["supervisor_ventas"]
 ```
+
+It has to be a list even for a single code: `jobs: supervisor_ventas` fails with `jobs must be a list`. Under any other `allow`, `jobs` is not read and not checked. Remote validation verifies that every code in the list is an existing JobTitle.
 
 ### `api` — options from an external endpoint
 
@@ -199,7 +203,13 @@ Nests another survey inside this one.
 
 <div className="alert alert--primary">
 
-**Apply the child first.** `surveyCode` must match an existing survey's `code` exactly (case-insensitive). If the referenced survey doesn't exist yet, `apply` fails with *"Referenced survey ... not found. Apply the child survey first."* `cotctl` resolves the code to an ID on apply and back to the code on export, so your YAML stays portable.
+**Apply the child first.** `surveyCode` has to be a non-empty string matching an existing survey's `code` exactly (case-insensitive) — a missing, empty or non-string value fails with *`survey requires a non-empty surveyCode`*.
+
+If the referenced survey doesn't exist, the remote validation that runs before every apply — `--dry-run` included — stops the parent with *`Survey with code "..." not found`*. With `--skip-remote-validation` that check doesn't run, so a dry run reports nothing and the apply itself stops later, with *"Referenced survey ... not found. Apply the child survey first."* The lookup is by code, the same way `apply` resolves the reference, so an inactive survey counts.
+
+`apply --dir` does **not** order surveys among themselves by reference: within the Survey kind, files go in path order and each file's documents in the order they're written. A child the server doesn't have yet has to sort first — an earlier file, or earlier in the same file.
+
+`cotctl` resolves the code to an ID on apply and back to the code on export, so your YAML stays portable.
 
 </div>
 

@@ -53,8 +53,8 @@ Under the hood, up to three layers of checking run — but only the first applie
 | Layer | What it checks | Applies to | How to skip |
 |---|---|---|---|
 | Structure (Zod) | Types, required fields, enums | **All kinds** | Always on |
-| Semantic | `function run()` in exec hooks, buttons in the wrong stage, deprecated fields | **Survey only** | `--skip-semantic-validation` |
-| Remote | Identifier uniqueness across the company, that referenced entities exist | **Survey only** | Needs `--remote` + `-c <profile>` |
+| Semantic | Per-type rules (a `property` question's `filters` and a jobTitle `jobs` must be lists, a `survey` question needs a non-empty `surveyCode`), `function run()` in exec hooks, buttons in the wrong stage, deprecated fields | **Survey only** | `--skip-semantic-validation` |
+| Remote | Identifier uniqueness across the company, and that the referenced PropertyTypes, JobTitles, Properties and `survey`-question surveys exist | **Survey only** | Needs `--remote` + `-c <profile>` |
 
 Non-Survey kinds get the structural (Zod) layer only. The semantic and remote layers are Survey-specific. Remote checks reach the API, so they require a profile — and `--remote` can't be combined with `--dir`:
 
