@@ -4,7 +4,7 @@ sidebar_label: Release notes
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/CHANGELOG.md @ c85e3b7 (2026-09-11) -->
+<!-- source: repositories/cotctl/CHANGELOG.md @ 278d134 (2026-10-02) -->
 
 What changed in each published release of `cotctl`, newest first — with the migration steps you need when something breaks.
 
@@ -27,6 +27,159 @@ npm install -g @cotctl/cli@latest
 </div>
 
 <!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
+
+<!-- DRAFT - copied verbatim from the cotctl CHANGELOG for release-0.13.0.
+    Before merging, rewrite it for implementation partners: give every
+    breaking change a "What to do", drop the internal detail (file paths,
+    PR numbers, contributor-only notes) and translate anything left in
+    Spanish. Then delete this comment. -->
+
+## 0.13.0 — 2026-10-02
+
+### ⚠ Breaking changes
+
+- **A `+property` question whose `filters` is not a list, or a `+person`
+  question with `allow: jobTitle` whose `personFilter.jobs` is not a list,
+  now fails validation.** Under any other `allow`, `jobs` is not read and is
+  still not checked. `filters` written as a map (a filter missing its leading
+  `-`) and a jobTitle `jobs` written as a single value (`jobs: mgr`) passed
+  the semantic check, so `validate` (`-f` or `--dir`) exited `0` on them, and
+  so did `surveys apply --dry-run --skip-remote-validation`. Without that flag
+  the apply failed without naming the problem: it crashed with
+  `q.filters is not iterable`, or looked up JobTitles `"m"`, `"g"` and `"r"`.
+  `validate`, `surveys apply` and `apply` now report `filters must be a list`
+  or `jobs must be a list` and exit `1`.
+
+  In 0.12.0, `surveys apply` and `apply` wrote the `jobs` of an
+  `allow: jobTitle` filter to the Survey as a string when it was a single
+  value and `--skip-remote-validation` was given, and as an empty list when
+  it was missing and `--skip-semantic-validation` was given. The semantic
+  check now refuses the single value, and with `--skip-semantic-validation`
+  the apply refuses both before writing anything, naming the question, and
+  exits `2` (`1` under `apply --dir`).
+
+  Migration: start each filter with `- `, and, under `allow: jobTitle`, write
+  `jobs` as a list (`jobs: [mgr]`). A Survey that 0.12.0 wrote with a
+  single-value or an empty `jobs` exports without its codes, and re-applying
+  that export fails with `jobs must not be empty when allow is "jobTitle"`:
+  add the codes back as a list before re-applying it.
+
+### Fixed
+
+- **A Survey that embeds another Survey no longer fails validation because the
+  embedded Survey's name does not start with its code.** `surveys apply`,
+  `apply` (`-f` or `--dir`, `--dry-run` included) and `validate --remote` looked
+  up each `+survey` question's `surveyCode` with a search the backend matches
+  against the Survey's **name**, not its code. A sub-Survey named
+  "Agregar Producto" with code `so_add_product` was reported as
+  `Survey with code "so_add_product" not found` and the command exited 1 — on a
+  valid YAML, an unchanged `surveys export` included. An apply could only get
+  past it with `--skip-remote-validation`, which skips the Survey's other
+  remote checks with it.
+
+  The check now resolves codes with the same lookup `apply` uses to write the
+  reference, so both agree on what exists: a code that no Survey carries is
+  still reported, with the same message, and a reference to an inactive Survey
+  passes, since `apply` resolves it too. Within the check, the codes the name
+  search cannot find share a single pass over the Survey list — the active
+  Surveys first, the inactive ones only while a code is still missing — however
+  many references there are, and a Survey that passed earlier in the same
+  `apply --dir` or multi-document `surveys apply -f` is not looked up at all.
+
+- **A Survey whose `+survey` question has a missing, empty or non-string
+  `surveyCode` can no longer break `validate` or `apply`.** A `surveyCode` such
+  as `123` or a list stopped both on `… is not a function`, an empty one or one
+  with an accent or a slash failed `surveys apply` and `apply` with an HTTP 400
+  from the backend, and with both `--skip-semantic-validation` and
+  `--skip-remote-validation` a missing one could crash the apply. They now get
+  the usual `survey requires a non-empty surveyCode` and
+  `Survey with code "…" not found` errors — `Referenced survey "…" not found` in
+  that last apply — and exit 1.
+
+- **A Survey that references more than ten PropertyTypes, JobTitles or
+  Properties no longer fails validation on all but ten of them.**
+  `surveys apply`, `apply` (`-f` or `--dir`, `--dry-run` included) and
+  `validate --remote` looked up each kind of reference in a single request,
+  which the backend answers with at most ten results unless asked for more.
+  With eleven or more distinct codes of one kind — in `+property` questions, in
+  the JobTitles of its `+person` questions, or in `propertiesChannel` /
+  `propertiesLimit` — only ten came back, the rest were reported as
+  `PropertyType "…" not found`, `JobTitle "…" not found`,
+  `PropertyType "…" referenced in propertiesChannel not found` or
+  `Property "…" referenced in propertiesLimit not found`, and the command
+  exited 1 on a valid YAML. Which codes failed depended on the backend's
+  ordering, not on the YAML, so the same reference could pass in one Survey and
+  fail in another.
+
+  Each lookup now asks for every code it sends, in batches the backend accepts
+  however many references the Survey carries. A code that does not exist is
+  still reported, with the same message.
+
+- **A `+property` question without `filters`, or a `+person` question without
+  `personFilter`, is reported as such instead of crashing the command, unless
+  `--skip-semantic-validation` is given.**
+  `surveys apply` and `apply` (`-f` or `--dir`, `--dry-run` included) stopped
+  on `q.filters is not iterable` or
+  `Cannot read properties of undefined (reading 'allow')`, which hid
+  `property requires at least 1 filter` or `person requires personFilter`
+  along with every other error the apply had found. They now report those
+  errors together and exit 1, as for any other invalid Survey.
+  `validate --remote --skip-semantic-validation` crashed the same way; it now
+  completes its remote checks and, since a missing filter is a semantic error,
+  reports the Survey as valid when nothing else is wrong, as it already did
+  without `--remote`. With `--skip-semantic-validation`, `surveys apply` and
+  `apply` still stop on an internal error for a missing `filters` or
+  `personFilter`, and for a `filters` written as a map, without writing
+  anything.
+
+- **`properties apply`, `workflows apply` and `jobtitles apply` can no longer
+  fail with HTTP 431 when their YAML references many long PropertyType or
+  Property codes.** They, and `apply` (`-f` or `--dir`) for those kinds, looked
+  the codes up in requests of up to 100 codes whatever their length, so enough
+  long codes made a request larger than the backend accepts. They now split
+  the codes as the Survey checks do: at most 20 per request, within a bounded
+  length.
+
+- **The help of `--skip-remote-validation` and of `validate --remote` names
+  what each one covers.** On `apply` and `surveys apply`,
+  `--skip-remote-validation` said "Skip remote identifier validation", but it
+  skips the Survey's remote checks of identifiers, of references to Surveys,
+  PropertyTypes, JobTitles and Properties, and of permission names. Three
+  things still reach the API with the flag: a missing sub-Survey and an
+  unknown AccessRole in `permissions` still stop the apply, because both are
+  resolved when the Survey is written, and a YAML that sets the Survey's `id`
+  still has its `code` compared with the server's. `validate --remote` said it
+  checked identifiers; it also checks a Survey's references to Surveys,
+  PropertyTypes, JobTitles and Properties.
+
+### Docs
+
+- **The embedded skills teach what this release enforces.** The
+  `cotctl-surveys` skill now says that `filters` and a jobTitle `jobs` are
+  lists, quoting each error. Across `cotctl-surveys`, `cotctl-apply` and
+  `cotctl-export`, the skills now say that `apply --dir` applies Surveys in
+  path order, not by `+survey` reference, so a child Survey that does not exist
+  yet has to sort first; that `--skip-remote-validation` does not get a missing
+  sub-Survey or an unknown AccessRole in `permissions` through; and that
+  `surveys list --search` matches names, with `--code` for a code. They
+  previously claimed that `apply --dir` ordered Surveys by reference and that
+  `--search` matched codes. `cotctl-apply`, `cotctl-workflows` and
+  `cotctl-properties` also stop promising that an `apply --dir --dry-run`
+  resolves every reference to an entity of the same directory: some, such as a
+  Survey's `propertiesChannel` or
+  an SLA's `stateMachine`, are still reported as missing in a dry run, and
+  `cotctl-apply` lists the known ones without claiming the list is complete.
+  The real `apply --dir` resolves them, because, for each of them, it applies
+  the referenced kind first.
+
+- **The documentation covers the simplified `person` question and the new
+  errors.** The simplified `type: person` format — its `allow` values and
+  `jobs` as a list — was not documented; the `person` question page gains a
+  section for it, next to the raw format. The troubleshooting page lists the
+  new messages with their fix and the `property` and `person` pages show them
+  in their examples; the `apply --dir` page no longer says Surveys are ordered
+  by reference; and the `surveys` page documents `--code` and corrects
+  `--search`.
 
 ## 0.12.0 — 2026-09-11
 
