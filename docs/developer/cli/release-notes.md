@@ -4,7 +4,7 @@ sidebar_label: Release notes
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/CHANGELOG.md @ c85e3b7 (2026-09-11) -->
+<!-- source: repositories/cotctl/CHANGELOG.md @ 278d134 (2026-10-02) -->
 
 What changed in each published release of `cotctl`, newest first — with the migration steps you need when something breaks.
 
@@ -27,6 +27,44 @@ npm install -g @cotctl/cli@latest
 </div>
 
 <!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
+
+## 0.13.0 — 2026-10-02
+
+A reliability release for survey validation. The headline is that **a survey embedding another survey is no longer rejected because of how the embedded survey is named** — the most visible of several checks that failed on YAML that was valid, or broke outright instead of reporting an error. One gap closed in the other direction: two fields that have to be lists are now checked as lists instead of being misread.
+
+### ⚠ Breaking changes
+
+**A `filters` written as a map, and a jobTitle `jobs` written as a single value, now fail validation.**
+
+On a `+property` question `filters` has to be a list, and on a `+person` question with `allow: jobTitle` so does `personFilter.jobs`. A filter missing its leading `- `, or `jobs: mgr` instead of `jobs: [mgr]`, used to pass the semantic check — `validate` exited `0`, and so did `surveys apply --dry-run --skip-remote-validation`. The apply that followed then failed without naming the problem, or looked up one JobTitle per letter of the value. Both now report `filters must be a list` or `jobs must be a list`, name the question, and exit `1`. Under any other `allow`, `jobs` is still not read and still not checked.
+
+- **Who this affects:** anyone whose survey YAMLs write a `+property` filter without its leading `- `, or a single-value `jobs` under `allow: jobTitle` — and any survey that `0.12.0` already applied from one of those files.
+- **What to do:** start each filter with `- `, and write `jobs` as a list. Then check the surveys `0.12.0` applied **with a validation flag off**: under `--skip-remote-validation` it wrote a single-value `jobs` to the survey as a string, and under `--skip-semantic-validation` it wrote a missing one as an empty list. Those surveys **export without their JobTitle codes**, and re-applying that export fails with `jobs must not be empty when allow is "jobTitle"` — add the codes back as a list before you re-apply.
+- **If you branch on exit codes:** with `--skip-semantic-validation` the apply now refuses both before writing anything, and exits `2` — `1` under `apply --dir`.
+
+### Fixed
+
+- **A survey that embeds another survey is no longer reported as missing because of how it is named.** `surveys apply`, `apply` (`-f` or `--dir`, `--dry-run` included) and `validate --remote` resolved each `+survey` question's `surveyCode` with a search the backend matches against the survey's **name**, not its code. A sub-survey named "Agregar Producto" with code `so_add_product` came back as `Survey with code "so_add_product" not found` and the command exited `1` — on valid YAML, an unchanged `surveys export` included. The only way past it was `--skip-remote-validation`, which switches off the survey's other remote checks along with it. The check now resolves codes the same way `apply` does when it writes the reference, so the two agree on what exists: a code that no survey carries is still reported, with the same message, and a reference to an inactive survey passes.
+
+- **A `+survey` question whose `surveyCode` is missing, empty or not a string gets an error instead of breaking the command.** A `surveyCode` such as `123` or a list stopped `validate` and `apply` outright; an empty one, or one carrying an accent or a slash, failed the apply with an HTTP 400 from the backend. They now get the usual `survey requires a non-empty surveyCode` or `Survey with code "…" not found` and exit `1`.
+
+- **A survey that references more than ten PropertyTypes, JobTitles or Properties no longer fails on all but ten of them.** Each kind of reference was looked up in a single request, which the backend answers with at most ten results. With eleven or more distinct codes of one kind — in `+property` questions, in the JobTitles of its `+person` questions, or in `propertiesChannel` / `propertiesLimit` — the rest came back as `… not found` and the command exited `1` on valid YAML. Which codes failed depended on the backend's ordering rather than on your file, so the same reference could pass in one survey and fail in another. Each lookup now asks for every code it sends.
+
+- **A `+property` question without `filters`, or a `+person` question without `personFilter`, is reported instead of breaking the command.** The apply stopped on an internal error that hid `property requires at least 1 filter` or `person requires personFilter` along with every other error it had already found. Those are now reported together, and the command exits `1` as it does for any other invalid survey. `validate --remote --skip-semantic-validation` broke the same way; it now completes its remote checks.
+
+- **`properties apply`, `workflows apply` and `jobtitles apply` no longer fail with HTTP 431 when their YAML carries many long codes.** They looked codes up in requests of up to 100 whatever their length, so enough long PropertyType or Property codes made a request larger than the backend accepts. They now split them the way the survey checks do.
+
+- **The help of `--skip-remote-validation` and of `validate --remote` names what each one covers.** `--skip-remote-validation` said "Skip remote identifier validation", but it skips the survey's remote checks of identifiers, of references to surveys, PropertyTypes, JobTitles and Properties, and of permission names. Three things still reach the API with the flag: a missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, because both are resolved when the survey is written, and a YAML that sets the survey's `id` still has its `code` compared with the server's. `validate --remote` said it checked identifiers; it also checks a survey's references to surveys, PropertyTypes, JobTitles and Properties.
+
+### Docs
+
+The question-type reference now says that a `+property` question's `filters` and a jobTitle `jobs` have to be lists, and that a `person` question needs its `personFilter`; the troubleshooting page lists this release's new messages with their fix. The `apply --dir` page no longer says surveys are applied in reference order: they go in path order, so a child survey that does not exist yet has to sort first. The `surveys` page expands `--code` and adds that `--search` matches names.
+
+### Migration
+
+- **Run `validate` over your YAML before you upgrade a CI gate.** The two list rules are reported there now, and a file that breaks either one was already being misread on the next apply.
+- **Re-check the surveys `0.12.0` applied from a single-value `jobs`.** They export without their JobTitle codes; add the codes back as a list before re-applying.
+- **Drop `--skip-remote-validation` if you added it to get a sub-survey through.** The false `not found` it worked around is fixed, and the flag was switching off the survey's other remote checks with it.
 
 ## 0.12.0 — 2026-09-11
 
