@@ -97,7 +97,7 @@ Surveys have their own entity-scoped command group. Every command takes a profil
 
 | Command | What it does |
 |---|---|
-| `cotctl surveys list` | List surveys (active by default; `--all` includes inactive, `--code <code>` does an exact lookup) |
+| `cotctl surveys list` | List surveys (active by default; `--all` includes inactive; `--code <code>` looks up an exact code, paginating as needed and including inactive surveys; `-s, --search <text>` matches the **name**, not the code) |
 | `cotctl surveys get <code>` | Show one survey; `--populate` includes the full question list (and switches the default output to YAML) |
 | `cotctl surveys export <code>` | Export a survey as YAML or JSON |
 | `cotctl surveys apply -f <file>` | Create or update a survey from a YAML file |

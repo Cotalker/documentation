@@ -13,7 +13,7 @@ There are two ways to run it, depending on whether you're deploying one file or 
 | Mode | Flag | Purpose |
 |---|---|---|
 | Single file | `-f <file>` | Apply one YAML file of any supported kind |
-| Directory | `--dir <path>` | Apply every YAML file in a folder, in the correct dependency order |
+| Directory | `--dir <path>` | Apply every YAML file in a folder, in the correct dependency order between kinds |
 
 <div className="alert alert--primary">
 
@@ -67,7 +67,7 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `--dry-run` | all | Validate and show what *would* be sent, without applying |
 | `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) |
 | `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind |
-| `--skip-remote-validation` | Survey only | Skip remote identifier checks — hard error on any other kind |
+| `--skip-remote-validation` | Survey only | Skip the remote checks — identifiers, references (Survey, PropertyType, JobTitle, Property) and permission names — hard error on any other kind. A missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, which resolves both before writing; a `--dry-run` with the flag doesn't report them. A YAML that sets the survey's `id` still has its `code` compared with the server's, and a `--dry-run` does report that one |
 | `--allow-reactivate` | User, JobTitle | Permit `isActive: true` on a currently-inactive record (otherwise blocked) |
 | `--notify-email` | User only | Send the welcome email on create (incompatible with a `password` in the YAML) |
 | `--lax-code` | JobTitle only | On *update* only, downgrade the code-format check to a warning when the existing record's code is already non-conforming |
@@ -199,6 +199,8 @@ Resources depend on each other: a workflow references roles and property types, 
 | 5 | Workflow | References roles, property types, and properties |
 | 6 | Survey | Referenced by workflow transitions |
 | 7 | User | Depends on job titles and roles |
+
+The order is between **kinds**. Within the Survey kind, surveys are *not* ordered among themselves by reference: files go in path order, and each file's documents in the order they're written. A survey that embeds a child the server doesn't have yet needs that child to sort first — in an earlier file, or earlier in the same file — otherwise the parent fails with `Survey with code "..." not found`, `--dry-run` included. A child the server already has is found in any order; putting it first is still the safe default.
 
 ### Options
 
