@@ -67,7 +67,7 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `--dry-run` | all | Validate and show what *would* be sent, without applying |
 | `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) |
 | `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind |
-| `--skip-remote-validation` | Survey only | Skip the remote checks — identifiers, references (Survey, PropertyType, JobTitle, Property) and permission names — hard error on any other kind. A missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, which resolves both before writing; a `--dry-run` with the flag doesn't report them |
+| `--skip-remote-validation` | Survey only | Skip the remote checks — identifiers, references (Survey, PropertyType, JobTitle, Property) and permission names — hard error on any other kind. A missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, which resolves both before writing; a `--dry-run` with the flag doesn't report them. A YAML that sets the survey's `id` still has its `code` compared with the server's, and a `--dry-run` does report that one |
 | `--allow-reactivate` | User, JobTitle | Permit `isActive: true` on a currently-inactive record (otherwise blocked) |
 | `--notify-email` | User only | Send the welcome email on create (incompatible with a `password` in the YAML) |
 | `--lax-code` | JobTitle only | On *update* only, downgrade the code-format check to a warning when the existing record's code is already non-conforming |
