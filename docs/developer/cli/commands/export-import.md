@@ -41,7 +41,9 @@ ID                         NAME                  CODE             VER   ACTIVE  
 507f1f77bcf86cd799439012   Approval Survey       approval_srv      1     true     2024-02-20
 ```
 
-Useful options: `-s/--search <text>` to filter by name or code, `--all` to include inactive resources, `-l/--limit` and `-p/--page` for paging, and `--json` for machine-readable output.
+Useful options: `-s/--search <text>` to filter, `--all` to include inactive resources, `-l/--limit` and `-p/--page` for paging, and `--json` for machine-readable output.
+
+What `--search` matches depends on the resource — `<resource> list --help` describes it — and `bot-types` and `slas` have no `--search` at all. `surveys list --search` matches the **name** only — to find a survey by its code, use `surveys list --code <code>`, an exact lookup.
 
 ## Looking at one: `get`
 
