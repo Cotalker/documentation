@@ -30,7 +30,7 @@ npm install -g @cotctl/cli@latest
 
 ## 0.13.0 — 2026-10-02
 
-A reliability release for survey validation. The headline is that **a survey embedding another survey is no longer rejected because of how the embedded survey is named** — the most visible of several checks that failed, or broke outright, on YAML that was valid. One gap closed in the other direction: two fields that have to be lists are now checked as lists instead of being misread.
+A reliability release for survey validation. The headline is that **a survey embedding another survey is no longer rejected because of how the embedded survey is named** — the most visible of several checks that failed on YAML that was valid, or broke outright instead of reporting an error. One gap closed in the other direction: two fields that have to be lists are now checked as lists instead of being misread.
 
 ### ⚠ Breaking changes
 
@@ -58,7 +58,7 @@ On a `+property` question `filters` has to be a list, and on a `+person` questio
 
 ### Docs
 
-Reference pages updated for the simplified `type: person` format — its `allow` values and `jobs` as a list, which had no page of its own until now — and the troubleshooting page lists this release's new messages with their fix. The `apply --dir` page no longer says surveys are applied in reference order: they go in path order, so a child survey that does not exist yet has to sort first. The `surveys` page documents `--code` and corrects `--search`, which matches names.
+The question-type reference now says that a `+property` question's `filters` and a jobTitle `jobs` have to be lists, and that a `person` question needs its `personFilter`; the troubleshooting page lists this release's new messages with their fix. The `apply --dir` page no longer says surveys are applied in reference order: they go in path order, so a child survey that does not exist yet has to sort first. The `surveys` page expands `--code` and adds that `--search` matches names.
 
 ### Migration
 
