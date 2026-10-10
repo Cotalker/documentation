@@ -83,6 +83,7 @@ body:
       name: PBScript
       data:
         code: rutina_calcular_riesgo   # must be a real routine code
+        data: {}                       # its input, one key per dataType entry — {} when none
       next:
         SUCCESS: ""
         ERROR: retry
@@ -95,7 +96,7 @@ body:
         ERROR: ""
 ```
 
-`cotctl` validates every `PBScript` stage's `data.code` against the routines registered in the profile, so a typo fails at apply time with a "did you mean…?" suggestion.
+`cotctl` validates every `PBScript` stage's `data.code` against the routines registered in the profile, so a typo fails at apply time with a "did you mean…?" suggestion. The invoked routine's input goes under **`data.data`** — required since 0.14.0, `{}` when the routine takes none; see [Required `data` entries](../workflow-bots/index.md#required-data-entries).
 
 <div className="alert alert--info">
 

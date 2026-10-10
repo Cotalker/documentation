@@ -141,10 +141,13 @@ parametrizedBot:
       name: PBScript
       data:
         code: rutina_calcular_riesgo   # must be a real Routine code
+        data: {}                       # the routine's input — {} when it takes none
       next:
         SUCCESS: send_message
         ERROR: ""
 ```
+
+The routine's input goes **under `data.data`**, one key per entry of its `dataType` — the only part of the stage's `data` that `PBScript` passes on. `data.data` is required even when the routine takes no input: since 0.14.0 every apply refuses a new `PBScript` stage without it (see [Required `data` entries](../workflow-bots/index.md#required-data-entries)).
 
 When your YAML declares a `PBScript` stage, `cotctl` checks that the routine code actually exists in the profile before applying — so a typo fails at apply time with a "did you mean…?" suggestion, not silently at runtime. It also validates that `start` points to a real stage and that every `next` branch lands on a real stage or the empty string (a terminal branch).
 

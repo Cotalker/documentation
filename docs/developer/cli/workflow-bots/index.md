@@ -21,7 +21,7 @@ bots:
     stages:
       - key: s1
         name: PBUpdateTask      # the bot TYPE (technical key)
-        version: "2.2.0"        # optional; omit to use the type's default
+        version: "2.2.0"        # optional; see "Checking versions" below
         data:                   # type-specific parameters
           _id: "{{task._id}}"
           taskGroup: "{{task.taskGroup}}"
@@ -165,3 +165,18 @@ Notes:
 - `cotctl bots list` / `cotctl bots versions <BotType>` still work as **deprecated aliases** of the `bot-types` commands.
 - A `stage.name` that is not a known bot type produces a **warning** at apply time (typo detection), not a hard error — double-check the exact key when you see one.
 - A few bots have **no `default` version** and require an explicit `version:` — `PBCalendar` (`2.0.0`) and `PBReport` (`1.0.0`) are the notable ones.
+- **On an update, an omitted `version` keeps the stored one** (since 0.14.0 — it used to mean the type's default). Write `version: null` to send a stage back to its type's default. So an update may leave out the `version` of a type with no default when the stored stage pins one, and a kept version the catalog no longer registers only draws a warning.
+
+## Required `data` entries
+
+The live catalog also says which `data` entries each bot type and version **requires** — the ones the webclient won't save a stage without. Since **0.14.0**, every apply checks each stage it writes — in a Workflow's bot slots, a Bot, a Routine, an SLA and a Schedule, with or without `partial: true` — and **refuses with exit `2`**, `--dry-run` included, a stage that would be written without one:
+
+```
+… would be written without data.<key>, which its bot type requires; …
+```
+
+- **Empty means** absent, `null`, `""` or `[]` — an empty object `{}` counts as a value — and every element of a list must hold a value too: `user: ["", "u1"]` is refused as `data.user[0]`.
+- **It compares with the stored stage**, paired by `key`. A stage is refused when the stored stage has the entry and the update drops it, and when nothing is stored — a new stage, one that moves to another bot type or version, or a list element the stored list lacks. A stage written over a stored one that **already lacks** the entry only draws a warning, so an export re-applies as it is over the stages it came from — except a Routine exported with 0.13.0 or earlier, which dropped every empty object: re-export it, or its `PBScript` stage is refused where the stored one holds `data.data: {}`.
+- **Promoting between companies:** an export applied to another company (QA → production) is checked against the stages stored *there*, so a stage that doesn't exist there yet is new, and every entry it lacks is refused.
+- **`PBScript` needs `data.data`** — the routine's input, and the only part of the stage's `data` that `PBScript` passes to the routine. Write `data: {}` when the routine takes no input. Every `PBScript` example `cotctl` shipped before 0.14.0 left it out, and an input written beside `code` never reached the routine.
+- A catalog that cannot be read skips the check, with one warning. `cotctl validate -f --remote` runs the same check on a Workflow's stages but only warns, since it has no stored stage to compare with.

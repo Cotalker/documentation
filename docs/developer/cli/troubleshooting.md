@@ -75,6 +75,21 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** invalid YAML syntax — usually indentation or a stray character.
 - **Fix:** check indentation (spaces, not tabs) and formatting. Running `cotctl validate -f <file>` points at the problem line.
 
+### `file:// path escapes YAML directory: <path>`
+
+- **Cause:** a `file://` reference leaves the YAML file's directory — through `..`, an absolute path, or a symlink that leads outside it (the message names where). Since 0.14.0 every kind's script fields are read, and the limit is each YAML file's own directory, not the root of `--dir`.
+- **Fix:** copy the file, or the folder, under the YAML file's directory, or write the script inline. See [`file://` references](./commands/validate.md#file-references).
+
+### `Cannot read file referenced by file://<path>` / `file:// reference is not a regular file`
+
+- **Cause:** the file a script field names doesn't exist, can't be read, or is a directory. Since 0.14.0 a `CCJS` or `ESMCode` stage's `data.src` is read too — before, it was sent as the literal path, so a reference that never resolved now fails.
+- **Fix:** create the file or fix its permissions, point the reference at a file, or write the content inline.
+
+### `… would be written without data.<key>, which its bot type requires`
+
+- **Cause:** a bot stage lacks an entry the live bot catalog marks required for its type and version — most often a new `PBScript` stage without `data.data`. Since 0.14.0 every apply refuses it with exit `2`, its `--dry-run` too.
+- **Fix:** give the entry a value. A `PBScript` stage carries its routine's input under `data.data`, and `data: {}` when the routine takes none. See [Required `data` entries](./workflow-bots/index.md#required-data-entries).
+
 ### Identifier conflict on remote validation / `Duplicate key error`
 
 - **Cause:** a question `identifier` already exists in another survey in the company — identifiers are unique company-wide, not per survey.

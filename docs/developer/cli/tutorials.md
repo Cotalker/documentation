@@ -209,6 +209,7 @@ body:
       name: PBScript
       data:
         code: rutina_saludo_simple   # must be a real Routine code
+        data: {}                     # the routine's input — this one takes none
       next:
         SUCCESS: ""
         ERROR: ""

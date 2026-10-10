@@ -158,12 +158,13 @@ body:
       name: PBScript
       data:
         code: rutina_reporte_diario   # must be a real routine code
+        data: {}                      # the routine's input — {} when it takes none
       next:
         SUCCESS: ""
         ERROR: ""
 ```
 
-`cotctl` validates the routine code exists before applying — which is why routines are applied before schedules in a directory apply.
+`cotctl` validates the routine code exists before applying — which is why routines are applied before schedules in a directory apply. `data.data` carries the routine's input and is required, `{}` when there is none (see [Required `data` entries](../workflow-bots/index.md#required-data-entries)).
 
 ## Apply order
 

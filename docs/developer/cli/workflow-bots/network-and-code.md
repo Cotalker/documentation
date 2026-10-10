@@ -161,7 +161,7 @@ Gotchas:
 
 Loads a packaged `COTPBScript` by `code` and runs its `parametrizedBot` body through the controller with your `data` as input. Returns a `{ key → result }` dictionary from each stage of the wrapped script. **Gated by `--allow-script-bots`.**
 
-Key parameters: `code` (the pbscript code to look up), `data` (input forwarded to the wrapped script).
+Key parameters: `code` (the pbscript code to look up), `data` (input forwarded to the wrapped script — one key per entry of the routine's `dataType`). `data.data` is **required**: write `data: {}` when the routine takes no input, and never put an input beside `code`, where it doesn't reach the routine. Since 0.14.0 every apply refuses a new `PBScript` stage without it — see [Required `data` entries](./index.md#required-data-entries).
 
 Branches: `SUCCESS` (the wrapped script produced at least one stage result), `ERROR` (not found, runtime error, or empty result).
 

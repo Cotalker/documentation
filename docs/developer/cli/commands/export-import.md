@@ -136,7 +136,7 @@ cotctl validate -f order_request.yaml
 cotctl apply -f order_request.yaml -c acme
 ```
 
-This is also how you **promote between environments** — export from staging, apply to production (with the matching `-c` profile).
+This is also how you **promote between environments** — export from staging, apply to production (with the matching `-c` profile). One check behaves differently there: the [required bot `data` entries](../workflow-bots/index.md#required-data-entries) are compared with the stages stored in the *target* company, so a stage that doesn't exist there yet is new, and every required entry it lacks is refused — even when the same export re-applies cleanly where it came from.
 
 ## Deactivating instead of deleting
 
