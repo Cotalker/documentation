@@ -105,12 +105,24 @@ Since 0.14.0 each command you declare is **paired with its stored version** — 
 
 </div>
 
-To add one command to an existing bot, export it, append the entry, and re-apply — or, since 0.14.0, apply a [`partial: true`](../commands/apply.md#partial-documents-partial-true) document that names only that command:
+To add one command to an existing bot, export it, append the entry, and re-apply:
 
 ```bash
 cotctl bots export "Saludo Bot" -c acme -o bot.yaml
 # edit bot.yaml — append to commands[]
 cotctl bots apply -f bot.yaml -c acme
+```
+
+Or, since 0.14.0, apply a [`partial: true`](../commands/apply.md#partial-documents-partial-true) document that names only the commands it adds or changes — the stored ones it leaves out are kept, and under the marker even `commands: []` deletes nothing:
+
+```yaml
+kind: Bot
+name: "Saludo Bot"
+partial: true
+commands:
+  - slashCmd: "adios"
+    isSlash: true
+    description: "Se despide"
 ```
 
 </div>

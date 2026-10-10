@@ -107,6 +107,8 @@ There are exactly eight types:
 
 Since 0.14.0 a node you declare is also matched with its stored node by `key` and keeps the fields it omits, and the nodes travel in their **stored order** — the ones your YAML omits in place, new ones last — whatever order the YAML lists them in (`apply` notes it when the orders differ). Before, a YAML that left a node out of the middle of the list, or reordered the nodes, produced an update the server refused.
 
+**To edit one node without writing the others**, add `partial: true` (0.14.0+): the document names the type's `code` and only the nodes it changes, each by `key`, and may leave out their `basicType` and the type's `display` — see [Partial documents](../commands/apply.md#partial-documents-partial-true).
+
 **Omitting the whole section and writing `schemaNodes: []` are different**, and since 0.12.0 `cotctl` tells them apart in what it reports. Nothing is deleted either way — the distinction is whether you *asked*:
 
 | Your YAML | What `cotctl` reports |

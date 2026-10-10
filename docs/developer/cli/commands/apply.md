@@ -183,6 +183,48 @@ Two things still travel exactly as written: **each question a survey YAML declar
 
 Each resource page notes the exceptions its kind has. For a workflow, the field-by-field contract — including why states can't silently vanish — is in [Workflow merge semantics](../resources/workflows/merge-semantics.md).
 
+## Partial documents (`partial: true`)
+
+**New in 0.14.0.** A declared list is normally the complete list. A document with `partial: true` at its top level instead names **only the elements it changes**, and every stored element it leaves out stays as it is, in its place. To edit one node of a property type that has fifteen:
+
+```yaml
+kind: PropertyType
+code: asset_type
+partial: true
+schemaNodes:
+  - key: serial
+    display: Serial number
+```
+
+The other fourteen nodes travel as stored. It works for six kinds, on the keyed lists below, wherever those kinds are applied — `apply --dir`, `apply -f` (a PropertyType or a Workflow), and `property-types`, `bots`, `routines`, `slas`, `schedules` and `workflows apply`:
+
+| Kind | List | Elements matched by |
+|---|---|---|
+| PropertyType | `schemaNodes` | `key` |
+| Bot | `commands` (and each command's `arguments`) | `slashCmd`, or `surveyIds` for a survey command (`name` for arguments) |
+| Bot | `parametrizedBot.stages` | `key` |
+| Workflow | `stateMachines`, their `states`, each state's `next` and `surveyTriggers`, and the stages of each slot's bot | `code`, `property`, `target`, `survey`, and `key` for stages |
+| Routine | `body.stages` | `key` |
+| Sla | `pb.stages` | `key` |
+| Schedule | `body.stages` | `key` |
+
+- **A named element is completed from its stored pair**, so it may leave out what the schema otherwise requires — a node's `basicType`, a state machine's `name`, `propertyType` and `asset`, a state's `type`, a stage's `name`, a bot's `start`, a property type's or routine's `display`, an SLA's `display`, `start`, `end`, `data` and `pb`, a schedule's `time` and `body`. The merged document is then validated whole: a problem in what you wrote refuses it, naming the element (`schemaNodes[key="serial"].basicType: …`).
+- **A named stage's `data` and `next` merge key by key.** Write one key to change it — `next: { ERROR: notify }` reroutes one branch and keeps the others. A key written as `null` is removed, and `data: {}` or `next: {}` empties the field (`next: {}` makes the stage end the run). On a schedule nothing is removed this way: its scheduler keeps a key the body leaves out.
+- **It never deletes, never reorders, never creates.** A stored element you leave out keeps its place; a new element is added last, with a warning — and so is an element whose key you edited, which becomes a new element. To retire one, set `isActive: false` where the element has it, or apply the complete list without the marker. A document whose entity does not exist yet is refused: remove `partial: true` and declare it in full to create it.
+- **It never guesses.** An element whose key the stored list repeats, or that the document names twice, is refused before anything is sent, `--dry-run` included.
+- **The dry run lists what it keeps** — `Kept 14 schemaNodes the partial YAML does not name (partial: true deletes nothing)` — and warns of a stage the merge leaves unreachable from `start`.
+
+Exceptions worth knowing before you rely on it:
+
+- **A workflow slot written as `bots: []` is still emptied**, deleting the bot stored there with its stages; the dry run and the apply warn about it. Leave `bots` out to keep the bot.
+- **A bot's `commands: []` deletes nothing** under the marker, and `cotctl bots apply` does not ask for the bot name then (its confirmation prompt still runs unless `-y`).
+- **A stage named under another bot type** than its stored pair is not completed: it replaces that stage as written, with a warning. Editing a stored `PBScript` stage still needs `--allow-script-bots`.
+- **Not covered:** a routine's `dataType` (a partial routine that declares it is refused), a survey's questions, lists of plain values such as permission codes, and every other kind. `--legacy-replace-workflows` refuses the marker.
+
+**Only `true` is read.** Any other value of `partial` — `false`, `null`, a string — and the key on any other kind are refused before anything is sent: `apply -f` exits `2`, and `apply --dir` treats the file as unreadable (exit `1`). In 0.13.0 the key was dropped without a word on a PropertyType, AccessRole, Property, User, Workflow or Survey, which then applied as complete documents — so a YAML that carries the key on those kinds now fails until you remove it. A refused partial document exits with its kind's validation code: `1` for a PropertyType or a Workflow, `2` for a Bot, Routine, SLA or Schedule.
+
+`cotctl validate` reads nothing stored, so it checks a partial PropertyType or Workflow on its own fields only (a new `S5` warning under `--dir`); the merged document is checked by `apply`, its `--dry-run` included — for Bot, Routine, SLA and Schedule, which `validate` does not recognise, that is the only check before a write.
+
 ## Directory mode
 
 For anything beyond a single file — and especially for a scaffolded workflow, which spans roles, property types, properties, and the workflow itself — point `apply` at the folder and let it handle ordering:

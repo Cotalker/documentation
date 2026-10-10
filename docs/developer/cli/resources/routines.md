@@ -69,6 +69,8 @@ On an update, each input is matched with the stored input of the same `key`, whe
 
 `body.start` names the entry stage. `body.maxIterations` (default `100`) caps how many transitions run — a safety net against loops.
 
+To edit one stage without restating the whole `body`, apply a document with `partial: true` (0.14.0+) that names the routine's `code` and only that stage, by `key` — see [Partial documents](../commands/apply.md#partial-documents-partial-true). A partial routine that declares `dataType` is refused.
+
 ### Invoking another routine
 
 A stage with `name: PBScript` invokes a standalone routine by code — and a routine may invoke itself (a retry-with-backoff pattern) or form a cycle with another:

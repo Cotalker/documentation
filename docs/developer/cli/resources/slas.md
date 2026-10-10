@@ -114,7 +114,7 @@ data:
 
 </div>
 
-Within those seven, an update since 0.14.0 sends only what your YAML changes. The backend replaces `start`, `end`, `data` and `pb` whole, so `cotctl` completes a declared one from the stored one — `start: { states: [x] }` keeps the stored `start.types` — and in `pb` each stage is paired with the stored stage of the same `key`. A declared `pb.stages` is still the complete list: a stage it leaves out is removed. The defaults in the table above (`reset: true`, `repeat: false`, …) apply only on create.
+Within those seven, an update since 0.14.0 sends only what your YAML changes. The backend replaces `start`, `end`, `data` and `pb` whole, so `cotctl` completes a declared one from the stored one — `start: { states: [x] }` keeps the stored `start.types` — and in `pb` each stage is paired with the stored stage of the same `key`. A declared `pb.stages` is still the complete list: a stage it leaves out is removed. The defaults in the table above (`reset: true`, `repeat: false`, …) apply only on create. To change one `pb` stage without restating the others, use a `partial: true` document (0.14.0+), which may leave out `display`, `start`, `end`, `data` and `pb` — see [Partial documents](../commands/apply.md#partial-documents-partial-true).
 
 What that means in practice:
 

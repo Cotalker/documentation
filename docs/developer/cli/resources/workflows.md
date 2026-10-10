@@ -99,7 +99,7 @@ Each state corresponds to a [Property](./properties.md). Its `type` is one of `n
 | `survey` | The user must complete a survey first — set `requiredSurvey` to its code |
 | `none` | Only automation/system can trigger it (e.g. auto-closure) |
 
-State machines also support a `requiredSurvey` (a StartForm that gates task creation), and states support `subtask` and `surveyTriggers` slots — all of which can carry automation **bots**. Those slots have preserve/replace/delete rules you must understand before editing a live workflow; the [Merge semantics](./workflows/merge-semantics.md) page covers them.
+State machines also support a `requiredSurvey` (a StartForm that gates task creation), and states support `subtask` and `surveyTriggers` slots — all of which can carry automation **bots**. Those slots have preserve/replace/delete rules you must understand before editing a live workflow; the [Merge semantics](./workflows/merge-semantics.md) page covers them — including `partial: true` (0.14.0+), which edits one state, transition or bot stage without restating the rest.
 
 ### Card labels, task extensions and the default tab
 

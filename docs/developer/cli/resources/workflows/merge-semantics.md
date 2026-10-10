@@ -62,6 +62,32 @@ Now say you apply this instead:
 - **Transitions — `next[]`:** each transition is matched to the server by its resolved `target`. For a matched transition, its `bots`, `requiredSurvey`, `permissions` and — since 0.14.0 — `canChange` preserve unless declared. A transition whose `target` doesn't match any existing one is new, and starts as `manual`. **`next: []` deletes every transition of the state** — since 0.14.0; it used to be ignored — and a transition a declared `next` leaves out is removed.
 - **Bots**, in every slot above, follow the omit/`[]`/list rule. A declared bot is **completed from the stored one** when the slot holds one bot: the keys it omits keep their stored value, and each stage is paired with the stored stage of the same `key` while it keeps its bot type (its `data` and `next` travel as written, and an omitted `version` keeps the stored one). When the slot stores **several** bots there is nothing to pair with, so the declared bot replaces all of them and `apply` warns which stored keys it loses; `workflows export` leaves such a slot's `bots` out, so re-applying the export keeps them.
 
+## Editing one element: `partial: true`
+
+Without a marker, a declared list is the complete list — a declared `states` must name every stored state, and a declared `next` or `surveyTriggers` replaces the stored one. Since **0.14.0**, a document with `partial: true` names only what it edits. To change one transition, name the workflow, its state machine, the state and that transition:
+
+```yaml
+kind: Workflow
+nameCode: purchase_orders
+partial: true
+stateMachines:
+  - code: po_flow
+    states:
+      - property: po_draft
+        next:
+          - target: po_approved
+            canChange: survey
+            requiredSurvey: survey_po_approval
+```
+
+- State machines are matched by `code`, states by `property`, transitions by `target`, survey triggers by `survey`, and the stages of a slot's bot by `key`. What you leave out stays as stored — **states you omit are kept instead of refused** — and a named element may leave out what the schema otherwise requires (a state machine's `name`, `propertyType` and `asset`, a state's `type`).
+- A named stage's `data` and `next` merge key by key: `next: { ERROR: notify }` reroutes one branch and keeps the others.
+- `next: []` and `surveyTriggers: []` name no element, so under the marker they remove nothing. **`bots: []` is the exception: it still empties a slot**, deleting the bot stored there with its stages, and the dry run and the apply warn about it. Leave `bots` out to keep it.
+- A slot whose stored slot holds **several** bots is refused when the document declares its bot — bots carry no key to pair by.
+- A deactivated state machine the document names is refused with exit `2`, as without the marker.
+
+The marker never creates the workflow, and `--legacy-replace-workflows` refuses it. The rules it shares with the other kinds are in [apply → Partial documents](../../commands/apply.md#partial-documents-partial-true).
+
 ## The silent errors it prevents (and the ones to still watch)
 
 The merge exists because pre-0.7.0 `cotctl` emitted near-complete bodies with hardcoded `[]` defaults, which silently wiped UI-managed config. That class of bug is gone for `cotctl`. Two things still deserve care:
