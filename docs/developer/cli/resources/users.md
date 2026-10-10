@@ -4,7 +4,7 @@ sidebar_label: Users
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/schemas/user.schema.ts, src/commands/users.ts, docs/users/apply-behavior.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/schemas/user.schema.ts, src/commands/users.ts, docs/users/apply-behavior.md @ 82e613d (2026-10-10) -->
 
 A **user** is a person in a company. Users are the most connected resource in Cotalker — each one references a [job title](./jobtitles.md), one or more [access roles](./roles.md), and can sit in an org-chart hierarchy with other users. Because of those dependencies, users are applied **last** (after job titles and roles exist).
 
@@ -72,7 +72,9 @@ hierarchy:
 
 </div>
 
-When you apply a batch of users that reference each other (A's boss is B, both new), `cotctl` handles it with a two-pass apply, so forward references resolve correctly.
+When you apply a batch of users that reference each other (A's boss is B, both new), `cotctl` handles it with a two-pass apply, so a reference within the same file resolves in either direction. **Across files it does not:** under `apply --dir`, a `hierarchy` may name a user of its own file or of an earlier one, but one that only a later file creates fails — in the dry run as in the apply — with `User(s) referenced in hierarchy not found: …`. Keep users that reference each other in one file, or order the files.
+
+On an update, an omitted `hierarchy` keeps the stored one, and a declared one is completed from it. Since 0.14.0, writing `boss: []`, `peers: []` and `subordinate: []` together empties the hierarchy — it used to be ignored.
 
 ## Custom metadata: `extra`
 
@@ -103,7 +105,9 @@ On update, `extra` is **merged** — keys you provide win, keys already on the s
 | A `password`, no `--notify-email` | The password is set; `cotctl` warns it's in plaintext in your YAML |
 | No `password` on an **update** | The existing password is left untouched — it's never cleared |
 
-**Reactivation is guarded.** An inactive user reappearing with `isActive: true` (or omitted, since the default is `true`) is **not** brought back automatically — `apply` stops with exit `2` and tells you to re-run with `--allow-reactivate`. Two situations can't be overridden at all: a `isReadOnly` user is never modified, and a `role: super` user can't be deactivated (both exit `1`).
+**Reactivation is guarded.** An inactive user reappearing with `isActive: true` is **not** brought back automatically — `apply` stops with exit `2` and tells you to re-run with `--allow-reactivate`. Since 0.14.0 a YAML that **omits** `isActive` is applied and leaves the user inactive (before, the omission read as `true` and was refused). Two situations can't be overridden at all: a `isReadOnly` user is never modified, and a `role: super` user can't be deactivated (both exit `1`).
+
+An update that omits `accessRoles` keeps the user's roles; a declared list is the complete list, and when it leaves out roles the user has, `apply` warns — naming them — that removing a role takes the user out of the task groups it grants. `users export` leaves out an access role that is not active, with a warning, so re-applying that export removes it from the user.
 
 To deactivate a user without deleting anything:
 
@@ -111,7 +115,7 @@ To deactivate a user without deleting anything:
 cotctl users deactivate juan.perez@acme.com -c acme
 ```
 
-As everywhere in `cotctl`, exit codes are meaningful here: `0` success, `1` a runtime error mid-apply (network, an API error, an unresolvable hierarchy email), and `2` a pre-apply validation failure (bad YAML, an unknown job code, a reactivation without the flag, the password/notify-email conflict).
+As everywhere in `cotctl`, exit codes are meaningful here: `0` success, `1` a runtime error (network, an API error, an unresolvable hierarchy email, or — since 0.14.0 — a pinned `id` the server fails to look up, reported as `Pre-apply checks could not run for …`), and `2` a pre-apply validation failure (bad YAML, an unknown job code, a reactivation without the flag, the password/notify-email conflict). One document that fails its pre-apply checks stops the whole batch before anything is sent.
 
 ## See also
 

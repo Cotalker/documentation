@@ -4,6 +4,8 @@ sidebar_label: Scaffolding
 displayed_sidebar: developer
 ---
 
+<!-- source: repositories/cotctl/src/commands/scaffold.ts, src/lib/scaffold-generator.ts @ 82e613d (2026-10-10) -->
+
 Building a workflow from a blank file is a lot of boilerplate: you need roles, property types, state properties, and the workflow itself, all named consistently and wired together. `cotctl workflows scaffold` generates that skeleton for you — correctly named and ready to customize — so you start from a working structure instead of an empty page.
 
 It's an offline command. No environment is touched until you `apply` later.
@@ -77,6 +79,12 @@ Scaffolding is step 1 of a five-step loop. Steps 2–5 repeat safely as you iter
 <div className="alert alert--primary">
 
 **The mental model.** Scaffold gives you a *correct skeleton*. You then flesh it out (step 2), check it offline (step 3), deploy it (step 4), and confirm it's production-ready against the live environment (step 5) — looping over 2–5 until you're happy.
+
+</div>
+
+<div className="alert alert--warning">
+
+**Don't re-apply a scaffold over transitions added in the webclient.** Without `--states`, the scaffold writes `next: []` on the workflow's *in-progress* state, and since 0.14.0 a written `next: []` deletes every transition of that state. If someone added transitions to it in the webclient, remove the line — or write those transitions into the YAML — before re-applying. The same goes for the `next` lists the scaffold writes elsewhere — on the *new* state, and with `--states` on the *in-progress* state: a written list is the complete list, so re-applying deletes any transition added in the webclient that it leaves out.
 
 </div>
 

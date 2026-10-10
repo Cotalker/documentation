@@ -4,7 +4,7 @@ sidebar_label: Export & import
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ 82e613d (2026-10-10) -->
 
 So far we've talked about pushing YAML *to* an environment. Just as often, you'll want to pull existing configuration *out* of one — to bring a customer's existing setup under version control, to copy a resource between environments, or simply to see how something is built. That round-trip — **export → edit → apply** — is one of the most useful patterns in `cotctl`.
 
@@ -65,11 +65,11 @@ cotctl surveys export order_request -c acme -o ./order_request.yaml
 
 <div className="alert alert--secondary">
 
-**`-o` is a path, not a format.** A common first mistake is `-o yaml`. The `-o`/`--output` flag is the *file path* to write to; use `--format` to choose the format. Passing a format keyword to `-o` is a hard error with a message telling you exactly this.
+**`-o` is a path, not a format.** A common first mistake is `-o yaml`. The `-o`/`--output` flag is the *file path* to write to; use `--format` to choose the format. Passing a format keyword to `-o` is a hard error with a message telling you exactly this — for `-o json` or `-o yaml`, that the export is always YAML.
 
 </div>
 
-Two export formats are available:
+Two export formats are available, and since 0.14.0 `--format` takes only these two values, in lower case — anything else (`json`, `yaml`, `RAW`) exits `1` before anything is read, where it used to export the simplified format silently:
 
 | `--format` | Description |
 |---|---|
@@ -96,7 +96,20 @@ A script wrapping `surveys export` can branch on exit `2` and retry with `--form
 
 **A simplified export can also succeed and leave something out**, which is the worse case: the YAML looks fine, gets committed, and the next `apply` is what removes the missing questions. Since 0.12.0 `cotctl` warns on stderr whenever it drops content — an unexpected chat bubble, a legacy bubble packing several questions into one, or a standalone text question absorbed as another question's label. **Read stderr on an export you are about to commit.** `stdout` stays clean, so piping and `-o` are unaffected.
 
+Since 0.14.0 the export also folds a title named `labelQuestion<identifier>` (as some solution presets name them) into its question, instead of exporting it as a `text` question and leaving the real question out — and the dry run of a survey update flags the questions it would deactivate as `⚠ DANGER`. An export made with 0.13.0 or earlier can carry exactly that gap: re-export before re-applying it.
+
 </div>
+
+### Exports write only what is stored
+
+Since **0.14.0**, an export writes the keys the resource actually stores and nothing else. Earlier versions filled in, with its default, every key the resource lacked — and re-applying that export sent those defaults as changes. Now **re-applying an unchanged export sends nothing**, which matters most for a running schedule, whose cron any update stops.
+
+Two consequences to plan for:
+
+- **A script that reads keys from an exported YAML has to accept their absence** — `isActive`, `accessRoles`, `extraData`, a schedule's `cronTimeZone` or `timeoutMinutes`, and so on. Read an absent key as the default the export used to write.
+- **Re-export a YAML exported with 0.13.0 or earlier before re-applying it.** Those files carry defaults the resource may not store. The costly case is a schedule stored without `cronTimeZone`: the old export wrote `America/Santiago`, so re-applying it moves the cron from the scheduler's own zone to Santiago — three or four hours away — and the `isActive: true` it wrote relaunches it there right away. `apply` warns when an update sets a zone on such a cron.
+
+A few exports still send an update on their first re-apply: `users export` leaves out an inactive access role (with a warning), so the re-apply removes it from the user; `routines export` writes the routine's `code` as its `display` when it stores none; and the first re-apply of a survey built in the web app rewrites it in `cotctl`'s shape.
 
 ### Keeping scripts out of YAML
 
@@ -125,7 +138,7 @@ cotctl validate -f order_request.yaml
 cotctl apply -f order_request.yaml -c acme
 ```
 
-This is also how you **promote between environments** — export from staging, apply to production (with the matching `-c` profile).
+This is also how you **promote between environments** — export from staging, apply to production (with the matching `-c` profile). One check behaves differently there: the [required bot `data` entries](../workflow-bots/index.md#required-data-entries) are compared with the stages stored in the *target* company, so a stage that doesn't exist there yet is new, and every required entry it lacks is refused — even when the same export re-applies cleanly where it came from.
 
 ## Deactivating instead of deleting
 

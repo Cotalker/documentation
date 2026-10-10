@@ -4,7 +4,7 @@ sidebar_label: Network & code
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/nw-request.md, nw-bot-v2-v3.md, ccjs.md, esm-code.md, pb-script.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/nw-request.md, nw-bot-v2-v3.md, ccjs.md, esm-code.md, pb-script.md @ 82e613d (2026-10-10) -->
 
 This family is the workflow's connection to the outside world and its escape hatch when no first-party bot fits:
 
@@ -161,7 +161,7 @@ Gotchas:
 
 Loads a packaged `COTPBScript` by `code` and runs its `parametrizedBot` body through the controller with your `data` as input. Returns a `{ key → result }` dictionary from each stage of the wrapped script. **Gated by `--allow-script-bots`.**
 
-Key parameters: `code` (the pbscript code to look up), `data` (input forwarded to the wrapped script).
+Key parameters: `code` (the pbscript code to look up), `data` (input forwarded to the wrapped script — one key per entry of the routine's `dataType`). `data.data` is **required**: write `data: {}` when the routine takes no input, and never put an input beside `code`, where it doesn't reach the routine. Since 0.14.0 every apply refuses a new `PBScript` stage without it — see [Required `data` entries](./index.md#required-data-entries).
 
 Branches: `SUCCESS` (the wrapped script produced at least one stage result), `ERROR` (not found, runtime error, or empty result).
 

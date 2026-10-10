@@ -4,7 +4,7 @@ sidebar_label: Property types
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/property-types.ts, src/schemas/property-type.schema.ts, src/resources/property-type.resource.ts, docs/property-types/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/property-types.ts, src/schemas/property-type.schema.ts, src/resources/property-type.resource.ts, docs/property-types/ @ 82e613d (2026-10-10) -->
 
 A **property type** is a schema — it defines the shape of a class of data. Its list of `schemaNodes` are the fields; each [property](./properties.md) of that type fills those fields in. If a property type is a table definition, a property is a row. This page is the deep reference for the type side and the `cotctl property-types` command; for the type-vs-instance mental model and the property side, start with [Properties & types](./properties.md).
 
@@ -38,10 +38,10 @@ schemaNodes:
 | `kind` | Yes | Always `PropertyType` |
 | `code` | Yes | Unique per company. **Immutable after creation** |
 | `display` | Yes | UI display name |
-| `hidden` | No | Defaults to `true`. See visibility below |
+| `hidden` | No | Defaults to `true` on create. See visibility below |
 | `viewPermissions` | Conditional | AccessRole **names**. **Required (non-empty) when `hidden: false`** |
 | `schemaNodes` | No | The field definitions (keys must be unique) |
-| `isActive` | No | Defaults to `true` |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value |
 | `displayTranslations`, `propertyImportPermissions`, `hierarchyLevel` | No | Localised label, import roles, hierarchy depth |
 
 ## Schema nodes: the fields
@@ -71,6 +71,10 @@ schemaNodes:
 | `validators` | No | `required`, `min`/`max`, `arrayMin`/`arrayMax`, and a custom `validator` list |
 | `default`, `weight`, `visualization` | No | Default value, display order, rendering hint |
 | `isActive`, `isHidden`, `isNonEditable`, `isIndexable` | No | Node-level flags |
+
+A node has **no `editable` block** — that belongs to a survey. The platform drops it, so since 0.14.0 `validate` and every apply refuse it (`editable is not a schema node field`, exit `1`) instead of letting it vanish. To keep users from editing a field, use `isNonEditable: true`.
+
+A node that omits `subType` is no longer read as a type change (fixed in 0.14.0): on an existing node it keeps the stored one.
 
 ### The `basicType` catalog
 
@@ -105,6 +109,10 @@ There are exactly eight types:
 
 **Omitting a node never deletes it.** When you apply a type, any node that exists on the server but isn't in your YAML is **preserved** — merged back into the update. So a partial YAML can't accidentally drop fields. To retire a node, include it explicitly with `isActive: false`; there's no way to permanently delete a schema node through YAML.
 
+Since 0.14.0 a node you declare is also matched with its stored node by `key` and keeps the fields it omits, and the nodes travel in their **stored order** — the ones your YAML omits in place, new ones last — whatever order the YAML lists them in (`apply` notes it when the orders differ). Before, a YAML that left a node out of the middle of the list, or reordered the nodes, produced an update the server refused.
+
+**To edit one node without writing the others**, add `partial: true` (0.14.0+): the document names the type's `code` and only the nodes it changes, each by `key`, and may leave out their `basicType` and the type's `display` — see [Partial documents](../commands/apply.md#partial-documents-partial-true).
+
 **Omitting the whole section and writing `schemaNodes: []` are different**, and since 0.12.0 `cotctl` tells them apart in what it reports. Nothing is deleted either way — the distinction is whether you *asked*:
 
 | Your YAML | What `cotctl` reports |
@@ -133,7 +141,13 @@ viewPermissions:
   - "Human Resources"   # role names can contain spaces — quote them
 ```
 
-`viewPermissions` are AccessRole **names**, case-sensitive. This is enforced before any API call — `hidden: false` with an empty `viewPermissions` fails validation. Conversely, flipping a visible type back to `hidden: true` clears its `viewPermissions`, and `cotctl` warns you when an apply would do that.
+`viewPermissions` are AccessRole **names**, case-sensitive. This is enforced before any API call — `hidden: false` with an empty `viewPermissions` fails validation.
+
+How `hidden: true` treats `viewPermissions` differs between create and update:
+
+- **On create**, `hidden: true` wins: the type is created with no view permissions, whatever list the YAML writes.
+- **On update** (since 0.14.0), a written `viewPermissions` travels as written, even next to `hidden: true`, and a YAML that omits both the list and `hidden: true` keeps the stored permissions — before 0.14.0 such an update wiped them. Only `hidden: true` **without** a `viewPermissions` list sends an empty one, and `apply` warns, naming the permissions it removes. Write `viewPermissions: []` to remove them on purpose.
+- **`hidden: true` does not hide a visible type.** `cotctl` never sends the visibility flag for `hidden: true`, so an update that writes it clears the view permissions (as above) but leaves a visible type visible — hide it from the webclient.
 
 ## Working with property types
 

@@ -29,7 +29,7 @@ permissions:
 | `kind` | Yes | Always `AccessRole` |
 | `name` | Yes | Unique per company. **Case-sensitive** — it's the upsert key |
 | `description` | No | Free text |
-| `active` | No | Defaults to `true`. **Note the field is `active`, not `isActive`** |
+| `active` | No | Defaults to `true` on create; an update that omits it keeps the stored value. **Note the field is `active`, not `isActive`** |
 | `permissions` | Yes | At least one permission |
 
 <div className="alert alert--secondary">

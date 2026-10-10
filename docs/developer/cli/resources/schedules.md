@@ -4,7 +4,7 @@ sidebar_label: Schedules
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/schedules.ts, src/schemas/schedule.schema.ts, src/resources/schedule.resource.ts, src/lib/validate-cron.ts, docs/schedules/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/schedules.ts, src/schemas/schedule.schema.ts, src/resources/schedule.resource.ts, src/lib/validate-cron.ts, docs/schedules/ @ 82e613d (2026-10-10) -->
 
 A **schedule** runs an automation at a time you choose — once, or on a recurring cron. It pairs a *when* (a one-shot `time`, or a `cron` expression with a timezone) with a *what* (`body`, an embedded automation graph). The `body` is the same ParametrizedBot shape used everywhere else, so a schedule can post a message, run a report, or invoke a standalone [routine](./routines.md) on a cadence.
 
@@ -43,14 +43,16 @@ body:
 | `code` | Yes | Upsert key. Lowercase/underscores/digits. **Immutable** |
 | `time` | Yes | ISO 8601. The one-shot fire time, or the first occurrence of a recurring schedule |
 | `cron` | No | UNIX 5-field cron. Omit for a one-shot schedule |
-| `cronTimeZone` | No | IANA timezone. Defaults to `America/Santiago` |
+| `cronTimeZone` | No | IANA timezone. Defaults to `America/Santiago` on create. A schedule stored without one fires in the scheduler's own zone, and `apply` warns when an update sets a zone on such a cron |
 | `endDate` | No | ISO 8601 or `null`. **Only valid with `cron`** — set `null` to clear an existing end date |
-| `isActive` | No | Defaults to `true`. See the activation note below |
+| `isActive` | No | Defaults to `true` on create. On an update, only a written `isActive` changes the status — see [Activation and status](#activation-and-status) |
 | `priority` | No | `1`–`6` (1 = real-time, 6 = idle). Defaults to `4` |
 | `timeoutMinutes` | No | `1`–`240`. Defaults to `60` |
 | `body` | Yes | The automation graph — same shape as bots in [workflows](./workflows.md) |
 | `owner`, `execPath` | No | Leave at their defaults; `cotctl` warns if you change them |
 | `tags`, `hooks`, `exponentialBackoff`, `runVersion` | No | Metadata, webhooks, retry policy, engine version |
+
+On an update, a key you omit keeps its stored value, and the declared `body` is completed from the stored one: each stage is paired with the stored stage of the same `key`, and a stage that omits `version` keeps the stored one. A stage with no stored match is sent with `isCritical: false` and `version: null` — the bot type's default — when it omits them. **`version: null` now unpins a stage** (before 0.14.0 a schedule kept the stored version either way), so remove a `version: null` that should keep it. The scheduler updates `body.stages` by position, not by key: a new stage, or one you move, keeps the keys it omits from the stored stage it lands on, and `apply` warns which. `owner` and `runVersion` are set on create only — an update never changes them, and `apply` warns when your YAML's value differs. To change one stage without restating the `body`, use a `partial: true` document (0.14.0+), which may leave out `time` and `body` — see [Partial documents](../commands/apply.md#partial-documents-partial-true).
 
 ## Cron and timezone
 
@@ -90,7 +92,7 @@ cotctl schedules deactivate sched_daily_digest
 cotctl schedules logs sched_daily_digest --limit 50
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `-q/--quiet`. `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …).
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage) and — new in 0.14.0 — `--json`, which prints one JSON object per result with `statusCall` when the apply relaunches or stops a cron. It checks each stage's bot `version` against the live catalog and refuses a bad one with exit `2`, `--dry-run` included, before anything is written (since 0.14.0; it used to fail only when the schedule ran). `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …).
 
 ### Reading a failed run
 
@@ -116,11 +118,25 @@ Until that changes, read the runs rather than filtering them: `cotctl schedules 
 
 </div>
 
-## Activation is a separate operation
+## Activation and status
 
 <div className="alert alert--primary">
 
-**`isActive` in the YAML isn't sent in the apply body — it's converged with a second call.** A schedule's live state can only be flipped through the dedicated `activate` / `deactivate` endpoints, not through create/update. So `cotctl` applies your schedule, then, if the YAML asks for a different state than what's live, it makes a follow-up `activate` or `deactivate` call. On a normal apply this is seamless.
+**`isActive` in the YAML isn't sent in the apply body — it's carried out with a second call.** A schedule's live state can only be flipped through the dedicated `activate` / `deactivate` endpoints, not through create/update. So `cotctl` applies your schedule, then, if the YAML asks for a different state than what's live, it makes a follow-up `activate` or `deactivate` call.
+
+</div>
+
+Since **0.14.0** an update never changes the status by itself — read this before you re-apply a running schedule:
+
+- **Only a written `isActive` moves the status.** `isActive: true` activates a canceled schedule, `isActive: false` deactivates any other, and an omitted `isActive` does neither. The live state is read from the status alone: anything but `canceled` counts as active — `done`, `error` and `incomplete` included. (Before 0.14.0 every update left the schedule `pending`, which reactivated a canceled one, and a YAML without `isActive` counted as active.)
+- **An update stops a running cron.** The scheduler stops the cron of a schedule in `running`, `tick` or `idle` when it updates it, and the status doesn't show it. With **`isActive: true`** in the YAML, `apply` relaunches the cron right after the update — the call `cotctl schedules activate` makes — and shows it as `+ activate` after the code in the dry run, the prompt and the result line (`"statusCall": "activate"` under `--json`). The cron starts again with the new configuration once its `time` has passed, staying `pending` until then. With `isActive` **omitted**, the cron stays stopped: `apply` warns on stderr and exits `0`, and you relaunch it with `cotctl schedules activate <code>`.
+- **A schedule that runs once is never relaunched** — with its `time` in the past it would run again right away — and neither is a running one whose YAML empties its cron (`cron: ''`), which turns it into a one-shot. `apply` warns in both cases; `cotctl schedules activate <code>` runs it.
+- **If the relaunch fails**, the update is already stored, so a re-apply would send nothing: `schedules apply` and `apply --dir` exit `3`, and `cotctl schedules activate <code>` is the fix.
+- **Re-applying a YAML that changes nothing sends nothing**, so it leaves the cron as it is.
+
+<div className="alert alert--warning">
+
+**Write `isActive: true` in the YAML of every schedule whose cron must keep running** — `cotctl schedules export` writes it for you. And re-export before re-applying an export made with 0.13.0 or earlier: those wrote `cronTimeZone: America/Santiago` for a schedule stored without a zone, so re-applying one moves its cron from the scheduler's zone to Santiago — three or four hours away — and relaunches it there.
 
 </div>
 
@@ -142,12 +158,13 @@ body:
       name: PBScript
       data:
         code: rutina_reporte_diario   # must be a real routine code
+        data: {}                      # the routine's input — {} when it takes none
       next:
         SUCCESS: ""
         ERROR: ""
 ```
 
-`cotctl` validates the routine code exists before applying — which is why routines are applied before schedules in a directory apply.
+`cotctl` validates the routine code exists before applying — which is why routines are applied before schedules in a directory apply. `data.data` carries the routine's input and is required, `{}` when there is none (see [Required `data` entries](../workflow-bots/index.md#required-data-entries)).
 
 ## Apply order
 

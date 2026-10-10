@@ -4,7 +4,7 @@ sidebar_label: Workflows
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ 82e613d (2026-10-10) -->
 
 A **workflow** models a process: a task that moves through a series of states, from creation to closure. Workflows are the most powerful — and the most structured — resource in Cotalker. You rarely write one from scratch: [`cotctl workflows scaffold`](../commands/scaffolding.md) generates a correct skeleton, and this page explains what that skeleton contains so you can customize it with confidence.
 
@@ -51,8 +51,8 @@ The schema defines these top-level fields:
 | `nameTranslations` | No | `es` / `en` / `pt` / `fr` |
 | `color`, `icon` | No | Display appearance |
 | `weight` | No | Display order (default `0`) |
-| `isActive` | No | Defaults to `true` |
-| `hideClosedAfterDays` | No | Days before closed tasks are hidden (0–1825). **Defaults to 7, which is often too short** — consider 30 |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value |
+| `hideClosedAfterDays` | No | Days before closed tasks are hidden (0–1825). **Defaults to 7 on create, which is often too short** — consider 30 |
 | `readPermissions` | No | Permission codes — who can read tasks |
 | `writePermissions` | No | Permission codes — who can create tasks |
 | `taskImportPermissions` | No | Permission codes — who can import tasks |
@@ -61,11 +61,15 @@ The schema defines these top-level fields:
 | `availableViews`, `defaultView` | No | Which UI views (e.g. kanban, list) are available |
 | `stateMachines` | No | The list of state machines |
 
+Since 0.14.0 a key the root doesn't declare is **refused**, by `validate` and every apply (exit `1`), instead of dropped without a word. The usual cause is a state-machine field written one level too high — `cardLabels` at the root — and the message says where it goes (`stateMachines[].cardLabels`); a root `code` or `name` is pointed at `nameCode` or `nameDisplay`.
+
 <div className="alert alert--danger">
 
 **Permission fields are literal permission codes — not AccessRole names.** The five permission arrays (`readPermissions`, `writePermissions`, `taskImportPermissions`, `taskFollowerPermissions`, `taskEditorPermissions`) hold **permission code strings** like `web-admin-write` or `purchase_orders:view`, and `cotctl` sends them to the server **verbatim** — it does *not* resolve them to AccessRole IDs. This is different from surveys, whose `permissions` field *does* take AccessRole names. Put the permission code itself here, exactly as it appears on the role that grants it. (Older workflows may still carry raw ObjectIds in these fields from a previous `cotctl` version; export surfaces those with a legacy marker so you can replace them.)
 
 </div>
+
+A StartForm's and a transition's `permissions` take permission **codes** too. Since 0.14.0, `workflows apply`, `apply -f` and `apply --dir` warn about a code that **no active AccessRole grants** — a typo, an AccessRole id written where a code belongs, or a code only an inactive role grants. No user holds such a code, so a list made only of them keeps the StartForm or the transition from everyone. The warning doesn't stop the apply.
 
 ## State machines, states, and transitions
 
@@ -91,15 +95,26 @@ stateMachines:
             requiredSurvey: survey_rejection_reason
 ```
 
+**The asset.** `asset.type` is `unique` or `generic`. A `generic` asset **must name its Property** in `asset.property` — one Property code, written as a one-entry list as `workflows export` writes it:
+
+```yaml
+    asset:
+      type: generic
+      propertyType: pt_po_assets
+      property: [po_asset_main]
+```
+
+Since 0.14.0 a generic asset without `asset.property`, or with `property: []`, is refused by `validate` and every apply (exit `1`) — the server refuses to save it, and before, that surfaced mid-apply as a server error. `asset.property` takes **one** code on any asset; a list of two or more is refused too. On a `unique` asset it stays optional, and `property: []` clears it.
+
 Each state corresponds to a [Property](./properties.md). Its `type` is one of `new`, `in-progress`, `closed`. A transition's `canChange` controls how it fires:
 
 | `canChange` | Meaning |
 |---|---|
-| `manual` (default) | A user triggers it from the task UI |
+| `manual` (default for a new transition) | A user triggers it from the task UI |
 | `survey` | The user must complete a survey first — set `requiredSurvey` to its code |
 | `none` | Only automation/system can trigger it (e.g. auto-closure) |
 
-State machines also support a `requiredSurvey` (a StartForm that gates task creation), and states support `subtask` and `surveyTriggers` slots — all of which can carry automation **bots**. Those slots have preserve/replace/delete rules you must understand before editing a live workflow; the [Merge semantics](./workflows/merge-semantics.md) page covers them.
+State machines also support a `requiredSurvey` (a StartForm that gates task creation), and states support `subtask` and `surveyTriggers` slots — all of which can carry automation **bots**. Those slots have preserve/replace/delete rules you must understand before editing a live workflow; the [Merge semantics](./workflows/merge-semantics.md) page covers them — including `partial: true` (0.14.0+), which edits one state, transition or bot stage without restating the rest.
 
 ### Card labels, task extensions and the default tab
 
@@ -135,7 +150,7 @@ This is the distinction to get right, and it is the same one [Merge semantics](.
 | `allowedExtensions: []` | **Every** accepted extension is removed |
 | `defaultSelectedTaskTab: null` | The setting is cleared |
 
-A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose. Use the entity-scoped `cotctl workflows apply --dry-run` to see it — the unified `apply` does not render that block.
+A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose — from `workflows apply` and, since 0.14.0, from the unified `apply` as well.
 
 #### What `validate --dir` checks, and what `export` warns about
 
@@ -151,7 +166,9 @@ A code that resolves to nothing **aborts the whole workflow apply** with `Proper
 
 ### SM-only mode
 
-If you omit `nameDisplay`, apply runs in **SM-only mode**: it touches only the state machines and states, leaving the workflow's display settings and permissions untouched. This is exactly what you want when adding a second state machine to a workflow that already exists, without resetting anything.
+If your YAML declares **none** of the workflow's root fields — no Group field (`nameDisplay`, `color`, …) and no TaskGroup field (the permission lists, `hideClosedAfterDays`, …) — apply runs in **SM-only mode**: it touches only the state machines and states, leaving the workflow's display settings and permissions untouched, and the workflow must already exist. This is exactly what you want when adding a second state machine to a workflow that already exists, without resetting anything.
+
+Since 0.14.0 the two root levels are also applied separately: a YAML that declares only TaskGroup fields (say, `readPermissions`) patches the TaskGroup and leaves the Group alone, and the reverse. And because an omitted field keeps its stored value on every level, the defaults in the table above apply only when the workflow is created.
 
 ## What the subpages cover
 
@@ -189,9 +206,9 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 
 ## A dependency note
 
-A transition's `requiredSurvey` references a survey by code, and the backend refuses to create the state machine if that survey does not exist yet.
+A transition's `requiredSurvey` — like a StartForm's `requiredSurvey.surveyCode` and a state's `surveyTriggers[].survey` — references a survey by code. Since 0.14.0 a workflow that names a survey the server doesn't have is **refused before its first write**, `--dry-run` included, with exit `1` and the reference named in the error. Before, the apply stopped halfway — after creating the Group, the TaskGroup, the state machine and its states — while the dry run passed.
 
-**Under `apply --dir` this is handled for you:** surveys are applied *before* workflows, so the reference resolves by construction. It matters when you run the two commands **separately** — then the order is yours to get right:
+**Under `apply --dir` this is handled for you:** surveys are applied *before* workflows, so a survey the same directory applies counts as present (and `validate --dir` checks it offline, as `X7`). It matters when you run the two commands **separately** — then the order is yours to get right:
 
 ```bash
 cotctl surveys apply -f surveys.yaml -c acme

@@ -4,7 +4,7 @@ sidebar_label: Bots
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/bots.ts, src/schemas/bot-admin.schema.ts, src/resources/bot.resource.ts, docs/bots/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/bots.ts, src/schemas/bot-admin.schema.ts, src/resources/bot.resource.ts, docs/bots/ @ 82e613d (2026-10-10) -->
 
 A **bot** is the entity behind the slash-commands operators trigger from the chat (`/hola`, `/registrar`). Each bot owns a list of `commands`, and — optionally — an embedded automation graph (a **ParametrizedBot**) that runs when a command fires. Because a bot can invoke almost anything in the platform, it's applied **last** in a directory apply, after every resource it might reference.
 
@@ -47,11 +47,11 @@ parametrizedBot:                   # optional automation that runs when a comman
 | `kind` | Yes | Always `Bot` |
 | `name` | Yes | The upsert key. Unique per company, 1–80 chars. No format rules — any string |
 | `description` | No | Free text |
-| `isActive` | No | Defaults to `true`. Soft-delete by re-applying with `isActive: false` |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value. Soft-delete by re-applying with `isActive: false` |
 | `global` | No | Defaults to `false`. When `true`, the bot is available across companies — common in production, no warning on apply |
 | `commands` | No | Slash-commands and survey-commands. See the three-way rule below |
 | `parametrizedBot` | No | The automation graph, same shape as bots embedded in [workflows](./workflows.md) |
-| `extraData` | No | Free-form feature flags (`messages`, `messagesWithSubsurveys`) |
+| `extraData` | No | Free-form feature flags (`messages`, `messagesWithSubsurveys`). Omit it to keep the stored list; since 0.14.0 `extraData: []` empties it |
 
 <div className="alert alert--info">
 
@@ -89,20 +89,40 @@ A few things trip people up:
 
 <div className="alert alert--primary">
 
-**`commands` is replace-entire on update — and its absence means "keep".** This is the single most important operational rule for bots. When you apply an update:
+**A declared `commands` list is the complete list — and its absence means "keep".** This is the single most important operational rule for bots. When you apply an update:
 
 | YAML | Result |
 |---|---|
 | `commands` omitted | The existing array is **kept** untouched |
-| `commands: [ … ]` | The existing array is **replaced wholesale** — every command not in your list is dropped |
-| `commands: []` | **All commands deleted.** `cotctl` refuses to do this silently: it warns and makes you retype the bot name to confirm — even with `-y` |
+| `commands: [ … ]` | The list you write is the bot's list: every stored command **not in it is deleted**, and `apply` names each one on stderr before the write — before the prompt without `-y`, so declining still keeps them |
+| `commands: []` | **All commands deleted.** `cotctl bots apply` refuses to do this silently: it names them and makes you retype the bot name to confirm — even with `-y` |
 
-There's no smart merge by `slashCmd`. To add one command to an existing bot, export it, append the entry, and re-apply:
+Since 0.14.0 each command you declare is **paired with its stored version** — by `slashCmd`, or by `surveyIds` for a survey command — and each of its `arguments` by `name`, so a key it omits keeps its stored value: a command that omits `isActive: false` stays deactivated. A survey command whose `surveyIds` you change is a different command to `cotctl` (the stored one is deleted and named in the warning), and a command that is neither a slash nor a survey command travels as written, with a warning naming the stored keys it loses.
+
+<div className="alert alert--warning">
+
+**`apply --dir` does not ask for the bot name.** Without `-y`, its preview names the commands a `commands: []` deletes before its single confirmation prompt; with `-y` it deletes them without asking. The name prompt is a safeguard of `cotctl bots apply` — don't use a directory apply to get around it.
+
+</div>
+
+To add one command to an existing bot, export it, append the entry, and re-apply:
 
 ```bash
 cotctl bots export "Saludo Bot" -c acme -o bot.yaml
 # edit bot.yaml — append to commands[]
 cotctl bots apply -f bot.yaml -c acme
+```
+
+Or, since 0.14.0, apply a [`partial: true`](../commands/apply.md#partial-documents-partial-true) document that names only the commands it adds or changes — the stored ones it leaves out are kept, and under the marker even `commands: []` deletes nothing:
+
+```yaml
+kind: Bot
+name: "Saludo Bot"
+partial: true
+commands:
+  - slashCmd: "adios"
+    isSlash: true
+    description: "Se despide"
 ```
 
 </div>
@@ -121,10 +141,13 @@ parametrizedBot:
       name: PBScript
       data:
         code: rutina_calcular_riesgo   # must be a real Routine code
+        data: {}                       # the routine's input — {} when it takes none
       next:
         SUCCESS: send_message
         ERROR: ""
 ```
+
+The routine's input goes **under `data.data`**, one key per entry of its `dataType` — the only part of the stage's `data` that `PBScript` passes on. `data.data` is required even when the routine takes no input: since 0.14.0 every apply refuses a new `PBScript` stage without it (see [Required `data` entries](../workflow-bots/index.md#required-data-entries)).
 
 When your YAML declares a `PBScript` stage, `cotctl` checks that the routine code actually exists in the profile before applying — so a typo fails at apply time with a "did you mean…?" suggestion, not silently at runtime. It also validates that `start` points to a real stage and that every `next` branch lands on a real stage or the empty string (a terminal branch).
 
@@ -154,7 +177,7 @@ cotctl bots apply -f bot.yaml --dry-run   # preview
 cotctl bots apply -f bot.yaml -y
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `-q/--quiet`, and handles multi-document files. As always, `--dry-run` first — especially against production — to see the create/update plan and any validation errors before anything is written.
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, and `--allow-script-bots` (required when `parametrizedBot` has a `PBScript`, `CCJS` or `ESMCode` stage), and handles multi-document files. As always, `--dry-run` first — especially against production — to see the create/update plan and any validation errors before anything is written.
 
 <div className="alert alert--info">
 

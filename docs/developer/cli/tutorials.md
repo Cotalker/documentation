@@ -4,7 +4,7 @@ sidebar_label: Tutorials
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/{bots,routines,schedules,slas,property-types,properties}/, repositories/cotctl/src/commands/{bots,routines,schedules,slas,property-types,properties,surveys,workflows,validate,apply}.ts, repositories/cotctl/examples/{bots,routines,properties}/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/{bots,routines,schedules,slas,property-types,properties}/, repositories/cotctl/src/commands/{bots,routines,schedules,slas,property-types,properties,surveys,workflows,validate,apply}.ts, repositories/cotctl/examples/{bots,routines,properties}/ @ 82e613d (2026-10-10) -->
 
 The reference pages tell you *what* each command does. This page shows you *how* they fit together, with complete, follow-along recipes for the things you'll actually do on a project. Each recipe lists what you need before you start and what success looks like, so you can tell when it worked.
 
@@ -70,7 +70,7 @@ cotctl validate -f survey.yaml
 cotctl apply -f survey.yaml -c acme
 ```
 
-**What success looks like:** `Survey "existing_survey" updated successfully`. You can add, remove, edit, and reorder questions freely — `cotctl` matches them by `identifier` and preserves their IDs.
+**What success looks like:** `Survey "existing_survey" updated successfully` — or, when your edit changes nothing the server doesn't already hold, `Survey "existing_survey" unchanged — nothing to send`. You can add, remove, edit, and reorder questions freely — `cotctl` matches them by `identifier` and preserves their IDs.
 
 ## Recipe 4 — Promote a survey between environments
 
@@ -209,6 +209,7 @@ body:
       name: PBScript
       data:
         code: rutina_saludo_simple   # must be a real Routine code
+        data: {}                     # the routine's input — this one takes none
       next:
         SUCCESS: ""
         ERROR: ""
@@ -216,8 +217,10 @@ body:
 
 ```bash
 # 3. Apply the schedule — it's active by default, so it starts firing on cron.
-cotctl schedules apply -f sched.yaml -c acme --dry-run
-cotctl schedules apply -f sched.yaml -c acme -y
+#    The PBScript stage runs code, so the apply needs --allow-script-bots
+#    (without it the schedule is refused before any request, --dry-run included).
+cotctl schedules apply -f sched.yaml -c acme --dry-run --allow-script-bots
+cotctl schedules apply -f sched.yaml -c acme -y --allow-script-bots
 
 # 4. After it has fired, inspect the runs
 cotctl schedules logs sched_saludo_diario -c acme -l 25 --op executed
@@ -227,12 +230,13 @@ cotctl schedules logs sched_saludo_diario -c acme -l 25 --op executed
 
 <div className="alert alert--warning">
 
-Apply the **routine before the schedule**. The schedule's `--dry-run` checks that `data.code` points at a routine that already exists in the profile — apply the schedule first and that check fails. Under `cotctl apply --dir`, cotctl orders Routine before Schedule automatically, so keeping both files in one folder side-steps the problem.
+Apply the **routine before the schedule**. The schedule's `--dry-run` checks that `data.code` points at a routine that already exists in the profile — apply the schedule first and that check fails. Under `cotctl apply --dir`, cotctl orders Routine before Schedule automatically, so keeping both files in one folder side-steps the problem — pass `--allow-script-bots` there too, since the schedule's `PBScript` stage needs it on every apply path.
 
 </div>
 
-Two details worth knowing:
+Three details worth knowing:
 
+- **When you edit the schedule later, write `isActive: true` in the YAML.** Updating a schedule stops its running cron. Since 0.14.0, `apply` relaunches it only when the YAML writes `isActive: true`; with the key left out, the cron stays stopped until `cotctl schedules activate`. See [Schedules](./resources/schedules.md#activation-and-status).
 - **Cron is UNIX 5-field.** cotctl validates it as standard cron. The admin webclient's Advanced tab pre-fills Quartz (6/7-field) examples like `0 15 10 L-2 * ?` — those are rejected. Use `0 9 * * *`.
 - **Pause without editing the YAML** using the dedicated endpoints:
 
@@ -387,11 +391,11 @@ cotctl surveys apply -f survey.yaml -c ci \
 
 <div className="alert alert--warning">
 
-These four flags live **only** on the scoped `surveys`, `properties`, and `workflows` apply commands. The unified `cotctl apply` — and `bots` / `routines` / `schedules` / `slas` / `property-types` apply — do **not** accept `--diff`, `--fail-on-destructive`, or line-delimited `--json`. Point your CI gate at the scoped command for the resource you're deploying.
+`--fail-on-destructive` lives **only** on the scoped `surveys`, `properties`, and `workflows` apply commands — and on `properties apply` it never fires, since every finding a property can raise is a warning. Since 0.14.0 the unified `cotctl apply` takes `--diff` (and `--json` with `--dir`) and prints the destructive findings in a dry run, but it has no gate. Point your CI gate at the scoped command for the resource you're deploying.
 
 </div>
 
-**What success looks like:** a benign change exits `0` and the pipeline proceeds; a change that would drop a question (or similar) exits `2` and the build stops before anything is applied.
+**What success looks like:** a benign change exits `0` and the pipeline proceeds; a change that would drop a question or empty a permission list exits `2` and the build stops before anything is applied. (Dropping a question counts since 0.14.0; before, the dry run did not report it at all. An export made with 0.13.0 or earlier can trip it unmodified — re-export first.)
 
 ## Where to go next
 

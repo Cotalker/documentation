@@ -4,7 +4,7 @@ sidebar_label: Installation
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/package.json @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/package.json @ 82e613d (2026-10-10) -->
 
 In this page you'll get `cotctl` installed on your machine and confirm it's working. It takes about two minutes. If you've ever installed a global npm package before, this will feel familiar.
 
@@ -63,6 +63,14 @@ You should see a version number printed back, for example:
 ```
 
 If you see a version, you're done — the tool is installed correctly. If instead you get a "command not found" error, the global npm bin directory may not be on your `PATH`; the [Troubleshooting](./troubleshooting.md) page covers how to fix that.
+
+## Staying up to date
+
+From **0.14.0**, `cotctl` checks for a newer version before every command. On a terminal, an update without breaking changes installs itself, and one with breaking changes is offered with a link to its release notes; in CI or with `-y` it only prints a notice on stderr. `cotctl update` installs the latest version whenever you want.
+
+Automatic updates apply only to a copy installed with `npm install -g`. An earlier version never looks for an update, so moving to 0.14.0 takes the `npm install -g @cotctl/cli` above, once. The details — and `COTCTL_NO_UPDATE_CHECK`, which turns the check off — are on the [update](./commands/update.md) page.
+
+**In a CI pipeline, pin the version instead** — `npm install -g @cotctl/cli@<version>` — and set `COTCTL_NO_UPDATE_CHECK=1`, so a job runs the version it names until you move the pin. [CI/CD](./ci-cd.md#new-cotctl-versions-in-a-pipeline) has the worked example.
 
 ## Getting your bearings
 
