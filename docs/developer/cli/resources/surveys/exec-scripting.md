@@ -4,7 +4,7 @@ sidebar_label: Exec scripting
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/surveys/exec-hooks.md, exec-contexts.md, exec-commands.md, exec-network-request.md, src/schemas/survey.schema.ts (~255-279) @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/surveys/exec-hooks.md, exec-contexts.md, exec-commands.md, exec-network-request.md, src/schemas/survey.schema.ts (~255-279) @ 82e613d (2026-10-10) -->
 
 Exec scripting is how a survey does things a static form can't: pre-fill a field from the current user, validate an answer against a business rule, call an external API when a button is pressed. Each question can carry an `exec` block with small JavaScript functions that run at defined points in its lifecycle.
 

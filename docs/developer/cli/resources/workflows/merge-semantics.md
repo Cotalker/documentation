@@ -4,7 +4,7 @@ sidebar_label: Merge semantics
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/merge-semantics.md, src/lib/apply-helpers.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/merge-semantics.md, src/lib/apply-helpers.ts @ 82e613d (2026-10-10) -->
 
 This is the most important page to read before you edit a workflow that's already live. It explains what `cotctl workflows apply` does with the fields you *didn't* write — and why an innocent-looking `bots: []` can silently wipe automation that someone built in the web builder.
 

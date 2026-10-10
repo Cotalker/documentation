@@ -4,7 +4,7 @@ sidebar_label: Skills
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/skills.ts, src/skills/index.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/skills.ts, src/skills/index.ts @ 82e613d (2026-10-10) -->
 
 A **Skill** is an installable package that gives the Claude Code AI agent specialized knowledge and tools for a specific area. `cotctl` ships a set of Skills — one per resource type — that turn a general-purpose agent into a Cotalker authoring specialist. This page is the reference for the `cotctl skills` command that manages them. For the bigger picture of how Skills fit with the RAG and the agent, see [AI-assisted authoring](./ai-authoring.md).
 

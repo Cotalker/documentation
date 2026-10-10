@@ -20,19 +20,20 @@ From **0.14.0**, `cotctl` keeps itself current. Before every command it checks w
 cotctl update
 ```
 
-It takes no options. It asks npm for the latest `@cotctl/cli` and:
+It takes no options. It asks the npm registry for the latest `@cotctl/cli` — ignoring the cache described below, and waiting up to **10 seconds** for the answer — and:
 
 - **Already up to date** — says so and exits `0`.
 - **A newer version exists** — names both versions (plus the [release notes](../release-notes.md) link when the update has breaking changes), installs it with `npm install -g @cotctl/cli@<version>`, and exits `0` once the new version answers.
 - **This copy cannot update itself** (see [When cotctl can update itself](#when-cotctl-can-update-itself)) — prints the command to run instead and exits `1`.
 - **Another `cotctl` is installing an update right now** — says so and exits `1` without touching npm. Run `cotctl update` again once that install finishes.
+- **An unreleased build** (a development copy) — says it does not update itself, and exits `1`.
 
 It works without a terminal, so a pipeline or a Dockerfile can call it, and it ignores `COTCTL_NO_UPDATE_CHECK` — asking for an update is an explicit request. Everything it prints goes to stderr.
 
 | Exit | Meaning |
 |---|---|
 | `0` | Already up to date, or updated |
-| `1` | npm could not be reached, this copy cannot update itself, another `cotctl` is installing an update, or npm failed |
+| `1` | The npm registry could not be reached, this copy cannot update itself (or is an unreleased build), another `cotctl` is installing an update, or npm failed |
 
 ## The check before every command
 
@@ -47,7 +48,7 @@ Before running any command, `cotctl` compares its version with the latest one on
 
 Before 1.0, a minor version bump is the breaking one; from 1.0 on, a major bump. Prerelease versions are never offered.
 
-"A terminal" means stdin, stdout and stderr are all attached to one and `CI` is unset (or `0`, `false`, `no`). Redirecting only the output — `cotctl surveys export … > survey.yaml` — counts as no terminal. A command run with `-y` gets the no-terminal behaviour even on a terminal: `--yes` says nobody is there to answer.
+"A terminal" means stdin, stdout and stderr are all attached to one and `CI` is unset — or set to empty, `0`, `false` or `no` (case-insensitive), which count as unset. Redirecting only the output — `cotctl surveys export … > survey.yaml` — counts as no terminal. A command run with `-y` gets the no-terminal behaviour even on a terminal: `--yes` says nobody is there to answer.
 
 ### The prompt for a breaking update
 
@@ -57,7 +58,7 @@ Before 1.0, a minor version bump is the breaking one; from 1.0 on, a major bump.
 | `continue` | Runs your command on the current version. The prompt comes back on the next command |
 | `cancel` | Does not run your command, and exits `0` |
 
-The versions and the release notes link stay on screen above the options, so you can read what changed before you choose.
+The versions and the release notes link stay on screen above the options, so you can read what changed before you choose. Ctrl-C at the prompt exits `1`.
 
 ### When an automatic update fails
 
@@ -75,11 +76,11 @@ Any other installation — a standalone binary, a project dependency, `npx` — 
 
 ## The lookup, its cache, and turning it off
 
-- The latest version comes from the npm registry with a **1.5-second** timeout. A slow or unreachable registry is ignored silently: the command runs as if nothing were published.
+- Before a command, the latest version comes from the npm registry with a **1.5-second** timeout. A slow or unreachable registry is ignored silently: the command runs as if nothing were published. (`cotctl update` waits up to 10 seconds instead, and reports a registry it cannot reach.)
 - The lookup does not read `HTTP_PROXY` / `HTTPS_PROXY`. Behind a mandatory proxy it always fails, so no notice ever appears and `cotctl update` reports that it could not reach the registry. Update with `npm install -g @cotctl/cli`, which follows npm's own proxy settings.
-- The answer is cached for **12 hours** in `~/.cotctl/update-check.json`, next to the profiles. The cache only spares the network call: while a breaking update is pending, the prompt still appears on every command.
+- The answer is cached for **12 hours** in `~/.cotctl/update-check.json`, next to the profiles — a failed lookup too, so an offline machine pays the timeout once per 12 hours. The cache only spares the network call: while a breaking update is pending, the prompt still appears on every command. `cotctl update` ignores it.
 
-Set `COTCTL_NO_UPDATE_CHECK=1` to skip the check entirely — no network call, no notice, no prompt:
+Set `COTCTL_NO_UPDATE_CHECK=1` to skip the check entirely — no network call, no notice, no prompt. Any value turns it off except empty, `0`, `false` or `no` (case-insensitive):
 
 ```bash
 COTCTL_NO_UPDATE_CHECK=1 cotctl apply -f survey.yaml -c acme --yes
@@ -89,7 +90,7 @@ The check is also skipped for `--version`, for `--help`, and for `cotctl update`
 
 <div className="alert alert--info">
 
-**Updating `cotctl` does not update your installed Skills.** The [Skills](../skills.md) are files copied from the version that installed them. Run `cotctl skills install` again after an update to bring them in line with the new version.
+**Updating `cotctl` does not update your installed Skills.** The [Skills](../skills.md) are files copied from the version that installed them. Run `cotctl skills install` again after an update, in the same scope (`--local` or `--global`; with `-y` and no scope it installs `--local`), to bring them in line with the new version.
 
 </div>
 

@@ -4,7 +4,7 @@ sidebar_label: validate
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/validate.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/validate.ts @ 82e613d (2026-10-10) -->
 
 `cotctl validate` checks your YAML *before* you deploy it. Getting into the habit of validating first is one of the highest-value things you can do as a partner: it catches mistakes on your machine, in seconds, instead of as a half-applied change in a customer's environment.
 

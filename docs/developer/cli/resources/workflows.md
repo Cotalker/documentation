@@ -4,7 +4,7 @@ sidebar_label: Workflows
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ 82e613d (2026-10-10) -->
 
 A **workflow** models a process: a task that moves through a series of states, from creation to closure. Workflows are the most powerful — and the most structured — resource in Cotalker. You rarely write one from scratch: [`cotctl workflows scaffold`](../commands/scaffolding.md) generates a correct skeleton, and this page explains what that skeleton contains so you can customize it with confidence.
 
@@ -51,7 +51,7 @@ The schema defines these top-level fields:
 | `nameTranslations` | No | `es` / `en` / `pt` / `fr` |
 | `color`, `icon` | No | Display appearance |
 | `weight` | No | Display order (default `0`) |
-| `isActive` | No | Defaults to `true` |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value |
 | `hideClosedAfterDays` | No | Days before closed tasks are hidden (0–1825). **Defaults to 7 on create, which is often too short** — consider 30 |
 | `readPermissions` | No | Permission codes — who can read tasks |
 | `writePermissions` | No | Permission codes — who can create tasks |

@@ -4,7 +4,7 @@ sidebar_label: Bot types
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/bot-types.ts, src/resources/bot-type.resource.ts, src/lib/known-bot-types.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/bot-types.ts, src/resources/bot-type.resource.ts, src/lib/known-bot-types.ts @ 82e613d (2026-10-10) -->
 
 When you write an automation graph — inside a [bot](./bots.md), a [routine](./routines.md), an [SLA](./slas.md), or a [schedule](./schedules.md) — each stage names a **bot type** in its `name` field: `PBSendMessage`, `PBCreateTask`, `FCEach`, `PBScript`, and so on. `cotctl bot-types` is the read-only lens onto that catalog: which types exist, which versions each one has registered, and whether it has a default.
 

@@ -4,7 +4,7 @@ sidebar_label: Immutability & versioning
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/immutability.md, src/lib/validate-bot-versions.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/immutability.md, src/lib/validate-bot-versions.ts @ 82e613d (2026-10-10) -->
 
 Some parts of a workflow are structural: change them after tasks exist and you'd corrupt data, so Cotalker won't let you. This page lists what's frozen after creation, why states can never be removed, and the bot-version rules `cotctl` checks before an apply.
 

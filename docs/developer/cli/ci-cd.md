@@ -4,7 +4,7 @@ sidebar_label: CI/CD
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/{apply,surveys,properties,workflows}.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/{apply,surveys,properties,workflows}.ts @ 82e613d (2026-10-10) -->
 
 Everything `cotctl` does on your laptop, it can do unattended in a pipeline. Running it in CI/CD is what turns "a partner deploys changes by hand" into "changes are validated and deployed automatically on every merge" — repeatable, reviewable, and not dependent on anyone remembering the steps. This page shows the recommended shape and, importantly, how to handle credentials safely.
 
@@ -88,6 +88,9 @@ on:
   push:
     branches: [main]
 
+env:
+  COTCTL_NO_UPDATE_CHECK: '1'   # both jobs: no version lookup, no notice
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -108,7 +111,6 @@ jobs:
       COTCTL_TOKEN: ${{ secrets.COTCTL_API_TOKEN }}
       COTCTL_API_URL: https://www.cotalker.com
       COTCTL_COMPANY_ID: ${{ vars.COTCTL_COMPANY_ID }}
-      COTCTL_NO_UPDATE_CHECK: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -122,7 +124,7 @@ Two things to notice. There is **no login step** — the environment credential 
 
 `COTCTL_COMPANY_ID` is a plain variable rather than a secret: a company id is not sensitive, and keeping it visible is the point — it is the line a reviewer reads to see which environment this job deploys to.
 
-Both jobs install a **pinned** version, and the deploy job sets `COTCTL_NO_UPDATE_CHECK`, so the version that runs is the one the workflow names — see [New cotctl versions in a pipeline](#new-cotctl-versions-in-a-pipeline).
+Both jobs install a **pinned** version, so the version that runs is the one the workflow names — without a terminal `cotctl` never installs an update on its own; the pin is what keeps `npm install` from picking up a newer release. The workflow-level `COTCTL_NO_UPDATE_CHECK` (the "offline" validate job queries npm for the check too) removes the version notice and its network call, and keeps a runner that has a terminal but no `CI` variable from ever being offered an update. See [New cotctl versions in a pipeline](#new-cotctl-versions-in-a-pipeline).
 
 ## The CI-oriented flags, and where they live
 
@@ -131,7 +133,7 @@ Most of the flags that make an apply *pipeline-friendly* used to live only on th
 | Flag | On | What it does |
 |---|---|---|
 | `--json` | `surveys`, `properties`, `workflows` and — new in 0.14.0 — `schedules apply`, and `apply --dir` | Emits results as JSON, one object per line, to stdout. `apply -f` refuses it |
-| `--quiet` / `-q` | those, plus `bots` / `routines` / `webhooks apply` and the unified `apply` | Suppresses the progress lines and advisory warnings. Errors still surface, and **so does every destructive finding** |
+| `--quiet` / `-q` | those, plus `bots` / `routines` / `webhooks apply` and the unified `apply` | Suppresses the advisory warnings on stderr. On `surveys`, `properties`, `workflows` and `webhooks apply` it also drops the `would-create` / `would-update` lines; on the unified `apply`, the per-field diff of a `--dry-run` (the result lines still print). Errors still surface, and **so does every destructive finding** |
 | `--diff <off\|compact\|verbose>` | `surveys`, `properties`, `workflows apply` and — new in 0.14.0 — the unified `apply`, `-f` or `--dir` | How much per-field diff a `--dry-run` prints (default `compact`) |
 | `--fail-on-destructive` | `surveys apply`, `properties apply`, `workflows apply` **only** | Exits `2` when a `--dry-run` finds a `danger` finding |
 
@@ -171,7 +173,7 @@ A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on
 
 <div className="alert alert--info">
 
-**0.14.0 changed several codes.** If your pipeline tests for specific values, check it against the list below. Among the moves: a survey refusal from `surveys apply` or `apply -f` (`1` → `2`); an SLA or schedule refusal (`1` → `2`); a partial workflow apply from `apply -f` (`1` → `3`); a Workflow naming a Survey the server lacks (`3` → `1`, refused before its first write); `bots apply --dry-run` on a runtime failure (`2` → `1`); `apply --dir` without `-y` when its preview finds an error (now exits with that error's code, writing nothing); and a batch that declares a resource twice (now `2`, where the last document used to win).
+**0.14.0 changed several codes.** If your pipeline tests for specific values, check it against the list below. Among the moves: a survey refusal from `surveys apply` or `apply -f` (`1` → `2`); an SLA or schedule refusal (`1` → `2`); a partial workflow apply from `apply -f` (`1` → `3`); a Workflow naming a Survey the server lacks (`3` → `1`, refused before its first write); `bots apply --dry-run` on a runtime failure (`2` → `1`); `apply --dir` without `-y` when its preview finds an error (now exits with that error's code, writing nothing); `apply --dir` for a document its own apply command refuses with `2` (`1` → `2`, even after `--continue-on-error` applied the rest); a batch that declares a resource twice (now `2`, where the last document used to win); `users` / `jobtitles apply` on an inactive record whose YAML omits `isActive` (`2` → `0`, and the rest of the YAML is now written); `bots`, `routines`, `users` and `jobtitles apply` on a failure that refuses nothing in the YAML, such as a catalog that cannot be read (`2` → `1`); a system JobTitle code typed back wrong at its prompt in `jobtitles apply` or `apply -f` (`2` → `0`, cancelled like a declined prompt; `apply --dir` stops there with `1`); and a Workflow state machine reusing a deactivated one's `code` (now `2`, before anything is written).
 
 </div>
 
@@ -236,7 +238,7 @@ What that means in practice: an ApiToken expires on a date somebody chose, and n
 
 ## New cotctl versions in a pipeline
 
-From **0.14.0**, `cotctl` checks for a newer version before every command. In a pipeline that check never prompts and never installs anything: without a terminal (or with `CI` set) — and on any command run with `-y` — it writes a few `[cotctl]` lines to **stderr** (the versions, the release notes link for a breaking update, and the command to update with) and runs the command as usual. stdout is untouched, so `--json` output stays parseable. 0.14.0 is the first version with the check: a job still on 0.13.x never sees a notice.
+From **0.14.0**, `cotctl` checks for a newer version before every command. In a pipeline that check never prompts and never installs anything: without a terminal, or with `CI` set to any value other than empty, `0`, `false` or `no` — and on any command run with `-y` — it writes a few `[cotctl]` lines to **stderr** (the versions, the release notes link for a breaking update, and the command to update with) and runs the command as usual. stdout is untouched, so `--json` output stays parseable. 0.14.0 is the first version with the check: a job still on 0.13.x never sees a notice.
 
 Two settings make a job predictable:
 

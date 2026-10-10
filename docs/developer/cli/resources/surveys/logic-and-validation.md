@@ -4,7 +4,7 @@ sidebar_label: Logic & validation
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/surveys/conditional-display.md, scoring.md, bounds.md, validations.md, src/lib/survey-validator.ts, src/validators/remote.validator.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/surveys/conditional-display.md, scoring.md, bounds.md, validations.md, src/lib/survey-validator.ts, src/validators/remote.validator.ts @ 82e613d (2026-10-10) -->
 
 Beyond capturing answers, a survey can react to them: hide questions that don't apply, compute a score, push answers onto the task it belongs to. This page covers the three declarative mechanisms for that — conditional display, scoring, and bounds — and the three-layer validation `cotctl` runs before any of it reaches the server.
 

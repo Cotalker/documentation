@@ -4,7 +4,7 @@ sidebar_label: Schedules
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/schedules.ts, src/schemas/schedule.schema.ts, src/resources/schedule.resource.ts, src/lib/validate-cron.ts, docs/schedules/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/schedules.ts, src/schemas/schedule.schema.ts, src/resources/schedule.resource.ts, src/lib/validate-cron.ts, docs/schedules/ @ 82e613d (2026-10-10) -->
 
 A **schedule** runs an automation at a time you choose — once, or on a recurring cron. It pairs a *when* (a one-shot `time`, or a `cron` expression with a timezone) with a *what* (`body`, an embedded automation graph). The `body` is the same ParametrizedBot shape used everywhere else, so a schedule can post a message, run a report, or invoke a standalone [routine](./routines.md) on a cadence.
 
@@ -52,7 +52,7 @@ body:
 | `owner`, `execPath` | No | Leave at their defaults; `cotctl` warns if you change them |
 | `tags`, `hooks`, `exponentialBackoff`, `runVersion` | No | Metadata, webhooks, retry policy, engine version |
 
-On an update, a key you omit keeps its stored value, and the declared `body` is completed from the stored one: each stage is paired with the stored stage of the same `key`, and a stage that omits `version` keeps the stored one. **`version: null` now unpins a stage** (before 0.14.0 a schedule kept the stored version either way), so remove a `version: null` that should keep it. The scheduler updates `body.stages` by position, not by key: a new stage, or one you move, keeps the keys it omits from the stored stage it lands on, and `apply` warns which. `owner` and `runVersion` are set on create only — an update never changes them, and `apply` warns when your YAML's value differs. To change one stage without restating the `body`, use a `partial: true` document (0.14.0+), which may leave out `time` and `body` — see [Partial documents](../commands/apply.md#partial-documents-partial-true).
+On an update, a key you omit keeps its stored value, and the declared `body` is completed from the stored one: each stage is paired with the stored stage of the same `key`, and a stage that omits `version` keeps the stored one. A stage with no stored match is sent with `isCritical: false` and `version: null` — the bot type's default — when it omits them. **`version: null` now unpins a stage** (before 0.14.0 a schedule kept the stored version either way), so remove a `version: null` that should keep it. The scheduler updates `body.stages` by position, not by key: a new stage, or one you move, keeps the keys it omits from the stored stage it lands on, and `apply` warns which. `owner` and `runVersion` are set on create only — an update never changes them, and `apply` warns when your YAML's value differs. To change one stage without restating the `body`, use a `partial: true` document (0.14.0+), which may leave out `time` and `body` — see [Partial documents](../commands/apply.md#partial-documents-partial-true).
 
 ## Cron and timezone
 

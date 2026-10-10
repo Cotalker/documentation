@@ -4,7 +4,7 @@ sidebar_label: Property types
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/property-types.ts, src/schemas/property-type.schema.ts, src/resources/property-type.resource.ts, docs/property-types/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/property-types.ts, src/schemas/property-type.schema.ts, src/resources/property-type.resource.ts, docs/property-types/ @ 82e613d (2026-10-10) -->
 
 A **property type** is a schema — it defines the shape of a class of data. Its list of `schemaNodes` are the fields; each [property](./properties.md) of that type fills those fields in. If a property type is a table definition, a property is a row. This page is the deep reference for the type side and the `cotctl property-types` command; for the type-vs-instance mental model and the property side, start with [Properties & types](./properties.md).
 

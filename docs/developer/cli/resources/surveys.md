@@ -4,7 +4,7 @@ sidebar_label: Surveys
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/surveys.ts, src/schemas/survey.schema.ts, docs/surveys/yaml-structure.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/surveys.ts, src/schemas/survey.schema.ts, docs/surveys/yaml-structure.md @ 82e613d (2026-10-10) -->
 
 A **survey** is a form — the way Cotalker captures structured data from people. Surveys are usually the first resource partners learn to manage with `cotctl`, because they're self-contained and immediately useful. A survey is a `code`, a `name`, and a list of `questions`, and everything else — who can respond, conditional visibility, scoring, automation hooks — is layered on top of that spine.
 
@@ -37,7 +37,7 @@ questions:
 | `kind` | Yes | Always `Survey` |
 | `code` | Yes | Unique per company. Must match `^[a-z][a-z0-9_]*$`. **Immutable after creation** |
 | `name` | Yes | Display name |
-| `isActive` | No | Defaults to `true` |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value |
 | `nameTranslations` | No | `es` / `en` / `pt` / `fr` display-name translations |
 | `permissions` | No | AccessRole **names**, resolved to IDs on apply — who can respond |
 | `bounds` | No | Maps answers to task fields. **`cotctl` cannot set it** — the server's survey update doesn't store it, and `apply` warns (see [Logic & validation](./surveys/logic-and-validation.md#bounds-writing-answers-onto-the-task)) |
@@ -105,7 +105,7 @@ Surveys have their own entity-scoped command group. Every command takes a profil
 
 ### Applying safely
 
-`apply` matches questions by `identifier` rather than position, so you can add, edit, remove, and reorder questions freely — IDs are preserved. Removing a question deactivates it rather than hard-deleting it, and you'll be asked to confirm. If you apply a survey YAML without its `questions` section, the existing questions are left untouched.
+`apply` matches questions by `identifier` rather than position, so you can add, edit, remove, and reorder questions freely — IDs are preserved. Removing a question deactivates it rather than hard-deleting it. An interactive apply asks first; `-y` skips the question and `apply --dir` never asks it, and a dry run flags it as `⚠ DANGER`. If you apply a survey YAML without its `questions` section, the existing questions are left untouched.
 
 At the survey level, a key you omit keeps its stored value, and `nameTranslations`, `editable`, `hidden` and `post` are completed from the stored ones. **A question you declare is the exception: it is written whole.** It keeps its ID, but a field it omits takes its default (`required: false`, …), not its stored value — so declare every field a question should keep. A survey is sent whole or not at all: since 0.14.0 a YAML that changes nothing sends nothing and reads `unchanged`. (The first re-apply of an unmodified export of a survey built in the web app is the one exception: it is sent, and rewrites the survey in `cotctl`'s shape.)
 

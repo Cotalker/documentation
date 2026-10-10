@@ -4,7 +4,7 @@ sidebar_label: Overview
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/README.md, data-context.md, company-specific.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/README.md, data-context.md, company-specific.md @ 82e613d (2026-10-10) -->
 
 A **bot** is a unit of automation that runs inside a workflow. When a task changes state, or a survey is answered, the workflow engine executes the bots you wired into that transition — one after another — and routes to the next stage based on the branch each bot returns. Bots are how a workflow *does* things: create a task, send a message, call an external API, branch on a value.
 

@@ -4,7 +4,7 @@ sidebar_label: Bots
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/bots.ts, src/schemas/bot-admin.schema.ts, src/resources/bot.resource.ts, docs/bots/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/bots.ts, src/schemas/bot-admin.schema.ts, src/resources/bot.resource.ts, docs/bots/ @ 82e613d (2026-10-10) -->
 
 A **bot** is the entity behind the slash-commands operators trigger from the chat (`/hola`, `/registrar`). Each bot owns a list of `commands`, and — optionally — an embedded automation graph (a **ParametrizedBot**) that runs when a command fires. Because a bot can invoke almost anything in the platform, it's applied **last** in a directory apply, after every resource it might reference.
 
@@ -47,7 +47,7 @@ parametrizedBot:                   # optional automation that runs when a comman
 | `kind` | Yes | Always `Bot` |
 | `name` | Yes | The upsert key. Unique per company, 1–80 chars. No format rules — any string |
 | `description` | No | Free text |
-| `isActive` | No | Defaults to `true`. Soft-delete by re-applying with `isActive: false` |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value. Soft-delete by re-applying with `isActive: false` |
 | `global` | No | Defaults to `false`. When `true`, the bot is available across companies — common in production, no warning on apply |
 | `commands` | No | Slash-commands and survey-commands. See the three-way rule below |
 | `parametrizedBot` | No | The automation graph, same shape as bots embedded in [workflows](./workflows.md) |

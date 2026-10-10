@@ -4,7 +4,7 @@ sidebar_label: Job titles
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/schemas/job-title.schema.ts, src/commands/jobtitles.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/schemas/job-title.schema.ts, src/commands/jobtitles.ts @ 82e613d (2026-10-10) -->
 
 A **job title** (Cargo) is the bridge between a person and what they can do. It links a [user](./users.md) to a set of [access roles](./roles.md), property-type extensions, and inherited properties. Assign a user a job title, and they inherit everything the job title grants. Because job titles depend on roles and the data model, they're applied after those — and before users.
 
@@ -30,7 +30,7 @@ elements:
 | `code` | Yes | Unique per company, 3–50 chars. Must start with a lowercase letter, then lowercase letters, digits and underscores (`^[a-z]+([_a-z0-9]+)*$`). **Immutable after creation** |
 | `display` | Yes | Human-readable label (mutable) |
 | `id` | No | The 24-character record ID. Optional — normally omitted, since `code` is the upsert key |
-| `isActive` | No | Defaults to `true` |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value |
 | `accessRoles` | No | AccessRole **names** (case-sensitive), max 50 |
 | `allowedExtensions` | No | PropertyType **codes**, max 50 |
 | `elements` | No | Property **codes** inherited by users |

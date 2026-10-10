@@ -4,7 +4,7 @@ sidebar_label: apply
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/apply.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/apply.ts @ 82e613d (2026-10-10) -->
 
 `cotctl apply` is the command that actually changes a Cotalker environment. It takes your YAML and makes the platform match it — creating resources that don't exist and updating those that do. This is the verb you'll use most, so it's worth understanding well.
 
@@ -137,6 +137,7 @@ Two things are immutable once created: a survey's `code`, and a question's `iden
 --- DRY RUN ---
 
   Would UPDATE Survey: my_survey
+    (1 changed)
     ~ name: "My survey" → "My Survey"
 ```
 
@@ -198,7 +199,7 @@ The other fourteen nodes travel as stored. It works for six kinds, on the keyed 
 | Schedule | `body.stages` | `key` |
 
 - **A named element is completed from its stored pair**, so it may leave out what the schema otherwise requires — a node's `basicType`, a state machine's `name`, `propertyType` and `asset`, a state's `type`, a stage's `name`, a bot's `start`, a property type's or routine's `display`, an SLA's `display`, `start`, `end`, `data` and `pb`, a schedule's `time` and `body`. The merged document is then validated whole: a problem in what you wrote refuses it, naming the element (`schemaNodes[key="serial"].basicType: …`).
-- **A named stage's `data` and `next` merge key by key.** Write one key to change it — `next: { ERROR: notify }` reroutes one branch and keeps the others. A key written as `null` is removed, and `data: {}` or `next: {}` empties the field (`next: {}` makes the stage end the run). On a schedule nothing is removed this way: its scheduler keeps a key the body leaves out.
+- **A named stage's `data` and `next` merge key by key.** Write one key to change it — `next: { ERROR: notify }` reroutes one branch and keeps the others. A key written as `null` is removed, and `data: {}` or `next: {}` empties the field (`next: {}` makes the stage end the run). On a schedule, a `null` over a key the stored stage holds with a value, or a `{}` over a `data` or `next` that has keys, is refused instead, since the scheduler keeps a key the body leaves out; over nothing to remove, it passes and changes nothing.
 - **It never deletes, never reorders, never creates.** A stored element you leave out keeps its place; a new element is added last, with a warning — and so is an element whose key you edited, which becomes a new element. To retire one, set `isActive: false` where the element has it, or apply the complete list without the marker. A document whose entity does not exist yet is refused: remove `partial: true` and declare it in full to create it.
 - **It never guesses.** An element whose key the stored list repeats, or that the document names twice, is refused before anything is sent, `--dry-run` included.
 - **The dry run lists what it keeps** — `Kept 14 schemaNodes the partial YAML does not name (partial: true deletes nothing)` — and warns of a stage the merge leaves unreachable from `start`.
@@ -210,7 +211,9 @@ Exceptions worth knowing before you rely on it:
 - **A stage named under another bot type** than its stored pair is not completed: it replaces that stage as written, with a warning. Editing a stored `PBScript` stage still needs `--allow-script-bots`.
 - **Not covered:** a routine's `dataType` (a partial routine that declares it is refused), a survey's questions, lists of plain values such as permission codes, and every other kind. `--legacy-replace-workflows` refuses the marker.
 
-**Only `true` is read.** Any other value of `partial` — `false`, `null`, a string — and the key on any other kind are refused before anything is sent: `apply -f` exits `2`, and `apply --dir` treats the file as unreadable (exit `1`). In 0.13.0 the key was dropped without a word on a PropertyType, AccessRole, Property, User, Workflow or Survey, which then applied as complete documents — so a YAML that carries the key on those kinds now fails until you remove it. A refused partial document exits with its kind's validation code: `1` for a PropertyType or a Workflow, `2` for a Bot, Routine, SLA or Schedule.
+**A `partial: true` document the apply refuses** — no stored entity, a key it cannot pair, or a merged document that is not valid — exits with its kind's validation code: `1` for a PropertyType or a Workflow, `2` for a Bot, Routine, SLA or Schedule (and `2` for a Workflow that names a deactivated state machine).
+
+**Only `true` is read.** That is a different refusal: any other value of `partial` — `false`, `null`, a string — and the key on any other kind are refused before anything is sent, whatever the document holds: `apply -f` exits `2`, and `apply --dir` treats the file as unreadable (exit `1`). In 0.13.0 the key was dropped without a word on a PropertyType, AccessRole, Property, User, Workflow or Survey, which then applied as complete documents — so a YAML that carries the key on those kinds now fails until you remove it.
 
 `cotctl validate` reads nothing stored, so it checks a partial PropertyType or Workflow on its own fields only (a new `S5` warning under `--dir`); the merged document is checked by `apply`, its `--dry-run` included — for Bot, Routine, SLA and Schedule, which `validate` does not recognise, that is the only check before a write.
 
@@ -250,7 +253,7 @@ The order is between **kinds**. Within the Survey kind, surveys are *not* ordere
 | `--dir <path>` | **(required)** Folder of YAML files |
 | `-c, --company <profile>` | **(required)**, unless an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) supplies it |
 | `--dry-run` | Preview every payload without applying |
-| `-y, --yes` | Skip the preview and all confirmation prompts |
+| `-y, --yes` | Skip the preview and the confirmation prompts — all but one: emptying the `accessRoles` of the system `admin` or `bot` JobTitle asks you to type its code even with `-y` |
 | `-q, --quiet` | Suppress advisory warnings and the `--dry-run` diff; errors and destructive findings still print |
 | `--diff <mode>` | **New in 0.14.0.** Diff verbosity of the preview: `off`, `compact` (default) or `verbose` |
 | `--json` | **New in 0.14.0.** Print the results as JSON on stdout, one object per line — see [JSON output](#json-output) |
@@ -273,24 +276,46 @@ Found 5 YAML files:
   1 Property file (3 documents)
   1 Workflow file (1 document)
 
+  [CREATE] access/manager-role.yaml — AccessRole: Órdenes de Compra: Manager
   [CREATE] access/permissions.yaml — AccessRole: ordenes-compra:start-form
+  [CREATE] access/permissions.yaml — AccessRole: ordenes-compra:view
+  [CREATE] access/permissions.yaml — AccessRole: ordenes-compra:view-all
+  [CREATE] access/permissions.yaml — AccessRole: ordenes-compra:write
+  [CREATE] access/permissions.yaml — AccessRole: ordenes-compra:form-bypass
+  [CREATE] access/permissions.yaml — AccessRole: ordenes-compra:force-state
   [CREATE] data-model/property-types.yaml — PropertyType: oc_transaccion
+  [CREATE] data-model/property-types.yaml — PropertyType: oc_maestro
+  [CREATE] data-model/property-types.yaml — PropertyType: oc_estados
+  [CREATE] data-model/states.yaml — Property: oc_estado_borrador
+  [CREATE] data-model/states.yaml — Property: oc_estado_pendiente
+  [CREATE] data-model/states.yaml — Property: oc_estado_error
   [CREATE] workflow.yaml — Workflow: ordenes_compra
   [CREATE] workflow.yaml — StateMachine: sm_oc_main
-  …
 
 ✔ 15 CREATE — Apply 15 changes to dev? Yes
+  [created] access/manager-role.yaml — AccessRole: Órdenes de Compra: Manager
   [created] access/permissions.yaml — AccessRole: ordenes-compra:start-form
+  [created] access/permissions.yaml — AccessRole: ordenes-compra:view
+  [created] access/permissions.yaml — AccessRole: ordenes-compra:view-all
+  [created] access/permissions.yaml — AccessRole: ordenes-compra:write
+  [created] access/permissions.yaml — AccessRole: ordenes-compra:form-bypass
+  [created] access/permissions.yaml — AccessRole: ordenes-compra:force-state
   [created] data-model/property-types.yaml — PropertyType: oc_transaccion
+  [created] data-model/property-types.yaml — PropertyType: oc_maestro
+  [created] data-model/property-types.yaml — PropertyType: oc_estados
+  [created] data-model/states.yaml — Property: oc_estado_borrador
+  [created] data-model/states.yaml — Property: oc_estado_pendiente
+  [created] data-model/states.yaml — Property: oc_estado_error
   [created] workflow.yaml — Workflow: ordenes_compra
   [created] workflow.yaml — StateMachine: sm_oc_main
   [created] workflow.yaml — State: oc_estado_borrador
-  …
+  [created] workflow.yaml — State: oc_estado_pendiente
+  [created] workflow.yaml — State: oc_estado_error
 
 Applied directory "ordenes-compra/": 18 created, 0 updated, 0 unchanged, 0 rolled back, 0 error(s), 0 skipped
 ```
 
-A prompt with something in every column reads like `3 CREATE · 12 UPDATE · 40 NO-OP · 1 ERROR — Apply 15 changes to dev?`. A Workflow's state machines and states get lines of their own, so the counts outnumber the documents. The write that follows repeats none of the warnings, and it asks nothing per resource — the questions a survey update deactivates, which `apply -f` asks about, are deactivated after that one prompt. What the preview settles:
+That is the scaffold's `ordenes-compra/` applied to a company that has none of it. A prompt with something in every column reads like `3 CREATE · 12 UPDATE · 40 NO-OP · 1 ERROR — Apply 15 changes to dev?`. A Workflow's state machines and states get lines of their own, so the counts outnumber the documents — and a new Workflow's preview lists its state machines but not their states, which is why the preview counts 15 and the summary 18. The write that follows repeats none of the warnings, and it asks nothing per resource — the questions a survey update deactivates, which `apply -f` asks about, are deactivated after that one prompt. What the preview settles:
 
 - **Nothing to send** — every resource is `NO-OP`: it says so and asks nothing.
 - **An error in the preview** — it asks nothing, writes nothing, and exits with the error's code: `2` for a validation refusal, `1` otherwise. In 0.13.0 a yes to the prompt applied the files before the error. With `--continue-on-error` it asks, with the `ERROR` lines on view, and the write skips what fails.
@@ -302,7 +327,7 @@ Under `--dry-run` the per-resource lines read `[CREATE]`, `[UPDATE]` or `[NO-OP]
 
 ### `--continue-on-error`
 
-By default the run stops at the first failure. With `--continue-on-error` a resource that fails is reported and the rest still apply — a file whose YAML, `partial` key or `file://` references cannot be read is skipped whole. The run still exits non-zero: with the first of `3` (a partial apply), `2` (a refusal) or `1`, in that order. A Ctrl-C at a prompt stops the run either way.
+By default the run stops at the first failure. With `--continue-on-error` a resource that fails is reported and the rest still apply — a file whose YAML or `partial` key cannot be read is skipped whole, and so is one with an unreadable `file://` reference outside a Survey; in a Survey, such a reference fails only that Survey. The run still exits non-zero: with the first of `3` (a partial apply), `2` (a refusal) or `1`, in that order. A Ctrl-C at a prompt stops the run either way.
 
 ### One document per resource
 
@@ -312,7 +337,7 @@ Every kind but `Workflow` takes several documents per file, and a file may mix k
 
 ### JSON output
 
-With `--json` (new in 0.14.0), stdout carries one JSON object per result instead of the text lines — the shape `surveys apply --json` and `workflows apply --json` print, plus the `file` it came from: `entity`, `identifier`, `action` and, when present, `diff`, `destructiveChanges`, `preservedElements` and `statusCall` (the `activate` a schedule update is followed by).
+With `--json` (new in 0.14.0), stdout carries one JSON object per result instead of the text lines — the shape `surveys apply --json` and `workflows apply --json` print, plus the `file` it came from: `entity`, `identifier`, `action` and, when present, `diff`, `destructiveChanges`, `preservedElements` and `statusCall` (`activate` or `deactivate`, the call a schedule update is followed by).
 
 ```json
 {"file":"schedules/digest.yaml","entity":"Schedule","identifier":"sched_daily_digest","action":"updated","statusCall":"activate"}

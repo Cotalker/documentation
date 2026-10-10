@@ -4,7 +4,7 @@ sidebar_label: Troubleshooting
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/lib/validate-bot-versions.ts, src/lib/validate-cron.ts, src/commands/bots.ts, src/commands/bot-types.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/lib/validate-bot-versions.ts, src/lib/validate-cron.ts, src/commands/bots.ts, src/commands/bot-types.ts @ 82e613d (2026-10-10) -->
 
 Most `cotctl` errors are clear and tell you how to fix them. This page collects the ones you're most likely to hit, organized as **symptom → cause → fix** so you can scan for yours quickly.
 
@@ -15,10 +15,15 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** the npm global bin directory isn't on your `PATH`.
 - **Fix:** confirm where npm installs global binaries with `npm bin -g`, and add that directory to your `PATH`. As a quick workaround, you can always run the tool via `npx @cotctl/cli <command>`.
 
+### `It was not installed automatically: …` / `cotctl cannot update itself here: …`
+
+- **Cause:** this copy of `cotctl` can't update itself (from 0.14.0), so it didn't try: there is no write permission on npm's global directory, it is a standalone binary, it was not installed with `npm install -g`, or it runs on Windows. The first message comes from the automatic update, the second from `update` at the prompt or `cotctl update`.
+- **Fix:** run the update command the message prints, with whatever permissions npm's global directory needs — `cotctl` never runs `sudo`. On an update without breaking changes your command still ran, on the current version; from the prompt or `cotctl update` it exited `1` without running anything. See [When cotctl can update itself](./commands/update.md#when-cotctl-can-update-itself).
+
 ### `Could not update cotctl to <version>: …`
 
-- **Cause:** the automatic update (from 0.14.0) could not install the new version with npm — no write permission on npm's global directory, no network, or an `npm` that belongs to another Node installation.
-- **Fix:** run the `npm install -g` command the message prints, with the permissions that directory needs. On an update without breaking changes your command still ran, on the current version, and `cotctl` will not retry for 12 hours; after choosing `update` at the prompt, it stopped without running the command. See [update](./commands/update.md#when-cotctl-can-update-itself).
+- **Cause:** the update was attempted and npm failed — no network, a registry that didn't answer in time — or `npm root -g` points somewhere other than where this `cotctl` lives, as happens when several Node installations (nvm, Volta) each have their own `npm`.
+- **Fix:** run the `npm install -g` command the message prints, with the `npm` of the Node installation `cotctl` runs from. On an update without breaking changes your command still ran, on the current version, and `cotctl` will not retry that version for 12 hours; after choosing `update` at the prompt, it stopped without running the command.
 
 ### `Another cotctl process is installing an update right now.`
 

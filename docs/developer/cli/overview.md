@@ -4,7 +4,7 @@ sidebar_label: Overview
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/index.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/index.ts @ 82e613d (2026-10-10) -->
 
 <span className="hero__title">Cotalker CLI — cotctl</span>
 <br/>
@@ -70,7 +70,7 @@ Don't worry about learning all of these at once. Most partners start with survey
 
 <div className="alert alert--primary">
 
-**Two flagship safety features.** Every apply supports `--dry-run`, which shows what would change without touching the environment — with a **per-field diff** for surveys, workflows, properties and property types, and the **destructive changes** flagged: a removed question, an emptied permission list, a deactivation. And the entity-scoped applies (`surveys apply`, `properties apply`, `workflows apply`) can fail a pipeline on them with `--fail-on-destructive`. You see what a change does before it happens.
+**Two flagship safety features.** Every apply supports `--dry-run`, which shows what would change without touching the environment — with a **per-field diff** for surveys, workflows, properties and property types, and the **destructive changes** flagged: a removed question, an emptied permission list, a deactivation. And `surveys apply` and `workflows apply` can fail a pipeline on them with `--fail-on-destructive`. You see what a change does before it happens.
 
 </div>
 

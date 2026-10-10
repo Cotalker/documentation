@@ -4,7 +4,7 @@ sidebar_label: Installation
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/package.json @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/package.json @ 82e613d (2026-10-10) -->
 
 In this page you'll get `cotctl` installed on your machine and confirm it's working. It takes about two minutes. If you've ever installed a global npm package before, this will feel familiar.
 

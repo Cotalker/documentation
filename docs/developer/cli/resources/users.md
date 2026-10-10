@@ -4,7 +4,7 @@ sidebar_label: Users
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/schemas/user.schema.ts, src/commands/users.ts, docs/users/apply-behavior.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/schemas/user.schema.ts, src/commands/users.ts, docs/users/apply-behavior.md @ 82e613d (2026-10-10) -->
 
 A **user** is a person in a company. Users are the most connected resource in Cotalker — each one references a [job title](./jobtitles.md), one or more [access roles](./roles.md), and can sit in an org-chart hierarchy with other users. Because of those dependencies, users are applied **last** (after job titles and roles exist).
 

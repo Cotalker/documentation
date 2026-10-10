@@ -4,7 +4,7 @@ sidebar_label: Tutorials
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/{bots,routines,schedules,slas,property-types,properties}/, repositories/cotctl/src/commands/{bots,routines,schedules,slas,property-types,properties,surveys,workflows,validate,apply}.ts, repositories/cotctl/examples/{bots,routines,properties}/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/{bots,routines,schedules,slas,property-types,properties}/, repositories/cotctl/src/commands/{bots,routines,schedules,slas,property-types,properties,surveys,workflows,validate,apply}.ts, repositories/cotctl/examples/{bots,routines,properties}/ @ 82e613d (2026-10-10) -->
 
 The reference pages tell you *what* each command does. This page shows you *how* they fit together, with complete, follow-along recipes for the things you'll actually do on a project. Each recipe lists what you need before you start and what success looks like, so you can tell when it worked.
 
@@ -217,8 +217,10 @@ body:
 
 ```bash
 # 3. Apply the schedule — it's active by default, so it starts firing on cron.
-cotctl schedules apply -f sched.yaml -c acme --dry-run
-cotctl schedules apply -f sched.yaml -c acme -y
+#    The PBScript stage runs code, so the apply needs --allow-script-bots
+#    (without it the schedule is refused before any request, --dry-run included).
+cotctl schedules apply -f sched.yaml -c acme --dry-run --allow-script-bots
+cotctl schedules apply -f sched.yaml -c acme -y --allow-script-bots
 
 # 4. After it has fired, inspect the runs
 cotctl schedules logs sched_saludo_diario -c acme -l 25 --op executed
@@ -228,13 +230,13 @@ cotctl schedules logs sched_saludo_diario -c acme -l 25 --op executed
 
 <div className="alert alert--warning">
 
-Apply the **routine before the schedule**. The schedule's `--dry-run` checks that `data.code` points at a routine that already exists in the profile — apply the schedule first and that check fails. Under `cotctl apply --dir`, cotctl orders Routine before Schedule automatically, so keeping both files in one folder side-steps the problem.
+Apply the **routine before the schedule**. The schedule's `--dry-run` checks that `data.code` points at a routine that already exists in the profile — apply the schedule first and that check fails. Under `cotctl apply --dir`, cotctl orders Routine before Schedule automatically, so keeping both files in one folder side-steps the problem — pass `--allow-script-bots` there too, since the schedule's `PBScript` stage needs it on every apply path.
 
 </div>
 
 Three details worth knowing:
 
-- **When you edit the schedule later, keep `isActive: true` in the YAML.** Updating a schedule stops its running cron. Since 0.14.0, `apply` relaunches it only when the YAML writes `isActive: true`; with the key left out, the cron stays stopped until `cotctl schedules activate`. See [Schedules](./resources/schedules.md#activation-and-status).
+- **When you edit the schedule later, write `isActive: true` in the YAML.** Updating a schedule stops its running cron. Since 0.14.0, `apply` relaunches it only when the YAML writes `isActive: true`; with the key left out, the cron stays stopped until `cotctl schedules activate`. See [Schedules](./resources/schedules.md#activation-and-status).
 - **Cron is UNIX 5-field.** cotctl validates it as standard cron. The admin webclient's Advanced tab pre-fills Quartz (6/7-field) examples like `0 15 10 L-2 * ?` — those are rejected. Use `0 9 * * *`.
 - **Pause without editing the YAML** using the dedicated endpoints:
 

@@ -4,7 +4,7 @@ sidebar_label: Routines
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/routines.ts, src/schemas/routine.schema.ts, src/resources/pbscript.resource.ts, docs/routines/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/routines.ts, src/schemas/routine.schema.ts, src/resources/pbscript.resource.ts, docs/routines/ @ 82e613d (2026-10-10) -->
 
 A **routine** (a PBScript, or *rutina*) is a reusable automation promoted to a first-class resource. It's the same automation graph you'd embed inline in a workflow — a `start` stage and a list of `stages[]` — but with its own `code`, `display`, and declared inputs, living in its own collection. Once a routine exists, any [bot](./bots.md), [SLA](./slas.md), or [schedule](./schedules.md) can invoke it from a stage by referencing its `code`. Think of routines as the shared library layer of the automation model.
 
@@ -35,7 +35,7 @@ body:
 | `display` | Yes | Human-readable label (mutable) |
 | `description` | No | Free text |
 | `type` | No | `normal` (default), `network`, or `flowcontrol` |
-| `isActive` | No | Defaults to `true`. Soft-delete by re-applying with `isActive: false` |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value. Soft-delete by re-applying the export with `isActive: false` |
 | `dataType` | No | Declared inputs the routine accepts (see below) |
 | `body` | Yes | The automation graph — same shape as bots embedded in [workflows](./workflows.md) |
 
@@ -55,7 +55,7 @@ dataType:
 
 These are documentation-and-contract only — `cotctl` doesn't check that the graph actually consumes them, and it won't resolve `$INPUT#...` expressions for you. They fail at runtime if misspelled, not at apply time.
 
-On an update, each input is matched with the stored input of the same `key`, wherever you place it, and keeps the fields it omits — an input that omits `required` keeps its stored value. The server updates this list **by position**, though, so a new input, or one you move, is written over the stored input at its place: it gets `required: false` when it omits it, but keeps any other field it omits (`description`, `type`) from that stored input, and `apply` warns on stderr which. Write those fields — empty where needed — to replace them. `dataType: []` removes every input.
+On an update, each input is matched with the stored input of the same `key`, wherever you place it, and keeps the fields it omits — an input that omits `required` keeps its stored value. The server updates this list **by position**, though. An input with no stored match is sent with `required: false` when it omits it. An input with no stored match, or one that moved, is written over the stored input at its position and keeps any other key it omits — its `description` or `type` — and `apply` warns on stderr which. Write those keys — empty where needed — to replace them. `dataType: []` removes every input.
 
 ## The automation graph: `body`
 

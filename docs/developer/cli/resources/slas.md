@@ -4,7 +4,7 @@ sidebar_label: SLAs
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/slas.ts, src/schemas/sla.schema.ts, src/resources/sla.resource.ts, docs/slas/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/slas.ts, src/schemas/sla.schema.ts, src/resources/sla.resource.ts, docs/slas/ @ 82e613d (2026-10-10) -->
 
 An **SLA** (Service Level Agreement) is a timed escalation rule attached to one state machine inside a [workflow](./workflows.md). It defines a window that **opens** when a task enters certain states, **closes** when the task reaches certain other states, and — if the window **expires** before closing — **fires an automation** (`pb`) to escalate. "Notify the manager if a purchase order sits in review for more than 24 hours" is a textbook SLA.
 

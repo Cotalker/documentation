@@ -4,7 +4,7 @@ sidebar_label: Network & code
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/nw-request.md, nw-bot-v2-v3.md, ccjs.md, esm-code.md, pb-script.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/nw-request.md, nw-bot-v2-v3.md, ccjs.md, esm-code.md, pb-script.md @ 82e613d (2026-10-10) -->
 
 This family is the workflow's connection to the outside world and its escape hatch when no first-party bot fits:
 

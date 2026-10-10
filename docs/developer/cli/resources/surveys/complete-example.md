@@ -4,7 +4,7 @@ sidebar_label: Complete example
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/surveys/complete-example.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/surveys/complete-example.md @ 82e613d (2026-10-10) -->
 
 Everything on the survey pages comes together in one place here: a real employee-registration survey. Read it top to bottom, then apply it to your demo company and answer it once — the fastest way to make the pieces click.
 
