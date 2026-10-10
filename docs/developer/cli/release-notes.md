@@ -32,7 +32,7 @@ npm install -g @cotctl/cli@latest
 
 A large release with one idea behind most of it: **an update now changes only what your YAML says.** Until now every `apply` filled each key the YAML left out with its default before sending an update, so re-applying a file could quietly empty permission lists, reactivate records or stop a schedule's cron. From this release an omitted key keeps its stored value, an element of a keyed list is matched with its stored counterpart, re-applying a YAML that changes nothing sends nothing, and an export writes only what is stored. On top of that, **`partial: true`** lets a document edit one element of a long list — one schema node, one bot stage — without restating the rest.
 
-The release also moves many failures from the middle of an apply to before anything is written, makes the dry run report what the apply will actually do, and lines the exit codes up with their contract. And it is **the first version that checks for new versions of itself**, which means the move from 0.13.x to 0.14.0 is still a manual install — see *Version updates* under *Added*. The *Migration* checklist at the end of this section lists everything to do.
+The release also moves many failures from the middle of an apply to before anything is written, makes the dry run report what the apply will actually do, and brings many exit codes in line with their contract (see *Exit codes* below). And it is **the first version that checks for new versions of itself**, which means the move from 0.13.x to 0.14.0 is still a manual install — see *Version updates* under *Added*. The *Migration* checklist at the end of this section lists everything to do.
 
 ### ⚠ Breaking changes
 
@@ -47,20 +47,20 @@ An update used to fill every key the YAML omitted with its default — `[]` for 
 - **A stage that omits `version` keeps its stored version; `version: null` (or `""`) puts it back on the bot type's default.** In a schedule, which already kept the stored version, what is new is that `version: null` unpins the stage.
 - **A survey trigger that omits `bots` keeps the bots stored for that survey.** It used to be sent with an empty list, which wiped them.
 - **A property type update sends `viewPermissions` as written.** It used to send `[]` unless the YAML said `hidden: false`. An update that writes `hidden: true` and no `viewPermissions` still removes them, now with a warning.
-- **A written `[]` now empties three lists that used to ignore it:** a bot's `extraData`, a workflow state's `next`, and a user's `hierarchy` when `boss`, `peers` and `subordinate` are all empty.
-- **Updating an inactive User or JobTitle whose YAML omits `isActive` succeeds, and the record stays inactive.** It used to be refused with exit `2` unless `--allow-reactivate` was passed, which then reactivated it.
+- **A written `[]` now empties three lists that used to ignore it:** a bot's `extraData`, a workflow state's `next`, and a user's whole `hierarchy` when `boss`, `peers` and `subordinate` are each written as `[]` — a list left out keeps its stored value.
+- **Updating an inactive User or JobTitle whose YAML omits `isActive` succeeds, and the record stays inactive.** It used to be refused — with exit `2` from `users apply` and `jobtitles apply` — unless `--allow-reactivate` was passed, which then reactivated it.
 
 Two paths keep the old behaviour on purpose: `--legacy-replace-workflows` (on `apply` and `workflows apply`) and `surveys apply --legacy-replace` still build the update from the create defaults, so a field the YAML omits is still wiped.
 
 - **Who this affects:** anyone whose YAML relies on leaving a key out to reset it, or on a key left out of a nested object being dropped.
 - **What to do:** write every key an update must reset, with the value you want:
-  - `[]` to clear a list — a workflow's permission lists, a user's `accessRoles`, a survey trigger's `bots`, a property type's `viewPermissions`;
+  - `[]` to clear a list — a workflow's permission lists, a user's `accessRoles`, a survey trigger's `bots`, a property type's `viewPermissions` — and, to empty a user's whole `hierarchy`, `[]` in each of `boss`, `peers` and `subordinate`;
   - `""` to clear a text inside one of the objects above — a translation left out of a survey's `nameTranslations` now stays stored until the YAML writes it as `""`;
   - `isActive: true` to reactivate a record (plus `--allow-reactivate` for a User or a JobTitle) or a bot command, `isCritical: false` on a stage, `required: false` on a routine input;
   - the default itself wherever you relied on it, such as `hideClosedAfterDays: 7` or `timeoutMinutes: 60`;
   - `version: null` on a stage that must go back to its bot type's default — and in a schedule, remove a `version: null` that should keep the stored version.
 
-  The other way round, **leave out** a bot's `extraData`, a state's `next` or a user's `hierarchy` to keep them. `cotctl workflows scaffold` without `--states` writes `next: []` on the `in-progress` state: if that state got transitions in the webclient, remove the line or write them before re-applying. A pipeline that relied on exit `2` to leave an inactive User or JobTitle untouched now gets `0` with the rest of the YAML applied — take the record out of the YAML instead.
+  The other way round, **leave out** a bot's `extraData`, a state's `next`, or a user's `hierarchy` or any one of its three lists, to keep them. `cotctl workflows scaffold` without `--states` writes `next: []` on the `in-progress` state: if that state got transitions in the webclient, remove the line or write them before re-applying. A pipeline that relied on that refusal to leave an inactive User or JobTitle untouched now gets `0` with the rest of the YAML applied — take the record out of the YAML instead.
 
 #### Exports write only what is stored
 
@@ -87,7 +87,7 @@ Two more exports changed shape. `users export` writes the hierarchy of the profi
 Three exports still send an update when re-applied unchanged: `users export` leaves out an inactive access role, with a warning, so the re-apply removes it from the user; `routines export` writes the routine's `code` as its `display` when it stores none; and the first re-apply of a survey built in the webclient rewrites it in cotctl's shape — it reads `would-update`, not `no-op`, and the dry run's diff does not show why, since it covers the survey's root fields only.
 
 - **Who this affects:** scripts that read keys from an exported YAML, and anyone keeping exports made with 0.13.0 or earlier — in a repository, for instance.
-- **What to do:** read a missing key as the default the export used to write. **Re-export every YAML exported with 0.13.0 or earlier before re-applying it**, or it sends as changes the defaults the entity does not store. The costliest case is a schedule stored without `cronTimeZone`: the old export wrote `America/Santiago`, which moves its cron three or four hours away from the scheduler's own zone, and the `isActive: true` it wrote relaunches the cron in that zone right away. `apply` now warns about such a zone.
+- **What to do:** read a missing key as the default the export used to write. **Re-export every YAML exported with 0.13.0 or earlier before re-applying it**, or it sends as changes the defaults the entity does not store. Re-export it into a scratch folder and merge it into the YAML you keep — or delete from that YAML the keys listed above — rather than overwriting a file that holds edits not yet applied. The costliest case is a schedule stored without `cronTimeZone`: the old export wrote `America/Santiago`, which moves its cron three or four hours away from the scheduler's own zone, and the `isActive: true` it wrote relaunches the cron in that zone right away. `apply` now warns about such a zone.
 
 #### Schedules: status and cron
 
@@ -113,7 +113,7 @@ The scheduler stops the cron of a running schedule — status `running`, `tick` 
 
 - **On a PropertyType or a Workflow, `partial: true` is now read.** 0.13.0 dropped the key without a warning and applied the document as a complete one: it refused a fragment for the required fields it left out, applied a complete document as a full update, and created the entity when none was stored. Now the document edits only the elements it names, and one whose entity is not stored is refused.
 - **Any other value of the key, and the key on any other kind, is refused** before anything is sent, by `validate`, `apply -f`, `apply -d` and every per-kind `apply`. `partial` takes only `true`, and only on a PropertyType, Bot, Workflow, Routine, SLA or Schedule document. 0.13.0 dropped the key from an AccessRole, Property, User or Survey document without a word.
-- **A refused partial document exits with the code its kind gives any refusal:** `1` for a PropertyType or a Workflow, `2` for a Bot, a Routine, an SLA or a Schedule, and `2` for a Workflow that names a deactivated state machine. A refused `partial` key exits `2` from `apply -f`; `apply -d` treats the file as one it cannot read, exits `1`, and goes on with the other files only under `--continue-on-error`.
+- **A refused partial document exits with the code its kind gives any refusal:** `1` for a PropertyType or a Workflow, `2` for a Bot, a Routine, an SLA or a Schedule, and `2` for a Workflow that names a deactivated state machine. A refused `partial` key exits `2` from `apply -f` and from the commands that give a refusal `2`, but `1` from `roles apply`, `properties apply`, `property-types apply`, `workflows apply` and `validate`; `apply -d` treats the file as one it cannot parse, exits `1`, and goes on with the other files only under `--continue-on-error`.
 
 - **Who this affects:** anyone whose YAML already carries a top-level `partial` key.
 - **What to do:** remove `partial: true` from a PropertyType or Workflow YAML that should still be applied whole, or that creates its entity. Remove the key, whatever its value, from AccessRole, Property, User, Survey, JobTitle and Webhook documents, and any value but `true` from the six kinds that take it.
@@ -121,14 +121,14 @@ The scheduler stops the cron of a running schedule — status `running`, `tick` 
 #### `file://` references
 
 - **Every kind now reads `file://` in its script fields**, not only a Survey: the `data.src` of a `CCJS` or `ESMCode` stage — in a Bot, a Routine, an SLA, a Schedule or a Workflow's bot slots — and a Survey's `src`, `editable.src`, `hidden.src` and the `src` of an `exec` hook on a question or a table column. A CCJS stage's `data.src: "file://script.js"` used to reach the server as that literal path; it is now sent as the file's content. `validate -f`, `apply -f`, `apply --dir` and every per-kind `apply` read them.
-- **Only those fields.** 0.13.0 read a Survey's references in any `src` key, at any depth. A `file://` anywhere else now keeps its text, with a warning that `-q` does not silence.
+- **Only those fields.** 0.13.0 read a Survey's references in any `src` key, at any depth. A `file://` in any other `src` key now keeps its text, with a warning that `-q` does not silence; one in a key other than `src` was never read and draws no warning.
 - **A reference must stay inside the YAML file's directory.** `file://../…`, an absolute path elsewhere, and a symlink that leads outside it — a linked file, or a path under a linked directory — are refused with exit `1` before the document is sent, even when the file exists; the error says where a link leads. A symlink whose target stays inside is still followed. The limit is the directory of **each file**, not the root of `--dir`, so a project with one folder per kind and a shared scripts folder beside them runs into it.
-- **A reference that cannot be read fails with exit `1`** — a missing file, a directory, or a named pipe, which used to leave the run waiting forever. `validate -f` now reports it, for every document of the file; it used to pass such a reference outside a Survey and let the apply send the literal path. Outside a Survey it fails before anything is sent, unless `apply --dir --continue-on-error` skips the whole file that holds it; a Survey's fails before that Survey is sent.
+- **A reference that cannot be read fails with exit `1`** — a missing file, a directory, or a named pipe, which used to leave the run waiting forever. `validate -f` now reports it, for every document of the file; it used to pass such a reference outside a Survey and let the apply send the literal path. Outside a Survey it fails before anything is sent, unless `apply --dir --continue-on-error` skips the whole file that holds it and applies the others — the run still exits `1`, or the `2` or `3` another document gives. A Survey's fails before that Survey is sent: a multi-document `surveys apply -f` goes on with the other Surveys, while `apply --dir` stops there unless `--continue-on-error` is given — with `-y`, after writing the files before it.
 - **In a `partial: true` document, a `file://` in the `data.src` of a stage written without its `name` is refused**, since the document alone cannot tell the stage's bot type.
-- **The file's extension only decides a warning.** A file ending in `.js`, `.mjs` or `.cjs` is read without one; a file with any other extension is read with a warning, which `-q` silences. When the reference is a symlink, the extension that counts is the one of the file it leads to.
+- **The file's extension only decides a warning.** A file ending in `.js`, `.mjs` or `.cjs` is read without one; a file with any other extension is read with a warning, which `-q` silences in an apply. When the reference is a symlink, the extension that counts is the one of the file it leads to.
 
 - **Who this affects:** anyone who keeps scripts in files referenced with `file://`.
-- **What to do:** move each script — or copy its folder — under the directory of the YAML file that references it, instead of linking it, and point the reference at the new path; create the file a reference names, or write its content inline. Write inline the content of a `file://` in a field that is not a script field. In a `partial: true` document, write the stage's `name` (`CCJS` or `ESMCode`). A pipeline whose `validate -f` passed a reference that `validate --dir` refused now fails at that first step.
+- **What to do:** move each script — or copy its folder — under the directory of the YAML file that references it, instead of linking it, and point the reference at the new path; create the file a reference names, or write its content inline. Write inline the content of a `file://` in a `src` key that is not a script field. In a `partial: true` document, write the stage's `name` (`CCJS` or `ESMCode`). A pipeline whose `validate -f` passed a reference that `validate --dir` refused now fails at that first step.
 
 #### Bot stages: required `data` entries and versions
 
@@ -168,23 +168,30 @@ Each of these used to pass `validate` and the dry run and then fail in the middl
 
 #### Exit codes
 
-The codes now follow one contract: `0` success; `1` a runtime failure — the network, the server, a catalog that cannot be read; `2` a YAML refused before its document was sent (other documents of the same run may have been sent); `3` an apply that stopped partway and left resources on the server, which wins over any other code. These cases change:
+What each code means as of this release — the cases in the table below now line up with it:
+
+- **`0`** — success.
+- **`1`** — the default failure: a runtime failure (the network, the server, a catalog that cannot be read), a file or `file://` reference that cannot be read, every `validate` failure, and what an AccessRole, PropertyType, Property or Workflow refuses.
+- **`2`** — a YAML refused before its document was sent (other documents of the same run may have been sent) for a Survey, User, JobTitle, Bot, Routine, SLA, Schedule or Webhook, plus three refusals that exit `2` whatever the kind: an entity declared twice, a bot stage missing a required `data` entry, and a state machine `code` that a deactivated one holds. Apart from that, `2` also means a `danger` finding under `--dry-run --fail-on-destructive`, and a survey that `surveys export` cannot model.
+- **`3`** — an apply that stopped partway and left something needing attention — resources a Workflow created, or a schedule whose cron relaunch failed — which wins over any other code.
+
+These cases change:
 
 | Command | Case | Was | Now |
 |---|---|---|---|
 | Every `apply`, `roles`, `properties` and `property-types apply` included | A batch declares the same entity twice | `0`, the last document won | `2` |
 | `surveys apply`, `apply -f` | A survey YAML they refuse: a schema or semantic error, an identifier another survey holds, a question type change, a reference that does not resolve, a renamed `code`, an unknown AccessRole or `permissionsV2` code, a table edit its locks refuse | `1` | `2` |
 | `surveys apply`, `apply -f`, `apply --dir` | A question identifier or title name another question holds | `1`, the server's raw `500` | `2`, `Identifier "<id>" cannot be reused` |
-| `slas apply`, `schedules apply`, `apply --dir` | A YAML they refuse: the schema, a `cron` that does not parse, a `PBScript` stage naming a routine the company lacks, an SLA `stateMachine` missing — or ambiguous without `--task-group` — or `start` / `end` states it does not have, an unregistered bot version | `1` (a schedule's version was not checked) | `2` |
+| `slas apply`, `schedules apply`, `apply --dir` | A YAML they refuse: the schema, a `cron` that does not parse, a `PBScript` stage naming a routine the company lacks, an SLA `stateMachine` missing — or ambiguous without `--task-group` — or `start` / `end` states it does not have, an unregistered bot version | `1` (`0` for a schedule stage's unregistered version, which was not checked) | `2` |
 | `apply --dir` | A document its own command refuses with `2` | `1` | `2`, also after `--continue-on-error` |
 | `apply --dir --dry-run` | A User, JobTitle or Survey naming an AccessRole the directory renames away or leaves inactive | `0`, or `1` | `2` |
 | `bots apply`, `routines apply`, `users apply`, `jobtitles apply`, `apply -f` with a User or JobTitle | A runtime failure: a PBScript catalog that cannot be read, a User or JobTitle lookup that fails | `2` | `1` |
 | `bots apply --dry-run` | An HTTP or network failure while previewing a bot | `2` | `1` |
-| `apply -f`, `workflows apply -f` | A workflow apply that stopped partway, under `--rollback` too | `1` | `3` |
-| `workflows apply`, `apply -f`, `apply --dir` | A Survey the server does not have | `3` (`1` from `apply -f`), after writing part of the workflow | `1`, nothing written |
+| `apply -f`, `workflows apply -f` | A workflow apply that stopped partway, under `--rollback` too | `1` (from `workflows apply -f`, only when a failed request stopped it) | `3` |
+| `workflows apply`, `apply -f`, `apply --dir` | A Survey the server does not have | `0` from a dry run; `3` (`1` from `apply -f`) after writing part of the workflow | `1`, nothing written |
 | `workflows apply`, `apply -f`, `apply --dir` | A state machine `code` that a deactivated one holds | `0` from a dry run; `1` or `3` after writing the Group and TaskGroup | `2`, nothing written |
 | `schedules apply`, `apply --dir` | The cron relaunch fails after the update | — | `3` |
-| `users apply`, `jobtitles apply` | An inactive record whose YAML omits `isActive` | `2`, refused | `0`, applied, stays inactive |
+| `users apply`, `jobtitles apply`, `apply -f`, `apply --dir` | An inactive User or JobTitle whose YAML omits `isActive` | Refused: `2` from `users apply` and `jobtitles apply`, non-zero from `apply` | `0`, applied, stays inactive |
 | `jobtitles apply` | A system JobTitle's code typed back wrong at its prompt | `2` | `0`, `Apply cancelled.` |
 | `surveys export` | A `--format` other than `simplified` or `raw` | `0` | `1` |
 | `surveys apply --dry-run --fail-on-destructive` | The update would deactivate questions | `0` | `2` |
@@ -221,17 +228,17 @@ The codes now follow one contract: `0` success; `1` a runtime failure — the ne
 
 - **Version updates: cotctl tells you when a newer version is out, and installs the ones without breaking changes.** Before every command but `cotctl update`, it reads the latest published version of `@cotctl/cli` from npm.
 
-  - **In a terminal**, an update without breaking changes — a patch, such as `0.14.0` to `0.14.1` — is installed before the command, which then runs on the new version and returns its own exit code. One with breaking changes — before 1.0, a minor version bump, such as `0.14.x` to `0.15.0` — is offered on every command with three options, `update`, `continue` and `cancel`, next to the link to its release notes; `cancel` exits `0` without running the command.
-  - **Without a terminal** — CI, scripts, redirected output — **or with `-y`/`--yes`**, it never asks and never installs: it writes a notice to stderr and runs the command, without touching stdout.
+  - **In a terminal**, an update without breaking changes — a patch, such as `0.14.0` to `0.14.1` — is installed before the command, which then runs on the new version and returns its own exit code. One with breaking changes — before 1.0, a minor version bump, such as `0.14.x` to `0.15.0` — is offered on every command with three options, `update`, `continue` and `cancel`, next to the link to its release notes; `cancel` exits `0` without running the command, and choosing `update` exits `1` without running it when this copy cannot update itself, another cotctl process is installing an update, or npm fails.
+  - **Without a terminal, or with `-y`/`--yes`**, it never asks and never installs: it writes a notice to stderr and runs the command, without touching stdout. A terminal means that stdin, stdout and stderr are all attached to one and the `CI` environment variable is not set, so a CI job, a pipe or redirected output count as unattended — but a script started from a terminal does not. Set `COTCTL_NO_UPDATE_CHECK=1` in such a script, or pass `-y`, so it neither installs a patch partway through nor stops at the prompt.
   - The check waits at most a second and a half, is ignored silently when it fails, and its result is kept for 12 hours next to the profiles. **`COTCTL_NO_UPDATE_CHECK=1` turns it off.**
   - Only an installation made with `npm install -g` on macOS or Linux, with write permission on npm's global directory, updates itself. A standalone binary, an installation inside a project or through `npx`, Windows, and an installation made with `sudo` are shown the command to run by hand instead. A standalone binary is also told to delete that file or replace it with the new version's: if it comes first in your `PATH`, it keeps running the old version.
-  - If npm fails, cotctl says so, carries on with the current version, and does not retry that version for 12 hours. A whole installation is cut off at five minutes.
+  - If an automatic install fails, cotctl says so, carries on with the current version, and does not retry that version for 12 hours. A whole installation is cut off at five minutes.
 
   **`cotctl update`** updates to the latest version on demand, also without a terminal. It exits `0` when it updated or was already up to date, and `1` when it could not reach npm, this copy cannot update itself, another cotctl process is installing an update, or npm failed.
 
   **0.13.x and earlier do not carry the check**, so the move to 0.14.0 is manual: `npm install -g @cotctl/cli@0.14.0`, or replace the standalone binary with the 0.14.0 one. From then on the notices come by themselves.
 
-  **In CI, cotctl never updates itself**: a pipeline keeps running whatever version its install step fetched, and gets one notice on stderr when a newer one exists. Install a pinned version (`npm install -g @cotctl/cli@0.14.0`) rather than the latest — an unpinned install picks up the next minor release, breaking changes included, on its next run — and move the pin on purpose, after reading that release's breaking changes. Set `COTCTL_NO_UPDATE_CHECK=1` in the job to skip the lookup before every command.
+  **In CI, cotctl never updates itself**: a pipeline keeps running whatever version its install step fetched, and gets a notice on stderr on every command while a newer one exists. Install a pinned version (`npm install -g @cotctl/cli@0.14.0`) rather than the latest — an unpinned install picks up the next minor release, breaking changes included, on its next run — and move the pin on purpose, after reading that release's breaking changes. Set `COTCTL_NO_UPDATE_CHECK=1` in the job to skip the lookup before every command.
 
 - **`partial: true` edits one element of a keyed list without rewriting the others.** A PropertyType, Bot, Workflow, Routine, SLA or Schedule document that carries it names only the elements it changes. To edit one node of a property type with fifteen, write the type and that node — its `key` and the change — and the other fourteen stay as stored:
 
@@ -282,7 +289,7 @@ The codes now follow one contract: `0` success; `1` a runtime failure — the ne
 
 - **Re-applying what you already applied changes nothing.**
   - `apply` sends only the keys whose value differs from what the server holds, and no request at all when none does. A re-apply used to write every entity again, and the write was not harmless: task groups, state machines, states, SLAs and bots were saved again, a property type pushed its schema nodes to its task groups again, a survey deactivated and reactivated all its chats, and a schedule update stopped an active cron. A survey is saved whole, so it is sent in full or not at all. A value stored in another shape — a list in another order, another type — is still sent: the cost is one extra request, never a lost change.
-  - The dry run announces what the apply does. An existing entity is no longer always `would-update`, and changes the apply never sends are gone: `extraData` and `description` on bots and routines, `dynamicPropertyTypes`, `nameTranslations` and `requiredSurvey.autoCreateTask` on workflows, a Property's `schemaInstance` reference, a Survey's `permissions` under `--skip-remote-validation`, and StartForm and transition `permissions` shown as AccessRole ids.
+  - The dry run announces what the apply does. An existing entity is no longer always `would-update`, and changes the apply never sends are gone: a Bot's `extraData` and a Routine's `description`, `dynamicPropertyTypes`, `nameTranslations` and `requiredSurvey.autoCreateTask` on workflows, a Property's `schemaInstance` reference, a Survey's `permissions` under `--skip-remote-validation`, and StartForm and transition `permissions` shown as AccessRole ids.
   - A schedule's `time` and `endDate` are compared as the instant the scheduler stores, and a date-time without a zone designator means UTC, whatever the zone of the machine running cotctl — `apply` warns about one, so write it with `Z` or an offset. The scheduler ignores `owner` and `runVersion` on an update, so they no longer count as changes, and `apply` warns when they differ from the stored values.
   - A Routine is read the way the webclient reads it, so an empty object such as a `PBScript` stage's `data: {}` survives: a routine written that way converges instead of reporting the same change after every apply, and `routines export` keeps it. `routines test` no longer sends a `version: null` for the bot and its stages, which a company with `enableSecurity` refused, and `routines get --json` prints the routine as `routines list --json` does.
   - A workflow bot stored without a pinned version is no longer sent back as `version: null`, which the server's own validator rejected: a StartForm, subtask, transition or survey trigger that omitted `bots` could fail the update of its state machine or state.
@@ -344,13 +351,15 @@ The codes now follow one contract: `0` success; `1` a runtime failure — the ne
 
 ### Migration
 
-- **Install 0.14.0 by hand once** — `npm install -g @cotctl/cli@0.14.0`, or replace the standalone binary. It is the first version that announces the next ones. In CI, pin the version and set `COTCTL_NO_UPDATE_CHECK=1`.
-- **Re-export every YAML exported with 0.13.0 or earlier before re-applying it** — schedules (their time zone), surveys (`labelQuestion` titles) and routines (empty objects) above all.
-- **Run `apply --dry-run` over your YAML before you upgrade a pipeline**, and fix what it refuses: a bot stage missing a required `data` entry (`data.data` on `PBScript`), a `generic` asset without `asset.property`, a Workflow naming a Survey the server lacks, a `dateMode` other than `date` or `date_time`, a table `max` below 1, a `file://` outside the YAML file's directory, an entity declared twice, a `partial` key.
+- **Install 0.14.0 by hand once** — `npm install -g @cotctl/cli@0.14.0`, or replace the standalone binary. It is the first version that announces the next ones. In CI, pin the version and set `COTCTL_NO_UPDATE_CHECK=1`; in a script started from a terminal, set it too or pass `-y`.
+- **Re-export every YAML exported with 0.13.0 or earlier before re-applying it** — schedules (their time zone), surveys (`labelQuestion` titles) and routines (empty objects) above all. Export into a scratch folder and merge into the YAML you keep, rather than overwriting edits not yet applied.
+- **With 0.14.0 installed, run `apply --dir --dry-run` (or each kind's `apply --dry-run`) over your YAML before you move a pipeline to it**, and fix what it refuses, such as a bot stage missing a required `data` entry (`data.data` on `PBScript`), a `generic` asset without `asset.property`, a Workflow naming a Survey the server lacks, a `dateMode` other than `date` or `date_time`, a table `max` below 1, a `file://` outside the YAML file's directory, an entity declared twice, a `partial` key.
 - **Write what an update must reset** — `[]`, `""`, `isActive: true`, `version: null`, `bots: []`, `viewPermissions: []` — and leave out a bot's `extraData`, a state's `next` and a user's `hierarchy` to keep them.
-- **Write `isActive: true` on every schedule whose cron must keep running.**
+- **Write `isActive: true` on every schedule whose cron must keep running**, and remove `isActive: false` from the YAML of a finished schedule that should keep its status: the apply now deactivates it.
 - **Move `file://` scripts under the directory of the YAML file that references them.**
 - **Re-check every branch on `$?`** against the table in *Exit codes*, and every parser of result lines or `--json` against *Output that scripts read*.
+- **Re-check pipelines gated on `--dry-run --fail-on-destructive`**: a survey YAML that leaves out a stored question, and a legacy-replace write that empties a permission list, now exit `2`.
+- **Move the team, and every pinned CI install, to 0.14.0 together when you share survey exports**: earlier versions refuse the `conditionalDisplay` with `resetIdentifiers` alone that 0.14.0 exports write.
 - **Remove `partial: true` from PropertyType and Workflow YAML meant to be applied whole**, and any `partial` key from the kinds that do not take it.
 - **Grant `admin-pbscripts-read`** to the profiles that read or apply routines by `code`.
 - **Replace AccessRole ids in StartForm and transition `permissions`** with the permission codes they were meant to require.
