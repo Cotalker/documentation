@@ -115,7 +115,7 @@ To deactivate a user without deleting anything:
 cotctl users deactivate juan.perez@acme.com -c acme
 ```
 
-As everywhere in `cotctl`, exit codes are meaningful here: `0` success, `1` a runtime error mid-apply (network, an API error, an unresolvable hierarchy email), and `2` a pre-apply validation failure (bad YAML, an unknown job code, a reactivation without the flag, the password/notify-email conflict).
+As everywhere in `cotctl`, exit codes are meaningful here: `0` success, `1` a runtime error (network, an API error, an unresolvable hierarchy email, or — since 0.14.0 — a pinned `id` the server fails to look up, reported as `Pre-apply checks could not run for …`), and `2` a pre-apply validation failure (bad YAML, an unknown job code, a reactivation without the flag, the password/notify-email conflict). One document that fails its pre-apply checks stops the whole batch before anything is sent.
 
 ## See also
 

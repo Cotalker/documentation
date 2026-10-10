@@ -92,7 +92,7 @@ cotctl schedules deactivate sched_daily_digest
 cotctl schedules logs sched_daily_digest --limit 50
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `-q/--quiet`. `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …).
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage) and — new in 0.14.0 — `--json`, which prints one JSON object per result with `statusCall` when the apply relaunches or stops a cron. It checks each stage's bot `version` against the live catalog and refuses a bad one with exit `2`, `--dry-run` included, before anything is written (since 0.14.0; it used to fail only when the schedule ran). `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …).
 
 ### Reading a failed run
 

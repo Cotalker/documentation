@@ -121,8 +121,8 @@ cotctl surveys apply -f survey.yaml -c acme --dry-run --fail-on-destructive
 
 - `--dry-run` validates and prints exactly what would be sent, without applying.
 - `--diff <off|compact|verbose>` sets how much of the before/after the dry-run prints (default `compact`).
-- `--fail-on-destructive` exits with code `2` when the dry-run finds any danger-severity change — useful in a pipeline. (Requires `--dry-run`.)
-- `--yes` skips the confirmation prompts; `--json` emits one result object per line for scripting.
+- `--fail-on-destructive` exits with code `2` when the dry-run finds any danger-severity change — an emptied `permissions` list or, since 0.14.0, questions the update would deactivate — useful in a pipeline. (Requires `--dry-run`.)
+- `--yes` skips the confirmation prompts; `--json` emits one result object per line for scripting (the prompt and `Apply cancelled.` go to stderr).
 
 ### A practical tip
 

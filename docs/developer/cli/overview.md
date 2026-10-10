@@ -70,7 +70,7 @@ Don't worry about learning all of these at once. Most partners start with survey
 
 <div className="alert alert--primary">
 
-**Two flagship safety features.** Every apply supports `--dry-run`, which shows a **per-field diff** of exactly what would change without touching the environment. And the entity-scoped applies (`surveys apply`, `properties apply`, `workflows apply`) go further: they **flag destructive changes** — a removed question, a dropped state, a deactivation — and can fail a pipeline on them with `--fail-on-destructive`. You see what a change does before it happens.
+**Two flagship safety features.** Every apply supports `--dry-run`, which shows what would change without touching the environment — with a **per-field diff** for surveys, workflows, properties and property types, and the **destructive changes** flagged: a removed question, an emptied permission list, a deactivation. And the entity-scoped applies (`surveys apply`, `properties apply`, `workflows apply`) can fail a pipeline on them with `--fail-on-destructive`. You see what a change does before it happens.
 
 </div>
 
@@ -109,7 +109,7 @@ Then reach for these as you need them:
 
 <div className="alert alert--secondary">
 
-**A note on exit codes.** `cotctl` returns `0` on success and `1` on a runtime error (an API error, a missing profile, a missing file). A third code, `2`, means a **validation failure** — the YAML was rejected before anything was sent — and it's also what `--fail-on-destructive` returns when a dry-run finds a destructive change. You don't need this yet, but it's what makes `cotctl` safe to wire into scripts and CI gates later on. [CI/CD](./ci-cd.md) covers exactly where each code comes from.
+**A note on exit codes.** `cotctl` returns `0` on success and `1` on a runtime error (an API error, a missing profile, a missing file). A third code, `2`, means a **validation failure** — what was rejected was not sent — and it's also what `--fail-on-destructive` returns when a dry-run finds a destructive change. A fourth, `3`, flags a partial apply that left something on the server. You don't need this yet, but it's what makes `cotctl` safe to wire into scripts and CI gates later on. [CI/CD](./ci-cd.md) covers exactly where each code comes from.
 
 </div>
 

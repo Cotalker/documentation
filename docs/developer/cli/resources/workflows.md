@@ -135,7 +135,7 @@ This is the distinction to get right, and it is the same one [Merge semantics](.
 | `allowedExtensions: []` | **Every** accepted extension is removed |
 | `defaultSelectedTaskTab: null` | The setting is cleared |
 
-A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose. Use the entity-scoped `cotctl workflows apply --dry-run` to see it — the unified `apply` does not render that block.
+A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose — from `workflows apply` and, since 0.14.0, from the unified `apply` as well.
 
 #### What `validate --dir` checks, and what `export` warns about
 

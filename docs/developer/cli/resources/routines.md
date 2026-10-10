@@ -122,7 +122,13 @@ cotctl routines apply -f rutina.yaml -y
 cotctl routines test rutina_saludo_simple --context ctx.json
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `-q/--quiet`, and handles multi-document files.
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, and `--allow-script-bots` (required when the body has a `PBScript`, `CCJS` or `ESMCode` stage), and handles multi-document files.
+
+<div className="alert alert--info">
+
+**Since 0.14.0, reading a routine by its `code` needs `admin-pbscripts-read`.** `cotctl` now reads it through the endpoint the webclient uses, which checks that permission — so `routines get`, `routines export`, `routines test`, and `routines apply` or `apply --dir` of a Routine without `id` that already exists fail with `API Error 403` (exit `1`) for a profile without it. It's the permission `routines list` already needed; writing also needs `admin-pbscripts-write`.
+
+</div>
 
 <div className="alert alert--warning">
 

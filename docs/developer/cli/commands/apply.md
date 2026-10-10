@@ -65,6 +65,7 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `-f, --file <path>` | all | **(required)** Path to the YAML file |
 | `-c, --company <profile>` | all | **(required)**, unless an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) supplies it. Profile to use |
 | `--dry-run` | all | Validate and show what *would* be sent, without applying |
+| `--diff <mode>` | PropertyType, Property, Workflow, Survey | **New in 0.14.0.** How much per-field diff a `--dry-run` prints under each `Would CREATE` / `Would UPDATE` line: `off`, `compact` (default) or `verbose` |
 | `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) |
 | `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind |
 | `--skip-remote-validation` | Survey only | Skip the remote checks — identifiers, references (Survey, PropertyType, JobTitle, Property) and permission names — hard error on any other kind. A missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, which resolves both before writing; a `--dry-run` with the flag doesn't report them. A YAML that sets the survey's `id` still has its `code` compared with the server's, and a `--dry-run` does report that one |
@@ -72,16 +73,17 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `--notify-email` | User only | Send the welcome email on create (incompatible with a `password` in the YAML) |
 | `--lax-code` | JobTitle only | On *update* only, downgrade the code-format check to a warning when the existing record's code is already non-conforming |
 | `--rollback` | Workflow only | On a mid-apply error, deactivate the resources created during the partial apply |
-| `-q, --quiet` | all | Suppress the progress lines. Errors and destructive findings still surface |
+| `-q, --quiet` | all | Suppress advisory warnings and the `--dry-run` diff. Errors and destructive findings still surface |
+| `--allow-script-bots` | Workflow | Opt in to `PBScript` / `CCJS` / `ESMCode` bot stages, which run arbitrary JavaScript. Without it the apply is refused before any write |
 | `--legacy-replace-workflows` | Workflow only | Escape hatch that restores pre-0.7.0 destructive replace semantics. Prints a warning to stderr. **Deprecated, with no removal version announced** — earlier releases promised 0.8.0, which never happened |
 
-The `--skip-*` flags are Survey-only by design: passing them with any other kind (or a directory containing non-Survey files) is a hard error, not a silent no-op.
+The `--skip-*` flags are Survey-only by design: passing them with any other kind (or a directory containing non-Survey files) is a hard error, not a silent no-op. And `--continue-on-error` and `--json` exist only for `--dir`: with `-f` they are refused, exit `1`, before anything is read.
 
 <div className="alert alert--secondary">
 
-**Some flags live on the entity-scoped applies, not here.** `--diff`, `--json` and `--fail-on-destructive` are **not** options of the unified `cotctl apply`. They exist only on `cotctl surveys apply`, `cotctl properties apply` and `cotctl workflows apply` — the entity-scoped forms built for CI. Reach for those when you need machine-readable output or a destructive-change gate; see [CI/CD](../ci-cd.md).
+**One CI flag lives only on the entity-scoped applies.** `--fail-on-destructive` is **not** an option of the unified `cotctl apply`: it exists on `cotctl surveys apply`, `cotctl properties apply` and `cotctl workflows apply`. Reach for those when a destructive change should fail the run; see [CI/CD](../ci-cd.md).
 
-`--quiet` **was** on that list until 0.12.0 and now exists here too, so a directory apply can be silenced. It mutes progress lines only: errors and destructive findings are never suppressed by it, on any kind.
+The rest of that list has moved here over time: `--quiet` in 0.12.0, and in **0.14.0** `--diff` (for a `--dry-run`, either mode) and `--json` (with `--dir`). `-q` never suppresses an error or a destructive finding, on any kind.
 
 </div>
 
@@ -106,7 +108,7 @@ A successful apply confirms what happened, one line per resource:
 Survey "my_survey" created successfully
 ```
 
-An update prints `updated successfully` instead. `cotctl` doesn't echo the generated `_id` — you never manage IDs by hand (see the note below).
+An update prints `updated successfully` instead, and — since 0.14.0 — a resource your YAML does not change prints `<Kind> "<identifier>" unchanged — nothing to send`, with no request made. `cotctl` doesn't echo the generated `_id` — you never manage IDs by hand (see the note below).
 
 <div className="alert alert--info">
 
@@ -121,7 +123,7 @@ Because questions are matched by `identifier`, not position, edits behave intuit
 | You want to… | Do this | Result |
 |---|---|---|
 | Add a question | Add it to `questions[]` | Created |
-| Remove a question | Delete it from `questions[]` | Deactivated (not hard-deleted), after a confirmation prompt |
+| Remove a question | Delete it from `questions[]` | Deactivated (not hard-deleted). An interactive apply asks first; `-y` skips the question and `apply --dir` never asks it. A dry run flags it as `⚠ DANGER` |
 | Edit a question | Change its fields, keep the `identifier` | Updated, ID preserved |
 | Reorder questions | Reorder `questions[]` | Order changes, IDs preserved |
 
@@ -129,38 +131,25 @@ Two things are immutable once created: a survey's `code`, and a question's `iden
 
 ## Preview first: `--dry-run`
 
-`--dry-run` validates the file and prints what *would* happen without sending anything. On the unified `apply` it reports the intended action per resource:
+`--dry-run` validates the file and prints what *would* happen without sending anything — one line per resource, and, since **0.14.0**, the same **per-field diff** the entity-scoped applies print, under each line of a PropertyType, Property, Workflow (and its state machines and states) or Survey:
 
 ```
 --- DRY RUN ---
 
-  Would CREATE Survey: my_survey
+  Would UPDATE Survey: my_survey
+    ~ name: "My survey" → "My Survey"
 ```
 
-The entity-scoped applies (`surveys apply`, `properties apply`, `workflows apply`) render a **per-field diff** on top of this, and mark any **destructive** change — a removed question, a dropped state, a deactivation — so you can catch it before it lands. In CI you can turn that signal into a hard gate with `--fail-on-destructive`, which exits `2` when a dry-run finds a destructive change. Those richer diff and gating flags are documented under [CI/CD](../ci-cd.md); the unified `apply` shown here keeps the plain preview.
+`--diff off|compact|verbose` sets how much of it prints (default `compact`), and `-q` drops it. A resource your YAML does not change reads `No changes to <Kind>: <identifier>` — before 0.14.0 every existing resource showed as `Would UPDATE`.
 
-<div className="alert alert--warning">
-
-**The unified `apply` never prints the destructive-findings block — read this before you build a pipeline on it.**
-
-The `⚠ DANGER` / `⚠ WARNING` block is rendered by the shared dry-run formatter, which `apply` does not use. It computes the findings and discards them, and it declares no `--fail-on-destructive` either. For `Survey`, `Workflow` and `Property` that block is the **only** place those findings surface, so:
-
-> `cotctl apply --dir --dry-run` is the quietest preview available — silent about exactly the changes that cannot be undone.
-
-This is the opposite of what most people assume, because `apply --dir` is the form the documentation otherwise recommends. **Preview a sensitive kind with its entity-scoped command**, which does render the block:
+A dry run also prints the **destructive findings** — a permission list emptied whole, the questions a survey update would deactivate, a state machine deactivated, card labels dropped — on stderr, under each resource: `⚠ DANGER` for the worst, `⚠ warn` for the rest. (Before 0.14.0 the unified `apply` computed these and never showed them.) What the unified `apply` still lacks is `--fail-on-destructive`: its exit code never changes with a finding. **When a danger finding should fail the run, preview with the entity-scoped command** first:
 
 ```bash
-# Preview that actually flags destructive changes
-cotctl surveys apply -f survey.yaml -c acme --dry-run
-cotctl workflows apply -f workflow.yaml -c acme --dry-run
-cotctl properties apply -f property.yaml -c acme --dry-run
+cotctl surveys apply -f survey.yaml -c acme --dry-run --fail-on-destructive
+cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 ```
 
-`Webhook` is the one exception: its applier also mirrors each finding into the warning channel, which `apply` does print — so a `context` clear is announced on every path.
-
-This is a known gap in `cotctl`, named here rather than closed.
-
-</div>
+Those richer gating flags are documented under [CI/CD](../ci-cd.md).
 
 ## What an update sends
 
@@ -256,37 +245,75 @@ The order is between **kinds**. Within the Survey kind, surveys are *not* ordere
 | `--dir <path>` | **(required)** Folder of YAML files |
 | `-c, --company <profile>` | **(required)**, unless an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) supplies it |
 | `--dry-run` | Preview every payload without applying |
-| `-y, --yes` | Skip all confirmation prompts |
-| `--continue-on-error` | Keep going if one entity fails (default: stop on first error) |
+| `-y, --yes` | Skip the preview and all confirmation prompts |
+| `-q, --quiet` | Suppress advisory warnings and the `--dry-run` diff; errors and destructive findings still print |
+| `--diff <mode>` | **New in 0.14.0.** Diff verbosity of the preview: `off`, `compact` (default) or `verbose` |
+| `--json` | **New in 0.14.0.** Print the results as JSON on stdout, one object per line — see [JSON output](#json-output) |
+| `--continue-on-error` | Keep going when a resource fails (default: stop on the first error) — see below |
+| `--allow-script-bots` | Opt in to `PBScript` / `CCJS` / `ESMCode` stages in Workflows, SLAs, Schedules, Routines and Bots |
 
-### Example
+`--skip-*`, `--allow-reactivate`, `--lax-code`, `--rollback` and `--legacy-replace-workflows` work as in single-file mode. `--notify-email` is accepted but has no effect: users created by `apply --dir` never get the welcome email.
 
-```bash
-# Preview, then apply
-cotctl apply --dir ordenes-compra/ -c dev --dry-run
-cotctl apply --dir ordenes-compra/ -c dev
-```
+### One preview, one prompt
 
-Before applying, `cotctl` shows what it found and asks you to confirm; then it reports one line per resource and a final tally:
+Without `-y` or `--dry-run`, `apply --dir` previews the whole directory before it asks — since **0.14.0**. It prints what it found, runs the directory exactly as `--dry-run` would (with the same flags, so `-q` and `--diff` apply), prints that preview with its warnings and destructive findings, and only then asks **once**, with the totals per action:
 
 ```
 Applying directory: ordenes-compra/
 Profile: dev
 
-Found 10 YAML files:
-  6 AccessRole files (6 documents)
-  3 PropertyType files (3 documents)
+Found 5 YAML files:
+  2 AccessRole files (7 documents)
+  1 PropertyType file (3 documents)
+  1 Property file (3 documents)
   1 Workflow file (1 document)
 
-Apply 10 resources to dev? (Y/n)
-  [created] roles.yaml — AccessRole: ordenes-compra:start-form
-  [created] property-types.yaml — PropertyType: oc_transaccion
-  [created] workflow.yaml — Workflow: ordenes_compra
+  [CREATE] access/permissions.yaml — AccessRole: ordenes-compra:start-form
+  [CREATE] data-model/property-types.yaml — PropertyType: oc_transaccion
+  [CREATE] workflow.yaml — Workflow: ordenes_compra
+  [CREATE] workflow.yaml — StateMachine: sm_oc_main
+  …
 
-Applied directory "ordenes-compra/": 13 created, 0 updated, 0 error(s), 0 skipped
+✔ 15 CREATE — Apply 15 changes to dev? Yes
+  [created] access/permissions.yaml — AccessRole: ordenes-compra:start-form
+  [created] data-model/property-types.yaml — PropertyType: oc_transaccion
+  [created] workflow.yaml — Workflow: ordenes_compra
+  [created] workflow.yaml — StateMachine: sm_oc_main
+  [created] workflow.yaml — State: oc_estado_borrador
+  …
+
+Applied directory "ordenes-compra/": 18 created, 0 updated, 0 unchanged, 0 rolled back, 0 error(s), 0 skipped
 ```
 
-Under `--dry-run` the per-resource lines read `[CREATE]` / `[UPDATE]` instead of `[created]` / `[updated]`, and a failed file shows `[error] <file> — <entity> <identifier>: <message>`.
+A prompt with something in every column reads like `3 CREATE · 12 UPDATE · 40 NO-OP · 1 ERROR — Apply 15 changes to dev?`. A Workflow's state machines and states get lines of their own, so the counts outnumber the documents. The write that follows repeats none of the warnings, and it asks nothing per resource — the questions a survey update deactivates, which `apply -f` asks about, are deactivated after that one prompt. What the preview settles:
+
+- **Nothing to send** — every resource is `NO-OP`: it says so and asks nothing.
+- **An error in the preview** — it asks nothing, writes nothing, and exits with the error's code: `2` for a validation refusal, `1` otherwise. In 0.13.0 a yes to the prompt applied the files before the error. With `--continue-on-error` it asks, with the `ERROR` lines on view, and the write skips what fails.
+- **A declined prompt** — prints `Apply cancelled.`, writes nothing, and exits with the code of the errors the preview showed, or `0` when it showed none.
+
+A reference to something the same directory writes first — an SLA naming a state machine one of its Workflows creates, a JobTitle or a User naming an AccessRole it creates — is read as the write will find it, in the preview and under `--dry-run` alike. Within a kind, files go in path order, so a reference to what only a **later** file creates is still an error.
+
+Under `--dry-run` the per-resource lines read `[CREATE]`, `[UPDATE]` or `[NO-OP]`, with no summary; after a write they read `[created]`, `[updated]`, `[unchanged]` or `[rolled-back]`, and a failed document prints `[error] <file> — <Entity> <identifier>: <message>`.
+
+### `--continue-on-error`
+
+By default the run stops at the first failure. With `--continue-on-error` a resource that fails is reported and the rest still apply — a file whose YAML, `partial` key or `file://` references cannot be read is skipped whole. The run still exits non-zero: with the first of `3` (a partial apply), `2` (a refusal) or `1`, in that order. A Ctrl-C at a prompt stops the run either way.
+
+### One document per resource
+
+A batch declares each resource once. Since **0.14.0**, two documents of one kind with the same identifier — `code`, `name`, `email` or `nameCode`, an SLA's `code` within its state machine — are refused before anything is written, whether they share a file or sit in two files of the directory, and the run exits `2`. Before, the last one silently won. Under `--continue-on-error` the files that repeat it are skipped (`[skip]` lines, counted under `skipped`) and the rest apply.
+
+Every kind but `Workflow` takes several documents per file, and a file may mix kinds; a Workflow file holds exactly one document.
+
+### JSON output
+
+With `--json` (new in 0.14.0), stdout carries one JSON object per result instead of the text lines — the shape `surveys apply --json` and `workflows apply --json` print, plus the `file` it came from: `entity`, `identifier`, `action` and, when present, `diff`, `destructiveChanges`, `preservedElements` and `statusCall` (the `activate` a schedule update is followed by).
+
+```json
+{"file":"schedules/digest.yaml","entity":"Schedule","identifier":"sched_daily_digest","action":"updated","statusCall":"activate"}
+```
+
+A failed document is a line with `"action": "would-error"` and an `error`; a skipped one has `"action": "skipped"`; a resource `--rollback` deactivated has `"action": "rolled-back"`. No summary is printed and the exit codes do not change. Without `-y`, the preview, the prompt and `Apply cancelled.` go to **stderr**, so stdout carries nothing but JSON.
 
 ### It's safe to run twice
 
@@ -295,14 +322,16 @@ Directory apply is **idempotent** — re-running it is expected and safe:
 | Scenario | Behavior |
 |---|---|
 | Fresh environment | Everything created |
-| Re-apply, no changes | Everything updated (effectively a no-op) |
-| Re-apply with new files | Existing updated, new created |
+| Re-apply, no changes | **Nothing is sent** — every resource reads `unchanged` (`[NO-OP]` in a dry run). Before 0.14.0 each one was written again. A User that declares `password`, and a Schedule whose `time` or `endDate` names no zone, are still sent every time |
+| Re-apply with new files | New ones created; an existing one is updated only when the YAML changes it |
 | State removed from a workflow YAML | **Blocked** — missing states are rejected |
 | Immutable field changed | **Blocked** — `code`/`nameCode` immutability enforced |
 
 ## A word on rate limits and permissions
 
-The backend rate-limits writes (roughly 20 per 5-second window). In large batch scripts, space out your calls or handle `429` responses. And if any apply returns `403`, the logged-in user lacks the required administration permission — that's a Cotalker permissions matter, not a CLI one.
+The backend rate-limits writes (roughly 20 per 5-second window). `cotctl` retries a `429` for you, up to three attempts with backoff, so you only need to space out calls when a batch is large enough to exhaust them.
+
+A `403` means the logged-in user lacks a permission the request needs — a Cotalker permissions matter, not a CLI one. How it reads depends on the kind: `API Error 403` for a Survey (usually the survey administration permission), an AccessRole, a PropertyType, a Property, a Workflow's group or task group, and a Routine or a Bot under `apply --dir`; `Forbidden (HTTP 403): <message>` for a JobTitle, a User, an SLA, a Schedule, a Webhook, a Workflow's state machines and states, and `bots apply` or `routines apply`; and `Attempted to modify a read-only field (path: …)` when the server refused a field `cotctl` sent — report that one as a bug. Since 0.14.0, reading a routine by its `code` also needs `admin-pbscripts-read` — see [Routines](../resources/routines.md).
 
 ## The standard loop
 

@@ -48,10 +48,15 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** the token is invalid.
 - **Fix:** re-authenticate with `cotctl login`.
 
-### `API Error 403`
+### `API Error 403` / `Forbidden (HTTP 403)`
 
-- **Cause:** the logged-in user lacks the required administration permissions.
+- **Cause:** the logged-in user lacks a permission the request needs — for a Survey, usually the survey administration permission. Since 0.14.0, `routines get`, `routines export`, `routines test`, and an apply of a Routine without `id` that already exists also need **`admin-pbscripts-read`** — the permission `routines list` already needed. Which of the two messages you get depends on the kind; see [apply](./commands/apply.md#a-word-on-rate-limits-and-permissions).
 - **Fix:** this is a Cotalker permissions matter — ask the company's administrator to grant the user the needed permissions, then retry.
+
+### `Attempted to modify a read-only field (path: …)`
+
+- **Cause:** the server refused a field `cotctl` sent in a JobTitle, User or Routine (`routines apply`) update.
+- **Fix:** report it as a bug — `cotctl` should not send that field.
 
 ### `Could not discover API URL from <url>`
 
@@ -130,8 +135,8 @@ These resources arrived in the 0.9–0.11 releases and have a few failure modes 
 
 ### A scoped apply exits `2` on a "destructive" change
 
-- **Cause:** you ran `cotctl surveys apply`, `cotctl properties apply` or `cotctl workflows apply` with `--fail-on-destructive`, and the dry-run flagged a destructive change (a removed question, a dropped state, a deactivation). That's the flag doing its job: exit code `2` means "a destructive change was detected", distinct from `1` (runtime error) and `0` (success).
-- **Fix:** if the change is intentional, drop `--fail-on-destructive` (or apply without `--dry-run`) to proceed. If it isn't, you just caught a mistake before it reached the environment — review the diff. This gate exists only on the entity-scoped applies, not on the unified `cotctl apply`.
+- **Cause:** you ran `cotctl surveys apply` or `cotctl workflows apply` with `--dry-run --fail-on-destructive`, and the dry-run found a `danger` finding: a permission list emptied whole, or — since 0.14.0 — questions the survey update would deactivate (reported under `--json` as `survey.questions-deactivated`). That's the flag doing its job: exit code `2` means "a destructive change was detected", distinct from `1` (runtime error) and `0` (success). A `warn` finding, such as a deactivation, never changes the code.
+- **Fix:** if the change is intentional, apply without the gate — a real apply ignores the flag. If it isn't, you just caught a mistake before it reached the environment — review the diff. An unmodified export made with 0.13.0 or earlier can trip it: re-export first. This gate exists only on the entity-scoped applies, not on the unified `cotctl apply`.
 
 ## Still stuck?
 

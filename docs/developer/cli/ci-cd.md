@@ -124,31 +124,33 @@ Two things to notice. There is **no login step** — the environment credential 
 
 Both jobs install a **pinned** version, and the deploy job sets `COTCTL_NO_UPDATE_CHECK`, so the version that runs is the one the workflow names — see [New cotctl versions in a pipeline](#new-cotctl-versions-in-a-pipeline).
 
-## The CI-oriented flags live on the scoped applies
+## The CI-oriented flags, and where they live
 
-This is the detail that catches people wiring up their first pipeline. Most of the flags that make an apply *pipeline-friendly* — machine-readable output, diff control, and the destructive-change gate — are **not** options of the unified `cotctl apply` (or `apply --dir`). They live only on the **entity-scoped** applies:
+Most of the flags that make an apply *pipeline-friendly* used to live only on the **entity-scoped** applies. Since **0.14.0** the unified `cotctl apply` has caught up on all but one:
 
 | Flag | On | What it does |
 |---|---|---|
-| `--json` | `surveys apply`, `properties apply`, `workflows apply` | Emits results as JSON, one object per line, to stdout |
-| `--quiet` / `-q` | those three, plus `bots` / `routines` / `schedules` / `webhooks apply` — and, since **0.12.0**, the unified `apply` | Suppresses the `would-create` / `would-update` progress lines. Errors still surface, and **so does every destructive finding** |
-| `--diff <off\|compact\|verbose>` | `surveys apply`, `properties apply`, `workflows apply` | Controls how much per-field diff detail is printed (default `compact`) |
-| `--fail-on-destructive` | `surveys apply`, `properties apply`, `workflows apply` | Exits `2` when a `--dry-run` detects a destructive change |
+| `--json` | `surveys`, `properties`, `workflows` and — new in 0.14.0 — `schedules apply`, and `apply --dir` | Emits results as JSON, one object per line, to stdout. `apply -f` refuses it |
+| `--quiet` / `-q` | those, plus `bots` / `routines` / `webhooks apply` and the unified `apply` | Suppresses the progress lines and advisory warnings. Errors still surface, and **so does every destructive finding** |
+| `--diff <off\|compact\|verbose>` | `surveys`, `properties`, `workflows apply` and — new in 0.14.0 — the unified `apply`, `-f` or `--dir` | How much per-field diff a `--dry-run` prints (default `compact`) |
+| `--fail-on-destructive` | `surveys apply`, `properties apply`, `workflows apply` **only** | Exits `2` when a `--dry-run` finds a `danger` finding |
+
+`--fail-on-destructive` acts only together with `--dry-run`, and only on a **`danger`** finding: a permission list emptied whole and — since 0.14.0 — the questions a survey update would deactivate. A `warn` finding never changes the exit code, which is why the flag never changes it on `properties apply`: every finding a property can raise is a warning.
 
 <div className="alert alert--warning">
 
-**`-q` never silences a destructive finding, and `apply` never prints one.** These are two different statements and both matter in a pipeline. The flag separates progress chatter from findings that announce data being removed, and mutes only the first. But the unified `apply` does not render the destructive-findings block at all — it computes the findings and discards them — so `apply --dir --dry-run` is the **quietest preview available**, silent about exactly the changes that cannot be undone. See [apply](./commands/apply.md) for what to run instead.
+**The gate is all or nothing.** It cannot accept one finding and keep failing on the rest, so a question you remove on purpose fails it too: check the question the gated dry run names, then apply — a real apply ignores the flag. And an **unmodified export made with 0.13.0 or earlier can fail it**: that export could leave a survey's real question out, so applying it deactivates the question. Re-export with 0.14.0 first.
 
 </div>
 
-So a strict per-resource gate uses the scoped form:
+The unified `apply` prints the destructive findings in a dry run too, since 0.14.0, but has no `--fail-on-destructive`. So a strict per-resource gate still uses the scoped form:
 
 ```bash
 # Fail the job if deploying this workflow would destroy anything
 cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 ```
 
-`cotctl apply --dir` remains the right tool for deploying a **mixed** directory in dependency order — it just doesn't carry those four flags. A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on-destructive` check, then deploy the whole set with `apply --dir`.
+A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on-destructive`, then deploy the whole set with `apply --dir`.
 
 ## Exit codes
 
@@ -156,10 +158,10 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 
 | Code | Meaning |
 |---|---|
-| `0` | Success — including a clean `--dry-run` and a user-cancelled prompt |
+| `0` | Success — including a clean `--dry-run` and a user-cancelled prompt with nothing wrong in it |
 | `1` | The default failure code: an API error, a missing file or profile, and any validation failure not covered by `2` |
-| `2` | One of three: a pre-apply **validation refusal** (nothing was mutated), an **export refusal** (the survey could not be modelled), or destructive changes detected under `--fail-on-destructive` |
-| `3` | **Partial apply** — some resources were created, but the batch left orphaned or incomplete state that needs attention |
+| `2` | One of three: a pre-apply **validation refusal** (what was refused was not sent, though other documents of the same run may have been), an **export refusal** (the survey could not be modelled), or a `danger` finding under `--fail-on-destructive` |
+| `3` | **Partial apply** — part of the apply was written and the run failed afterwards: resources a Workflow created, or a schedule whose cron an update stopped and whose relaunch failed |
 
 <div className="alert alert--warning">
 
@@ -167,30 +169,34 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 
 </div>
 
-### Which commands exit `2` on a validation failure
+<div className="alert alert--info">
 
-`apply`, `bots`, `slas`, `schedules`, `routines`, `users`, `jobtitles`, `surveys` and `webhooks`.
+**0.14.0 changed several codes.** If your pipeline tests for specific values, check it against the list below. Among the moves: a survey refusal from `surveys apply` or `apply -f` (`1` → `2`); an SLA or schedule refusal (`1` → `2`); a partial workflow apply from `apply -f` (`1` → `3`); a Workflow naming a Survey the server lacks (`3` → `1`, refused before its first write); `bots apply --dry-run` on a runtime failure (`2` → `1`); `apply --dir` without `-y` when its preview finds an error (now exits with that error's code, writing nothing); and a batch that declares a resource twice (now `2`, where the last document used to win).
 
-The rest — `properties`, `workflows`, `roles`, `property-types` and `validate` — exit **`1`**. Two consequences worth planning around:
+</div>
 
-- The *same invalid YAML* exits `2` through `cotctl apply -f` and `1` through `cotctl properties apply`, `workflows apply`, `roles apply` or `property-types apply`.
+### Which refusals exit `2`
+
+A kind gets the **same code from its own command as from `cotctl apply`**:
+
+- **Survey, User and JobTitle** exit `2` for what they check before writing — schema, references, a renamed code — through `apply -f` as through `surveys`, `users` and `jobtitles apply`. A check the server keeps them from making (a pinned User `id` it fails to look up, a JobTitle it fails to read) exits `1`.
+- **AccessRole, PropertyType, Property and Workflow** exit `1` for theirs, through `apply -f` as through `roles`, `property-types`, `properties` and `workflows apply` — except a Workflow state machine whose `code` a deactivated state machine holds, which every command refuses with `2`.
+- **Webhook, Routine, Bot, SLA and Schedule** — which `apply -f` does not take — exit `2` from their own commands for what the YAML gets wrong: the schema, an SLA whose state machine or states don't resolve, a schedule's invalid `cron`, a bot version or routine the catalog doesn't have. A catalog that cannot be read exits `1`.
 - **`cotctl validate` exits `1` for a validation failure, not `2`** — which surprises most people wiring up their first gate, because `validate` is the command whose whole job is validation.
+
+Three refusals cross the kinds: **a batch that declares a resource twice** exits `2` from every apply; **a bot stage missing a `data` entry its bot type requires** exits `2` from every command that writes stages, `workflows apply` included; and **a `partial` key no command reads** exits `2` from `apply -f` but `1` from `roles`, `property-types`, `properties` and `workflows apply`.
+
+**`apply --dir` gives each document the code its own command gives it**, and exits with the first of `3`, `2`, `1` it met — even after `--continue-on-error` applied the other files. A file it cannot read at all (a YAML syntax error, an unreadable `file://` reference, a refused `partial` key) exits `1`.
 
 ### `2` from `surveys export` is the odd one
 
 It is not a pre-apply signal at all: `surveys export` exits `2` when the simplified format cannot model the survey, and nothing was ever going to be mutated, because the run is a read.
 
-Read inside that command, though, it is unambiguous and it is actionable. It has exactly one meaning — *this survey cannot be expressed in the simplified format* — and exactly one answer: re-run with `--format raw`, which exports it verbatim. A script wrapping `surveys export` can branch on `2` and retry without reading the message.
+Read inside that command, though, it is unambiguous and it is actionable. It has exactly one meaning — *this survey cannot be expressed in the simplified format* — and exactly one answer: re-run with `--format raw`, which exports it verbatim. A script wrapping `surveys export` can branch on `2` and retry without reading the message. (An unknown `--format` value is not that: since 0.14.0 it exits `1` before anything is read.)
 
-<div className="alert alert--info">
+### One failure whose code depends on the command you entered through
 
-**Changed in 0.12.0.** This refusal used to exit `1`. If your pipeline tests for `== 1` specifically, update it; one that treats any non-zero exit as a failure is unaffected.
-
-</div>
-
-### Two failures whose code depends on the command you entered through
-
-These are inconsistencies in the current implementation, not a design. Pin the exact command in a script rather than relying on the code alone.
+An inconsistency in the current implementation, not a design. Pin the exact command in a script rather than relying on the code alone.
 
 **Script-bot refusal** — the YAML declares a `PBScript`, `CCJS` or `ESMCode` stage without `--allow-script-bots`. Same refusal, same message, two codes:
 
@@ -201,22 +207,17 @@ These are inconsistencies in the current implementation, not a design. Pin the e
 | `cotctl slas apply` | `1` |
 | `cotctl schedules apply` | `1` |
 | `cotctl workflows apply` | `1` |
-| `cotctl apply -f` / `apply --dir` | `1` |
-
-**Partial apply** — a workflow left orphaned group, task-group, state-machine or state resources behind:
-
-| Command | Exit |
-|---|---|
-| `cotctl apply --dir` | `3` |
-| `cotctl workflows apply -f` | `3` |
 | `cotctl apply -f` | `1` |
+| `cotctl apply --dir` | the document's own command: `2` for a Bot or a Routine, `1` otherwise |
+
+**A partial apply** no longer depends on the entry point: since 0.14.0 a workflow left half-applied exits `3` from `apply -f`, `apply --dir` and `workflows apply -f` alike — `--rollback` included, since what it deactivates stays on the server, inactive — and a schedule whose cron relaunch failed exits `3` from `schedules apply` and `apply --dir`. What `--rollback` deactivated is reported as `rolled back — created, then deactivated` (`[rolled-back]` under `--dir`, `"action": "rolled-back"` under `--json`), not as created.
 
 ## stdout vs. stderr
 
 `cotctl` keeps the two streams disciplined so your pipeline can parse output reliably:
 
 - **stdout** carries the result — the human table, or, under `--json`, the JSON-Lines payload and nothing else. When you pass `--json`, the human banner is suppressed so stdout stays machine-parseable.
-- **stderr** carries warnings, progress notes, and prompts.
+- **stderr** carries warnings, progress notes, and prompts. Since 0.14.0 that includes the confirmation prompt and `Apply cancelled.` under `--json` (`surveys`, `workflows`, `properties` and `schedules apply`, and `apply --dir`), so a run without `-y` no longer mixes them into the JSON lines.
 
 So the safe pattern in CI is to **capture stdout for parsing and let stderr flow to the log**:
 
@@ -246,7 +247,7 @@ To move a pinned job forward, change the pin. Outside a pipeline, `cotctl update
 
 ## Use `--continue-on-error` deliberately
 
-By default, a directory apply stops at the first failure — usually what you want, so a broken deploy halts loudly. Add `--continue-on-error` only when you intentionally want the remaining entities to apply despite one failing.
+By default, a directory apply stops at the first failure — usually what you want, so a broken deploy halts loudly. Add `--continue-on-error` only when you intentionally want the remaining entities to apply despite one failing; the run still exits non-zero. It exists only on `apply --dir`: `apply -f` refuses it with exit `1`. In an unattended job, which runs with `-y`, the interactive preview never runs — see [apply](./commands/apply.md#one-preview-one-prompt) for what it changes when a person answers the prompt.
 
 ## See also
 

@@ -174,7 +174,7 @@ cotctl bots apply -f bot.yaml --dry-run   # preview
 cotctl bots apply -f bot.yaml -y
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `-q/--quiet`, and handles multi-document files. As always, `--dry-run` first — especially against production — to see the create/update plan and any validation errors before anything is written.
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, and `--allow-script-bots` (required when `parametrizedBot` has a `PBScript`, `CCJS` or `ESMCode` stage), and handles multi-document files. As always, `--dry-run` first — especially against production — to see the create/update plan and any validation errors before anything is written.
 
 <div className="alert alert--info">
 

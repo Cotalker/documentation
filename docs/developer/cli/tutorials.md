@@ -70,7 +70,7 @@ cotctl validate -f survey.yaml
 cotctl apply -f survey.yaml -c acme
 ```
 
-**What success looks like:** `Survey "existing_survey" updated successfully`. You can add, remove, edit, and reorder questions freely — `cotctl` matches them by `identifier` and preserves their IDs.
+**What success looks like:** `Survey "existing_survey" updated successfully` — or, when your edit changes nothing the server doesn't already hold, `Survey "existing_survey" unchanged — nothing to send`. You can add, remove, edit, and reorder questions freely — `cotctl` matches them by `identifier` and preserves their IDs.
 
 ## Recipe 4 — Promote a survey between environments
 
@@ -388,11 +388,11 @@ cotctl surveys apply -f survey.yaml -c ci \
 
 <div className="alert alert--warning">
 
-These four flags live **only** on the scoped `surveys`, `properties`, and `workflows` apply commands. The unified `cotctl apply` — and `bots` / `routines` / `schedules` / `slas` / `property-types` apply — do **not** accept `--diff`, `--fail-on-destructive`, or line-delimited `--json`. Point your CI gate at the scoped command for the resource you're deploying.
+`--fail-on-destructive` lives **only** on the scoped `surveys`, `properties`, and `workflows` apply commands — and on `properties apply` it never fires, since every finding a property can raise is a warning. Since 0.14.0 the unified `cotctl apply` takes `--diff` (and `--json` with `--dir`) and prints the destructive findings in a dry run, but it has no gate. Point your CI gate at the scoped command for the resource you're deploying.
 
 </div>
 
-**What success looks like:** a benign change exits `0` and the pipeline proceeds; a change that would drop a question (or similar) exits `2` and the build stops before anything is applied.
+**What success looks like:** a benign change exits `0` and the pipeline proceeds; a change that would drop a question or empty a permission list exits `2` and the build stops before anything is applied. (Dropping a question counts since 0.14.0; before, the dry run did not report it at all. An export made with 0.13.0 or earlier can trip it unmodified — re-export first.)
 
 ## Where to go next
 

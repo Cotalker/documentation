@@ -143,7 +143,7 @@ cotctl slas apply -f sla.yaml --dry-run
 cotctl slas apply -f sla.yaml -y
 ```
 
-`get` and `export` **require** `--state-machine <smCode>` (an SLA code is only unique within its SM). `apply` reads the SM from each document's `stateMachine` field and takes `-f/--file` (required), `--dry-run`, and `-y/--yes`; it handles multi-document files. When the same SM code exists in more than one workflow, add `--task-group <workflow>` to disambiguate — `cotctl` will tell you when it's needed.
+`get` and `export` **require** `--state-machine <smCode>` (an SLA code is only unique within its SM). `apply` reads the SM from each document's `stateMachine` field and takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage); it handles multi-document files. When the same SM code exists in more than one workflow, add `--task-group <workflow>` to disambiguate — `cotctl` will tell you when it's needed.
 
 There's no `cron` in an SLA — it's driven by state transitions and its time window, not a schedule. If you want a cron cadence, that's a [schedule](./schedules.md).
 
