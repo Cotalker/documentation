@@ -96,7 +96,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install -g @cotctl/cli
+      - run: npm install -g @cotctl/cli@0.14.0
       # Offline — no credentials required
       - run: cotctl validate --dir config/
 
@@ -108,18 +108,21 @@ jobs:
       COTCTL_TOKEN: ${{ secrets.COTCTL_API_TOKEN }}
       COTCTL_API_URL: https://www.cotalker.com
       COTCTL_COMPANY_ID: ${{ vars.COTCTL_COMPANY_ID }}
+      COTCTL_NO_UPDATE_CHECK: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install -g @cotctl/cli
+      - run: npm install -g @cotctl/cli@0.14.0
       - run: cotctl apply --dir config/ -y
 ```
 
 Two things to notice. There is **no login step** — the environment credential is the whole of the authentication, and `-c` is absent because the company comes from the token. And `cotctl apply ... -y` skips the interactive confirmation prompts, which is exactly what you want in an unattended job.
 
 `COTCTL_COMPANY_ID` is a plain variable rather than a secret: a company id is not sensitive, and keeping it visible is the point — it is the line a reviewer reads to see which environment this job deploys to.
+
+Both jobs install a **pinned** version, and the deploy job sets `COTCTL_NO_UPDATE_CHECK`, so the version that runs is the one the workflow names — see [New cotctl versions in a pipeline](#new-cotctl-versions-in-a-pipeline).
 
 ## The CI-oriented flags live on the scoped applies
 
@@ -229,6 +232,17 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --json > result.jsonl
 What that means in practice: an ApiToken expires on a date somebody chose, and nothing warns you as it approaches. **Record when each one expires and rotate it before that date** — a pipeline whose only credential has lapsed fails on its next run, which is usually the run you needed.
 
 `cotctl` tells you which token it is refusing: an expired environment credential stops the run naming `COTCTL_TOKEN`, and the startup line announces an already-expired token as `EXPIRED` rather than printing a date in the past.
+
+## New cotctl versions in a pipeline
+
+From **0.14.0**, `cotctl` checks for a newer version before every command. In a pipeline that check never prompts and never installs anything: without a terminal (or with `CI` set) — and on any command run with `-y` — it writes a few `[cotctl]` lines to **stderr** (the versions, the release notes link for a breaking update, and the command to update with) and runs the command as usual. stdout is untouched, so `--json` output stays parseable. 0.14.0 is the first version with the check: a job still on 0.13.x never sees a notice.
+
+Two settings make a job predictable:
+
+- **Pin the version you install** — `npm install -g @cotctl/cli@<version>`, as the worked example does. An unpinned install picks up whatever is latest on the next run, breaking releases included: 0.14.0, for one, changed several exit codes a pipeline may branch on. Move the pin when you have read the release notes.
+- **Set `COTCTL_NO_UPDATE_CHECK=1`** to skip the check and its network call altogether. Any value other than empty, `0`, `false` or `no` turns it off.
+
+To move a pinned job forward, change the pin. Outside a pipeline, `cotctl update` installs the latest version on demand — see [update](./commands/update.md).
 
 ## Use `--continue-on-error` deliberately
 

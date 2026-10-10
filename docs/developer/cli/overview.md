@@ -64,6 +64,7 @@ On top of the resource groups sit the commands that operate on them and the tool
 | `cotctl apply` | Create or update resources from YAML (single file or a whole directory) |
 | `cotctl validate` | Check YAML — and live workflows — before you deploy |
 | `cotctl skills` / `cotctl mcp` | Install the Claude Code Skills and connect the documentation RAG for [AI-assisted authoring](./ai-authoring.md) |
+| `cotctl update` | Update `cotctl` to the latest version — it also checks before every command, from 0.14.0 (see [update](./commands/update.md)) |
 
 Don't worry about learning all of these at once. Most partners start with surveys and workflows and pick up the rest as projects require them.
 

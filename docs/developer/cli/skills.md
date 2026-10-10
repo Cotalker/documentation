@@ -54,6 +54,7 @@ Each Skill specializes the agent in one resource area:
 | `cotctl-jobtitles` | Creating, managing, exporting, and applying job title (Cargo) YAML |
 | `cotctl-routines` | Creating, editing, listing, exporting, and applying routines (PBScripts) |
 | `cotctl-bots` | Creating, managing, exporting, and applying Bot admin (slash-command) YAML |
+| `cotctl-webhooks` | Creating, editing, exporting, applying, testing, and deactivating webhooks (event subscriptions) |
 | `cotctl-apply` | Applying resources to Cotalker environments |
 | `cotctl-export` | Exporting and querying resources |
 | `cotalker-docs` | General knowledge of the Cotalker platform |
@@ -63,6 +64,12 @@ A common starting point is to install them all:
 ```bash
 cotctl skills install --all --local
 ```
+
+<div className="alert alert--info">
+
+**The Skills don't update with `cotctl`.** Installing writes a copy of the Skills built into the `cotctl` you ran, and nothing refreshes that copy afterwards — not the automatic update, not `cotctl update`. After moving to a new version, run `cotctl skills install` again in the same scope to bring the Skills in line with it. The 0.14.0 Skills, for example, are the first to describe `partial: true` documents and the 0.14.0 `file://` rules.
+
+</div>
 
 ## Scopes: local vs. global
 

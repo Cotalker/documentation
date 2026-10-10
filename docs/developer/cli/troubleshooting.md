@@ -15,6 +15,16 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** the npm global bin directory isn't on your `PATH`.
 - **Fix:** confirm where npm installs global binaries with `npm bin -g`, and add that directory to your `PATH`. As a quick workaround, you can always run the tool via `npx @cotctl/cli <command>`.
 
+### `Could not update cotctl to <version>: …`
+
+- **Cause:** the automatic update (from 0.14.0) could not install the new version with npm — no write permission on npm's global directory, no network, or an `npm` that belongs to another Node installation.
+- **Fix:** run the `npm install -g` command the message prints, with the permissions that directory needs. On an update without breaking changes your command still ran, on the current version, and `cotctl` will not retry for 12 hours; after choosing `update` at the prompt, it stopped without running the command. See [update](./commands/update.md#when-cotctl-can-update-itself).
+
+### `Another cotctl process is installing an update right now.`
+
+- **Cause:** a `cotctl` in another terminal or script is installing the new version at that moment. Nothing failed.
+- **Fix:** on an update without breaking changes your command ran anyway, on the current version. After `update` at the prompt, or from `cotctl update`, it exited `1` without running anything — run it again once that install finishes, and do **not** run `npm install -g` meanwhile: two installs at once can break the global installation.
+
 ## Authentication & profiles
 
 ### `--company/-c is required`
