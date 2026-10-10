@@ -54,7 +54,7 @@ questions:
       - label: "HR"
         value: "hr"
 
-  # 5 — Shown only when department = engineering; cleared if hidden.
+  # 5 — Shown only when department = engineering.
   - type: textinput
     identifier: re_comentarios_tech
     label: "Tech stack"
@@ -63,7 +63,6 @@ questions:
       showWhen:
         - op: eq
           value: "engineering"
-      resetOnHide: true
 
   # 6 — A date, no time.
   - type: datetime
@@ -99,7 +98,7 @@ questions:
 
 - **Every identifier is prefixed `re_`**, derived from the survey code `registro_empleado`. This is the convention that keeps identifiers unique across the whole company — see [why it matters](../surveys.md#identifiers-the-one-rule-to-internalize).
 - **Question 1 (`text`)** puts its content in `label` and renders it as Markdown — no answer is captured.
-- **Question 5 (`conditionalDisplay`)** appears only when the department is Engineering, and `resetOnHide: true` clears whatever was typed if the user changes their mind.
+- **Question 5 (`conditionalDisplay`)** appears only when the department is Engineering. (Earlier versions of this example also set `resetOnHide: true`, which has no effect — to clear an answer when the condition changes, use `resetIdentifiers`; see [Logic & validation](./logic-and-validation.md#clearing-answers-resetidentifiers).)
 - **Question 7 (`exec.preload`)** reads `user#me` to pre-fill the email and returns two commands — one to set the value, one to lock the field. See [Exec scripting](./exec-scripting.md).
 - **Translations** appear at two levels: `nameTranslations` for the survey name and `translations.label` per question.
 

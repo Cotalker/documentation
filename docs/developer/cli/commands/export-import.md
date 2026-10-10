@@ -65,11 +65,11 @@ cotctl surveys export order_request -c acme -o ./order_request.yaml
 
 <div className="alert alert--secondary">
 
-**`-o` is a path, not a format.** A common first mistake is `-o yaml`. The `-o`/`--output` flag is the *file path* to write to; use `--format` to choose the format. Passing a format keyword to `-o` is a hard error with a message telling you exactly this.
+**`-o` is a path, not a format.** A common first mistake is `-o yaml`. The `-o`/`--output` flag is the *file path* to write to; use `--format` to choose the format. Passing a format keyword to `-o` is a hard error with a message telling you exactly this — for `-o json` or `-o yaml`, that the export is always YAML.
 
 </div>
 
-Two export formats are available:
+Two export formats are available, and since 0.14.0 `--format` takes only these two values, in lower case — anything else (`json`, `yaml`, `RAW`) exits `1` before anything is read, where it used to export the simplified format silently:
 
 | `--format` | Description |
 |---|---|
@@ -95,6 +95,8 @@ A script wrapping `surveys export` can branch on exit `2` and retry with `--form
 <div className="alert alert--warning">
 
 **A simplified export can also succeed and leave something out**, which is the worse case: the YAML looks fine, gets committed, and the next `apply` is what removes the missing questions. Since 0.12.0 `cotctl` warns on stderr whenever it drops content — an unexpected chat bubble, a legacy bubble packing several questions into one, or a standalone text question absorbed as another question's label. **Read stderr on an export you are about to commit.** `stdout` stays clean, so piping and `-o` are unaffected.
+
+Since 0.14.0 the export also folds a title named `labelQuestion<identifier>` (as some solution presets name them) into its question, instead of exporting it as a `text` question and leaving the real question out — and the dry run of a survey update flags the questions it would deactivate as `⚠ DANGER`. An export made with 0.13.0 or earlier can carry exactly that gap: re-export before re-applying it.
 
 </div>
 

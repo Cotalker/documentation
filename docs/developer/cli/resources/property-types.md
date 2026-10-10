@@ -72,6 +72,10 @@ schemaNodes:
 | `default`, `weight`, `visualization` | No | Default value, display order, rendering hint |
 | `isActive`, `isHidden`, `isNonEditable`, `isIndexable` | No | Node-level flags |
 
+A node has **no `editable` block** — that belongs to a survey. The platform drops it, so since 0.14.0 `validate` and every apply refuse it (`editable is not a schema node field`, exit `1`) instead of letting it vanish. To keep users from editing a field, use `isNonEditable: true`.
+
+A node that omits `subType` is no longer read as a type change (fixed in 0.14.0): on an existing node it keeps the stored one.
+
 ### The `basicType` catalog
 
 There are exactly eight types:

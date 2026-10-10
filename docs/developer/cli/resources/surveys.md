@@ -40,7 +40,7 @@ questions:
 | `isActive` | No | Defaults to `true` |
 | `nameTranslations` | No | `es` / `en` / `pt` / `fr` display-name translations |
 | `permissions` | No | AccessRole **names**, resolved to IDs on apply — who can respond |
-| `bounds` | No | Maps answers to task fields (see [Logic & validation](./surveys/logic-and-validation.md)) |
+| `bounds` | No | Maps answers to task fields. **`cotctl` cannot set it** — the server's survey update doesn't store it, and `apply` warns (see [Logic & validation](./surveys/logic-and-validation.md#bounds-writing-answers-onto-the-task)) |
 | `src` | No | Scoring script (see [Logic & validation](./surveys/logic-and-validation.md)) |
 
 <div className="alert alert--primary">
@@ -49,7 +49,7 @@ questions:
 
 </div>
 
-Beyond these, surveys carry many optional fields for channel visibility, post-submission editing, responder filters, and re-assignment. You'll reach for those as projects demand; export a real survey to see them all.
+Beyond these, surveys carry optional fields for channel visibility and post-submission editing; export a real survey to see them all. Five keys the platform knows are out of `cotctl`'s reach: the server's survey update stores none of `onlyChannelCreation`, `responders`, `representation`, `bounds` and `reassignable`, so a create gets their defaults whatever the YAML sets, and an update that is sent erases a value another client stored. Since 0.14.0 `apply` warns about both cases.
 
 ## Questions
 
@@ -99,7 +99,7 @@ Surveys have their own entity-scoped command group. Every command takes a profil
 |---|---|
 | `cotctl surveys list` | List surveys (active by default; `--all` includes inactive; `--code <code>` looks up an exact code, paginating as needed and including inactive surveys; `-s, --search <text>` matches the **name**, not the code) |
 | `cotctl surveys get <code>` | Show one survey; `--populate` includes the full question list (and switches the default output to YAML) |
-| `cotctl surveys export <code>` | Export a survey as YAML or JSON |
+| `cotctl surveys export <code>` | Export a survey as YAML (`--format simplified` or `raw`) |
 | `cotctl surveys apply -f <file>` | Create or update a survey from a YAML file |
 | `cotctl surveys deactivate <code>` | Soft-delete a survey (it's never hard-deleted) |
 

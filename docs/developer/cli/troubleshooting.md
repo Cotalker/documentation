@@ -110,10 +110,45 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** a `person` question with `personFilter.allow: jobTitle` has `jobs` as a single value (`jobs: mgr`) instead of a list. Before `0.13.0` this passed validation, and the apply looked up one JobTitle per character of the value.
 - **Fix:** write it as a list, even for one code: `jobs: [mgr]`. Under any other `allow`, `jobs` is not read. See [`person`](./resources/surveys/question-types.md#person--pick-a-user).
 
+### `Identifier "<id>" cannot be reused`
+
+- **Cause:** a question of the company already holds `<id>` — or `<id>_label`, the name `cotctl` gives `<id>`'s title question — typically a question some survey stopped declaring, which the server keeps. The remote check refuses it first; under `--skip-remote-validation` the server does. Since 0.14.0 this exits `2` with that hint, instead of `1` and the server's raw `500`.
+- **Fix:** declare the question with another identifier, e.g. with the survey code as prefix.
+
+### `max must be at least 1 row — remove it to keep the 50-row cap`
+
+- **Cause:** a `table` question's `max` is below 1 — also in a survey exported from a table saved with `max: 0`. Refused since 0.14.0.
+- **Fix:** remove the `max`; the table then takes up to 50 rows. See [`table`](./resources/surveys/question-types.md#table--a-grid-of-repeating-rows).
+
+### `dateMode must be "date" or "date_time"`
+
+- **Cause:** another value on a `datetime` question or table column — `time`, `datetime`, or an empty `dateMode:`. Refused since 0.14.0; such a value used to be saved as a date only.
+- **Fix:** `date_time` for a date and a time of day; `date`, or no `dateMode`, for a date only. There is no time-only mode.
+
 ### `Survey with code "<code>" not found`
 
 - **Cause:** no survey in the company — active or inactive — carries that code. On a `survey`-type question it means the child survey hasn't been applied yet.
 - **Fix:** check the code with `cotctl surveys list --code <code> -c <profile>`, which looks up the exact code and includes inactive surveys. For a `survey` reference, apply the child first; with `apply --dir`, put it in a file that sorts before the parent's, or earlier in the same file — surveys are applied in path order, not in reference order.
+
+### `Unrecognized key at the workflow root: "<key>"`
+
+- **Cause:** a key the workflow root doesn't declare — usually a state-machine field written one level too high, such as `cardLabels`. Refused since 0.14.0; it used to be dropped without a word.
+- **Fix:** move it under its state machine (`stateMachines[].<key>`), or remove it. At the root, `code` is `nameCode` and `name` is `nameDisplay`.
+
+### `asset.property must name one Property on a generic asset`
+
+- **Cause:** a state machine's `generic` asset has no `asset.property`, or `property: []` — or (`asset.property takes one Property code`) it lists more than one. Refused since 0.14.0, before anything is written; the server refuses to save such an asset.
+- **Fix:** declare the asset's one Property code as a one-entry list. `cotctl workflows export` writes it.
+
+### `…: survey with code "<code>" not found. Apply the survey first.`
+
+- **Cause:** the workflow names a survey the server doesn't have — in a transition's `requiredSurvey`, a StartForm's `requiredSurvey.surveyCode` or a state's `surveyTriggers[].survey`. Since 0.14.0 it is refused before the first write (exit `1`), `--dry-run` included.
+- **Fix:** apply the survey first, or add it to the `--dir` directory, which applies surveys before workflows.
+
+### `editable is not a schema node field`
+
+- **Cause:** a property type's schema node declares an `editable` block, which the platform drops. Refused since 0.14.0.
+- **Fix:** remove it; use `isNonEditable: true` for a field users can't edit.
 
 ## Surveys: orphaned questions
 
@@ -121,7 +156,7 @@ This one is worth understanding because it's easy to avoid and annoying to undo.
 
 - **Symptom:** after applying a survey with `questions: []`, you can no longer re-create questions with the same identifiers.
 - **Cause:** applying an *empty* questions array leaves the old questions behind as orphaned records, and their identifiers (unique per company) now block re-creation.
-- **Fix / prevention:** never apply `questions: []` to "clear" a survey. To deactivate a survey, set `isActive: false` *without* touching the questions section — `cotctl` preserves existing questions automatically when the section is absent. (Recovering from an existing orphan requires backend cleanup, so prevention is the play here.)
+- **Fix / prevention:** never apply `questions: []` to "clear" a survey. To deactivate a survey, set `isActive: false` *without* touching the questions section — `cotctl` preserves existing questions automatically when the section is absent. Once it has happened, neither `cotctl` nor the public API can delete a stored question, which keeps its identifier: declare the question with **another identifier**, as the `Identifier "<id>" cannot be reused` hint says. Prevention is the play here.
 
 ## Bots, schedules & routines
 
