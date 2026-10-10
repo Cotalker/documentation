@@ -66,7 +66,7 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `-c, --company <profile>` | all | **(required)**, unless an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) supplies it. Profile to use |
 | `--dry-run` | all | Validate and show what *would* be sent, without applying |
 | `--diff <mode>` | PropertyType, Property, Workflow, Survey | **New in 0.14.0.** How much per-field diff a `--dry-run` prints under each `Would CREATE` / `Would UPDATE` line: `off`, `compact` (default) or `verbose` |
-| `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) |
+| `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) — all but one: emptying the `accessRoles` of the system `admin` or `bot` JobTitle asks you to type its code even with `-y` |
 | `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind |
 | `--skip-remote-validation` | Survey only | Skip the remote checks — identifiers, references (Survey, PropertyType, JobTitle, Property) and permission names — hard error on any other kind. A missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, which resolves both before writing; a `--dry-run` with the flag doesn't report them. A YAML that sets the survey's `id` still has its `code` compared with the server's, and a `--dry-run` does report that one |
 | `--allow-reactivate` | User, JobTitle | Permit `isActive: true` on a currently-inactive record (otherwise blocked) |
