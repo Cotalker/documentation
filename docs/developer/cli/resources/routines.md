@@ -55,13 +55,15 @@ dataType:
 
 These are documentation-and-contract only — `cotctl` doesn't check that the graph actually consumes them, and it won't resolve `$INPUT#...` expressions for you. They fail at runtime if misspelled, not at apply time.
 
+On an update, each input is matched with the stored input of the same `key`, wherever you place it, and keeps the fields it omits — an input that omits `required` keeps its stored value. The server updates this list **by position**, though, so a new input, or one you move, is written over the stored input at its place: it gets `required: false` when it omits it, but keeps any other field it omits (`description`, `type`) from that stored input, and `apply` warns on stderr which. Write those fields — empty where needed — to replace them. `dataType: []` removes every input.
+
 ## The automation graph: `body`
 
 `body` is a **multi-stage builder** — a directed graph the runtime walks one stage at a time, branching on the transition each stage emits (`SUCCESS`, `ERROR`, and type-specific branches like `TRUE`/`FALSE`). Every stage has:
 
 - **`key`** — unique within the body.
 - **`name`** — the bot type (see [Bot types](./bot-types.md) for the catalog: `PB*` messaging/tasks, `FC*` flow control, `NW*` HTTP, `PBScript`, …).
-- **`version`** — optional. Omit it to take the type's default; pin it (quoted!) when the type has no default.
+- **`version`** — optional. On create, omit it to take the type's default; pin it (quoted!) when the type has no default. On an update, an omitted `version` keeps the stored stage's version, and `version: null` sends it back to the type's default.
 - **`data`** — an opaque payload passed straight through. `cotctl` does **not** rewrite ObjectIds or resolve COTLang expressions (`$INPUT#`, `$VALUE#`, `$OUTPUT#`) inside it — provide them exactly as the runtime expects.
 - **`next`** — a map from branch name to the next stage's `key`. The empty string `""` is a valid terminal branch.
 
@@ -134,7 +136,18 @@ cotctl routines test rutina_saludo_simple --context ctx.json
 
 ## Immutability and updates
 
-`code` is immutable and identifies the routine — there's no in-place rename. On update, `cotctl` sends only the fields the backend allows to change (`display`, `description`, `type`, `isActive`, `dataType`, and `body`); it deliberately omits `code` so an update can never try to change it. To retire a routine, set `isActive: false` and re-apply — there's no delete endpoint, and no `cotctl routines logs` command.
+`code` is immutable and identifies the routine — there's no in-place rename. On update, `cotctl` sends only the fields the backend allows to change (`display`, `description`, `type`, `isActive`, `dataType`, and `body`) — and of those, only what differs from the stored routine. A key you omit keeps its stored value, inside `body` too: each stage is paired with the stored stage of the same `key`. But a declared `body.stages` is the complete list, so a stage it leaves out is removed.
+
+That is why **a routine is retired from its export, never from a stub.** The schema requires `display` and a full `body`, so a YAML can't carry `isActive: false` alone, and a stub with a placeholder stage would replace the routine's real stages. Export it, set `isActive: false`, and apply it back:
+
+```bash
+cotctl routines export rutina_obsoleta -c acme -o rutina_obsoleta.yaml
+# edit rutina_obsoleta.yaml: isActive: false
+cotctl routines apply -f rutina_obsoleta.yaml -c acme --dry-run
+cotctl routines apply -f rutina_obsoleta.yaml -c acme -y
+```
+
+There's no delete endpoint, and no `cotctl routines logs` command.
 
 ## Apply order
 

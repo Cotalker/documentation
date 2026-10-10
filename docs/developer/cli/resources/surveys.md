@@ -107,6 +107,8 @@ Surveys have their own entity-scoped command group. Every command takes a profil
 
 `apply` matches questions by `identifier` rather than position, so you can add, edit, remove, and reorder questions freely — IDs are preserved. Removing a question deactivates it rather than hard-deleting it, and you'll be asked to confirm. If you apply a survey YAML without its `questions` section, the existing questions are left untouched.
 
+At the survey level, a key you omit keeps its stored value, and `nameTranslations`, `editable`, `hidden` and `post` are completed from the stored ones. **A question you declare is the exception: it is written whole.** It keeps its ID, but a field it omits takes its default (`required: false`, …), not its stored value — so declare every field a question should keep. A survey is sent whole or not at all: since 0.14.0 a YAML that changes nothing sends nothing and reads `unchanged`. (The first re-apply of an unmodified export of a survey built in the web app is the one exception: it is sent, and rewrites the survey in `cotctl`'s shape.)
+
 Two flags make `apply` safe to run in anger:
 
 ```bash

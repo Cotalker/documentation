@@ -52,7 +52,7 @@ The schema defines these top-level fields:
 | `color`, `icon` | No | Display appearance |
 | `weight` | No | Display order (default `0`) |
 | `isActive` | No | Defaults to `true` |
-| `hideClosedAfterDays` | No | Days before closed tasks are hidden (0–1825). **Defaults to 7, which is often too short** — consider 30 |
+| `hideClosedAfterDays` | No | Days before closed tasks are hidden (0–1825). **Defaults to 7 on create, which is often too short** — consider 30 |
 | `readPermissions` | No | Permission codes — who can read tasks |
 | `writePermissions` | No | Permission codes — who can create tasks |
 | `taskImportPermissions` | No | Permission codes — who can import tasks |
@@ -95,7 +95,7 @@ Each state corresponds to a [Property](./properties.md). Its `type` is one of `n
 
 | `canChange` | Meaning |
 |---|---|
-| `manual` (default) | A user triggers it from the task UI |
+| `manual` (default for a new transition) | A user triggers it from the task UI |
 | `survey` | The user must complete a survey first — set `requiredSurvey` to its code |
 | `none` | Only automation/system can trigger it (e.g. auto-closure) |
 
@@ -151,7 +151,9 @@ A code that resolves to nothing **aborts the whole workflow apply** with `Proper
 
 ### SM-only mode
 
-If you omit `nameDisplay`, apply runs in **SM-only mode**: it touches only the state machines and states, leaving the workflow's display settings and permissions untouched. This is exactly what you want when adding a second state machine to a workflow that already exists, without resetting anything.
+If your YAML declares **none** of the workflow's root fields — no Group field (`nameDisplay`, `color`, …) and no TaskGroup field (the permission lists, `hideClosedAfterDays`, …) — apply runs in **SM-only mode**: it touches only the state machines and states, leaving the workflow's display settings and permissions untouched, and the workflow must already exist. This is exactly what you want when adding a second state machine to a workflow that already exists, without resetting anything.
+
+Since 0.14.0 the two root levels are also applied separately: a YAML that declares only TaskGroup fields (say, `readPermissions`) patches the TaskGroup and leaves the Group alone, and the reverse. And because an omitted field keeps its stored value on every level, the defaults in the table above apply only when the workflow is created.
 
 ## What the subpages cover
 

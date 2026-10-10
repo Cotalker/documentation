@@ -49,7 +49,7 @@ The three list fields each reference a different resource by name or code:
 
 <div className="alert alert--primary">
 
-**These lists are REPLACE-on-update, not merge.** When you update a job title, the array you send *replaces* the one on the server. Omit a role that was already there, and it's removed. Always export before a partial edit:
+**A declared list is REPLACE-on-update, not merge.** When you update a job title, the array you send *replaces* the one on the server. Omit a role that was already there, and it's removed. Leaving the **whole key** out, on the other hand, keeps the stored list — since 0.14.0; before, an omitted list was reset to empty. Always export before a partial edit:
 
 ```bash
 cotctl jobtitles export store_manager -c acme -o store_manager.yaml
@@ -75,7 +75,7 @@ Deactivate with the dedicated command (or `isActive: false` in YAML):
 cotctl jobtitles deactivate store_manager -c acme
 ```
 
-Reactivating is deliberately guarded: applying `isActive: true` to a currently-inactive job title requires the explicit `--allow-reactivate` flag, so you never bring one back by accident.
+Reactivating is deliberately guarded: applying `isActive: true` to a currently-inactive job title requires the explicit `--allow-reactivate` flag, so you never bring one back by accident. A YAML that omits `isActive` is applied and leaves the job title inactive — since 0.14.0; before, the omission read as `true` and `jobtitles apply` refused it with exit `2`.
 
 There is **no delete** for job titles — deactivation is the only removal path, in keeping with Cotalker's soft-delete model.
 

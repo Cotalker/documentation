@@ -80,6 +80,12 @@ Scaffolding is step 1 of a five-step loop. Steps 2–5 repeat safely as you iter
 
 </div>
 
+<div className="alert alert--warning">
+
+**Don't re-apply a scaffold over transitions added in the webclient.** Without `--states`, the scaffold writes `next: []` on the workflow's *in-progress* state, and since 0.14.0 a written `next: []` deletes every transition of that state. If someone added transitions to it in the webclient, remove the line — or write those transitions into the YAML — before re-applying.
+
+</div>
+
 ## A couple of input rules
 
 `cotctl` validates your inputs up front so the generated names are always valid:

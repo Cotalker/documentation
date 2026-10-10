@@ -231,8 +231,9 @@ Apply the **routine before the schedule**. The schedule's `--dry-run` checks tha
 
 </div>
 
-Two details worth knowing:
+Three details worth knowing:
 
+- **When you edit the schedule later, keep `isActive: true` in the YAML.** Updating a schedule stops its running cron. Since 0.14.0, `apply` relaunches it only when the YAML writes `isActive: true`; with the key left out, the cron stays stopped until `cotctl schedules activate`. See [Schedules](./resources/schedules.md#activation-and-status).
 - **Cron is UNIX 5-field.** cotctl validates it as standard cron. The admin webclient's Advanced tab pre-fills Quartz (6/7-field) examples like `0 15 10 L-2 * ?` — those are rejected. Use `0 9 * * *`.
 - **Pause without editing the YAML** using the dedicated endpoints:
 

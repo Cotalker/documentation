@@ -98,6 +98,17 @@ A script wrapping `surveys export` can branch on exit `2` and retry with `--form
 
 </div>
 
+### Exports write only what is stored
+
+Since **0.14.0**, an export writes the keys the resource actually stores and nothing else. Earlier versions filled in, with its default, every key the resource lacked — and re-applying that export sent those defaults as changes. Now **re-applying an unchanged export sends nothing**, which matters most for a running schedule, whose cron any update stops.
+
+Two consequences to plan for:
+
+- **A script that reads keys from an exported YAML has to accept their absence** — `isActive`, `accessRoles`, `extraData`, a schedule's `cronTimeZone` or `timeoutMinutes`, and so on. Read an absent key as the default the export used to write.
+- **Re-export a YAML exported with 0.13.0 or earlier before re-applying it.** Those files carry defaults the resource may not store. The costly case is a schedule stored without `cronTimeZone`: the old export wrote `America/Santiago`, so re-applying it moves the cron from the scheduler's own zone to Santiago — three or four hours away — and the `isActive: true` it wrote relaunches it there right away. `apply` warns when an update sets a zone on such a cron.
+
+A few exports still send an update on their first re-apply: `users export` leaves out an inactive access role (with a warning), so the re-apply removes it from the user; `routines export` writes the routine's `code` as its `display` when it stores none; and the first re-apply of a survey built in the web app rewrites it in `cotctl`'s shape.
+
 ### Keeping scripts out of YAML
 
 Surveys can carry inline JavaScript (exec hooks). For cleaner version control, `--extract-scripts <dir>` pulls those scripts out into separate files and replaces them with `file://` references in the YAML:

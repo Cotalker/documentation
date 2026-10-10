@@ -162,21 +162,26 @@ This is a known gap in `cotctl`, named here rather than closed.
 
 </div>
 
-## Workflow apply: merge semantics
+## What an update sends
 
-Since 0.7.0, applying a `Workflow` is a **merge**, not a wholesale replace. `cotctl` fetches the current workflow, merges your YAML into it, and writes the result back (a GET-merge-PUT). The practical consequences:
+Since **0.14.0**, every update — `apply -f`, `apply --dir` and each per-kind `apply` — follows for **every kind** the rule workflows have followed since 0.7.0: your YAML is a patch, not a replacement.
 
-- **A field you omit is preserved.** Leave a section out of your YAML and the live value stays — you can safely apply a partial workflow to touch just one thing.
-- **An explicit empty array deletes.** Writing `someList: []` is a deliberate "make this empty", and it *will* clear the live value. Omitting the key and writing `[]` mean different things.
-- **States can't silently vanish.** Removing a state from the YAML doesn't delete it; missing states are rejected so you don't lose one by accident.
+- **A key you omit keeps its stored value.** Before 0.14.0 an update filled each omitted key with its create default — `[]` for a workflow's permission lists or a user's `accessRoles`, `true` for `isActive`, `7` for `hideClosedAfterDays`, `60` for a schedule's `timeoutMinutes` — overwriting whatever the server had. Defaults now apply only when a resource is created.
+- **Inside an object the server replaces whole, too.** `cotctl` completes the object you declare from the stored one: an SLA's `start`, `end`, `data` and `pb`, a bot's `parametrizedBot`, a schedule's `body`, a state machine's `asset`, a survey's `nameTranslations`, `editable`, `hidden` and `post`, a user's `hierarchy`, and the bot of a workflow slot. Bot commands (by `slashCmd`, or `surveyIds` for a survey command), stages (by `key`, while they keep their bot type), routine inputs and schema nodes (by `key`) are matched with their stored counterpart and keep the keys they omit — so a command that omits `isActive: false` stays deactivated. A stage's own `data` and `next` still travel as written.
+- **A written `[]` empties the list, and a declared list is complete** — a stored element it leaves out is removed. A property type's `schemaNodes` is the exception: a node is never removed. `[]` now also empties three lists that used to ignore it: a bot's `extraData`, a workflow state's `next`, and a user's `hierarchy` when `boss`, `peers` and `subordinate` are all empty.
+- **To clear a key, write it empty** — `""` for a text, `[]` for a list. Leaving it out no longer clears it. A translation left out of a survey's `nameTranslations`, for instance, stays stored until you write it as `""`.
+- **A stage that omits `version` keeps its stored version.** Write `version: null` to send it back to the bot type's default.
+- **Nothing to change, nothing sent.** A key whose value the server already holds is left out of the request, and a resource left with nothing to send gets no request at all.
 
-<div className="alert alert--secondary">
+Two things still travel exactly as written: **each question a survey YAML declares** — matched by `identifier`, which keeps its ID, but a field the question omits takes its default (`required: false`, …), not its stored value, so declare every field a question should keep — and a **webhook's `context`**. And two flags keep the old behaviour on purpose: `--legacy-replace-workflows` (on `apply` and `workflows apply`) and `surveys apply --legacy-replace` build the update from the create defaults, so what the YAML omits is wiped.
 
-**Omit to keep, `[]` to clear.** This is the one rule that trips people up. If you don't want to change a list, leave the key out entirely. The full field-by-field behavior lives in [Workflow merge semantics](../resources/workflows/merge-semantics.md).
+<div className="alert alert--warning">
+
+**Upgrading from 0.13.x: write what an update must reset.** A YAML that relied on an omitted key being reset now leaves it as stored. Write the value you want instead — `[]` to clear a list, `isActive: true` to reactivate (with `--allow-reactivate` for a user or job title), or the default itself, such as `hideClosedAfterDays: 7`. And **re-export before re-applying an export made with 0.13.0 or earlier**: those exports filled in defaults the resource may not store, so re-applying one sends them as changes — see [Export & import](./export-import.md#exports-write-only-what-is-stored).
 
 </div>
 
-The `--legacy-replace-workflows` flag restores the old pre-0.7.0 behavior where omitted fields were deleted. It exists only as a temporary escape hatch for 0.7.x, prints a warning to stderr when used, and is slated for removal in 0.8.0 — you should not need it.
+Each resource page notes the exceptions its kind has. For a workflow, the field-by-field contract — including why states can't silently vanish — is in [Workflow merge semantics](../resources/workflows/merge-semantics.md).
 
 ## Directory mode
 

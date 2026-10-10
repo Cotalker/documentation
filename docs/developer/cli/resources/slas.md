@@ -114,6 +114,8 @@ data:
 
 </div>
 
+Within those seven, an update since 0.14.0 sends only what your YAML changes. The backend replaces `start`, `end`, `data` and `pb` whole, so `cotctl` completes a declared one from the stored one — `start: { states: [x] }` keeps the stored `start.types` — and in `pb` each stage is paired with the stored stage of the same `key`. A declared `pb.stages` is still the complete list: a stage it leaves out is removed. The defaults in the table above (`reset: true`, `repeat: false`, …) apply only on create.
+
 What that means in practice:
 
 - **`code`, `stateMachine`** — the identity and its home. `cotctl` omits them from the update entirely, so an apply can never try to move or rename an SLA. To change either, you're creating a different SLA.
