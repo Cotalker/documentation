@@ -71,7 +71,7 @@ The typical loop when building an automation:
 3. Write the stage — omit `version` to take the default, or pin `version: "<x>"` (quoted) if there's no default.
 4. `cotctl <resource> apply --dry-run` — the version is checked against the catalog again as a safety net.
 
-A handful of types (`PBScript`, `CCJS`, `ESMCode`) execute arbitrary JavaScript. They appear in the catalog like any other, but a **workflow** apply that declares one is refused unless you pass `--allow-script-bots`. (Standalone routines, SLAs, and bots validate the referenced routine exists but don't gate on that flag.)
+A handful of types (`PBScript`, `CCJS`, `ESMCode`) execute arbitrary JavaScript. They appear in the catalog like any other, but **every** apply that declares one — a workflow, a bot, a routine, an SLA, a schedule, `apply -f` or `apply --dir` — is refused before any write unless you pass `--allow-script-bots`. (The exit code of that refusal differs by command; see [CI/CD](../ci-cd.md#one-failure-whose-code-depends-on-the-command-you-entered-through).)
 
 ## A recent rename
 

@@ -12,7 +12,7 @@ There are two ways to run it, depending on whether you're deploying one file or 
 
 | Mode | Flag | Purpose |
 |---|---|---|
-| Single file | `-f <file>` | Apply one YAML file of any supported kind |
+| Single file | `-f <file>` | Apply one YAML file of the seven kinds marked ✅ below; the other five go through their own command (`cotctl bots apply`, …) or `--dir` |
 | Directory | `--dir <path>` | Apply every YAML file in a folder, in the correct dependency order between kinds |
 
 <div className="alert alert--primary">
@@ -23,9 +23,9 @@ There are two ways to run it, depending on whether you're deploying one file or 
 
 ## How apply decides what to do
 
-`apply` reads the `kind:` field at the top of your YAML and routes to the right handler. **Twelve** kinds are supported, applied in this order when you point it at a directory:
+`apply` reads the `kind:` field at the top of your YAML and routes to the right handler. **Twelve** kinds are supported by `apply --dir`, applied in this order. `apply -f` takes the seven `validate` knows — the same ✅ column:
 
-| `kind:` | What it manages | `validate` knows it |
+| `kind:` | What it manages | `validate` and `apply -f` know it |
 |---|---|:--:|
 | `AccessRole` | Permissions | ✅ |
 | `PropertyType` | Data model schemas | ✅ |
@@ -232,9 +232,14 @@ Resources depend on each other: a workflow references roles and property types, 
 | 2 | PropertyType | Foundation of the data model |
 | 3 | Property | Depends on PropertyType |
 | 4 | JobTitle | Depends on roles and the data model |
-| 5 | Workflow | References roles, property types, and properties |
-| 6 | Survey | Referenced by workflow transitions |
-| 7 | User | Depends on job titles and roles |
+| 5 | Survey | Referenced by workflow transitions, StartForms and survey triggers |
+| 6 | Workflow | References roles, property types, properties and surveys |
+| 7 | Routine | Invoked by SLA and schedule `PBScript` stages |
+| 8 | Sla | Attaches to a workflow's state machines |
+| 9 | Schedule | May invoke routines |
+| 10 | User | Depends on job titles and roles |
+| 11 | Bot | Nothing references it |
+| 12 | Webhook | References entities by id, so ordering cannot help it |
 
 The order is between **kinds**. Within the Survey kind, surveys are *not* ordered among themselves by reference: files go in path order, and each file's documents in the order they're written. A survey that embeds a child the server doesn't have yet needs that child to sort first — in an earlier file, or earlier in the same file — otherwise the parent fails with `Survey with code "..." not found`, `--dry-run` included. A child the server already has is found in any order; putting it first is still the safe default.
 

@@ -177,12 +177,6 @@ These resources arrived in the 0.9–0.11 releases and have a few failure modes 
 - **Cause:** a **breaking rename**. `cotctl bots` now manages **Bot admin** entities — the slash-commands (`/command`) users run in chat — so `cotctl bots list` lists those, not the ParametrizedBot type catalog it used to.
 - **Fix:** the type catalog moved to its own command group. Use `cotctl bot-types list` and `cotctl bot-types versions <BotType>`. The old `cotctl bots versions <BotType>` still works as a **deprecated alias** — it prints a warning and delegates to `bot-types versions` — but it will be removed in `cotctl` 1.0.0, so update your scripts now.
 
-<div className="alert alert--secondary">
-
-**A dangling hint you may still see.** Some bot-version error messages suggest `cotctl bots list` to check a type name. Since the rename, the command you actually want is `cotctl bot-types list` — follow that instead.
-
-</div>
-
 ### A scoped apply exits `2` on a "destructive" change
 
 - **Cause:** you ran `cotctl surveys apply` or `cotctl workflows apply` with `--dry-run --fail-on-destructive`, and the dry-run found a `danger` finding: a permission list emptied whole, or — since 0.14.0 — questions the survey update would deactivate (reported under `--json` as `survey.questions-deactivated`). That's the flag doing its job: exit code `2` means "a destructive change was detected", distinct from `1` (runtime error) and `0` (success). A `warn` finding, such as a deactivation, never changes the code.

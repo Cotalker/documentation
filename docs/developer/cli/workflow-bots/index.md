@@ -162,7 +162,7 @@ cotctl bot-types versions PBUpdateTask   # versions + default for one type
 
 Notes:
 
-- `cotctl bots list` / `cotctl bots versions <BotType>` still work as **deprecated aliases** of the `bot-types` commands.
+- `cotctl bots versions <BotType>` still works as a **deprecated alias** of `cotctl bot-types versions`. `cotctl bots list` is not an alias: it lists your Bot entities, not the catalog.
 - A `stage.name` that is not a known bot type produces a **warning** at apply time (typo detection), not a hard error — double-check the exact key when you see one.
 - A few bots have **no `default` version** and require an explicit `version:` — `PBCalendar` (`2.0.0`) and `PBReport` (`1.0.0`) are the notable ones.
 - **On an update, an omitted `version` keeps the stored one** (since 0.14.0 — it used to mean the type's default). Write `version: null` to send a stage back to its type's default. So an update may leave out the `version` of a type with no default when the stored stage pins one, and a kept version the catalog no longer registers only draws a warning.
