@@ -105,7 +105,7 @@ On update, `extra` is **merged** — keys you provide win, keys already on the s
 | A `password`, no `--notify-email` | The password is set; `cotctl` warns it's in plaintext in your YAML |
 | No `password` on an **update** | The existing password is left untouched — it's never cleared |
 
-**Reactivation is guarded.** An inactive user reappearing with `isActive: true` is **not** brought back automatically — `apply` stops with exit `2` and tells you to re-run with `--allow-reactivate`. Since 0.14.0 a YAML that **omits** `isActive` is applied and leaves the user inactive (before, the omission read as `true` and was refused). Two situations can't be overridden at all: a `isReadOnly` user is never modified, and a `role: super` user can't be deactivated (both exit `1`).
+**Reactivation is guarded.** An inactive user reappearing with `isActive: true` is **not** brought back automatically — `apply` stops with exit `2` and tells you to re-run with `--allow-reactivate`. Since 0.14.0 a YAML that **omits** `isActive` is applied and leaves the user inactive (before, the omission read as `true` and was refused). Two situations can't be overridden at all: an `isReadOnly` user is never modified, and a `role: super` user can't be deactivated (both exit `1`).
 
 An update that omits `accessRoles` keeps the user's roles; a declared list is the complete list, and when it leaves out roles the user has, `apply` warns — naming them — that removing a role takes the user out of the task groups it grants. `users export` leaves out an access role that is not active, with a warning, so re-applying that export removes it from the user.
 
