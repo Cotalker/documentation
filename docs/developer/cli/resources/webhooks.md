@@ -31,7 +31,7 @@ That is a complete, valid file. Everything else is optional.
 | `trigger` | Yes | Which event fires it — one of the six below |
 | `context` | No | Optional scoping. **Read the section below before using it** |
 | `description` | No | A free-text note |
-| `isActive` | No | Defaults to `true`. Setting `false` stops it firing — there is no delete |
+| `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value. Setting `false` stops it firing — there is no delete |
 
 ## `trigger` — the six events
 

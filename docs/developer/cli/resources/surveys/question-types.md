@@ -4,8 +4,8 @@ sidebar_label: Question types
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/transformers/simplified.transformer.ts, src/schemas/survey.schema.ts, docs/surveys/question-types/*.md @ 4f7248a (2026-07-06) -->
-<!-- the `table` section: repositories/cotctl/docs/surveys/question-types/table.md, src/lib/survey-validator.ts @ 6098bd5 (release-0.11.0, 2026-09-01) -->
+<!-- source: repositories/cotctl/src/transformers/simplified.transformer.ts, src/schemas/survey.schema.ts, docs/surveys/question-types/*.md @ 82e613d (2026-10-10) -->
+<!-- the `table` section: repositories/cotctl/docs/surveys/question-types/table.md, src/lib/survey-validator.ts @ 82e613d (2026-10-10) -->
 
 Cotalker offers 14 question types. Every question shares the [common fields](../surveys.md#questions) — `type`, `identifier`, `label`, and the optional `help`, `required`, `isReadOnly`, `conditionalDisplay`, `exec`. This page covers what's *specific* to each type: the extra fields it needs and the gotchas worth knowing before you author one.
 
@@ -23,7 +23,7 @@ Renders a block of content — a title, an instruction, a separator. It captures
   label: "# Employee Registration"
 ```
 
-The `label` is the visible content and is rendered as Markdown (GitHub-flavored, HTML allowed). Use it for headings and dividers.
+The `label` is the visible content and is rendered as Markdown (GitHub-flavored, HTML allowed). Use it for headings and dividers. Don't reach for `display`: the simplified format builds every `display` from the question's type and never sends the one you write, and since 0.14.0 `validate` and every apply warn when a question or `table` column carries one.
 
 ### `textinput` — free text
 
@@ -135,11 +135,11 @@ It has to be a list even for a single code: `jobs: supervisor_ventas` fails with
 - type: datetime
   identifier: re_ingreso
   label: "Start date"
-  dateMode: date            # "date" or "date_time"
+  dateMode: date            # "date" (default) or "date_time"
   timezone: America/Santiago  # optional, IANA name
 ```
 
-`dateMode: date` captures a date only; `date_time` adds a time picker.
+`dateMode: date` (or no `dateMode`) captures a date only; `date_time` adds the time of day. **There is no time-only mode**, and since 0.14.0 any other value — `time` and `datetime` included, or an empty `dateMode:` — is refused: `validate` exits `1` and an apply `2`, before anything is sent. Before, such a value was saved silently as a date only. The same applies to a `datetime` column of a `table`, where switching a saved column from `date` to `date_time` is a type change the apply refuses — capture the time in a new column. A `dateMode` on any type other than `datetime` is never sent, and draws a warning.
 
 ### `gps` — a location
 
@@ -238,7 +238,9 @@ Each column is itself a question, and every row's answers are stored under the c
         - { label: "Pending", value: "pending" }
 ```
 
-`columns` is required, from 1 to 10, in render order. **On a table, `min` and `max` are row counts** — not characters, not selections; the backend caps every table at 50 rows. On a column they keep that column's own meaning.
+`columns` is required, from 1 to 10, in render order. **On a table, `min` and `max` are row counts** — not characters, not selections; the backend caps every table at 50 rows. `min` goes from 0 to 50 and `max` from **1** to 50, with `min` not above `max`. On a column they keep that column's own meaning.
+
+Since 0.14.0 a table `max` below 1 is refused — `max must be at least 1 row — remove it to keep the 50-row cap` — by `validate` (exit `1`) and by every apply (exit `2`, `--dry-run` included), also in a survey exported from a table saved with `max: 0`. Such a table only half worked anyway: the webclient refused to submit it. Remove the `max` and the table takes up to 50 rows; set one only to actually limit the rows.
 
 Column identifiers are unique *within their own table*, not across the survey, so the same identifier may appear in two different tables. Their charset is `^[a-zA-Z0-9_]+$` — stricter than a question identifier, and with no dots, dashes or spaces, which would break the per-cell error paths. A header caps at 50 characters.
 

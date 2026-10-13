@@ -4,7 +4,7 @@ sidebar_label: Immutability & versioning
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/immutability.md, src/lib/validate-bot-versions.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/immutability.md, src/lib/validate-bot-versions.ts @ 82e613d (2026-10-10) -->
 
 Some parts of a workflow are structural: change them after tasks exist and you'd corrupt data, so Cotalker won't let you. This page lists what's frozen after creation, why states can never be removed, and the bot-version rules `cotctl` checks before an apply.
 
@@ -17,7 +17,7 @@ Some parts of a workflow are structural: change them after tasks exist and you'd
 | `propertyType` | State machine | Always | Apply errors |
 | `asset.type` | State machine | Always | Apply errors |
 | `asset.propertyType` | State machine | When active tasks exist | Apply errors |
-| `asset.property[]` | State machine | When active tasks exist | Apply errors |
+| `asset.property` | State machine | When active tasks exist | Apply errors |
 | `type` | State | Always | Apply errors |
 
 The rule of thumb: anything that defines the *shape* of the data a workflow produces is fixed once real tasks depend on it. Plan `nameCode`, the state machine's `propertyType`, and the asset model up front.
@@ -36,6 +36,7 @@ No flag bypasses this — you must keep every existing state in your YAML. **Add
 
 - Deactivating a **state machine** (`isActive: false`) is blocked while it has active (non-closed) tasks: `Cannot deactivate — it has active tasks.` Close or reassign them first.
 - Deactivating the **workflow** (`cotctl workflows deactivate <nameCode>`) only flips the workflow's own `isActive`. It does **not** deactivate the state machines inside it.
+- **A deactivated state machine keeps its `code`**, and nothing in the API updates or reactivates it. Since 0.14.0 a YAML that declares a state machine with that code is refused with exit `2` before anything is written, `--dry-run` included — before, the apply wrote the Group and TaskGroup and then failed on the server. Remove it from the YAML, declare it with `isActive: false` to leave it as stored, or give it another code.
 
 ## When you truly need to change a frozen field
 
@@ -52,9 +53,11 @@ Bots carry two independent "version" numbers, and `cotctl` checks both against t
 
 Every stage names a bot type (`PBCreateTask`, `PBReport`, …), and each type has registered versions on the server. `cotctl` enforces:
 
-- **Unknown bot type** → a **warning** (the catalog may not list a brand-new type yet). Check the name with `cotctl bots list`.
+- **Unknown bot type** → a **warning** (the catalog may not list a brand-new type yet). Check the name with `cotctl bot-types list`.
 - **A pinned `version` that isn't registered** → an **error**, listing the available versions so you can fix it in one shot.
-- **No `version` and the type has no default** (e.g. `PBReport`, `PBCalendar`) → an **error**: the runtime has no fallback, so you must pin one.
+- **No `version` and the type has no default** (e.g. `PBReport`, `PBCalendar`) → an **error**: the runtime has no fallback, so you must pin one — on a new stage. Since 0.14.0, a stage that omits `version` on an update **keeps the stored stage's version**, so it passes when the stored stage pins one; a kept version the catalog no longer registers only warns. Write `version: null` to go back to the type's default.
+
+The catalog also lists the **`data` entries** each type and version requires, and every apply refuses a stage that would be written without one — see [Required `data` entries](../../workflow-bots/index.md#required-data-entries).
 
 ### `bot.version` — the COTLang engine
 

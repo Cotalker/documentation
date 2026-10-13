@@ -4,7 +4,7 @@ sidebar_label: Exec scripting
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/surveys/exec-hooks.md, exec-contexts.md, exec-commands.md, exec-network-request.md, src/schemas/survey.schema.ts (~255-279) @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/surveys/exec-hooks.md, exec-contexts.md, exec-commands.md, exec-network-request.md, src/schemas/survey.schema.ts (~255-279) @ 82e613d (2026-10-10) -->
 
 Exec scripting is how a survey does things a static form can't: pre-fill a field from the current user, validate an answer against a business rule, call an external API when a button is pressed. Each question can carry an `exec` block with small JavaScript functions that run at defined points in its lifecycle.
 
@@ -39,7 +39,7 @@ The order over a session is: `preload` → (user opens it) `onDisplay` → (butt
 
 Each hook accepts three fields:
 
-- `src` — inline JavaScript, or a `file://` path relative to the YAML file (`cotctl` inlines it on apply). Must define `function run()`.
+- `src` — inline JavaScript, or a `file://` path relative to the YAML file, which must stay inside that file's directory (`cotctl` inlines it on apply). Must define `function run()`.
 - `context` — a comma-separated string of the contexts to inject (see below).
 - `button` — **only valid on `onPlay`** — configures the trigger button.
 
@@ -140,10 +140,17 @@ Key behaviors:
 Inline JavaScript inside YAML is awkward to write and review. Export with `--extract-scripts` to pull each script into its own `.js` file, referenced with `file://`:
 
 ```bash
-cotctl surveys export my_survey -c acme --extract-scripts ./scripts/
+cotctl surveys export my_survey -c acme -o my_survey.yaml --extract-scripts ./scripts/
 ```
 
 On the next `apply`, `cotctl` inlines the file contents back in — so you get real editor tooling and clean diffs while the survey stays a single portable resource.
+
+Two rules decide whether a reference is read (both since 0.14.0):
+
+- **Only in a survey's script fields** — the `src` of a hook on a question or a table column, and the survey's own `src`, `editable.src` and `hidden.src`. A `file://` in any other `src` — an `exec` block at the survey's root, say, or a key that names no hook — keeps its text and is sent as written, with a warning.
+- **Only inside the YAML file's directory.** `file://../…`, an absolute path elsewhere, or a symlink that leads outside it is refused, exit `1`. Keep the scripts folder under the folder that holds the YAML.
+
+See [`file://` references](../../commands/validate.md#file-references) for the full rules.
 
 ## See also
 

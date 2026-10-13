@@ -4,7 +4,7 @@ sidebar_label: SLAs
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/slas.ts, src/schemas/sla.schema.ts, src/resources/sla.resource.ts, docs/slas/ @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/slas.ts, src/schemas/sla.schema.ts, src/resources/sla.resource.ts, docs/slas/ @ 82e613d (2026-10-10) -->
 
 An **SLA** (Service Level Agreement) is a timed escalation rule attached to one state machine inside a [workflow](./workflows.md). It defines a window that **opens** when a task enters certain states, **closes** when the task reaches certain other states, and — if the window **expires** before closing — **fires an automation** (`pb`) to escalate. "Notify the manager if a purchase order sits in review for more than 24 hours" is a textbook SLA.
 
@@ -114,6 +114,8 @@ data:
 
 </div>
 
+Within those seven, an update since 0.14.0 sends only what your YAML changes. The backend replaces `start`, `end`, `data` and `pb` whole, so `cotctl` completes a declared one from the stored one — `start: { states: [x] }` keeps the stored `start.types` — and in `pb` each stage is paired with the stored stage of the same `key`. A declared `pb.stages` is still the complete list: a stage it leaves out is removed. The defaults in the table above (`reset: true`, `repeat: false`, …) apply only on create. To change one `pb` stage without restating the others, use a `partial: true` document (0.14.0+), which may leave out `display`, `start`, `end`, `data` and `pb` — see [Partial documents](../commands/apply.md#partial-documents-partial-true).
+
 What that means in practice:
 
 - **`code`, `stateMachine`** — the identity and its home. `cotctl` omits them from the update entirely, so an apply can never try to move or rename an SLA. To change either, you're creating a different SLA.
@@ -141,7 +143,7 @@ cotctl slas apply -f sla.yaml --dry-run
 cotctl slas apply -f sla.yaml -y
 ```
 
-`get` and `export` **require** `--state-machine <smCode>` (an SLA code is only unique within its SM). `apply` reads the SM from each document's `stateMachine` field and takes `-f/--file` (required), `--dry-run`, and `-y/--yes`; it handles multi-document files. When the same SM code exists in more than one workflow, add `--task-group <workflow>` to disambiguate — `cotctl` will tell you when it's needed.
+`get` and `export` **require** `--state-machine <smCode>` (an SLA code is only unique within its SM). `apply` reads the SM from each document's `stateMachine` field and takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage); it handles multi-document files. When the same SM code exists in more than one workflow, add `--task-group <workflow>` to disambiguate — `cotctl` will tell you when it's needed.
 
 There's no `cron` in an SLA — it's driven by state transitions and its time window, not a schedule. If you want a cron cadence, that's a [schedule](./schedules.md).
 

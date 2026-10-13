@@ -348,6 +348,7 @@ module.exports = {
             'developer/cli/commands/apply',
             'developer/cli/commands/export-import',
             'developer/cli/commands/scaffolding',
+            'developer/cli/commands/update',
           ],
         },
         {

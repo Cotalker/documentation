@@ -4,7 +4,7 @@ sidebar_label: validate
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/validate.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/validate.ts @ 82e613d (2026-10-10) -->
 
 `cotctl validate` checks your YAML *before* you deploy it. Getting into the habit of validating first is one of the highest-value things you can do as a partner: it catches mistakes on your machine, in seconds, instead of as a half-applied change in a customer's environment.
 
@@ -54,15 +54,31 @@ Under the hood, up to three layers of checking run — but only the first applie
 |---|---|---|---|
 | Structure (Zod) | Types, required fields, enums | **All kinds** | Always on |
 | Semantic | Per-type rules (a `property` question's `filters` and a jobTitle `jobs` must be lists, a `survey` question needs a non-empty `surveyCode`), `function run()` in exec hooks, buttons in the wrong stage, deprecated fields | **Survey only** | `--skip-semantic-validation` |
-| Remote | Identifier uniqueness across the company, and that the referenced PropertyTypes, JobTitles, Properties and `survey`-question surveys exist | **Survey only** | Needs `--remote` + `-c <profile>` |
+| Remote | Identifier uniqueness across the company, and that the referenced PropertyTypes, JobTitles, Properties and `survey`-question surveys exist (with a warning for an inactive embedded survey); on a **Workflow**, the `data` entries each bot stage's type requires — warnings only | **Survey**, and Workflow bot stages | Needs `--remote` + `-c <profile>` |
 
-Non-Survey kinds get the structural (Zod) layer only. The semantic and remote layers are Survey-specific. Remote checks reach the API, so they require a profile — and `--remote` can't be combined with `--dir`:
+Non-Survey kinds get the structural (Zod) layer only — plus, for a Workflow under `--remote`, the bot-stage check. Remote checks reach the API, so they require a profile — and `--remote` can't be combined with `--dir`:
 
 ```bash
 cotctl validate -f my-survey.yaml --remote -c acme
 ```
 
 **Since 0.12.0 the semantic layer also runs in directory mode**, which it did not before. See the warning under *Directory mode* below: a folder that passed clean can start failing, and the failure was always there.
+
+**The Workflow bot-stage check only warns** (new in 0.14.0). The live bot catalog marks some `data` entries as required for each bot type and version, and every apply refuses a stage that would be written without one (see [Required `data` entries](../workflow-bots/index.md#required-data-entries)). `validate -f --remote` has no stored stage to compare with, so it warns and exits `0`; the apply's `--dry-run` is where the refusal shows. It reads a stage that omits `version` on the default version and skips a `partial: true` document. Without `--remote`, and with `--dir`, it reads no catalog.
+
+A `partial: true` PropertyType or Workflow is checked on its own fields only, with what the schema otherwise requires left optional: `validate` reads nothing stored, so the merged document is validated by `apply`. Any other `partial` value, or the key on another kind, fails. See [Partial documents](./apply.md#partial-documents-partial-true).
+
+### `file://` references
+
+A script can live in its own file, referenced as `file://<path>`. Since **0.14.0**, `validate` and every apply read those references in the **script fields of every kind** — not only a survey's — and nowhere else:
+
+- **Which fields:** the `data.src` of a `CCJS` or `ESMCode` stage — in a Bot, a Routine, an SLA, a Schedule or a Workflow's bot slots — and a Survey's `src`, `editable.src`, `hidden.src` and the `src` of an `exec` hook on a question or a table column. A reference that can be read is sent as the file's content; before 0.14.0 a `CCJS` stage's `data.src: "file://script.js"` reached the server as that literal path.
+- **Anywhere else**, a `file://` keeps its text and is sent as written. When the field is a `src` — a Property's `schemaInstance.src`, a `src` deeper in a survey — `validate` and the apply print a warning that `-q` does not silence. (0.13.0 read a survey's references in any `src` key, at any depth.)
+- **It must stay inside the YAML file's directory.** `file://../…`, an absolute path elsewhere, or a symlink that leads outside the directory is refused even when the file exists; a symlink whose target stays inside is followed. The limit is the directory of **each file**, not the root of `--dir`, so a project with one folder per kind and a shared scripts folder beside them runs into it: move the scripts under each YAML file's directory.
+- **A reference that cannot be read fails, exit `1`** — a missing file, one you can't read, or something that is not a regular file. `validate -f` reports each document that fails under its own header and still checks the rest. A file that is not `.js`, `.mjs` or `.cjs` is read with a warning.
+- **In a `partial: true` document**, a `file://` in the `data.src` of a stage written without its `name` is refused: the stage keeps the bot type of the stored stage, which the document alone cannot tell. Write the stage's `name` (`CCJS` or `ESMCode`).
+
+A pipeline whose `validate -f` passed a reference that `validate --dir` refused now fails at that first step — they read the same references the same way.
 
 ## Directory mode — a whole folder, offline
 
@@ -77,9 +93,10 @@ It runs two families of checks. **Schema checks**, per file:
 | ID | Check |
 |---|---|
 | S1 | File parses as valid YAML |
-| S2 | `kind` is present and recognized |
+| S2 | `kind` is present and recognized, and a top-level `partial` key, if any, is `true` on a kind that reads it |
 | S3 | Document validates against the schema for its `kind` |
 | S4 | **New in 0.12.0.** A survey's semantic rules — repeated identifiers, reserved identifiers, a `dependsOn` pointing at an identifier that does not exist. FAIL for errors, WARN for warnings |
+| S5 | **New in 0.14.0.** A `partial: true` PropertyType or Workflow passed against its own fields only (WARN). It is left out of the cross-reference checks: the merged document is validated by `apply` |
 
 And **cross-reference checks**, across files — this is what catches a property pointing at a property type that doesn't exist:
 
@@ -91,13 +108,14 @@ And **cross-reference checks**, across files — this is what catches a property
 | X4 | fail | Workflow `states[].property` references an existing Property |
 | X5 | fail | The state machine `initialState` references an existing Property |
 | X6 | warn | Workflow permissions are defined as AccessRoles |
+| X7 | warn | **New in 0.14.0.** Each Survey a Workflow names — a StartForm's `requiredSurvey.surveyCode`, a transition's `requiredSurvey`, a state's `surveyTriggers[].survey` — is among the directory's Surveys. A WARN, not a FAIL, because it may already exist on the server; the apply's `--dry-run` looks it up there and refuses the workflow before its first write when it's missing |
 
 <div className="alert alert--warning">
 
 **Changed in 0.12.0 — a directory that exits `0` today can start exiting `1`.** Two classes of problem now surface here that used to wait until `apply`:
 
 - **A survey's semantic errors** (check `S4` above). Those rules used to live inside the apply, so `validate --dir` passed a survey that the deploy would then refuse.
-- **A `file://` reference that does not resolve**, in any kind — not just surveys. A PropertyType carrying `editable.src: "file://missing.js"` passed as a plain string before.
+- **A `file://` reference that does not resolve** in a script field, in any kind — not just surveys. (Since 0.14.0 `validate -f` and every apply read the same fields; see [`file://` references](#file-references).)
 
 **Nothing new is wrong with your files.** Run it once before you upgrade a CI gate and fix what it reports; the same failure was already waiting on the next `apply`.
 

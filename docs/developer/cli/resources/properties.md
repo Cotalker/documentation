@@ -39,7 +39,7 @@ schemaNodes:
 | `kind` | Yes | Always `PropertyType` |
 | `code` | Yes | Unique per company. **Immutable after creation** |
 | `display` | Yes | UI display name |
-| `hidden` | No | Defaults to `true`. See below |
+| `hidden` | No | Defaults to `true` on create; an update that omits it keeps the stored value. See below |
 | `viewPermissions` | Conditional | AccessRole names. **Required when `hidden: false`** |
 | `schemaNodes` | No | The field definitions |
 
