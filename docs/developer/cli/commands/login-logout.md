@@ -4,7 +4,7 @@ sidebar_label: login & logout
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ a9168d68 (2026-10-23) -->
 
 These two commands open and close your connection to a Cotalker environment. If you've already read the [Authentication](../authentication.md) page, you've met `login` — this page is the complete reference for both commands, including every option and the less common cases like on-premise environments.
 
@@ -60,6 +60,8 @@ cotctl login \
   --api-url https://api.empresa.com
 ```
 
+Give the API's base URL: a trailing `/api` is dropped, with a notice, since `cotctl` adds the `/api/…` paths itself.
+
 ### Pasting a pre-generated token
 
 The two flows above both **mint** an ApiToken for you, which requires the `admin-apitokens-write` permission. If your user doesn't have it, there's a third path: an administrator issues an ApiToken for you from the webclient admin panel, and you register it with `--paste-token`:
@@ -68,7 +70,7 @@ The two flows above both **mint** an ApiToken for you, which requires the `admin
 cotctl login --url https://web.cotalker.com --subdomain acme --paste-token
 ```
 
-`cotctl` prompts you to paste the token (masked), validates it against the backend, and saves the profile — no email/password and no browser involved. Because it reads from a prompt, **this flow needs a terminal**: in a pipeline, use `--token` below or an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) instead. See [CI/CD](../ci-cd.md).
+`cotctl` prompts you to paste the token (masked), validates it against the backend, and saves the profile — no email/password and no browser involved. A token from the ApiTokens panel has no expiry, and the profile records none. Because it reads from a prompt, **this flow needs a terminal**: in a pipeline, use `--token` below or an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) instead. See [CI/CD](../ci-cd.md).
 
 ### Logging in with no terminal: `--token`
 
@@ -92,6 +94,12 @@ echo "$CI_COTCTL_TOKEN" | cotctl login \
 ```
 
 Neither indirect form can hang or run away. `--token -` gives up after 10 seconds if the pipe stays open without delivering a token, and stops reading at 8 KB, so a job never burns its global timeout on a stalled stdin. `--token @<path>` **warns — it does not fail** — when the file is readable beyond its owner, so a secret mounted with your cluster's own mode still works.
+
+<div className="alert alert--warning">
+
+**Since 0.15.0, `--token` and `--paste-token` only take a token they can recognize as an ApiToken.** A token whose `type` claim is missing or is not `api-token` — such as a session JWT copied from the browser — or one without a `company` claim is refused before it is sent anywhere, with exit `1`; `--allow-unverified-company` does not waive the `company` claim. Mint an ApiToken with `cotctl login`, or have an admin issue one from the webclient's ApiTokens panel, and pass that one instead. A profile saved earlier from a session JWT is not checked again: it stops working when that session expires (within 7 days), and `cotctl login` replaces it.
+
+</div>
 
 `--token` and `--paste-token` supply the same thing, so passing both is an error. `--machine-id` is rejected alongside `--token` as well: it labels the machine that *mints* a token, and `--token` supplies one minted elsewhere.
 

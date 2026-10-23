@@ -4,7 +4,7 @@ sidebar_label: Scaffolding
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/scaffold.ts, src/lib/scaffold-generator.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/scaffold.ts, src/lib/scaffold-generator.ts @ a9168d68 (2026-10-23) -->
 
 Building a workflow from a blank file is a lot of boilerplate: you need roles, property types, state properties, and the workflow itself, all named consistently and wired together. `cotctl workflows scaffold` generates that skeleton for you — correctly named and ready to customize — so you start from a working structure instead of an empty page.
 
@@ -19,7 +19,7 @@ cotctl workflows scaffold --name <flow-name> --code <prefix> [options]
 Two inputs are required:
 
 - `--name` — the flow name in kebab-case, e.g. `ordenes-compra`.
-- `--code` — a short 2–4 letter prefix used across all generated codes, e.g. `oc`.
+- `--code` — a short prefix (2 to 8 characters) used across all generated codes, e.g. `oc`.
 
 ```bash
 cotctl workflows scaffold --name ordenes-compra --code oc
@@ -30,10 +30,10 @@ cotctl workflows scaffold --name ordenes-compra --code oc
 | Option | Description |
 |---|---|
 | `--name <name>` | **(required)** Flow name, kebab-case |
-| `--code <prefix>` | **(required)** 2–4 lowercase letters |
+| `--code <prefix>` | **(required)** 2 to 8 characters: a lowercase letter, then lowercase letters or digits (`oc`, `qa011`) |
 | `--display <name>` | Human-readable name (default: title-cased `--name`) |
-| `--output-dir <dir>` | Where to write (default: `./<name>/`) |
-| `--states <list>` | Extra closed states beyond the base three, comma-separated |
+| `--output-dir <dir>` | Where to write (default: `./<name>/`). May already exist; no file in it is overwritten |
+| `--states <list>` | Extra closed states beyond the base three, comma-separated, each written as its display name (`"Aprobado,En compra"`) |
 | `--no-technical` | Omit the technical permissions (`form-bypass`, `force-state`) |
 
 ## What it generates
@@ -56,12 +56,12 @@ Out of the box you get six access roles (four with `--no-technical`), a Manager 
 
 ### Adding your own states
 
-Most real flows need more than the three base states. Pass them with `--states` and `cotctl` generates the state properties and wires transitions from `pendiente` to each:
+Most real flows need more than the three base states. Pass them with `--states` and `cotctl` generates the state properties and wires transitions from `pendiente` to each. Write each state as the name users should see: it is kept as typed for the display, and the codes are derived from it.
 
 ```bash
 cotctl workflows scaffold --name ordenes-compra --code oc \
   --display "Órdenes de Compra" \
-  --states aprobado,rechazado,cerrado
+  --states "Aprobado,Rechazado,En compra"
 ```
 
 ## The pipeline it fits into
@@ -93,8 +93,8 @@ Scaffolding is step 1 of a five-step loop. Steps 2–5 repeat safely as you iter
 `cotctl` validates your inputs up front so the generated names are always valid:
 
 - `--name` must be kebab-case (e.g. `ordenes-compra`).
-- `--code` must be 2–4 lowercase letters.
-- `--output-dir` must not already exist (so you never overwrite work).
+- `--code` must be 2 to 8 characters — a lowercase letter, then lowercase letters or digits (`qa011`). Before 0.15.0 it took 2 to 4 lowercase letters; every code it took then is still accepted. `validate --workflow` checks the flow's codes against the same rule.
+- `--output-dir` may already exist — an empty folder, or a folder of a repository — but `cotctl` never overwrites a file: if any of the six files it generates is already there, it exits `1` naming them and writes nothing.
 
 ## See also
 

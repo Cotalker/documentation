@@ -4,7 +4,7 @@ sidebar_label: Troubleshooting
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/lib/validate-bot-versions.ts, src/lib/validate-cron.ts, src/commands/bots.ts, src/commands/bot-types.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/lib/validate-bot-versions.ts, src/lib/validate-cron.ts, src/commands/bots.ts, src/commands/bot-types.ts @ a9168d68 (2026-10-23) -->
 
 Most `cotctl` errors are clear and tell you how to fix them. This page collects the ones you're most likely to hit, organized as **symptom → cause → fix** so you can scan for yours quickly.
 
@@ -52,6 +52,17 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 
 - **Cause:** the token is invalid.
 - **Fix:** re-authenticate with `cotctl login`.
+- **With `COTCTL_TOKEN`:** the message names the API URL the token was sent to. `cotctl` checks the token's expiry before sending it, so a `401` here usually means a revoked token, or one issued by another environment than `COTCTL_API_URL`. Mint a fresh ApiToken and update the variable.
+
+### `… is not recognized as an ApiToken` / `… is a user session JWT`
+
+- **Cause:** since 0.15.0, `cotctl login --token`, `--paste-token` and `COTCTL_TOKEN` accept only a token whose `type` claim is `api-token` and that carries `_id` and `company` claims. A session JWT copied from the browser has none of that, and neither does an ApiToken old enough to predate the claim.
+- **Fix:** mint an ApiToken with `cotctl login`, or have an admin issue one from the webclient's ApiTokens panel, and use that one.
+
+### `API Error 404` on every request, with `/api/api/` in the URL
+
+- **Cause:** before 0.15.0, an `--api-url` or `COTCTL_API_URL` ending in `/api` doubled the prefix.
+- **Fix:** update `cotctl`. It now drops a trailing `/api`, with a notice; or remove it from the value yourself.
 
 ### `API Error 403` / `Forbidden (HTTP 403)`
 

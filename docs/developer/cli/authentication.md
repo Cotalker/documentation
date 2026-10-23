@@ -4,7 +4,7 @@ sidebar_label: Authentication
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ a9168d68 (2026-10-23) -->
 
 Now that `cotctl` is installed, it needs to know *which Cotalker environment to talk to* and *who you are*. This page explains how authentication works, walks you through your first login, and introduces **profiles** — the concept that lets you safely juggle several environments.
 
@@ -109,9 +109,9 @@ cotctl apply -f survey.yaml --yes
 Four rules worth knowing before you wire it up:
 
 - **`-c` always wins.** The variables are consulted only when `-c/--company` is absent, so exporting `COTCTL_TOKEN` on a machine that also has profiles changes nothing about your existing commands.
-- **The company comes from the token**, not from a flag, so it cannot disagree with the credential. `cotctl` prints one line to `stderr` naming where the credential came from.
-- **It fails hard when the token is rejected.** On a `401`, or once the token has expired, `cotctl` stops and names `COTCTL_TOKEN`. It does not fall back to a prompt, and it will never write your token into a profile on its own.
-- **A browser session token is refused.** Only an ApiToken is accepted, and the check costs no network call.
+- **The company comes from the token**, not from a flag, so it cannot disagree with the credential. `cotctl` prints one line to `stderr` naming where the credential came from — `[cotctl] Credentials from $COTCTL_TOKEN …` — after the first response the backend accepts, and never for a refused token.
+- **It fails hard when the token is rejected.** An expired token stops the run before it is sent, naming `COTCTL_TOKEN`. A `401` names the API URL the token was sent to and the likely causes — a revoked token, or one from another environment than `COTCTL_API_URL`. It does not fall back to a prompt, and it will never write your token into a profile on its own.
+- **A browser session token is refused.** Only an ApiToken is accepted, and the check costs no network call: a token whose `type` claim is missing or is not `api-token`, or that lacks an `_id` or a `company` claim, is refused. An old `COTCTL_TOKEN` without a `type` claim may be a session JWT, which expires within 7 days, or an ApiToken old enough to predate the claim — replace it either way. A trailing `/api` in `COTCTL_API_URL` is dropped, with a notice.
 
 ### Asserting which company the job expects
 

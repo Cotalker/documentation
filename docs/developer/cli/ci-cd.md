@@ -4,7 +4,7 @@ sidebar_label: CI/CD
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/{apply,surveys,properties,workflows}.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/{apply,surveys,properties,workflows}.ts @ a9168d68 (2026-10-23) -->
 
 Everything `cotctl` does on your laptop, it can do unattended in a pipeline. Running it in CI/CD is what turns "a partner deploys changes by hand" into "changes are validated and deployed automatically on every merge" — repeatable, reviewable, and not dependent on anyone remembering the steps. This page shows the recommended shape and, importantly, how to handle credentials safely.
 
@@ -165,6 +165,8 @@ A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on
 | `2` | One of three: a pre-apply **validation refusal** (what was refused was not sent, though other documents of the same run may have been), an **export refusal** (the survey could not be modelled), or a `danger` finding under `--fail-on-destructive` |
 | `3` | **Partial apply** — part of the apply was written and the run failed afterwards: resources a Workflow created, or a schedule whose cron an update stopped and whose relaunch failed |
 
+`cotctl logs`, which writes nothing to Cotalker, gives `3` and a fifth code its own meanings: `3` when some requested log was not delivered, and `4` when the environment's backend has no log reader yet. See [logs](./commands/logs.md#exit-codes).
+
 <div className="alert alert--warning">
 
 **`2` carries three unrelated meanings, and none of them is applied uniformly across commands.** Inside one command the code is unambiguous, and that is the case a script is usually in. Across commands it is not: a pipeline that runs `apply` and `surveys export` and branches on a shared `$?` learns that *something* was refused, not whether anything was written. **Pin the exact command, or read the message** — do not carry one command's meaning of `2` over to the next.
@@ -186,7 +188,7 @@ A kind gets the **same code from its own command as from `cotctl apply`**:
 - **Webhook, Routine, Bot, SLA and Schedule** — which `apply -f` does not take — exit `2` from their own commands for what the YAML gets wrong: the schema, an SLA whose state machine or states don't resolve, a schedule's invalid `cron`, a bot version or routine the catalog doesn't have. A catalog that cannot be read exits `1`.
 - **`cotctl validate` exits `1` for a validation failure, not `2`** — which surprises most people wiring up their first gate, because `validate` is the command whose whole job is validation.
 
-Three refusals cross the kinds: **a batch that declares a resource twice** exits `2` from every apply; **a bot stage missing a `data` entry its bot type requires** exits `2` from every command that writes stages, `workflows apply` included; and **a `partial` key no command reads** exits `2` from `apply -f` but `1` from `roles`, `property-types`, `properties` and `workflows apply`.
+Four refusals cross the kinds: **an `id` that is not a 24-character hex ObjectId** (since 0.15.0) exits with the kind's own code — `2` for a User or Survey, `1` for an AccessRole, Property, PropertyType or Workflow — dry runs included; **a batch that declares a resource twice** exits `2` from every apply; **a bot stage missing a `data` entry its bot type requires** exits `2` from every command that writes stages, `workflows apply` included; and **a `partial` key no command reads** exits `2` from `apply -f` but `1` from `roles`, `property-types`, `properties` and `workflows apply`.
 
 **`apply --dir` gives each document the code its own command gives it**, and exits with the first of `3`, `2`, `1` it met — even after `--continue-on-error` applied the other files. A file it cannot read at all (a YAML syntax error, an unreadable `file://` reference, a refused `partial` key) exits `1`.
 
@@ -194,7 +196,7 @@ Three refusals cross the kinds: **a batch that declares a resource twice** exits
 
 It is not a pre-apply signal at all: `surveys export` exits `2` when the simplified format cannot model the survey, and nothing was ever going to be mutated, because the run is a read.
 
-Read inside that command, though, it is unambiguous and it is actionable. It has exactly one meaning — *this survey cannot be expressed in the simplified format* — and exactly one answer: re-run with `--format raw`, which exports it verbatim. A script wrapping `surveys export` can branch on `2` and retry without reading the message. (An unknown `--format` value is not that: since 0.14.0 it exits `1` before anything is read.)
+Read inside that command, though, it is unambiguous and it is actionable. It has exactly one meaning — *this survey cannot be expressed in the simplified format* — and exactly one answer: re-run with `--format raw`, which exports the survey as stored. A script wrapping `surveys export` can branch on `2` and retry without reading the message. (An unknown `--format` value is not that: since 0.14.0 it exits `1` before anything is read.)
 
 ### One failure whose code depends on the command you entered through
 
@@ -230,11 +232,11 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --json > result.jsonl
 
 ## Token lifetime in CI
 
-**An ApiToken does not expire from disuse.** It carries its own expiry date, set when it was issued, and a pipeline that runs once a quarter is as valid as one that runs hourly. The "7 days of inactivity" rule belongs to the browser session a person logs in with, not to the token a pipeline uses.
+**An ApiToken does not expire from disuse.** It carries its own expiry date, set when it was issued — or none at all, for a token issued from the webclient's ApiTokens panel — and a pipeline that runs once a quarter is as valid as one that runs hourly. The "7 days of inactivity" rule belongs to the browser session a person logs in with, not to the token a pipeline uses.
 
-What that means in practice: an ApiToken expires on a date somebody chose, and nothing warns you as it approaches. **Record when each one expires and rotate it before that date** — a pipeline whose only credential has lapsed fails on its next run, which is usually the run you needed.
+What that means in practice: an ApiToken that has an expiry date expires on a date somebody chose, and nothing warns you as it approaches. **Record when each one expires and rotate it before that date** — a pipeline whose only credential has lapsed fails on its next run, which is usually the run you needed.
 
-`cotctl` tells you which token it is refusing: an expired environment credential stops the run naming `COTCTL_TOKEN`, and the startup line announces an already-expired token as `EXPIRED` rather than printing a date in the past.
+`cotctl` tells you which token it is refusing: an expired environment credential stops the run naming `COTCTL_TOKEN` before the token is sent, and a `401` names the API URL it was sent to — usually a revoked token, or one from another environment than `COTCTL_API_URL`. The token must be an ApiToken: since 0.15.0 a `COTCTL_TOKEN` without a `type` claim of `api-token` is refused before any request, so replace a session JWT, or an ApiToken old enough to predate the claim, with a fresh ApiToken.
 
 ## New cotctl versions in a pipeline
 
