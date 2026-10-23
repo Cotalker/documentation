@@ -4,7 +4,7 @@ sidebar_label: apply
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/apply.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/apply.ts @ a9168d68 (2026-10-23) -->
 
 `cotctl apply` is the command that actually changes a Cotalker environment. It takes your YAML and makes the platform match it — creating resources that don't exist and updating those that do. This is the verb you'll use most, so it's worth understanding well.
 
@@ -116,6 +116,12 @@ An update prints `updated successfully` instead, and — since 0.14.0 — a reso
 
 </div>
 
+<div className="alert alert--warning">
+
+**An `id` you do write must be the record's real ObjectId.** Since 0.15.0, `validate` and every apply — dry runs included, through `apply -f`, `apply --dir` and the kind's own `apply` — refuse an `id` that is not a 24-character hex ObjectId on an AccessRole, Property, PropertyType, Survey, User or Workflow, `partial: true` fragments included. The refusal comes before the record is looked up, so the value never reaches a request URL. Two cases that used to pass now fail: `id: ""`, which used to count as absent, and a malformed `id` on a User or a Survey, which used to fall back to the email or the `code` when the server answered `404`. The apply exits `1` for an AccessRole, Property, PropertyType or Workflow and `2` for a User or Survey; `validate` exits `1`. Remove the `id`, or set it to the `_id` the export writes — a `# id:` comment for an AccessRole, Property, PropertyType, User or Workflow, an `id:` field for a Survey.
+
+</div>
+
 ### What you can change on a survey update
 
 Because questions are matched by `identifier`, not position, edits behave intuitively:
@@ -150,7 +156,7 @@ cotctl surveys apply -f survey.yaml -c acme --dry-run --fail-on-destructive
 cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 ```
 
-Those richer gating flags are documented under [CI/CD](../ci-cd.md).
+Those richer gating flags are documented under [CI/CD](../ci-cd.md). Only a `danger` finding makes `--fail-on-destructive` exit `2`; a `warning` never does. A survey dry run's `--json` carries two warnings added in 0.15.0: `survey.empty-chats-deactivated`, when the apply deactivates a chat bubble the YAML cannot write (one the read returns empty, or a text bubble the simplified export leaves out), and `survey.title-conditions-dropped`, when it drops a title's own condition.
 
 ## What an update sends
 
@@ -163,7 +169,7 @@ Since **0.14.0**, every update — `apply -f`, `apply --dir` and each per-kind `
 - **A stage that omits `version` keeps its stored version.** Write `version: null` to send it back to the bot type's default.
 - **Nothing to change, nothing sent.** A key whose value the server already holds is left out of the request, and a resource left with nothing to send gets no request at all.
 
-Two things still travel exactly as written: **each question a survey YAML declares** — matched by `identifier`, which keeps its ID, but a field the question omits takes its default (`required: false`, …), not its stored value, so declare every field a question should keep — and a **webhook's `context`**. And two flags keep the old behaviour on purpose: `--legacy-replace-workflows` (on `apply` and `workflows apply`) and `surveys apply --legacy-replace` build the update from the create defaults, so what the YAML omits is wiped.
+Two things still travel exactly as written: **each question a survey YAML declares** — matched by `identifier`, which keeps its ID, but a field the question omits takes its default (`required: false`, …), not its stored value, so declare every field a question should keep. The exception, since 0.15.0, is a question's `display` — a field's placeholder, a `datetime`'s input labels: a question or table column that keeps its identifier and its type keeps its stored `display`, unless the YAML sets it (see [Surveys](../resources/surveys.md)). The other is a **webhook's `context`**. And two flags keep the old behaviour on purpose: `--legacy-replace-workflows` (on `apply` and `workflows apply`) and `surveys apply --legacy-replace` build the update from the create defaults, so what the YAML omits is wiped.
 
 <div className="alert alert--warning">
 

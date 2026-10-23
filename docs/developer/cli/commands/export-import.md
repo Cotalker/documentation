@@ -4,7 +4,7 @@ sidebar_label: Export & import
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ a9168d68 (2026-10-23) -->
 
 So far we've talked about pushing YAML *to* an environment. Just as often, you'll want to pull existing configuration *out* of one — to bring a customer's existing setup under version control, to copy a resource between environments, or simply to see how something is built. That round-trip — **export → edit → apply** — is one of the most useful patterns in `cotctl`.
 
@@ -86,7 +86,7 @@ cotctl surveys export order_request -c acme --format raw -o ./order_request_raw.
 
 <div className="alert alert--info">
 
-**`--format raw` is not just for debugging.** The simplified format is a model of a survey, and an older or hand-built survey does not always fit it. When it does not, `export` refuses and **exits `2`**, naming the question that cannot be expressed and pointing you here. `--format raw` exports that survey verbatim and re-applies unchanged, so it is the answer, not a workaround.
+**`--format raw` is not just for debugging.** The simplified format is a model of a survey, and an older or hand-built survey does not always fit it. When it does not, `export` refuses and **exits `2`**, naming the question that cannot be expressed and pointing you here. `--format raw` exports that survey verbatim and `apply` takes it back, so it is the answer, not a workaround. Expect one update on the way back: the first apply of a raw export over a survey built in the webclient usually still sends one (`Would UPDATE` in a dry run), because what the webclient stored differs from what a raw apply writes. From the second apply on, the raw round trip changes nothing.
 
 A script wrapping `surveys export` can branch on exit `2` and retry with `--format raw` without reading the message — it has exactly one meaning in this command. See [CI/CD](../ci-cd.md#exit-codes). **In 0.12.0 this refusal changed from exit `1` to exit `2`.**
 
@@ -97,6 +97,14 @@ A script wrapping `surveys export` can branch on exit `2` and retry with `--form
 **A simplified export can also succeed and leave something out**, which is the worse case: the YAML looks fine, gets committed, and the next `apply` is what removes the missing questions. Since 0.12.0 `cotctl` warns on stderr whenever it drops content — an unexpected chat bubble, a legacy bubble packing several questions into one, or a standalone text question absorbed as another question's label. **Read stderr on an export you are about to commit.** `stdout` stays clean, so piping and `-o` are unaffected.
 
 Since 0.14.0 the export also folds a title named `labelQuestion<identifier>` (as some solution presets name them) into its question, instead of exporting it as a `text` question and leaving the real question out — and the dry run of a survey update flags the questions it would deactivate as `⚠ DANGER`. An export made with 0.13.0 or earlier can carry exactly that gap: re-export before re-applying it.
+
+Since 0.15.0 any two-entry chat bubble — a text followed by a question that takes a title — is read as that title and its question, **whatever the text is called** (`kilometrajeLabel`, a timestamp, …), and an apply rebuilds the stored title in place, keeping its identifier and its `_id`. A title's own condition, help text and `required` are not kept by the simplified format: the export warns about each and points to `--format raw`, and the dry run warns about the condition.
+
+Three more cases now warn instead of failing silently or failing late:
+
+- **A chat bubble whose questions were all deactivated or deleted** is skipped with a `SKIPPED` warning, and the export exits `0` (it used to exit `2`). The warning names the SurveyChat an apply of the export deactivates.
+- **A condition operator the simplified format does not accept**, such as the `=` older webclients stored, is written as stored with a warning pointing to `--format raw` — `validate` and `apply` still refuse that file.
+- **A reset identifier that names no question of the export** is left out with a warning, in both formats. The raw format also writes the empty `[""]` reset the webclient's builder stores as `[]`, so `validate` accepts the file it just exported.
 
 </div>
 
@@ -109,7 +117,7 @@ Two consequences to plan for:
 - **A script that reads keys from an exported YAML has to accept their absence** — `isActive`, `accessRoles`, `extraData`, a schedule's `cronTimeZone` or `timeoutMinutes`, and so on. Read an absent key as the default the export used to write.
 - **Re-export a YAML exported with 0.13.0 or earlier before re-applying it.** Those files carry defaults the resource may not store. The costly case is a schedule stored without `cronTimeZone`: the old export wrote `America/Santiago`, so re-applying it moves the cron from the scheduler's own zone to Santiago — three or four hours away — and the `isActive: true` it wrote relaunches it there right away. `apply` warns when an update sets a zone on such a cron.
 
-A few exports still send an update on their first re-apply: `users export` leaves out an inactive access role (with a warning), so the re-apply removes it from the user; `routines export` writes the routine's `code` as its `display` when it stores none; and the first re-apply of a survey built in the web app rewrites it in `cotctl`'s shape.
+A few exports still send an update on their first re-apply: `users export` leaves out an inactive access role (with a warning), so the re-apply removes it from the user; `routines export` writes the routine's `code` as its `display` when it stores none; the first re-apply of a survey built in the web app rewrites it in `cotctl`'s shape — in the raw format too; and the first re-apply of a survey that stores the legacy `subtype: long_text` sends `short_text` in its place.
 
 ### Keeping scripts out of YAML
 

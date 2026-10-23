@@ -4,8 +4,8 @@ sidebar_label: Question types
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/transformers/simplified.transformer.ts, src/schemas/survey.schema.ts, docs/surveys/question-types/*.md @ 82e613d (2026-10-10) -->
-<!-- the `table` section: repositories/cotctl/docs/surveys/question-types/table.md, src/lib/survey-validator.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/transformers/simplified.transformer.ts, src/schemas/survey.schema.ts, docs/surveys/question-types/*.md @ a9168d68 (2026-10-23) -->
+<!-- the `table` section: repositories/cotctl/docs/surveys/question-types/table.md, src/lib/survey-validator.ts @ a9168d68 (2026-10-23) -->
 
 Cotalker offers 14 question types. Every question shares the [common fields](../surveys.md#questions) — `type`, `identifier`, `label`, and the optional `help`, `required`, `isReadOnly`, `conditionalDisplay`, `exec`. This page covers what's *specific* to each type: the extra fields it needs and the gotchas worth knowing before you author one.
 
@@ -23,7 +23,20 @@ Renders a block of content — a title, an instruction, a separator. It captures
   label: "# Employee Registration"
 ```
 
-The `label` is the visible content and is rendered as Markdown (GitHub-flavored, HTML allowed). Use it for headings and dividers. Don't reach for `display`: the simplified format builds every `display` from the question's type and never sends the one you write, and since 0.14.0 `validate` and every apply warn when a question or `table` column carries one.
+The `label` is the visible content and is rendered as Markdown (GitHub-flavored, HTML allowed). Use it for headings and dividers. Don't reach for `display`: the simplified format builds a new question's `display` from its type, keeps the stored one on an update (see [Applying safely](../surveys.md#applying-safely)), and never sends the one you write — since 0.14.0 `validate` and every apply warn when a question or `table` column carries one.
+
+### `subtype` — only the values the server takes
+
+Four types take a `subtype`, and since 0.15.0 `validate` and every apply refuse any other value before anything is sent — in both formats, on a `table` column too, and `--skip-semantic-validation` does not turn the check off. The error lists the values the type takes:
+
+| Type | `subtype` |
+|---|---|
+| `textinput` | `short_text` |
+| `textnumber` | `number` (default), `integer`, `rating` |
+| `listquestion` | `list` (default), `toggle` |
+| `datetime` | `absolute`, `relative`, `createdAt` — each with numeric `min` and `max` (see [`datetime`](#datetime--date-andor-time)) |
+
+Leaving `subtype` out is always valid. An export of a survey that stores a value outside this list — `short_text` on a `textnumber`, say — now fails `validate`: fix the value or remove the key before re-applying it.
 
 ### `textinput` — free text
 
@@ -35,7 +48,7 @@ The `label` is the visible content and is rendered as Markdown (GitHub-flavored,
   max: 5000       # max length (default 5000)
 ```
 
-Set `subtype: long_text` for a multi-line box.
+`long_text` is a legacy value older surveys store. It is still accepted, with a warning, and sent as `short_text` — what the webclient's survey builder does when it loads the question — so the first apply of an unchanged survey that stores it writes `short_text` (`Would UPDATE` in a dry run). Write `short_text`, or no `subtype`, to silence the warning.
 
 ### `textnumber` — numbers
 
@@ -47,7 +60,7 @@ Set `subtype: long_text` for a multi-line box.
   max: 99         # maximum accepted value
 ```
 
-`min`/`max` bound the entered *value* (not a length). Set `subtype: rating` to render a star rating instead of a number field.
+`min`/`max` bound the entered *value* (not a length). Set `subtype: integer` for an integer field, or `subtype: rating` to render a star rating instead of a number field.
 
 ## Selection
 
@@ -79,7 +92,25 @@ Lets the user choose from a Cotalker [Property](../../data-models.md#property) o
       subfilter: "*"          # "*" = any property of that type
 ```
 
-`filters` is required and has to be a **list** of 1 to 3 entries, each starting with `- `. A single filter written as a map — without that leading `- ` — fails validation with `filters must be a list`. Add `tree: true` for a hierarchical tree picker, or `creation: true` to let the user create a new property inline. To scope the options, replace `subfilter: "*"` with a real subfilter and set `subfilterValue`.
+`filters` is required and has to be a **list** of 1 to 3 entries, each starting with `- `. A single filter written as a map — without that leading `- ` — fails validation with `filters must be a list`. To scope the options, replace `subfilter: "*"` with a real subfilter and set `subfilterValue`.
+
+Two optional keys on a filter entry change the picker:
+
+```yaml
+  filters:
+    - propertyType: area
+      subfilter: "*"
+      tree:
+        target: parent_area   # required, non-empty
+        filter: []            # a list; [] = every folder visible
+      creation:
+        permissions: []       # a list; [] = every user can create
+```
+
+- `tree` turns the picker into a hierarchical tree. `target` must not be empty, and `filter` must be a **list** — an empty list applies no narrowing, which is what the webclient saves for a tree with none.
+- `creation` lets the user create a new property inline. `permissions` must be a **list** — an empty list opens creation to every user, which is what the webclient saves when no role is chosen.
+
+Since 0.15.0 `validate` and every apply refuse a `tree.filter` or `creation.permissions` that is not a list — `filter: <value>` has to become `filter: [<value>]` — and accept an empty list, which `surveys export` writes back. It is a semantic check, so `--skip-semantic-validation` turns it off.
 
 ### `person` — pick a user
 
@@ -140,6 +171,10 @@ It has to be a list even for a single code: `jobs: supervisor_ventas` fails with
 ```
 
 `dateMode: date` (or no `dateMode`) captures a date only; `date_time` adds the time of day. **There is no time-only mode**, and since 0.14.0 any other value — `time` and `datetime` included, or an empty `dateMode:` — is refused: `validate` exits `1` and an apply `2`, before anything is sent. Before, such a value was saved silently as a date only. The same applies to a `datetime` column of a `table`, where switching a saved column from `date` to `date_time` is a type change the apply refuses — capture the time in a new column. A `dateMode` on any type other than `datetime` is never sent, and draws a warning.
+
+A `subtype` limits which dates are accepted — `absolute`, `relative` or `createdAt` — and needs numeric `min` and `max`, not dates: without them the webclient refuses every answer (`absolute`) or accepts a single day (`relative`, `createdAt`), and neither `validate` nor an apply catches it. On `relative` and `createdAt` the limits are **seconds** before and after the reference date; the safest way to get them right is to copy them from the export of a survey whose limits were set in the webclient. **Avoid `absolute`**: the webclient refuses every answer even with the limits its own builder saves. Use `relative` or `createdAt`, or leave `subtype` out.
+
+The simplified format has no field for the labels of a `datetime`'s inputs. A new question gets `Fecha`, or `Fecha` and `Hora` with `date_time`; an update keeps the stored labels — `Date` and `Hour` from the English webclient, say — unless its `dateMode` adds or drops the time input.
 
 ### `gps` — a location
 
@@ -265,7 +300,7 @@ Still editable on a saved column: `label`, `help` and `min`/`max`. Adding a **ne
 
 <div className="alert alert--warning">
 
-**A column cannot carry a conditional display — rejected since 0.12.0.** `conditionalDisplay` (and `command`, its raw-format spelling) used to validate fine on a column, and then do nothing: the client always renders every cell of a table, so the condition was never evaluated. A YAML that applies today stops applying.
+**A column cannot carry a conditional display — rejected since 0.12.0.** `conditionalDisplay` (and `command`, its raw-format spelling) used to validate fine on a column, and then do nothing: the client always renders every cell of a table, so the condition was never evaluated. Since 0.15.0 the same goes for `dependsOn`, `showWhen` and `resetIdentifiers` written at the column's root, in both formats: they used to pass, and the apply dropped them without a word. Remove them — the apply never sent them, so the stored survey does not change.
 
 **Move the condition up to the `table` question itself**, which is the level that is actually evaluated:
 

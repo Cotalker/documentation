@@ -4,7 +4,7 @@ sidebar_label: Webhooks
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/schemas/webhook.schema.ts, src/commands/webhooks.ts @ c85e3b7 (2026-09-11) -->
+<!-- source: repositories/cotctl/src/schemas/webhook.schema.ts, src/commands/webhooks.ts @ a9168d68 (2026-10-23) -->
 
 A **webhook** tells Cotalker to POST an event to a URL you control whenever something happens — a task changes, a form is answered, a user logs out. It is how you connect a Cotalker process to a system that lives outside it.
 
@@ -25,7 +25,7 @@ That is a complete, valid file. Everything else is optional.
 | Field | Required | Notes |
 |---|---|---|
 | `kind` | Yes | Always `Webhook` |
-| `code` | Yes | The upsert key. Lowercase, digits and underscores (`^[a-z]+([_a-z0-9]+)*$`) |
+| `code` | Yes | The upsert key. Lowercase, digits and underscores (`^[a-z][_a-z0-9]*$`) |
 | `name` | Yes | Display name |
 | `url` | Yes | Where the event is POSTed. `cotctl` checks it is a real URL before applying |
 | `trigger` | Yes | Which event fires it — one of the six below |

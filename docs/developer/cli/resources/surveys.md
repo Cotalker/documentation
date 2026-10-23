@@ -4,7 +4,7 @@ sidebar_label: Surveys
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/surveys.ts, src/schemas/survey.schema.ts, docs/surveys/yaml-structure.md @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/surveys.ts, src/schemas/survey.schema.ts, docs/surveys/yaml-structure.md @ a9168d68 (2026-10-23) -->
 
 A **survey** is a form — the way Cotalker captures structured data from people. Surveys are usually the first resource partners learn to manage with `cotctl`, because they're self-contained and immediately useful. A survey is a `code`, a `name`, and a list of `questions`, and everything else — who can respond, conditional visibility, scoring, automation hooks — is layered on top of that spine.
 
@@ -36,6 +36,7 @@ questions:
 |---|---|---|
 | `kind` | Yes | Always `Survey` |
 | `code` | Yes | Unique per company. Must match `^[a-z][a-z0-9_]*$`. **Immutable after creation** |
+| `id` | No | The survey's `_id`, as `surveys export` writes it. It must be a 24-character hex ObjectId: `validate` and every apply, dry runs included, refuse any other value — `id: ""` too — and a malformed `id` no longer falls back to the `code`. With it, the survey is looked up by `_id`, and a `code` other than the stored one is refused |
 | `name` | Yes | Display name |
 | `isActive` | No | Defaults to `true` on create; an update that omits it keeps the stored value |
 | `nameTranslations` | No | `es` / `en` / `pt` / `fr` display-name translations |
@@ -107,7 +108,7 @@ Surveys have their own entity-scoped command group. Every command takes a profil
 
 `apply` matches questions by `identifier` rather than position, so you can add, edit, remove, and reorder questions freely — IDs are preserved. Removing a question deactivates it rather than hard-deleting it. An interactive apply asks first; `-y` skips the question and `apply --dir` never asks it, and a dry run flags it as `⚠ DANGER`. If you apply a survey YAML without its `questions` section, the existing questions are left untouched.
 
-At the survey level, a key you omit keeps its stored value, and `nameTranslations`, `editable`, `hidden` and `post` are completed from the stored ones. **A question you declare is the exception: it is written whole.** It keeps its ID, but a field it omits takes its default (`required: false`, …), not its stored value — so declare every field a question should keep. A survey is sent whole or not at all: since 0.14.0 a YAML that changes nothing sends nothing and reads `unchanged`. (The first re-apply of an unmodified export of a survey built in the web app is the one exception: it is sent, and rewrites the survey in `cotctl`'s shape.)
+At the survey level, a key you omit keeps its stored value, and `nameTranslations`, `editable`, `hidden` and `post` are completed from the stored ones. **A question you declare is the exception: it is written whole.** It keeps its ID, but a field it omits takes its default (`required: false`, …), not its stored value — so declare every field a question should keep. The one field kept is `display`, which the simplified format has no key for: a question or `table` column that keeps its identifier and its type keeps its stored `display` — a placeholder, a `datetime`'s input labels — instead of its type's default. A `text` question's `label`, a `listquestion`'s option labels, and the `label` of a `gps`, `image`, `file` or `signature` question still replace the parts of `display` they stand for; a new question, a changed type, or a `dateMode` that adds or drops the time input gets the default. The dry run lists each `display` the update changes and counts as `preserved` each stored one it keeps. (Since 0.15.0 — before, every update sent the default. To put a `display` back to its default, edit it in the raw format or in the webclient.) A survey is sent whole or not at all: since 0.14.0 a YAML that changes nothing sends nothing and reads `unchanged`. (The first re-apply of an unmodified export of a survey built in the web app is the one exception: it is sent, and rewrites the survey in `cotctl`'s shape.)
 
 Two flags make `apply` safe to run in anger:
 
@@ -121,7 +122,7 @@ cotctl surveys apply -f survey.yaml -c acme --dry-run --fail-on-destructive
 
 - `--dry-run` validates and prints exactly what would be sent, without applying.
 - `--diff <off|compact|verbose>` sets how much of the before/after the dry-run prints (default `compact`).
-- `--fail-on-destructive` exits with code `2` when the dry-run finds any danger-severity change — an emptied `permissions` list or, since 0.14.0, questions the update would deactivate — useful in a pipeline. (Requires `--dry-run`.)
+- `--fail-on-destructive` exits with code `2` when the dry-run finds any danger-severity change — an emptied `permissions` list or, since 0.14.0, questions the update would deactivate — useful in a pipeline. (Requires `--dry-run`.) Two dry-run findings are only warnings and never exit `2`: a chat bubble the apply deactivates because the YAML cannot write it (one whose questions were all deactivated, or a text bubble the simplified export leaves out), and a title whose own condition the apply drops.
 - `--yes` skips the confirmation prompts; `--json` emits one result object per line for scripting (the prompt and `Apply cancelled.` go to stderr).
 
 ### A practical tip
