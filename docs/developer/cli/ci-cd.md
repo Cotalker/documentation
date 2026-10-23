@@ -99,7 +99,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install -g @cotctl/cli@0.14.0
+      - run: npm install -g @cotctl/cli@0.15.0
       # Offline — no credentials required
       - run: cotctl validate --dir config/
 
@@ -116,7 +116,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install -g @cotctl/cli@0.14.0
+      - run: npm install -g @cotctl/cli@0.15.0
       - run: cotctl apply --dir config/ -y
 ```
 
