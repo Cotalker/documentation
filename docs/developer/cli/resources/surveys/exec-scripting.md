@@ -4,7 +4,7 @@ sidebar_label: Exec scripting
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/surveys/exec-hooks.md, exec-contexts.md, exec-commands.md, exec-network-request.md, src/schemas/survey.schema.ts (~255-279) @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/docs/surveys/exec-hooks.md, exec-contexts.md, exec-commands.md, exec-network-request.md, src/schemas/survey.schema.ts, src/lib/survey-validator.ts @ a9168d68 (2026-10-23) -->
 
 Exec scripting is how a survey does things a static form can't: pre-fill a field from the current user, validate an answer against a business rule, call an external API when a button is pressed. Each question can carry an `exec` block with small JavaScript functions that run at defined points in its lifecycle.
 
@@ -36,6 +36,11 @@ The code runs in the **frontend, inside a Web Worker**, with a **60-second timeo
 | `onSubmitSuccess` | After a successful submit | Webhooks, external notifications |
 
 The order over a session is: `preload` → (user opens it) `onDisplay` → (button) `onPlay` → (submit) `validate` → `postsave` → `onSubmitSuccess`.
+
+A stored question can carry three more stages — `onChange`, `presave` and `filter` — but **the webclient never runs them**. `validate` and every survey apply, dry run included, warn about them without refusing the file:
+
+- In the **raw** format such a stage is sent and stored as written, and one that carries code gets the warning. Its `src` is not asked for a `function run()`, since nothing runs it.
+- In the **simplified** format it is never sent, whatever it holds, so an apply also removes it from a question that stores it; any value gets the warning.
 
 Each hook accepts three fields:
 
@@ -72,6 +77,15 @@ A script only sees the data you declare in its `context` field. Declare the cont
 | `responses#self` | This question's current answer |
 
 You can also read other answers in the same survey with `responses#<identifier>`, a parent survey's answers with `responses#parent#<identifier>`, and a sub-survey's answers with `responses#<identifier>@<sub_survey_code>`.
+
+### Exec on a table column
+
+A `table` column's `exec` runs in each cell, once per row, and differs from a question's in two ways:
+
+- **Only `preload` and `validate` run in a cell.** The webclient never runs a column's `onDisplay`, `onPlay`, `postsave` or `onSubmitSuccess`. Both formats still send them, so `validate` and every apply warn about each one that carries code or a context. A cell runs the column's `preload` with `src` alone, so it needs no `context` and draws no warning about a missing one.
+- **The `context` sees only the cell's own row.** `responses#self` is the cell, `responses#<identifier>` names another column of the same table, and `responses#parent#<identifier>` is looked up inside the row too. A root question, the table itself, or a column of another table resolves empty in the cell, and each gets its own warning. The static contexts (`user#me`, `task#self`, …) work as on a question.
+
+None of these warnings changes the exit code.
 
 <div className="alert alert--secondary">
 

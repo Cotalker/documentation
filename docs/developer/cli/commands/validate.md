@@ -4,7 +4,7 @@ sidebar_label: validate
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/validate.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/validate.ts @ a9168d68 (2026-10-23) -->
 
 `cotctl validate` checks your YAML *before* you deploy it. Getting into the habit of validating first is one of the highest-value things you can do as a partner: it catches mistakes on your machine, in seconds, instead of as a half-applied change in a customer's environment.
 
@@ -13,7 +13,7 @@ There are three things you might want to validate, and `validate` has a mode for
 | Mode | Flag | Network | What it's for |
 |---|---|---|---|
 | File | `-f <file>` | Offline | Check a single YAML file of any supported kind |
-| Directory | `--dir <path>` | Offline | Cross-check a whole folder of resources before `apply --dir` |
+| Directory | `--dir <path>` | Offline (online with `--remote`) | Cross-check a whole folder of resources before `apply --dir` |
 | Workflow | `--workflow <nameCode>` | Online | Run the production-readiness checklist against a live workflow |
 
 ## File mode — one file, offline
@@ -53,14 +53,18 @@ Under the hood, up to three layers of checking run — but only the first applie
 | Layer | What it checks | Applies to | How to skip |
 |---|---|---|---|
 | Structure (Zod) | Types, required fields, enums | **All kinds** | Always on |
-| Semantic | Per-type rules (a `property` question's `filters` and a jobTitle `jobs` must be lists, a `survey` question needs a non-empty `surveyCode`), `function run()` in exec hooks, buttons in the wrong stage, deprecated fields | **Survey only** | `--skip-semantic-validation` |
+| Semantic | Per-type rules (a `property` question's `filters`, each filter's `tree.filter` and `creation.permissions`, and a jobTitle `jobs` must be lists, a `survey` question needs a non-empty `surveyCode`), `function run()` in exec hooks, buttons in the wrong stage, deprecated fields | **Survey only** | `--skip-semantic-validation` |
 | Remote | Identifier uniqueness across the company, and that the referenced PropertyTypes, JobTitles, Properties and `survey`-question surveys exist (with a warning for an inactive embedded survey); on a **Workflow**, the `data` entries each bot stage's type requires — warnings only | **Survey**, and Workflow bot stages | Needs `--remote` + `-c <profile>` |
 
-Non-Survey kinds get the structural (Zod) layer only — plus, for a Workflow under `--remote`, the bot-stage check. Remote checks reach the API, so they require a profile — and `--remote` can't be combined with `--dir`:
+Non-Survey kinds get the structural (Zod) layer only — plus, for a Workflow under `--remote`, the bot-stage check. Remote checks reach the API, so they require a profile:
 
 ```bash
 cotctl validate -f my-survey.yaml --remote -c acme
 ```
+
+**Some checks run whatever the flags say.** Since 0.15.0, `validate` refuses — in both survey formats, and with `--skip-semantic-validation` too — a `subtype` the server does not accept on a `textinput`, `textnumber`, `listquestion` or `datetime` question or table column, and `dependsOn`, `showWhen` or `resetIdentifiers` at the root of a table column. It also refuses an `id` that is not a 24-character hex ObjectId — `id: ""` included — on an AccessRole, Property, PropertyType, Survey, User or Workflow, `partial: true` fragments too. See [Question types](../resources/surveys/question-types.md) and [Logic & validation](../resources/surveys/logic-and-validation.md) for the survey rules.
+
+**Warnings never change the exit code.** A survey also gets warnings that do not refuse the file: a `showWhen` the webclient cannot honour (empty, or with more than one entry), an `exec.onChange`, `exec.presave` or `exec.filter` stage, which the webclient never runs, `subtype: long_text` on a `textinput`, and a table column's `context` or hooks that a cell cannot use.
 
 **Since 0.12.0 the semantic layer also runs in directory mode**, which it did not before. See the warning under *Directory mode* below: a folder that passed clean can start failing, and the failure was always there.
 
@@ -131,6 +135,16 @@ Results: 11 PASS, 0 WARN, 0 FAIL — ready to apply
 
 Add `--json` if you want to consume the result in a script.
 
+### Adding the remote checks: `--dir --remote`
+
+Since **0.15.0**, `--dir` takes `--remote` (with `-c <profile>`), which used to exit `1`. After the offline checks, it runs the same remote checks `validate -f --remote` runs on every Survey and Workflow that passed them; a `partial: true` Workflow fragment is not checked remotely.
+
+```bash
+cotctl validate --dir ordenes-compra/ --remote -c acme
+```
+
+Its results are reported in a `Remote` section and count in the verdict: a remote FAIL exits `1`. An API error on one Survey is reported as that Survey's FAIL, and the documents after it are still checked; an expired session or a missing profile stops the run when the folder holds a Survey; with only Workflows, the bot-stage check is reported as not run. When no document was checked remotely, the `Remote` section says why. Under `--json` the results arrive in a `remoteResults` key, present only with `--remote`, and count in `summary`.
+
 ## Workflow mode — production readiness, online
 
 Once a workflow is live, this mode runs the **Marcha Blanca** (go-live) checklist against it. It's an online check, so it needs a profile:
@@ -154,7 +168,19 @@ cotctl validate --workflow ordenes_compra --section nomenclature -c prod
 Results: 13 PASS, 1 WARN, 0 FAIL — production ready
 ```
 
+**Which forms are checked.** A form is linked to the Workflow when the Workflow references it — a StartForm's `requiredSurvey`, a transition's `requiredSurvey`, a State's `surveyTriggers` — or when its `permissionsV2` grant one of the flow's TaskGroup permissions; a form linked both ways counts once. Since **0.15.0** both kinds count (before, only the second did, so a Workflow wired through its States reported `No forms linked to this workflow`), and the PASS of `Form codes follow {flow}_{type}_{desc}` names the forms it checked. A new check, `Referenced forms exist and are active`, warns, listing every referenced form the survey listing does not return — a deleted or inactive survey — by the reference as the Workflow stores it.
+
+**The flow code.** The naming checks on the flow code prefix, form codes, PropertyType codes and Property codes read the flow code from the state machine's `{code}_estados` PropertyType, so a flow fresh out of `workflows scaffold --name ordenes-compra --code oc` is checked against `oc`. When that PropertyType carries no such code — a flow built in the webclient names it `wf_<hex>_…` — they fall back to the segment of the `nameCode` before its first underscore. `Flow code prefix (2-8 chars)` applies the [`--code` rule](./scaffolding.md) of `workflows scaffold`: 2 to 8 characters, a lowercase letter, then lowercase letters or digits.
+
 Checks are graded **WARN** (a recommendation) or **FAIL** (a real problem). The command exits `0` when everything passes or only warns, and `1` when at least one check fails — which is exactly what you want as a gate in a pipeline.
+
+<div className="alert alert--warning">
+
+**Since 0.15.0, a Workflow that used to pass can fail.** Checking the referenced forms means `Manager in access roles of all forms` and `_ctrl fields hidden in forms` can fail on a form they never saw — a new FAIL there is a finding the command used to miss. And a survey listing that fails no longer reads as no linked forms: every check that reads the forms FAILs with `Not checked — survey listing failed: …`, which is about the listing, not the Workflow — re-run once the listing answers. Both reach the exit code, with or without `--json`. Also: in `--json`, N1 is now named `Flow code prefix (2-8 chars)` instead of `(2-4 chars)`, so a script should pick a check by its `id`, which does not change.
+
+</div>
+
+A `--workflow` code that names a Group that is not configured as a Workflow says so, with the message `workflows get` gives, instead of a raw `API Error 404`; it still exits `1`.
 
 <div className="alert alert--info">
 

@@ -4,7 +4,7 @@ sidebar_label: Property types
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/property-types.ts, src/schemas/property-type.schema.ts, src/resources/property-type.resource.ts, docs/property-types/ @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/property-types.ts, src/schemas/property-type.schema.ts, src/resources/property-type.resource.ts, docs/property-types/ @ a9168d68 (2026-10-23) -->
 
 A **property type** is a schema — it defines the shape of a class of data. Its list of `schemaNodes` are the fields; each [property](./properties.md) of that type fills those fields in. If a property type is a table definition, a property is a row. This page is the deep reference for the type side and the `cotctl property-types` command; for the type-vs-instance mental model and the property side, start with [Properties & types](./properties.md).
 
@@ -169,6 +169,8 @@ cotctl property-types deactivate location
 ```
 
 `apply` takes `-f/--file` (required), `--dry-run`, and `-y/--yes`, and handles multi-document files. There's no delete — `deactivate` (setting `isActive: false`) is the removal path.
+
+Since 0.15.0, `export` leaves out a node's `min`, `max`, `arrayMin` and `arrayMax` when they are stored as `null` — and `validators` when nothing is left — so the exported file passes `validate`; `get` no longer prints `min: null`, `max: null` or `default: null`. Applying property types is unchanged.
 
 <div className="alert alert--warning">
 

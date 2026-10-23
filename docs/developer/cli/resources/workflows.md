@@ -4,7 +4,7 @@ sidebar_label: Workflows
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ a9168d68 (2026-10-23) -->
 
 A **workflow** models a process: a task that moves through a series of states, from creation to closure. Workflows are the most powerful — and the most structured — resource in Cotalker. You rarely write one from scratch: [`cotctl workflows scaffold`](../commands/scaffolding.md) generates a correct skeleton, and this page explains what that skeleton contains so you can customize it with confidence.
 
@@ -46,7 +46,7 @@ The schema defines these top-level fields:
 | Field | Required | Notes |
 |---|---|---|
 | `kind` | Yes | Always `Workflow` |
-| `nameCode` | Yes | Unique per company. **Immutable after creation.** Min 3 chars, `^[a-z]+([_a-z0-9]+)*$` |
+| `nameCode` | Yes | Unique per company. **Immutable after creation.** Min 3 chars, `^[a-z][_a-z0-9]*$` |
 | `nameDisplay` | No | Display name. If omitted, apply runs in "SM-only mode" (see below) |
 | `nameTranslations` | No | `es` / `en` / `pt` / `fr` |
 | `color`, `icon` | No | Display appearance |
@@ -150,7 +150,7 @@ This is the distinction to get right, and it is the same one [Merge semantics](.
 | `allowedExtensions: []` | **Every** accepted extension is removed |
 | `defaultSelectedTaskTab: null` | The setting is cleared |
 
-A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose — from `workflows apply` and, since 0.14.0, from the unified `apply` as well.
+A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose — from `workflows apply` and, since 0.14.0, from the unified `apply` as well. Since 0.15.0 it also lists a declared `cardLabels` equal to the stored one as `preserved`, so the diff alone shows that the labels survive the apply; the entry counts in the headline's `preserved` and reaches `--json` as a `diff[]` entry with `field: "dynamicPropertyTypes"` and `kind: "preserved"`, while the state machine still reads `no-op`.
 
 #### What `validate --dir` checks, and what `export` warns about
 

@@ -181,7 +181,7 @@ cotctl bots apply -f bot.yaml -y
 
 <div className="alert alert--info">
 
-**No `deactivate`, `test`, or `logs`.** There's no `cotctl bots deactivate` (soft-delete with `isActive: false` instead), no `cotctl bots test`, and no `cotctl bots logs` — the backend has no consolidated endpoints for the latter two yet.
+**No `deactivate`, `test`, or `logs` subcommand.** There's no `cotctl bots deactivate` (soft-delete with `isActive: false` instead) and no `cotctl bots test` — the backend has no consolidated endpoint for it yet. There's no `cotctl bots logs` either: a bot's runs are read with [`cotctl logs`](../commands/logs.md), for example `cotctl logs list --bot "<bot name>" --since 24h`.
 
 </div>
 
