@@ -4,7 +4,7 @@ sidebar_label: Overview
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/index.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/index.ts @ a9168d68 (2026-10-23) -->
 
 <span className="hero__title">Cotalker CLI — cotctl</span>
 <br/>
@@ -63,6 +63,7 @@ On top of the resource groups sit the commands that operate on them and the tool
 | `cotctl login` / `cotctl logout` / `cotctl profile` | Connect to an environment, revoke access, and manage saved profiles |
 | `cotctl apply` | Create or update resources from YAML (single file or a whole directory) |
 | `cotctl validate` | Check YAML — and live workflows — before you deploy |
+| `cotctl logs` | Read what a routine did when it ran: list the runs and download their logs as JSON (see [logs](./commands/logs.md)) |
 | `cotctl skills` / `cotctl mcp` | Install the Claude Code Skills and connect the documentation RAG for [AI-assisted authoring](./ai-authoring.md) |
 | `cotctl update` | Update `cotctl` to the latest version — it also checks before every command, from 0.14.0 (see [update](./commands/update.md)) |
 
@@ -98,7 +99,7 @@ We recommend reading the first three pages in order — they get you set up and 
 1. [**Installation**](./installation.md) — get `cotctl` onto your machine and confirm it works.
 2. [**Authentication**](./authentication.md) — connect to an environment and understand profiles and the all-important `-c` flag.
 3. [**Practice in a demo company**](./demo-company.md) — set up a safe, non-production environment so your first real use case isn't a customer's live company.
-4. [**Commands**](./commands/apply.md) — the day-to-day verbs: `apply`, `validate`, exporting/importing, and scaffolding.
+4. [**Commands**](./commands/apply.md) — the day-to-day verbs: `apply`, `validate`, exporting/importing, scaffolding, and reading run logs.
 
 Then reach for these as you need them:
 

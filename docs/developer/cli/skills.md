@@ -4,7 +4,7 @@ sidebar_label: Skills
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/skills.ts, src/skills/index.ts @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/skills.ts, src/skills/index.ts @ a9168d68 (2026-10-23) -->
 
 A **Skill** is an installable package that gives the Claude Code AI agent specialized knowledge and tools for a specific area. `cotctl` ships a set of Skills — one per resource type — that turn a general-purpose agent into a Cotalker authoring specialist. This page is the reference for the `cotctl skills` command that manages them. For the bigger picture of how Skills fit with the RAG and the agent, see [AI-assisted authoring](./ai-authoring.md).
 
@@ -55,6 +55,7 @@ Each Skill specializes the agent in one resource area:
 | `cotctl-routines` | Creating, editing, listing, exporting, and applying routines (PBScripts) |
 | `cotctl-bots` | Creating, managing, exporting, and applying Bot admin (slash-command) YAML |
 | `cotctl-webhooks` | Creating, editing, exporting, applying, testing, and deactivating webhooks (event subscriptions) |
+| `cotctl-logs` | Reading what a routine did when it ran — listing runs and downloading their logs with [`cotctl logs`](./commands/logs.md) |
 | `cotctl-apply` | Applying resources to Cotalker environments |
 | `cotctl-export` | Exporting and querying resources |
 | `cotalker-docs` | General knowledge of the Cotalker platform |
@@ -67,7 +68,7 @@ cotctl skills install --all --local
 
 <div className="alert alert--info">
 
-**The Skills don't update with `cotctl`.** Installing writes a copy of the Skills built into the `cotctl` you ran, and nothing refreshes that copy afterwards — not the automatic update, not `cotctl update`. After moving to a new version, run `cotctl skills install` again in the same scope to bring the Skills in line with it. The 0.14.0 Skills, for example, are the first to describe `partial: true` documents and the 0.14.0 `file://` rules.
+**The Skills don't update with `cotctl`.** Installing writes a copy of the Skills built into the `cotctl` you ran, and nothing refreshes that copy afterwards — not the automatic update, not `cotctl update`. After moving to a new version, run `cotctl skills install` again in the same scope to bring the Skills in line with it. The 0.14.0 Skills, for example, are the first to describe `partial: true` documents and the 0.14.0 `file://` rules; the 0.15.0 set adds `cotctl-logs`, and its `cotctl-routines` and `cotctl-bots` point to `cotctl logs` for a routine's or a bot's runs.
 
 </div>
 

@@ -4,7 +4,7 @@ sidebar_label: Routines
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/routines.ts, src/schemas/routine.schema.ts, src/resources/pbscript.resource.ts, docs/routines/ @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/routines.ts, src/schemas/routine.schema.ts, src/resources/pbscript.resource.ts, docs/routines/ @ a9168d68 (2026-10-23) -->
 
 A **routine** (a PBScript, or *rutina*) is a reusable automation promoted to a first-class resource. It's the same automation graph you'd embed inline in a workflow — a `start` stage and a list of `stages[]` — but with its own `code`, `display`, and declared inputs, living in its own collection. Once a routine exists, any [bot](./bots.md), [SLA](./slas.md), or [schedule](./schedules.md) can invoke it from a stage by referencing its `code`. Think of routines as the shared library layer of the automation model.
 
@@ -125,6 +125,8 @@ cotctl routines test rutina_saludo_simple --context ctx.json
 
 `apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, and `--allow-script-bots` (required when the body has a `PBScript`, `CCJS` or `ESMCode` stage), and handles multi-document files.
 
+`get`, `export` and `test` look up exactly the code they are given, and report a routine whose code is not that one as not found. (Before 0.15.0 a code containing `#`, `?`, `/`, `\` or `%` reached the request URL unencoded and could resolve another routine: `routines test 'daily#x' -y` ran `daily`.)
+
 <div className="alert alert--info">
 
 **Since 0.14.0, reading a routine by its `code` needs `admin-pbscripts-read`.** `cotctl` now reads it through the endpoint the webclient uses, which checks that permission — so `routines get`, `routines export`, `routines test`, and `routines apply` or `apply --dir` of a Routine without `id` that already exists fail with `API Error 403` (exit `1`) for a profile without it. It's the permission `routines list` already needed; writing also needs `admin-pbscripts-write`.
@@ -133,7 +135,7 @@ cotctl routines test rutina_saludo_simple --context ctx.json
 
 <div className="alert alert--warning">
 
-**`routines test` runs the routine for real.** There is no simulation mode: `test` executes the routine immediately with all its side effects (it posts messages, creates tasks, writes properties, fires webhooks). It always prints a warning banner, and without `-y` it makes you retype the routine's `code` to confirm. `--context <file>` supplies the input JSON; `--dry-run` prints the payload that would be sent without calling the backend. Reserve `-y` for CI and scripts. Inspect the run afterward with `cotctl schedules logs <TEST_...>` — the backend records each test as a schedule.
+**`routines test` runs the routine for real.** There is no simulation mode: `test` executes the routine immediately with all its side effects (it posts messages, creates tasks, writes properties, fires webhooks). It always prints a warning banner, and without `-y` it makes you retype the routine's `code` to confirm. `--context <file>` supplies the input JSON; `--dry-run` prints the payload that would be sent without calling the backend. Reserve `-y` for CI and scripts. Inspect the run afterward with `cotctl schedules logs <TEST_...>` — the backend records each test as a schedule — or download its log with [`cotctl logs`](../commands/logs.md) `pull --owner TEST`.
 
 </div>
 
@@ -156,7 +158,7 @@ cotctl routines apply -f rutina_obsoleta.yaml -c acme --dry-run
 cotctl routines apply -f rutina_obsoleta.yaml -c acme -y
 ```
 
-There's no delete endpoint, and no `cotctl routines logs` command.
+There's no delete endpoint, and no `cotctl routines logs` subcommand: to read what a routine did when it ran — the context it received, what each stage returned, its error — use [`cotctl logs`](../commands/logs.md), for example `cotctl logs pull --routine <code> --since 24h`.
 
 ## Apply order
 

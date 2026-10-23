@@ -4,7 +4,7 @@ sidebar_label: Schedules
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/schedules.ts, src/schemas/schedule.schema.ts, src/resources/schedule.resource.ts, src/lib/validate-cron.ts, docs/schedules/ @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/schedules.ts, src/schemas/schedule.schema.ts, src/resources/schedule.resource.ts, src/lib/validate-cron.ts, docs/schedules/ @ a9168d68 (2026-10-23) -->
 
 A **schedule** runs an automation at a time you choose — once, or on a recurring cron. It pairs a *when* (a one-shot `time`, or a `cron` expression with a timezone) with a *what* (`body`, an embedded automation graph). The `body` is the same ParametrizedBot shape used everywhere else, so a schedule can post a message, run a report, or invoke a standalone [routine](./routines.md) on a cadence.
 
@@ -92,7 +92,9 @@ cotctl schedules deactivate sched_daily_digest
 cotctl schedules logs sched_daily_digest --limit 50
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage) and — new in 0.14.0 — `--json`, which prints one JSON object per result with `statusCall` when the apply relaunches or stops a cron. It checks each stage's bot `version` against the live catalog and refuses a bad one with exit `2`, `--dry-run` included, before anything is written (since 0.14.0; it used to fail only when the schedule ran). `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …).
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage) and — new in 0.14.0 — `--json`, which prints one JSON object per result with `statusCall` when the apply relaunches or stops a cron. It checks each stage's bot `version` against the live catalog and refuses a bad one with exit `2`, `--dry-run` included, before anything is written (since 0.14.0; it used to fail only when the schedule ran). `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …). To download what a run actually did — its context, each stage's result, its error — as JSON files, or to filter runs by bot, workflow, State, SLA or routine, use [`cotctl logs`](../commands/logs.md).
+
+`get`, `export`, `activate`, `deactivate` and `logs` find a schedule whose code contains `#` — as the codes the platform gives the schedules of SLAs and State changes do. (Before 0.15.0 the part after the `#` never reached the server, so they answered `Schedule "…" not found` for a schedule that exists.)
 
 ### Reading a failed run
 
@@ -108,7 +110,7 @@ The error line now also appears without `-v` whenever there is one; `-v` is what
 
 **`--op failed` cannot find a stage that failed inside the bot.** The scheduler marks the *run* as failed only when the run itself fails. A schedule whose PBScript throws every night still records its runs as `executed`, so a health check built on `--op failed` reports green through a schedule that has not worked in weeks.
 
-Until that changes, read the runs rather than filtering them: `cotctl schedules logs <code> -c <profile> -v` and look for the error text, or consume `--json` and filter on the error field yourself. The gap is in the backend, not in `cotctl`.
+Until that changes, read the runs rather than filtering them: `cotctl schedules logs <code> -c <profile> -v` and look for the error text, consume `--json` and filter on the error field yourself, or download the runs' errors with `cotctl logs pull --schedule <code> --parts error`. The gap is in the backend, not in `cotctl`.
 
 </div>
 
@@ -119,6 +121,8 @@ Until that changes, read the runs rather than filtering them: `cotctl schedules 
 </div>
 
 ## Activation and status
+
+**`activate` and `deactivate` name the schedule's owner** in their confirmation. When the owner is not `AdminSchedules` — the schedules the platform creates for SLAs, State changes and bots — a warning also goes to stderr before the command acts, even with `-y`: those schedules are managed by the backend, so make sure relaunching or canceling one is intentional. Nothing is refused, and the exit codes don't change.
 
 <div className="alert alert--primary">
 
