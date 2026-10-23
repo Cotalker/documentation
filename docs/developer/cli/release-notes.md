@@ -4,7 +4,7 @@ sidebar_label: Release notes
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/CHANGELOG.md @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/CHANGELOG.md @ a9168d6 (2026-10-23) -->
 
 What changed in each published release of `cotctl`, newest first — with the migration steps you need when something breaks.
 
@@ -27,6 +27,172 @@ npm install -g @cotctl/cli@latest
 </div>
 
 <!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
+
+## 0.15.0 — 2026-10-23
+
+The headline is **`cotctl logs`, a new command group that reads what a Routine did when it ran** — the context the run received, the configuration it ran with, what each stage returned and its error — and saves it as JSON files, without copying anything out of the webclient. It needs backend `release-5.13.0` or later in the environment you point it at.
+
+The rest of the release makes survey validation agree with what the server and the webclient accept, keeps a survey's stored placeholders and input labels across re-applies, makes `validate --workflow` check the forms a Workflow is actually wired to, and makes `cotctl login` and `COTCTL_TOKEN` accept only ApiTokens. Most of the nine breaking changes are YAML that used to pass and is now refused before anything is written. The *Migration* checklist at the end of this section lists everything to do.
+
+### ⚠ Breaking changes
+
+Grouped by theme. Each group says who it affects and what to do.
+
+#### Survey YAML that validation now refuses
+
+Each of these used to pass `validate`. It now fails `validate` with exit `1`, and every apply, dry runs included, refuses it with exit `2` before anything is written.
+
+- **A `subtype` its question type does not take**, on a `textinput`, `textnumber`, `listquestion` or `datetime` question or `+table` column, in both formats. It used to pass: an unchanged export of a survey that stores one — `short_text` on a `textnumber`, say — re-applied with exit `0`, and an apply with something to write failed with the server's `500`. The error lists the values the type takes, and `--skip-semantic-validation` does not turn the check off. The one exception is `long_text` on a `textinput`, a legacy value older surveys store: it is accepted, with a warning, and sent as `short_text`, so the first apply of an unchanged survey that stores it writes `short_text` (`Would UPDATE` in a dry run) and the ones after it change nothing.
+- **A `property` question's `tree.filter` or `creation.permissions` that is not a list.** Either key used to be refused only when empty, so a non-empty string went through. It is a semantic check, so `--skip-semantic-validation` turns it off. The other way round, an empty list is now accepted (see *Fixed*).
+- **`dependsOn`, `showWhen` or `resetIdentifiers` at the root of a `+table` column**, in both formats. They passed, and the apply dropped them without a word, so the condition never reached the server. No export writes them there.
+
+- **Who this affects:** anyone with hand-written survey YAML, and anyone re-applying the export of a survey that stores a `subtype` the server does not accept.
+- **What to do:**
+  - Set each `subtype` to a value its type takes — `short_text` on a `textinput`; `number`, `integer` or `rating` on a `textnumber`; `list` or `toggle` on a `listquestion`; `absolute`, `relative` or `createdAt` on a `datetime` — or remove the key, which is always valid.
+  - A `datetime` with a `subtype` also needs a numeric `min` and `max`, which neither `validate` nor `apply` checks: without them the webclient refuses every answer (`absolute`) or accepts a single day (`relative`, `createdAt`). On `relative` and `createdAt` the limits are **seconds** before and after the reference date — copy them from the export of a survey whose limits were set in the webclient. Avoid `absolute`: the webclient refuses every answer even with the limits its own builder saves, so use `relative` or `createdAt`, or leave `subtype` out.
+  - Write `tree.filter` and `creation.permissions` as lists: `filter: [<value>]` instead of `filter: <value>`, and the same for `permissions`.
+  - Remove `dependsOn`, `showWhen` and `resetIdentifiers` from the column — the apply never sent them, so the stored survey does not change. A column takes no condition at all (its `conditionalDisplay`, or `command` in the raw format, is refused too): put the condition on the `table` question itself, in its own `conditionalDisplay`.
+
+#### What a survey update writes
+
+- **An update in the simplified format keeps each question's stored `display`.** When `surveys apply`, `apply -f` or `apply -d` updates a survey, each question and `+table` column that keeps its identifier and its type keeps its stored `display` — a field's placeholder, the labels of a `datetime`'s inputs — where the update used to send its type's default: an empty placeholder, and the default Spanish labels on a `datetime`. So an unchanged YAML now writes something different over a survey whose `display` was set in the webclient or by a raw apply; over a survey the simplified format created and nobody edited since, it writes what it wrote before. *Fixed* has the details.
+- **A two-entry chat bubble — a `+text` followed by a question whose type takes a title — is read as that title and its question, whatever the `+text` is called.** A `+text` used to count as a title only when its identifier ended in `_label` or `_<digits>`, or was `labelQuestion` followed by its question's identifier. Over a bubble like `[+text mileageHeading, textnumber mileage]`, the same simplified YAML now rebuilds the stored title in place, keeping its identifier, where it used to create `mileage_label` and deactivate the stored `+text`. So it writes something different, and `surveys apply --dry-run --fail-on-destructive` no longer exits `2` on it.
+
+- **Who this affects:** anyone who relied on a re-apply to reset a placeholder or a label, and pipelines gated on `--fail-on-destructive` over surveys with such bubbles.
+- **What to do:** to put a stored `display` back to its type's default, set it in the raw format (`surveys export --format raw`, edit the `display`, apply that file) or in the webclient. `surveys apply --legacy-replace` still sends the default, but it also wipes every field the YAML leaves out. Nothing is needed to keep a survey with such a bubble: a gated pipeline that relied on that exit `2` now gets, at most, a `survey.title-conditions-dropped` warning, when the title stores a condition of its own. A YAML exported earlier, with the title as a `text` question, applies as it did.
+
+#### Record `id`s must be ObjectIds
+
+`validate` and every apply, dry runs included, refuse an `id` that is not a 24-character hex ObjectId on an AccessRole, Property, PropertyType, Survey, User or Workflow, `partial: true` fragments included. The `id` is refused before the record is looked up by it; an apply that reads catalogs first, such as a User's JobTitles and AccessRoles, still reads them. Two cases that passed now fail:
+
+- `id: ""`, which every apply treated as absent;
+- a malformed `id` on a User or a Survey, which fell back to the email or the `code` when the server answered `404`.
+
+The refusal exits with the code its kind gives any refusal, with or without `--dry-run`, through `apply -f`, `apply --dir` and the kind's own `apply`: `1` for an AccessRole, Property, PropertyType or Workflow, `2` for a User or Survey. `validate` exits `1` for every kind.
+
+- **Who this affects:** anyone whose YAML carries an empty `id`, or an `id` copied wrong.
+- **What to do:** remove the `id`, or set it to the record's `_id` as its export writes it — a `# id:` comment for an AccessRole, Property, PropertyType, User or Workflow, and an `id:` field for a Survey.
+
+#### `cotctl login` and `COTCTL_TOKEN` accept only ApiTokens
+
+`cotctl login --token` and `--paste-token` refuse a token they cannot recognize as an ApiToken — one whose `type` claim is missing or is not `api-token`, such as a session JWT copied from the browser, or one without a `company` or an `_id` claim — with exit `1` and before sending it anywhere, where they used to save it as an ApiToken profile. `--allow-unverified-company` does not waive the `company` claim. `COTCTL_TOKEN` applies the same check, so it now also refuses a token without a `type` or an `_id` claim.
+
+- **Who this affects:** anyone who logs in with a token copied from the browser, and pipelines that pass a token through `COTCTL_TOKEN`.
+- **What to do:** mint an ApiToken with `cotctl login`, or have an admin issue one from the webclient's ApiTokens panel, and use that one instead. A `COTCTL_TOKEN` without a `type` claim may be a session JWT, which expires within 7 days, or an ApiToken old enough to predate the claim — replace it either way. A profile saved earlier from a session JWT is not checked again: it stops working when that session expires, and `cotctl login` replaces it.
+
+#### `validate --workflow`
+
+- **It can now fail, and exit `1`, on a Workflow it used to report as production ready.** It checks the forms the Workflow references, not only those its permissions reach (see *Fixed*), so the two form checks that fail rather than warn — "Manager in access roles of all forms" and "`_ctrl` fields hidden in forms" — can fail on a form they never saw: one without the flow's Manager permissions in its `permissionsV2`, or with an editable `_ctrl` field. And a survey listing that fails no longer reads as "no linked forms": every form check fails with `Not checked — survey listing failed`. Both reach the exit code, with or without `--json`.
+- **The flow-code check is now named `Flow code prefix (2-8 chars)`**, where it said `(2-4 chars)`: it follows the `--code` rule of `workflows scaffold` (see *Changed*). The `--json` shape and the exit codes do not change, but a script that picks that check by its `name` no longer finds it.
+
+- **Who this affects:** pipelines gated on `validate --workflow`, and scripts that read its `--json`.
+- **What to do:** a new FAIL on a linked form is a finding the command used to miss — fix the form as the check says. A FAIL that reads `Not checked — survey listing failed` is about the listing, not the Workflow: re-run once the listing answers. No flag brings back the old result. In `--json`, pick a check by its `id` (`N1` for the flow-code check), which does not change, rather than by its `name`.
+
+#### Exit codes
+
+These cases change:
+
+| Command | Case | Was | Now |
+|---|---|---|---|
+| `validate`, every apply | A `subtype` its question type does not take | `0` from `validate`; an apply with something to write failed with the server's `500` | `1` from `validate`; `2` from every apply, before anything is written |
+| `validate`, every apply | A `property` question's `tree.filter` or `creation.permissions` written as a non-empty string | `0` | `1` from `validate`; `2` from every apply |
+| `validate`, every apply | The same keys written as an empty list | `1` from `validate`; `2` from every apply | `0`, accepted |
+| `validate`, every apply | `dependsOn`, `showWhen` or `resetIdentifiers` at the root of a `+table` column | `0`, and the apply dropped them | `1` from `validate`; `2` from every apply |
+| `validate` | An `id` that is not a 24-character hex ObjectId, `id: ""` included | `0` | `1` |
+| Every apply, dry runs included | `id: ""` on an AccessRole, Property, PropertyType, Survey, User or Workflow, or a malformed `id` on a User or Survey | `0` | `1` for an AccessRole, Property, PropertyType or Workflow; `2` for a User or Survey |
+| `login --token`, `login --paste-token` | A token that is not an ApiToken, such as a session JWT | `0`, saved as a profile | `1`, nothing saved |
+| `validate --workflow` | A referenced form fails a form check, or the survey listing fails | `0` | `1` |
+| `validate --dir --remote` | Any run | `1`, the combination was refused | `0`, or `1` when an offline or remote check fails |
+| `surveys apply --dry-run --fail-on-destructive` | A two-entry bubble whose `+text` title did not follow the old naming | `2` | `0` |
+| `surveys export` | A chat bubble the survey read returns empty | `2` | `0`, the bubble skipped with a warning |
+| `schedules get`, `export`, `activate`, `deactivate`, `logs` | A Schedule whose code contains `#` | `1`, `not found` | `0` |
+
+A malformed, non-empty `id` on an AccessRole, Property, PropertyType or Workflow already failed with `1`, as not found; it is now refused before the lookup, with the same code.
+
+The new `cotctl logs` commands have exit codes of their own: `3` when some log was not delivered (not the partial write it means on `apply`), and `4` when the environment's backend cannot serve the logs yet. See *Added*.
+
+- **Who this affects:** any script or pipeline that branches on `$?`.
+- **What to do:** re-check each row your scripts rely on. Even a pipeline that only tests for a non-zero exit is affected by the rows whose old or new code is `0`.
+
+### Added
+
+- **`cotctl logs`: read what a Routine did when it ran, as JSON files.** The scheduler keeps one log per run for 7 days: the context the run received, the configuration it ran with, what each stage returned and its error. The commands need backend `release-5.13.0` or later, and a profile whose user has the `admin-schedules-read` permission, or one that includes it, such as `admin-schedules-write`.
+  - **`logs list`** lists the runs that match the webclient's filters, newest first, a page at a time: `--workflow` (alone or with `--state` or `--sla`), `--bot`, `--schedule`, `--routine`, `--tag-value`, `--owner`, `--op`, and the dates `--from`, `--to` and `--since`. It prints a table, or with `--json` the page and the count of every matching run.
+  - **`logs get <logId...>`** downloads logs by id, one file per log, named after the Schedule, the run's start in UTC and the log id. `--stdout` prints the logs instead of writing files.
+  - **`logs pull`** downloads every run the same filters match. Beyond one page of 100 runs it asks first, with an estimate of the time it takes; `--yes` skips the question, and with no terminal to ask on, the run stops with exit `2` instead of waiting. It refuses a pull that matches more than `--max` runs, 500 by default; raise `--max` to download more.
+  - **`--parts`** downloads only part of each log: `log`, `context`, `routine`, `results`, `error`, or one stage with `stage:<key>`.
+  - **A log of 2 MiB or more**, which the scheduler keeps in S3, arrives like any other. When its download URL has expired, the log is reported as expired — with the instant the URL stopped working, when the URL carries one — and no file is written for it.
+  - **Log files are owner-only (`0600`) on Linux and macOS**, a replaced copy included: a log carries what its run received and returned.
+  - **For scripts**, `--json` on `get` and `pull` prints a manifest of each file written and of each log missing, expired or failed. Exit `3` means some log was not delivered, and `4` that the environment's backend has no log reader yet, or cannot filter by Routine — both arrive with backend `release-5.13.0`, which the no-reader message names.
+  - **`--routine` cannot see every run, and says so each time it is used**: an interrupted run, a Routine called by another Routine, and a run of `routines test`, which `--owner TEST` lists instead.
+  - **Known limitation:** an `--owner` with no `--bot`, `--workflow` or `--tag-value` beside it can answer `504` in a company with a very large number of Schedules of that owner. A shorter date window does not help; one of those three filters does.
+  - **This is not the audit log.** Who changed a Routine's configuration, and when, is a different record, and the command name `audit-logs` is reserved for it.
+  - **A new embedded skill, `cotctl-logs`**, lets an agent use these commands: `cotctl skills install cotctl-logs`. `schedules logs <code>` still shows the recent log entries of one Schedule in the terminal; `cotctl logs` finds runs across Schedules — by Workflow, Bot, Routine and the other filters — and saves each run's full log as a file.
+
+- **`validate --dir --remote`** runs the remote checks `validate --file --remote` runs, on every Survey and Workflow that passed the offline checks; a `partial: true` Workflow fragment is not checked remotely. The combination used to exit `1`. `--json` gains a `remoteResults` key, present only with `--remote`; its results count in `summary`, and a FAIL exits `1`. An API error on a Survey is reported as that Survey's FAIL and the documents after it are still checked; an expired session or a missing profile stops the run.
+- **`validate --workflow` warns about each form the Workflow references that the survey listing does not return** — a deleted or inactive survey — in a new check, "Referenced forms exist and are active", which names the reference as the Workflow stores it: an `_id` or a code.
+- **New survey warnings** from `validate` and every survey apply, dry runs included. None of them refuses a file or changes the exit code, and `-q` silences them on `apply`:
+  - a `showWhen` the webclient cannot honor: an empty one, which hides the question for good, and one with more than one entry, of which the webclient reads only the first (see *Docs*). A raw `command.values` on a question with an `isCommanded` gets the same warnings. The server stores both shapes, so neither is refused;
+  - an `exec.onChange`, `exec.presave` or `exec.filter` stage, which the webclient never runs. In the raw format it is sent and stored as written; in the simplified format it is never sent, so an apply also removes it from a question that stores it;
+  - `subtype: long_text` on a `textinput`, which cotctl sends as `short_text`, as the webclient's survey builder does when it loads the question. Write `short_text` to silence it.
+- **Two new `ruleId`s in the `--json` output of a survey dry run:** `survey.empty-chats-deactivated`, when the apply deactivates a SurveyChat the YAML cannot write — a question bubble the survey read returns empty, or a text bubble the simplified export leaves out, which a re-apply used to deactivate with no line in the dry run — and `survey.title-conditions-dropped`, when it drops a title's own condition. Both are warnings: `--fail-on-destructive` exits `2` only on a `danger` finding.
+
+### Changed
+
+- **The confirmation of `schedules activate` and `schedules deactivate` names the Schedule's owner.** When the owner is not `AdminSchedules` — as with the Schedules the platform creates for SLAs and State changes — a warning also goes to stderr before the command acts, with `-y` too. Nothing is refused and the exit codes do not change.
+- **`workflows scaffold --code` takes 2 to 8 characters, with digits after the first letter** (`qa011`): a lowercase letter, then lowercase letters or digits. It took 2 to 4 lowercase letters, and every code it took before is still accepted.
+- **`validate --workflow` checks a flow against the code it was scaffolded with.** The flow-code check and the checks on form, PropertyType and Property code prefixes read the flow code from the states PropertyType that `workflows scaffold` generates, so a flow fresh out of `workflows scaffold --name purchase-orders --code po` no longer warns that its codes lack the prefix `purchase`. When that PropertyType carries no such code — as in a flow built in the webclient — they fall back to the part of the `nameCode` before its first underscore, as before. The flow-code check applies the `--code` rule, so a prefix of 5 to 8 characters, or one with digits, now passes. These checks only warn, so the exit code does not change.
+- **`workflows scaffold --output-dir` accepts an existing directory.** It refuses — exit `1`, naming the files and writing nothing — only when one of the six files it generates is already there; it used to refuse any existing directory, even an empty one. The `--states` help now shows display names as typed (`"Approved,In purchase"`), which is what the flag has always kept.
+
+### Fixed
+
+- **Lookups that found the wrong record, or none.**
+  - `routines get`, `routines export` and `routines test` look up exactly the code they are given. A code containing `#`, `?`, `/`, `\` or `%` could make the lookup find another routine — `routines test 'daily#x' -y` resolved, and ran, the routine `daily`. The code is now sent encoded, and a Routine with another code than the one requested is now reported as not found.
+  - `schedules get`, `export`, `activate`, `deactivate` and `logs` find a Schedule whose code contains `#`, as the codes the platform gives the Schedules of SLAs and State changes do. They answered `Schedule "…" not found` and exited `1` for a Schedule that exists.
+- **Exports that pass `validate` again.**
+  - `surveys export --format raw` no longer writes `resetIdentifiers: [""]`, nor a reset identifier that names no question of the export. The empty entry the webclient's builder stores becomes `resetIdentifiers: []`, or the `command` is left out when the reset was all it held; an identifier naming a question the survey no longer returns — removed or deactivated — is left out, with a warning, as in the simplified format. The first apply of such an export stores an empty list in place of `[""]`, which changes nothing in the form, and erases the left-out identifiers from the stored reset.
+  - `validate` and every apply accept a `property` question whose `tree.filter` or `creation.permissions` is an empty list — what the webclient saves for a tree with no narrowing, and for inline creation open to every user, and what `surveys export` writes back. `tree.target` is still required.
+  - `property-types export` leaves out `min`, `max`, `arrayMin` and `arrayMax` when they are stored as `null`, and `validators` when nothing is left, so the file passes `validate`. `property-types get` no longer prints `min: null`, `max: null` or `default: null`.
+- **Survey exports that keep more of the survey.**
+  - `surveys export` no longer fails on a chat bubble the survey read returns empty because its questions were deactivated or deleted. It used to exit `2`; the bubble is now skipped with a `SKIPPED` warning that names the SurveyChat an apply of the export deactivates, and the export exits `0`.
+  - The simplified export keeps the question of a `[+text, question]` bubble, with its reset, whatever the `+text` is called. It used to write the `+text` as a `text` question and leave the question out, so the exported YAML of those surveys changes. A title's own condition, help text and `required` are not kept in the simplified format: the export warns about each and points to `--format raw`, and the dry run warns about the condition.
+  - The simplified export warns about a condition operator the simplified format does not accept, such as the `=` older webclient versions stored, and points to `--format raw`. The operator is still written as stored, so `validate` still refuses the file, but the export now says so first.
+- **Re-applying a survey in the simplified format no longer empties a field's placeholder or renames a `datetime`'s labels.** A `textinput`, `textnumber` or `property` question kept the placeholder set in the webclient only until the next apply, and a `datetime`'s labels from the English webclient were replaced with the Spanish defaults. An update now keeps the stored `display`, in `+table` columns too, except where the YAML sets it: a `text` question's `label` and a `listquestion`'s `options[].label` are its whole `display`, and a `gps`, `image`, `file` or `signature` question sends its `label` as the first entry and keeps the stored ones after it. A new question, a changed type, and a `datetime` whose `dateMode` adds or drops the time input get the default. The dry run lists each `display` the update changes and counts each stored one it keeps as `preserved`.
+- **`validate --workflow` and Workflow dry runs.**
+  - `validate --workflow` checks the forms a Workflow is wired to. A form is linked when the Workflow references it — a StartForm's `requiredSurvey`, a transition's `requiredSurvey`, a State's `surveyTriggers` — or when its `permissionsV2` grant one of the flow's TaskGroup permissions, and a form linked both ways counts once. Only the second kind used to count, so a Workflow wired through its States reported `No forms linked to this workflow` and its form checks checked nothing. The form-code check now names the forms it checked, and the survey listing no longer fails on a backend configured with a lower page limit.
+  - A Workflow's dry run lists a declared `cardLabels` equal to the stored one as `preserved`, so the diff alone shows that the labels survive the apply. It counts in the headline's `preserved` and reaches `--json` as one more `diff[]` entry, `field: "dynamicPropertyTypes"` with `kind: "preserved"`.
+- **Script checks on `+table` columns.** The `context` of a column is checked against its row: a sibling column no longer draws a warning, and `responses#parent#X` is looked up in the row. A root question or the table itself in a column's `context`, and a column of another table, get their own warning, since in the cell they resolve empty. A column's `onDisplay`, `onPlay`, `postsave` and `onSubmitSuccess` warn that a cell never runs them, and a column's `preload` no longer draws the missing-`context` warning, since a cell runs it with `src` alone. No exit code changes.
+- **`validate`, dry runs and apply no longer hang on a long `code` with an invalid character near its end** — a Property, JobTitle, Routine, Schedule, SLA or Webhook `code`, a Routine's `dataType[].key`, a Workflow's `nameCode` or a StateMachine's `code`. The same codes are accepted as before, and the errors that quote the pattern now write it `^[a-z][_a-z0-9]*$`.
+- **Credentials and connection.**
+  - The `[cotctl] Credentials from $COTCTL_TOKEN …` line prints after the first accepted response, and never for a refused token. The `EXPIRED at …` line is gone: an expired token stops before it is sent.
+  - A `401` with `COTCTL_TOKEN` names the URL it was sent to and the likely causes — a revoked token, or one from another environment — instead of calling it "expired or revoked".
+  - A trailing `/api` in `--api-url` or `COTCTL_API_URL` is dropped, with a notice. Requests used to go to `/api/api/…` and fail with a `404`.
+  - A response that is not JSON names where its URL came from: `COTCTL_API_URL` or the profile. The error for a command run without `-c` names `COTCTL_TOKEN` and `COTCTL_API_URL`.
+  - `login --token` and `--paste-token` no longer invent an expiry for a token from the ApiTokens panel, which has none: they report `no expiry`, as `COTCTL_TOKEN` does. A profile saved earlier keeps the invented date until the next `cotctl login`.
+- **Messages.**
+  - A Survey's validation messages name a question type the way its YAML writes it: ``columns is only valid on a `type: table` question`` (or `+table` in a `chat[]` YAML) instead of the internal content type, and a refused type change of a saved table column reads in the YAML's own keys — `type: textnumber (subtype: number) → type: textinput`, `dateMode: date → date_time`. What is refused did not change.
+  - A repeated `identifier` in a simplified Survey points at the repeat and names the question that already has it — `questions[2].identifier: Identifier "x" is already used by questions[0] (label "First field")` — where the error named itself.
+  - `validate --workflow` on a Group that is not a Workflow says so, with the message `workflows get` gives, instead of a raw `API Error 404`. It still exits `1`.
+
+### Docs
+
+- **The skills embedded in the CLI describe 0.15.0**: `cotctl logs` and the new `cotctl-logs` skill, what a survey update keeps, the `subtype` values each question type takes, the raw format's round trip, and the `workflows scaffold` rules.
+- **Earlier guidance was corrected on these points** — worth checking if you configured from it:
+  - **Not every `showWhen` entry has to hold.** The webclient reads only the first entry, so a list of them is neither an AND nor an OR: two `eq` entries only ever match the first value, and a numeric range written as a `gte` entry and an `lte` one is only the `gte`. For an OR, write one `op: regex` entry with `|` between the values. `regex` never matches a `textnumber` or a `datetime` answer, so an OR cannot be written on those.
+  - **The raw format does not guarantee a re-apply that changes nothing.** The first apply of a raw export over a survey built in the webclient usually still sends an update (`Would UPDATE` in a dry run), because what the webclient stored differs from what a raw apply writes; from the second apply on, the raw round trip changes nothing. The error that points a failed simplified export to `--format raw` now says this too.
+  - **The `cotctl-routines` and `cotctl-bots` skills point to `cotctl logs`** for a Routine's or a Bot's runs, where they said the backend had no way to read them.
+
+### Migration
+
+1. **Install 0.15.0** — `npm install -g @cotctl/cli@0.15.0`. From 0.14.x, cotctl announces it by itself and, in a terminal, offers to install it (a standalone binary is shown the command instead); in CI or with `-y` it only prints a notice. It never installs a minor version unasked, since one carries breaking changes, and `COTCTL_NO_UPDATE_CHECK=1` turns the check off. In CI, move the pinned version on purpose, after reading the breaking changes above.
+2. **Run `validate --dir` over the directories that hold your Surveys, Workflows, AccessRoles, Properties, PropertyTypes, JobTitles and Users before you move a pipeline to 0.15.0** — it does not recognize the other kinds — and fix what it refuses: a `subtype` its question type does not take, a `tree.filter` or `creation.permissions` that is not a list, a condition at the root of a `+table` column, an `id` that is not a 24-character hex ObjectId. Add `--remote` to run the remote checks on every Survey and Workflow too.
+3. **Give every `datetime` with a `subtype` a numeric `min` and `max`** — seconds on `relative` and `createdAt` — and prefer `relative` or `createdAt` over `absolute`, or leave `subtype` out.
+4. **Replace any token that is not an ApiToken** in `COTCTL_TOKEN` and in `cotctl login --token` or `--paste-token` — a session JWT copied from the browser above all — with one minted by `cotctl login` or issued from the webclient's ApiTokens panel.
+5. **Re-check pipelines gated on `validate --workflow`**: it now checks every form the Workflow references, and in `--json` a check is found by its `id`, not its `name`.
+6. **Re-check pipelines gated on `surveys apply --dry-run --fail-on-destructive`** over surveys whose `+text` titles do not end in `_label`: the dry run no longer exits `2` on them.
+7. **Reset a placeholder or an input label in the raw format or in the webclient**: a simplified re-apply now keeps the stored one.
+8. **Before using `cotctl logs`**, check that the environment runs backend `release-5.13.0` or later, and that the profile's user has `admin-schedules-read`, or a permission that includes it such as `admin-schedules-write`.
+9. **Re-check every branch on `$?`** against the table in *Exit codes*.
 
 ## 0.14.0 — 2026-10-10
 
