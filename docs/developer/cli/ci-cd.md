@@ -196,7 +196,7 @@ Four refusals cross the kinds: **an `id` that is not a 24-character hex ObjectId
 
 It is not a pre-apply signal at all: `surveys export` exits `2` when the simplified format cannot model the survey, and nothing was ever going to be mutated, because the run is a read.
 
-Read inside that command, though, it is unambiguous and it is actionable. It has exactly one meaning — *this survey cannot be expressed in the simplified format* — and exactly one answer: re-run with `--format raw`, which exports the survey as stored. A script wrapping `surveys export` can branch on `2` and retry without reading the message. (An unknown `--format` value is not that: since 0.14.0 it exits `1` before anything is read.)
+Read inside that command, though, it is unambiguous and it is actionable. It has exactly one meaning — *this survey cannot be expressed in the simplified format* — and exactly one answer: re-run with `--format raw`, which exports the survey in its stored shape (see [Export & import](./commands/export-import.md)). A script wrapping `surveys export` can branch on `2` and retry without reading the message. (An unknown `--format` value is not that: since 0.14.0 it exits `1` before anything is read.)
 
 ### One failure whose code depends on the command you entered through
 

@@ -26,7 +26,7 @@ displayed_sidebar: developer
 
 </div>
 
-Every subcommand takes `-c, --company <profile>`, or an environment credential (see [Authentication](../authentication.md)). `cotctl schedules logs <code>` still lists one Schedule's recent runs, with the output scripts already read; `logs list --schedule <code>` is the one that combines with every other filter.
+Every subcommand takes `-c, --company <profile>`, or an environment credential (see [Authentication](../authentication.md)). `cotctl schedules logs <code>` still lists one Schedule's recent runs, with each run's output and error already parsed; `logs list --schedule <code>` is the one that combines with every other filter.
 
 ## `logs list` — find the runs
 
@@ -80,7 +80,7 @@ A log id is 24 hexadecimal characters; a malformed one is refused before any req
 | `--max <n>` | Refuse a run that asks for more than `<n>` distinct logs — an error that gives the total, never a silent cut | `500` |
 | `--concurrency <1-4>` | Batch requests in flight at once | `3` |
 
-A script should always pass `--output-dir`: the current directory of a scheduled job is whoever launched it (`$HOME`, or `/` under cron).
+A script should always pass `--output-dir`: the current directory of a scheduled job is wherever its scheduler starts it (`$HOME` under cron, `/` for a systemd service).
 
 ## `logs pull` — download everything a filter matches
 
@@ -103,7 +103,7 @@ Before reading any log it counts the matching runs over a window frozen at that 
 
 ## Filters
 
-`list` and `pull` take the webclient's filters as flags. Every one but `--op` and the dates can be repeated; repeating a flag widens it (`--owner BOT --owner TEST` lists either owner), and different flags narrow each other.
+`list` and `pull` take the webclient's filters as flags. Every one but `--op`, `--since` and the dates can be repeated; repeating a flag widens it (`--owner BOT --owner TEST` lists either owner), and different flags narrow each other.
 
 | Flag | Takes |
 |---|---|
@@ -114,7 +114,7 @@ Before reading any log it counts the matching runs over a window frozen at that 
 | `--schedule <code>` | A Schedule, by its code — a code with `#`, like those of SLA and State Schedules, works |
 | `--routine <code>` | Runs that ran this Routine, by its code, sent without a lookup (see [Filtering by Routine](#filtering-by-routine)) |
 | `--tag-value <value>` | Any tag value, sent as given — the only way to filter by a Survey trigger, which has no code |
-| `--owner <owner>` | An owner, sent as given: `BOT`, `SM_REQUIRED_SURVEY`, `SM_STATE_SURVEY_TRIGGER`, `SM_STATE_NEXT`, `SM_SLA`, `TEST`, `WEBHOOK`, `AdminSchedules`, `CoreWrapper`, or any other. Replaces the one `--bot`, `--state` or `--sla` imply |
+| `--owner <owner>` | An owner, sent as given: `BOT`, `SM_REQUIRED_SURVEY`, `SM_STATE_SURVEY_TRIGGER`, `SM_STATE_NEXT`, `SM_SLA`, `TEST`, `WEBHOOK`, `AdminSchedules`, `CoreWrapper`, or any other. Replaces the one `--bot`, `--state` or `--sla` imply. `SM_STATE_NEXT` / `SMStateNext`, `SM_STATE_SUBTASK` / `SMStateSubtask` and `SM_HOOKS_ON_CREATE` / `SMHooksOnCreate` each match both spellings |
 | `--op <op>` | `executed`, `created`, `modified`, `failed`, `canceled` or `started` |
 | `--from <date>` / `--to <date>` | Runs that started at or after / at or before this instant: ISO 8601 (`2026-09-20T14:30`, local; or with `Z` or an offset), or a date alone, which is a **local** day — `--to` covers it whole |
 | `--since <window>` | Runs that started within this window up to now: `30m`, `24h`, `7d`. Not with `--from` |

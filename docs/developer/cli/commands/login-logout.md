@@ -97,7 +97,7 @@ Neither indirect form can hang or run away. `--token -` gives up after 10 second
 
 <div className="alert alert--warning">
 
-**Since 0.15.0, `--token` and `--paste-token` only take a token they can recognize as an ApiToken.** A token whose `type` claim is missing or is not `api-token` — such as a session JWT copied from the browser — or one without a `company` claim is refused before it is sent anywhere, with exit `1`; `--allow-unverified-company` does not waive the `company` claim. Mint an ApiToken with `cotctl login`, or have an admin issue one from the webclient's ApiTokens panel, and pass that one instead. A profile saved earlier from a session JWT is not checked again: it stops working when that session expires (within 7 days), and `cotctl login` replaces it.
+**Since 0.15.0, `--token` and `--paste-token` only take a token they can recognize as an ApiToken.** A token whose `type` claim is missing or is not `api-token` — such as a session JWT copied from the browser — or one without an `_id` or a `company` claim is refused before it is sent anywhere, with exit `1`; `--allow-unverified-company` does not waive the `company` claim. Mint an ApiToken with `cotctl login`, or have an admin issue one from the webclient's ApiTokens panel, and pass that one instead. A profile saved earlier from a session JWT is not checked again: it stops working when that session expires (within 7 days), and `cotctl login` replaces it.
 
 </div>
 

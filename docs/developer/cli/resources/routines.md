@@ -135,7 +135,7 @@ cotctl routines test rutina_saludo_simple --context ctx.json
 
 <div className="alert alert--warning">
 
-**`routines test` runs the routine for real.** There is no simulation mode: `test` executes the routine immediately with all its side effects (it posts messages, creates tasks, writes properties, fires webhooks). It always prints a warning banner, and without `-y` it makes you retype the routine's `code` to confirm. `--context <file>` supplies the input JSON; `--dry-run` prints the payload that would be sent without calling the backend. Reserve `-y` for CI and scripts. Inspect the run afterward with `cotctl schedules logs <TEST_...>` — the backend records each test as a schedule — or download its log with [`cotctl logs`](../commands/logs.md) `pull --owner TEST`.
+**`routines test` runs the routine for real.** There is no simulation mode: `test` executes the routine immediately with all its side effects (it posts messages, creates tasks, writes properties, fires webhooks). It always prints a warning banner, and without `-y` it makes you retype the routine's `code` to confirm. `--context <file>` supplies the input JSON; `--dry-run` prints the payload that would be sent without calling the backend. Reserve `-y` for CI and scripts. Inspect the run afterward with `cotctl schedules logs <TEST_...>` — the backend records each test as a schedule — or download its log with [`cotctl logs`](../commands/logs.md) `pull --schedule <TEST_...>`.
 
 </div>
 
