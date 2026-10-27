@@ -30,24 +30,25 @@ npm install -g @cotctl/cli@latest
 
 ## 0.15.1 — 2026-10-27
 
-A patch release for the AI assistant integration. **`cotctl` now connects Claude to Cotalker's production documentation server, `https://codex.cotalker.com/mcp`**, and a connection installed with the `global` scope now reaches Claude Code — before this release it never did. Nothing in your YAML, your profiles or your pipelines changes.
+A patch release for the AI assistant integration. **`cotctl` now connects Claude to Cotalker's production documentation server, `https://codex.cotalker.com/mcp`**, and a connection installed with the `global` scope now reaches Claude Code — before this release it never did. Nothing in your YAML or your profiles changes; a script that runs `cotctl mcp` should check the exit-code changes below.
 
 A connection you set up with an earlier version keeps its old URL until you install it again: the *Migration* checklist at the end of this section says how.
 
 ### Exit codes
 
-Two error cases now fail instead of reporting success:
+These `cotctl mcp` cases now exit `1` where 0.15.0 exited `0`:
 
 | Command | Before | Now |
 |---|---|---|
-| `cotctl mcp list`, `cotctl mcp indices`, `cotctl mcp remove`, when `~/.claude.json` is not valid JSON | `0`, as if no server were configured | `1`, with an error that names the file |
+| `cotctl mcp list`, `cotctl mcp indices`, `cotctl mcp remove`, when the global configuration file is not valid JSON | `0`, ignoring that file's servers (in 0.15.0 the file was `~/.claude/settings.json`) | `1`, with an error that names the file — now `~/.claude.json`. `--scope local` does not read it |
 | `cotctl mcp remove <name>` when no server is configured | `0`, with `No MCP servers configured.` | `1`, reporting that `<name>` was not found |
+| `cotctl mcp remove <name>` for a server that is only in `~/.claude/settings.json`, or for a `.mcp.json` entry that is not an HTTP server | `0`, and the entry was removed | `1`, reporting that `<name>` was not found; the entry stays |
 
 ### Fixed
 
-- **The documentation server answers again.** `cotctl mcp install` and `cotctl skills install` configured the staging server, which no longer answers: `cotctl mcp indices` could not list its indices, and Claude got no documentation through the connection. They now configure the production server, which publishes two indices — `cotctl-documentation` and `cotalker-implementation` — and `cotctl mcp indices` reads it too.
-- **A global connection reaches Claude Code.** `cotctl mcp install --scope global` and `cotctl skills install --global` wrote the server to `~/.claude/settings.json`, where Claude Code does not look for MCP servers, so it never appeared in `claude mcp list`. They now write it to `~/.claude.json` — or `$CLAUDE_CONFIG_DIR/.claude.json` when that variable is set — the file `claude mcp add --scope user` uses. Every other server and setting in that file keeps its value; the file is rewritten as formatted JSON, and one that is not valid JSON is left untouched. Installing or removing a global server also removes the entry an earlier version left in `~/.claude/settings.json`, and says so.
-- **`cotctl` leaves your other MCP servers alone.** `cotctl mcp list`, `cotctl mcp indices` and `cotctl mcp remove` consider only HTTP servers with a URL, the kind `cotctl` writes, in both `.mcp.json` and `~/.claude.json`. A `stdio` or `sse` server you added yourself is no longer listed and cannot be removed through `cotctl`.
+- **The documentation server answers again.** `cotctl mcp install` and `cotctl skills install` configured the staging server, which no longer answers: `cotctl mcp install` and `cotctl mcp indices` could not list its indices, and Claude got no documentation through the connection. They now use the production server, which publishes two indices — `cotctl-documentation` and `cotalker-implementation`.
+- **A global connection reaches Claude Code.** `cotctl mcp install --scope global` and `cotctl skills install --global` wrote the server to `~/.claude/settings.json`, where Claude Code does not look for MCP servers, so it never appeared in `claude mcp list`. They now write it to `~/.claude.json` — or `$CLAUDE_CONFIG_DIR/.claude.json` when that variable is set — the file `claude mcp add --scope user` uses. Every other server and setting in that file keeps its value and the file keeps its indentation; a file that is not valid JSON is left untouched and the command stops with an error. Installing a global server, or removing one that is in `~/.claude.json`, also removes the same-named entry an earlier version left in `~/.claude/settings.json`, and says so.
+- **`cotctl` only manages HTTP servers.** `cotctl mcp list`, `cotctl mcp indices`, `cotctl mcp remove` and `cotctl skills uninstall` consider only HTTP servers with a URL — the kind `cotctl` writes — in both `.mcp.json` and `~/.claude.json`, including HTTP servers you added yourself. A `stdio` or `sse` server, or one with no `type`, is not listed and cannot be removed through `cotctl`.
 
 ### Docs
 
@@ -55,10 +56,10 @@ Two error cases now fail instead of reporting success:
 
 ### Migration
 
-1. **Install 0.15.1** — `npm install -g @cotctl/cli@0.15.1`.
-2. **Install the documentation connection again** if you set it up with an earlier version: run `cotctl mcp install` with the same name and scope, and choose **Replace existing instance** if it asks — or run `cotctl skills install` (with `--global` for the global scope) and accept the MCP prompt, which covers the default `cotalker-rag` server only. A global connection from an earlier version never worked, so it needs this step too.
+1. **Install 0.15.1.** A 0.15.0 installed with `npm install -g` on macOS or Linux updates itself the first time you run a command in a terminal, and 0.14.x asks first. In CI, with `-y`, with the standalone binary or on Windows, run `npm install -g @cotctl/cli@0.15.1` or download the binary. Updating `cotctl` does not move a connection you already installed: that is step 2.
+2. **Install the documentation connection again** if you set it up with an earlier version: run `cotctl mcp install` with the same name and scope, and choose **Replace existing instance** if it asks — or run `cotctl skills install` (with `--global` for the global scope) and accept the MCP prompt, which rewrites the default `cotalker-rag` server with the default indices. A global connection from an earlier version never worked, so it needs this step too. An entry an earlier version left only in `~/.claude/settings.json` is not found by `cotctl mcp remove`: install it again with the same name to move it, or delete it by hand.
 3. **Replace old index names** in setup scripts and in servers you registered with `claude mcp add`: use `cotctl-documentation` and `cotalker-implementation`, or leave `?indices=` out to search both. `--indices` is not checked against the server, so an old name produces a connection the server rejects.
-4. **Check the result** with `cotctl mcp list`: each server should show `https://codex.cotalker.com/mcp`. It also warns about any server an earlier version left in `~/.claude/settings.json`.
+4. **Check the result** with `cotctl mcp list`: each Cotalker server should show `https://codex.cotalker.com/mcp`. It also warns about any server an earlier version left in `~/.claude/settings.json`.
 
 ## 0.15.0 — 2026-10-23
 
