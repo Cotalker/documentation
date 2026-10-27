@@ -4,7 +4,7 @@ sidebar_label: Release notes
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/CHANGELOG.md @ a9168d6 (2026-10-23) -->
+<!-- source: repositories/cotctl/CHANGELOG.md @ 80cdbc8 (2026-10-27) -->
 
 What changed in each published release of `cotctl`, newest first — with the migration steps you need when something breaks.
 
@@ -27,6 +27,72 @@ npm install -g @cotctl/cli@latest
 </div>
 
 <!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
+
+<!-- DRAFT - copied verbatim from the cotctl CHANGELOG for release-0.15.1.
+    Before merging, rewrite it for implementation partners: give every
+    breaking change a "What to do", drop the internal detail (file paths,
+    PR numbers, contributor-only notes) and translate anything left in
+    Spanish. Then delete this comment. -->
+
+## 0.15.1 — 2026-10-27
+
+### Fixed
+
+- **`cotctl mcp install` and `cotctl skills install` configure the production
+  documentation server, `https://codex.cotalker.com/mcp`.** They configured the
+  staging server, which no longer answers: `mcp install` could not list its
+  indices, and the connection it wrote gave Claude Code no documentation.
+  `cotctl mcp indices` reads the production server too.
+
+  A connection configured with an earlier version keeps the URL it was
+  installed with — the staging server, for 0.15.0 — because it is written
+  into the Claude Code configuration at install time and updating cotctl does
+  not touch it. To move it, run `cotctl mcp install` again with
+  the same name and scope and pick **Replace existing instance**; with
+  `--indices`, the existing instance is replaced without asking. `cotctl mcp
+  list` shows the URL each server uses.
+
+- **A global MCP connection reaches Claude Code.** `cotctl mcp install --scope
+  global` and `cotctl skills install --global` wrote the server to
+  `~/.claude/settings.json`, where Claude Code does not read MCP servers, so it
+  never appeared in `claude mcp list` and Claude never queried it. They now
+  write it to `~/.claude.json`, the file `claude mcp add --scope user` uses —
+  or `$CLAUDE_CONFIG_DIR/.claude.json` when that variable is set, as Claude
+  Code does. Every other server and setting in that file keeps its value,
+  although the file is rewritten as formatted JSON, and a file that is not
+  valid JSON is left untouched with an error. `cotctl mcp list`, `cotctl mcp
+  indices`, `cotctl mcp remove --scope global` and `cotctl skills uninstall
+  --global` read the same file, and consider only the HTTP servers in it: the
+  user's other Claude Code servers are neither listed nor removed. The same
+  filter applies to a project's `.mcp.json` (`--scope local`): entries that are
+  not an HTTP server with a URL — `sse`, `stdio`, or with no `type` — are no
+  longer listed, and `cotctl mcp remove` reports them as not found. `cotctl mcp
+  list`, `cotctl mcp indices` and `cotctl mcp remove` stop with the same error
+  (exit 1) when the global file is not valid JSON, instead of showing no
+  servers, and `cotctl mcp remove <name>` reports a name it does not find
+  (exit 1) even when no server is configured, where it used to print `No MCP
+  servers configured.` and exit 0.
+
+  A global connection made with an earlier version never worked: install it
+  again with `cotctl mcp install --scope global` (or `cotctl skills install
+  --global`, accepting the MCP prompt). The install removes the same-named
+  entry an earlier version left in `~/.claude/settings.json` and says so, and
+  so does removing a global server with `cotctl mcp remove` or with `cotctl
+  skills uninstall --all --global`. `cotctl mcp list` warns about the other
+  HTTP servers cotctl left in that file. If that file cannot be rewritten, the
+  command still succeeds and only warns.
+
+### Docs
+
+- **The manual MCP setup points at the production server and the index names
+  it publishes.** The `claude mcp add` examples used the staging host and the
+  indices `cotctl`, `cot-api` and `cot-models`, which the production server
+  does not publish — it answers `400 No valid indices found`. They now use
+  `https://codex.cotalker.com/mcp` with `cotctl-documentation` and
+  `cotalker-implementation`, quote the URL so zsh accepts its `?`, and explain
+  how to move a server registered with the old URL. The sample output of
+  `cotctl mcp list` and `cotctl mcp indices` shows the two indices the server
+  publishes, and the global configuration file is given as `~/.claude.json`.
 
 ## 0.15.0 — 2026-10-23
 
