@@ -100,7 +100,7 @@ Parámetros clave: `subject`, `content` (objeto pasado a la plantilla), `targets
 
 Detalles a cuidar:
 
-- **Fija `3.0.1`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. `3.0.1` acepta solo `SUCCESS` / `ERROR` en `next` y rechaza cualquier clave de `data` que no liste, incluida la `template` de la predeterminada.
+- **Fija `3.0.1`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. `3.0.1` acepta solo `SUCCESS` / `ERROR` en `next` y rechaza cualquier clave de `data` que no liste, incluida la `template` de la predeterminada — ver [Cada stage que puede fallar necesita una rama de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
 - Todas las direcciones se validan: una sola inválida rechaza la llamada completa. Un marcador `{{…}}` es inválido: solo `htmlTemplate` y `cssTemplate` se renderizan como plantillas Mustache.
 - `singleRecipient: true` envía un correo por destinatario (más lento, pero más seguro para semántica de baja de suscripción).
 - cotctl fija `dryRun: true`, que omite el envío SMTP real pero igual corre la validación.

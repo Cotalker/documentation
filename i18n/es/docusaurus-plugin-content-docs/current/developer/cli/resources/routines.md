@@ -77,7 +77,7 @@ Son solo documentación y contrato — `cotctl` no comprueba que el grafo realme
 
 - **`key`** — única dentro del body.
 - **`name`** — el tipo de bot (mira [Tipos de bot](./bot-types.md) para el catálogo: `PB*` mensajería/tareas, `FC*` control de flujo, `NW*` HTTP, `PBScript`, …).
-- **`version`** — opcional. Omítela para tomar la predeterminada del tipo; fíjala (¡entre comillas!) cuando el tipo no tiene predeterminada.
+- **`version`** — opcional. Omítela para tomar la predeterminada del tipo; fíjala (¡entre comillas!) cuando el tipo no tiene predeterminada o cuando la predeterminada nunca informa una falla en `ERROR` (ver [más abajo](#cada-stage-que-puede-fallar-necesita-una-rama-de-error)).
 - **`data`** — una carga opaca que se pasa tal cual. `cotctl` **no** reescribe ObjectIds ni resuelve expresiones COTLang (`$INPUT#`, `$VALUE#`, `$OUTPUT#`) dentro de ella — provéelas exactamente como las espera el runtime.
 - **`next`** — un mapa de nombre de rama al `key` del stage siguiente. La cadena vacía `""` es una rama terminal válida.
 
@@ -85,7 +85,7 @@ Son solo documentación y contrato — `cotctl` no comprueba que el grafo realme
 
 ### Cada stage que puede fallar necesita una rama de error
 
-`""` es una rama terminal válida, y ahí está la trampa: un stage que falla hacia `ERROR: ""` termina la corrida en ese punto, y la corrida igual queda registrada como ejecutada, así que `cotctl logs list --op failed` no la encuentra. Apunta el `ERROR` de cada stage que puede fallar — un correo, un mensaje, una solicitud, una escritura que el backend puede rechazar — a un stage de manejo que alguien vea, como el `PBMessage` fijado a un canal monitoreado del ejemplo anterior. El stage de manejo es el único que conserva `ERROR: ""`.
+`""` es una rama terminal válida, y ahí está la trampa: un stage que falla hacia `ERROR: ""` termina la corrida en ese punto, y la corrida igual queda registrada como ejecutada, así que `cotctl logs list --op failed` no la encuentra. Apunta el `ERROR` de cada stage que puede fallar — un correo, un mensaje, una solicitud, una escritura que el backend puede rechazar — a un stage de manejo que alguien vea, como el `PBMessage` fijado que publica en un canal monitoreado, en el ejemplo anterior. El stage de manejo es el único que conserva `ERROR: ""`.
 
 Las versiones predeterminadas de `PBEmail` y `PBMessage` nunca toman esa rama: devuelven `DEFAULT` tanto si el envío funcionó como si no (la predeterminada de `PBEmail` solo registra `status: false` en su resultado). Fija `PBEmail` en `"3.0.1"` y `PBMessage` en `"2.2.0"`, y ten en cuenta que fijarlas cambia dos contratos que `cotctl` no comprueba. Su `next` acepta solo `SUCCESS` y `ERROR`, así que renombra `DEFAULT` a `SUCCESS`: un stage que conserva `DEFAULT` nunca envía. Además, validan `data` de forma estricta y rechazan cualquier clave que no listen: `PBEmail` necesita `subject`, un objeto `content` y `targets` como direcciones de correo; `PBMessage` necesita `content`, `contentType`, un ObjectId en `sentBy` y una lista no vacía de ObjectIds en `channelIds`. Un marcador `{{…}}` no es ninguna de las dos cosas: `data` no es una plantilla Mustache.
 
@@ -96,7 +96,7 @@ cotctl logs list --owner TEST --since 1h            # una corrida de prueba no l
 cotctl logs get <logId> --parts results --stdout    # el status de cada stage, en orden
 ```
 
-La corrida que falla debe mostrar el stage con `status: ERROR` y, después, el stage de manejo, y el mensaje del stage de manejo debe haber llegado.
+La corrida que falla debe mostrar el stage con `status: ERROR` y, después, el stage de manejo, cuyo mensaje debe haber llegado.
 
 ### Invocar otra rutina
 

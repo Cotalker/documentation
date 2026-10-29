@@ -79,7 +79,7 @@ On an update, each input is matched with the stored input of the same `key`, whe
 
 - **`key`** — unique within the body.
 - **`name`** — the bot type (see [Bot types](./bot-types.md) for the catalog: `PB*` messaging/tasks, `FC*` flow control, `NW*` HTTP, `PBScript`, …).
-- **`version`** — optional. On create, omit it to take the type's default; pin it (quoted!) when the type has no default. On an update, an omitted `version` keeps the stored stage's version, and `version: null` sends it back to the type's default.
+- **`version`** — optional. On create, omit it to take the type's default; pin it (quoted!) when the type has no default, or when its default never reports a failure on `ERROR` (see [below](#give-every-stage-that-can-fail-an-error-path)). On an update, an omitted `version` keeps the stored stage's version, and `version: null` sends it back to the type's default.
 - **`data`** — an opaque payload passed straight through. `cotctl` does **not** rewrite ObjectIds or resolve COTLang expressions (`$INPUT#`, `$VALUE#`, `$OUTPUT#`) inside it — provide them exactly as the runtime expects.
 - **`next`** — a map from branch name to the next stage's `key`. The empty string `""` is a valid terminal branch.
 
@@ -89,7 +89,7 @@ To edit one stage without restating the whole `body`, apply a document with `par
 
 ### Give every stage that can fail an error path
 
-`""` is a valid terminal branch, and that is the trap: a stage that fails onto `ERROR: ""` ends the run there, and the run is still logged as executed, so `cotctl logs list --op failed` does not find it. Point the `ERROR` of every stage that can fail — an email, a message, a request, a write the backend can refuse — at a handler stage someone will see, such as the pinned `PBMessage` to a watched channel in the example above. The handler is the one stage that keeps `ERROR: ""`.
+`""` is a valid terminal branch, and that is the trap: a stage that fails onto `ERROR: ""` ends the run there, and the run is still logged as executed, so `cotctl logs list --op failed` does not find it. Point the `ERROR` of every stage that can fail — an email, a message, a request, a write the backend can refuse — at a handler stage someone will see, such as the pinned `PBMessage` that posts to a watched channel in the example above. The handler is the one stage that keeps `ERROR: ""`.
 
 The default `PBEmail` and `PBMessage` never take that branch: they return `DEFAULT` whether the send worked or not (the default `PBEmail` only records `status: false` in its result). Pin `PBEmail` `"3.0.1"` and `PBMessage` `"2.2.0"`, and know that pinning changes two contracts `cotctl` does not check. Their `next` takes only `SUCCESS` and `ERROR`, so rename `DEFAULT` to `SUCCESS` — a stage that keeps `DEFAULT` never sends. And they validate `data` strictly, refusing any key they don't list: `PBEmail` needs `subject`, an object `content` and `targets` as email addresses; `PBMessage` needs `content`, `contentType`, a `sentBy` ObjectId and a non-empty `channelIds` list of ObjectIds. A `{{…}}` placeholder is neither: `data` is not a Mustache template.
 

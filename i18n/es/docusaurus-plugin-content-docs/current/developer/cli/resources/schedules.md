@@ -39,7 +39,7 @@ body:
       next:
         SUCCESS: ""
         ERROR: notify_failure
-    - key: notify_failure          # la ruta de error del stage anterior
+    - key: notify_failure          # la rama de error del stage anterior
       name: PBMessage
       version: "2.2.0"
       data:

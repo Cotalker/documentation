@@ -94,7 +94,19 @@ pb:
           - "6a000000000000000000abcd"
       next:
         SUCCESS: ""
-        ERROR: notify_failure   # the handling stage of the example above
+        ERROR: notify_failure
+    - key: notify_failure          # the error path of the stage above
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "The overdue-task SLA could not send its alert"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # a channel the team watches
+      next:
+        SUCCESS: ""
+        ERROR: ""                  # the handling stage ends the run either way
 ```
 
 **On create**, `cotctl` defaults `pb.version` to `v3` when you omit it. **On update, it leaves the server's value alone.** A YAML that omits the key — or carries it as `null` or an empty string — does not change the engine the SLA is already running on.

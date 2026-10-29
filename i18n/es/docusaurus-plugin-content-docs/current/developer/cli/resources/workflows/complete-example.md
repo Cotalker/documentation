@@ -119,7 +119,7 @@ stateMachines:
 - **Dos estados terminales** (`po_rejected`, `po_closed`) no tienen `next[]` — una tarea ahí se queda quieta.
 - **Rechazo condicionado por formulario:** ambas transiciones hacia `po_rejected` usan `canChange: survey` con un `requiredSurvey`, así que siempre se captura un motivo.
 - **`initialState` nombra un code de property**, no un ID — `cotctl` lo resuelve tras crear los estados.
-- **El correo de ingreso tiene una ruta de error.** `PBEmail` está fijado en `3.0.1` y su `ERROR` va a `notify_failure`, así que un envío fallido llega a un canal que alguien monitorea — ver [Cada stage que puede fallar necesita una rama de error](../routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
+- **El correo de ingreso tiene una rama de error.** `PBEmail` está fijado en `3.0.1` y su `ERROR` va a `notify_failure`, así que un envío fallido llega a un canal que alguien monitorea — ver [Cada stage que puede fallar necesita una rama de error](../routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
 - **Los slots de bots** (`requiredSurvey.bots`, `bots` de transición) siguen las [reglas de merge](./merge-semantics.md): omitir para preservar, `[]` para borrar, una lista para reemplazar. Los IDs dentro de `stage.data` se pasan intactos.
 
 ## Patrones de dos pasos y multi-máquina

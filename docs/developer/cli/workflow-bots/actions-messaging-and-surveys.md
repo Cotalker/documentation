@@ -100,7 +100,7 @@ Key parameters: `subject`, `content` (object passed to the template), `targets` 
 
 Gotchas:
 
-- **Pin `3.0.1`.** The default version returns `DEFAULT` whether the send worked or not, so it never takes `ERROR`. `3.0.1` accepts only `SUCCESS` / `ERROR` in `next` and refuses any `data` key it doesn't list — the default's `template` included.
+- **Pin `3.0.1`.** The default version returns `DEFAULT` whether the send worked or not, so it never takes `ERROR`. `3.0.1` accepts only `SUCCESS` / `ERROR` in `next` and refuses any `data` key it doesn't list, the default's `template` included — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
 - All addresses are validated — a single invalid one rejects the whole call. A `{{…}}` placeholder is one: only `htmlTemplate` and `cssTemplate` are rendered as Mustache templates.
 - `singleRecipient: true` sends one email per recipient (slower, but safer for unsubscribe semantics).
 - cotctl sets `dryRun: true`, which skips the actual SMTP send but still runs validation.

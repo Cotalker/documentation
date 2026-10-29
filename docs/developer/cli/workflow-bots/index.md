@@ -51,7 +51,7 @@ Reach for a first-party bot before writing custom JavaScript. The table below ma
 | Send a survey | `PBSendSurvey` | `PBMessage` | `editMode: true` for drafts |
 | Reopen a sent survey | `PBEditableSurvey` | `PBSendSurvey` with `editMode` | |
 | Copy a survey to another channel | `PBCopySurvey` | `PBSendSurvey` | |
-| Send an email | `PBEmail` | `NWRequest` to SES/SMTP | Pin `3.0.1`: the default never takes `ERROR` |
+| Send an email | `PBEmail` | `NWRequest` to SES/SMTP | Pin `3.0.1`: the default never takes `ERROR` ([error paths](../resources/routines.md#give-every-stage-that-can-fail-an-error-path)) |
 | Push notification + channel message | `PBSendCustomNotification` | `PBMessage` | |
 | WhatsApp template | `PBWhatsApp` | `NWRequest` to a BSP | needs a valid `contractCode` |
 | Generate a PDF | `PBPdf` (4.0.0) | `PBTemplate` (HTML only) | |
