@@ -28,13 +28,29 @@ body:
   start: enqueue
   stages:
     - key: enqueue
-      name: PBSendMessage
+      name: PBMessage
+      version: "2.2.0"             # fijada: la versión predeterminada nunca toma ERROR
       data:
-        channelId: "6a000000000000000000abcd"
-        text: "Daily digest is ready"
+        content: "Daily digest is ready"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"   # el usuario que aparece como remitente
+        channelIds:
+          - "6a000000000000000000abcd"
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure
+    - key: notify_failure          # la ruta de error del stage anterior
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "The daily digest Schedule could not post its message"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # un canal que el equipo monitorea
+      next:
+        SUCCESS: ""
+        ERROR: ""                  # el stage de manejo termina la corrida en cualquier caso
 ```
 
 | Campo | Requerido | Notas |

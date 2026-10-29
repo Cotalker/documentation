@@ -6,7 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/src/commands/bot-types.ts, src/resources/bot-type.resource.ts, src/lib/known-bot-types.ts @ 82e613d (2026-10-10) -->
 
-When you write an automation graph — inside a [bot](./bots.md), a [routine](./routines.md), an [SLA](./slas.md), or a [schedule](./schedules.md) — each stage names a **bot type** in its `name` field: `PBSendMessage`, `PBCreateTask`, `FCEach`, `PBScript`, and so on. `cotctl bot-types` is the read-only lens onto that catalog: which types exist, which versions each one has registered, and whether it has a default.
+When you write an automation graph — inside a [bot](./bots.md), a [routine](./routines.md), an [SLA](./slas.md), or a [schedule](./schedules.md) — each stage names a **bot type** in its `name` field: `PBMessage`, `PBCreateTask`, `FCEach`, `PBScript`, and so on. `cotctl bot-types` is the read-only lens onto that catalog: which types exist, which versions each one has registered, and whether it has a default.
 
 Unlike every other resource in this section, there's nothing to apply — the catalog is defined by the runtime, not by you. These two commands just let you read it.
 
@@ -26,8 +26,8 @@ cotctl bot-types list
 BotType                          Versions                             Default
 ------------------------------------------------------------------------------
 PBCreateTask                     2.0, 2.1                             yes
+PBMessage                        2.0.0, 2.1.0, 2.2.0                  yes
 PBReport                         1.3                                  no
-PBSendMessage                    (none pinned)                        yes
 ...
 68 bot type(s) — source: live backend
 ```
@@ -68,7 +68,7 @@ The typical loop when building an automation:
 
 1. `cotctl bot-types list` to find the stage type you need.
 2. `cotctl bot-types versions <BotType>` to see its versions and whether it needs an explicit pin.
-3. Write the stage — omit `version` to take the default, or pin `version: "<x>"` (quoted) if there's no default.
+3. Write the stage — omit `version` to take the default, or pin `version: "<x>"` (quoted) if there's no default or the default doesn't report failures on `ERROR`, as with `PBEmail` and `PBMessage` (see [Give every stage that can fail an error path](./routines.md#give-every-stage-that-can-fail-an-error-path)).
 4. `cotctl <resource> apply --dry-run` — the version is checked against the catalog again as a safety net.
 
 A handful of types (`PBScript`, `CCJS`, `ESMCode`) execute arbitrary JavaScript. They appear in the catalog like any other, but **every** apply that declares one — a workflow, a bot, a routine, an SLA, a schedule, `apply -f` or `apply --dir` — is refused before any write unless you pass `--allow-script-bots`. (The exit code of that refusal differs by command; see [CI/CD](../ci-cd.md#one-failure-whose-code-depends-on-the-command-you-entered-through).)

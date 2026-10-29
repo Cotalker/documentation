@@ -160,7 +160,7 @@ Para ir más allá — un comando que dispara un formulario, más un grafo embeb
 
 Una **Rutina** (PBScript) es un script reutilizable; un **Schedule** dispara una en un cron. Esta receta las conecta: escribe la rutina, pruébala y luego prográmala.
 
-**Qué necesitas:** un perfil funcionando y el `_id` de un canal de chat donde la rutina publique.
+**Qué necesitas:** un perfil funcionando, el `_id` de un canal de chat donde la rutina publique, el `_id` del usuario que aparece como remitente y el `_id` de un canal que el equipo monitorea para las fallas.
 
 ```yaml
 # rutina.yaml — ver examples/routines/routine-minimal.yaml
@@ -172,13 +172,31 @@ body:
   stages:
     - key: send
       name: PBMessage
+      version: "2.2.0"          # fijada: la versión predeterminada nunca toma ERROR
       data:
-        channelId: "6a000000000000000000abcd"   # un _id de canal real
-        text: "Hola desde una rutina"
+        content: "Hola desde una rutina"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"   # el usuario que aparece como remitente
+        channelIds:
+          - "6a000000000000000000abcd"       # un _id de canal real
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure
+    - key: notify_failure
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "La rutina de saludo no pudo enviar su mensaje."
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # un canal que el equipo monitorea
+      next:
+        SUCCESS: ""
+        ERROR: ""                            # el stage de manejo termina la corrida en cualquier caso
 ```
+
+Un envío fallido va a `notify_failure` en lugar de terminar la corrida sin que nadie lo note — ver [Cada stage que puede fallar necesita una rama de error](./resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
 
 ```bash
 # 1. Dry-run y luego aplica (las rutinas, como los bots, no las cubre `cotctl validate`)
@@ -245,7 +263,7 @@ Dos detalles que conviene conocer:
 
 Un **SLA** es un temporizador adjunto a la máquina de estados de un workflow: se abre cuando una tarea entra en ciertos estados y dispara un ParametrizedBot si la tarea no los abandona a tiempo.
 
-**Qué necesitas:** un workflow existente cuyo código de máquina de estados conozcas.
+**Qué necesitas:** un workflow existente cuyo código de máquina de estados conozcas, más los mismos `_id` de canal y de usuario de la Receta 7.
 
 ```yaml
 # sla.yaml
@@ -267,13 +285,29 @@ pb:
   start: alert
   stages:
     - key: alert
-      name: PBSendMessage
+      name: PBMessage
+      version: "2.2.0"          # fijada: la versión predeterminada nunca toma ERROR
       data:
-        channelId: "6a000000000000000000abcd"
-        text: "Review deadline reached"
+        content: "Review deadline reached"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000abcd"
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure
+    - key: notify_failure
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "The review-window SLA could not send its alert"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # un canal que el equipo monitorea
+      next:
+        SUCCESS: ""
+        ERROR: ""                            # el stage de manejo termina la corrida en cualquier caso
 ```
 
 ```bash

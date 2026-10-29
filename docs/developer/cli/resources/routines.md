@@ -20,12 +20,28 @@ body:
   stages:
     - key: send
       name: PBMessage              # a bot type from the catalog
+      version: "2.2.0"             # pinned: the default version never takes ERROR
       data:
-        channelId: "6a000000000000000000abcd"
-        text: "Hola desde una rutina"
+        content: "Hola desde una rutina"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"   # the user shown as the sender
+        channelIds:
+          - "6a000000000000000000abcd"
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure      # see "Give every stage that can fail an error path"
+    - key: notify_failure
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "La rutina de saludo no pudo enviar su mensaje."
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # a channel the team watches
+      next:
+        SUCCESS: ""
+        ERROR: ""                  # the handling stage ends the run either way
 ```
 
 | Field | Required | Notes |
@@ -70,6 +86,21 @@ On an update, each input is matched with the stored input of the same `key`, whe
 `body.start` names the entry stage. `body.maxIterations` (default `100`) caps how many transitions run — a safety net against loops.
 
 To edit one stage without restating the whole `body`, apply a document with `partial: true` (0.14.0+) that names the routine's `code` and only that stage, by `key` — see [Partial documents](../commands/apply.md#partial-documents-partial-true). A partial routine that declares `dataType` is refused.
+
+### Give every stage that can fail an error path
+
+`""` is a valid terminal branch, and that is the trap: a stage that fails onto `ERROR: ""` ends the run there, and the run is still logged as executed, so `cotctl logs list --op failed` does not find it. Point the `ERROR` of every stage that can fail — an email, a message, a request, a write the backend can refuse — at a handler stage someone will see, such as the pinned `PBMessage` to a watched channel in the example above. The handler is the one stage that keeps `ERROR: ""`.
+
+The default `PBEmail` and `PBMessage` never take that branch: they return `DEFAULT` whether the send worked or not (the default `PBEmail` only records `status: false` in its result). Pin `PBEmail` `"3.0.1"` and `PBMessage` `"2.2.0"`, and know that pinning changes two contracts `cotctl` does not check. Their `next` takes only `SUCCESS` and `ERROR`, so rename `DEFAULT` to `SUCCESS` — a stage that keeps `DEFAULT` never sends. And they validate `data` strictly, refusing any key they don't list: `PBEmail` needs `subject`, an object `content` and `targets` as email addresses; `PBMessage` needs `content`, `contentType`, a `sentBy` ObjectId and a non-empty `channelIds` list of ObjectIds. A `{{…}}` placeholder is neither: `data` is not a Mustache template.
+
+Prove both branches before production. Apply the routine to a testing company and run `cotctl routines test` twice — once as it is, once with the stage made to fail (`PBEmail` `3.0.1` refuses a malformed address in `targets` before sending anything) — then read each run with [`cotctl logs`](../commands/logs.md):
+
+```bash
+cotctl logs list --owner TEST --since 1h            # a test run carries no Routine code
+cotctl logs get <logId> --parts results --stdout    # each stage's status, in order
+```
+
+The failing run must show the stage with `status: ERROR` and the handler stage after it, and the handler's message must have arrived.
 
 ### Invoking another routine
 

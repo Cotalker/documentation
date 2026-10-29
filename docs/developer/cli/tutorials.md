@@ -160,7 +160,7 @@ To go further — a survey-command that fires a form, plus an embedded graph tha
 
 A **Routine** (PBScript) is a reusable script; a **Schedule** fires one on a cron. This recipe wires them together: write the routine, test it, then schedule it.
 
-**What you'll need:** a working profile and a chat channel `_id` for the routine to post into.
+**What you'll need:** a working profile, the `_id` of a chat channel for the routine to post into, the `_id` of the user shown as the sender, and the `_id` of a channel the team watches for failures.
 
 ```yaml
 # rutina.yaml — see examples/routines/routine-minimal.yaml
@@ -172,13 +172,31 @@ body:
   stages:
     - key: send
       name: PBMessage
+      version: "2.2.0"          # pinned: the default version never takes ERROR
       data:
-        channelId: "6a000000000000000000abcd"   # a real channel _id
-        text: "Hola desde una rutina"
+        content: "Hola desde una rutina"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"   # the user shown as the sender
+        channelIds:
+          - "6a000000000000000000abcd"       # a real channel _id
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure
+    - key: notify_failure
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "La rutina de saludo no pudo enviar su mensaje."
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # a channel the team watches
+      next:
+        SUCCESS: ""
+        ERROR: ""                            # the handling stage ends the run either way
 ```
+
+A failed send goes to `notify_failure` instead of ending the run unnoticed — see [Give every stage that can fail an error path](./resources/routines.md#give-every-stage-that-can-fail-an-error-path).
 
 ```bash
 # 1. Dry-run then apply (routines, like bots, aren't covered by `cotctl validate`)
@@ -249,7 +267,7 @@ Three details worth knowing:
 
 An **SLA** is a timer attached to a workflow's state machine: it opens when a task enters certain states and fires a ParametrizedBot if the task hasn't left them in time.
 
-**What you'll need:** an existing workflow whose state-machine code you know.
+**What you'll need:** an existing workflow whose state-machine code you know, plus the same channel and user `_id`s as in Recipe 7.
 
 ```yaml
 # sla.yaml
@@ -271,13 +289,29 @@ pb:
   start: alert
   stages:
     - key: alert
-      name: PBSendMessage
+      name: PBMessage
+      version: "2.2.0"          # pinned: the default version never takes ERROR
       data:
-        channelId: "6a000000000000000000abcd"
-        text: "Review deadline reached"
+        content: "Review deadline reached"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000abcd"
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure
+    - key: notify_failure
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "The review-window SLA could not send its alert"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # a channel the team watches
+      next:
+        SUCCESS: ""
+        ERROR: ""                            # the handling stage ends the run either way
 ```
 
 ```bash

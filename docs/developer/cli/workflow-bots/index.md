@@ -46,12 +46,12 @@ Reach for a first-party bot before writing custom JavaScript. The table below ma
 | Update task fields (status, assignee, dates) | `PBUpdateTask` | `CCJS` | `2.2.0` adds performance tracking |
 | Advance the state machine | `PBChangeState` | `PBUpdateTask` (does not record SM history) | |
 | Duplicate a task | `PBDuplicateTask` | manual `PBCreateTask` | `ignoreChildren: true` skips children |
-| Send a channel message | `PBMessage` | `PBSendCustomNotification` (that one is for push) | |
+| Send a channel message | `PBMessage` | `PBSendCustomNotification` (that one is for push) | Pin `2.2.0`: the default never takes `ERROR` ([error paths](../resources/routines.md#give-every-stage-that-can-fail-an-error-path)) |
 | Message many channels | `PBBulkMessage` | `FCEach` + `PBMessage` loop | ~90% fewer network calls |
 | Send a survey | `PBSendSurvey` | `PBMessage` | `editMode: true` for drafts |
 | Reopen a sent survey | `PBEditableSurvey` | `PBSendSurvey` with `editMode` | |
 | Copy a survey to another channel | `PBCopySurvey` | `PBSendSurvey` | |
-| Send an email | `PBEmail` | `NWRequest` to SES/SMTP | `3.0.1` recommended |
+| Send an email | `PBEmail` | `NWRequest` to SES/SMTP | Pin `3.0.1`: the default never takes `ERROR` |
 | Push notification + channel message | `PBSendCustomNotification` | `PBMessage` | |
 | WhatsApp template | `PBWhatsApp` | `NWRequest` to a BSP | needs a valid `contractCode` |
 | Generate a PDF | `PBPdf` (4.0.0) | `PBTemplate` (HTML only) | |

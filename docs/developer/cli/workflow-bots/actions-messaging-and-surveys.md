@@ -19,20 +19,35 @@ Key parameters: `content`, `contentType` (`text/plain`, `text/system`, …), `se
 ```yaml
 - key: s1
   name: PBMessage
-  version: "2.2.0"
+  version: "2.2.0"            # pinned: the default version never takes ERROR
   data:
-    content: "The task was updated by {{user.names}}"
+    content: "The task was updated"
     contentType: "text/plain"
-    sentBy: "{{user._id}}"
+    # Literal ObjectIds: `data` is not a Mustache template, and 2.2.0 refuses
+    # a non-ObjectId here. A dynamic id is a COTLang expression.
+    sentBy: "6a000000000000000000beef"
     channelIds:
-      - "{{task.channel}}"
+      - "6a000000000000000000c0de"
   next:
     SUCCESS: ""
-    ERROR: ""
+    ERROR: notify_failure
+- key: notify_failure
+  name: PBMessage
+  version: "2.2.0"
+  data:
+    content: "The task-update notice could not be posted"
+    contentType: "text/plain"
+    sentBy: "6a000000000000000000beef"
+    channelIds:
+      - "6a000000000000000000fa11"       # a channel the team watches
+  next:
+    SUCCESS: ""
+    ERROR: ""                            # the handling stage ends the run either way
 ```
 
 Gotchas:
 
+- **Pin `2.2.0`.** The default version returns `DEFAULT` whether the send worked or not, so it never takes `ERROR`. `2.0.0`–`2.2.0` accept only `SUCCESS` / `ERROR` in `next` and refuse any `data` key they don't list — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
 - Channels are processed in series; one failure stops the run and emits `ERROR`.
 - With `contentTranslations`, `text/plain` becomes `multilanguage/plain` (and `text/system` → `multilanguage/system`). Only `en`/`es`/`pt`/`fr` are allowed — any other key throws.
 - For broadcasting to many channels, prefer `PBBulkMessage`.
@@ -70,22 +85,23 @@ Key parameters: `subject`, `content` (object passed to the template), `targets` 
 ```yaml
 - key: s1
   name: PBEmail
-  version: "3.0.1"
+  version: "3.0.1"            # pinned: the default version never takes ERROR
   data:
     subject: "Your PO has been received"
     content:
-      poId: "{{task._id}}"
-      name: "{{user.names}}"
+      title: "PO received"
+      messageA: "We will let you know once it is reviewed."
     targets:
-      - "{{user.email}}"
+      - "requester@example.com"
   next:
     SUCCESS: ""
-    ERROR: ""
+    ERROR: notify_failure     # the handling stage of the PBMessage example
 ```
 
 Gotchas:
 
-- All addresses are validated — a single invalid one rejects the whole call.
+- **Pin `3.0.1`.** The default version returns `DEFAULT` whether the send worked or not, so it never takes `ERROR`. `3.0.1` accepts only `SUCCESS` / `ERROR` in `next` and refuses any `data` key it doesn't list — the default's `template` included.
+- All addresses are validated — a single invalid one rejects the whole call. A `{{…}}` placeholder is one: only `htmlTemplate` and `cssTemplate` are rendered as Mustache templates.
 - `singleRecipient: true` sends one email per recipient (slower, but safer for unsubscribe semantics).
 - cotctl sets `dryRun: true`, which skips the actual SMTP send but still runs validation.
 
