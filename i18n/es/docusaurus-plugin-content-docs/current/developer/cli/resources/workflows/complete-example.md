@@ -39,7 +39,7 @@ stateMachines:
     requiredSurvey:
       surveyCode: survey_po_intake
       bots:
-        - name: notify-creator
+        - name: notify-purchasing
           start: s1
           stages:
             - key: s1

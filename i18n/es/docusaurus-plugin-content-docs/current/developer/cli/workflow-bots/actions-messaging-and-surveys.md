@@ -47,7 +47,7 @@ Parámetros clave: `content`, `contentType` (`text/plain`, `text/system`, …), 
 
 Detalles a cuidar:
 
-- **Fija `2.2.0`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. Las versiones `2.0.0` a `2.2.0` aceptan solo `SUCCESS` / `ERROR` en `next` y rechazan cualquier clave de `data` que no listen — ver [Cada stage que puede fallar necesita una rama de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
+- **Fija `2.2.0`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. Las versiones `2.0.0` a `2.2.0` aceptan solo `SUCCESS` / `ERROR` en `next` y rechazan cualquier clave de `data` que no declaren — ver [Cada stage que puede fallar necesita una rama de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
 - Los canales se procesan en serie; una falla detiene la corrida y emite `ERROR`.
 - Con `contentTranslations`, `text/plain` pasa a `multilanguage/plain` (y `text/system` → `multilanguage/system`). Solo se permiten `en`/`es`/`pt`/`fr`: cualquier otra clave lanza excepción.
 - Para difundir a muchos canales, prefiere `PBBulkMessage`.
@@ -100,8 +100,8 @@ Parámetros clave: `subject`, `content` (objeto pasado a la plantilla), `targets
 
 Detalles a cuidar:
 
-- **Fija `3.0.1`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. `3.0.1` acepta solo `SUCCESS` / `ERROR` en `next` y rechaza cualquier clave de `data` que no liste, incluida la `template` de la predeterminada — ver [Cada stage que puede fallar necesita una rama de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
-- Todas las direcciones se validan: una sola inválida rechaza la llamada completa. Un marcador `{{…}}` es inválido: solo `htmlTemplate` y `cssTemplate` se renderizan como plantillas Mustache.
+- **Fija `3.0.1`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. `3.0.1` acepta solo `SUCCESS` / `ERROR` en `next` y rechaza cualquier clave de `data` que no declare, incluida la `template` de la predeterminada — ver [Cada stage que puede fallar necesita una rama de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
+- Todas las direcciones se validan: una sola inválida rechaza la llamada completa. Un marcador `{{…}}` es inválido: solo `htmlTemplate` se renderiza como plantilla Mustache; `cssTemplate` se inserta tal cual.
 - `singleRecipient: true` envía un correo por destinatario (más lento, pero más seguro para semántica de baja de suscripción).
 - cotctl fija `dryRun: true`, que omite el envío SMTP real pero igual corre la validación.
 
