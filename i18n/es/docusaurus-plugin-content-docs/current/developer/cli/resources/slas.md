@@ -34,13 +34,29 @@ pb:                                # corre cuando la ventana expira
   start: send_alert
   stages:
     - key: send_alert
-      name: PBSendMessage
+      name: PBMessage
+      version: "2.2.0"             # fijada: la versión predeterminada nunca toma ERROR
       data:
-        channelId: "6a000000000000000000abcd"
-        text: "Review deadline reached"
+        content: "Review deadline reached"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"   # el usuario que aparece como remitente
+        channelIds:
+          - "6a000000000000000000abcd"
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure
+    - key: notify_failure          # la rama de error del stage anterior
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "The review-window SLA could not send its alert"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # un canal que el equipo monitorea
+      next:
+        SUCCESS: ""
+        ERROR: ""                  # el stage de manejo termina la corrida en cualquier caso
 ```
 
 | Campo | Requerido | Notas |

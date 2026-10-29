@@ -6,7 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/src/commands/bot-types.ts, src/resources/bot-type.resource.ts, src/lib/known-bot-types.ts @ 4f7248a (2026-07-06) -->
 
-Cuando escribes un grafo de automatización — dentro de un [bot](./bots.md), una [rutina](./routines.md), un [SLA](./slas.md) o un [schedule](./schedules.md) — cada stage nombra un **tipo de bot** en su campo `name`: `PBSendMessage`, `PBCreateTask`, `FCEach`, `PBScript`, etc. `cotctl bot-types` es la lente de solo lectura sobre ese catálogo: qué tipos existen, qué versiones tiene registrada cada uno y si tiene una versión predeterminada.
+Cuando escribes un grafo de automatización — dentro de un [bot](./bots.md), una [rutina](./routines.md), un [SLA](./slas.md) o un [schedule](./schedules.md) — cada stage nombra un **tipo de bot** en su campo `name`: `PBMessage`, `PBCreateTask`, `FCEach`, `PBScript`, etc. `cotctl bot-types` es la lente de solo lectura sobre ese catálogo: qué tipos existen, qué versiones tiene registrada cada uno y si tiene una versión predeterminada.
 
 A diferencia del resto de los recursos de esta sección, aquí no hay nada que aplicar — el catálogo lo define el runtime, no tú. Estos dos comandos solo te dejan leerlo.
 
@@ -26,8 +26,8 @@ cotctl bot-types list
 BotType                          Versions                             Default
 ------------------------------------------------------------------------------
 PBCreateTask                     2.0, 2.1                             yes
+PBMessage                        2.0.0, 2.1.0, 2.2.0                  yes
 PBReport                         1.3                                  no
-PBSendMessage                    (none pinned)                        yes
 ...
 68 bot type(s) — source: live backend
 ```
@@ -68,7 +68,7 @@ El ciclo típico al construir una automatización:
 
 1. `cotctl bot-types list` para encontrar el tipo de stage que necesitas.
 2. `cotctl bot-types versions <BotType>` para ver sus versiones y si necesita una fijación explícita.
-3. Escribe el stage — omite `version` para tomar la predeterminada, o fija `version: "<x>"` (entre comillas) si no hay predeterminada.
+3. Escribe el stage — omite `version` para tomar la predeterminada, o fija `version: "<x>"` (entre comillas) si no hay predeterminada o si la predeterminada no informa las fallas en `ERROR`, como ocurre con `PBEmail` y `PBMessage` (ver [Cada stage que puede fallar necesita una rama de error](./routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error)).
 4. `cotctl <recurso> apply --dry-run` — la versión se comprueba de nuevo contra el catálogo, como red de seguridad.
 
 Un puñado de tipos (`PBScript`, `CCJS`, `ESMCode`) ejecuta JavaScript arbitrario. Aparecen en el catálogo como cualquier otro, pero una aplicación de **workflow** que declare uno se rechaza salvo que pases `--allow-script-bots`. (Las rutinas, SLAs y bots independientes validan que la rutina referenciada exista, pero no exigen ese flag.)

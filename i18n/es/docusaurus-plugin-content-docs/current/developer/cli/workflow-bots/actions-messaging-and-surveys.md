@@ -19,20 +19,35 @@ Parámetros clave: `content`, `contentType` (`text/plain`, `text/system`, …), 
 ```yaml
 - key: s1
   name: PBMessage
-  version: "2.2.0"
+  version: "2.2.0"            # fijada: la versión predeterminada nunca toma ERROR
   data:
-    content: "The task was updated by {{user.names}}"
+    content: "The task was updated"
     contentType: "text/plain"
-    sentBy: "{{user._id}}"
+    # ObjectIds literales: `data` no es una plantilla Mustache, y 2.2.0 rechaza
+    # un valor que no sea ObjectId. Un id dinámico es una expresión COTLang.
+    sentBy: "6a000000000000000000beef"
     channelIds:
-      - "{{task.channel}}"
+      - "6a000000000000000000c0de"
   next:
     SUCCESS: ""
-    ERROR: ""
+    ERROR: notify_failure
+- key: notify_failure
+  name: PBMessage
+  version: "2.2.0"
+  data:
+    content: "The task-update notice could not be posted"
+    contentType: "text/plain"
+    sentBy: "6a000000000000000000beef"
+    channelIds:
+      - "6a000000000000000000fa11"       # un canal que el equipo monitorea
+  next:
+    SUCCESS: ""
+    ERROR: ""                            # el stage de manejo termina la corrida en cualquier caso
 ```
 
 Detalles a cuidar:
 
+- **Fija `2.2.0`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. Las versiones `2.0.0` a `2.2.0` aceptan solo `SUCCESS` / `ERROR` en `next` y rechazan cualquier clave de `data` que no declaren — ver [Cada stage que puede fallar necesita una rama de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
 - Los canales se procesan en serie; una falla detiene la corrida y emite `ERROR`.
 - Con `contentTranslations`, `text/plain` pasa a `multilanguage/plain` (y `text/system` → `multilanguage/system`). Solo se permiten `en`/`es`/`pt`/`fr`: cualquier otra clave lanza excepción.
 - Para difundir a muchos canales, prefiere `PBBulkMessage`.
@@ -70,22 +85,23 @@ Parámetros clave: `subject`, `content` (objeto pasado a la plantilla), `targets
 ```yaml
 - key: s1
   name: PBEmail
-  version: "3.0.1"
+  version: "3.0.1"            # fijada: la versión predeterminada nunca toma ERROR
   data:
     subject: "Your PO has been received"
     content:
-      poId: "{{task._id}}"
-      name: "{{user.names}}"
+      title: "PO received"
+      messageA: "We will let you know once it is reviewed."
     targets:
-      - "{{user.email}}"
+      - "requester@example.com"
   next:
     SUCCESS: ""
-    ERROR: ""
+    ERROR: notify_failure     # el stage de manejo del ejemplo de PBMessage
 ```
 
 Detalles a cuidar:
 
-- Todas las direcciones se validan: una sola inválida rechaza la llamada completa.
+- **Fija `3.0.1`.** La versión predeterminada devuelve `DEFAULT` tanto si el envío funcionó como si no, así que nunca toma `ERROR`. `3.0.1` acepta solo `SUCCESS` / `ERROR` en `next` y rechaza cualquier clave de `data` que no declare, incluida la `template` de la predeterminada — ver [Cada stage que puede fallar necesita una rama de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error).
+- Todas las direcciones se validan: una sola inválida rechaza la llamada completa. Un marcador `{{…}}` es inválido: solo `htmlTemplate` se renderiza como plantilla Mustache; `cssTemplate` se inserta tal cual.
 - `singleRecipient: true` envía un correo por destinatario (más lento, pero más seguro para semántica de baja de suscripción).
 - cotctl fija `dryRun: true`, que omite el envío SMTP real pero igual corre la validación.
 

@@ -46,12 +46,12 @@ Recurre a un bot de primera línea antes de escribir JavaScript propio. La tabla
 | Actualizar campos de tarea (estado, asignado, fechas) | `PBUpdateTask` | `CCJS` | `2.2.0` agrega tracking de rendimiento |
 | Avanzar la máquina de estados | `PBChangeState` | `PBUpdateTask` (no registra historial de SM) | |
 | Duplicar una tarea | `PBDuplicateTask` | `PBCreateTask` manual | `ignoreChildren: true` omite hijas |
-| Enviar un mensaje a un canal | `PBMessage` | `PBSendCustomNotification` (ese es para push) | |
+| Enviar un mensaje a un canal | `PBMessage` | `PBSendCustomNotification` (ese es para push) | Fija `2.2.0`: la predeterminada nunca toma `ERROR` ([ramas de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error)) |
 | Enviar mensajes a muchos canales | `PBBulkMessage` | bucle `FCEach` + `PBMessage` | ~90% menos llamadas de red |
 | Enviar un formulario | `PBSendSurvey` | `PBMessage` | `editMode: true` para borradores |
 | Reabrir un formulario enviado | `PBEditableSurvey` | `PBSendSurvey` con `editMode` | |
 | Copiar un formulario a otro canal | `PBCopySurvey` | `PBSendSurvey` | |
-| Enviar un correo | `PBEmail` | `NWRequest` a SES/SMTP | `3.0.1` recomendada |
+| Enviar un correo | `PBEmail` | `NWRequest` a SES/SMTP | Fija `3.0.1`: la predeterminada nunca toma `ERROR` ([ramas de error](../resources/routines.md#cada-stage-que-puede-fallar-necesita-una-rama-de-error)) |
 | Push + mensaje al canal | `PBSendCustomNotification` | `PBMessage` | |
 | Plantilla de WhatsApp | `PBWhatsApp` | `NWRequest` a un BSP | requiere un `contractCode` válido |
 | Generar un PDF | `PBPdf` (4.0.0) | `PBTemplate` (solo HTML) | |

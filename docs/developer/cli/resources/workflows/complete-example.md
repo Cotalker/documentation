@@ -35,14 +35,38 @@ stateMachines:
     initialState: po_draft           # a state property code
 
     # StartForm: a survey that gates task creation, with a bot that
-    # emails the creator on intake.
+    # emails purchasing on intake.
     requiredSurvey:
       surveyCode: survey_po_intake
       bots:
-        - name: notify-creator
+        - name: notify-purchasing
           start: s1
           stages:
-            - { key: s1, name: PBEmail, data: { to: "purchasing@acme.com" } }
+            - key: s1
+              name: PBEmail
+              version: "3.0.1"   # pinned: the default version never takes ERROR
+              data:
+                subject: "PO request received"
+                content:
+                  title: "PO request received"
+                  messageA: "We will let you know once it is reviewed."
+                targets:
+                  - "purchasing@example.com"
+              next:
+                SUCCESS: ""
+                ERROR: notify_failure
+            - key: notify_failure
+              name: PBMessage
+              version: "2.2.0"
+              data:
+                content: "The PO confirmation email could not be sent"
+                contentType: "text/plain"
+                sentBy: "6a000000000000000000beef"   # the user shown as the sender
+                channelIds:
+                  - "6a000000000000000000fa11"       # a channel the team watches
+              next:
+                SUCCESS: ""
+                ERROR: ""       # the handling stage ends the run either way
 
     states:
       - property: po_draft           # must already exist as a Property
@@ -95,6 +119,7 @@ stateMachines:
 - **Two terminal states** (`po_rejected`, `po_closed`) have no `next[]` — a task there stays put.
 - **Survey-gated rejection:** both transitions into `po_rejected` use `canChange: survey` with a `requiredSurvey`, so a reason is always captured.
 - **`initialState` names a property code**, not an ID — `cotctl` resolves it after creating the states.
+- **The intake email has an error path.** `PBEmail` is pinned to `3.0.1` and its `ERROR` goes to `notify_failure`, so a failed send reaches a channel someone watches — see [Give every stage that can fail an error path](../routines.md#give-every-stage-that-can-fail-an-error-path).
 - **The bot slots** (`requiredSurvey.bots`, transition `bots`) follow the [merge rules](./merge-semantics.md): omit to preserve, `[]` to delete, a list to replace. IDs inside `stage.data` are passed through untouched.
 
 ## Two-step and multi-machine patterns

@@ -33,13 +33,29 @@ parametrizedBot:                   # optional automation that runs when a comman
   start: send
   stages:
     - key: send
-      name: PBSendMessage
+      name: PBMessage
+      version: "2.2.0"               # pinned: the default version never takes ERROR
       data:
-        channelId: "6a000000000000000000abcd"
-        text: "Hola"
+        content: "Hola"
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"   # the user shown as the sender
+        channelIds:
+          - "6a000000000000000000abcd"
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure
+    - key: notify_failure            # the error path of the stage above
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "El bot de saludo no pudo responder."
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # a channel the team watches
+      next:
+        SUCCESS: ""
+        ERROR: ""                    # the handling stage ends the run either way
 ```
 
 | Field | Required | Notes |
