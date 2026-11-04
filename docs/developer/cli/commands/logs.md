@@ -4,7 +4,7 @@ sidebar_label: logs
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/logs.ts, docs/commands/logs.md @ a9168d68 (2026-10-23) -->
+<!-- source: repositories/cotctl/src/commands/logs.ts, docs/commands/logs.md @ 18d0110b (2026-11-04) -->
 
 `cotctl logs` reads **what a Routine did when it ran**: the context the run received, the configuration it ran with, what each stage returned, and its error. The scheduler keeps one log per run for **7 days**; `cotctl logs` lists those runs with the same filters the webclient offers and downloads their logs as JSON files, so you — or an AI assistant — can read them without copying anything out of the webclient.
 
@@ -154,7 +154,14 @@ Without `--parts` a log comes whole — every part but the stages, which is what
 | `error` | The run's error, parsed when it is JSON |
 | `stage:<key>` | One stage: its configuration and every result with that key |
 
-A part the log does not have — an `error` in a successful run, a stage that never ran — comes empty and is listed in the file's `emptyParts`; it is not an error.
+A part the log does not have — an `error` in a successful run, a configured stage that never ran — comes empty and is listed in the file's `emptyParts`; it is not an error.
+
+A `stage:<key>` that is **not a stage of the log** at all — no stage by that key in its configuration, and no result carrying it — is almost always a mistyped key, and the two commands treat it differently (since 0.16.0):
+
+- **`logs get` stops with exit `1`** before writing that log, and names the stages the log has, read from its `routine` part with one more request, so the key can be fixed from the message alone. Like any `logs get` that stops, it prints no manifest under `--json`; the files written before that log stay.
+- **`logs pull` writes the log as before**, with `config: null` and no results under that key, and warns on stderr once per log that lacks it: the runs a pull matches need not share their stages. Its exit code does not change. `--parts routine` shows a log's stages.
+
+Two kinds of log cannot tell a stage from a typo, so they are written as they are, with no error and no warning: one whose stored output is not valid JSON, and one that stored no response of its run — what a run that timed out, or whose worker threw, leaves. On those, a mistyped key goes unnoticed.
 
 ### Files
 
@@ -195,7 +202,7 @@ Every requested log lands in exactly one of `written`, `missing` (it does not ex
 | Code | Meaning |
 |---|---|
 | `0` | Done: every log delivered, the page listed (an empty one included), nothing matched, or the `pull` confirmation was declined |
-| `1` | General failure: an API error (`403`, `504`, `5xx`), the network, the profile, the file system, or Ctrl-C at the confirmation |
+| `1` | General failure: an API error (`403`, `504`, `5xx`), the network, the profile, the file system, or Ctrl-C at the confirmation. From `get`, also a `stage:<key>` that a requested log does not have (see [Parts](#parts)) |
 | `2` | Invalid input, before anything is read: a flag value or combination, a log id, a code or name that matches nothing, more logs than `--max`, or a multi-page `pull` with no terminal to confirm on and no `--yes` |
 | `3` | `get` / `pull`: some log was not delivered — missing, expired or failed. The manifest (or, under `--stdout`, stderr) says which |
 | `4` | The environment's backend has no log reader yet, or its reader cannot filter by `--routine`. Nothing to retry until the backend is on `release-5.13.0` or later |

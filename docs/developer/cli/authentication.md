@@ -4,7 +4,7 @@ sidebar_label: Authentication
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ a9168d68 (2026-10-23) -->
+<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts, docs/authentication.md @ 18d0110b (2026-11-04) -->
 
 Now that `cotctl` is installed, it needs to know *which Cotalker environment to talk to* and *who you are*. This page explains how authentication works, walks you through your first login, and introduces **profiles** — the concept that lets you safely juggle several environments.
 
@@ -62,11 +62,11 @@ Use with: cotctl surveys list -c acme
 | `--subdomain <name>` | **(required)** Subdomain or company name |
 | `--api-url <url>` | API URL, if you need to override autodiscovery |
 | `--no-browser` | Use email/password instead of the browser flow |
-| `--profile <name>` | Custom profile name (defaults to the `--subdomain` value) |
+| `--profile <name>` | Custom profile name (defaults to the `-c` value, else the `--subdomain` value). Wins over `-c` when both are given |
 | `--paste-token` | Register a pre-generated ApiToken instead of authenticating, typed at a prompt |
 | `--token <jwt \| @file \| ->` | The same, supplied as an argument instead of at a prompt — this is the one that works with no terminal attached |
 | `--machine-id <id>` | Pin the machine identifier stamped into the token's code, so you can tell tokens apart per machine |
-| `--yes` | Overwrite an existing profile without asking |
+| `--yes` | Overwrite an existing profile without asking. Without it, the question comes before the browser opens or the password is asked for |
 | `--allow-unverified-company` | Continue when the environment cannot confirm which company the token belongs to |
 
 The [login & logout reference](./commands/login-logout.md) covers `--token`, `--paste-token` and `--machine-id` in full.
@@ -115,13 +115,21 @@ Four rules worth knowing before you wire it up:
 
 ### Asserting which company the job expects
 
-`COTCTL_COMPANY_ID` is optional and exists for one purpose: to state which company the pipeline believes it is acting on. A token belonging to a different one stops the run before anything happens, naming both ids.
+`COTCTL_COMPANY_ID` is optional and exists for one purpose: to state which company the pipeline believes it is acting on. A token belonging to a different one stops the run before anything is sent, naming both ids.
 
 ```bash
 export COTCTL_COMPANY_ID="64a1b2c3d4e5f6a7b8c9d0e1"
 ```
 
 This is worth setting on any job that can write. It is the same guardrail `-c` gives a person, expressed as an assertion instead of a choice.
+
+<a id="company-mismatch-exit-codes"></a>
+The refusal exits non-zero, but **the code depends on the command**:
+
+- **`2`** from `apply`, `bots apply`, `jobtitles apply`, `routines apply`, `slas apply`, `surveys apply`, `users apply`, `webhooks apply`, `users list`, `surveys export`, `schedules logs`, `webhooks list` and `webhooks logs` — and from `logs list` and `logs pull`, unless a `--workflow`, `--state`, `--sla`, `--bot` or `--schedule` filter has to be looked up first;
+- **`1`** from every other command, including `properties apply`, `property-types apply`, `roles apply`, `schedules apply`, `workflows apply` and `logs get`.
+
+**A script should test for non-zero, not for a specific code.** `schedules logs`, `webhooks list` and `webhooks logs` moved from `1` to `2` in 0.16.0. The check runs only on a run without `-c`, which takes its credential from the environment.
 
 <div className="alert alert--warning">
 
@@ -169,7 +177,9 @@ cotctl logout acme
 # Logged out from profile "acme".
 ```
 
-If you only want to forget a profile locally **without** revoking its token, use `cotctl profile delete <name>` instead.
+Since 0.16.0, `logout` keeps the token active when another local profile still uses it — `login --token` and `--paste-token` can save one token in several profiles — and names those profiles; the last of them to log out revokes it. `cotctl logout <name> --revoke` revokes it anyway. See [login & logout](./commands/login-logout.md#cotctl-logout).
+
+If you only want to forget a profile locally **without** revoking its token, use `cotctl profile delete <name>` instead (`-y` skips its confirmation).
 
 ## You don't have to think about token refresh
 
@@ -184,6 +194,8 @@ If a refresh can't be done, `cotctl` tells you exactly what to run:
 ```
 Error: Session expired for profile "acme". Run: cotctl login --url https://web.cotalker.com --subdomain acme
 ```
+
+When the server refuses an ApiToken profile's token in the middle of a command, because it expired or was revoked, `cotctl` asks for the password of the email the profile records, logs in again and retries the request. Before it mints the new ApiToken it checks that the login resolved to the user the profile is bound to, and otherwise refuses without minting one — a mismatch takes two users sharing an email, or a profile edited by hand. If the new token is minted but the profile cannot be saved (a full or read-only disk), it names that token and where to revoke it before failing. With no terminal it stops instead, and `cotctl login` is the way back.
 
 **None of this applies to an environment credential.** `COTCTL_TOKEN` is never refreshed and never renewed: an expired token stops the run with a message naming the variable, so a pipeline fails loudly instead of quietly re-authenticating as somebody. Rotating that token is the pipeline's job, not the CLI's.
 

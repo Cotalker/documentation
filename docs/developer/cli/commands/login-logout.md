@@ -4,7 +4,7 @@ sidebar_label: login & logout
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts @ a9168d68 (2026-10-23) -->
+<!-- source: repositories/cotctl/src/commands/login.ts, src/commands/logout.ts, docs/commands/login.md, docs/commands/logout.md @ 18d0110b (2026-11-04) -->
 
 These two commands open and close your connection to a Cotalker environment. If you've already read the [Authentication](../authentication.md) page, you've met `login` — this page is the complete reference for both commands, including every option and the less common cases like on-premise environments.
 
@@ -26,12 +26,48 @@ The key thing to remember: `--url` is the **webclient** address (what you'd type
 | `--subdomain` | Yes | — | Company subdomain |
 | `--api-url` | No | Auto-detected | Manual override of the API URL |
 | `--no-browser` | No | `false` | Use email/password instead of the browser flow |
-| `--profile` | No | Value of `--subdomain` | Custom profile name |
+| `--profile` | No | Value of `-c`, else of `--subdomain` | Custom profile name. Wins over `-c` when both are given (see [Naming the profile](#naming-the-profile)) |
+| `-c` / `--company` | No | — | The global profile option. On `login` it names the profile to save, as `--profile` does |
 | `--machine-id` | No | Sanitized hostname | Identifier embedded in the ApiToken's code, so you can tell tokens apart per machine |
 | `--paste-token` | No | `false` | Paste a pre-generated ApiToken instead of authenticating, typed at a prompt (see below) |
 | `--token` | No | — | The same, supplied as an argument, a file or standard input — the form that works with no terminal (see below) |
-| `--yes` / `-y` | No | `false` | Overwrite an existing profile without asking. Required in CI, where the prompt cannot be answered |
+| `--yes` / `-y` | No | `false` | Overwrite an existing profile without asking. Required in CI, where the prompt cannot be answered (see [Overwriting an existing profile](#overwriting-an-existing-profile)) |
 | `--allow-unverified-company` | No | `false` | Continue when the environment cannot confirm which company the token belongs to |
+
+### Naming the profile
+
+The profile is named after `--subdomain` unless `login` is given a name: `--profile <name>`, or the global `-c <name>`, placed before or after `login`. That is how one company gets a profile per environment — two logins with the same `--subdomain` would otherwise save under the same name, and the second would ask to overwrite the first:
+
+```bash
+cotctl login --url https://web.cotalker.com --subdomain acme -c acme-prod
+cotctl login --url https://web.staging.cotalker.com --subdomain acme -c acme-staging
+
+cotctl apply -f survey.yaml -c acme-prod
+```
+
+Whatever the name, `--subdomain` still labels the company the profile belongs to. An empty or blank name counts as not given: `-c ""` saves under `--subdomain`. When `--profile` and `-c` are both given and differ, `--profile` wins, and `login` says so on stderr:
+
+```
+Warning: -c "acme-prod" is ignored — --profile "mine" names the profile this login saves.
+```
+
+<div className="alert alert--warning">
+
+**Changed in 0.16.0.** Before, `login` ignored `-c` and saved the profile under the `--subdomain` value. A script or alias that passes `-c` to `login` now finds the profile under the `-c` name — and when that name is a profile that already exists, `login` asks before overwriting it, or, without a terminal and without `--yes`, exits `1`. With `--yes` it overwrites that profile with the credentials of whichever environment the login authenticated against, so check the name a script that passes both `-c` and `--yes` targets. The same holds for a wrapper that adds `-c` to every command.
+
+</div>
+
+### Overwriting an existing profile
+
+When the profile name is already taken, `login` asks before overwriting it — before it discovers the API URL, opens the browser or asks for a password, so a login that will not be saved mints no ApiToken. Answering `n` cancels with exit `1` and leaves the existing profile as it was:
+
+```
+Profile "acme" already exists. Overwrite? (y/N) n
+
+Error: Login cancelled — the existing profile "acme" was not overwritten.
+```
+
+With no terminal attached (a pipe, a CI job), it fails immediately unless `--yes` is given. The one case asked after authenticating is a profile that another process saved while `login` ran: by then the browser and password flows have minted their token, so a cancellation names the token it leaves behind.
 
 ### Browser flow (the default)
 
@@ -70,7 +106,7 @@ The two flows above both **mint** an ApiToken for you, which requires the `admin
 cotctl login --url https://web.cotalker.com --subdomain acme --paste-token
 ```
 
-`cotctl` prompts you to paste the token (masked), validates it against the backend, and saves the profile — no email/password and no browser involved. A token from the ApiTokens panel has no expiry, and the profile records none. Because it reads from a prompt, **this flow needs a terminal**: in a pipeline, use `--token` below or an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) instead. See [CI/CD](../ci-cd.md).
+`cotctl` prompts you to paste the token (masked), validates it against the backend, and saves the profile — no email/password and no browser involved. A pasted token can be saved in more than one profile: when another profile already holds the same token against the same API URL, `login` (with `--paste-token` or `--token`) saves the new profile anyway and warns on stderr, naming the profiles that hold it — see [`cotctl logout`](#cotctl-logout) for what that means when one of them logs out. A token from the ApiTokens panel has no expiry, and the profile records none. Because it reads from a prompt, **this flow needs a terminal**: in a pipeline, use `--token` below or an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) instead. See [CI/CD](../ci-cd.md).
 
 ### Logging in with no terminal: `--token`
 
@@ -93,7 +129,9 @@ echo "$CI_COTCTL_TOKEN" | cotctl login \
   --allow-unverified-company
 ```
 
-Neither indirect form can hang or run away. `--token -` gives up after 10 seconds if the pipe stays open without delivering a token, and stops reading at 8 KB, so a job never burns its global timeout on a stalled stdin. `--token @<path>` **warns — it does not fail** — when the file is readable beyond its owner, so a secret mounted with your cluster's own mode still works.
+All three forms are read before the API URL is discovered, before any request reaches the Cotalker backend and before `login` asks anything, so a missing or unreadable file, an empty or oversized stdin, or a terminal where `-` expects a pipe fails without waiting on the discovery.
+
+Neither indirect form can hang or run away. `--token -` gives up 10 seconds after `login` starts reading it if the pipe stays open without delivering a token, and stops reading at 8 KB, so a job never burns its global timeout on a stalled stdin. `--token @<path>` **warns — it does not fail** — when the file is readable beyond its owner, so a secret mounted with your cluster's own mode still works.
 
 <div className="alert alert--warning">
 
@@ -149,15 +187,25 @@ A login that **mints** a token reports it as created and prints a URL where you 
 cotctl logout <profile>
 # or, equivalently:
 cotctl logout -c <profile>
+# revoke the token even when another profile still uses it:
+cotctl logout <profile> --revoke
 ```
 
-The positional `<profile>` is optional if you pass `-c <profile>` instead.
+The positional `<profile>` is optional if you pass `-c <profile>` instead; when both are given, the positional one wins.
+
+| Option | Description |
+|---|---|
+| `--revoke` | Revoke the ApiToken even when another local profile still uses it, and name the profiles that can no longer authenticate |
 
 <div className="alert alert--secondary">
 
 **`logout` revokes your token server-side.** For modern API-token profiles, `cotctl logout` **revokes the ApiToken on the Cotalker server** and then removes the local profile, so the token can no longer be used. Revocation is **best-effort**: if the server can't be reached, `cotctl` still removes the local profile and warns you to revoke the token manually in the admin panel — so a logout never leaves you unable to log back in. (Legacy JWT profiles have nothing to revoke — they simply expire — so they're only removed locally.) This is the key difference from [`cotctl profile delete`](./profiles.md), which removes the profile **locally only** and leaves any token valid.
 
 </div>
+
+**A token another profile still uses is not revoked** (since 0.16.0). `login --paste-token` and `login --token` save a pre-generated ApiToken, so the same token can end up in several profiles. When another profile on this machine holds the same token against the same API URL, `logout` removes only the profile you named, keeps the token active and names, on stderr, the profiles that still use it. The last of them to log out revokes it; `--revoke` revokes it at once.
+
+Only the profiles on this machine are checked. A token also saved on another machine, or kept as a CI secret, is still revoked by the last `logout` here; to remove a profile without touching the token, use `cotctl profile delete`. Revoking needs the `admin-apitokens-write` permission: without it the server refuses, `logout` warns and removes the local profile anyway, and the token stays active.
 
 ## See also
 

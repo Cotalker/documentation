@@ -42,7 +42,7 @@ cotctl apply --dir config/ --yes
 
 There is no `login` step and no `-c` flag. **Nothing is written to disk** — the configuration is built in memory for that run — and the company comes from the token itself, so it cannot disagree with the credential.
 
-Add `COTCTL_COMPANY_ID` to assert which company the job expects. A token belonging to another one stops the run before anything happens, naming both ids. On a job that can write, this is worth the one line:
+Add `COTCTL_COMPANY_ID` to assert which company the job expects. A token belonging to another one stops the run before anything is sent, naming both ids, and exits non-zero — `2` or `1` depending on the command (see [Authentication](./authentication.md#company-mismatch-exit-codes)), so test for non-zero. On a job that can write, this is worth the one line:
 
 ```bash
 export COTCTL_COMPANY_ID="64a1b2c3d4e5f6a7b8c9d0e1"
@@ -89,7 +89,7 @@ on:
     branches: [main]
 
 env:
-  COTCTL_NO_UPDATE_CHECK: '1'   # both jobs: no version lookup, no notice
+  COTCTL_NO_UPDATE_CHECK: '1'   # both jobs: no update notice
 
 jobs:
   validate:
@@ -124,7 +124,7 @@ Two things to notice. There is **no login step** — the environment credential 
 
 `COTCTL_COMPANY_ID` is a plain variable rather than a secret: a company id is not sensitive, and keeping it visible is the point — it is the line a reviewer reads to see which environment this job deploys to.
 
-Both jobs install a **pinned** version, so the version that runs is the one the workflow names — without a terminal `cotctl` never installs an update on its own; the pin is what keeps `npm install` from picking up a newer release. The workflow-level `COTCTL_NO_UPDATE_CHECK` (the "offline" validate job queries npm for the check too) removes the version notice and its network call, and keeps a runner that has a terminal but no `CI` variable from ever being offered an update. See [New cotctl versions in a pipeline](#new-cotctl-versions-in-a-pipeline).
+Both jobs install a **pinned** version, so the version that runs is the one the workflow names — without a terminal `cotctl` never installs an update on its own; the pin is what keeps `npm install` from picking up a newer release. The workflow-level `COTCTL_NO_UPDATE_CHECK` removes the version notice, and keeps a runner that has a terminal but no `CI` variable from ever being offered an update. From 0.16.0 it does not remove the lookup itself, which also brings the [data-loss advisories](./commands/update.md#data-loss-advisories): even the "offline" validate job queries npm once per job on a runner that starts with an empty home directory. See [New cotctl versions in a pipeline](#new-cotctl-versions-in-a-pipeline).
 
 ## The CI-oriented flags, and where they live
 
@@ -156,7 +156,7 @@ A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on
 
 ## Exit codes
 
-`cotctl` maps outcomes to four exit codes:
+`cotctl` maps outcomes to five exit codes:
 
 | Code | Meaning |
 |---|---|
@@ -164,6 +164,7 @@ A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on
 | `1` | The default failure code: an API error, a missing file or profile, and any validation failure not covered by `2` |
 | `2` | One of three: a pre-apply **validation refusal** (what was refused was not sent, though other documents of the same run may have been), an **export refusal** (the survey could not be modelled), or a `danger` finding under `--fail-on-destructive` |
 | `3` | **Partial apply** — part of the apply was written and the run failed afterwards: resources a Workflow created, or a schedule whose cron an update stopped and whose relaunch failed |
+| `5` | **Stopped by a data-loss advisory** (since 0.16.0) — a published advisory names this `cotctl` version and this command, so the command did not run, `--dry-run` included. Update `cotctl` and run it again; see [Data-loss advisories](./commands/update.md#data-loss-advisories) |
 
 `cotctl logs`, which writes nothing to Cotalker, gives `3` and a fifth code its own meanings: `3` when some requested log was not delivered, and `4` when the environment's backend has no log reader yet. See [logs](./commands/logs.md#exit-codes).
 
@@ -175,6 +176,8 @@ A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on
 
 <div className="alert alert--info">
 
+**0.16.0 changed a few codes.** A command a [data-loss advisory](./commands/update.md#data-loss-advisories) names exits `5` without running; a `partial: true` Workflow the merge refuses exits `2` from `workflows apply`, `apply -f` and `apply --dir` (`1` → `2`), as a `partial: true` Bot, Routine, SLA or Schedule already did; `slas apply` and `apply --dir` exit `0` on an SLA they created or updated, where every SLA write ended in `1` since 0.12.0 — and `apply --dir` without `--continue-on-error` stopped there, so the files after the first SLA file were never applied: review them, or run the same `apply --dir --dry-run`, before the first run on 0.16.0; `validate --remote` exits `1` on a Survey a Workflow names that the server does not have, as `apply --dry-run` already did; `logs get --parts stage:<key>` exits `1` for a log without that stage (`0` → `1`); and a `COTCTL_COMPANY_ID` mismatch exits `2` from `schedules logs`, `webhooks list` and `webhooks logs` (`1` → `2`). A `-l` that is not a positive integer on `schedules logs`, `webhooks list` and `webhooks logs` now exits `2` before any request.
+
 **0.14.0 changed several codes.** If your pipeline tests for specific values, check it against the list below. Among the moves: a survey refusal from `surveys apply` or `apply -f` (`1` → `2`); an SLA or schedule refusal (`1` → `2`); a partial workflow apply from `apply -f` (`1` → `3`); a Workflow naming a Survey the server lacks (`3` → `1`, refused before its first write); `bots apply --dry-run` on a runtime failure (`2` → `1`); `apply --dir` without `-y` when its preview finds an error (now exits with that error's code, writing nothing); `apply --dir` for a document its own apply command refuses with `2` (`1` → `2`, even after `--continue-on-error` applied the rest); a batch that declares a resource twice (now `2`, where the last document used to win); `users` / `jobtitles apply` on an inactive record whose YAML omits `isActive` (`2` → `0`, and the rest of the YAML is now written); `bots`, `routines`, `users` and `jobtitles apply` on a failure that refuses nothing in the YAML, such as a catalog that cannot be read (`2` → `1`); a system JobTitle code typed back wrong at its prompt in `jobtitles apply` or `apply -f` (`2` → `0`, cancelled like a declined prompt; `apply --dir` stops there with `1`); and a Workflow state machine reusing a deactivated one's `code` (now `2`, before anything is written).
 
 </div>
@@ -184,7 +187,7 @@ A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on
 A kind gets the **same code from its own command as from `cotctl apply`**:
 
 - **Survey, User and JobTitle** exit `2` for what they check before writing — schema, references, a renamed code — through `apply -f` as through `surveys`, `users` and `jobtitles apply`. A check the server keeps them from making (a pinned User `id` it fails to look up, a JobTitle it fails to read) exits `1`.
-- **AccessRole, PropertyType, Property and Workflow** exit `1` for theirs, through `apply -f` as through `roles`, `property-types`, `properties` and `workflows apply` — except a Workflow state machine whose `code` a deactivated state machine holds, which every command refuses with `2`.
+- **AccessRole, PropertyType, Property and Workflow** exit `1` for theirs, through `apply -f` as through `roles`, `property-types`, `properties` and `workflows apply` — except a Workflow state machine whose `code` a deactivated state machine holds, which every command refuses with `2`, and, since 0.16.0, a `partial: true` Workflow that is not valid once merged with the stored one, which exits `2`.
 - **Webhook, Routine, Bot, SLA and Schedule** — which `apply -f` does not take — exit `2` from their own commands for what the YAML gets wrong: the schema, an SLA whose state machine or states don't resolve, a schedule's invalid `cron`, a bot version or routine the catalog doesn't have. A catalog that cannot be read exits `1`.
 - **`cotctl validate` exits `1` for a validation failure, not `2`** — which surprises most people wiring up their first gate, because `validate` is the command whose whole job is validation.
 
@@ -245,7 +248,9 @@ From **0.14.0**, `cotctl` checks for a newer version before every command. In a 
 Two settings make a job predictable:
 
 - **Pin the version you install** — `npm install -g @cotctl/cli@<version>`, as the worked example does. An unpinned install picks up whatever is latest on the next run, breaking releases included: 0.14.0, for one, changed several exit codes a pipeline may branch on. Move the pin when you have read the release notes.
-- **Set `COTCTL_NO_UPDATE_CHECK=1`** to skip the check and its network call altogether. Any value other than empty, `0`, `false` or `no` turns it off.
+- **Set `COTCTL_NO_UPDATE_CHECK=1`** to turn the update notice off. Any value other than empty, `0`, `false` or `no` turns it off.
+
+**From 0.16.0, one thing the variable does not turn off: [data-loss advisories](./commands/update.md#data-loss-advisories).** When a published advisory names the pinned version and a command the job runs, that command does not run — `--dry-run` included — and exits `5`, after naming the loss and the version that fixes it on stderr. The lookup that brings the advisories still runs at most once every 12 hours while `~/.cotctl` can be written — once per job on a runner that starts with an empty home directory — and waits up to 1.5 seconds where npm cannot be reached. A job that meets exit `5` moves its pin to the fixed version and runs again; to run the affected version anyway, set `COTCTL_ACCEPT_ADVISORY` to the id the message names (several ids separated by commas). A job pinned to a version before 0.16.0 never meets exit `5`: those versions do not read advisories.
 
 To move a pinned job forward, change the pin. Outside a pipeline, `cotctl update` installs the latest version on demand — see [update](./commands/update.md).
 

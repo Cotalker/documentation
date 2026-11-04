@@ -28,7 +28,12 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 ### `Another cotctl process is installing an update right now.`
 
 - **Cause:** a `cotctl` in another terminal or script is installing the new version at that moment. Nothing failed.
-- **Fix:** on an update without breaking changes your command ran anyway, on the current version. After `update` at the prompt, or from `cotctl update`, it exited `1` without running anything — run it again once that install finishes, and do **not** run `npm install -g` meanwhile: two installs at once can break the global installation.
+- **Fix:** on an update without breaking changes your command ran anyway, on the current version. After `update` at the prompt, or from `cotctl update`, it exited `1` without running anything — `5` when the prompt was offering the fix for a [data-loss advisory](./commands/update.md#data-loss-advisories). Run it again once that install finishes, and do **not** run `npm install -g` meanwhile: two installs at once can break the global installation.
+
+### `` cotctl <version> has a known data loss in `cotctl <command>` (<id>): … ``
+
+- **Cause:** from 0.16.0, a published advisory names this version of `cotctl` and this command, so the command did not run — `--dry-run` included — and the exit code is `5`.
+- **Fix:** update `cotctl` with `cotctl update`, or with the command the message prints, and run the command again. To run this version anyway, set `COTCTL_ACCEPT_ADVISORY=<id>` with the id the message names; `COTCTL_NO_UPDATE_CHECK` does not turn it off. See [Data-loss advisories](./commands/update.md#data-loss-advisories).
 
 ## Authentication & profiles
 
@@ -79,6 +84,16 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** the webclient URL is wrong, or (common on-premise) the webclient doesn't serve the variables file `cotctl` reads to find the API.
 - **Fix:** double-check the `--url`. On-premise, pass the API explicitly with `--api-url https://api.empresa.com`.
 
+### `COTCTL_COMPANY_ID=<id> does not match the company of COTCTL_TOKEN`
+
+- **Cause:** the pipeline secret holds a token for another company than the one `COTCTL_COMPANY_ID` asserts.
+- **Fix:** check which token the secret holds. The run stops before sending anything and exits non-zero; the code depends on the command — see [Asserting which company the job expects](./authentication.md#company-mismatch-exit-codes) — so a script should test for non-zero.
+
+### `Login cancelled — the existing profile "<name>" was not overwritten.`
+
+- **Cause:** `cotctl login` was about to save a profile under a name that already exists, and the overwrite was declined — or there was no terminal to ask on and no `--yes`. Since 0.16.0 the name can come from `-c` as well as `--profile` (see [Naming the profile](./commands/login-logout.md#naming-the-profile)), and the question comes before authenticating, so nothing was minted.
+- **Fix:** pick another name with `-c` or `--profile`, or pass `--yes` to overwrite — after checking that the name is the profile you mean to replace.
+
 ### `Token does not belong to the specified company`
 
 - **Cause:** the token was issued for a different company than the subdomain/URL you specified.
@@ -121,10 +136,10 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 - **Cause:** a `property` question's `filters` is written as a map — a single filter missing its leading `- `. Before `0.13.0` this passed validation and then broke the apply.
 - **Fix:** start each filter with `- `. See [`property`](./resources/surveys/question-types.md#property--pick-a-property).
 
-### `jobs must be a list`
+### `jobs must be a list, or "*" for every job title`
 
-- **Cause:** a `person` question with `personFilter.allow: jobTitle` has `jobs` as a single value (`jobs: mgr`) instead of a list. Before `0.13.0` this passed validation, and the apply looked up one JobTitle per character of the value.
-- **Fix:** write it as a list, even for one code: `jobs: [mgr]`. Under any other `allow`, `jobs` is not read. See [`person`](./resources/surveys/question-types.md#person--pick-a-user).
+- **Cause:** a `person` question with `personFilter.allow: jobTitle` has `jobs` as a single code (`jobs: mgr`) instead of a list. Before `0.13.0` this passed validation, and the apply looked up one JobTitle per character of the value. Before 0.16.0 the message read `jobs must be a list`.
+- **Fix:** write it as a list, even for one code: `jobs: [mgr]`. For every job title, write the string `jobs: "*"`. A missing `jobs` fails with `jobs is required when allow is "jobTitle": …`. Under any other `allow`, `jobs` is not read. See [`person`](./resources/surveys/question-types.md#person--pick-a-user).
 
 ### `Identifier "<id>" cannot be reused`
 
@@ -165,6 +180,11 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 
 - **Cause:** a property type's schema node declares an `editable` block, which the platform drops. Refused since 0.14.0.
 - **Fix:** remove it; use `isNonEditable: true` for a field users can't edit.
+
+### `<Kind> "<identifier>": could not confirm the write: …`
+
+- **Cause:** the server answered a create or an update with a success code but no document, so `cotctl` cannot tell whether anything was written. On an update, the target may have been deleted, or belong to another company. Before 0.16.0 the message read `the backend accepted the write but answered with no <kind> document, so nothing was written`, which `cotctl` could not know.
+- **Fix:** read the entity back (`get` or `export`) before re-running the apply. The run exits `1`.
 
 ## Surveys: orphaned questions
 

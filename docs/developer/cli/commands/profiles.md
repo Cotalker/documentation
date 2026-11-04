@@ -28,11 +28,16 @@ Removes a profile from your local config file:
 
 ```bash
 cotctl profile delete <name>
+cotctl profile delete <name> --yes   # no confirmation prompt
 ```
+
+| Option | Description |
+|---|---|
+| `-y`, `--yes` | Skip the confirmation prompt. Without it, the command asks on the terminal, so a script deleting a profile passes `--yes` |
 
 <div className="alert alert--secondary">
 
-**Local only — this does *not* revoke the token.** Deleting a profile removes it from `~/.cotctl/config.json` but leaves any token valid on the server. This is different from [`cotctl logout`](./login-logout.md), which revokes the ApiToken server-side (for API-token profiles) before removing the profile. Use `profile delete` when you just want to forget a profile; use `logout` when you also want to invalidate its token.
+**Local only — this does *not* revoke the token.** Deleting a profile removes it from `~/.cotctl/config.json` but leaves any token valid on the server. This is different from [`cotctl logout`](./login-logout.md#cotctl-logout), which revokes the ApiToken server-side (for API-token profiles) before removing the profile — unless another local profile still uses the same token. Use `profile delete` when you just want to forget a profile; use `logout` when you also want to invalidate its token.
 
 </div>
 
@@ -47,3 +52,5 @@ cotctl surveys export my_survey -c staging
 ```
 
 If you ever see `Error: --company/-c is required`, run `cotctl profile list` to pick the right name.
+
+On [`cotctl login`](./login-logout.md#naming-the-profile), `-c <name>` names the profile the login saves, as `--profile` does; on `cotctl logout`, it is the alternative to the positional `<profile>`.
