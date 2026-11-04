@@ -4,9 +4,11 @@ sidebar_label: COTLang
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/cotlang.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/cotlang.md @ 18d0110b (2026-11-04) -->
 
-**COTLang** is the small expression language Cotalker uses to interpolate runtime values into a bot's configuration. When a bot fires inside a workflow, the strings in its `data` block are parsed as COTLang expressions and resolved against the live context — so `{{task._id}}` becomes the current task's ID, `{{user.company}}` becomes the company, and so on.
+**COTLang** is the small expression language Cotalker uses to interpolate runtime values into a bot's configuration. When a bot fires inside a workflow, the strings in its `data` block are parsed as COTLang expressions and resolved against the live context — the commands of its grammar, such as `$VALUE#…`, `$OUTPUT#<stage>#…`, `$INPUT#…` and `$JOIN#…`.
+
+`{{…}}` is not one of those expressions. A Mustache placeholder in `data` reaches the bot as literal text; only the `htmlTemplate` of `PBEmail` and `PBTemplate`, which skips COTLang, is rendered as a template, and their `cssTemplate` is inlined as written.
 
 You'll meet COTLang mainly in the `data` values of the bots you attach to transitions, StartForms, and survey triggers. Most of the time it just works. This page is about the one way it surprises people.
 

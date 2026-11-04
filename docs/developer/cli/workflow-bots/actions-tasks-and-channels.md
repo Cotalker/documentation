@@ -4,7 +4,7 @@ sidebar_label: 'Actions: tasks & channels'
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/pb-create-task.md, pb-update-task.md, pb-duplicate-task.md, pb-bulk-task-update.md, pb-change-state.md, pb-task-add-editor.md, pb-channel-to-task-se.md, pb-create-channel.md, pb-update-channel.md, pb-channel-add-user.md, pb-clean-channel.md, pb-hide-messages.md, pb-get-channel-messages.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/pb-create-task.md, pb-update-task.md, pb-duplicate-task.md, pb-bulk-task-update.md, pb-change-state.md, pb-task-add-editor.md, pb-channel-to-task-se.md, pb-create-channel.md, pb-update-channel.md, pb-channel-add-user.md, pb-clean-channel.md, pb-hide-messages.md, pb-get-channel-messages.md @ 18d0110b (2026-11-04) -->
 
 These `PB*` bots create and modify the two core objects of a workflow — **tasks** and **channels** — plus their editors, members and message history. They all share the `SUCCESS`/`ERROR` branch convention unless noted.
 
@@ -24,15 +24,19 @@ Key parameters: `name` (array of strings, joined with spaces), `taskGroup`; opti
     taskGroup: "5d23a26435513c1230fc671d"
     name: ["Review Purchase Order"]
     user: "5e7548ae1d8897202c6668b7"
-    parent: "{{task._id}}"
+    # Literal ObjectIds: `data` is not a Mustache template, and 2.0.1 refuses
+    # a non-ObjectId here. A dynamic id is a COTLang expression.
+    parent: "5d23a26435513c1230fc6720"
     status1: "5d2fd97cb448357a12fe59ac"
   next:
     SUCCESS: ""
-    ERROR: ""
+    ERROR: notify_failure     # a stage that tells a channel the team watches
 ```
 
 Gotchas:
 
+- **Pin `2.0.1`.** The default version reports a task it did not create on `NOT-CREATED`, not `ERROR`, and when the backend refuses the request the stage throws: the run stops as `UNHANDLED_ERROR` without taking any branch. Its `ERROR` catches only a missing or empty `name` or `taskGroup`. With `2.0.0` and `2.0.1`, a refusal takes `ERROR` — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
+- **Pinning an existing stage changes its contracts.** Rename `CREATED` to `SUCCESS` and `NOT-CREATED` to `ERROR`: the pinned versions check the keys of `next` before the bot runs, so a stage that keeps the old keys never creates the task — it takes `ERROR` on every run or, with no `ERROR` key, ends the run silently — and `cotctl validate` does not flag it. A stage holding both `NOT-CREATED` and `ERROR` can keep only one of the two handlers. The pinned versions also validate `data` strictly: `name` a non-empty list of strings, and `taskGroup`, `user`, `parent`, `parentChannel`, `assignee` and `status1`…`status5` ObjectIds.
 - `name` must be a non-empty array of strings.
 - If `user` is set and `assignee`/`editors` are not, `user` is used for both.
 - `parentChannel`/`parentAsset` trigger extra lookups — prefer `parent` when you already have the ObjectId.
@@ -119,23 +123,31 @@ Gotchas:
 
 Patches only the `smState` of a task — use this instead of `PBUpdateTask` when you want to advance the state machine and preserve its history.
 
-Key parameters: `tid`, `smState`, `taskGroup`; optionally `quiet`.
+Key parameters: `tid`, `smState`, `taskGroup`; optionally `quiet` (read only by `2.1.0`).
 
 ```yaml
 - key: s1
   name: PBChangeState
   version: "2.1.0"
   data:
-    tid: "{{task._id}}"
-    taskGroup: "{{task.taskGroup}}"
+    # Literal ObjectIds: `data` is not a Mustache template, and 2.1.0 refuses
+    # a non-ObjectId here. A dynamic id is a COTLang expression.
+    tid: "5e98c2c81d8897202c6668a1"
+    taskGroup: "5d23a26435513c1230fc671d"
     smState: "5e98c2c81d8897202c6668b7"
     quiet: false
   next:
     SUCCESS: ""
-    ERROR: ""
+    ERROR: notify_failure     # a stage that tells a channel the team watches
 ```
 
 Unlike `PBUpdateTask`, this bot touches only `smState` and goes through proper state-machine transition logic.
+
+Gotchas:
+
+- **Pin `2.1.0`.** The default version reports a patched task on `DEFAULT`, and when the backend refuses the request the stage throws: the run stops as `UNHANDLED_ERROR`, and an `ERROR` in its `next` is never taken. With `2.0.0` and `2.1.0`, a refusal takes `ERROR` — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
+- **Only `2.1.0` reads `quiet`.** `2.0.0` refuses it (`"quiet" is not allowed`) and takes `ERROR` on every run. The default accepts it and ignores it, so `quiet: true` silences nothing there. Off `2.1.0`, remove the field.
+- **Pinning an existing stage changes its contracts.** Rename `DEFAULT` to `SUCCESS`: the pinned versions check the keys of `next` before the bot runs, so a stage that keeps `DEFAULT` never changes the state — it takes `ERROR` on every run or, with no `ERROR` key, ends the run silently — and `cotctl validate` does not flag it. They also require `tid`, `smState` and `taskGroup` to be ObjectIds, where the default accepts any `data`.
 
 ## PBTaskAddEditor
 

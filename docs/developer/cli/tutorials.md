@@ -4,7 +4,7 @@ sidebar_label: Tutorials
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/{bots,routines,schedules,slas,property-types,properties}/, repositories/cotctl/src/commands/{bots,routines,schedules,slas,property-types,properties,surveys,workflows,validate,apply}.ts, repositories/cotctl/examples/{bots,routines,properties}/ @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/docs/{bots,routines,schedules,slas,property-types,properties}/, repositories/cotctl/src/commands/{bots,routines,schedules,slas,property-types,properties,surveys,workflows,validate,apply}.ts, repositories/cotctl/examples/{bots,routines,properties}/ @ 18d0110b (2026-11-04) -->
 
 The reference pages tell you *what* each command does. This page shows you *how* they fit together, with complete, follow-along recipes for the things you'll actually do on a project. Each recipe lists what you need before you start and what success looks like, so you can tell when it worked.
 
@@ -230,8 +230,22 @@ body:
         data: {}                     # the routine's input — this one takes none
       next:
         SUCCESS: ""
-        ERROR: ""
+        ERROR: notify_failure        # only when the routine returns no result
+    - key: notify_failure
+      name: PBMessage
+      version: "2.2.0"
+      data:
+        content: "La rutina de saludo no devolvió resultados."
+        contentType: "text/plain"
+        sentBy: "6a000000000000000000beef"
+        channelIds:
+          - "6a000000000000000000fa11"       # a channel the team watches
+      next:
+        SUCCESS: ""
+        ERROR: ""                            # the handling stage ends the run either way
 ```
+
+The `PBScript` stage takes `ERROR` only when the routine returns no result. A failure inside the routine is handled by the routine's own error paths, as above; a crash inside it stops the run as `UNHANDLED_ERROR` without taking any branch.
 
 ```bash
 # 3. Apply the schedule — it's active by default, so it starts firing on cron.

@@ -4,7 +4,7 @@ sidebar_label: Flow control
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/fc-*.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/fc-*.md @ 18d0110b (2026-11-04) -->
 
 Flow-control bots (`FC*`) do not touch tasks or channels — they shape how the workflow itself runs: looping over arrays, branching on a value, and pausing. Use them instead of custom JavaScript whenever you can; the engine understands them natively and they generate proper subcontexts.
 
@@ -14,7 +14,7 @@ A note on **subcontexts**: `FCEach`, `FCEachBulk` and `FCSwitchAll` each spawn a
 
 Iterates an array and runs the `STEP` branch once per item, each in its own subcontext where the loop variable resolves to the current item. `DONE` runs once at the end, in the parent context.
 
-Key parameters: `control` (the array), `target` (the variable name; inside each subcontext `{{target}}` is the current item).
+Key parameters: `control` (the array), `target` (the variable name; inside each subcontext `$VALUE#<target>` resolves to the current item).
 
 ```yaml
 - key: s1
@@ -52,7 +52,7 @@ Key parameters: `sourceArray`, `targetVariable` (inside the subcontext resolves 
   next:
     BATCH: s_update   # runs once per batch
     DONE: ""
-    ERROR: ""
+    ERROR: notify_failure   # a stage that tells a channel the team watches
 ```
 
 Gotchas:
@@ -86,7 +86,7 @@ Gotchas:
 
 ## FCSleep
 
-Pauses for `milliseconds` (default 1000), then continues to `DEFAULT`.
+Pauses for `milliseconds` (default 1000), then continues to `DEFAULT`. It has no `ERROR` branch, and needs none: it has nothing to fail on.
 
 ```yaml
 - key: s1
