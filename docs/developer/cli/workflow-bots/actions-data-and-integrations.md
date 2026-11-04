@@ -8,7 +8,7 @@ displayed_sidebar: developer
 
 The rest of the `PB*` catalog: creating and patching **properties and users**, small **routing helpers**, and a set of **integration** bots that reach out to external services (PDF rendering and extraction, spreadsheets, calendars, payments, Giphy, QR codes, and an LLM runner). Most share the `SUCCESS`/`ERROR` convention; the exceptions are noted per bot.
 
-Two bots here have **no `default` version** and require an explicit `version:` — `PBCalendar` (`2.0.0`) and `PBReport` (`1.0.0`).
+Three bots here have **no `default` version** and require an explicit `version:` — `PBCalendar` (`2.0.0`), `PBReport` (`1.0.0`) and `PBSheet` (`1.0.0`, which the scheduler does not run; see [PBSheet](#pbsheet)).
 
 ## PBCreateProperty
 
