@@ -146,21 +146,21 @@ Common mistakes in a `surveyTriggers` bot:
 
 ## Company-specific bots (`CB*`)
 
-A handful of bots (`CB*`) are loaded **only for specific tenants** and will fail anywhere else. The current tenants with custom bots are `puertocoronel`, `muellesdepenco` and `primetime`. Do not use them in cross-company workflows unless you have confirmed the bot is registered in the target environment.
+A handful of bots (`CB*`) are loaded **only for specific tenants** and will fail anywhere else. Do not use them in cross-company workflows unless you have confirmed the bot is registered in the target environment.
 
-| Bot | Tenant | Purpose |
-|-----|--------|---------|
-| `CBCheckOTsched` | puertocoronel | Trigger the `checkOT` scheduler once (testing utility) |
-| `CBCoronelCreateMtNotification` | puertocoronel | Push maintenance notifications to SAP via WS1 SOAP |
-| `CBGruas` | puertocoronel | Pull crane registers into a PostgreSQL DB, split by shift |
-| `CBRocketReachIOGetContact` | primetime | Despite the name, sets `smState` on a task (`patchTask`) |
-| `CBRocketReachIOSearch` | primetime | **Stub** — always returns `SEARCH_ERROR` (real call commented out) |
-| `CBErrorMessages` | muellesdepenco | Return channel messages whose content matches substrings |
-| `CBGetDeadTimeAnswer` | muellesdepenco | Look up a dead-time / delay answer by composite id |
-| `CBValidateAssignation` | muellesdepenco | Validate a dead-time assignation equals the actual duration |
-| `CBValidateClose` | muellesdepenco | Validate no dead time ends after the shift's real end |
-| `CBValidateStart` | muellesdepenco | Validate the real start falls inside the planned window |
-| `CBValidateTM` | muellesdepenco | Validate a new dead time fits inside the planned shift |
+| Bot | Purpose |
+|-----|---------|
+| `CBCheckOTsched` | Trigger the `checkOT` scheduler once (testing utility) |
+| `CBCoronelCreateMtNotification` | Push maintenance notifications to SAP via WS1 SOAP |
+| `CBGruas` | Pull crane registers into a PostgreSQL DB, split by shift |
+| `CBRocketReachIOGetContact` | Despite the name, sets `smState` on a task (`patchTask`) |
+| `CBRocketReachIOSearch` | **Stub** — always returns `SEARCH_ERROR` (real call commented out) |
+| `CBErrorMessages` | Return channel messages whose content matches substrings |
+| `CBGetDeadTimeAnswer` | Look up a dead-time / delay answer by composite id |
+| `CBValidateAssignation` | Validate a dead-time assignation equals the actual duration |
+| `CBValidateClose` | Validate no dead time ends after the shift's real end |
+| `CBValidateStart` | Validate the real start falls inside the planned window |
+| `CBValidateTM` | Validate a new dead time fits inside the planned shift |
 
 `CBCheckOTsched` throws its failures instead of reporting them, so no `ERROR` branch catches them: read its log entry after each test run.
 

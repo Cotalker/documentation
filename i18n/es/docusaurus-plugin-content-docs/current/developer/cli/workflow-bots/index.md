@@ -133,21 +133,21 @@ Errores comunes en un bot de `surveyTriggers`:
 
 ## Bots específicos por empresa (`CB*`)
 
-Un puñado de bots (`CB*`) se cargan **solo para ciertos tenants** y fallan en cualquier otro lado. Los tenants con bots propios hoy son `puertocoronel`, `muellesdepenco` y `primetime`. No los uses en workflows entre empresas salvo que hayas confirmado que el bot está registrado en el entorno destino.
+Un puñado de bots (`CB*`) se cargan **solo para ciertos tenants** y fallan en cualquier otro lado. No los uses en workflows entre empresas salvo que hayas confirmado que el bot está registrado en el entorno destino.
 
-| Bot | Tenant | Propósito |
-|-----|--------|-----------|
-| `CBCheckOTsched` | puertocoronel | Dispara el scheduler `checkOT` una vez (utilidad de prueba) |
-| `CBCoronelCreateMtNotification` | puertocoronel | Envía notificaciones de mantenimiento a SAP vía SOAP WS1 |
-| `CBGruas` | puertocoronel | Inserta registros de grúas en una base PostgreSQL, partidos por turno |
-| `CBRocketReachIOGetContact` | primetime | Pese al nombre, fija `smState` en una tarea (`patchTask`) |
-| `CBRocketReachIOSearch` | primetime | **Stub** — siempre devuelve `SEARCH_ERROR` (la llamada real está comentada) |
-| `CBErrorMessages` | muellesdepenco | Devuelve mensajes de un canal cuyo contenido coincide con substrings |
-| `CBGetDeadTimeAnswer` | muellesdepenco | Busca una respuesta de tiempo muerto / demora por un id compuesto |
-| `CBValidateAssignation` | muellesdepenco | Valida que una asignación de tiempo muerto iguale la duración real |
-| `CBValidateClose` | muellesdepenco | Valida que ningún tiempo muerto termine después del fin real del turno |
-| `CBValidateStart` | muellesdepenco | Valida que el inicio real caiga dentro de la ventana planificada |
-| `CBValidateTM` | muellesdepenco | Valida que un nuevo tiempo muerto quepa en el turno planificado |
+| Bot | Propósito |
+|-----|-----------|
+| `CBCheckOTsched` | Dispara el scheduler `checkOT` una vez (utilidad de prueba) |
+| `CBCoronelCreateMtNotification` | Envía notificaciones de mantenimiento a SAP vía SOAP WS1 |
+| `CBGruas` | Inserta registros de grúas en una base PostgreSQL, partidos por turno |
+| `CBRocketReachIOGetContact` | Pese al nombre, fija `smState` en una tarea (`patchTask`) |
+| `CBRocketReachIOSearch` | **Stub** — siempre devuelve `SEARCH_ERROR` (la llamada real está comentada) |
+| `CBErrorMessages` | Devuelve mensajes de un canal cuyo contenido coincide con substrings |
+| `CBGetDeadTimeAnswer` | Busca una respuesta de tiempo muerto / demora por un id compuesto |
+| `CBValidateAssignation` | Valida que una asignación de tiempo muerto iguale la duración real |
+| `CBValidateClose` | Valida que ningún tiempo muerto termine después del fin real del turno |
+| `CBValidateStart` | Valida que el inicio real caiga dentro de la ventana planificada |
+| `CBValidateTM` | Valida que un nuevo tiempo muerto quepa en el turno planificado |
 
 Estos bots dependen de variables de entorno propias del tenant, ids de formulario fijados en el código y servicios externos (SAP, PostgreSQL, SOAP). Trátalos como integraciones internas, no como bloques reutilizables, y confirma su comportamiento con el equipo dueño antes de diseñar un workflow alrededor de ellos.
 
