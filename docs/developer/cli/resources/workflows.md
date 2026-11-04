@@ -59,7 +59,30 @@ The schema defines these top-level fields:
 | `taskFollowerPermissions` | No | Permission codes — who can be added as followers |
 | `taskEditorPermissions` | No | Permission codes — who can edit tasks |
 | `availableViews`, `defaultView` | No | Which UI views (e.g. kanban, list) are available |
+| `taskPaginationLimit` | No | Tasks per page in the task list, an integer from 10 to 100 (0.16.0+). Takes precedence over the Company's limit. Omit it to keep the stored value; `null` clears it, back to the Company's limit |
+| `defaultSortBy` | No | Order of the task list's default view: `modifiedAt` or `createdAt` (0.16.0+). See below |
 | `stateMachines` | No | The list of state machines |
+
+#### Task list paging and order
+
+**New in 0.16.0.** Two root fields configure the workflow's task list:
+
+```yaml
+taskPaginationLimit: 50          # 10–100, or null for the Company's limit
+defaultSortBy: createdAt         # modifiedAt | createdAt
+```
+
+**`taskPaginationLimit`** — how many Tasks the task list loads per page. `validate` and every apply refuse a value outside 10–100, a fraction or a string. Omitting the key keeps the stored value, and a workflow that never set one uses the Company's limit; `taskPaginationLimit: null` — or the key written with no value, which YAML reads as `null` — clears it, back to the Company's limit. `workflows get` prints it as `Tasks per page` when the workflow has its own limit.
+
+**`defaultSortBy`** — which date orders the default view. Tasks are always listed newest first; `modifiedAt` (the default of a workflow that never set it) sorts by last modification, `createdAt` by creation. Any other value is refused before a request is sent, **`null` included** — and so is the key written with no value: to go back to the default, write `modifiedAt`.
+
+For both, `--dry-run` shows the change in the workflow's diff, and `workflows export` writes the key only when the workflow stores a value.
+
+<div className="alert alert--warning">
+
+**Both fields need a backend that stores them.** An older backend accepts the request and drops the key, so the apply reports success and the next `--dry-run` lists the same change again.
+
+</div>
 
 Since 0.14.0 a key the root doesn't declare is **refused**, by `validate` and every apply (exit `1`), instead of dropped without a word. The usual cause is a state-machine field written one level too high — `cardLabels` at the root — and the message says where it goes (`stateMachines[].cardLabels`); a root `code` or `name` is pointed at `nameCode` or `nameDisplay`.
 
@@ -118,7 +141,7 @@ State machines also support a `requiredSurvey` (a StartForm that gates task crea
 
 ### Card labels, task extensions and the default tab
 
-**New in 0.12.0.** Three state-machine settings that could only be configured from the webclient are now declarable from YAML. Before this release `cotctl` could not see any of them — and worse, **every `workflows apply` silently erased the first two**, so an apply meant to rename a transition also wiped configuration somebody had set in the UI. Both halves are fixed: they are preserved when your YAML omits them, and declarable when it does not.
+**New in 0.12.0.** Three settings that could only be configured from the webclient are now declarable from YAML. Before this release `cotctl` could not see any of them — and worse, **every `workflows apply` silently erased the first two**, so an apply meant to rename a transition also wiped configuration somebody had set in the UI. Both halves are fixed: they are preserved when your YAML omits them, and declarable when it does not.
 
 ```yaml
 stateMachines:
@@ -129,14 +152,14 @@ stateMachines:
     allowedExtensions:
       - pt_po_photo
       - pt_po_signature
-    defaultSelectedTaskTab: task
+defaultSelectedTaskTab: task     # a root field, not a state-machine one
 ```
 
 **`cardLabels`** — which PropertyType values a task card shows. The map takes a slot (`status1` through `status5`) to a PropertyType **code**, so declaring a slot is what activates it. Slots may be sparse, and the card renders them in ascending slot order, which the YAML cannot change. An unknown slot key such as `status6` is a validation error, not a key that gets quietly dropped.
 
 **`allowedExtensions`** — the PropertyTypes a task may carry as an extension, by code. The list is replaced wholesale rather than merged, so an entry you leave out stops being an accepted extension.
 
-**`defaultSelectedTaskTab`** — the tab a task opens on. One of `notes`, `channel`, `task`, `documents`, or `null` to clear it. **There is no `detail` tab**; it has been reported as one, and that value is rejected rather than sent.
+**`defaultSelectedTaskTab`** — the tab a task opens on, set at the workflow root. One of `notes`, `channel`, `task`, `documents`, or `null` to clear it. **There is no `detail` tab**; it has been reported as one, and that value is rejected rather than sent.
 
 #### Omitting a key is not the same as emptying it
 
@@ -152,11 +175,13 @@ This is the distinction to get right, and it is the same one [Merge semantics](.
 
 A `--dry-run` reports the destructive half of this: which labels the card stops showing, and how many extensions the apply would lose — from `workflows apply` and, since 0.14.0, from the unified `apply` as well. Since 0.15.0 it also lists a declared `cardLabels` equal to the stored one as `preserved`, so the diff alone shows that the labels survive the apply; the entry counts in the headline's `preserved` and reaches `--json` as a `diff[]` entry with `field: "dynamicPropertyTypes"` and `kind: "preserved"`, while the state machine still reads `no-op`.
 
+The text output names the labels `cardLabels`, the key the YAML uses (0.16.0+): `~ cardLabels: …` when they change, `= cardLabels (preserved)` when they don't. Earlier versions printed the API's name, `dynamicPropertyTypes`; `--json` keeps that name in its `diff[]` entry. And since 0.16.0, `--diff verbose` lists a state machine's `preserved` entries even when it changes nothing else — under its `No changes` or `[NO-OP]` line — where before they reached only `--json`.
+
 #### What `validate --dir` checks, and what `export` warns about
 
 Every `cardLabels` slot and every `allowedExtensions` entry is resolved against the PropertyTypes declared in the directory (check `X3`), so a typo is caught offline rather than becoming a backend error.
 
-A code that resolves to nothing **aborts the whole workflow apply** with `PropertyType "<code>" not found`. On the way out, `workflows export` warns on stderr when it cannot resolve a stored id back to a code and emits the raw id — re-applying that YAML would abort, naming a PropertyType nobody wrote. The usual cause is a slot left pointing at a PropertyType that was deleted, deactivated, or is invisible to the profile doing the export.
+A code that resolves to nothing **aborts the whole workflow apply** with `PropertyType "<code>" not found`. Since 0.16.0 the dry run reports the same error and exits `1` — for a workflow the server has and for one it doesn't have yet — where it used to show the code as a planned change with exit `0`. The same holds for the state machine's `propertyType`, its asset's `propertyType`, a generic asset's `property` (`Property "<code>" not found`) and a state's `property`. Under `apply --dir --dry-run`, a PropertyType or Property the same directory declares counts as present, since the apply creates it first. When the dry run cannot read the Properties a state machine references, it says so in a warning naming the state machine and leaves the verdict to the apply. On the way out, `workflows export` warns on stderr when it cannot resolve a stored id back to a code and emits the raw id — re-applying that YAML would abort, naming a PropertyType nobody wrote. The usual cause is a slot left pointing at a PropertyType that was deleted, deactivated, or is invisible to the profile doing the export.
 
 <div className="alert alert--info">
 
@@ -199,7 +224,7 @@ cotctl workflows apply -f workflow.yaml -c acme --dry-run --fail-on-destructive
 ```
 
 - `--dry-run` validates and shows what would happen without applying.
-- `--diff <off|compact|verbose>` sets the before/after verbosity (default `compact`).
+- `--diff <off|compact|verbose>` sets the before/after verbosity (default `compact`). `verbose` also lists what a state machine with nothing to change keeps — `= cardLabels (preserved)`, say — under its `No changes` line.
 - `--fail-on-destructive` exits with code `2` when the dry-run finds a danger-severity change (requires `--dry-run`).
 - `--rollback` deactivates anything created during a partial apply if it fails partway.
 - `--yes` skips confirmations; `--json` emits one result object per line.
@@ -214,6 +239,8 @@ A transition's `requiredSurvey` — like a StartForm's `requiredSurvey.surveyCod
 cotctl surveys apply -f surveys.yaml -c acme
 cotctl workflows apply -f workflow.yaml -c acme
 ```
+
+Since 0.16.0 `validate --remote` reaches the same verdict on those Surveys. `validate --dir --remote` and `validate -f --remote` look each one up as the dry run does and fail with exit `1` on one the server doesn't have, naming where the workflow names it (`--dir --json` lists it under `remoteResults` with the `id` `R3`). With `--dir`, a Survey the directory declares counts as present, wherever its file sorts; with `-f`, only the server counts — so validate a workflow whose Surveys sit in sibling files with `--dir`, next to them. Codes match whatever their case, and `--remote` needs a credential: `-c <profile>`, or `COTCTL_TOKEN` and `COTCTL_API_URL`. The dry run still checks more — a Survey's permissions, and a bot stage missing the `data` its type requires, which `validate --remote` only warns about — so it stays the last check before an apply.
 
 ## See also
 

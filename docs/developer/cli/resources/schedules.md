@@ -94,6 +94,8 @@ An `endDate` only makes sense for a recurring schedule, so setting it without `c
 cotctl schedules list                        # active, admin-owned (default)
 cotctl schedules list --all                  # include canceled
 cotctl schedules list --has-cron             # only recurring
+cotctl schedules list --no-cron              # only one-shot (0.16.0+)
+cotctl schedules list -s digest              # code, or bot name/description, contains "digest"
 cotctl schedules list --type all             # include SLA/internal-owned (read-only)
 cotctl schedules get sched_daily_digest
 cotctl schedules export sched_daily_digest -o sched.yaml
@@ -108,7 +110,7 @@ cotctl schedules deactivate sched_daily_digest
 cotctl schedules logs sched_daily_digest --limit 50
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage) and — new in 0.14.0 — `--json`, which prints one JSON object per result with `statusCall` when the apply relaunches or stops a cron. It checks each stage's bot `version` against the live catalog and refuses a bad one with exit `2`, `--dry-run` included, before anything is written (since 0.14.0; it used to fail only when the schedule ran). `list` defaults to active, admin-owned schedules; `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …). To download what a run actually did — its context, each stage's result, its error — as JSON files, or to filter runs by bot, workflow, State, SLA or routine, use [`cotctl logs`](../commands/logs.md).
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage) and — new in 0.14.0 — `--json`, which prints one JSON object per result with `statusCall` when the apply relaunches or stops a cron. It checks each stage's bot `version` against the live catalog and refuses a bad one with exit `2`, `--dry-run` included, before anything is written (since 0.14.0; it used to fail only when the schedule ran). `list` defaults to active, admin-owned schedules, newest first (0.16.0+); `--limit` defaults to 100. `logs` shows recent executions and takes `--op` to filter by operation (`executed`, `failed`, `started`, …); its `-l, --limit` takes an integer from 1 to 100 (default 50), and since 0.16.0 any other value — `0`, a negative number, a non-number, or more than 100 — exits `2` before any request is sent, with `--limit takes an integer from 1 to 100, got "<value>".` (Before, a negative value lifted the log reader's cap, a value above 100 was cut to 100 without a word, and `0` or a non-number fell back to the backend's 10 rows.) `logs` also exits `2`, instead of `1`, when `COTCTL_COMPANY_ID` doesn't match the company of `COTCTL_TOKEN` on a run without `-c` — see [Authentication](../authentication.md). To download what a run actually did — its context, each stage's result, its error — as JSON files, or to filter runs by bot, workflow, State, SLA or routine, use [`cotctl logs`](../commands/logs.md).
 
 `get`, `export`, `activate`, `deactivate` and `logs` find a schedule whose code contains `#` — as the codes the platform gives the schedules of SLAs and State changes do. (Before 0.15.0 the part after the `#` never reached the server, so they answered `Schedule "…" not found` for a schedule that exists.)
 
@@ -132,7 +134,9 @@ Until that changes, read the runs rather than filtering them: `cotctl schedules 
 
 <div className="alert alert--info">
 
-**Two more `list` behaviours that do not follow from the flag names.** `--has-cron` tests for the *presence* of a `cron` field, not its value. And `-l, --limit` bounds what the backend returns, so the active filter runs **afterwards**, on your machine — which means a listing can legitimately come back shorter than the limit you asked for.
+**How `list` reads the server (0.16.0+).** The backend answers at most 100 schedules per request, so `list` reads page after page, newest first, dropping canceled schedules (unless `--all`) and those that don't match `-s`, until it has `-l` schedules to show, a page comes back short, or it has read **10 pages** — the newest 1000. A `-l` above 100 therefore works, within those 1000. When it stops at the 10 pages and the server holds more, it says so on stderr with the server's total; to reach older schedules, narrow the query with `--code-prefix` or `--type`. stdout and `--json` keep their shape.
+
+`-s, --search` keeps the schedules whose code, or the name or description of the bot they run, contains the text, case-insensitively; the backend ignores the search it used to be sent, so before 0.16.0 `-s` returned the unfiltered listing. `--no-cron` lists only the one-shot schedules — before 0.16.0 it was parsed and then dropped. Given together with `--has-cron`, `list` warns and keeps `--has-cron`, which tests for the *presence* of a `cron` field, not its value.
 
 </div>
 

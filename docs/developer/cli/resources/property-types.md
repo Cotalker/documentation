@@ -63,9 +63,9 @@ schemaNodes:
 
 | Node field | Required | Notes |
 |---|---|---|
-| `key` | Yes | Unique within the type. The key that appears in a property's `schemaInstance` |
+| `key` | Yes | Unique within the type. The key that appears in a property's `schemaInstance`. A node the apply creates needs 3 to 50 characters matching `^[a-z][a-z0-9_]*$`, and every key must fit in 62 minus the length of the type's `code` (see [Key rules](#key-rules)) |
 | `basicType` | Yes | The datatype (see the catalog below). **Immutable** once the node exists |
-| `subType` | Conditional | The target PropertyType **code**, required by the backend for `COTProperty`. **Immutable** |
+| `subType` | Conditional | The target PropertyType **code**, expected for `COTProperty`. The backend accepts a node without it, but the webclient then shows no value and offers no property to pick, and `properties apply` refuses every reference under it. **Immutable** |
 | `isArray` | No | Defaults to `false`. Makes the field a list. **Immutable** |
 | `display`, `description` | No | Labels |
 | `validators` | No | `required`, `min`/`max`, `arrayMin`/`arrayMax`, and a custom `validator` list |
@@ -74,7 +74,20 @@ schemaNodes:
 
 A node has **no `editable` block** — that belongs to a survey. The platform drops it, so since 0.14.0 `validate` and every apply refuse it (`editable is not a schema node field`, exit `1`) instead of letting it vanish. To keep users from editing a field, use `isNonEditable: true`.
 
-A node that omits `subType` is no longer read as a type change (fixed in 0.14.0): on an existing node it keeps the stored one.
+A node that omits `subType` is no longer read as a type change (fixed in 0.14.0): on an existing node it keeps the stored one. Give a new `COTProperty` node its `subType` when you create it — it cannot be added later.
+
+### Key rules
+
+The backend holds a node's `key` to two rules, and since 0.16.0 `cotctl` checks both before sending anything, so a key no longer passes `validate` and `--dry-run` only to fail the apply with a 400:
+
+- **3 to 50 characters matching `^[a-z][a-z0-9_]*$`** — checked only when a node is **created**. `property-types apply`, `apply -f` and `apply --dir`, `--dry-run` included, refuse another key on a new type and on a node an update adds. A type stored with such a key — a `firstName` written before the rule, say — still updates, since an update sends no change to a stored node's key.
+- **At most 62 minus the length of the type's `code`** — checked on **every node of every write** of the type, stored nodes included. The apply refuses it on a node it creates, and refuses an update of a type that already stores such a key whenever the update sends something, ending the error with `The backend refuses every write to a PropertyType that holds this key`; an update that sends nothing only warns. Shorten the key, or the code of a type being created. A type already stored with such a key refuses every write in the backend, with or without `cotctl`.
+
+`validate -f` and `validate --dir` (check `S7`) **warn and pass** on both: they cannot tell a stored node from a new one, nor whether the apply will send anything, and the export of a type stored with such a key has to pass its own `validate`.
+
+```
+Error: fresh: schemaNodes[ab].key: Key must be at least 3 characters (it has 2). The backend refuses this key when it creates a schema node
+```
 
 ### The `basicType` catalog
 
@@ -88,7 +101,7 @@ There are exactly eight types:
 | `boolean` | true/false | |
 | `link` | A URL | |
 | `file` | A file `_id` | |
-| `COTProperty` | A property `_id` | Needs `subType` (the target type's code); the picker is filtered to it |
+| `COTProperty` | A property `_id` | Needs `subType` (the target type's code); the picker lists the active properties of that type. A property YAML names the referenced property by `code` — see [Properties & types](./properties.md#references-to-other-properties-cotproperty-nodes) |
 | `COTUser` | A user `_id` | The picker lists users |
 
 <div className="alert alert--info">

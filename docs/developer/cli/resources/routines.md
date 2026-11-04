@@ -71,7 +71,9 @@ dataType:
 
 These are documentation-and-contract only — `cotctl` doesn't check that the graph actually consumes them, and it won't resolve `$INPUT#...` expressions for you. They fail at runtime if misspelled, not at apply time.
 
-On an update, each input is matched with the stored input of the same `key`, wherever you place it, and keeps the fields it omits — an input that omits `required` keeps its stored value. The server updates this list **by position**, though. An input with no stored match is sent with `required: false` when it omits it. An input with no stored match, or one that moved, is written over the stored input at its position and keeps any other key it omits — its `description` or `type` — and `apply` warns on stderr which. Write those keys — empty where needed — to replace them. `dataType: []` removes every input.
+On an update, each input is matched with the stored input of the same `key`, wherever you place it, and keeps the fields it omits — an input that omits `required` keeps its stored value. An input with no stored match is sent with `required: false` when it omits it. `dataType: []` removes every input.
+
+What happens to an input with no stored match, or one that moved, depends on the route the update takes (see [How an update reaches the server](#how-an-update-reaches-the-server)). The keyed route, which servers that have it use since 0.16.0, replaces `dataType` whole: such an input is written exactly as the update sends it, keeps nothing of the stored input at its position, and draws no warning. Through `PATCH /api/v2/pbscripts/:id` the server updates the list **by position**, so the input is written over the stored input at its position and keeps any other key it omits — its `description` or `type` — and `apply` warns on stderr which, in a `--dry-run` as well. Write those keys — empty where needed — to replace them.
 
 ## The automation graph: `body`
 
@@ -85,13 +87,15 @@ On an update, each input is matched with the stored input of the same `key`, whe
 
 `body.start` names the entry stage. `body.maxIterations` (default `100`) caps how many transitions run — a safety net against loops.
 
-To edit one stage without restating the whole `body`, apply a document with `partial: true` (0.14.0+) that names the routine's `code` and only that stage, by `key` — see [Partial documents](../commands/apply.md#partial-documents-partial-true). A partial routine that declares `dataType` is refused.
+To edit one stage without restating the whole `body`, apply a document with `partial: true` (0.14.0+) that names the routine's `code` and only that stage, by `key` — see [Partial documents](../commands/apply.md#partial-documents-partial-true). A partial routine that declares `dataType` is refused. Since 0.16.0 `cotctl` completes a partial document with the stored stages before sending it, so it takes the same route as any update, with the complete `body.stages`, and the refusals, the script gate and the unreachable-stage warning apply before either route is tried.
 
 ### Give every stage that can fail an error path
 
 `""` is a valid terminal branch, and that is the trap: a stage that fails onto `ERROR: ""` ends the run there, and the run is still logged as executed, so `cotctl logs list --op failed` does not find it. Point the `ERROR` of every stage that can fail — an email, a message, a request, a write the backend can refuse — at a handler stage someone will see, such as the pinned `PBMessage` that posts to a watched channel in the example above. The handler is the one stage that keeps `ERROR: ""`. Not every default reports there, though: a default `PBCreateTask` routes `CREATED` / `NOT-CREATED`, and a request the backend refuses stops the run as `UNHANDLED_ERROR` without taking any branch.
 
 The default `PBEmail` and `PBMessage` never take that branch: they return `DEFAULT` whether the send worked or not (the default `PBEmail` only records `status: false` in its result). Pin `PBEmail` `"3.0.1"` and `PBMessage` `"2.2.0"`, and know that pinning changes two contracts `cotctl` does not check. Their `next` takes only `SUCCESS` and `ERROR`, so rename `DEFAULT` to `SUCCESS` — a stage that keeps `DEFAULT` never sends. And they validate `data` strictly, refusing any key they don't list: `PBEmail` needs `subject`, an object `content` and `targets` as email addresses; `PBMessage` needs `content`, `contentType`, a `sentBy` ObjectId and a non-empty `channelIds` list of ObjectIds. A `{{…}}` placeholder is neither: `data` is not a Mustache template.
+
+The same renaming applies to any stage you pin to a version that reports on `ERROR` — `PBCreateTask` `"2.0.1"` and `PBChangeState` `"2.1.0"` among them: `DEFAULT` and `CREATED` become `SUCCESS`, and `NOT-CREATED` becomes `ERROR`. A `PBCreateTask` stage holding both `NOT-CREATED` and `ERROR` can keep only one of the two handlers. The pinned versions check the keys before the bot runs and refuse any other, so a stage that keeps an old key never runs its bot — and `cotctl validate` does not catch it.
 
 Prove both branches before production. Apply the routine to a testing company and run `cotctl routines test` twice — once as it is, once with the stage made to fail by a variant you apply only for that test (`PBEmail` `3.0.1` refuses a malformed address in `targets`, and `PBMessage` `2.2.0` a `channelIds` entry that is not an ObjectId, before sending anything) — then read each run with [`cotctl logs`](../commands/logs.md):
 
@@ -109,6 +113,7 @@ A stage with `name: PBScript` invokes a standalone routine by code — and a rou
 ```yaml
 body:
   start: try
+  maxIterations: 5                     # caps the retries
   stages:
     - key: try
       name: PBScript
@@ -117,15 +122,16 @@ body:
         data: {}                       # its input, one key per dataType entry — {} when none
       next:
         SUCCESS: ""
-        ERROR: retry
+        ERROR: retry                   # taken only when the routine returns no result
     - key: retry
       name: FCSleep
       data:
-        seconds: 30
+        milliseconds: 30000            # FCSleep waits, then takes DEFAULT; it has no ERROR
       next:
-        SUCCESS: try
-        ERROR: ""
+        DEFAULT: try
 ```
+
+A `PBScript` stage takes `ERROR` only when the invoked routine returns no result. It does not see a failure inside that routine: a routine that ends on one of its own `ERROR: ""` branches still returns results, so the stage takes `SUCCESS`, and a crash inside it stops the run as `UNHANDLED_ERROR` without taking any branch. Give the invoked routine its own error paths.
 
 `cotctl` validates every `PBScript` stage's `data.code` against the routines registered in the profile, so a typo fails at apply time with a "did you mean…?" suggestion. The invoked routine's input goes under **`data.data`** — required since 0.14.0, `{}` when the routine takes none; see [Required `data` entries](../workflow-bots/index.md#required-data-entries).
 
@@ -148,13 +154,14 @@ cotctl routines export rutina_saludo_simple -o rutina.yaml
 
 # Write
 cotctl routines apply -f rutina.yaml --dry-run
+cotctl routines apply -f rutina.yaml --dry-run --json   # one JSON line per routine, with the server's ops
 cotctl routines apply -f rutina.yaml -y
 
 # Run for real
 cotctl routines test rutina_saludo_simple --context ctx.json
 ```
 
-`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, and `--allow-script-bots` (required when the body has a `PBScript`, `CCJS` or `ESMCode` stage), and handles multi-document files.
+`apply` takes `-f/--file` (required), `--dry-run`, `-y/--yes`, `-q/--quiet`, `--allow-script-bots` (required when the body has a `PBScript`, `CCJS` or `ESMCode` stage) and — new in 0.16.0 — `--json`, which prints one JSON object per routine on stdout, errors included, as `schedules apply --json` does. It handles multi-document files.
 
 `get`, `export` and `test` look up exactly the code they are given, and report a routine whose code is not that one as not found. (Before 0.15.0 a code containing `#`, `?`, `/`, `\` or `%` reached the request URL unencoded and could resolve another routine: `routines test 'daily#x' -y` ran `daily`.)
 
@@ -188,6 +195,30 @@ cotctl routines export rutina_obsoleta -c acme -o rutina_obsoleta.yaml
 cotctl routines apply -f rutina_obsoleta.yaml -c acme --dry-run
 cotctl routines apply -f rutina_obsoleta.yaml -c acme -y
 ```
+
+### How an update reaches the server
+
+**New in 0.16.0.** `routines apply` and `apply --dir` send an update through the server's **keyed route**, `PATCH /api/v2/pbscripts` with the `code` in the body, wherever the server has it, and through `PATCH /api/v2/pbscripts/:id` otherwise. The routine ends up the same either way, except for the `dataType` inputs described [above](#declared-inputs-datatype).
+
+- **Fallback.** The first update is the attempt: a server without the keyed route answers it with an HTML 404, which writes nothing, and `cotctl` sends the same update through `PATCH /api/v2/pbscripts/:id`. That costs one attempt per run, remembered per API URL; nothing is kept on disk. A JSON error from the keyed route — `ENTITY_NOT_FOUND` included — fails without trying the other route.
+- **Reordering stages.** The keyed route keeps the stored order of `body.stages`, so a YAML that reorders them is sent through `PATCH /api/v2/pbscripts/:id`, the only route that writes an order, with a warning saying so.
+- **`--dry-run` asks the server.** Where the keyed route exists, the update is sent with `?dryRun=true`, which validates it without saving anything. A profile without write permission, and a server without the route, get `cotctl`'s own preview as before. `routines apply` dry-runs every document before it writes, and so does `apply --dir` without `-y`, so there an update reaches the server twice.
+- **The server's `ops` check the diff.** `cotctl` warns when the keyed route announces an operation the local diff did not predict — a warning `-q` does not silence — and notes a predicted change the server does not announce. An answer with no operation saved nothing, so the routine is reported `unchanged` (`no-op` in a dry run). The route's own warnings print too — a violation the stored routine already had, a `dataType` that repeats a `key` — and its errors list the fields it refuses or the violations an update would introduce. With `--json`, a result the keyed route answered carries its `ops` exactly as the server sent them (so does the Routine line of `apply --dir --json`), a `partial: true` update carries the stages it keeps as `preservedElements`, and an error the route answered keeps its `code` and `data` in the line's `error` object.
+
+<div className="alert alert--warning">
+
+**A stored routine whose stages repeat a `key`, or lack one, can't be updated by key.** The keyed route refuses such an update with a 409 `STORED_KEY_CONFLICT`, in a dry run too, and writes nothing — and `cotctl` does not retry it through the other route. It stops before sending, naming the routine, the stored stage by its index and the repeated key, and exits `1`:
+
+```text
+Error: rt_x: Routine "rt_x" cannot be updated by key (STORED_KEY_CONFLICT): the stored stage at body.stages[2] repeats the key "request" of an earlier stage, so it cannot be paired with a stage of the YAML. The update wrote nothing.
+Fix the stored Routine, then re-run: give that stage a unique key in the webclient's Routine editor or through PATCH /api/v2/pbscripts/:id.
+```
+
+Until `cotctl` knows the route is there, it asks with a dry run first. Any other JSON error to that dry run fails as the route sent it; a dry run the route accepts — the routine changed after `cotctl` read it — stops and asks you to re-run; and a profile without write permission stops saying so, since the route could not tell. Those last two carry no `code` in `--json`. A server without the keyed route still takes such an update through the old route.
+
+</div>
+
+**`COTCTL_LEGACY_PATCH=1` sends every update through the old route**, without trying the keyed one. `1`, `true`, `yes` and `on` set it; `0`, `false`, `no`, `off` or no value leave detection on; any other value is refused before anything is sent, and `apply` exits `2`. It exists for the transition and will be removed in a later release.
 
 There's no delete endpoint, and no `cotctl routines logs` subcommand: to read what a routine did when it ran — the context it received, what each stage returned, its error — use [`cotctl logs`](../commands/logs.md), for example `cotctl logs pull --routine <code> --since 24h`.
 

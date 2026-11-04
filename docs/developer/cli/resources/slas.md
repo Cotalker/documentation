@@ -181,6 +181,16 @@ cotctl slas apply -f sla.yaml -y
 
 `get` and `export` **require** `--state-machine <smCode>` (an SLA code is only unique within its SM). `apply` reads the SM from each document's `stateMachine` field and takes `-f/--file` (required), `--dry-run`, `-y/--yes`, and `--allow-script-bots` (for a `PBScript`, `CCJS` or `ESMCode` stage); it handles multi-document files. When the same SM code exists in more than one workflow, add `--task-group <workflow>` to disambiguate — `cotctl` will tell you when it's needed.
 
+A state machine whose workflow is **inactive** is named as such (0.16.0+): `slas list --state-machine`, `get`, `export`, `apply` and `apply --dir` say `StateMachine "<code>" belongs to the inactive Workflow "<nameCode>"` instead of reporting that it does not exist and asking you to apply a workflow that is already applied. The SLAs of an inactive workflow are still neither read nor applied, and the exit codes are unchanged.
+
+<div className="alert alert--warning">
+
+**Fixed in 0.16.0: every SLA apply reported a failure that wasn't one.** From 0.12.0 through 0.15.x, each SLA create and update ended in `the backend accepted the write but answered with no Sla document, so nothing was written`, with exit `1`, although the write had happened. `slas apply` and `apply --dir` now report `created` or `updated` and exit `0`.
+
+The side effect worth checking: in those versions `apply --dir` stopped after the first file holding an SLA, unless `--continue-on-error` was passed, so the files after it — the rest of the SLA files, then the schedule, user, bot and webhook ones — were never applied. With 0.16.0 they are. Review those files first, or run the same `apply --dir` with `--dry-run`. A script that read that exit `1` as "nothing was written" now gets `0` for the same write.
+
+</div>
+
 There's no `cron` in an SLA — it's driven by state transitions and its time window, not a schedule. If you want a cron cadence, that's a [schedule](./schedules.md).
 
 ## Invoking a routine

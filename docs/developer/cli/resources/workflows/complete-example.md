@@ -92,6 +92,8 @@ stateMachines:
                   - key: s1
                     name: PBCreateTask
                     data:
+                      name:                       # required by every version
+                        - "Follow up on the approved PO"
                       taskGroup: "665f0c3e9a1b2c0012ab34cd"
                       propertyValues:
                         priority: "high"

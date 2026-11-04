@@ -9,6 +9,8 @@ displayed_sidebar: developer
 
 Cotalker offers 14 question types. Every question shares the [common fields](../surveys.md#questions) — `type`, `identifier`, `label`, and the optional `help`, `required`, `isReadOnly`, `conditionalDisplay`, `exec`. This page covers what's *specific* to each type: the extra fields it needs and the gotchas worth knowing before you author one.
 
+Each type sends only the keys it reads, so a key written on the wrong type, or in the wrong place, never reaches the server. Since 0.16.0 `validate` and every apply, `--dry-run` included, warn about each such key — on a question and on a `table` column alike — naming where it belongs or which types take it. It is a warning: no exit code changes.
+
 All snippets use the **simplified** `cotctl` format — the `type:` form you write in a `questions[]` list. `cotctl` translates it to the platform's internal representation on apply.
 
 ## Text and input
@@ -110,6 +112,8 @@ Two optional keys on a filter entry change the picker:
 - `tree` turns the picker into a hierarchical tree. `target` must not be empty, and `filter` must be a **list** — an empty list applies no narrowing, which is what the webclient saves for a tree with none.
 - `creation` lets the user create a new property inline. `permissions` must be a **list** — an empty list opens creation to every user, which is what the webclient saves when no role is chosen.
 
+These keys belong to each entry, never to the question: a `tree` or a `creation` written next to `filters` is ignored, and since 0.16.0 `validate` and every apply warn about it without failing.
+
 Since 0.15.0 `validate` and every apply refuse a `tree.filter` or `creation.permissions` that is not a list — `filter: <value>` has to become `filter: [<value>]` — and accept an empty list, which `surveys export` writes back. It is a semantic check, so `--skip-semantic-validation` turns it off.
 
 ### `person` — pick a user
@@ -127,14 +131,14 @@ Since 0.15.0 `validate` and every apply refuse a `tree.filter` or `creation.perm
 | `allow` | Selectable users |
 |---|---|
 | `job` | Anyone |
-| `jobTitle` | Only users holding one of `jobs: [ ... ]` (JobTitle codes) |
+| `jobTitle` | Only users holding one of `jobs: [ ... ]` (JobTitle codes), or any job title with `jobs: "*"` |
 | `hierarchy.subordinates` | The responder's subordinates |
 | `hierarchy.boss` | The responder's manager |
 | `hierarchy.peers` | The responder's peers |
 
 `personFilter` itself is required — a `person` question without it fails with `person requires personFilter`. The legacy `allow: no_filter` is still accepted and normalized to `job`, with a deprecation warning.
 
-For `jobTitle`, add a `jobs` **list** of one or more JobTitle codes:
+For `jobTitle`, add a `jobs` **list** of JobTitle codes, or the string `"*"` for every job title:
 
 ```yaml
   personFilter:
@@ -142,7 +146,22 @@ For `jobTitle`, add a `jobs` **list** of one or more JobTitle codes:
     jobs: ["supervisor_ventas"]
 ```
 
-It has to be a list even for a single code: `jobs: supervisor_ventas` fails with `jobs must be a list`. Under any other `allow`, `jobs` is not read and not checked. Remote validation verifies that every code in the list is an existing JobTitle.
+```yaml
+  personFilter:
+    allow: jobTitle
+    jobs: "*"            # every job title
+```
+
+A list has to be a list even for a single code: `jobs: supervisor_ventas` fails with `jobs must be a list, or "*" for every job title`, and a missing `jobs` fails with `jobs is required when allow is "jobTitle": …`. Under any other `allow`, `jobs` is not read and not checked. `--skip-semantic-validation` does not get either through: the apply still refuses the question before writing anything, with exit `2`, and a `--dry-run` with that flag refuses it too.
+
+Since 0.16.0 two shapes the webclient's survey builder saves pass with a **warning** instead of failing:
+
+- **`jobs: []`** — what the builder saves once every job title is unselected. It passes, but the person picker lists no users.
+- **A list holding `"*"`** (`jobs: ["*"]`, or `"*"` among codes) — the person picker reads it as every job title, but the builder compares the string strictly and does not show it as "all job titles". The apply sends it as the string `"*"`, without the list's other codes.
+
+Remote validation verifies that every code in the list is an existing JobTitle. It looks up nothing for `"*"`, nor for a list holding `"*"` (earlier versions failed such a list with `JobTitle "*" not found`).
+
+`surveys export` writes "all job titles" as `jobs: "*"`, and a legacy filter stored as a single code as the one-code list the webclient reads it as, which an apply writes back as stored; earlier versions left both out, and `validate` refused the export. A stored list holding `"*"` exports as `jobs: "*"`, with a warning that the next apply writes it back as the string. Any other stored value is named in a warning.
 
 ### `api` — options from an external endpoint
 
