@@ -84,7 +84,7 @@ schemaInstance:
 | `propertyType` | Yes | The type's **code**. **Immutable after creation** |
 | `schemaInstance` | No | The data, keyed by the type's `schemaNodes[].key` |
 
-The keys inside `schemaInstance` must match the `key` fields you defined on the property type. `cotctl` does not check them against the type and prints no warning for a key the type does not define: the key is sent as written (earlier versions of this page said `apply` warns about it). Check which keys a type defines before writing them:
+The keys inside `schemaInstance` must match the `key` fields you defined on the property type. `cotctl` does not check them against the type and prints no warning for a key the type does not define: the key is sent as written. Check which keys a type defines before writing them:
 
 ```bash
 cotctl property-types get location -c acme

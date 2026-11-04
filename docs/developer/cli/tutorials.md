@@ -408,7 +408,7 @@ cotctl apply -f cities.yaml -c acme
 Two things to know:
 
 - **You can't delete a schemaNode by removing it from YAML.** cotctl merges server-side nodes back into the update to prevent accidental data loss — deactivate a node with `isActive: false` on the node instead.
-- **`schemaInstance` keys are checked against the type.** Unknown keys produce a non-blocking warning (the value is still written), so a typo won't stop the apply — read the warnings.
+- **`schemaInstance` keys are not checked against the type.** `cotctl` prints no warning for a key the type does not define: the value is sent as written, so a typo goes through silently. Check the type's keys with `cotctl property-types get` before writing them.
 
 ## Recipe 10 — Gate a CI pipeline on a safe diff
 
