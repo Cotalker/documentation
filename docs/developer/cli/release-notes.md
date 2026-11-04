@@ -4,7 +4,7 @@ sidebar_label: Release notes
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/CHANGELOG.md @ 80cdbc8 (2026-10-27) -->
+<!-- source: repositories/cotctl/CHANGELOG.md @ 18d0110 (2026-11-04) -->
 
 What changed in each published release of `cotctl`, newest first — with the migration steps you need when something breaks.
 
@@ -27,6 +27,958 @@ npm install -g @cotctl/cli@latest
 </div>
 
 <!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
+
+<!-- DRAFT - copied verbatim from the cotctl CHANGELOG for release-0.16.0.
+    Before merging, rewrite it for implementation partners: give every
+    breaking change a "What to do", drop the internal detail (file paths,
+    PR numbers, contributor-only notes) and translate anything left in
+    Spanish. Then delete this comment. -->
+
+## 0.16.0 — 2026-11-04
+
+### ⚠ Breaking changes
+
+- **A `gte` or `lte` condition on a question that is neither a `textnumber`
+  nor a `datetime` passes `validate` and the apply with a warning, in both
+  formats.** The raw format refused it unless the question was a `textnumber`,
+  and the simplified format accepted it without a word. The web app's survey
+  builder offers the four operators whatever the question's type, and compares
+  `gte` and `lte` only on a number or a date, so on any other type the
+  condition never matches and the question is never shown: the warning says
+  so. On a `datetime` question the condition passes with no message.
+- **A raw `exec.onPlay.button` with any of `label`, `type`, `theme` or
+  `debounceTime` missing, or stored as `null`, passes `validate` and the
+  apply.** The raw format required all four keys and refused `null`, while the
+  server leaves each key optional and accepts a `null` button.
+- **Under `allow: jobTitle`, `jobs: "*"` passes, and `jobs: []` passes with a
+  warning.** The web app's builder saves the string `"*"` for every job title,
+  and an empty list once every job title is unselected, which leaves the person
+  picker with no users. `jobs` written as a single code still fails, with
+  `jobs must be a list, or "*" for every job title` where it said
+  `jobs must be a list`; a missing `jobs` fails with
+  `jobs is required when allow is "jobTitle": …` where it said
+  `jobs must not be empty when allow is "jobTitle"`.
+  `jobs: ["*"]`, or a list holding `"*"` among codes, passes with a warning,
+  and the apply sends it as the string `"*"`: the payload changes from a list
+  to a string. Remote validation looks up none of that list's codes; before,
+  the apply failed with `JobTitle "*" not found`.
+- **A simplified `exec.onChange`, `exec.presave` or `exec.filter` that is not
+  an object fails `validate`.** It passed with a warning while the simplified
+  format ignored it; now that the format sends it, a value no update can store
+  is refused before the apply.
+- **A simplified `exec.onChange`, `exec.presave` or `exec.filter` whose
+  JavaScript does not parse fails `validate` and the apply on a Question.** The
+  check covers each stage's `src` and the `filter` stage's `filter`. It passed
+  with a warning while the simplified format ignored the stage; now that the
+  format sends it, the server parses it when it saves the Question and would
+  refuse it. On a `+table` column the simplified format only warns: the server
+  never parses a column's exec. It is a semantic check, so
+  `--skip-semantic-validation` turns it off.
+- **A simplified `+table` column's `exec.onDisplay`, `exec.onPlay`,
+  `exec.postsave` or `exec.onSubmitSuccess` whose JavaScript does not parse
+  passes `validate` and the apply with a warning.** The server never parses a
+  column's exec and a cell never runs those stages; `preload` and `validate`
+  still fail, and the raw format still refuses one in every stage of a column.
+
+  Migration: nothing refuses a `gte` or `lte` on text, or an empty `jobs`, any
+  more, since the server stores both: a pipeline that relied on `validate` to
+  stop one can match its warning on stderr instead. A raw `onPlay` button with
+  missing keys or `null` now passes with no message, and a pipeline that
+  matched the old `jobs` messages has to match the new ones. Write a
+  simplified exec stage as an object — `src` and `context`, plus `filter` on
+  the `filter` stage. Where `validate` names a syntax error in one of those
+  stages, fix the JavaScript at the path it gives, or remove the stage: the web
+  app never runs it, and the apply then erases it from the Question. A syntax
+  error in a stage a `+table` cell never runs now passes the simplified
+  `validate` with a warning: a pipeline that relied on it to stop one can match
+  the warning on stderr instead.
+
+- **`validate -f` and `validate --dir` exit `0` with a warning on a Property
+  `code` outside `^[a-z][_a-z0-9]*$` or shorter than 3 characters, where they
+  exited `1`.** The API refuses such a code when it creates a Property, a PATCH
+  cannot change a stored `code`, and `validate` cannot tell a create from an
+  update. A server configured to check codes on update also checks it each
+  time it saves an update: there, the apply of an update that sends a change to
+  such a Property fails, although `validate` and the dry run let it through. An
+  empty `code` still fails `validate`.
+
+  Migration: a pipeline that relied on `validate` to stop such a code before a
+  create gets that stop from the dry run instead — `--dry-run` on
+  `properties apply`, `apply -f` or `apply --dir` refuses the code with exit
+  `1` when the apply would create the Property.
+
+- **`slas apply` and `apply --dir` report the SLA they created or updated, and
+  exit `0`.** Every SLA create and update ended in `the backend accepted the
+  write but answered with no Sla document, so nothing was written`, although
+  the write had happened, and the run exited `1`. It now reports `created` or
+  `updated`.
+  Migration: in every version from 0.12.0 until this one, `apply --dir`
+  stopped after the first file holding an SLA, unless `--continue-on-error`
+  was passed, so the files after it were never applied: the rest of the SLA
+  files, then the Schedule, User, Bot and Webhook ones. This version applies
+  them, so review those files first, or run the same `apply --dir` with
+  `--dry-run`. A script that read that exit `1` as "nothing was written" now
+  gets `0` for the same write.
+- **`validate --remote` and the apply of a Survey look up a Question
+  identifier that carries a `/`, `?`, `#` or `%` as written.** The lookup sent
+  it unescaped: with a `/` it reached no route, so the identifier counted as
+  free whoever held it; a `?` or a `#` cut it short, so the check judged the
+  text before it; and the server decoded a `%` followed by two hex digits, so
+  `a%41b` was judged as `aAb`. Only a run with `--skip-semantic-validation`
+  reaches this check with such an identifier; without it, the semantic check
+  refuses the identifier first.
+  Migration: under `--skip-semantic-validation`, the verdict now follows the
+  whole identifier, as written, and can turn either way. An identifier that a
+  Question of another Survey of the Company already uses is now refused as a
+  conflict where it passed before: always with a `/`, and with a `?` or a `#`
+  whenever the text before it was free; rename the identifier. One with a `?`
+  or a `#` that was refused for the text before it now passes. One with a `%`
+  followed by two hex digits is now looked up literally, not as the server
+  decoded it. One with a `%` not followed by two hex digits, which made the
+  server answer `400` and stopped the check with an HTTP error, now gets a
+  verdict.
+
+- **`logs get --parts stage:<key>` exits `1` and writes no file for a log that
+  has no stage by that key**, where it exited `0` and wrote a file holding
+  `config: null` and no results for it, which read as a stage that never ran
+  and hid a mistyped key. The error names the stages the log has, read from
+  its `routine` part with one more request, so the key can be fixed from the
+  message alone. Like any `logs get` that stops, it prints no manifest under
+  `--json`, and the files written before that log stay. A configured stage
+  that never ran is still delivered as an empty part. Two kinds of log cannot
+  tell a stage from a typo and are still written as they are: one whose output
+  is not valid JSON, and one that stored no response of its run, which is what
+  a run that timed out or whose worker threw leaves. On those, a mistyped key
+  still goes unnoticed.
+
+  Migration: a script that reads one stage from several logs and relied on
+  exit `0` now gets `1` at the first log that lacks it. Fix the key with the
+  stages the error names, or leave that log out; `logs pull` still writes such
+  logs, with a warning.
+
+- **A command a published data-loss advisory names no longer runs on a cotctl
+  version it affects: it exits `5`.** A release that fixes a loss of data now
+  publishes an advisory with the package — the affected versions, the version
+  that fixes it and the commands that lose the data — and the check before
+  every command reads it along with the latest version. A named command stops,
+  `--dry-run` included, after printing the loss, the advisory id and the
+  version that fixes it on stderr. Without a terminal, in CI or with `-y`, it
+  exits `5` right away. On a terminal it offers `update` or `cancel`, with no
+  `continue`, and `cancel` exits `5` too; an update that fails stops the
+  command as well, where a failed automatic update lets it run. Every other
+  command runs as before, so `export` keeps working on an affected version.
+  The advisories are kept in the update cache, so a run that cannot reach npm
+  still knows the ones the last answered lookup brought, and a cache last
+  written by an earlier version, which does not record them, is looked up again
+  rather than trusted for its 12 hours.
+  Migration: a pipeline that meets exit `5` updates cotctl and runs the command
+  again. To run an affected version anyway, set `COTCTL_ACCEPT_ADVISORY` to the
+  id the message names (several ids go separated by commas); the command then
+  runs with a warning on stderr. `npm view @cotctl/cli cotctl.advisories --json`
+  lists the published advisories. The first, `COTCTL-2026-001`, is the loss of
+  card labels and allowed extensions on every StateMachine `apply` and
+  `workflows apply` updated from 0.5.1 to 0.11.x; those versions predate the
+  check and never read it. Only this release and later read advisories: an
+  earlier one, 0.14 and 0.15 included, runs every command whatever is published.
+- **`COTCTL_NO_UPDATE_CHECK` no longer turns the whole check off.** It still
+  silences the update notice, the prompt and the automatic install, but not the
+  advisories: a command an advisory names still exits `5`, and the lookup that
+  brings them still runs.
+  Migration: a job that set the variable to keep cotctl off the network now
+  reaches `https://registry.npmjs.org` once every 12 hours while `~/.cotctl`
+  can be written, which on a runner that starts with an empty home directory
+  is once per job. Where npm cannot be reached, that lookup waits up to 1.5
+  seconds before the command runs. Only `COTCTL_ACCEPT_ADVISORY` lets a command
+  an advisory names run.
+
+- **`validate --dir --remote` and `validate -f --remote` fail with exit `1` on
+  a Survey a Workflow names that the server does not have**, where they
+  passed: a StartForm's `requiredSurvey.surveyCode`, a transition's
+  `requiredSurvey` or a state's `surveyTriggers[].survey`. The error names
+  where the Workflow names the Survey, and `--dir --json` lists it under
+  `remoteResults` with the `id` `R3`. With `--dir`, a Survey the directory
+  declares counts as present, wherever its file sorts, since `apply --dir`
+  creates every Survey before any Workflow; with `-f`, only the server counts,
+  as in `workflows apply -f --dry-run`. Codes match whatever their case.
+  Without `--remote` nothing changes: `validate --dir` still only warns (X7) of
+  a Survey the directory does not declare.
+
+  Migration: a directory or a Workflow file that passed `validate --remote`
+  while naming a Survey that exists nowhere now fails it, as
+  `apply --dry-run` already did. Correct the code, add the Survey to the
+  directory, or apply it first. A Workflow file whose Surveys sit in sibling
+  files, or in the file itself, fails `validate -f --remote` until they are
+  applied, so validate it with `--dir`, next to them.
+- **A missing profile stops `validate --remote` on a Workflow that names a
+  Survey to look up**, with its one error and exit `1`, as it already stopped
+  a directory holding a Survey. Before, such a run passed, with at most the
+  one warning of a bot catalog that could not be read.
+
+  Migration: pass `-c <profile>`, or set `COTCTL_TOKEN` and `COTCTL_API_URL`:
+  `--remote` cannot look a Survey up without a credential.
+
+- **`workflows apply`, `apply -f` and `apply --dir` exit `2`, instead of `1`,
+  for a `partial: true` Workflow that is not valid once merged with the stored
+  one**: a state, transition or state machine it names that is not stored and
+  leaves out what a new one needs, a key it names twice, a key the stored list
+  repeats, or a bot slot whose stored bots are several. Each was already
+  refused before anything was written, `--dry-run` included; only the code
+  changes, to the one a `partial: true` Bot, Routine, SLA or Schedule already
+  gets for the same refusal.
+
+  Migration: a pipeline that matched `1` for such a Workflow matches `2`. A
+  `partial: true` Workflow still exits `1` when:
+
+  - the schema rejects the YAML itself, before the merge: a value it writes,
+    such as a state `type` other than `new`, `in-progress` or `closed`. That
+    is the `1` a Workflow without the marker gets for a document the schema
+    rejects. A field a new state leaves out passes that check, and the merge
+    refuses it with `2`;
+  - it comes with `--legacy-replace-workflows`, which wipes what the marker
+    keeps;
+  - a state machine it names is stored pointing at a `propertyType` or an
+    `asset.propertyType` that no longer exists. The fault is in what is
+    stored, not in the YAML: leaving that state machine out applies the rest;
+  - its `nameCode` or `id` is not stored.
+
+  A `partial: true` PropertyType the merge refuses also still exits `1`.
+
+- **`properties export` writes the `code` of the Property a `COTProperty` node
+  references, where it wrote its `_id`.** The export now round-trips by code.
+  An `_id` the export cannot name — a deleted or deactivated Property's —
+  stays, with a warning, and so does every node reference of a PropertyType
+  that is not active or cannot be found — an inactive one included when the
+  profile cannot read it: listing inactive PropertyTypes takes
+  `admin-properties-read`, and without it the backend answers as if the type
+  did not exist; the `type: COTProperty` slice at the root of `schemaInstance`
+  is written by code all the same.
+
+  Migration: apply such an export with this release or a later one. An older
+  cotctl sends the code as written and the backend refuses it. An export taken
+  before this release still applies, since each `_id` it holds is the stored
+  value, which the apply keeps — with a warning when it names a Property the
+  apply now refuses; a script that reads the ids out of an export reads codes
+  now.
+
+- **A `COTProperty` node refuses a Property outside its `subType`, by `code` or
+  by `_id`.** The backend checks only that the value is an ObjectId, while the
+  webclient lists a node's Properties by its `subType`: it showed such a field
+  as empty and dropped the reference at the next edit. `properties apply`,
+  `apply -f` and `apply --dir`, `--dry-run` included, now fail that Property. A
+  value the Property already stores still applies, with a warning.
+
+  Migration: name a Property of the node's `subType`.
+- **A `COTProperty` node with no `subType` refuses every reference.** The
+  backend accepts such a node and any Property under it, while the webclient
+  lists a node's Properties by its `subType`: it showed the value as empty,
+  offered no Property to pick and dropped it at the next edit. A value the
+  Property already stores stays, with a warning.
+
+  Migration: leave the node empty, or reference the Property from a node that
+  has a `subType`. A stored node's `subType` cannot change, so that is a new
+  node.
+- **An `_id` in a `COTProperty` node must name an active Property.** One that
+  names a deleted or deactivated Property, or none at all, was sent as it is
+  and shown as empty; it now fails the Property, unless it is the stored value,
+  which stays with a warning. A code that names a deactivated Property was
+  already refused as unknown, and still is: re-export the Property that
+  references it to get the `_id` the export keeps.
+
+  Migration: use the code of an active Property, or remove the value.
+- **A `COTProperty` list refuses an empty item.** The webclient never saves
+  one, and can read a `null` item as every Property of the type, so the next
+  edit of the field saves them all. A stored one stays, with a warning.
+
+  Migration: drop the item. `[]` is an empty list, which a `required` node
+  refuses.
+- **A `COTProperty` list refuses a Property it already holds.** The backend
+  stores the repeat, while the webclient shows each Property once and saves the
+  list without it at the next edit of the field, which can leave the list
+  under `arrayMin`. A code and the `_id` of the same Property count as a
+  repeat. A stored one stays, with a warning.
+
+  Migration: drop the repeat.
+
+- **The apply refuses a schema node `key` longer than 62 minus the length of
+  the PropertyType's `code`, and `validate` warns about it.** The backend
+  checks that limit on every node of every write of the type, stored nodes
+  included, so such a key passed `validate` and `--dry-run` and failed the
+  apply. `property-types apply`, `apply -f` and `apply --dir`, `--dry-run`
+  included, now refuse it on a node they create, and refuse an update of a type
+  that already stores one whenever the update sends something; an update that
+  sends nothing only warns. `validate -f` and `validate --dir` (check `S7`)
+  warn and pass, as they do for the 3-to-50-character rule on a node the apply
+  creates: they cannot tell whether the apply will send anything, and the
+  export of a type stored with such a key has to pass its own `validate`.
+
+  Migration: shorten the key, or the code of a type being created. A type
+  already stored with such a key refuses every write in the backend, with or
+  without cotctl.
+
+- **`cotctl login` saves the profile under the name `-c` gives it.** With `-c`
+  before or after `login`, the profile was saved under the `--subdomain` value,
+  with exit `0`: the option every other command reads as the profile to use was
+  ignored. `-c` now names the profile, as `--profile` does. When both are given
+  with different names, `--profile` wins and `login` warns on stderr that `-c`
+  was ignored — the rule `logout` already follows, where the positional profile
+  wins over `-c`. `--subdomain` still labels the company the profile belongs to.
+  An empty or blank `-c` or `--profile` counts as not given, as it does for
+  every other command, so the profile falls back to the next name in line
+  instead of being saved under a name no command can select.
+
+  Migration: a script that passes `-c` to `login` finds the profile under that
+  name, not under the subdomain; select it with the `-c` name, or drop `-c` from
+  the `login` line. When the `-c` name is a profile that already exists, `login`
+  now asks before overwriting it, and without a terminal or `--yes` exits `1`
+  where it saved under the subdomain and exited `0`. With `-y`/`--yes` it does
+  not ask: it overwrites that profile with the credentials of whichever
+  environment the login authenticated against and exits `0`, so a script or
+  alias that passes both `-c` and `--yes` should check the profile name it
+  targets. The same holds for an alias or wrapper that adds `-c` to every
+  command.
+
+- **`schedules logs`, `webhooks list` and `webhooks logs` exit `2`, instead of
+  `1`, when `COTCTL_COMPANY_ID` does not match the company of `COTCTL_TOKEN`**,
+  as `apply` already did: the mismatch is refused as an input error before any
+  request is sent. The check runs only on a run without `-c`, which takes its
+  credential from the environment.
+
+  Migration: a pipeline that matched `1` for that refusal matches `2`, or tests
+  for a non-zero exit, as the authentication page advises: the same refusal
+  still exits `1` from other commands, `webhooks get` among them.
+
+### Added
+
+- **A Routine update uses the server's keyed route where it exists.**
+  `routines apply` and `apply --dir` now send an update to
+  `PATCH /api/v2/pbscripts`, with the `code` in the body, and fall back to
+  `PATCH /api/v2/pbscripts/:id` when the server answers the HTML 404 of a route
+  it does not serve. The routine ends up the same either way, but for the
+  `dataType` input described next. Against a server without the route, an
+  update behaves as it did before: one attempt per run, remembered per API URL,
+  nothing kept on disk. A JSON error from the keyed route — `ENTITY_NOT_FOUND`
+  included — fails without trying the other route. A YAML that reorders
+  `body.stages` is sent through the old route, the only one that writes an
+  order, with a warning saying so.
+- **On the keyed route, a routine input written over another stored one keeps
+  nothing of it, and draws no warning.** That route replaces `dataType` whole,
+  so an input with no stored counterpart, or one that moved, is written as the
+  update sends it. The warning naming what such an input keeps of the stored
+  one — its `description` or `type` — appears only when the update goes through
+  `PATCH /api/v2/pbscripts/:id`: on a server without the keyed route, for a
+  YAML that reorders `body.stages`, or with `COTCTL_LEGACY_PATCH` set, in a
+  `--dry-run` as well.
+- **`--dry-run` asks the server where the keyed route exists.** The update is
+  sent with `?dryRun=true`, which validates it without saving anything; a
+  profile without write permission, and a server without the route, get
+  cotctl's own preview as before. `routines apply` dry-runs every document
+  before it writes, and so does `apply --dir` without `-y`, so there an update
+  reaches the server twice.
+- **cotctl checks its diff against the server's `ops`.** It warns when the keyed
+  route announces an operation the local diff did not predict — a warning `-q`
+  does not silence — and notes a predicted change the server does not announce.
+  An answer with no operation saved nothing, so the routine is reported
+  `unchanged` (`no-op` in a dry run). The route's own warnings are printed too —
+  a violation the stored routine already had, a `dataType` that repeats a
+  `key` — and its errors list the fields it refuses or the violations an update
+  would introduce.
+- **Where the server has the keyed route, a Routine whose stored stages repeat
+  a `key` or lack one stops with a message that says how to fix it.** The route
+  refuses such an update with a 409 `STORED_KEY_CONFLICT`, in a dry run too, and
+  writes nothing; once cotctl knows the route is there, it stops on the routine
+  it read before sending anything, and while it does not know yet it asks with a
+  dry run first. The update is not retried through
+  `PATCH /api/v2/pbscripts/:id`: cotctl names the routine, the stored stage by
+  its index and the repeated key, and says to give that stage a unique `key` in
+  the webclient's Routine editor or through `PATCH /api/v2/pbscripts/:id` before
+  re-running. Both cases print the same message and `--json` line, and the apply
+  exits `1`. Only that 409 is read as a conflict: any other JSON error to the dry
+  run fails as the route sent it, with its own `code` and `data`; a dry run the
+  route accepts — the routine changed after cotctl read it — stops and asks to
+  re-run; and a profile without write permission stops saying so, since the
+  route could not tell. These last two carry no `code` in `--json`. A server
+  without the keyed route still takes such an update through the old route, as
+  before.
+- **`routines apply --json`** prints one JSON object per routine on stdout, as
+  `schedules apply --json` does, errors included. A result the keyed route
+  answered carries its `ops` exactly as the server sent them, and so does the
+  Routine line of `apply --dir --json`; a `partial: true` update carries the
+  stages it keeps as `preservedElements`. An error the keyed route answered
+  keeps its `code` and `data` in the line's `error` object.
+- **A `partial: true` Routine takes the same route as any update.** cotctl
+  completes the document with the stored stages before sending it, so the keyed
+  route and `PATCH /api/v2/pbscripts/:id` both receive the complete
+  `body.stages`, and the refusals, the script gate and the unreachable-stage
+  warning apply before either is tried.
+- **`COTCTL_LEGACY_PATCH=1` sends every update through the old routes**, without
+  trying the keyed ones. `1`, `true`, `yes` and `on` set it; `0`, `false`, `no`,
+  `off` or no value leave detection on; any other value is refused before
+  anything is sent, and `apply` exits `2`. It exists for the transition and
+  will be removed in a later release.
+
+- **`cotctl logout --revoke` revokes the ApiToken even when another local
+  profile still uses it**, and names the profiles it leaves unable to
+  authenticate. Without it, `logout` keeps a shared token active (see Fixed).
+- **`cotctl profile delete -y/--yes` deletes the profile without asking**, so
+  a script can remove one profile and leave its token active. Without it, the
+  command still asks on the terminal.
+- **`cotctl login --paste-token` and `--token` warn on stderr when another
+  profile already holds the token they save**, naming it. The profile is saved
+  anyway.
+- **The `cotalker-docs` skill and the npm package's README tell `logout` and
+  `profile delete` apart.** The skill described `logout` as only removing a
+  saved profile, and the README as always revoking its ApiToken. Both now say
+  that `logout` revokes the ApiToken unless another local profile still uses
+  it, that `--revoke` revokes it anyway, and that `profile delete` keeps the
+  token active and deletes without a terminal only with `-y`. Installed skills
+  are files on disk: run `cotctl skills install` again to get this version.
+
+- **A Workflow YAML can set how many Tasks its task list loads per page, with
+  `taskPaginationLimit`**, an integer from 10 to 100 that takes precedence over
+  the Company's limit. `validate` and every apply refuse a value outside that
+  range, a fraction or a string; `--dry-run` shows the change in the Workflow's
+  diff; `workflows export` writes it when the workflow has one, and `workflows
+  get` prints it as `Tasks per page`. Omitting the key keeps the stored value,
+  and a workflow without one keeps using the Company's limit;
+  `taskPaginationLimit: null` clears it, back to the Company's limit. It needs a
+  backend that stores the field: an older one accepts the request and ignores it.
+
+- **A Workflow YAML can set the order of its task list's default view**, with
+  `defaultSortBy: modifiedAt` or `defaultSortBy: createdAt`; tasks are always
+  listed newest first. `validate`, `apply` and `workflows apply` accept it,
+  `--dry-run` shows the change, and `workflows export` writes it when the
+  Workflow has one. Leaving it out keeps what the Workflow has, and one that
+  never set it sorts by `modifiedAt`. Any other value is refused before a
+  request is sent, `null` included: going back to the default is writing
+  `modifiedAt`.
+- **It needs a backend that stores the field.** An older one accepts the
+  request and drops the key, so the apply reports success and the next
+  `--dry-run` lists the same change again.
+
+### Changed
+
+- **The `cotctl-routines`, `cotctl-bots` and `cotctl-workflows` skills have
+  Claude propose an error path for every stage that can fail** — sending an
+  email or a message, calling an endpoint, invoking a Routine, writing what the
+  backend can refuse — instead of writing `ERROR: ""` by default, and ask before
+  leaving one out. A stage that fails onto `ERROR: ""` ends the run unnoticed,
+  and the run is still logged as executed, so a broken email stage could go
+  unseen until someone missed the email.
+- **They pin the version of a bot type that reports a failure on `ERROR`**,
+  because the default version of many types does not: the default `PBEmail`
+  and `PBMessage` report a failed send on `DEFAULT`, the default
+  `PBCreateTask` reports a task it did not create on `NOT-CREATED` and crashes
+  on a refusal, and the default `PBChangeState` crashes on one. The examples
+  pin `PBEmail` `3.0.1` and `PBMessage` `2.2.0`, and the skills name
+  `PBCreateTask` `2.0.1` and `PBChangeState` `2.1.0`. They also say where an
+  error branch cannot help: a `PBScript` stage's `ERROR` does not see a
+  failure inside the Routine it invokes.
+- **They tell the user when a failure cannot be routed at all, by how the bot
+  fails rather than by the branches it declares**: a failure the bot reports
+  reaches `ERROR` — `PBCalendar` `2.0.0` routes every failure there, although
+  it declares only `DEFAULT` — while one it throws ends the run as
+  `UNHANDLED_ERROR`, past every branch. For `PBGiphy`, `PBWhatsApp`, the `ST*`
+  survey tools and `CBCheckOTsched`, whose own failures never reach `ERROR`,
+  the skills say so instead of adding an `ERROR` branch that would never run.
+- **When they pin an existing stage, they rename its `next` and re-check its
+  `data`**: the pinned versions accept only `SUCCESS` / `ERROR` — `DEFAULT`
+  and `CREATED` become `SUCCESS`, `NOT-CREATED` becomes `ERROR`, keeping one
+  handler where the stage already has the new key — and check `data` against
+  a schema the default does not have, so a `PBEmail` stage whose `targets` is
+  not a list of valid emails fails every run once pinned. A stage left as it
+  was never runs its bot, and `cotctl validate` catches neither.
+- **Before a Routine or a bot goes live, they test both branches**: two runs,
+  one forced through `ERROR`, read with `cotctl logs list` and `cotctl logs get
+  --parts results` — for a Routine, two `cotctl routines test` runs found with
+  `cotctl logs list --owner TEST`. Installed skills are files on disk: run
+  `cotctl skills install` again to get this version.
+
+- **Only a create refuses a Property `code` outside `^[a-z][_a-z0-9]*$`.** The
+  API enforces the charset whenever it creates a Property, and the backend
+  stores many codes that do not match it: the `unique-<task id>` code it gives
+  each Task's asset, or the concatenated codes of `local_concat`. A PATCH
+  cannot change a stored `code`, and an update checks it only on a server
+  configured to check codes on update; cotctl cannot tell which servers are.
+  `properties export` writes those codes as stored, and `validate` and `apply`
+  refused the file it had just written. Now `properties apply`, `apply -f` and
+  `apply --dir` update such a Property and refuse the code only when they would
+  create one, in a dry run too. On a server that checks updates, the apply of
+  an update that sends a change to such a Property fails although the dry run
+  reports it as an update; a re-apply that changes nothing sends no request, so
+  it passes.
+- **A Property `code` shorter than 3 characters follows the same rule.** The
+  API enforces the 3-character minimum when it creates a Property, as it does
+  the charset and the 50-character cap, and on an update only where it
+  enforces the charset. `properties apply`, `apply -f` and `apply --dir` refuse
+  it only when they would create the Property, in a dry run too; updating a
+  Property stored with a short code goes through, except on a server that
+  checks updates.
+
+- **`surveys apply --dry-run` and `apply --dry-run` name what a Survey update
+  changes on each Question.** The first raw re-apply of a Survey built in the
+  web app read `Would UPDATE` without naming a field, while the PUT rewrote its
+  Questions. The diff now comes from the same comparison that decides the
+  action, one entry per Question and field
+  (`questions[identifier="…"].isReadOnly`), so a second re-apply still reads
+  `No changes`. The compact diff counts a change several Questions share on one
+  line (`+ questions[].isReadOnly ×7`), and `--diff verbose` lists every entry.
+  A Question an update adds or removes is one entry of its own
+  (`questions[identifier="…"]`, or `+ questions[] ×3` in the compact diff), next
+  to the entries of the Questions it edits: a change in how many Questions there
+  are no longer reads as a single `chat` entry. A SurveyChat it adds or removes
+  whole is one such entry per item, its `+text` title included, so the compact
+  count includes titles; one holding an item with no identifier, or two with the
+  same one, is a single entry on its index instead (`chat[2]`). The same
+  Questions in another order are one `changed` entry on their list.
+  A note under the diff counts the stored keys at their default value that the
+  update leaves out and that read back the same; with `--diff verbose`, another
+  counts the `command.values` conditions the backend stores with a new `_id`.
+  No action, exit code or flag changes.
+- **The `diff` of `--json` carries those entries, and the notes stay out of
+  it.** A stored value the update removes, such as `required: false`, is an entry
+  with `kind: "deleted"`, and so is a Question it removes: a pipeline that stops
+  on any `deleted` entry will stop on those first re-applies, and on an update
+  that removes a Question. Check the entry's `field`, or rely on
+  `destructiveChanges` and `--fail-on-destructive`, which this does not touch.
+  An entry on a whole Question carries that Question, never the SurveyChat that
+  holds it: as `after` when the update adds it, as `before` when it removes it.
+  An entry on an index (`chat[2]`) carries a whole SurveyChat, and the one on
+  the list itself (`chat`) carries both lists, the stored one as `before` and
+  the sent one as `after`: a reorder gives it, and so does a change in how many
+  SurveyChats there are when one of them cannot be named.
+
+- **`properties apply`, `apply -f` and `apply --dir` fail only that Property
+  when its `id` is one the backend answers with a 404, and apply the other
+  Properties of the same file.** The apply used to stop the file on the raw
+  404; it now reports `Property with id '<id>' was not found`, as it already did
+  for an empty answer, and still exits `1`. So the other Properties of that
+  file are written now where the 404 used to stop them: a pipeline that relied
+  on it should fix or remove the `id` first. `apply --dir` still stops after
+  that file unless `--continue-on-error`.
+
+- **`schedules list` is ordered newest first**, so `--type all` shows the
+  schedules created most recently instead of the oldest ones in the company.
+  The columns, the `--json` output and the exit codes are unchanged.
+
+- **`cotctl login --token -` reads the token from stdin before it discovers the
+  API URL, sends any request to the Cotalker backend or asks anything**, as
+  `--token @<path>` and the literal value already did. An empty stdin, one past
+  8 KB, or a terminal where `-` expects a pipe now fails before the discovery
+  instead of after it, and a stdin that never closes fails 10 seconds after
+  `login` starts reading it — ahead of the discovery — rather than 10 seconds
+  after the discovery. The messages and the exit code are the same. When the token
+  comes from a slow command piped into `login`, that command's time now adds to
+  the discovery's, where the two used to overlap. With `--api-url`, which skips
+  the discovery, nothing changes.
+
+### Fixed
+
+- **`surveys export --format raw` writes an `exec.onPlay.button` that
+  `validate` accepts, whatever keys it stores.** The raw format required
+  `label`, `type`, `theme` and `debounceTime` on every button, all four of
+  which the server leaves optional, so the raw export of a Survey with a button
+  saved without `debounceTime` failed its own `validate`. Each key is now
+  optional in the raw format, as it already was in the simplified one, and the
+  button may be `null`, as the server allows.
+- **`surveys export --format raw` skips a SurveyChat of a type the survey
+  update does not accept back, such as `text/system`, with a warning.** It
+  wrote the bubble as stored, and `validate` and `apply` refused the file. No
+  YAML can write such a bubble back, so the warning says what applying the
+  export does: it deactivates that SurveyChat. The dry run says so too, in a
+  `warn` line that `--fail-on-destructive` lets through. The simplified export,
+  which already dropped the bubble, no longer sends you to `--format raw` for
+  it. The embedded `cotctl-surveys` and `cotctl-export` skills now say so too.
+- **`surveys export` writes a jobTitle filter stored as `"*"` or as a single
+  code.** "All job titles" exports as `jobs: "*"`, and a legacy single code as
+  the one-code list the web app reads it as, which an apply writes back as
+  stored. Both were left out without a word, and `validate` refused the export.
+  A stored value that is neither is now named in a warning. A stored list
+  holding `"*"`, which the web app reads as every job title but its builder
+  cannot show, exports as `jobs: "*"`, without the list's other codes, with a
+  warning that the next apply writes it back as the string.
+- **The simplified format keeps a Question's `exec.onChange`, `exec.presave`
+  and `exec.filter`.** The export left them out and the apply never sent them,
+  so re-applying a simplified export erased them from every Question and
+  `+table` column that stored them. Both formats now export and send them as
+  written, and `validate` and the apply warn that the web app never runs them,
+  as they already did for the raw format; on a Question the warning adds that
+  saving the Survey from the web app's builder removes them, and on a `+table`
+  column, that opening or editing the column, or editing its table, there may
+  remove them. The simplified format also checks their JavaScript, which the
+  server parses when it saves a Question, and only warns on a `+table` column,
+  whose exec the server never parses.
+
+- **The Routine, Bot, SLA and Schedule examples in the skills used
+  `PBSendMessage`, which is not a registered bot type**, with `channelId` and
+  `text` in its data — a stage that fails at runtime. They use `PBMessage` with
+  its own data now: `content`, `contentType`, `sentBy`, `channelIds`. The
+  `cotctl-workflows` skill's `PBEmail` examples wrote the recipient as `to`;
+  they write `targets`, with `subject` and `content`.
+- **The `cotctl-workflows` skill's `PBCreateTask` examples had no `name`**,
+  which every version of the bot needs, so the stage failed on every run. They
+  carry one now, and its reference routes the default version on `CREATED`,
+  the branch it reports, instead of `DEFAULT`, which it never does.
+- **Two bots of the `cotctl-workflows` skill's Workflow example never did
+  their work.** Its survey-triggered bot started on an `FCEach` stage with no
+  `data`, which stopped the run before the next stage, and that stage gave
+  `PBSendSurvey` a `surveyId` its default version does not read: it is a
+  single `PBSendSurvey` stage with `survey`, `channel` and `recipient` now. Its
+  sub-task bot's `PBSendCustomNotification` had no `data`, which the bot
+  refuses on every run; it carries `content` and `channelId`.
+
+- **`workflows apply --dry-run` and `apply --dry-run` refuse a state machine
+  whose PropertyTypes or asset Property do not exist, as the apply does.** A
+  `cardLabels` or `allowedExtensions` code — or the state machine's
+  `propertyType`, its asset's `propertyType` or a generic asset's `property` —
+  that the server does not know showed up in the dry run as a planned change,
+  with exit `0`, and the apply then stopped with
+  `PropertyType "<code>" not found` or `Property "<code>" not found`. The dry
+  run now reports the same error and exits `1`, for a Workflow the server has
+  and for one it does not have yet. Under `apply --dir --dry-run`, a
+  PropertyType or Property the same directory declares counts as present, since
+  the apply creates it first.
+- **`surveys apply --dry-run --skip-semantic-validation` refuses what the apply
+  refuses when it builds the Survey.** A shape only the semantic check catches,
+  such as a single-value `personFilter.jobs`, passed the dry run with
+  `Would UPDATE` or `Would CREATE` and exit `0`, and the apply refused it with
+  exit `2`. The dry run now reports the apply's error, with its exit code.
+  Without the flag nothing changes: the semantic check refuses such a shape
+  first.
+- **`validate` warns about a Property `code` longer than 50 characters, and the
+  dry run refuses it on a create.** The API caps the code at 50 whenever it
+  creates a Property, so `validate` and `--dry-run` approved a longer one that
+  the create then failed with a 400. `validate -f` and `validate --dir` now warn
+  and pass, since they cannot tell a create from an update, and
+  `properties apply`, `apply -f` and `apply --dir`, dry run included, refuse the
+  code only when they would create the Property, before sending anything.
+  Updating a Property already stored with a longer code works as before,
+  except on a server configured to check codes on update.
+- **With an `id` in a Property YAML, `--dry-run` announces what the apply
+  does.** The dry run looked the Property up by `code` alone, so an `id` with a
+  new code announced a create, an `id` with another Property's code announced
+  that Property's update, and an `id` the backend does not hold announced an
+  update by code — three cases the apply refuses. The dry run now reads by `id`,
+  as the apply does, and refuses the same three with the apply's message. It
+  also refuses a changed `propertyType`, which the apply already refused.
+- **`workflows apply --dry-run` and `apply --dry-run` refuse a State whose
+  Property does not exist, as the apply does.** The dry run skipped such a State
+  and announced the update with exit `0`, and the apply then stopped with
+  `Property "<code>" not found`. The dry run now reports that error and exits
+  `1`, in a state machine the server has, in a new one and in a new Workflow.
+  Under `apply --dir --dry-run`, a Property the same directory declares counts
+  as present. When it cannot read the Properties a state machine references,
+  the dry run says so in a warning that names the state machine, and leaves the
+  verdict to the apply.
+
+- **`cotctl logout` no longer revokes an ApiToken another local profile still
+  uses.** `login --paste-token` and `login --token` can save one token in
+  several profiles, and a `logout` of any of them revoked it for all, leaving
+  the others unable to authenticate. It now removes only the profile you named,
+  keeps the token active and names the profiles that still use it; the last of
+  them to log out revokes it. Only the profiles on this machine are checked: a
+  token also saved on another machine, or kept as a CI secret, is still revoked
+  by the last local `logout`.
+- **`apply --dir` names the files a run that stopped early never reached**, on
+  stderr, right under the summary: `Not reached, the run stopped before them:
+  …`. The summary counts only the files the run chose to skip, so a run that
+  stopped at an error said `0 skipped` and nothing about the files after it. A
+  mixed-kind file whose later kind never ran is named with that kind. The
+  summary line, still the last line of stdout, and the `--json` output are
+  unchanged.
+- **`slas list --state-machine`, `slas get`, `slas export`, `slas apply` and
+  `apply --dir` name the inactive Workflow a state machine belongs to**,
+  instead of saying it does not exist and asking to apply a Workflow that is
+  already applied. The exit codes are unchanged: the SLAs of an inactive
+  Workflow are still neither read nor applied.
+
+- **`logs pull --parts stage:<key>` warns on stderr once per log that has no
+  stage by that key**, where it said nothing. The pull goes on and writes those
+  logs as before, with `config: null` and no results for the key, and its exit
+  code does not change: the runs a pull matches need not share their stages.
+  As in `logs get`, a log whose output is not valid JSON or that stored no
+  response of its run is not judged, and gets no warning.
+
+- **`--legacy-replace-workflows` names every card-label slot of a StateMachine
+  it updates, `null` where the YAML declares none.** With no `cardLabels` in the
+  YAML, or with `cardLabels: {}`, it sent the active labels empty and no slot at
+  all: the body every release from 0.5.1 to 0.11 sent on each update, erasing
+  the labels. A backend that refuses that body over stored labels, to protect
+  them from those releases, no longer refuses the legacy replace for it. The
+  labels end up cleared as before, and the dry run reads as before.
+
+- **`validate --dir --remote` ended `ready to apply`, with exit `0`, on a
+  directory whose Workflow names a Survey that exists nowhere**, while
+  `apply --dir --dry-run` refused the same directory with exit `1`, naming the
+  transition. A pipeline that gated a pull request on `validate --remote`
+  stayed green until the apply. The remote checks now look each of those
+  Surveys up as the dry run does, before anything is written, so, on the
+  Surveys a Workflow names, `validate --dir --remote` reaches the verdict of
+  `apply --dir --dry-run`, and `validate -f --remote` on a Workflow file
+  reaches that of its own dry run. The dry run still checks more: it resolves
+  a Survey's `permissions` and `permissionsV2`, and refuses a bot stage that
+  lacks the `data` its type requires, where `validate --remote` only warns, so
+  it stays the last check before an apply.
+
+- **`schedules list` reads beyond the first page, up to the newest 1000
+  schedules.** It read a single page, and the server answers at most 100 per
+  request: where most schedules are canceled ones belonging to SLAs,
+  `--type all` could show `1 schedule(s)`. It now reads page after page until
+  it has `-l` schedules that pass the active filter and `--search`, until a
+  page comes back short, or until it has read 10 pages (the newest 1000), so a
+  `-l` above 100 works within those 1000. When it stops at the 10 pages and
+  the server holds more, it says so on stderr with the server's total; stopping
+  because `-l` was reached does not warn. stdout and `--json` keep their shape.
+- **`schedules list -s` filters.** The server ignores the search it was sent,
+  so `-s` returned the same listing as without it. It now keeps the schedules
+  whose code, or the name or description of the bot they run, contains the
+  text, case-insensitively, over the pages read.
+- **`schedules list --no-cron` lists only the one-shot schedules.** It was
+  parsed and then dropped, so it returned the cron ones too. It now asks the
+  server for the schedules without a cron expression. Given together with
+  `--has-cron`, `list` warns and keeps `--has-cron`.
+
+- **A `partial: true` document that names an element no stored one holds says
+  so.** A misspelled `property`, `target`, `code` or stage `key` reads as a new
+  element, and when it left out what a new one needs, the refusal named only
+  the missing field — `…states[property="<x>"].type: Invalid option` — which
+  sent you looking for a `type`. It now leads with `State "<x>" is not stored
+  in <list>, so partial: true would add it as a new state, and nothing stored
+  completes what it leaves out:`, and the warning that the apply adds the
+  element is no longer printed beside the refusal. Every kind `partial: true`
+  covers.
+- **`validate --workflow` names an inactive form by its code.** Check T4
+  listed each form the workflow references that the active surveys do not
+  include by the id the workflow stores, as `deleted or inactive`. It now reads
+  each one: an inactive form is named by its code, marked `(inactive)`, and a
+  reference no Survey of the company answers to is shown as the workflow
+  stores it — its id, or its code — marked `(not found)`. A reference whose
+  read finds it active no longer warns. T4 reads one Survey per reference
+  stored as an id, and walks the company's inactive Surveys once when a
+  reference is stored as a code. It reads them only when the `configuration`
+  section runs.
+- **A question's `responses#<column>` context names the column's table.** On a
+  question outside a `+table`, a context naming one of its columns warned that
+  the identifier `does not exist in this survey`, although the column exists.
+  The warning now says that a context outside the table does not see its rows,
+  so it resolves empty, on `validate` and every apply, `--dry-run` included.
+  It is still a warning.
+- **An apply whose write the server answers with no document says it could not
+  confirm the write**, instead of `the backend accepted the write but answered
+  with no <kind> document, so nothing was written`: cotctl cannot know that
+  nothing was written. Only the message changed; the run still fails with exit `1`.
+
+- **`--diff verbose` lists what an entity with nothing to change keeps.** A
+  state machine whose declared `cardLabels` equal the stored ones, and that
+  changes nothing else, read `No changes to StateMachine` and printed no diff,
+  so the labels' `preserved` entry reached only `--json`. With
+  `--diff verbose`, a dry run now lists such an entity's preserved entries
+  under its `No changes` or `[NO-OP]` line, as it does under an update's — for
+  that state machine, `= cardLabels (preserved)`. This holds for
+  every command with `--diff`: `workflows apply`, `surveys apply`,
+  `properties apply` and `apply`, with `-f` and with `--dir`. The compact
+  default, `-q`, `--json` and the exit codes are unchanged.
+- **`validate` and `--dry-run` warn about every key a Survey Question does not
+  take.** Each Question type sends only the keys it reads, so a `tree` or a
+  `creation` written next to a `property` Question's `filters` instead of inside
+  one of them, a `jobs` outside `personFilter`, a `min` on a `gps` Question, a
+  raw-format key such as `isActive` or a typo passed `validate` and vanished
+  from the write without a word. One warning per key names where it belongs or
+  which types take it; a `+table` column gets the same. It is a warning: no exit
+  code changes, and `--skip-semantic-validation` skips it with the rest.
+- **A Property names another Property by `code` under a `COTProperty` node, and
+  the apply sends its id.** The backend stores the id of the referenced
+  Property, and cotctl resolved a code only in the `type: COTProperty` slice at
+  the root of `schemaInstance`, so a node given a code passed `validate` and the
+  dry run and failed the apply with a 400. `properties apply`, `apply -f` and
+  `apply --dir` now resolve the code of each such node — read from the
+  PropertyType the apply already reads, single values and lists alike — and
+  send an `_id` that is already one as it is, once it names an active Property
+  of the node's `subType`. A node that is not active is left out of the
+  write, with a warning: the backend does not store it, so re-applying an
+  export leaves the value stored under it as it is. Under `apply --dir`, the
+  dry run's diff shows a reference to a Property an earlier file creates as
+  `<id of <code>, created by this batch>`,
+  which the apply replaces with that Property's `_id`; an error names the
+  code as written.
+- **A COTProperty code that names no Property fails only that Property, in the
+  dry run as in the apply.** The dry run reported the unresolved references
+  alone, for the whole file, while the apply failed those Properties and wrote
+  the others; the dry run now previews the others too, and still exits `1`. A
+  file that also fails a check of the whole file — a PropertyType that does not
+  exist — still stops. Its Property then lists an unresolved reference next to
+  that error only from the `type: COTProperty` slice, since a type that does
+  not exist has no node to read. An `_id` in the `type: COTProperty` slice,
+  where the type has no node of that name, now applies as it is, where it was
+  refused as an unknown code.
+- **The dry run refuses a schema node `key` the backend refuses on a node it
+  creates, and `validate` warns about it.** The backend creates a node only
+  with a `key` of 3 to 50 characters matching `^[a-z][a-z0-9_]*$`, while cotctl
+  asked for one character, so `validate` and `--dry-run` approved a key the
+  apply then failed with a 400. `property-types apply`, `apply -f` and
+  `apply --dir`, dry run included, now refuse such a key on a PropertyType they
+  create and on a node an update adds, before sending anything. A type stored
+  with such a key — a `firstName` written before the rule — still updates, since
+  an update sends no change to a stored node's key. `validate -f` and
+  `validate --dir` (check `S7`) cannot tell the two apart, so they warn and pass.
+
+- **The dry run refuses a `COTProperty` value of the wrong shape, as the apply
+  now does before sending anything.** A single value in an `isArray` node, a
+  list in a single-value node, an empty `required` node (`[]` included) and
+  a list outside `arrayMin` / `arrayMax` passed `--dry-run` and failed the
+  apply with a 400;
+  both now fail that Property alone, and so does a value that is neither a
+  Property code nor an `_id`. The backend checks every node when
+  `schemaInstance` changes, so a stored value of the wrong shape fails a write
+  that changes another key, and the error says it is the stored value; a write
+  that does not send `schemaInstance` only warns about it.
+- **A node named `propertyType` or `propertyTypes` is read as that node.** On a
+  `type: COTProperty` instance, cotctl took such a key for the legacy slice at
+  the root of `schemaInstance`, which the backend does not store: a
+  `COTProperty` node of that name is now resolved as a node, and a node of any
+  other `basicType` is sent as written.
+
+- **`cotctl login` asks whether to overwrite an existing profile before it
+  authenticates.** The question came after the browser or password login had
+  minted a new ApiToken, so answering `n` left that token active with no profile
+  referencing it — and, when the existing profile held the token the same user
+  had minted on the same machine, the login could already have deactivated it,
+  so even the profile it kept needed a new login. The question now comes before
+  the API URL is discovered, the browser opens or a password is asked for, so
+  `n` mints nothing and leaves the existing profile as it was. It still exits
+  `1`, and `--yes` and runs without a terminal behave as before. Only a profile
+  that another process saves while the login runs is asked about after
+  authenticating, and a `n` then still names the token it leaves behind.
+
+- **The automatic re-login checks the user before it mints a new ApiToken.**
+  When a profile's ApiToken expires or is revoked mid-command, cotctl asks for
+  the password and logs in again, and refuses when the login resolves to a user
+  other than the one the profile is bound to — which takes two users sharing an
+  email, or a profile edited by hand. It refused only after minting a token for
+  that user, which stayed active with no profile referencing it and nothing
+  saying so. The refusal, its message and its exit code are the same; it now
+  comes before any ApiToken is created or deactivated, so it leaves none behind.
+  And when the new token is minted but the profile cannot be saved, on a full or
+  read-only disk, the re-login names that token and where to revoke it, as
+  `cotctl login` does, before failing with the same error.
+
+- **The text output of a dry run names a state machine's card labels
+  `cardLabels`, the key the YAML uses.** It printed the API's name for them,
+  `dynamicPropertyTypes` — `= dynamicPropertyTypes (preserved)` under
+  `--diff verbose`, or `~ dynamicPropertyTypes: …` when they change — a name
+  that appears in no YAML. It now prints `= cardLabels (preserved)` and
+  `~ cardLabels: …`, in the commands that apply a Workflow: `workflows apply`,
+  `apply -f` and `apply --dir`. `--json` is unchanged: its `diff[]` entry keeps
+  `field: "dynamicPropertyTypes"`.
+
+- **A `-l` that is not a positive integer now exits `2` before any request is
+  sent**, with `--limit takes an integer from 1 to 100, got "-5".` on
+  `schedules logs` and `--limit takes a positive integer, got "-5".` on
+  `webhooks list` and `webhooks logs`, as `logs list` already did. A negative
+  `-l` used to reach the backend as written: on `schedules logs` the log reader
+  turned it into no limit at all, lifting its 100-row cap, so `-l -1` returned
+  every log of the Schedule. A `0` or a non-number (`-l abc`) was dropped
+  instead, and the backend's own default of 10 rows answered in place of the
+  documented 50 or 100.
+- **`schedules logs -l` takes at most 100**, the most the log reader returns: a
+  higher value was cut to 100 without a word, and now exits `2`.
+- The `-l` change is a fix, not a breaking change: every value now refused
+  either removed the cap or was silently replaced by another, so none of them
+  ever did what it asked for. Every value from 1 to the cap is sent exactly as
+  before, and the defaults are unchanged.
+
+### Docs
+
+- **The documentation and the YAML examples give every stage that can fail an
+  error path.** Their stages sent `ERROR` to `""`, which ends the run
+  unnoticed while the run is still logged as executed; they now send it to a
+  stage that tells a channel the team watches. A new section of the Routine
+  guide, *Give every stage that can fail an error path*, says where an `ERROR`
+  branch cannot see the failure — the default version of `PBEmail`,
+  `PBMessage`, `PBCreateTask` and `PBChangeState`, a `PBScript` stage invoking
+  a Routine, a bot that throws its failure instead of reporting it, a bot type
+  or version the scheduler does not register, which fails the whole run before
+  its first stage — and how to prove both branches with `cotctl routines test`
+  and `cotctl logs`. It also says what decides it: whether the bot reports the
+  failure or throws it, not the branches its version declares. The SLA,
+  Schedule, Bot and bot-catalog pages point to it. The pages of those four
+  bots say which versions declare `ERROR`, every example pins `PBEmail`
+  `3.0.1` and `PBMessage` `2.2.0`, and all four pages warn that the pinned
+  versions validate `data` where the default barely checks it, so pinning an
+  existing stage can break it — a `targets` entry that is not an email address
+  in `PBEmail`, an array `content` in `PBMessage`.
+- **They also say that pinning an existing stage renames its `next`:**
+  `DEFAULT` and `CREATED` become `SUCCESS`, and `NOT-CREATED` becomes `ERROR`.
+  The pinned versions check the keys before the bot runs and refuse any other,
+  so a stage that keeps an old key never runs its bot — and `cotctl validate`
+  does not catch it. A `PBCreateTask` stage holding both `NOT-CREATED` and
+  `ERROR` can keep only one of the two handlers. The Routine guide, the
+  catalog's *Error branches* and the pages of the four bots say so.
+- **The examples no longer name bot types that do not exist.** They used
+  `PBSendMessage` with `channelId` and `text`, and one Workflow example
+  `PBNotify`; they use `PBMessage` with `content`, `contentType`, `sentBy` and
+  `channelIds`, and `PBSendCustomNotification`. The Routine guide's `FCIfElse`,
+  `FCEach` and `FCSleep` examples use those types' real data and branches, its
+  `$OUTPUT` expression is written `$OUTPUT#<stage>#<field>`, and the complete
+  Workflow example's `PBEmail` writes `targets` instead of `to`. Its
+  `PBCreateTask` and the YAML twin of the Workflow skill example now give the
+  task a `name`, which the default version requires before it runs. The YAML
+  structure page pins its `PBEmail` to `3.0.1`, gives
+  `PBSendCustomNotification` the `content` and `channelId` its schema
+  requires, and replaces an `FCEach` that never reached its next stage with a
+  `PBSendSurvey`.
+- **Every page of the bot catalog does the same.** Where the bot reports its
+  failures on `ERROR`, its examples send it to a `notify_failure` stage, a
+  pinned `PBMessage`; where it throws them or reports none — `PBGiphy`,
+  `PBWhatsApp`, the `ST*` bots, `CBCheckOTsched` — the page says no `ERROR`
+  branch catches them and what to do instead. Five pages also said something
+  the runtime does not do: `PBCalendar`'s said its failures throw instead of
+  branching, and its only version, although it declares just `DEFAULT`,
+  reports every one of them on `ERROR`; `PBConditional`'s example wrote
+  `TRUE:` and `FALSE:` unquoted, which YAML reads as booleans, so the stage
+  never branched; `PBSheet` recommended a version, and no version of it can be
+  applied and run through `cotctl` today — its page now says why; `PBScript`'s
+  `ERROR` is taken only when the invoked Routine returns no results, not on a
+  missing script or a failure inside it; and `PBGiphy` stops the run on a
+  failure rather than reporting it on a branch. The `PBChangeState` page said
+  its default version refuses `quiet`: the default accepts it and ignores it,
+  and only `2.0.0` refuses it.
+- **`{{…}}` placeholders are no longer written into bot `data` on the pages of
+  the error-path bots.** `data` is not a Mustache template — only `htmlTemplate`
+  is — so the placeholder reached the bot as literal text,
+  and a pinned version that validates the field, such as an email in `PBEmail`
+  `3.0.1`'s `targets` or an ObjectId in `PBMessage` `2.2.0`'s `sentBy`, refused
+  it on every run. The COTLang reference no longer lists `{{…}}` as one of its
+  expressions.
+
+- **The `properties` documentation no longer promises a warning for a
+  `schemaInstance` key the PropertyType does not define.** It said `apply` warns
+  about such a key; nothing emits that warning, and the key is sent as written.
+  The documentation now says so, and points at `property-types get` to check the
+  keys a type defines before writing them.
+
+- **The `cotctl-apply` skill and the `apply` documentation give a `partial: true`
+  Workflow the merge refuses its exit `2`.** The documentation still gave it
+  `1`, and the skill left it out of the refusals that exit `2`. Both now name
+  the refusals that keep `1`: a `nameCode` or `id` that is not stored, a stored
+  state machine pointing at a `propertyType` that no longer exists, and the
+  marker with `--legacy-replace-workflows`. The skill also stops giving `2` to a
+  `partial: true` Bot, Routine, SLA or Schedule refused for any reason: like the
+  documentation, it names the three refusals that exit `2` — no stored one, a
+  key it cannot pair, a merged document that is not valid. The exit codes of
+  `apply --dir` list the `partial: true` refusals that exit `2`. Installed
+  skills are files on disk: run `cotctl skills install` again to get this
+  version.
+- **The webhooks documentation names `-l` on `webhooks list` and
+  `webhooks logs`**, with its defaults and its exit `2` for a value that is not
+  a positive integer, and the troubleshooting page explains
+  `could not confirm the write`.
+- **The authentication page gives the exit codes of a `COTCTL_COMPANY_ID` that
+  does not match the token, in one place.** It listed seven commands that exit
+  `2`, the troubleshooting page repeated the list, and both left out
+  `logs list`, `logs pull` and most per-entity `apply` subcommands. The page now
+  names which commands exit `2` and which exit `1`, every per-entity `apply`
+  subcommand included, and tells a script to test for non-zero; the
+  troubleshooting and advanced-configuration pages link to it.
 
 ## 0.15.1 — 2026-10-27
 
