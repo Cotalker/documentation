@@ -91,7 +91,7 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 
 ### `Login cancelled — the existing profile "<name>" was not overwritten.`
 
-- **Cause:** `cotctl login` was about to save a profile under a name that already exists, and the overwrite was declined — or there was no terminal to ask on and no `--yes`. Since 0.16.0 the name can come from `-c` as well as `--profile` (see [Naming the profile](./commands/login-logout.md#naming-the-profile)), and the question comes before authenticating, so nothing was minted.
+- **Cause:** `cotctl login` was about to save a profile under a name that already exists, and the answer to `Overwrite? (y/N)` was not `y`. Since 0.16.0 the name can come from `-c` as well as `--profile` (see [Naming the profile](./commands/login-logout.md#naming-the-profile)), and the question normally comes before authenticating, so nothing was minted — except when another process created the profile while `login` ran, where the message names the token left behind. With no terminal and no `--yes`, the error reads `Profile "<name>" already exists and there is no terminal to confirm the overwrite on.` instead.
 - **Fix:** pick another name with `-c` or `--profile`, or pass `--yes` to overwrite — after checking that the name is the profile you mean to replace.
 
 ### `Token does not belong to the specified company`

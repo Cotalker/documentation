@@ -166,7 +166,7 @@ A common pattern is: gate each sensitive kind with a scoped `--dry-run --fail-on
 | `3` | **Partial apply** — part of the apply was written and the run failed afterwards: resources a Workflow created, or a schedule whose cron an update stopped and whose relaunch failed |
 | `5` | **Stopped by a data-loss advisory** (since 0.16.0) — a published advisory names this `cotctl` version and this command, so the command did not run, `--dry-run` included. Update `cotctl` and run it again; see [Data-loss advisories](./commands/update.md#data-loss-advisories) |
 
-`cotctl logs`, which writes nothing to Cotalker, gives `3` and a fifth code its own meanings: `3` when some requested log was not delivered, and `4` when the environment's backend has no log reader yet. See [logs](./commands/logs.md#exit-codes).
+`cotctl logs`, which writes nothing to Cotalker, gives `3` its own meaning and adds a sixth code, `4`: `3` when some requested log was not delivered, and `4` when the environment's backend has no log reader yet. See [logs](./commands/logs.md#exit-codes).
 
 <div className="alert alert--warning">
 
@@ -250,7 +250,7 @@ Two settings make a job predictable:
 - **Pin the version you install** — `npm install -g @cotctl/cli@<version>`, as the worked example does. An unpinned install picks up whatever is latest on the next run, breaking releases included: 0.14.0, for one, changed several exit codes a pipeline may branch on. Move the pin when you have read the release notes.
 - **Set `COTCTL_NO_UPDATE_CHECK=1`** to turn the update notice off. Any value other than empty, `0`, `false` or `no` turns it off.
 
-**From 0.16.0, one thing the variable does not turn off: [data-loss advisories](./commands/update.md#data-loss-advisories).** When a published advisory names the pinned version and a command the job runs, that command does not run — `--dry-run` included — and exits `5`, after naming the loss and the version that fixes it on stderr. The lookup that brings the advisories still runs at most once every 12 hours while `~/.cotctl` can be written — once per job on a runner that starts with an empty home directory — and waits up to 1.5 seconds where npm cannot be reached. A job that meets exit `5` moves its pin to the fixed version and runs again; to run the affected version anyway, set `COTCTL_ACCEPT_ADVISORY` to the id the message names (several ids separated by commas). A job pinned to a version before 0.16.0 never meets exit `5`: those versions do not read advisories.
+**From 0.16.0, one thing the variable does not turn off: [data-loss advisories](./commands/update.md#data-loss-advisories).** When a published advisory names the pinned version and a command the job runs, that command does not run — `--dry-run` included — and exits `5`, after naming the loss and the version that fixes it on stderr. The lookup that brings the advisories still runs at most once every 12 hours while `~/.cotctl` can be written — once per job on a runner that starts with an empty home directory — and waits up to 1.5 seconds where npm cannot be reached. A job that meets exit `5` moves its pin to the fixed version and runs again; to run the affected version anyway, set `COTCTL_ACCEPT_ADVISORY` to the id the message names (several ids separated by commas or spaces). A job pinned to a version before 0.16.0 never meets exit `5`: those versions do not read advisories.
 
 To move a pinned job forward, change the pin. Outside a pipeline, `cotctl update` installs the latest version on demand — see [update](./commands/update.md).
 

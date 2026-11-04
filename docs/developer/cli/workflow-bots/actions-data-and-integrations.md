@@ -274,7 +274,7 @@ Key parameters: `url`; optionally `csv_iso_date` (parse cells as dates).
 :::warning No `PBSheet` stage works through `cotctl` today
 The bot catalog and the scheduler disagree about this bot, and each way of writing the stage fails on one of them:
 
-- **Without `version`**, `cotctl validate`, `--dry-run` and `apply` refuse the stage: the catalog registers no default for `PBSheet`, so the version must be specified.
+- **Without `version`**, `--dry-run` and `apply` refuse the stage (`cotctl validate` does not check bot versions): the catalog registers no default for `PBSheet`, so the version must be specified.
 - **With `version: "1.0.0"`**, the only version the catalog lists, the stage gets past that check, but the scheduler registers the bot only as `default`. It loads the bot of every stage before the run starts, so the whole run fails there: no stage runs, the ones before `PBSheet` included, and the run's log shows a single `__init__` step with status `UNHANDLED_ERROR`.
 - **On top of both**, the catalog marks `data.data` as required. That entry is the bot's result — the parsed rows — annotated as an input by mistake, so a stage has no meaningful value to give it, and an empty one is refused.
 

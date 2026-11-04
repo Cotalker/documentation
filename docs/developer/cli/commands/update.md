@@ -99,7 +99,7 @@ The first advisory, `COTCTL-2026-001`, is the loss of card labels and allowed ex
 COTCTL_ACCEPT_ADVISORY=<advisory id> cotctl apply -f workflow.yaml -c acme --yes
 ```
 
-The command then runs with a warning on stderr that names the loss. The variable takes several ids, separated by commas, and accepts only the ones it names: an advisory published later still stops the command.
+The command then runs with a warning on stderr that names the loss. The variable takes several ids, separated by commas or spaces and matched whatever their case, and accepts only the ones it names: an advisory published later still stops the command.
 
 ## When cotctl can update itself
 

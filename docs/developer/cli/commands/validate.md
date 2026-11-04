@@ -81,7 +81,7 @@ A raw `exec.onPlay.button` may leave out any of `label`, `type`, `theme` and `de
 
 **The Workflow bot-stage check only warns** (new in 0.14.0). The live bot catalog marks some `data` entries as required for each bot type and version, and every apply refuses a stage that would be written without one (see [Required `data` entries](../workflow-bots/index.md#required-data-entries)). `validate -f --remote` has no stored stage to compare with, so it warns and exits `0`; the apply's `--dry-run` is where the refusal shows. It reads a stage that omits `version` on the default version and skips a `partial: true` document. Without `--remote`, and with `--dir`, it reads no catalog.
 
-**The Surveys a Workflow names are looked up with `--remote`** (new in 0.16.0). Each one — a StartForm's `requiredSurvey.surveyCode`, a transition's `requiredSurvey`, a state's `surveyTriggers[].survey` — is matched on the server whatever its case, as the apply's dry run does before its first write. One the server does not have fails the document with exit `1`, naming where the Workflow names it:
+**The Surveys a Workflow names are looked up with `--remote`** (new in 0.16.0), except in a `partial: true` document. Each one — a StartForm's `requiredSurvey.surveyCode`, a transition's `requiredSurvey`, a state's `surveyTriggers[].survey` — is matched on the server whatever its case, as the apply's dry run does before its first write. One the server does not have fails the document with exit `1`, naming where the Workflow names it:
 
 ```
 ✗ workflow.yaml has remote validation errors:
@@ -174,13 +174,13 @@ cotctl validate --dir ordenes-compra/ --remote -c acme
 | R2 | warn / pass | A Workflow's bot stages against the `data` the live bot catalog requires |
 | R3 | fail / pass | **New in 0.16.0.** Each Survey a Workflow names (the ones X7 lists) is on the server or declared by a Survey of the directory, matched whatever its case. A Survey the directory declares counts wherever its file sorts, since `apply --dir` creates every Survey before any Workflow |
 
-Its results are reported in a `Remote` section and count in the verdict: a remote FAIL exits `1`. An API error on one Survey is reported as that Survey's FAIL, and the documents after it are still checked; an API error while looking up a Workflow's Surveys is that Workflow's R3 FAIL. An expired session or a missing profile stops the run before anything is looked up — when the folder holds a Survey, or a Workflow that names a Survey the directory does not declare; otherwise the bot-stage check is reported as not run.
+Its results are reported in a `Remote` section and count in the verdict: a remote FAIL exits `1`. An API error on one Survey is reported as that Survey's FAIL, and the documents after it are still checked; an API error while looking up a Workflow's Surveys is that Workflow's R3 FAIL. An expired session or a missing profile stops the run before anything is looked up — when the folder holds a Survey, or a Workflow that names a Survey the directory does not declare; otherwise the bot-stage check is reported as not run. When no document was checked remotely, the `Remote` section says why. Under `--json` the results arrive in a `remoteResults` key, present only with `--remote`, and count in `summary`.
 
 <div className="alert alert--warning">
 
 **Changed in 0.16.0 — `validate --dir --remote` can now fail on a Workflow.** A directory whose Workflow names a Survey that exists nowhere used to end `ready to apply` with exit `0`, while `apply --dir --dry-run` refused it. It now fails R3 with exit `1`. Correct the code, add the Survey to the directory, or apply it first. The dry run still checks more — a Survey's `permissions` and `permissionsV2`, and a bot stage that lacks required `data` — so it stays the last check before an apply.
 
-</div> When no document was checked remotely, the `Remote` section says why. Under `--json` the results arrive in a `remoteResults` key, present only with `--remote`, and count in `summary`.
+</div>
 
 ## Workflow mode — production readiness, online
 

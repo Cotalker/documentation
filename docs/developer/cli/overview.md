@@ -110,7 +110,7 @@ Then reach for these as you need them:
 
 <div className="alert alert--secondary">
 
-**A note on exit codes.** `cotctl` returns `0` on success and `1` on a runtime error (an API error, a missing profile, a missing file). A third code, `2`, means a **validation failure** — what was rejected was not sent — and it's also what `--fail-on-destructive` returns when a dry-run finds a destructive change. A fourth, `3`, flags a partial apply that left something on the server, and a fifth, `5`, a command a [data-loss advisory](./commands/update.md#data-loss-advisories) stopped on an affected `cotctl` version. You don't need this yet, but it's what makes `cotctl` safe to wire into scripts and CI gates later on. [CI/CD](./ci-cd.md) covers exactly where each code comes from.
+**A note on exit codes.** `cotctl` returns `0` on success and `1` on a runtime error (an API error, a missing profile, a missing file). A third code, `2`, means a **validation failure** — what was rejected was not sent — and it's also what `--fail-on-destructive` returns when a dry-run finds a destructive change. A fourth, `3`, flags a partial apply that left something on the server, and a fifth, `5`, a command a [data-loss advisory](./commands/update.md#data-loss-advisories) stopped on an affected `cotctl` version (`cotctl logs` also uses `4`, when the backend has no log reader). You don't need this yet, but it's what makes `cotctl` safe to wire into scripts and CI gates later on. [CI/CD](./ci-cd.md) covers exactly where each code comes from.
 
 </div>
 

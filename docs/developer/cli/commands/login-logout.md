@@ -67,7 +67,7 @@ Profile "acme" already exists. Overwrite? (y/N) n
 Error: Login cancelled — the existing profile "acme" was not overwritten.
 ```
 
-With no terminal attached (a pipe, a CI job), it fails immediately unless `--yes` is given. The one case asked after authenticating is a profile that another process saved while `login` ran: by then the browser and password flows have minted their token, so a cancellation names the token it leaves behind.
+With no terminal attached (a pipe, a CI job), it fails immediately unless `--yes` is given, with `Profile "<name>" already exists and there is no terminal to confirm the overwrite on.` The one case asked after authenticating is a profile that another process saved while `login` ran: by then the browser and password flows have minted their token, so a cancellation names the token it leaves behind.
 
 ### Browser flow (the default)
 

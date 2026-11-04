@@ -183,5 +183,5 @@ Branches: `SUCCESS` (the wrapped script produced at least one stage result), `ER
 
 Gotchas:
 
-- **`ERROR` is taken only when the Routine returns no result.** A run that crashes inside the Routine stops this run as `UNHANDLED_ERROR` without taking any branch, and so does a script that is not found (an unknown `code`), on `2.0.0` and on the default version alike. A Routine that ends on one of its own `ERROR: ""` branches still returns results, so this stage takes `SUCCESS`. Handle a failure inside the Routine that has it — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
+- **`ERROR` is taken only when the Routine returns no result.** A run that crashes inside the Routine stops this run as `UNHANDLED_ERROR` without taking any branch, and on `2.0.0` so does a script that is not found (an unknown `code`); on the default version, an unknown `code` makes the run fail without taking any branch. A Routine that ends on one of its own `ERROR: ""` branches still returns results, so this stage takes `SUCCESS`. Handle a failure inside the Routine that has it — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
 - `PBScript` is for **reusable, named** bot bundles. For ad-hoc JavaScript prefer `CCJS` or `ESMCode` (also gated).
