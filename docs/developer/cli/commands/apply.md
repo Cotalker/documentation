@@ -4,7 +4,7 @@ sidebar_label: apply
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/apply.ts @ a9168d68 (2026-10-23) -->
+<!-- source: repositories/cotctl/src/commands/apply.ts @ 18d0110b (2026-11-04) -->
 
 `cotctl apply` is the command that actually changes a Cotalker environment. It takes your YAML and makes the platform match it — creating resources that don't exist and updating those that do. This is the verb you'll use most, so it's worth understanding well.
 
@@ -65,7 +65,7 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `-f, --file <path>` | all | **(required)** Path to the YAML file |
 | `-c, --company <profile>` | all | **(required)**, unless an [environment credential](../authentication.md#running-without-a-profile-the-environment-credential) supplies it. Profile to use |
 | `--dry-run` | all | Validate and show what *would* be sent, without applying |
-| `--diff <mode>` | PropertyType, Property, Workflow, Survey | **New in 0.14.0.** How much per-field diff a `--dry-run` prints under each `Would CREATE` / `Would UPDATE` line: `off`, `compact` (default) or `verbose` |
+| `--diff <mode>` | PropertyType, Property, Workflow, Survey | **New in 0.14.0.** How much per-field diff a `--dry-run` prints under each `Would CREATE` / `Would UPDATE` line: `off`, `compact` (default) or `verbose`. Since 0.16.0, `verbose` also lists what an entity with nothing to change keeps, under its `No changes` line |
 | `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) — all but one: emptying the `accessRoles` of the system `admin` or `bot` JobTitle asks you to type its code even with `-y` |
 | `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind |
 | `--skip-remote-validation` | Survey only | Skip the remote checks — identifiers, references (Survey, PropertyType, JobTitle, Property) and permission names — hard error on any other kind. A missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, which resolves both before writing; a `--dry-run` with the flag doesn't report them. A YAML that sets the survey's `id` still has its `code` compared with the server's, and a `--dry-run` does report that one |
@@ -147,7 +147,27 @@ Two things are immutable once created: a survey's `code`, and a question's `iden
     ~ name: "My survey" → "My Survey"
 ```
 
-`--diff off|compact|verbose` sets how much of it prints (default `compact`), and `-q` drops it. A resource your YAML does not change reads `No changes to <Kind>: <identifier>` — before 0.14.0 every existing resource showed as `Would UPDATE`.
+`--diff off|compact|verbose` sets how much of it prints (default `compact`), and `-q` drops it. A resource your YAML does not change reads `No changes to <Kind>: <identifier>` — before 0.14.0 every existing resource showed as `Would UPDATE`. Since **0.16.0**, `--diff verbose` lists what such a resource keeps under its `No changes` line — a state machine whose declared `cardLabels` equal the stored ones shows `= cardLabels (preserved)` — where before only `--json` carried it. The text diff of a state machine names its card labels `cardLabels`, the YAML key, where it printed the API's `dynamicPropertyTypes`; the `field` of a `--json` diff entry is still `dynamicPropertyTypes`.
+
+**A survey update's diff names what changes on each question** (0.16.0). The first raw re-apply of a survey built in the webclient used to read `Would UPDATE` without naming a field. The diff now has one entry per question and field, such as `questions[identifier="…"].isReadOnly`, and a second re-apply reads `No changes`. The compact diff counts a change several questions share on one line (`+ questions[].isReadOnly ×7`); `--diff verbose` lists every entry. A question the update adds or removes is an entry of its own (`questions[identifier="…"]`, or `+ questions[] ×3` compact), and so is each item of a chat bubble added or removed whole; the same questions in another order are one entry on their list. In `--json`, a stored value the update removes — such as `required: false` — and a question it removes are entries with `kind: "deleted"`, so a pipeline that stops on any `deleted` entry will stop on those: check the entry's `field`, or rely on `destructiveChanges` and `--fail-on-destructive`, which this does not touch.
+
+### What the dry run refuses
+
+The dry run is meant to reach the apply's verdict. Since **0.16.0** it refuses, with the apply's message and exit code, several things it used to announce as planned changes:
+
+- **A Workflow whose state machines reference something that does not exist** — a `cardLabels` or `allowedExtensions` code, the state machine's `propertyType`, its asset's `propertyType`, a generic asset's `property`, or a State's `property`. It reports `PropertyType "<code>" not found` or `Property "<code>" not found` and exits `1`, for a Workflow the server has and for one it does not have yet. Under `apply --dir --dry-run`, a PropertyType or Property the same directory declares counts as present. When the dry run cannot read the Properties a state machine references, it says so in a warning and leaves the verdict to the apply.
+- **A Survey under `--skip-semantic-validation`** that the apply refuses when it builds the survey, such as a single-value `personFilter.jobs`: the dry run now reports that error with exit `2`.
+- **Properties and PropertyTypes** — see the next section.
+
+### Properties and PropertyTypes
+
+What changed in **0.16.0** for `properties apply`, `property-types apply`, `apply -f` and `apply --dir`, `--dry-run` included:
+
+- **A Property `code` is refused only when the apply would create the Property** — one shorter than 3 or longer than 50 characters, or outside `^[a-z][_a-z0-9]*$`. The backend stores many codes that do not match, a PATCH cannot change a stored code, and the export writes them as stored, so an update of such a Property goes through. Depending on the server's configuration, the apply of an update that sends a change to such a Property can still fail, although the dry run reports it as an update; a re-apply that changes nothing sends no request. `validate` only warns about such a code.
+- **With an `id` in the YAML, the dry run reads by `id`, as the apply does.** It refuses an `id` with a new code, an `id` with another Property's code, an `id` the backend does not hold and a changed `propertyType`, each with the apply's message.
+- **An `id` the backend answers with a `404` fails only that Property** (`Property with id '<id>' was not found`, exit `1`), and the other Properties of the file are applied. `apply --dir` still stops after that file unless `--continue-on-error`.
+- **A `COTProperty` node of `schemaInstance` takes a Property `code`**, and the apply sends that Property's `_id`; an `_id` is sent as written. The value must name an active Property of the node's `subType`: anything else — a Property of another `subType`, any reference under a node with no `subType`, an `_id` of a deleted or deactivated Property, an empty item in a list, a Property the list already holds, a single value in an `isArray` node, a list in a single-value node, an empty `required` node, a list outside `arrayMin` / `arrayMax` — fails that Property alone, dry run included. A value the Property already stores stays, with a warning. A code that names no Property also fails only its Property, and the dry run previews the others. Under `apply --dir`, the diff shows a reference to a Property an earlier file creates as `<id of <code>, created by this batch>`. See [Properties](../resources/properties.md).
+- **A schema node `key` the backend refuses is refused before anything is sent.** On a node the apply creates, the key must be 3 to 50 characters matching `^[a-z][a-z0-9_]*$`; a type stored with such a key still updates. A `key` longer than 62 minus the length of the type's `code` is refused on a type the apply creates, and on an update of a type that stores one whenever the update sends something — the backend refuses every write of such a type. An update that sends nothing only warns. `validate` warns about both (check `S7`).
 
 A dry run also prints the **destructive findings** — a permission list emptied whole, the questions a survey update would deactivate, a state machine deactivated, card labels dropped — on stderr, under each resource: `⚠ DANGER` for the worst, `⚠ warn` for the rest. (Before 0.14.0 the unified `apply` computed these and never showed them.) What the unified `apply` still lacks is `--fail-on-destructive`: its exit code never changes with a finding. **When a danger finding should fail the run, preview with the entity-scoped command** first:
 
@@ -176,6 +196,10 @@ Two things still travel exactly as written: **each question a survey YAML declar
 **Upgrading from 0.13.x: write what an update must reset.** A YAML that relied on an omitted key being reset now leaves it as stored. Write the value you want instead — `[]` to clear a list, `isActive: true` to reactivate (with `--allow-reactivate` for a user or job title), or the default itself, such as `hideClosedAfterDays: 7`. And **re-export before re-applying an export made with 0.13.0 or earlier**: those exports filled in defaults the resource may not store, so re-applying one sends them as changes — see [Export & import](./export-import.md#exports-write-only-what-is-stored).
 
 </div>
+
+**A Routine update uses the server's keyed route** where the server has it (0.16.0): `PATCH /api/v2/pbscripts` with the `code` in the body, falling back to `PATCH /api/v2/pbscripts/:id` on a server without it. There, a routine input written over another stored one keeps nothing of it, and `--dry-run` asks the server to validate the update without saving it. Setting `COTCTL_LEGACY_PATCH=1` (also `true`, `yes`, `on`) sends every update through the old routes; any value other than those or `0`, `false`, `no`, `off` is refused, exit `2`. The variable exists for the transition and will be removed in a later release. See [Routines](../resources/routines.md).
+
+**An apply whose write the server answers with no document** now says `could not confirm the write`, since `cotctl` cannot know whether anything was written; the run still exits `1`. Before 0.16.0 every SLA create and update ended that way, with `nothing was written` and exit `1`, although the write had happened: `slas apply` and `apply --dir` now report the SLA `created` or `updated` and exit `0`.
 
 Each resource page notes the exceptions its kind has. For a workflow, the field-by-field contract — including why states can't silently vanish — is in [Workflow merge semantics](../resources/workflows/merge-semantics.md).
 
@@ -208,6 +232,7 @@ The other fourteen nodes travel as stored. It works for six kinds, on the keyed 
 - **A named stage's `data` and `next` merge key by key.** Write one key to change it — `next: { ERROR: notify }` reroutes one branch and keeps the others. A key written as `null` is removed, and `data: {}` or `next: {}` empties the field (`next: {}` makes the stage end the run). On a schedule, a `null` over a key the stored stage holds with a value, or a `{}` over a `data` or `next` that has keys, is refused instead, since the scheduler keeps a key the body leaves out; over nothing to remove, it passes and changes nothing.
 - **It never deletes, never reorders, never creates.** A stored element you leave out keeps its place; a new element is added last, with a warning — and so is an element whose key you edited, which becomes a new element. To retire one, set `isActive: false` where the element has it, or apply the complete list without the marker. A document whose entity does not exist yet is refused: remove `partial: true` and declare it in full to create it.
 - **It never guesses.** An element whose key the stored list repeats, or that the document names twice, is refused before anything is sent, `--dry-run` included.
+- **A misspelled key reads as a new element.** When it leaves out what a new element needs, the refusal says so first — `State "<x>" is not stored in <list>, so partial: true would add it as a new state, and nothing stored completes what it leaves out:` — instead of naming only the missing field.
 - **The dry run lists what it keeps** — `Kept 14 schemaNodes the partial YAML does not name (partial: true deletes nothing)` — and warns of a stage the merge leaves unreachable from `start`.
 
 Exceptions worth knowing before you rely on it:
@@ -217,7 +242,7 @@ Exceptions worth knowing before you rely on it:
 - **A stage named under another bot type** than its stored pair is not completed: it replaces that stage as written, with a warning. Editing a stored `PBScript` stage still needs `--allow-script-bots`.
 - **Not covered:** a routine's `dataType` (a partial routine that declares it is refused), a survey's questions, lists of plain values such as permission codes, and every other kind. `--legacy-replace-workflows` refuses the marker.
 
-**A `partial: true` document the apply refuses** — no stored entity, a key it cannot pair, or a merged document that is not valid — exits with its kind's validation code: `1` for a PropertyType or a Workflow, `2` for a Bot, Routine, SLA or Schedule (and `2` for a Workflow that names a deactivated state machine).
+**A `partial: true` document the apply refuses** — no stored entity, a key it cannot pair, or a merged document that is not valid — exits `2` for a Bot, Routine, SLA or Schedule, and `1` for a PropertyType. A Workflow exits `2` (since 0.16.0; it was `1`) for a key it cannot pair and for a merged document that is not valid — a state, transition or state machine it names that is not stored and leaves out what a new one needs, a key named twice, a key the stored list repeats, a bot slot holding several stored bots — and for a deactivated state machine it names. A `partial: true` Workflow still exits `1` when the schema rejects the YAML before the merge (a state `type` other than `new`, `in-progress` or `closed`), when its `nameCode` or `id` is not stored, when a state machine it names is stored pointing at a `propertyType` or `asset.propertyType` that no longer exists, and when it comes with `--legacy-replace-workflows`.
 
 **Only `true` is read.** That is a different refusal: any other value of `partial` — `false`, `null`, a string — and the key on any other kind are refused before anything is sent, whatever the document holds: `apply -f` exits `2`, and `apply --dir` treats the file as unreadable (exit `1`). In 0.13.0 the key was dropped without a word on a PropertyType, AccessRole, Property, User, Workflow or Survey, which then applied as complete documents — so a YAML that carries the key on those kinds now fails until you remove it.
 
@@ -333,7 +358,15 @@ Under `--dry-run` the per-resource lines read `[CREATE]`, `[UPDATE]` or `[NO-OP]
 
 ### `--continue-on-error`
 
-By default the run stops at the first failure. With `--continue-on-error` a resource that fails is reported and the rest still apply — a file whose YAML or `partial` key cannot be read is skipped whole, and so is one with an unreadable `file://` reference outside a Survey; in a Survey, such a reference fails only that Survey. The run still exits non-zero: with the first of `3` (a partial apply), `2` (a refusal) or `1`, in that order. A Ctrl-C at a prompt stops the run either way.
+By default the run stops at the first failure. With `--continue-on-error` a resource that fails is reported and the rest still apply — a file whose YAML or `partial` key cannot be read is skipped whole, and so is one with an unreadable `file://` reference outside a Survey; in a Survey, such a reference fails only that Survey. The run still exits non-zero: with the first of `3` (a partial apply), `2` (a refusal) or `1`, in that order. A Ctrl-C at a prompt stops the run either way. The refusals that exit `2` include the `partial: true` ones listed under [Partial documents](#partial-documents-partial-true).
+
+A run that stops early names, on stderr right under the summary, the files it never reached — `Not reached, the run stopped before them: <file>, …` (new in 0.16.0). A mixed-kind file that ran in part is named with the kinds that did not run, as `<file> (<Kind>, …)`. The `skipped` count of the summary covers only what the run chose to skip; the summary line stays the last line of stdout. The line is not printed under `--dry-run` or `--json`.
+
+<div className="alert alert--warning">
+
+**SLA files stopped every directory run before 0.16.0.** From 0.12.0 until 0.16.0, every SLA write ended in an error although it had been written, so `apply --dir` without `--continue-on-error` stopped after the first SLA file and never applied the rest of the SLA files, nor the Schedule, User, Bot and Webhook files after them. 0.16.0 applies them: review those files, or run the same `apply --dir` with `--dry-run`, before the first run on this version.
+
+</div>
 
 ### One document per resource
 
@@ -349,7 +382,7 @@ With `--json` (new in 0.14.0), stdout carries one JSON object per result instead
 {"file":"schedules/digest.yaml","entity":"Schedule","identifier":"sched_daily_digest","action":"updated","statusCall":"activate"}
 ```
 
-A failed document is a line with `"action": "would-error"` and an `error`; a skipped one has `"action": "skipped"`; a resource `--rollback` deactivated has `"action": "rolled-back"`. No summary is printed and the exit codes do not change. Without `-y`, the preview, the prompt and `Apply cancelled.` go to **stderr**, so stdout carries nothing but JSON.
+A Routine result the server's keyed route answered also carries `ops`, the operations it announced, exactly as the server sent them (an empty list means nothing was saved). A failed document is a line with `"action": "would-error"` and an `error` object — with the server's `code` and `data` when the keyed route refused a Routine update; a skipped one has `"action": "skipped"`; a resource `--rollback` deactivated has `"action": "rolled-back"`. No summary is printed and the exit codes do not change. Without `-y`, the preview, the prompt and `Apply cancelled.` go to **stderr**, so stdout carries nothing but JSON.
 
 ### It's safe to run twice
 

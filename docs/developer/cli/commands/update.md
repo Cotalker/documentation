@@ -4,9 +4,9 @@ sidebar_label: update
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/update.ts, src/lib/update-check.ts, docs/commands/update.md @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/update.ts, src/lib/update-check.ts, docs/commands/update.md @ 18d0110b (2026-11-04) -->
 
-From **0.14.0**, `cotctl` keeps itself current. Before every command it checks whether a newer version is published, and `cotctl update` installs the latest one whenever you ask. This page covers both.
+From **0.14.0**, `cotctl` keeps itself current. Before every command it checks whether a newer version is published, and `cotctl update` installs the latest one whenever you ask. This page covers both, and the [data-loss advisories](#data-loss-advisories) that check can stop a command for, from **0.16.0**.
 
 <div className="alert alert--warning">
 
@@ -35,12 +35,15 @@ It works without a terminal, so a pipeline or a Dockerfile can call it, and it i
 | `0` | Already up to date, or updated |
 | `1` | The npm registry could not be reached, this copy cannot update itself (or is an unreleased build), another `cotctl` is installing an update, or npm failed |
 
+The check before every other command adds one code of its own, `5`, for a command a [data-loss advisory](#data-loss-advisories) stops.
+
 ## The check before every command
 
 Before running any command, `cotctl` compares its version with the latest one on npm. What happens next depends on whether the update has **breaking changes**, and on whether there is a **terminal** to talk to:
 
 | Situation | What `cotctl` does |
 |---|---|
+| A published advisory names this version and this command | Does not run the command, with or without a terminal: see [Data-loss advisories](#data-loss-advisories) |
 | Nothing newer is published | Nothing |
 | No terminal (CI, scripts, redirected output), or a command run with `-y`/`--yes` | Prints a notice on **stderr** — the versions, the release notes link when the update is breaking, and the command to update with — then runs your command. It never asks and never installs |
 | Terminal, update **without** breaking changes (`0.14.0` → `0.14.1`) | Installs it, prints one line, and runs your command on the new version. The exit code is that run's |
@@ -62,7 +65,41 @@ The versions and the release notes link stay on screen above the options, so you
 
 ### When an automatic update fails
 
-A failed update never stops your command. If npm fails, `cotctl` prints npm's reason and the command to run, carries on with the current version, and does not retry that version for 12 hours — an install you interrupt with Ctrl-C counts too. The registry gets 30 seconds to answer each request, and a whole install that reaches five minutes is stopped and treated as failed. When another `cotctl` is already installing an update, the command carries on with the current version instead of waiting, and does not suggest the npm command: running it at that moment would collide with that install.
+A failed update never stops your command — unless an advisory names it, in which case nothing short of an installed fix lets it run (see [Data-loss advisories](#data-loss-advisories)). If npm fails, `cotctl` prints npm's reason and the command to run, carries on with the current version, and does not retry that version for 12 hours — an install you interrupt with Ctrl-C counts too. The registry gets 30 seconds to answer each request, and a whole install that reaches five minutes is stopped and treated as failed. When another `cotctl` is already installing an update, the command carries on with the current version instead of waiting, and does not suggest the npm command: running it at that moment would collide with that install.
+
+## Data-loss advisories
+
+When a release fixes a loss of data, it publishes an **advisory** with the package on npm: the versions that lose the data, the version that fixes it, and the commands that lose it. The check before every command reads the advisories from the same answer it reads the latest version from, and does not run a command an advisory names on a version it affects — `--dry-run` included, because the dry run of an affected version does not show the loss either. Every other command runs as usual, so `export` and `list` keep working on an affected version, to back up what is stored.
+
+Advisories are read from **0.16.0** on. An older version never sees one, so no advisory stops it — 0.14.x and 0.15.x included, although they check for updates.
+
+| Situation | What `cotctl` does |
+|---|---|
+| No terminal (CI, scripts, redirected output), or a command run with `-y`/`--yes` | Prints the loss, the advisory id and the version that fixes it on **stderr**, with the command to update with, and exits `5` without running your command |
+| Terminal | Prints the loss and the version that fixes it, then asks: `update` installs the latest version and runs your command on it, and the exit code is that run's; `cancel` exits `5`. There is no `continue` |
+| Terminal, but this copy cannot update itself, or npm fails | Says why, prints the command to update with, and exits `5`. Unlike an automatic update, a failed one never lets the command run |
+| Terminal, but another `cotctl` is installing an update right now | Says so and exits `5`. Run the command again once that install finishes |
+| Terminal, but the last lookup got no answer from npm | Stops without asking, with the command to update with, and exits `5`: nothing is installed from a registry that has just failed to answer |
+
+`5` means only this, so a pipeline can tell it apart from a failed apply, update `cotctl` and run the command again. Ctrl-C at the prompt still exits `1`. The messages name the advisory by its id, such as `COTCTL-2026-001`, and this lists every published one:
+
+```bash
+npm view @cotctl/cli cotctl.advisories --json
+```
+
+The advisories are kept in the [cache](#the-lookup-its-cache-and-turning-it-off): a run that cannot reach npm still knows the ones the last answered lookup brought. A new advisory reaches a machine within the 12 hours of the cache. A cache last written by a version older than 0.16.0 holds no advisories, so the next command looks them up again instead of trusting it for those 12 hours.
+
+The first advisory, `COTCTL-2026-001`, is the loss of card labels and allowed extensions on every StateMachine an `apply` or `workflows apply` updated, from 0.5.1 to 0.11.x. None of those versions reads advisories, so it stops nothing: update them by hand with `npm install -g @cotctl/cli`.
+
+### Running an affected version anyway
+
+`COTCTL_NO_UPDATE_CHECK` does not turn the advisories off. To run a command an advisory stops, name the advisory in `COTCTL_ACCEPT_ADVISORY`, with the id the message gives:
+
+```bash
+COTCTL_ACCEPT_ADVISORY=<advisory id> cotctl apply -f workflow.yaml -c acme --yes
+```
+
+The command then runs with a warning on stderr that names the loss. The variable takes several ids, separated by commas or spaces and matched whatever their case, and accepts only the ones it names: an advisory published later still stops the command.
 
 ## When cotctl can update itself
 
@@ -78,13 +115,15 @@ Any other installation — a standalone binary, a project dependency, `npx` — 
 
 - Before a command, the latest version comes from the npm registry with a **1.5-second** timeout. A slow or unreachable registry is ignored silently: the command runs as if nothing were published. (`cotctl update` waits up to 10 seconds instead, and reports a registry it cannot reach.)
 - The lookup does not read `HTTP_PROXY` / `HTTPS_PROXY`. Behind a mandatory proxy it always fails, so no notice ever appears and `cotctl update` reports that it could not reach the registry. Update with `npm install -g @cotctl/cli`, which follows npm's own proxy settings.
-- The answer is cached for **12 hours** in `~/.cotctl/update-check.json`, next to the profiles — a failed lookup too, so an offline machine pays the timeout once per 12 hours. The cache only spares the network call: while a breaking update is pending, the prompt still appears on every command. `cotctl update` ignores it.
+- The answer is cached for **12 hours** in `~/.cotctl/update-check.json`, next to the profiles, advisories included — a failed lookup too, so an offline machine pays the timeout once per 12 hours. A failed lookup forgets the latest version but keeps the advisories. The cache only spares the network call: while a breaking update is pending, the prompt still appears on every command. `cotctl update` ignores it.
 
-Set `COTCTL_NO_UPDATE_CHECK=1` to skip the check entirely — no network call, no notice, no prompt. Any value turns it off except empty, `0`, `false` or `no` (case-insensitive):
+Set `COTCTL_NO_UPDATE_CHECK=1` to turn off the update offer — no notice, no prompt, no automatic install. Any value turns it off except empty, `0`, `false` or `no` (case-insensitive):
 
 ```bash
 COTCTL_NO_UPDATE_CHECK=1 cotctl apply -f survey.yaml -c acme --yes
 ```
+
+From **0.16.0** it does not turn off the [data-loss advisories](#data-loss-advisories), so the lookup still runs, at most once every 12 hours while `~/.cotctl` can be written — on a runner that starts with an empty home directory, once per job — and a command an advisory names still exits `5`. Where npm cannot be reached, that lookup waits up to 1.5 seconds before the command runs. Only `COTCTL_ACCEPT_ADVISORY` lets that command run.
 
 The check is also skipped for `--version`, for `--help`, and for `cotctl update` itself.
 

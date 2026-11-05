@@ -134,6 +134,8 @@ cotctl webhooks logs notify_task_changes -c acme
 cotctl webhooks test notify_task_changes -c acme
 ```
 
+`list` and `logs` take `-l, --limit <n>`: on `list` it caps each activity set — `100` by default, and with `--all` the active and the deactivated sets separately — and on `logs` the number of delivery attempts, `50` by default. Since 0.16.0 a value that is not a positive integer exits `2` before any request is sent, with `--limit takes a positive integer, got "<value>".`; before, a negative value reached the backend as written, and `0` or a non-number was dropped for the backend's own default of 10. So does a `COTCTL_COMPANY_ID` that doesn't match the company of `COTCTL_TOKEN`, on a run without `-c` — see [Authentication](../authentication.md).
+
 `apply` handles multi-document files and takes `--dry-run`, `-y/--yes` and `-q/--quiet`. `test` can also probe a destination that does not exist yet, with `--url` and `--trigger` instead of a code — useful when you are building the receiving end.
 
 <div className="alert alert--info">

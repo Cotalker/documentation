@@ -4,7 +4,7 @@ sidebar_label: Bots
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/bots.ts, src/schemas/bot-admin.schema.ts, src/resources/bot.resource.ts, docs/bots/ @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/src/commands/bots.ts, src/schemas/bot-admin.schema.ts, src/resources/bot.resource.ts, docs/bots/ @ 18d0110b (2026-11-04) -->
 
 A **bot** is the entity behind the slash-commands operators trigger from the chat (`/hola`, `/registrar`). Each bot owns a list of `commands`, and — optionally — an embedded automation graph (a **ParametrizedBot**) that runs when a command fires. Because a bot can invoke almost anything in the platform, it's applied **last** in a directory apply, after every resource it might reference.
 
@@ -160,8 +160,10 @@ parametrizedBot:
         data: {}                       # the routine's input — {} when it takes none
       next:
         SUCCESS: send_message
-        ERROR: ""
+        ERROR: notify_failure          # only when the routine returns no result
 ```
+
+The `PBScript` stage takes `ERROR` only when the routine returns no result: a routine whose own stage fails onto `ERROR: ""` still finishes, and the stage carries on through `SUCCESS`, while a crash inside the routine stops the run as `UNHANDLED_ERROR` without taking any branch. Handle a failure inside the routine that has it.
 
 The routine's input goes **under `data.data`**, one key per entry of its `dataType` — the only part of the stage's `data` that `PBScript` passes on. `data.data` is required even when the routine takes no input: since 0.14.0 every apply refuses a new `PBScript` stage without it (see [Required `data` entries](../workflow-bots/index.md#required-data-entries)).
 

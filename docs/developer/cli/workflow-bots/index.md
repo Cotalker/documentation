@@ -4,7 +4,7 @@ sidebar_label: Overview
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/README.md, data-context.md, company-specific.md @ 82e613d (2026-10-10) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/README.md, data-context.md, company-specific.md @ 18d0110b (2026-11-04) -->
 
 A **bot** is a unit of automation that runs inside a workflow. When a task changes state, or a survey is answered, the workflow engine executes the bots you wired into that transition — one after another — and routes to the next stage based on the branch each bot returns. Bots are how a workflow *does* things: create a task, send a message, call an external API, branch on a value.
 
@@ -28,7 +28,7 @@ bots:
           status1: "5d2fd97cb448357a12fe59ac"
         next:                   # where to go for each output branch
           SUCCESS: ""           # "" ends this bot
-          ERROR: ""
+          ERROR: notify_failure # a stage that reports the failure (see "Error branches")
 ```
 
 Two rules that trip people up:
@@ -36,15 +36,28 @@ Two rules that trip people up:
 - **cotctl does not resolve ObjectIds inside `stage.data`.** You must pass real ObjectIds. The only automatic resolutions are `surveyTriggers[].survey` (code → ObjectId) and AccessRole permissions by name. Inside `data`, a survey code in `surveyId` will *not* be resolved — pass the ObjectId.
 - **Each bot declares its own output branches** (`SUCCESS`/`ERROR`, `IF`/`ELSE`, `FOUND`/`NOT-FOUND`, `DEFAULT`, …). Declare in `next` every branch the bot can return, or the engine may not find a downstream stage.
 
+## Error branches
+
+A stage that can fail points `ERROR` at a stage someone will see: a failure that takes `ERROR: ""` ends the run unnoticed, and the run is still logged as executed. So the examples in this catalog point it at a `notify_failure` stage — a pinned `PBMessage` to a channel the team watches. A bot whose failures no `ERROR` branch catches says so in its section, with what to do instead.
+
+Four facts decide whether an `ERROR` branch fires when the stage fails:
+
+- **The default version of many types does not report on `ERROR`.** The default `PBEmail` and `PBMessage` return `DEFAULT` whether the send worked or not; the default `PBCreateTask` sends a task it did not create to `NOT-CREATED` and throws on a refusal; the default `PBChangeState` declares only `DEFAULT` and throws on a refusal. Pin `PBEmail` `3.0.1`, `PBMessage` `2.2.0`, `PBCreateTask` `2.0.1` and `PBChangeState` `2.1.0`. `cotctl bot-types versions` does not show the branches, so a forced run is the check.
+- **Pinning an existing stage renames its `next` keys.** The pinned versions accept only `SUCCESS` and `ERROR`, and the engine checks the keys before the bot runs (an empty `next` passes): a stage that keeps `DEFAULT`, `CREATED` or `NOT-CREATED` never runs its bot — it takes `ERROR` on every run or, with no `ERROR` key, ends the run silently. `cotctl validate` does not flag it, so rename `DEFAULT` and `CREATED` to `SUCCESS` and `NOT-CREATED` to `ERROR` when you pin. A `PBCreateTask` stage holding both `NOT-CREATED` and `ERROR` can keep only one of the two handlers.
+- **Pinning can also break an existing stage's `data`.** Every pinned version validates `data` before the bot runs and refuses any key it does not list, where the default checks little more than that `data` is there: `PBEmail` `3.0.1` needs `targets` as email addresses, `PBMessage` `2.2.0` a `sentBy` ObjectId and a non-empty `channelIds`, the 2.x `PBCreateTask` `name` as a non-empty list of strings and `taskGroup` as an ObjectId, the 2.x `PBChangeState` `tid`, `smState` and `taskGroup` as ObjectIds.
+- **A failure the bot throws takes no branch.** The branches a version declares do not decide it — the engine follows whatever key the stage's `next` holds — the way the bot fails does: one it reports takes `ERROR`, one it throws stops the run as `UNHANDLED_ERROR`. So `PBCalendar` `2.0.0` declares only `DEFAULT` and still reports on `ERROR`, while `PBGiphy`, the `ST*` bots and `CBCheckOTsched` throw, and `PBWhatsApp` reports a failed send on `DEFAULT`. A bot type or version the scheduler does not register fails the whole run before its first stage runs.
+
+The full rule, with a handling stage and how to test both branches, is in [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path). It applies to every bot graph: a workflow bot, a Routine `body`, an SLA `pb`, a Schedule `body` and a Bot's `parametrizedBot`.
+
 ## Choosing the right bot
 
 Reach for a first-party bot before writing custom JavaScript. The table below maps a need to the recommended bot; the "Instead of" column is the common anti-pattern to avoid.
 
 | Need | Use | Instead of | Notes |
 |------|-----|------------|-------|
-| Create a task | `PBCreateTask` | `CCJS` + custom API call | Use version `2.0.1` |
+| Create a task | `PBCreateTask` | `CCJS` + custom API call | Pin `2.0.1`: the default version takes `ERROR` only on a missing `name` or `taskGroup` |
 | Update task fields (status, assignee, dates) | `PBUpdateTask` | `CCJS` | `2.2.0` adds performance tracking |
-| Advance the state machine | `PBChangeState` | `PBUpdateTask` (does not record SM history) | |
+| Advance the state machine | `PBChangeState` | `PBUpdateTask` (does not record SM history) | Pin `2.1.0`: the default version throws on a refusal instead of taking `ERROR` |
 | Duplicate a task | `PBDuplicateTask` | manual `PBCreateTask` | `ignoreChildren: true` skips children |
 | Send a channel message | `PBMessage` | `PBSendCustomNotification` (that one is for push) | Pin `2.2.0`: the default never takes `ERROR` ([error paths](../resources/routines.md#give-every-stage-that-can-fail-an-error-path)) |
 | Message many channels | `PBBulkMessage` | `FCEach` + `PBMessage` loop | ~90% fewer network calls |
@@ -133,21 +146,23 @@ Common mistakes in a `surveyTriggers` bot:
 
 ## Company-specific bots (`CB*`)
 
-A handful of bots (`CB*`) are loaded **only for specific tenants** and will fail anywhere else. The current tenants with custom bots are `puertocoronel`, `muellesdepenco` and `primetime`. Do not use them in cross-company workflows unless you have confirmed the bot is registered in the target environment.
+A handful of bots (`CB*`) are loaded **only for specific tenants** and will fail anywhere else. Do not use them in cross-company workflows unless you have confirmed the bot is registered in the target environment.
 
-| Bot | Tenant | Purpose |
-|-----|--------|---------|
-| `CBCheckOTsched` | puertocoronel | Trigger the `checkOT` scheduler once (testing utility) |
-| `CBCoronelCreateMtNotification` | puertocoronel | Push maintenance notifications to SAP via WS1 SOAP |
-| `CBGruas` | puertocoronel | Pull crane registers into a PostgreSQL DB, split by shift |
-| `CBRocketReachIOGetContact` | primetime | Despite the name, sets `smState` on a task (`patchTask`) |
-| `CBRocketReachIOSearch` | primetime | **Stub** — always returns `SEARCH_ERROR` (real call commented out) |
-| `CBErrorMessages` | muellesdepenco | Return channel messages whose content matches substrings |
-| `CBGetDeadTimeAnswer` | muellesdepenco | Look up a dead-time / delay answer by composite id |
-| `CBValidateAssignation` | muellesdepenco | Validate a dead-time assignation equals the actual duration |
-| `CBValidateClose` | muellesdepenco | Validate no dead time ends after the shift's real end |
-| `CBValidateStart` | muellesdepenco | Validate the real start falls inside the planned window |
-| `CBValidateTM` | muellesdepenco | Validate a new dead time fits inside the planned shift |
+| Bot | Purpose |
+|-----|---------|
+| `CBCheckOTsched` | Trigger the `checkOT` scheduler once (testing utility) |
+| `CBCoronelCreateMtNotification` | Push maintenance notifications to SAP via WS1 SOAP |
+| `CBGruas` | Pull crane registers into a PostgreSQL DB, split by shift |
+| `CBRocketReachIOGetContact` | Despite the name, sets `smState` on a task (`patchTask`) |
+| `CBRocketReachIOSearch` | **Stub** — always returns `SEARCH_ERROR` (real call commented out) |
+| `CBErrorMessages` | Return channel messages whose content matches substrings |
+| `CBGetDeadTimeAnswer` | Look up a dead-time / delay answer by composite id |
+| `CBValidateAssignation` | Validate a dead-time assignation equals the actual duration |
+| `CBValidateClose` | Validate no dead time ends after the shift's real end |
+| `CBValidateStart` | Validate the real start falls inside the planned window |
+| `CBValidateTM` | Validate a new dead time fits inside the planned shift |
+
+`CBCheckOTsched` throws its failures instead of reporting them, so no `ERROR` branch catches them: read its log entry after each test run.
 
 These bots depend on tenant-specific env vars, hard-coded survey ids and external services (SAP, PostgreSQL, SOAP). Treat them as internal integrations, not reusable building blocks, and confirm behavior with the owning team before designing a workflow around them.
 

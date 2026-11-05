@@ -4,7 +4,7 @@ sidebar_label: Data extraction & patching
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/jp-*.md, st-*.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/jp-*.md, st-*.md @ 18d0110b (2026-11-04) -->
 
 This family covers two kinds of low-level data tools:
 
@@ -78,6 +78,8 @@ Key parameters: `userId`, `body`.
 ```
 
 For a field-level, validated alternative use `PBUpdateUser`.
+
+The three `ST*` bots below return `DEFAULT` when they work. **No `ERROR` branch catches their failures**: they throw them instead of reporting them, so adding an `ERROR` key to their `next` does not help — an answer they cannot read stops the run as `UNHANDLED_ERROR`. Test each stage on a real answer before relying on it.
 
 ## STDatetimeString
 

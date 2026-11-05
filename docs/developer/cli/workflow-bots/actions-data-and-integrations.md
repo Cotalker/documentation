@@ -4,11 +4,11 @@ sidebar_label: 'Actions: data & integrations'
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/pb-create-property.md, pb-update-property.md, pb-create-user.md, pb-update-user.md, pb-switch-list.md, pb-conditional.md, pb-calendar.md, pb-google-calendar.md, pb-pdf.md, pb-pdf-extractor.md, pb-report.md, pb-sheet.md, pb-giphy.md, pb-qr-code.md, pb-payments.md, pb-llm-runner.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/pb-create-property.md, pb-update-property.md, pb-create-user.md, pb-update-user.md, pb-switch-list.md, pb-conditional.md, pb-calendar.md, pb-google-calendar.md, pb-pdf.md, pb-pdf-extractor.md, pb-report.md, pb-sheet.md, pb-giphy.md, pb-qr-code.md, pb-payments.md, pb-llm-runner.md @ 18d0110b (2026-11-04) -->
 
 The rest of the `PB*` catalog: creating and patching **properties and users**, small **routing helpers**, and a set of **integration** bots that reach out to external services (PDF rendering and extraction, spreadsheets, calendars, payments, Giphy, QR codes, and an LLM runner). Most share the `SUCCESS`/`ERROR` convention; the exceptions are noted per bot.
 
-Two bots here have **no `default` version** and require an explicit `version:` — `PBCalendar` (`2.0.0`) and `PBReport` (`1.0.0`).
+Three bots here have **no `default` version** and require an explicit `version:` — `PBCalendar` (`2.0.0`), `PBReport` (`1.0.0`) and `PBSheet` (`1.0.0`, which the scheduler does not run; see [PBSheet](#pbsheet)).
 
 ## PBCreateProperty
 
@@ -135,11 +135,11 @@ Key parameters: `condition` (any value; `!!condition` decides).
   data:
     condition: "{{answer.approved}}"
   next:
-    TRUE: s_continue
-    FALSE: ""
+    "TRUE": s_continue        # quoted: YAML reads a bare TRUE key as a boolean
+    "FALSE": ""
 ```
 
-Both `TRUE` and `FALSE` must be present in `next`. For richer comparisons (`==`, `>`, `<`), use `FCIfElse`.
+Both `TRUE` and `FALSE` must be present in `next`, and both must be quoted. YAML reads a bare `TRUE:` or `FALSE:` key as a boolean, so `cotctl` sends it as `"true"` / `"false"`, keys the bot never takes: the stage fails its `next` check (`Runtime Check Next Failed`) and the run ends there, logged as `ERROR`, instead of branching. For richer comparisons (`==`, `>`, `<`), use `FCIfElse`.
 
 ## PBCalendar
 
@@ -147,26 +147,29 @@ Sends an email with an attached `.ics` invite so recipients can add a meeting to
 
 Key parameters: `title`, `initialDate` (COTDate), `durationMinutes` (≥ 1), `owner`; optionally `description`, `invitedById` (user ObjectIds), `invitedByEmail` (raw emails — **pass `[]` even if unused**).
 
-Branches: `DEFAULT` (errors throw `EventError` instead of branching).
+Branches: `DEFAULT` (email enqueued) and `ERROR` (validation, lookup or send failure). `2.0.0`, the only version, declares only `DEFAULT`, yet it reports every failure on `ERROR`: the engine follows the key the stage's `next` holds. So point `ERROR` at a stage that tells someone; with no `ERROR` key a failed invitation ends the run unnoticed — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
 
 ```yaml
 - key: s1
   name: PBCalendar
   version: "2.0.0"
   data:
-    title: "Kickoff with {{user.names}}"
+    # Literal values: `data` is not a Mustache template. A dynamic value
+    # is a COTLang expression.
+    title: "Project kickoff"
     description: "Discuss the new project requirements"
-    initialDate: "{{startsAt}}"
+    initialDate: "2026-11-02T14:00:00.000Z"
     durationMinutes: 30
-    owner: "{{user._id}}"
+    owner: "6a000000000000000000beef"    # the organizer
     invitedById:
-      - "{{task.assignee}}"
+      - "6a000000000000000000a551"       # an invitee
     invitedByEmail: []
   next:
     DEFAULT: ""
+    ERROR: notify_failure     # a stage that tells a channel the team watches
 ```
 
-Gotcha: the implementation calls `.map()` on `invitedByEmail` unconditionally, so an omitted `invitedByEmail` crashes the bot — always pass an array (even empty).
+Gotcha: the implementation calls `.map()` on `invitedByEmail` unconditionally, so the stage fails when `invitedByEmail` is omitted — always pass an array (even empty).
 
 ## PBGoogleCalendar
 
@@ -268,17 +271,15 @@ Downloads a CSV/XLSX/XLS from `url`, parses the first sheet with sheetjs, and re
 
 Key parameters: `url`; optionally `csv_iso_date` (parse cells as dates).
 
-```yaml
-- key: s1
-  name: PBSheet
-  version: "1.0.0"
-  data:
-    url: "https://files.example.com/roster.xlsx"
-    csv_iso_date: false
-  next:
-    SUCCESS: ""
-    ERROR: ""
-```
+:::warning No `PBSheet` stage works through `cotctl` today
+The bot catalog and the scheduler disagree about this bot, and each way of writing the stage fails on one of them:
+
+- **Without `version`**, `--dry-run` and `apply` refuse the stage (`cotctl validate` does not check bot versions): the catalog registers no default for `PBSheet`, so the version must be specified.
+- **With `version: "1.0.0"`**, the only version the catalog lists, the stage gets past that check, but the scheduler registers the bot only as `default`. It loads the bot of every stage before the run starts, so the whole run fails there: no stage runs, the ones before `PBSheet` included, and the run's log shows a single `__init__` step with status `UNHANDLED_ERROR`.
+- **On top of both**, the catalog marks `data.data` as required. That entry is the bot's result — the parsed rows — annotated as an input by mistake, so a stage has no meaningful value to give it, and an empty one is refused.
+
+So there is no example to copy here. Until the catalog and the scheduler agree, parse the file some other way, and treat any `PBSheet` stage you find — exported from an existing bot, say — as one that does not run.
+:::
 
 Only the **first** sheet is parsed. Values are not coerced (`{ raw: true }`); `result.data` holds the rows.
 
@@ -288,7 +289,9 @@ Searches Giphy (or fetches an exact id) and posts the GIF as an `image/gif` mess
 
 Key parameters: `search` (non-empty array of terms, joined with `+`; a single `id:<giphyId>` element fetches that exact GIF), `channel`; optionally `sentBy` (defaults to `meta.user`).
 
-Branches: `DEFAULT` (errors throw `EventError`).
+Branches: `DEFAULT` (the GIF was found and sent to the channel).
+
+**No `ERROR` branch catches its failures.** `PBGiphy` throws them instead of reporting them, so adding an `ERROR` key to its `next` does not help: a failed search or send stops the run as `UNHANDLED_ERROR`. Make it the last stage of its graph, so a failure skips nothing that matters.
 
 ```yaml
 - key: s1

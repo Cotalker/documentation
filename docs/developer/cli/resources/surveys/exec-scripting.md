@@ -39,8 +39,12 @@ The order over a session is: `preload` → (user opens it) `onDisplay` → (butt
 
 A stored question can carry three more stages — `onChange`, `presave` and `filter` — but **the webclient never runs them**. `validate` and every survey apply, dry run included, warn about them without refusing the file:
 
-- In the **raw** format such a stage is sent and stored as written, and one that carries code gets the warning. Its `src` is not asked for a `function run()`, since nothing runs it.
-- In the **simplified** format it is never sent, whatever it holds, so an apply also removes it from a question that stores it; any value gets the warning.
+- **Both formats send and store it as written**, and both exports write it back, so an export of a question that has one re-applies unchanged. Its `src` is not asked for a `function run()`, since nothing runs it. Before 0.16.0 the simplified format never sent it, so re-applying a simplified export erased it from every question and `table` column that stored it.
+- **The server parses its `src` as JavaScript when it saves the question**, so since 0.16.0 `validate` and the apply refuse a syntax error there in the simplified format too, as well as in the `filter` stage's `filter`. It is a semantic check, so `--skip-semantic-validation` turns it off. On a `table` column the server never parses the exec, so the simplified format only warns (see [Exec on a table column](#exec-on-a-table-column)).
+- In the simplified format a stage is an **object** — `src` and `context`, plus `filter` on the `filter` stage. Any other value fails `validate`.
+- **Saving the survey from the webclient's survey builder removes the three stages from every question**, whatever else the save edits, and the next dry run announces that the apply writes them back; the warning on a question says so. On a `table` column, opening or editing the column, or editing its table, in the builder may remove them.
+
+If `validate` names a syntax error in one of these stages, fix the JavaScript at the path it gives, or remove the stage: the webclient never runs it, and the apply then erases it from the question.
 
 Each hook accepts three fields:
 
@@ -60,6 +64,8 @@ Each hook accepts three fields:
         theme: primary      # basic | primary | accent | warn | ...
         debounceTime: 2000  # milliseconds, minimum 1000
 ```
+
+Every key of `button` is optional, as the server stores them, and in the raw format the button may also be `null`. Since 0.16.0 a raw button saved without some of them — as older surveys hold one — exports and re-applies as stored; before, the raw format required all four keys and `surveys export --format raw` wrote a file its own `validate` refused.
 
 ## Contexts: what a script can read
 
@@ -82,8 +88,8 @@ You can also read other answers in the same survey with `responses#<identifier>`
 
 A `table` column's `exec` runs in each cell, once per row, and differs from a question's in two ways:
 
-- **Only `preload` and `validate` run in a cell.** The webclient never runs a column's `onDisplay`, `onPlay`, `postsave` or `onSubmitSuccess`. Both formats still send them, so `validate` and every apply warn about each one that carries code or a context. A cell runs the column's `preload` with `src` alone, so it needs no `context` and draws no warning about a missing one.
-- **The `context` sees only the cell's own row.** `responses#self` is the cell, `responses#<identifier>` names another column of the same table, and `responses#parent#<identifier>` is looked up inside the row too. A root question, the table itself, or a column of another table resolves empty in the cell, and each gets its own warning. The static contexts (`user#me`, `task#self`, …) work as on a question.
+- **Only `preload` and `validate` run in a cell.** The webclient never runs a column's `onDisplay`, `onPlay`, `postsave` or `onSubmitSuccess`. Both formats still send them, so `validate` and every apply warn about each one that carries code or a context. Since the server never parses a column's exec either, the simplified format only **warns** about a syntax error in any stage a cell never runs — these four and `onChange`, `presave`, `filter` — and still refuses one in `preload` or `validate`; the raw format refuses a syntax error in every stage of a column. A cell runs the column's `preload` with `src` alone, so it needs no `context` and draws no warning about a missing one.
+- **The `context` sees only the cell's own row.** `responses#self` is the cell, `responses#<identifier>` names another column of the same table, and `responses#parent#<identifier>` is looked up inside the row too. A root question, the table itself, or a column of another table resolves empty in the cell, and each gets its own warning. The reverse holds too: on a question outside the table, `responses#<column>` resolves empty, since a question's context sees the table as one question and never its rows; `validate` and every apply warn about it, naming the table the column belongs to. The static contexts (`user#me`, `task#self`, …) work as on a question.
 
 None of these warnings changes the exit code.
 

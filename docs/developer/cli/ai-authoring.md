@@ -4,7 +4,7 @@ sidebar_label: AI-assisted authoring
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/bot-types.ts @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/src/commands/bot-types.ts, src/skills/{cotctl-routines,cotctl-bots,cotctl-workflows}/ @ 18d0110b (2026-11-04) -->
 
 So far this guide has treated `cotctl` as a tool *you* drive by hand. But `cotctl` is also the foundation for something bigger: **authoring Cotalker configurations with the help of an AI agent.** This page explains how that ecosystem fits together — and why it makes you, as a partner, dramatically faster.
 
@@ -90,6 +90,19 @@ cotctl validate --dir ordenes-compra/
 cotctl apply    --dir ordenes-compra/ -c dev
 cotctl validate --workflow ordenes_compra -c dev
 ```
+
+### Error paths in what the agent writes
+
+When the agent writes a Routine, a Bot or a Workflow, the `cotctl-routines`, `cotctl-bots` and `cotctl-workflows` Skills have it propose an **error path for every stage that can fail** — sending an email or a message, calling an endpoint, invoking a Routine, writing what the backend can refuse — instead of `ERROR: ""`, and ask you before leaving one out. A stage that fails onto `ERROR: ""` ends the run unnoticed, while the run is still logged as executed.
+
+To make those error paths fire, the Skills:
+
+- **pin the version of a bot type that reports a failure on `ERROR`** — `PBEmail` `3.0.1`, `PBMessage` `2.2.0`, `PBCreateTask` `2.0.1`, `PBChangeState` `2.1.0` — since the default version of many types does not;
+- **rename the `next` of an existing stage they pin, and re-check its `data`** — `DEFAULT` and `CREATED` become `SUCCESS`, `NOT-CREATED` becomes `ERROR` — because a pinned version refuses the old keys and validates `data` the default never checked, and `cotctl validate` catches neither;
+- **tell you when a failure cannot be routed at all**, by how the bot fails rather than by the branches it declares — `PBGiphy`, `PBWhatsApp`, the `ST*` bots and `CBCheckOTsched` never report their own failures on `ERROR`, and a `PBScript` stage's `ERROR` does not see a failure inside the Routine it invokes;
+- **test both branches before the Routine or bot goes live** — two runs, one forced through `ERROR`, read with `cotctl logs list` and `cotctl logs get --parts results`; for a Routine, two `cotctl routines test` runs found with `cotctl logs list --owner TEST`.
+
+The rule behind it is in [Give every stage that can fail an error path](./resources/routines.md#give-every-stage-that-can-fail-an-error-path). Installed Skills are files on disk: run `cotctl skills install` again after updating `cotctl` to get this behaviour.
 
 <div className="alert alert--primary">
 

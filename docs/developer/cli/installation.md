@@ -68,7 +68,9 @@ If you see a version, you're done — the tool is installed correctly. If instea
 
 From **0.14.0**, `cotctl` checks for a newer version before every command. On a terminal, an update without breaking changes installs itself, and one with breaking changes is offered with a link to its release notes; in CI or with `-y` it only prints a notice on stderr. `cotctl update` installs the latest version whenever you want.
 
-Automatic updates apply only to a copy installed with `npm install -g`. An earlier version never looks for an update, so moving to 0.14.0 takes the `npm install -g @cotctl/cli` above, once. The details — and `COTCTL_NO_UPDATE_CHECK`, which turns the check off — are on the [update](./commands/update.md) page.
+Automatic updates apply only to a copy installed with `npm install -g`. An earlier version never looks for an update, so moving to 0.14.0 takes the `npm install -g @cotctl/cli` above, once. The details — and `COTCTL_NO_UPDATE_CHECK`, which turns the update notice off — are on the [update](./commands/update.md) page.
+
+From **0.16.0**, the check does more than announce on a version with a known data loss: a command a published advisory names does not run, and exits `5` with the version that fixes it. `COTCTL_NO_UPDATE_CHECK` does not turn that off; see [Data-loss advisories](./commands/update.md#data-loss-advisories). An earlier version never reads advisories.
 
 **In a CI pipeline, pin the version instead** — `npm install -g @cotctl/cli@<version>` — and set `COTCTL_NO_UPDATE_CHECK=1`, so a job runs the version it names until you move the pin. [CI/CD](./ci-cd.md#new-cotctl-versions-in-a-pipeline) has the worked example.
 

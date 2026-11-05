@@ -53,7 +53,7 @@ Now say you apply this instead:
 ## Which fields this applies to
 
 - **Workflow (Group):** `nameDisplay`, `nameTranslations` (a declared object keeps the languages it omits), `color`, `icon`, `weight`, `isActive`.
-- **TaskGroup:** the five permission arrays, `hideClosedAfterDays`, `availableViews`, `defaultView`, `defaultSelectedTaskTab`. A declared permission list replaces the stored one, and when it leaves out entries the TaskGroup has, `apply` names them on stderr, list by list.
+- **TaskGroup:** the five permission arrays, `hideClosedAfterDays`, `availableViews`, `defaultView`, `taskPaginationLimit`, `defaultSelectedTaskTab`, `defaultSortBy`. A declared permission list replaces the stored one, and when it leaves out entries the TaskGroup has, `apply` names them on stderr, list by list.
 - **Each level is applied by presence.** The Group is patched only when your YAML declares one of its fields, and the TaskGroup only when it declares one of its own — so a YAML that sets only `nameDisplay` sends no TaskGroup update, and the reverse. A YAML that declares **no** root field at all runs in [SM-only mode](../workflows.md#sm-only-mode).
 - **State machine:** `name`, `description`, `isActive`; a declared `asset` is completed from the stored one (its `property` only while the asset keeps its `propertyType`); `cardLabels` and `allowedExtensions` as described on the [Workflows](../workflows.md#card-labels-task-extensions-and-the-default-tab) page.
 - **State machine — `requiredSurvey`:** when you omit the whole block, the server's StartForm (survey, bots, permissions) is left fully intact. If you write a partial block, each sub-field follows YAML-wins-else-preserve.
@@ -86,6 +86,19 @@ stateMachines:
 - A slot whose stored slot holds **several** bots is refused when the document declares its bot — bots carry no key to pair by.
 - A deactivated state machine the document names is refused with exit `2`, as without the marker.
 
+### When the merged document is refused
+
+The merge happens before anything is written, `--dry-run` included, and the merged workflow is validated in full. Since **0.16.0**, `workflows apply`, `apply -f` and `apply --dir` refuse with exit **`2`** — the code a `partial: true` Bot, Routine, SLA or Schedule gets for the same refusal — when the merged document is not valid: a state, transition or state machine it names that is not stored and leaves out what a new one needs, a key it names twice, a key the stored list repeats, or a slot whose stored bots are several. Earlier versions exited `1`.
+
+A misspelled `property`, `target`, `code` or stage `key` reads as a new element, since no stored one answers to it. The refusal now says so first — `State "<x>" is not stored in <list>, so partial: true would add it as a new state, and nothing stored completes what it leaves out:` — rather than naming only the missing field, which sent you looking for a `type`.
+
+A `partial: true` workflow still exits **`1`** when:
+
+- the schema rejects the YAML itself, before the merge — a state `type` other than `new`, `in-progress` or `closed`, say (a field a new state leaves out passes that check, and the merge refuses it with `2`);
+- it comes with `--legacy-replace-workflows`;
+- a state machine it names is stored pointing at a `propertyType` or an `asset.propertyType` that no longer exists — the fault is in what is stored, so leaving that state machine out applies the rest;
+- its `nameCode` or `id` is not stored.
+
 The marker never creates the workflow, and `--legacy-replace-workflows` refuses it. The rules it shares with the other kinds are in [apply → Partial documents](../../commands/apply.md#partial-documents-partial-true).
 
 ## The silent errors it prevents (and the ones to still watch)
@@ -109,7 +122,7 @@ If you genuinely want the old destructive behavior — omitted fields wiped on t
 cotctl workflows apply -f workflow.yaml --legacy-replace-workflows
 ```
 
-It builds every level without the server's existing state, filling in the create defaults, so anything you didn't write is cleared. Since 0.14.0 its `--dry-run` shows that write: a permission list it would empty is a `DANGER` finding, so `--fail-on-destructive` exits `2` on it. It prints a warning and applies only to workflows. It was announced for removal in 0.8.0, which did not happen, and no removal version is announced now — treat it as deprecated and declare the fields you want to keep instead. You almost never want it.
+It builds every level without the server's existing state, filling in the create defaults, so anything you didn't write is cleared. Since 0.14.0 its `--dry-run` shows that write: a permission list it would empty is a `DANGER` finding, so `--fail-on-destructive` exits `2` on it. Since 0.16.0 it names every `cardLabels` slot of a state machine it updates, `null` where the YAML declares none, so a backend that protects stored labels from an empty body doesn't refuse it; the labels end up cleared as before. It prints a warning and applies only to workflows. It was announced for removal in 0.8.0, which did not happen, and no removal version is announced now — treat it as deprecated and declare the fields you want to keep instead. You almost never want it.
 
 ## See also
 

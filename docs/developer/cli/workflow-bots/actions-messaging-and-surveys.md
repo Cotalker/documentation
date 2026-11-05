@@ -4,7 +4,7 @@ sidebar_label: 'Actions: messaging & surveys'
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/docs/workflows/bots/pb-message.md, pb-bulk-message.md, pb-email.md, pb-send-custom-notification.md, pb-whats-app.md, pb-send-survey.md, pb-copy-survey.md, pb-editable-survey.md, pb-answer-checker.md, pb-action-button.md, pb-template.md @ 4f7248a (2026-07-06) -->
+<!-- source: repositories/cotctl/docs/workflows/bots/pb-message.md, pb-bulk-message.md, pb-email.md, pb-send-custom-notification.md, pb-whats-app.md, pb-send-survey.md, pb-copy-survey.md, pb-editable-survey.md, pb-answer-checker.md, pb-action-button.md, pb-template.md @ 18d0110b (2026-11-04) -->
 
 These `PB*` bots are how a workflow **talks** — to channels, inboxes, phones — and how it sends, reopens and inspects surveys. Most share the `SUCCESS`/`ERROR` convention; the exceptions are called out per bot.
 
@@ -48,6 +48,7 @@ Key parameters: `content`, `contentType` (`text/plain`, `text/system`, …), `se
 Gotchas:
 
 - **Pin `2.2.0`.** The default version returns `DEFAULT` whether the send worked or not, so it never takes `ERROR`. `2.0.0`–`2.2.0` accept only `SUCCESS` / `ERROR` in `next` and refuse any `data` key they don't list — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
+- **Pinning an existing stage changes its contracts.** Rename its `DEFAULT` to `SUCCESS`: the pinned versions check the keys of `next` before the bot runs, so a stage that keeps `DEFAULT` never sends — it takes `ERROR` on every run or, with no `ERROR` key, ends the run silently — and `cotctl validate` does not flag it. They also validate `data` where the default barely checks it: an array `content`, for one, is refused.
 - Channels are processed in series; one failure stops the run and emits `ERROR`.
 - With `contentTranslations`, `text/plain` becomes `multilanguage/plain` (and `text/system` → `multilanguage/system`). Only `en`/`es`/`pt`/`fr` are allowed — any other key throws.
 - For broadcasting to many channels, prefer `PBBulkMessage`.
@@ -102,6 +103,7 @@ Gotchas:
 
 - **Pin `3.0.1`.** The default version returns `DEFAULT` whether the send worked or not, so it never takes `ERROR`. `3.0.1` accepts only `SUCCESS` / `ERROR` in `next` and refuses any `data` key it doesn't list, the default's `template` included — see [Give every stage that can fail an error path](../resources/routines.md#give-every-stage-that-can-fail-an-error-path).
 - All addresses are validated — a single invalid one rejects the whole call. A `{{…}}` placeholder is one: only `htmlTemplate` is rendered as a Mustache template; `cssTemplate` is inlined as written.
+- **Pinning an existing stage changes its contracts.** Rename its `DEFAULT` to `SUCCESS`: `3.0.1` checks the keys of `next` before the bot runs, so a stage that keeps `DEFAULT` never sends — it takes `ERROR` on every run or, with no `ERROR` key, ends the run silently — and `cotctl validate` does not flag it. `3.0.1` also validates `data` where the default barely checks it, so a `targets` entry that is not an email address fails every run once pinned.
 - `singleRecipient: true` sends one email per recipient (slower, but safer for unsubscribe semantics).
 - cotctl sets `dryRun: true`, which skips the actual SMTP send but still runs validation.
 
@@ -156,7 +158,7 @@ Gotchas:
 
 - `contractCode` must be exactly the gated value — anything else throws.
 - Requires env vars `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN`; the sender phone is hard-coded to Cotalker's business number.
-- The bot does **not** branch on Twilio errors — check `result.status === 'error'` in the next stage.
+- **No `ERROR` branch catches its failures.** `PBWhatsApp` reports none of them, so adding an `ERROR` key to its `next` does not help: a failed send carries on through `DEFAULT` with `status: "error"` in its result, and an invalid `contractCode`, `phoneNumber` or `language` throws instead of branching. To react to a failed send, follow the stage with an `FCIfElse` whose `left` is `$OUTPUT#<stage-key>#status` and `right` is `"error"`, and point `IF` at a handling stage.
 
 ## PBSendSurvey
 

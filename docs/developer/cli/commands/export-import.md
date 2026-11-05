@@ -4,7 +4,7 @@ sidebar_label: Export & import
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ a9168d68 (2026-10-23) -->
+<!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ 18d0110b (2026-11-04) -->
 
 So far we've talked about pushing YAML *to* an environment. Just as often, you'll want to pull existing configuration *out* of one — to bring a customer's existing setup under version control, to copy a resource between environments, or simply to see how something is built. That round-trip — **export → edit → apply** — is one of the most useful patterns in `cotctl`.
 
@@ -106,6 +106,13 @@ Three more cases now warn instead of failing silently or failing late:
 - **A condition operator the simplified format does not accept**, such as the `=` older webclients stored, is written as stored with a warning pointing to `--format raw` — `validate` and `apply` still refuse that file.
 - **A reset identifier that names no question of the export** is left out with a warning, in both formats. The raw format also writes the empty `[""]` reset the webclient's builder stores as `[]`, so `validate` accepts the file it just exported.
 
+Since 0.16.0, a few more surveys export to a file their own `validate` accepts:
+
+- **A raw `exec.onPlay.button`** may lack any of `label`, `type`, `theme` and `debounceTime`, or be `null`, as the server allows. A button saved without `debounceTime` used to fail the raw export's own `validate`.
+- **A chat bubble of a type the update does not accept back**, such as `text/system`, is skipped by `--format raw` with a warning, as the simplified format already did: applying the export deactivates that SurveyChat, and the dry run says so in a `warn` line that `--fail-on-destructive` lets through. The simplified export no longer points to `--format raw` for it.
+- **A jobTitle filter stored as `"*"` or as a single code** is exported: "all job titles" as `jobs: "*"`, and a legacy single code as a one-code list, which the apply writes back as stored. A stored list holding `"*"` exports as `jobs: "*"`, without the list's other codes, with a warning that the next apply writes it back as the string. A stored value that is neither is named in a warning.
+- **The simplified format keeps a question's `exec.onChange`, `exec.presave` and `exec.filter`.** It used to leave them out, so re-applying a simplified export erased them from every question and table column that stored them. Both formats now export and send them, with a warning that the webclient never runs them.
+
 </div>
 
 ### Exports write only what is stored
@@ -116,6 +123,10 @@ Two consequences to plan for:
 
 - **A script that reads keys from an exported YAML has to accept their absence** — `isActive`, `accessRoles`, `extraData`, a schedule's `cronTimeZone` or `timeoutMinutes`, and so on. Read an absent key as the default the export used to write.
 - **Re-export a YAML exported with 0.13.0 or earlier before re-applying it.** Those files carry defaults the resource may not store. The costly case is a schedule stored without `cronTimeZone`: the old export wrote `America/Santiago`, so re-applying it moves the cron from the scheduler's own zone to Santiago — three or four hours away — and the `isActive: true` it wrote relaunches it there right away. `apply` warns when an update sets a zone on such a cron.
+
+**`properties export` writes Property references by code** (0.16.0). In a `COTProperty` node of `schemaInstance` it writes the `code` of the Property referenced, where it used to write its `_id`, so the export round-trips by code. An `_id` it cannot name — a deleted or deactivated Property's — stays, with a warning, and so does every reference under a node whose PropertyType is not active or cannot be found (an inactive one included, when the profile lacks `admin-properties-read`). Apply such an export with 0.16.0 or later: an older `cotctl` sends the code as written and the backend refuses it. An export taken before 0.16.0 still applies, and a script that reads ids out of an export now reads codes.
+
+**`workflows export`** writes `taskPaginationLimit` and `defaultSortBy` when the Workflow stores them (0.16.0); see [Workflows](../resources/workflows.md).
 
 A few exports still send an update on their first re-apply: `users export` leaves out an inactive access role (with a warning), so the re-apply removes it from the user; `routines export` writes the routine's `code` as its `display` when it stores none; the first re-apply of a survey built in the web app rewrites it in `cotctl`'s shape — in the raw format too; and the first re-apply of a survey that stores the legacy `subtype: long_text` sends `short_text` in its place.
 
