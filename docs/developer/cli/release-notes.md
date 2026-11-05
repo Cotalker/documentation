@@ -4,7 +4,7 @@ sidebar_label: Release notes
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/CHANGELOG.md @ 80cdbc8 (2026-10-27) -->
+<!-- source: repositories/cotctl/CHANGELOG.md @ 18d0110 (2026-11-04) -->
 
 What changed in each published release of `cotctl`, newest first — with the migration steps you need when something breaks.
 
@@ -27,6 +27,188 @@ npm install -g @cotctl/cli@latest
 </div>
 
 <!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
+
+## 0.16.0 — 2026-11-04
+
+The headline is **data-loss advisories**. When a release fixes a loss of data, it now publishes an advisory with the package, and from this version on `cotctl` does not run a command an advisory names on a version it affects: it exits with a new code, `5`, `--dry-run` included. The first one, `COTCTL-2026-001`, covers the card labels and allowed extensions that every StateMachine update erased from 0.5.1 to 0.11.x. See [`cotctl update`](./commands/update.md).
+
+The rest of the release makes the dry run and `validate --remote` reach the apply's verdict in many more cases, sends Routine updates through the server's keyed route where it has one, lets a `COTProperty` node reference a Property by code and refuses the references the webclient cannot show, stops a simplified survey re-apply from erasing `exec.onChange`, `exec.presave` and `exec.filter`, and fixes SLA applies, which since 0.12.0 reported every write as failed — and so stopped `apply --dir` at the first SLA file. Read *Breaking changes* before the first run on 0.16.0; the *Migration* checklist at the end of this section lists the main steps.
+
+### ⚠ Breaking changes
+
+Grouped by theme. Each group says who it affects and what to do.
+
+#### Data-loss advisories stop a command with exit `5`
+
+- **A command a published data-loss advisory names no longer runs on a version it affects.** The check before every command reads the advisories together with the latest version. A named command stops, `--dry-run` included, after printing the loss, the advisory id and the version that fixes it on stderr. Without a terminal, in CI or with `-y`, it exits `5` right away. On a terminal it offers `update` or `cancel` — there is no `continue` — and `cancel` exits `5`; an update that fails stops the command too, where a failed automatic update lets it run. Every other command runs as before, so `export` keeps working on an affected version to back up what is stored.
+- **`COTCTL_NO_UPDATE_CHECK` no longer turns the whole check off.** It still silences the update notice, the prompt and the automatic install, but not the advisories: a command an advisory names still exits `5`, and the lookup that brings them still runs — at most once every 12 hours while `~/.cotctl` can be written, which on a runner that starts with an empty home directory is once per job. Where npm cannot be reached, that lookup waits up to 1.5 seconds before the command runs.
+
+- **Who this affects:** every pipeline, and anyone who set `COTCTL_NO_UPDATE_CHECK` to keep `cotctl` off the network.
+- **What to do:** when a command exits `5`, update `cotctl` and run it again. To run an affected version anyway, set `COTCTL_ACCEPT_ADVISORY` to the id the message names — several ids separated by commas or spaces, matched whatever their case; the command then runs with a warning on stderr. `npm view @cotctl/cli cotctl.advisories --json` lists the published advisories. Only 0.16.0 and later read them: an earlier version, 0.14.x and 0.15.x included, runs every command whatever is published.
+
+#### SLA applies succeed, and `apply --dir` now reaches the files after them
+
+`slas apply` and `apply --dir` report the SLA they created or updated as `created` or `updated`, and exit `0`. In every version from 0.12.0 until this one, each SLA create and update ended in `the backend accepted the write but answered with no Sla document, so nothing was written` and exit `1`, although the write had happened. So `apply --dir` without `--continue-on-error` stopped after the first file holding an SLA, and never applied the rest of the SLA files, nor the Schedule, User, Bot and Webhook files after them.
+
+- **Who this affects:** anyone who runs `apply --dir` over a directory that holds SLAs, and scripts that read that `1` as "nothing was written".
+- **What to do:** before the first `apply --dir` on 0.16.0, review the files that come after the first SLA file, or run the same `apply --dir` with `--dry-run`: this version applies them. A script now gets `0` for the same write.
+
+#### `cotctl login -c` names the profile
+
+`login` saves the profile under the name `-c` gives it, before or after `login`, as `--profile` does. It used to ignore `-c` and save the profile under the `--subdomain` value, with exit `0`. When `-c` and `--profile` are both given with different names, `--profile` wins and `login` warns on stderr. An empty or blank `-c` counts as not given.
+
+- **Who this affects:** scripts, aliases and wrappers that pass `-c` to `login` — including one that adds `-c` to every command.
+- **What to do:** select the profile by its `-c` name, or drop `-c` from the `login` line. When the `-c` name is a profile that already exists, `login` now asks before overwriting it, and without a terminal or `--yes` exits `1` where it used to save under the subdomain. With `--yes` it does not ask: it overwrites that profile with the credentials of whichever environment the login authenticated against, so check the name a script that passes both `-c` and `--yes` targets.
+
+#### Survey YAML: what validation accepts and refuses
+
+Validation now follows what the server stores and the webclient's survey builder saves.
+
+- **Accepted now:**
+  - a `gte` or `lte` condition on a question that is neither a `textnumber` nor a `datetime`, in both formats, with a warning: the webclient compares those operators only on a number or a date, so the condition never matches and the question is never shown. The raw format refused it, and the simplified format accepted it without a word;
+  - a raw `exec.onPlay.button` with any of `label`, `type`, `theme` or `debounceTime` missing, or a `null` button — the server leaves each key optional;
+  - under `allow: jobTitle`, `jobs: "*"`, which the builder saves for every job title; `jobs: []`, with a warning that it leaves the person picker with no users; and a list holding `"*"`, with a warning, which the apply sends as the string `"*"` where it used to fail with `JobTitle "*" not found`;
+  - a syntax error in a simplified `+table` column's `exec.onDisplay`, `exec.onPlay`, `exec.postsave` or `exec.onSubmitSuccess`, with a warning: the server never parses a column's exec, and a cell never runs those stages. `preload` and `validate` still fail.
+- **Refused now:** a simplified `exec.onChange`, `exec.presave` or `exec.filter` that is not an object, and, on a question, one whose JavaScript does not parse. The simplified format now sends these stages (see *Fixed*), and the server parses them when it saves the question. Both refusals stop `validate` and the apply. The object check is part of the schema, so `--skip-semantic-validation` does not turn it off; the syntax check is semantic, so it does.
+- **New messages:** `jobs` written as a single code still fails, with `jobs must be a list, or "*" for every job title`; a missing `jobs` fails with `jobs is required when allow is "jobTitle": …`.
+- **Under `--skip-semantic-validation` only**, `validate --remote` and the survey apply look up a question identifier holding `/`, `?`, `#` or `%` as written, where the lookup cut it short or decoded it. The verdict can turn either way: an identifier a question of another survey of the company already uses is now refused as a conflict, and one that was refused for the text before a `?` or `#` now passes. Without the flag, the semantic check refuses such an identifier first.
+
+- **Who this affects:** pipelines that relied on `validate` to stop a `gte` or `lte` on text or an empty `jobs`, or that match the old `jobs` messages; anyone with simplified exec stages, which `validate` and every apply, `--dry-run` included, now refuse when they are not objects or do not parse.
+- **What to do:** where you relied on a refusal, match the new warning on stderr; update any match on the `jobs` messages. Write a simplified exec stage as an object — `src` and `context`, plus `filter` on the `filter` stage. Where `validate` names a syntax error in one, fix the JavaScript at the path it gives, or remove the stage: the webclient never runs it, and the apply then erases it from the question. Rename an identifier refused as a conflict.
+
+#### Properties and PropertyTypes
+
+- **The Property `code` rules apply only to a create.** The API enforces them — `^[a-z][_a-z0-9]*$`, at least 3 and at most 50 characters — when it creates a Property, a PATCH cannot change a stored `code`, and the backend stores many codes that do not match, which `properties export` writes as stored. So `validate -f` and `validate --dir` exit `0` with a warning on such a code, where they exited `1` (or, past 50 characters, passed without a word), and `properties apply`, `apply -f` and `apply --dir` refuse it only when they would create the Property, `--dry-run` included. An empty `code` still fails `validate`.
+- **A `COTProperty` node's value must name an active Property of the node's `subType`**, by `code` or `_id`. The webclient lists a node's Properties by its `subType`, so it showed anything else as empty and dropped it at the next edit. `properties apply`, `apply -f` and `apply --dir`, `--dry-run` included, now fail that Property for a Property of another `subType`, any reference under a node with no `subType`, an `_id` of a deleted or deactivated Property or of none, an empty item in a list, and a Property the list already holds — a code and the `_id` of the same Property count as a repeat. A value the Property already stores stays, with a warning.
+- **`properties export` writes the `code` of a Property a `COTProperty` node references**, where it wrote its `_id`, so the export round-trips by code. An `_id` it cannot name — a deleted or deactivated Property's, or one under a PropertyType that is inactive or that the profile cannot read — stays, with a warning.
+- **A schema node `key` longer than 62 minus the length of the PropertyType's `code` is refused** by `property-types apply`, `apply -f` and `apply --dir`, `--dry-run` included, on a node they create, and on an update of a type that stores one whenever the update sends something. The backend checks that limit on every node of every write, so such a key passed `validate` and the dry run and failed the apply. `validate` warns about it.
+
+- **Who this affects:** pipelines that relied on `validate` to stop a bad Property code, anyone applying Properties with `COTProperty` references, and scripts that read ids out of a Properties export.
+- **What to do:**
+  - Rely on the dry run for the code check before a create: `--dry-run` refuses the code with exit `1` when the apply would create the Property. Depending on the server's configuration, the apply of an update that sends a change to a Property whose code breaks the rules can still fail, although `validate` and the dry run let it through; a re-apply that changes nothing sends no request.
+  - Reference an active Property of the node's `subType`, and drop empty and repeated items. A stored node's `subType` cannot change, so moving a reference to a node that has one means a new node.
+  - Apply a Properties export taken with 0.16.0 with 0.16.0 or later: an older `cotctl` sends the codes as written and the backend refuses them. An export taken earlier still applies.
+  - Shorten the node `key`, or the `code` of a type being created. A type already stored with such a key refuses every write in the backend, with or without `cotctl`.
+
+#### `validate --remote` checks the Surveys a Workflow names
+
+`validate --dir --remote` and `validate -f --remote` fail on a Survey a Workflow names — a StartForm's `requiredSurvey`, a transition's `requiredSurvey`, a State's `surveyTriggers` — that the server does not have, as `apply --dry-run` already did; they used to end `ready to apply`. The error names where the Workflow names the Survey. With `--dir`, a Survey the directory declares counts as present, since `apply --dir` creates every Survey before any Workflow; with `-f`, only the server counts. A missing profile now stops such a run, where it passed. Without `--remote` nothing changes.
+
+- **Who this affects:** pipelines that gate a pull request on `validate --remote`.
+- **What to do:** correct the Survey code, add the Survey to the directory, or apply it first. Validate a Workflow file whose Surveys sit in sibling files with `--dir`, next to them. Pass `-c <profile>`, or set `COTCTL_TOKEN` and `COTCTL_API_URL`: `--remote` cannot look a Survey up without a credential.
+
+#### Exit codes
+
+These cases change:
+
+| Command | Case | Was | Now |
+|---|---|---|---|
+| Any command a published advisory names, `--dry-run` included | Run on a version the advisory affects | The command ran | `5`, not run |
+| `slas apply`, `apply --dir` | An SLA created or updated | `1` | `0` |
+| `workflows apply`, `apply -f`, `apply --dir` | A `partial: true` Workflow that is not valid once merged with the stored one — a state, transition or state machine it names that is not stored and leaves out what a new one needs, a key named twice, a key the stored list repeats, a bot slot holding several stored bots | `1` | `2`, as a `partial: true` Bot, Routine, SLA or Schedule already got |
+| `validate --dir --remote`, `validate -f --remote` | A Workflow names a Survey the server does not have (nor, with `--dir`, the directory) | `0` | `1` |
+| `validate --remote` | A Workflow names a Survey to look up, and no profile is given | `0` | `1` |
+| `validate -f`, `validate --dir` | A Property `code` outside `^[a-z][_a-z0-9]*$` or shorter than 3 characters | `1` | `0`, with a warning |
+| `validate`, every apply | A `gte` or `lte` on a question other than a `textnumber`, in the raw format; a raw `onPlay` button with missing keys or `null`; `jobs: "*"` or `jobs: []` | `1` from `validate`; `2` from every apply | `0`, some with a warning |
+| `validate`, `surveys apply`, `apply -f`, `apply --dir` | A simplified `exec.onChange`, `exec.presave` or `exec.filter` that is not an object, or, on a question, whose JavaScript does not parse | `0`, with a warning | `1` from `validate`; `2` from every apply, `--dry-run` included |
+| `properties apply`, `apply -f`, `apply --dir` | An update of a Property whose `code` breaks the code rules — outside `^[a-z][_a-z0-9]*$`, shorter than 3 or longer than 50 characters | `1`, refused on every apply | `0`: only a create refuses it |
+| `properties apply`, `apply -f`, `apply --dir` | A `COTProperty` reference outside the node's `subType` or under a node with none, an `_id` of a deleted or deactivated Property, an empty or repeated item | `0` | `1`, on the apply as on the dry run |
+| `routines apply`, `apply --dir` | A Routine whose stored stages repeat a `key` or lack one, on a server with the keyed route | The update went through by `_id` | `1`, nothing written |
+| `--dry-run` of Workflows, Properties and PropertyTypes | A write the apply refuses (see *Fixed*) | `0` | `1`, with the apply's error |
+| `surveys apply`, `apply -f`, `apply --dir`, each with `--dry-run --skip-semantic-validation` | A shape the apply refuses when it builds the survey, such as a single-value `personFilter.jobs` | `0` | The apply's code: `2` for an input refusal, `1` for any other failure |
+| `logs get --parts stage:<key>` | A log with no stage by that key | `0`, and a file with no results | `1`, and no file for it |
+| `schedules logs`, `webhooks list`, `webhooks logs` | `COTCTL_COMPANY_ID` does not match the company of `COTCTL_TOKEN` | `1` | `2` |
+| `schedules logs`, `webhooks list`, `webhooks logs` | A `-l` that is not a positive integer, or above 100 on `schedules logs` | Sent as written, or replaced (see *Fixed*) | `2`, nothing sent |
+| `login` | `-c` names an existing profile, with no terminal and no `--yes` | `0`, saved under the subdomain | `1` |
+
+A `partial: true` Workflow still exits `1` when the schema rejects the YAML itself, when it comes with `--legacy-replace-workflows`, when a state machine it names is stored pointing at a `propertyType` or an `asset.propertyType` that no longer exists, and when its `nameCode` or `id` is not stored. A `partial: true` PropertyType the merge refuses also still exits `1`. A `logs get` that stops at a missing stage prints no manifest under `--json`, and the files written before it stay. `cotctl logs` keeps its own `3` and `4`.
+
+- **Who this affects:** any script or pipeline that branches on `$?`.
+- **What to do:** re-check each row your scripts rely on. `5` means only an advisory stop, so a pipeline can tell it apart from a failed apply. The `COTCTL_COMPANY_ID` refusal still exits `1` from other commands, so test for a non-zero exit there. A script that reads one stage from several logs fixes the key with the stages the error names, or leaves that log out; `logs pull` still writes such logs, with a warning.
+
+### Added
+
+- **Data-loss advisories and `COTCTL_ACCEPT_ADVISORY`** — see *Breaking changes*, and [`cotctl update`](./commands/update.md) for every case, prompt and message.
+- **Routine updates go through the server's keyed route where it has one.** `routines apply` and `apply --dir` send an update by the Routine's `code` and fall back to the update by `_id` on a server without the route, at the cost of one attempt per run. The Routine ends up the same either way, except for one thing: the keyed route replaces `dataType` whole, so an input written over another stored one keeps nothing of it. On that route:
+  - **`--dry-run` asks the server** to validate the update without saving it. A profile without write permission, and a server without the route, get `cotctl`'s own preview as before.
+  - **`cotctl` checks its diff against the operations the server announces**, warns about one it did not predict — a warning `-q` does not silence — and prints the route's own warnings. An answer with no operation saved nothing, so the Routine is reported `unchanged`.
+  - **A Routine whose stored stages repeat a `key`, or lack one, stops with exit `1`**, writing nothing, with a message that names the stored stage and says to give it a unique `key` in the webclient's Routine editor before re-running.
+  - **A YAML that reorders `body.stages`** is sent through the update by `_id`, the only one that writes an order, with a warning. A `partial: true` Routine takes the same route as any update.
+  - **`COTCTL_LEGACY_PATCH=1`** sends every Routine update through the update by `_id`, without trying the keyed route. `1`, `true`, `yes` and `on` set it; `0`, `false`, `no`, `off` or no value leave detection on; any other value is refused with exit `2` when a Routine update is about to be sent — under `apply --dir -y`, earlier kinds may already be written. It exists for the transition and will be removed in a later release.
+- **`routines apply --json`** prints one JSON object per Routine on stdout, errors included, as `schedules apply --json` does. A result the keyed route answered carries the operations it announced as `ops`, and an error it answered keeps its `code` and `data`.
+- **Two Workflow keys for the task list**, each needing a backend that stores the field — an older one accepts the request and ignores the key, so the next `--dry-run` lists the same change again:
+  - **`taskPaginationLimit`**, how many Tasks the task list loads per page: an integer from 10 to 100 that takes precedence over the company's limit. Omitting the key keeps the stored value; `null` clears it, back to the company's limit. `workflows get` prints it as `Tasks per page`.
+  - **`defaultSortBy`**, the order of the task list's default view: `modifiedAt` (the default) or `createdAt`; tasks are always listed newest first. Any other value is refused, `null` included: to go back to the default, write `modifiedAt`.
+- **Profiles that share an ApiToken.** `login --token` and `--paste-token` warn on stderr when another profile already holds the token they save, naming it, and save the profile anyway. `cotctl logout --revoke` revokes the token even when another local profile still uses it, naming the profiles it leaves unable to authenticate (see *Fixed* for what `logout` does without it). `cotctl profile delete -y` deletes a profile without asking and leaves its token active.
+- **`validate` and `--dry-run` warn about every key a survey question does not take** — a `tree` or `creation` written next to a `property` question's `filters` instead of inside one, a `jobs` outside `personFilter`, a `min` on a `gps` question, a raw-format key such as `isActive`, or a typo — which used to vanish from the write without a word. One warning per key names where it belongs or which types take it; `+table` columns get the same. No exit code changes.
+
+### Changed
+
+- **A survey update's dry run names what changes on each question.** The first raw re-apply of a survey built in the webclient read `Would UPDATE` without naming a field. The diff now has one entry per question and field, such as `questions[identifier="…"].isReadOnly`, and a second re-apply reads `No changes`. The compact diff counts a change several questions share on one line (`+ questions[].isReadOnly ×7`); `--diff verbose` lists every entry. A question or SurveyChat the update adds or removes is an entry of its own.
+  - **In `--json`**, a stored value the update removes, such as `required: false`, is a `diff` entry with `kind: "deleted"`, and so is a question it removes. A pipeline that stops on any `deleted` entry will stop on those first re-applies: check the entry's `field`, or rely on `destructiveChanges` and `--fail-on-destructive`, which this does not touch.
+- **`--diff verbose` lists what an entity with nothing to change keeps**, under its `No changes` line — a state machine whose declared `cardLabels` equal the stored ones shows `= cardLabels (preserved)`, which only `--json` carried. The text diff of a Workflow apply also names card labels `cardLabels`, the YAML key, where it printed `dynamicPropertyTypes`; `--json` keeps `field: "dynamicPropertyTypes"`.
+- **A Property whose `id` the backend answers with a `404` fails alone.** `properties apply`, `apply -f` and `apply --dir` report `Property with id '<id>' was not found` and still exit `1`, but now apply the other Properties of the same file, which the `404` used to stop. Fix or remove such an `id` first if you relied on that stop. `apply --dir` still stops after that file unless `--continue-on-error`.
+- **The embedded `cotctl-routines`, `cotctl-bots` and `cotctl-workflows` skills give every stage that can fail an error path.** They have Claude propose a handler for each stage that sends an email or a message, calls an endpoint, invokes a Routine or writes what the backend can refuse, instead of writing `ERROR: ""`, and ask before leaving one out. They pin the bot versions that report a failure on `ERROR` — `PBEmail` `3.0.1`, `PBMessage` `2.2.0`, `PBCreateTask` `2.0.1`, `PBChangeState` `2.1.0` — rename an existing stage's `next` when they pin it, say where no `ERROR` branch can catch a failure, and test both branches with `cotctl routines test` and `cotctl logs` before a Routine or a bot goes live. Run `cotctl skills install` again to get them.
+- **`cotctl login --token -` reads the token from stdin before anything else** — before discovering the API URL or sending any request — as `--token @<path>` and a literal value already did, so an empty, oversized or stalled stdin fails first.
+
+### Fixed
+
+- **A simplified survey re-apply no longer erases `exec.onChange`, `exec.presave` and `exec.filter`.** The simplified export left them out and the apply never sent them, so re-applying a simplified export erased them from every question and `+table` column that stored them. Both formats now export and send them as written, and warn that the webclient never runs them — and that saving the survey from the webclient's builder removes them.
+- **Survey exports that pass `validate` again.**
+  - `surveys export --format raw` writes an `exec.onPlay.button` saved without some of its keys, which made the export fail its own `validate`.
+  - `surveys export --format raw` skips a SurveyChat of a type no survey update accepts back, such as `text/system`, with a warning that applying the export deactivates it; it used to write it, and `validate` refused the file. The dry run warns about it too, and `--fail-on-destructive` lets it through.
+  - `surveys export` writes a job-title filter stored as `"*"` (as `jobs: "*"`) or as a legacy single code (as a one-code list), which it used to leave out. A stored list holding `"*"` exports as `jobs: "*"`, with a warning that the next apply writes it back as the string.
+- **Dry runs that announced a write the apply then refused.** Each now reports the apply's error and exit code:
+  - a Workflow whose state machine references a PropertyType or Property that does not exist — a `cardLabels` or `allowedExtensions` code, the state machine's `propertyType`, its asset's `propertyType`, a generic asset's `property`, or a State's `property`. It used to show them as planned changes and exit `0`, and the apply stopped with `PropertyType "<code>" not found` or `Property "<code>" not found`. Under `apply --dir --dry-run`, a PropertyType or Property the same directory declares counts as present;
+  - a Property YAML with an `id`: the dry run read the Property by `code`, so an `id` with a new code, an `id` with another Property's code and an `id` the backend does not hold announced a create or an update the apply refuses. It now reads by `id`, as the apply does, and refuses those and a changed `propertyType`;
+  - a Property `code` longer than 50 characters on a create, and a schema node `key` the backend refuses on a node it creates — it must be 3 to 50 characters matching `^[a-z][a-z0-9_]*$`. Both failed the apply with a `400`; `validate` warns about both;
+  - a `COTProperty` value of the wrong shape — a single value in an `isArray` node, a list in a single-value node, an empty `required` node, a list outside `arrayMin` / `arrayMax` — which failed the apply with a `400`. It now fails that Property alone. A stored value of the wrong shape fails a write that changes `schemaInstance`, with an error that says it is the stored value;
+  - a survey under `--skip-semantic-validation` whose shape the apply refuses when it builds it.
+- **A `COTProperty` node takes a Property code.** The apply resolves the code of each node to the `_id` the backend stores, where it resolved codes only in the `type: COTProperty` slice at the root of `schemaInstance`, so a node given a code passed `validate` and the dry run and failed the apply with a `400`. A code that names no Property fails only that Property, in the dry run as in the apply. A node named `propertyType` or `propertyTypes` is now read as a node. Under `apply --dir --dry-run`, a reference to a Property an earlier file creates shows as `<id of <code>, created by this batch>`.
+- **`cotctl logout` no longer revokes an ApiToken another local profile still uses.** `login --token` and `--paste-token` can save one token in several profiles, and a `logout` of any of them revoked it for all. It now removes only the profile you named, keeps the token active and names the profiles that still use it; the last of them to log out revokes it. Only the profiles on this machine are checked: a token also kept as a CI secret is still revoked by the last local `logout`.
+- **Logins that no longer leave an orphan ApiToken.** `cotctl login` asks whether to overwrite an existing profile before it authenticates, so answering `n` mints nothing — it used to mint a token, leave it active with no profile, and could deactivate the token the kept profile held. The automatic re-login, when a profile's ApiToken expires or is revoked mid-command, checks the user before it mints a new token; and when the profile cannot be saved, on a full or read-only disk, it names the token it minted and where to revoke it.
+- **`schedules list` shows the schedules you expect.**
+  - It is ordered newest first, so `--type all` shows the most recent schedules instead of the oldest ones in the company.
+  - It reads beyond the first page, up to the newest 1000 schedules, so `-l` above 100 works. Where most schedules were canceled ones of SLAs, `--type all` could show `1 schedule(s)`. When it stops at 1000 and the server holds more, it says so on stderr.
+  - `-s` filters, by the schedule's code or the name or description of its bot, case-insensitively; it returned the same listing as without it. `--no-cron` lists only one-shot schedules; it returned the cron ones too.
+- **`-l` on `schedules logs`, `webhooks list` and `webhooks logs` does what it asks.** A negative value reached the backend as written, and on `schedules logs` lifted the 100-row cap — `-l -1` returned every log of the Schedule; a `0` or a non-number was replaced by the backend's default of 10 rows; and a value above 100 on `schedules logs` was cut to 100. Each now exits `2` before any request. Every value from 1 to the cap is sent as before, and the defaults are unchanged.
+- **`apply --dir` names the files a run that stopped early never reached**, on stderr under the summary: `Not reached, the run stopped before them: …`. The summary's `skipped` count only covers what the run chose to skip, so a run that stopped at an error said `0 skipped` and nothing about the files after it.
+- **`--legacy-replace-workflows` works over stored card labels** on a backend that protects them from the releases that erased them. The labels end up cleared as before.
+- **Clearer messages.**
+  - The SLA commands and `apply --dir` name the inactive Workflow a state machine belongs to, instead of saying it does not exist and asking you to apply a Workflow that is already applied. The SLAs of an inactive Workflow are still neither read nor applied.
+  - A `partial: true` document that names an element no stored one holds — a misspelled `property`, `target`, `code` or stage `key` — leads with `State "<x>" is not stored in <list>, so partial: true would add it as a new state, and nothing stored completes what it leaves out:` instead of naming only the field the new element lacks.
+  - `validate --workflow` names an inactive form by its code, marked `(inactive)`, and one no survey of the company answers to as the Workflow stores it, marked `(not found)`. A referenced form that is active no longer warns.
+  - A question's context naming a `+table` column (`responses#<column>`) outside the table warns that it resolves empty, where it said the identifier does not exist in the survey.
+  - An apply whose write the server answers with no document says it could not confirm the write, instead of claiming nothing was written. It still exits `1`.
+  - `logs pull --parts stage:<key>` warns once per log that has no stage by that key, and still writes it.
+- **The embedded skills' examples use bots that run.** They used `PBSendMessage`, which is not a registered bot type, and a `PBEmail` with `to`; they use `PBMessage` with `content`, `contentType`, `sentBy` and `channelIds`, and `PBEmail` with `targets`, `subject` and `content`. The `cotctl-workflows` skill's `PBCreateTask` has the `name` every version needs, and its Workflow example's survey-triggered and sub-task bots now do their work. The `cotalker-docs` skill tells `logout` and `profile delete` apart, and the `cotctl-apply` skill gives a `partial: true` Workflow the merge refuses its exit `2`. Run `cotctl skills install` again to get them.
+
+### Docs
+
+- **[Give every stage that can fail an error path](./resources/routines.md#give-every-stage-that-can-fail-an-error-path)**, a new section of the Routine guide: a stage that fails onto `ERROR: ""` ends the run unnoticed while the run is still logged as executed. It says where an `ERROR` branch cannot see the failure — the default version of `PBEmail`, `PBMessage`, `PBCreateTask` and `PBChangeState`, a `PBScript` stage invoking a Routine, a bot that throws its failure — and how to prove both branches with `cotctl routines test` and `cotctl logs`.
+- **Every page of the [bot catalog](./workflow-bots/index.md) does the same.** Where a bot reports its failures on `ERROR`, its examples send them to a `notify_failure` stage, a pinned `PBMessage`; where it throws them or reports none — `PBGiphy`, `PBWhatsApp`, the `ST*` bots, `CBCheckOTsched` — the page says no `ERROR` branch catches them. The pages of the four bots above say which versions report on `ERROR`, and warn that pinning an existing stage renames its `next` (`DEFAULT` and `CREATED` become `SUCCESS`, `NOT-CREATED` becomes `ERROR`) and validates `data` the default barely checks — which `cotctl validate` does not catch.
+- **Corrections worth checking if you configured from earlier pages:**
+  - `PBCalendar` reports every failure on `ERROR`, although its only version declares just `DEFAULT`;
+  - `PBConditional`'s `TRUE` and `FALSE` keys must be quoted — YAML reads them bare as booleans, and the stage never branched;
+  - no `PBSheet` stage can be applied and run through `cotctl` today, and its page says why;
+  - a `PBScript` stage takes `ERROR` only when the invoked Routine returns no results, not on a failure inside it;
+  - the default `PBChangeState` accepts `quiet` and ignores it; only `2.0.0` refuses it;
+  - the examples no longer use `PBSendMessage`, which is not a registered bot type, but `PBMessage` with its own `data`;
+  - the examples of the error-path bots no longer put `{{…}}` placeholders in bot `data`, which is not a template: the placeholder reached the bot as literal text, and a pinned version that validates the field refused it on every run. The COTLang reference no longer lists `{{…}}` among its expressions;
+  - `cotctl` prints no warning for a `schemaInstance` key the PropertyType does not define: it sends the key as written. The [Properties](./resources/properties.md) page now says so; check a type's keys with `cotctl property-types get` before writing them.
+- **The [Authentication](./authentication.md) page gives, in one place, which commands exit `2` and which exit `1`** when `COTCTL_COMPANY_ID` does not match the token, and tells a script to test for a non-zero exit.
+
+### Migration
+
+1. **Install 0.16.0** — `npm install -g @cotctl/cli@0.16.0`. In CI, move the pinned version on purpose, after reading the breaking changes above.
+2. **Before the first `apply --dir` on 0.16.0 over a directory with SLAs**, review the files after the first SLA file, or run the same `apply --dir` with `--dry-run`: earlier versions never applied them.
+3. **Re-check every branch on `$?`** against the table in *Exit codes*. In particular, handle `5` — update `cotctl` and run again, or set `COTCTL_ACCEPT_ADVISORY` to the id the message names to run the affected version anyway.
+4. **Expect one npm lookup per job even with `COTCTL_NO_UPDATE_CHECK`** set, on a runner that starts with an empty home directory: it no longer silences the advisories.
+5. **Check scripts and aliases that pass `-c` to `login`**: the profile is saved under that name, and a `-c` naming an existing profile now asks, fails without a terminal, or is overwritten with `--yes`.
+6. **Run `validate --dir` over your survey directories** and fix what it refuses: a simplified exec stage that is not an object, or whose JavaScript does not parse — every apply, `--dry-run` included, now refuses it too, with exit `2`. Run `validate --remote` with a profile or `COTCTL_TOKEN` and `COTCTL_API_URL`, and fix any Survey a Workflow names that exists nowhere.
+7. **Fix `COTProperty` references** to name active Properties of the node's `subType`, without empty or repeated items; shorten a schema node `key` past 62 minus the type's `code` length; and apply a Properties export taken with 0.16.0 only with 0.16.0 or later.
+8. **Re-check pipelines that stop on any `deleted` entry** of a survey dry run's `--json` diff: check the entry's `field`, or rely on `--fail-on-destructive`.
+9. **Run `cotctl skills install` again** to get the skills' error-path guidance and corrected examples.
 
 ## 0.15.1 — 2026-10-27
 
