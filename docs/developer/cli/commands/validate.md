@@ -124,6 +124,8 @@ A `partial: true` PropertyType or Workflow is checked on its own fields only, wi
 | `personFilter.allow: no_filter` | `personFilter.allow: job` | `0.10.0-C22` |
 | `subtype: long_text` on a `textinput` | `subtype: short_text` | `0.15.0-C6` |
 
+The first four are checked in the simplified format; `subtype: long_text` in both.
+
 `cotctl release-notes 0.10.0-C19` prints that entry, with the YAML before and after. When a Question also sets the current key, the warning says the old one is ignored: `"hint" is deprecated and ignored, since "help" is also set: remove "hint"`.
 
 - **A warning (`M1`) leaves the document valid** and never changes the exit code. `validate -f` prints it on stderr — after the document's header, such as `document 2 (kind: Survey): `, in a file of several documents; with `--json` it is an issue of the report instead.
@@ -182,7 +184,7 @@ A pipeline whose `validate -f` passed a reference that `validate --dir` refused 
 
 ## Directory mode — a whole folder, offline
 
-This is the one you'll use most when working with scaffolded workflows. It validates every YAML file in a folder **and** checks that they reference each other correctly — all offline. Run it right before `apply --dir`:
+This is the one you'll use most when working with scaffolded workflows. It validates the YAML files below a folder **and** checks that they reference each other correctly — all offline. Run it right before `apply --dir`:
 
 ```bash
 cotctl validate --dir ordenes-compra/

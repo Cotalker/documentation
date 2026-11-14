@@ -38,7 +38,7 @@ If you don't pass `--local` or `--global`, `cotctl` asks you interactively which
 
 **What an install writes.** An install overwrites the Skill's files, edited or not. From **0.17.0** it names on stderr the edited files it replaced and, on a line of its own, the deleted ones it restored, and it deletes the files a version no longer ships unless someone edited them. A symbolic link in place of a file or folder inside a Skill counts as an edit: the install replaces the link itself and writes nothing where it pointed — earlier versions wrote into whatever the link pointed at.
 
-**The install keeps a record.** From 0.17.0 it records what it wrote in `.cotctl-manifest.json`, inside the scope's skills directory. That record is what lets a later `cotctl` tell an edited Skill from one it may replace. When the file was written by a newer `cotctl`, or cannot be read, the install writes nothing and exits `1`: run `cotctl update` and install again. Errors are reported in English, and a file the install cannot write is named with its error code, as in `.claude/skills: could not install the skills (EACCES on .claude/skills/cotctl-apply/SKILL.md)`.
+**The install keeps a record.** From 0.17.0 it records what it wrote in `.cotctl-manifest.json`, inside the scope's skills directory. That record is what lets a later `cotctl` tell an edited Skill from one it may replace. When the file was written by a newer `cotctl`, the install writes nothing and exits `1`: run `cotctl update` and install again. When it cannot be read — a permission error, say — the install also writes nothing and exits `1`, naming the file and the error. Errors are reported in English, and a file the install cannot write is named with its error code, as in `.claude/skills: could not install the skills (EACCES on .claude/skills/cotctl-apply/SKILL.md)`.
 
 Once the scope holds any `cotctl-*` Skill, [`cotctl-upgrade`](#upgrading-your-yaml-cotctl-upgrade) comes with the install, named on a line of its own — unless it was uninstalled from that scope by name or deleted by hand.
 
@@ -77,14 +77,15 @@ cotctl skills install --all --local
 
 ## Keeping the Skills in step with cotctl
 
-From **0.17.0**, installed Skills follow the `cotctl` that runs them. Before every command, `cotctl` checks the global Skills and the `.claude/skills/` of the directory the command runs in, and brings the ones behind its version up to it — what [`cotctl skills update`](#cotctl-skills-update) does, without `--force`, so an edited Skill is never replaced:
+From **0.17.0**, installed Skills follow the `cotctl` that runs them. Before every command, `cotctl` checks the global Skills and the `.claude/skills/` of the directory the command runs in, and brings the ones behind its version up to it — what [`cotctl skills update`](#cotctl-skills-update) does, without `--force`, so a Skill edited since `cotctl` recorded it is never replaced (Skills an older version installed are the exception — see the warning below):
 
 - **Unchanged since `cotctl` wrote it:** rewritten with this version's content; files this version no longer ships are deleted.
 - **Edited:** left as it is. It is named in a `Warning:` line, with the command that replaces it (`cotctl skills update --<scope> --force`), at each new `cotctl` version that ships for it something other than what `cotctl` last wrote there.
 - **With a symbolic link in place of one of its files or folders:** counts as edited, because `cotctl` never writes or deletes through a link inside a Skill.
+- **A Skill whose folder is a symbolic link:** followed only when it leads to a folder holding a `SKILL.md` and, in a project's `.claude/skills/`, stays inside that folder. Any other is left as it is and recorded as removed — a project link leading out is named in a `Warning:` line — and `cotctl skills install <name> --local` replaces a project link that leads out, or to nothing, with a folder.
 - **Deleted by hand, or uninstalled by name:** stays deleted.
 - **Written by a newer `cotctl`:** left as it is.
-- **Missing:** `cotctl-upgrade` is added wherever a `cotctl-*` Skill is installed, and a scope installed with `--all` — one holding every Skill `cotctl` ships but `cotctl-upgrade` — receives the Skills later versions add.
+- **Missing:** `cotctl-upgrade` is added wherever a `cotctl-*` Skill is installed, and a scope installed with `--all` — or, for Skills installed by 0.16.0 or earlier, one holding every Skill `cotctl` ships but `cotctl-upgrade` — receives the Skills later versions add.
 
 The check says what it did in one `[cotctl]` line on **stderr** — the Skills it updated or added, the backup it took, the edited Skills it left — and never writes to stdout, so a command's `--json` output is unaffected. It never stops the command: a failure prints one `Warning:` line and the command runs anyway, and a skills directory it cannot write to is skipped without a word. It does not run for `cotctl skills` and its subcommands, `cotctl update`, `--version` or `--help`, nor on a build with no release version.
 
@@ -98,7 +99,7 @@ Set `COTCTL_NO_SKILLS_REFRESH=1` to turn it off. `cotctl skills update` still wo
 
 <div className="alert alert--info">
 
-**A repository that commits `.claude/skills/` gets changes to commit.** After `cotctl` is updated, its first command there rewrites the Skills that version changes and writes `.cotctl-manifest.json` next to them. In a pipeline that requires a clean tree, set `COTCTL_NO_SKILLS_REFRESH=1` — see [CI/CD](./ci-cd.md#new-cotctl-versions-in-a-pipeline). And resolve a merge conflict in `.cotctl-manifest.json` before running `cotctl` in that checkout: a manifest that does not parse counts as missing, so `cotctl` rebuilds it from the Skills on disk and forgets which Skills were uninstalled by name.
+**A repository that commits `.claude/skills/` gets changes to commit.** After `cotctl` is updated, its first command there rewrites the Skills that version changes and writes `.cotctl-manifest.json` next to them. In a pipeline that requires a clean tree, set `COTCTL_NO_SKILLS_REFRESH=1` — see [CI/CD](./ci-cd.md#new-cotctl-versions-in-a-pipeline). And resolve a merge conflict in `.cotctl-manifest.json` before running `cotctl` in that checkout: a manifest that does not parse counts as missing, so `cotctl` rebuilds it from the Skills on disk: it forgets which Skills were uninstalled by name, and treats every Skill there as one an older version installed — copying to the backup folder and rewriting any whose files differ from this version, edited or not.
 
 </div>
 
@@ -166,7 +167,7 @@ When you uninstall with `--all`, `cotctl` also asks whether to remove the RAG/MC
 
 From **0.17.0**:
 
-- **A Skill uninstalled by name is recorded** in the scope's `.cotctl-manifest.json`, so neither the [update before every command](#keeping-the-skills-in-step-with-cotctl) nor a later install brings it back. `--all` keeps no record: it deletes the manifest with the Skills, and the next install starts as if nothing had been installed in that scope.
+- **A Skill uninstalled by name is recorded** in the scope's `.cotctl-manifest.json`, so neither the [update before every command](#keeping-the-skills-in-step-with-cotctl) nor an install of other Skills brings it back; installing it by name, or with `--all`, does. `--all` keeps no record: it deletes the manifest with the Skills, and the next install starts as if nothing had been installed in that scope.
 - **When the manifest was written by a newer `cotctl`**, `--all` removes nothing and exits `1`: run `cotctl update` and uninstall again. Uninstalling a single Skill by name still works there.
 - **`[name]` is a single folder name.** A path such as `../skills-old` or `cotctl-apply/references`, and a name that starts with `.` such as `.cotctl-manifest.json`, are refused before anything is deleted. Any other folder in the scope can still be uninstalled by its name.
 
