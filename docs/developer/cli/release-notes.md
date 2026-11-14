@@ -4,7 +4,7 @@ sidebar_label: Release notes
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/CHANGELOG.md @ 18d0110 (2026-11-04) -->
+<!-- source: repositories/cotctl/CHANGELOG.md @ acc260a (2026-11-14) -->
 
 What changed in each published release of `cotctl`, newest first — with the migration steps you need when something breaks.
 
@@ -27,6 +27,404 @@ npm install -g @cotctl/cli@latest
 </div>
 
 <!-- releases:start — the cotctl release job inserts each new release right below this line. Newest first. -->
+
+<!-- DRAFT - copied verbatim from the cotctl CHANGELOG for release-0.17.0.
+    Before merging, rewrite it for implementation partners: give every
+    breaking change a "What to do", drop the internal detail (file paths,
+    PR numbers, contributor-only notes) and translate anything left in
+    Spanish. Then delete this comment. -->
+
+## 0.17.0 — 2026-11-14
+
+### ⚠ Breaking changes
+
+- **`validate` refuses `--skip-semantic-validation` on a file or a directory
+  that holds a kind other than Survey, as `apply` does**, with the same error,
+  `--skip-semantic-validation / --skip-remote-validation are Survey-only.`, and
+  exit `1`. `validate -f` accepted the flag on any kind and ignored it. Remove
+  the flag, or validate the Surveys on their own.
+
+- **A `textinput` column of a `+table` that leaves out `max` is sent with
+  `max: 1000` in the simplified format, where it was sent with 5000.** A
+  standalone `textinput` question keeps 5000, and the raw format still sends a
+  column as written. So the first apply of an unchanged YAML over a column
+  stored with 5000 lowers it to 1000 — `Would UPDATE` in a dry run, with the
+  column's `max` in the diff — and the applies after it change nothing.
+  `surveys export` leaves out a text column's `max` when it is 1000 and writes
+  any other value, 5000 included, so re-applying an export made with this
+  version, on a server without the 1000-character cap, keeps the column as
+  stored.
+- **`validate` and every apply, `--dry-run` included, refuse a `textinput`
+  column of a `+table` whose `min` is above its `max`** — in the simplified
+  format, above the 1000 the column is sent with when it leaves out `max`.
+  cotctl sent such a column and the server stored it, but its `min` is never
+  usable as written: an older webclient or server refuses every non-empty
+  cell, and a newer one lowers the `min` to the `max`. `validate` fails
+  with exit `1`, and the apply refuses it with exit `2` before writing
+  anything, naming the column. The simplified format reads a quoted `min` or
+  `max` as the number it spells, as the server does. A raw-format column
+  without `max` is sent without one and is not compared. It is a semantic
+  check, so `--skip-semantic-validation` turns it off.
+
+  Migration: nothing to do for a column whose answers fit in 1000 characters.
+  A longer text belongs in a standalone `textinput` question, which keeps its
+  5000. A server that caps a table's text column at 1000 characters refuses a
+  `min` or `max` above 1000, which this version still accepts: to apply the
+  YAML there, lower it to 1000, or move the longer text to a standalone
+  `textinput` question. A webclient whose survey builder applies the same cap
+  marks such a column invalid and limits its cells to 1000 characters. An
+  export made with an earlier cotctl leaves out the 5000 a column stores, so
+  its first apply lowers the column to 1000; an export made with this version,
+  applied with an earlier cotctl, writes 5000 again. An answer already stored
+  with a cell over 1000 characters still shows, but editing it in the
+  webclient needs that cell shortened. A column refused for its `min` is fixed
+  by lowering the `min` to its `max` or below — to 1000 when it declares no
+  `max` — or, for a `min` of 1000 or less, by raising the `max` to it. That
+  includes a column exported as stored: neither the webclient's survey builder
+  nor the server compares the two, so the export of a survey that stores one
+  is refused whole by `validate` and the apply, even when the change being
+  applied does not touch the table.
+
+- **Before every command, cotctl now updates the Claude Code skills it
+  installed**, globally and in the `.claude/skills/` of the current directory,
+  and adds `cotctl-upgrade` where `cotctl-*` skills are installed. In a
+  repository that commits `.claude/skills/`, the first command a new cotctl
+  version runs there can leave those files changed, which fails a CI step that
+  requires a clean tree. `COTCTL_NO_SKILLS_REFRESH=1` turns the check off;
+  *Added* describes what it does, in the entry on the installed skills that
+  follow the cotctl that runs them.
+
+- **`cotctl skills` changes three things a script may rely on.** With
+  `CLAUDE_CONFIG_DIR` set, `--global` uses `$CLAUDE_CONFIG_DIR/skills/`, so
+  skills installed before stop showing in `list` and `uninstall`; `install`
+  and `uninstall --all` exit `1` where a newer cotctl wrote the scope's record
+  (`install` also where it cannot be read); and both report their errors in
+  English. The migrations are under *Changed* and *Fixed* below.
+
+- **The warnings about a Survey's legacy keys no longer start with
+  `[cotctl deprecation]`.** `hint`, `api`, `translations.hint` and
+  `personFilter.allow: no_filter` are still accepted and sent under their
+  current names, but each warning now names the Question or the `+table` column
+  and ends with the release-notes entry that explains it:
+  `questions[identifier=plate].hint: "hint" is deprecated: write "help" (cotctl release-notes 0.10.0-C19)`.
+  A script that searches stderr for `[cotctl deprecation]` stops matching; the
+  new lines all contain `(cotctl release-notes `. Every apply prints them on
+  stderr, and so does `validate -f` without `--json`; `validate --dir` puts
+  them in its report — on stdout, or in the `--json` output — and
+  `validate -f --json` in its JSON document. The `subtype: long_text`
+  warning, and `validate`'s advice to drop `hint` or `api` when `help` or
+  `source` is also set, take the same form.
+- **Under `validate --dir`, a file that writes one of those forms is a WARN
+  where it was a PASS**, with an `M1` issue per form, so `summary` counts it
+  under `warn`. The exit code does not change. Under `validate --dir --json`,
+  the `subtype: long_text` warning and the advice to drop `hint` or `api` when
+  `help` or `source` is also set now come as `M1` issues with a `note`, where
+  they were `S4` issues.
+- **`--skip-semantic-validation` no longer silences any of these warnings**, in
+  `validate` or in any apply. It used to silence only the `subtype: long_text`
+  warning and `validate`'s advice to drop `hint` or `api` when `help` or
+  `source` is also set; the four renames came from the schema and were never
+  silenced. **In an apply, `-q` now silences them**, where the
+  `[cotctl deprecation]` lines printed regardless.
+
+  Migration: replace each legacy form with the one its warning names —
+  `cotctl release-notes <id>` prints the entry, with the YAML before and after.
+  A pipeline that keeps a legacy form on purpose can silence the apply's
+  warnings with `-q`.
+
+- **`cotctl validate --dir` and `cotctl apply --dir` no longer read hidden
+  files and folders or `node_modules` below the directory.** They read every
+  `.yaml` and `.yml` file at any depth, so in a repository with these skills
+  installed locally they also read the example YAMLs under
+  `.claude/skills/`: the preview listed them, and with `-y` they joined the
+  batch, most often failing it. Below the directory you pass, a name that
+  starts with `.` (such as `.git/`, `.claude/` or `.gitlab-ci.yml`) and
+  `node_modules/` are now skipped without a message; the directory you pass is
+  read even when its own name starts with `.`. To apply YAML kept in a hidden
+  folder, move it out of that folder, pass that folder to `--dir`, or pass
+  each file to `-f`.
+
+### Added
+
+- **`cotctl validate -f <file> --json` prints its result as JSON**, in the
+  shape `validate --dir --json` gives each file: `file`, `fileResults` with the
+  file's one entry — its `kind`, `docCount`, `kindCounts`, `severity` and
+  `issues`, with the same issue ids — and `summary`, plus `remoteResults` with
+  `--remote`. A migration warning (`M1`) or refusal (`M2`) is an issue with its
+  `note`, and no longer a line on stderr. A file that cannot be read or parsed,
+  or that holds no document, is an `S1` issue and exits `1`. The flag was
+  accepted and ignored before: the command printed its text output.
+
+- **`cotctl release-notes` prints what each cotctl version changed for YAML
+  files**, from release notes compiled into the binary and written for an AI
+  agent that writes or upgrades cotctl YAML. Each note sorts its entries by what
+  they ask of a YAML — action required, behavior changed, now accepted,
+  deprecated, new — and each entry that can affect an existing YAML says how to
+  find one and, where it helps, shows it before and after and names the command
+  that catches it. Without an argument
+  the command lists the versions with a one-line summary; with a version it
+  prints that note, and with an entry id such as `0.16.0-C3`, that entry.
+  `--since <version>` prints every note after it, up to the cotctl that runs,
+  oldest first — on a build from source (`0.0.0-dev`), which has no version to
+  stop at, every note after it that the build carries; `--kind` and `--action`
+  keep the entries about some kinds or of some sections, and `--json` prints
+  them structured. An argument it cannot read
+  exits `2`, and a version or an entry it has no note for exits `1`. The notes
+  cover every version from 0.10.0: a YAML written for an older cotctl may need
+  changes no note describes, and `--since` warns so.
+
+- **The Claude Code skills installed with `cotctl skills install` follow the
+  cotctl that runs them.** Before every command, cotctl checks the global
+  skills and the `.claude/skills/` of the current directory, and brings the
+  ones behind its version up to it: a skill nobody edited is rewritten, and an
+  edited one is left as it is, named with the command that replaces it at
+  each new version that ships for it something other than what cotctl last
+  wrote there. A symbolic link in place of a file or folder inside a skill
+  counts as an edit, since cotctl never writes or deletes through one. A
+  skill's folder that is itself a link is followed only when what it leads to
+  holds a `SKILL.md` and, in a project's `.claude/skills/` — not the global
+  folder itself, as it is from the home folder — lies inside that folder too,
+  since a cloned repository can bring the link along with the record that
+  decides what cotctl deletes; any other is left as it is and recorded as
+  removed, and `cotctl skills install <name> --local` replaces with a folder a
+  project link that leads out of `.claude/skills/` or to nothing. A skill
+  installed by 0.16.0 or earlier with a link inside it is named at every
+  version, since nothing records what it held. Skills installed by 0.16.0 or earlier, which carry no record of
+  what cotctl wrote, are recorded as they are when their files already match
+  this version; the others are copied to `~/.cotctl/skills-backup/<date>/`
+  once, before they are rewritten. A scope holding every skill cotctl ships
+  but `cotctl-upgrade` counts as installed with `--all`, so it receives the
+  skills later versions add. A skill deleted by hand stays deleted, and skills
+  a newer cotctl wrote are left alone. The check says what it did in one
+  `[cotctl]` line on stderr, where an edited skill it left, a project skill
+  whose folder is a link leading out of `.claude/skills/`, and a failure carry
+  the `Warning: ` prefix of cotctl's other warnings; it never writes to stdout
+  and never stops the command, and a skills directory it cannot write to is
+  skipped without a word. It does not run under `cotctl skills` or
+  `cotctl update`, nor in a build with no release version, and
+  `COTCTL_NO_SKILLS_REFRESH=1` turns it off. A repository that commits
+  `.claude/skills/` gets the rewritten files and `.cotctl-manifest.json` as
+  changes to commit.
+- **`cotctl skills update` does the same on request**, for both scopes or the
+  one `--local` or `--global` names. `--force` also replaces edited skills,
+  after copying them to the backup folder, and `--json` prints what happened in
+  each scope. It exits `1` when a skills directory, or the backup folder,
+  cannot be read or written, and names the file or folder that failed;
+  `COTCTL_NO_SKILLS_REFRESH` does not apply to it.
+- **New embedded skill `cotctl-upgrade`**, which guides Claude Code through
+  bringing a repository of YAML files up to date with the installed cotctl: it
+  reads the release notes after the version the repository was last reviewed
+  against, validates the YAMLs, proposes the changes the notes call for as a
+  diff, and checks them with `validate` and `apply --dry-run`, never applying
+  anything. The version it starts from is kept in `.cotctl-upgrade.json`, at
+  the root of the repository, written once a review is finished and meant to
+  be committed with the YAMLs; without it, the skill reads every note.
+  Installing any `cotctl-*` skill installs `cotctl-upgrade` too, and the check
+  before every command adds it where `cotctl-*` skills are already installed,
+  unless it was uninstalled by name or deleted by hand, or its folder is a
+  link that cotctl does not follow; `cotctl skills uninstall --all` keeps no
+  record, so the next install brings it again.
+
+- **The `cotctl-upgrade` skill checks the YAMLs before changing anything and
+  again after**, with `validate` and
+  `apply --dir --dry-run --continue-on-error --json` against the profile you
+  choose, and compares each check with its own earlier run, file by file, so
+  a failure that was already there is not taken for one the changes caused. A
+  repository that holds the YAMLs of several companies is checked folder by
+  folder, each against its own profile.
+- **For a folder without a profile, the skill runs only `validate` on it**,
+  says that the dry-run comparison is missing there, and does not write
+  `.cotctl-upgrade.json`: the review is not complete. The same holds for a
+  folder whose dry run checked nothing, as with an expired session, and was
+  not run again.
+- **The `cotctl-upgrade` skill can upgrade only some YAMLs** — the files,
+  folders or pattern you name, such as the YAMLs under one folder. It searches
+  and changes only those files, and still checks the whole folder they are
+  applied from with `validate --dir` and
+  `apply --dir --dry-run --continue-on-error`, so references between files are
+  still checked. It reports the named files one by one, and the files outside
+  them that should follow a change; for the rest it says how many fail, and
+  reports in full any failure that is new there, with whether the changes or
+  the company explain it, and any new cross-reference warning.
+- **Such a review never writes `.cotctl-upgrade.json`**, and neither does a
+  review of one company's folder in a repository that holds several, because
+  the YAMLs outside it were not reviewed: the next full review starts from the
+  same version and reads the same notes again.
+- **A failure the first dry run never checked, in a file the changes did not
+  edit, counts as one that was already there.** A document that dry run
+  skipped, or left without a line of its own because it stopped that file's
+  documents of its kind, can fail once a change clears what held it back; the
+  skill does not take that failure for one the changes caused.
+- **The skill does not conclude from the dry run alone that no failure a
+  release note explains remains.** The dry run stops at a document's first
+  error, so for a document that still fails the skill also reads the
+  cross-reference results of `validate`, searches a generic asset's
+  `asset.property`, which they do not cover, and tells you the document was
+  checked only up to its error. A Workflow in a file `validate` fails, or
+  marked `partial`, is never covered by those results, so the skill searches
+  that Workflow as well and tells you no command checked it.
+- **Every review lists the YAMLs that declare a cotctl `kind` and that
+  neither check reads** — hidden, below `node_modules`, reached through a
+  symbolic link, or, in a full review, outside every folder it checks —
+  whether it covers the whole repository or only the YAMLs you name, and
+  never edits them: an edit through a link changes a file outside the folder
+  you named, and `.cotctl-upgrade.json` does not speak for them. You can edit
+  one yourself, or move it into a checked folder so the next review checks it.
+- **The skill adds `-c <profile>` to a release-note entry's `Check`**, which
+  the notes write without it, and reads the dry run's warnings on stderr, where a
+  deprecated Survey form is named by the Survey's `code` rather than its file.
+- **On a cotctl built from source (`0.0.0-dev`), the skill compares the
+  version file with the newest release note the build carries**, and asks for
+  a rebuild from newer source, not `cotctl update`, when the version file is
+  newer still.
+- **It expects the right message from a revoked ApiToken on a Routine:** an
+  exported Routine, which carries its `id`, gets the message that asks to run
+  `cotctl login`, and `API Error 401` comes only from a Routine written without
+  an `id`. A corrupt session's `Invalid JWT` counts as a dry run that checked
+  nothing, as an expired one does.
+- **It describes the checks' output as they print it:** the four keys of
+  `validate --dir --json`, a document with no `kind`, the
+  single dry-run line of a JobTitle or User file whose documents are refused
+  and of a Workflow file with several documents, how to tell a raw Survey
+  from a simplified one, and the order in which `apply --dir` reads files when
+  a note asks to keep the last of two documents.
+- **It points out a misspelt `kind`.** It tells a kind that `validate --dir`
+  does not recognize but `apply --dir` applies from one cotctl does not know,
+  by the kind `validate` names, so a misspelt one is caught even in a file
+  whose other kinds the dry run checks.
+
+- **`validate` and every apply, `--dry-run` included, point each legacy Survey
+  form at the release-notes entry that explains it.** A form cotctl still
+  accepts under an older name warns (`M1`); a form a later version stops
+  accepting fails that Survey (`M2`) before it is sent, with the same pointer;
+  a multi-document `surveys apply -f` goes on with the other Surveys, and
+  `apply --dir` stops there unless `--continue-on-error` is given. They read
+  the YAML as written, so a document its schema or a `file://` reference
+  refuses still gets them, and each form is reported once.
+- **`validate --dir --json` carries each one as an issue with a `note`**, the
+  id of its entry (`"note": "0.10.0-C19"`), next to `id`, `severity` and
+  `message`, and `validate -f --json` carries them the same way. Without
+  `--json`, `validate -f` prints them on stderr, after the document's header
+  in a file of several documents.
+
+- **A Workflow YAML can say who may export its Tasks, with
+  `taskExportPermissions`**, a list of permission codes like the other five
+  permission lists: the webclient offers the export only in the Table view
+  (`grid`) and only to a user holding one of them, so an empty list offers it
+  to nobody. It only hides the export in the webclient: the API does not
+  restrict it. `validate` and every apply accept it, a `--dry-run` refuses a
+  code no AccessRole grants, reports a `danger` finding when the YAML empties
+  the list — which `--fail-on-destructive` turns into exit `2` — and a
+  `warning` when it drops some of its codes, `workflows export` writes
+  it when the workflow stores it, `workflows get` prints it as `Task export
+  permissions`, and `validate --dir` and the `validate --workflow` checklist
+  read it with the other lists. A new workflow gets `[]`, as one created in the
+  webclient does.
+- **Leaving it out keeps what the workflow has.** A workflow stored before the
+  field existed has none, which reads as empty: its export leaves the key out,
+  and writing `taskExportPermissions: []` over it sends nothing.
+- **It needs a backend that stores the field.** An older one accepts the
+  request and drops the key, so the apply reports success and the next
+  `--dry-run` lists the same change again.
+- **An export written by this version carries the key**: cotctl 0.14.0
+  through 0.16.0 refuse it as an unrecognized root key (exit `1`), and earlier
+  versions drop the key without a word. Under
+  `--legacy-replace-workflows`, a YAML that declares a root field besides
+  `kind`, `id`, `nameCode` and `stateMachines` but leaves this one out empties
+  the stored list, as with the other five lists, so
+  `workflows apply --dry-run --fail-on-destructive` exits `2` over a workflow
+  that stores one. The `validate --workflow` P1 check fails when the Manager
+  role lacks one of its flow codes.
+
+### Changed
+
+- **`cotctl validate --dir --skip-semantic-validation` skips the semantic
+  checks of each Survey, as `apply --dir` does.** It accepted the flag and ran
+  them anyway, so `validate --dir` could fail a directory the apply passes.
+
+- **`cotctl skills install` keeps a record of what it wrote**, in
+  `.cotctl-manifest.json` inside the skills directory, so that a later cotctl
+  can tell an edited skill from one it may replace. It still overwrites the
+  skills it installs, edited or not, but now names on stderr the edited files
+  it replaced and, on a line of its own, the deleted ones it restored, and
+  deletes the files a version no longer ships unless someone edited them.
+  When that record was written by a newer cotctl, or cannot be read, it
+  installs nothing and exits `1`; after a newer one, run `cotctl update` and
+  install again.
+- **`cotctl skills uninstall --all` leaves alone a skills directory whose
+  record a newer cotctl wrote**: it removes nothing there and exits `1`; run
+  `cotctl update` and uninstall again. `cotctl skills uninstall <name>` still
+  removes a single skill there.
+- **`cotctl skills install` and `cotctl skills uninstall` report their errors
+  in English**, and a file an install cannot write is named with its error
+  code, as `skills update` names it: `.claude/skills: could not install the
+  skills (EACCES on .claude/skills/cotctl-apply/SKILL.md)`.
+- **A skill counts as installed only in a folder named exactly as the skill,
+  letter case included**, also on a disk that ignores case, as macOS's does by
+  default: `cotctl skills list` shows a folder such as `COTCTL-APPLY` as not
+  installed, `cotctl skills uninstall --all` leaves it, and the update before
+  every command does not update it. `cotctl skills uninstall <name>` still
+  removes it.
+
+### Fixed
+
+- **Several messages print the control characters of an identifier or a
+  `kind` escaped.** A Survey `code` or another identifier, and an unrecognized
+  `kind`, reached the terminal as the YAML wrote them, so a line break could
+  forge a line of the output and an escape sequence could drive the terminal.
+  These messages now print each control character as `\uXXXX`: the error for an
+  identifier a batch repeats, as in `Survey "a\u000ab" appears 2 times in this
+  batch`, and the documents `apply --dir` skips because of it; the schema error
+  that names a Bot or a Routine; the Survey `code` that names the errors and
+  warnings about its migration or its `file://` references, and the `kind` in
+  the `document N (kind: …)` prefix of another kind's `file://` messages — the
+  path a reference names still prints as written; what the Survey semantic
+  checks report, in `validate` and in `apply`; and a `kind`, both where
+  `apply -f` and `validate` refuse it as unknown, where `apply -f` refuses a
+  file that mixes kinds, and in the header `validate -f` prints for each
+  document of a multi-document file. In the `--json` output of `apply --dir`,
+  `routines apply` and `surveys apply`, the `identifier` of an error, and of a
+  document `apply --dir` skips, carries the same escaped form.
+  What is sent to the server does not change.
+
+- **With `CLAUDE_CONFIG_DIR` set, `cotctl skills install --global` installs
+  in `$CLAUDE_CONFIG_DIR/skills/`, where Claude Code then reads a user's
+  skills.** It wrote to `~/.claude/skills/` whatever the variable said, so
+  with it set the skills never reached Claude Code. `skills list`, `skills
+  update` and `skills uninstall` use the same directory. Skills an earlier
+  version installed under `~/.claude/skills/` stay there: run `cotctl skills
+  install --global` again, and delete the old copies by hand.
+
+- **`cotctl skills install` no longer writes through a symbolic link inside a
+  skill.** Where a file or folder of the skill was a link, the install wrote
+  into whatever the link pointed at; it now replaces the link itself.
+- **`cotctl skills uninstall` takes a single name, never a path, and no
+  hidden name.** A name such as `../skills-old` deleted the `skills-old` folder
+  beside the skills folder, and one such as `cotctl-apply/references` a folder
+  inside a skill; both are now refused before anything is deleted, as is a
+  name that starts with `.`, such as `.cotctl-manifest.json`, the record of the
+  skills installed and uninstalled there. Any other folder there can still be
+  uninstalled by its name.
+
+### Docs
+
+- **The embedded skills describe this version.** `cotalker-docs` lists
+  `release-notes`, `skills` and `mcp` among the commands it searches the
+  documentation for, with a row each: `mcp install` skips its prompts when
+  given `--indices` and `--scope`, and `cotctl skills install` asks before it
+  sets up the MCP connection, even with `-y`. `cotctl-apply` and
+  `cotctl-workflows` say that `apply --dir` and `validate --dir` skip hidden
+  files and folders and `node_modules`, and `cotctl-apply` gives
+  `validate -f --json` and the `M1` issue a deprecated form becomes under it.
+  `cotctl-export` says how a table's text column round-trips: the 1000 it is
+  sent with, the 5000 an earlier export left out, a `min` above the `max` that
+  fails the whole Survey, and a server that refuses a `min` or `max` above
+  1000; `cotctl-surveys` gives the same notice next to the 1000 default. The
+  `cotctl-workflows` reference says the webclient offers the Task export only
+  in the Table view, and which earlier cotctl versions refuse or drop
+  `taskExportPermissions`. Installed skills take this from the first
+  command after the update, unless edited; `cotctl skills update --force`
+  replaces those too.
 
 ## 0.16.0 — 2026-11-04
 
