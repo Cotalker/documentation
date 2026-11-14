@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/lib/validate-bot-versions.ts, src/lib/validate-cron.ts, src/commands/bots.ts, src/commands/bot-types.ts @ a9168d68 (2026-10-23) -->
+<!-- the Skills entries, the table column min and the Survey-only flags: repositories/cotctl/src/lib/skills-refresh.ts, src/lib/skills-manager.ts, src/lib/survey-validator.ts, src/lib/survey-only-flags.ts, docs/troubleshooting.md @ acc260a9 (2026-11-14) -->
 
 Most `cotctl` errors are clear and tell you how to fix them. This page collects the ones you're most likely to hit, organized as **symptom → cause → fix** so you can scan for yours quickly.
 
@@ -34,6 +35,21 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 
 - **Cause:** from 0.16.0, a published advisory names this version of `cotctl` and this command, so the command did not run — `--dry-run` included — and the exit code is `5`.
 - **Fix:** update `cotctl` with `cotctl update`, or with the command the message prints, and run the command again. To run this version anyway, set `COTCTL_ACCEPT_ADVISORY=<id>` with the id the message names; `COTCTL_NO_UPDATE_CHECK` does not turn it off. See [Data-loss advisories](./commands/update.md#data-loss-advisories).
+
+### `[cotctl] Warning: Could not update the Claude Code skills in <dir> (<reason>); set COTCTL_NO_SKILLS_REFRESH=1 to stop trying.`
+
+- **Cause:** from 0.17.0, before every command `cotctl` brings the Claude Code Skills it installed up to its version, and this time it failed in that directory. The reason is an error code such as `EIO`, followed by the file or folder it happened on. A directory `cotctl` cannot write to is skipped without this line.
+- **Fix:** nothing stopped — the command ran anyway — but the line comes back before every command until what it names is fixed. `cotctl skills update` reports the failure per directory, with exit `1`. Fix what it names, or set `COTCTL_NO_SKILLS_REFRESH=1` to stop the attempt. See [Skills](./skills.md#keeping-the-skills-in-step-with-cotctl).
+
+### `Warning: Not updated because it was edited: <skills> in <dir>; …`
+
+- **Cause:** someone edited those Skills after `cotctl` installed them — or put a symbolic link in place of one of their files or folders — so the update to this `cotctl` version left them as they were. It is said at each new version that ships for them something other than what `cotctl` last wrote there.
+- **Fix:** nothing failed. To take this version's content, run the command the line names (`cotctl skills update --<scope> --force`): it copies the edited Skills to `~/.cotctl/skills-backup/` first. To keep the edits, do nothing.
+
+### `<dir>/.cotctl-manifest.json was written by a newer cotctl, so nothing was installed; …`
+
+- **Cause:** `cotctl skills install`, or `cotctl skills uninstall --all` (`… nothing was uninstalled`), found the record a newer `cotctl` keeps of the Skills in that directory, so it changed nothing and exited `1` (0.17.0+).
+- **Fix:** run `cotctl update`, then the same command again. `cotctl skills uninstall <name>` still removes a single Skill there.
 
 ## Authentication & profiles
 
@@ -150,6 +166,16 @@ Most `cotctl` errors are clear and tell you how to fix them. This page collects 
 
 - **Cause:** a `table` question's `max` is below 1 — also in a survey exported from a table saved with `max: 0`. Refused since 0.14.0.
 - **Fix:** remove the `max`; the table then takes up to 50 rows. See [`table`](./resources/surveys/question-types.md#table--a-grid-of-repeating-rows).
+
+### `column "<identifier>": min (<min>) exceeds …`
+
+- **Cause:** a `table`'s `textinput` column has a `min` above its `max` — in the simplified format, above the 1000 the column is sent with when it leaves out `max`. Refused since 0.17.0 by `validate` (exit `1`) and by every apply (exit `2`, `--dry-run` included), also in a survey exported as stored: the webclient could not fill such a cell with any text.
+- **Fix:** lower the `min` to the column's `max` or below — to 1000 when the column declares no `max` — or, for a `min` of 1000 or less, raise the `max` to it. See [`table`](./resources/surveys/question-types.md#table--a-grid-of-repeating-rows).
+
+### `--skip-semantic-validation / --skip-remote-validation are Survey-only.`
+
+- **Cause:** the flag was given with a file or a directory that holds a kind other than Survey. `apply` always refused it; since 0.17.0 `validate` refuses it too, with the same error and exit `1`, where `validate -f` used to accept it and ignore it.
+- **Fix:** remove the flag, or validate and apply the Surveys on their own.
 
 ### `dateMode must be "date" or "date_time"`
 

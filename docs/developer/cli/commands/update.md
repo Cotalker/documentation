@@ -4,7 +4,7 @@ sidebar_label: update
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/update.ts, src/lib/update-check.ts, docs/commands/update.md @ 18d0110b (2026-11-04) -->
+<!-- source: repositories/cotctl/src/commands/update.ts, src/lib/update-check.ts, src/lib/skills-refresh.ts, docs/commands/update.md @ acc260a9 (2026-11-14) -->
 
 From **0.14.0**, `cotctl` keeps itself current. Before every command it checks whether a newer version is published, and `cotctl update` installs the latest one whenever you ask. This page covers both, and the [data-loss advisories](#data-loss-advisories) that check can stop a command for, from **0.16.0**.
 
@@ -127,11 +127,15 @@ From **0.16.0** it does not turn off the [data-loss advisories](#data-loss-advis
 
 The check is also skipped for `--version`, for `--help`, and for `cotctl update` itself.
 
+From **0.17.0** a second step runs before a command: once `cotctl` has changed version, it brings the Claude Code Skills installed with `cotctl skills install` up to it. `COTCTL_NO_UPDATE_CHECK` leaves that step alone; it has its own variable, `COTCTL_NO_SKILLS_REFRESH=1`.
+
 <div className="alert alert--info">
 
-**Updating `cotctl` does not update your installed Skills.** The [Skills](../skills.md) are files copied from the version that installed them. Run `cotctl skills install` again after an update, in the same scope (`--local` or `--global`; with `-y` and no scope it installs `--local`), to bring them in line with the new version.
+**From 0.17.0, updating `cotctl` updates your installed Skills.** The first command the new version runs brings the [Skills](../skills.md#keeping-the-skills-in-step-with-cotctl) it installed — globally and in the current directory's `.claude/skills/` — up to it, and leaves alone any Skill someone edited since `cotctl` last wrote it. The exception is the first command of 0.17.0 itself: a Skill installed by 0.16.0 or earlier carries no record of what `cotctl` wrote, so that command copies it to `~/.cotctl/skills-backup/<date>/` and rewrites it, edited or not, unless its files already match. `cotctl skills update` does the same on request. Versions before 0.17.0 never touched the installed Skills: after updating to one of them, `cotctl skills install` again in the same scope was the way to bring them in line.
 
 </div>
+
+After an update, [`cotctl release-notes --since <previous version>`](./release-notes.md) prints what the versions in between changed for your YAML files.
 
 ## See also
 

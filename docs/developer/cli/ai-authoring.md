@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/commands/bot-types.ts, src/skills/{cotctl-routines,cotctl-bots,cotctl-workflows}/ @ 18d0110b (2026-11-04) -->
+<!-- Skills that follow cotctl, cotctl-upgrade and release-notes: repositories/cotctl/src/lib/skills-refresh.ts, src/commands/release-notes.ts, docs/commands/skills.md @ acc260a9 (2026-11-14) -->
 
 So far this guide has treated `cotctl` as a tool *you* drive by hand. But `cotctl` is also the foundation for something bigger: **authoring Cotalker configurations with the help of an AI agent.** This page explains how that ecosystem fits together — and why it makes you, as a partner, dramatically faster.
 
@@ -46,7 +47,7 @@ A **Skill** is an installable package that gives the agent specialized knowledge
 cotctl skills install
 ```
 
-Once installed, asking the agent to "create a purchase-orders workflow" produces YAML that follows Cotalker's structure and naming conventions, because the relevant Skill is guiding it. The full command reference — listing, scopes, and the available Skills — is on the [Skills](./skills.md) page.
+Once installed, asking the agent to "create a purchase-orders workflow" produces YAML that follows Cotalker's structure and naming conventions, because the relevant Skill is guiding it. From **0.17.0** the installed Skills follow the `cotctl` that runs them: after an update, its first command brings them up to the new version, leaving alone any Skill you edited. The full command reference — listing, scopes, updates, and the available Skills — is on the [Skills](./skills.md) page.
 
 ### 3. RAG — live documentation grounding
 
@@ -102,7 +103,11 @@ To make those error paths fire, the Skills:
 - **tell you when a failure cannot be routed at all**, by how the bot fails rather than by the branches it declares — `PBGiphy`, `PBWhatsApp`, the `ST*` bots and `CBCheckOTsched` never report their own failures on `ERROR`, and a `PBScript` stage's `ERROR` does not see a failure inside the Routine it invokes;
 - **test both branches before the Routine or bot goes live** — two runs, one forced through `ERROR`, read with `cotctl logs list` and `cotctl logs get --parts results`; for a Routine, two `cotctl routines test` runs found with `cotctl logs list --owner TEST`.
 
-The rule behind it is in [Give every stage that can fail an error path](./resources/routines.md#give-every-stage-that-can-fail-an-error-path). Installed Skills are files on disk: run `cotctl skills install` again after updating `cotctl` to get this behaviour.
+The rule behind it is in [Give every stage that can fail an error path](./resources/routines.md#give-every-stage-that-can-fail-an-error-path). Installed Skills are files on disk: from 0.17.0 they are brought up to the `cotctl` that runs them before every command, unless you edited them (see [Keeping the Skills in step with cotctl](./skills.md#keeping-the-skills-in-step-with-cotctl)); with an earlier `cotctl`, run `cotctl skills install` again after updating.
+
+### Upgrading YAML you already have
+
+A new `cotctl` version can change what an existing YAML needs — a key renamed, a check added. Since **0.17.0**, [`cotctl release-notes`](./commands/release-notes.md) prints those changes, version by version, in a form written for an agent, and the `cotctl-upgrade` Skill uses them: ask Claude Code to bring the repository up to date with the installed `cotctl`, and it reads the notes since the version the repository was last reviewed against, proposes the changes as a diff, and checks them with `cotctl validate` and `apply --dry-run` — without applying anything. See [Upgrading your YAML](./skills.md#upgrading-your-yaml-cotctl-upgrade).
 
 <div className="alert alert--primary">
 

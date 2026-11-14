@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/commands/{apply,surveys,properties,workflows}.ts @ a9168d68 (2026-10-23) -->
+<!-- the pinned version and the Skills step: repositories/cotctl/src/lib/skills-refresh.ts, docs/advanced-configuration.md @ acc260a9 (2026-11-14) -->
 
 Everything `cotctl` does on your laptop, it can do unattended in a pipeline. Running it in CI/CD is what turns "a partner deploys changes by hand" into "changes are validated and deployed automatically on every merge" — repeatable, reviewable, and not dependent on anyone remembering the steps. This page shows the recommended shape and, importantly, how to handle credentials safely.
 
@@ -99,7 +100,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install -g @cotctl/cli@0.16.0
+      - run: npm install -g @cotctl/cli@0.17.0
       # Offline — no credentials required
       - run: cotctl validate --dir config/
 
@@ -116,7 +117,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install -g @cotctl/cli@0.16.0
+      - run: npm install -g @cotctl/cli@0.17.0
       - run: cotctl apply --dir config/ -y
 ```
 
@@ -251,6 +252,8 @@ Two settings make a job predictable:
 - **Set `COTCTL_NO_UPDATE_CHECK=1`** to turn the update notice off. Any value other than empty, `0`, `false` or `no` turns it off.
 
 **From 0.16.0, one thing the variable does not turn off: [data-loss advisories](./commands/update.md#data-loss-advisories).** When a published advisory names the pinned version and a command the job runs, that command does not run — `--dry-run` included — and exits `5`, after naming the loss and the version that fixes it on stderr. The lookup that brings the advisories still runs at most once every 12 hours while `~/.cotctl` can be written — once per job on a runner that starts with an empty home directory — and waits up to 1.5 seconds where npm cannot be reached. A job that meets exit `5` moves its pin to the fixed version and runs again; to run the affected version anyway, set `COTCTL_ACCEPT_ADVISORY` to the id the message names (several ids separated by commas or spaces). A job pinned to a version before 0.16.0 never meets exit `5`: those versions do not read advisories.
+
+**From 0.17.0, a job can find its checkout changed.** Before every command, `cotctl` brings the Claude Code Skills it installed up to its own version — globally and in the `.claude/skills/` of the working directory. A job whose checkout holds `cotctl` Skills under `.claude/skills/` — a repository that commits them, say — finds it changed after the first command of a new `cotctl` version: the Skills that version changes are rewritten, and `.cotctl-manifest.json` is written next to them even when none changed. `cotctl` names what it did in one `[cotctl]` line on stderr and runs the command as usual, but a later step that requires a clean tree fails. Set `COTCTL_NO_SKILLS_REFRESH=1` when a job must leave the checkout as it found it, such as one that commits what it finds. See [Skills](./skills.md#keeping-the-skills-in-step-with-cotctl).
 
 To move a pinned job forward, change the pin. Outside a pipeline, `cotctl update` installs the latest version on demand — see [update](./commands/update.md).
 
