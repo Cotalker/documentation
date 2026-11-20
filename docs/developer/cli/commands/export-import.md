@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/commands/{surveys,roles,property-types,properties,workflows,users,jobtitles,bots,bot-types,routines,schedules,slas}.ts @ 18d0110b (2026-11-04) -->
+<!-- 0.17.0: a table text column's max and taskExportPermissions on export — repositories/cotctl/src/transformers/simplified.transformer.ts, src/resources/workflow.resource.ts @ acc260a9 (2026-11-14) -->
 
 So far we've talked about pushing YAML *to* an environment. Just as often, you'll want to pull existing configuration *out* of one — to bring a customer's existing setup under version control, to copy a resource between environments, or simply to see how something is built. That round-trip — **export → edit → apply** — is one of the most useful patterns in `cotctl`.
 
@@ -126,7 +127,9 @@ Two consequences to plan for:
 
 **`properties export` writes Property references by code** (0.16.0). In a `COTProperty` node of `schemaInstance` it writes the `code` of the Property referenced, where it used to write its `_id`, so the export round-trips by code. An `_id` it cannot name — a deleted or deactivated Property's — stays, with a warning, and so does every reference under a node whose PropertyType is not active or cannot be found (an inactive one included, when the profile lacks `admin-properties-read`). Apply such an export with 0.16.0 or later: an older `cotctl` sends the code as written and the backend refuses it. An export taken before 0.16.0 still applies, and a script that reads ids out of an export now reads codes.
 
-**`workflows export`** writes `taskPaginationLimit` and `defaultSortBy` when the Workflow stores them (0.16.0); see [Workflows](../resources/workflows.md).
+**`workflows export`** writes `taskPaginationLimit` and `defaultSortBy` when the Workflow stores them (0.16.0), and `taskExportPermissions` (0.17.0); see [Workflows](../resources/workflows.md#who-may-export-tasks-taskexportpermissions). An export that carries `taskExportPermissions` is refused by `cotctl` 0.14.0 through 0.16.0 as an unrecognized root key, with exit `1`; earlier versions drop the key without a word.
+
+**`surveys export` writes a table text column's `max` unless it is 1000** (0.17.0), the default such a column is now sent with — 5000 included, which earlier versions left out. Re-applying an export made with 0.17.0, on a server without the 1000-character cap, keeps the column as stored; an export made with an earlier `cotctl`, applied with 0.17.0, lowers a column stored with 5000 to 1000 on its first apply. See [Question types → `table`](../resources/surveys/question-types.md#table--a-grid-of-repeating-rows).
 
 A few exports still send an update on their first re-apply: `users export` leaves out an inactive access role (with a warning), so the re-apply removes it from the user; `routines export` writes the routine's `code` as its `display` when it stores none; the first re-apply of a survey built in the web app rewrites it in `cotctl`'s shape — in the raw format too; and the first re-apply of a survey that stores the legacy `subtype: long_text` sends `short_text` in its place.
 

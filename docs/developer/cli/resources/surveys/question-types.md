@@ -6,6 +6,7 @@ displayed_sidebar: developer
 
 <!-- source: repositories/cotctl/src/transformers/simplified.transformer.ts, src/schemas/survey.schema.ts, docs/surveys/question-types/*.md @ a9168d68 (2026-10-23) -->
 <!-- the `table` section: repositories/cotctl/docs/surveys/question-types/table.md, src/lib/survey-validator.ts @ a9168d68 (2026-10-23) -->
+<!-- a `table` text column's `max` and `min`: repositories/cotctl/src/transformers/simplified.transformer.ts, src/lib/survey-validator.ts, src/lib/constants.ts, docs/surveys/question-types/table.md @ acc260a9 (2026-11-14) -->
 
 Cotalker offers 14 question types. Every question shares the [common fields](../surveys.md#questions) — `type`, `identifier`, `label`, and the optional `help`, `required`, `isReadOnly`, `conditionalDisplay`, `exec`. This page covers what's *specific* to each type: the extra fields it needs and the gotchas worth knowing before you author one.
 
@@ -50,7 +51,9 @@ Leaving `subtype` out is always valid. An export of a survey that stores a value
   max: 5000       # max length (default 5000)
 ```
 
-`long_text` is a legacy value older surveys store. It is still accepted, with a warning, and sent as `short_text` — what the webclient's survey builder does when it loads the question — so the first apply of an unchanged survey that stores it writes `short_text` (`Would UPDATE` in a dry run). Write `short_text`, or no `subtype`, to silence the warning.
+The 5000 default is a standalone question's. A `textinput` **column** of a `table` defaults to 1000 since 0.17.0 — see [`table`](#table--a-grid-of-repeating-rows).
+
+`long_text` is a legacy value older surveys store. It is still accepted, with a warning, and sent as `short_text` — what the webclient's survey builder does when it loads the question — so the first apply of an unchanged survey that stores it writes `short_text` (`Would UPDATE` in a dry run). Write `short_text`, or no `subtype`, to silence the warning. Since 0.17.0 the warning ends with the release-notes entry that explains it, `(cotctl release-notes 0.15.0-C6)`, and `--skip-semantic-validation` no longer silences it — see [Migration diagnostics](../../commands/validate.md#migration-diagnostics).
 
 ### `textnumber` — numbers
 
@@ -299,6 +302,22 @@ Since 0.14.0 a table `max` below 1 is refused — `max must be at least 1 row �
 Column identifiers are unique *within their own table*, not across the survey, so the same identifier may appear in two different tables. Their charset is `^[a-zA-Z0-9_]+$` — stricter than a question identifier, and with no dots, dashes or spaces, which would break the per-cell error paths. A header caps at 50 characters.
 
 Seven types are allowed as a column: `textinput`, `textnumber`, `listquestion`, `datetime`, `person`, `property` and `api`. Plain `text` is not one of them, and a table cannot nest another table. **A selection column is single-select**: leave `max` unset and it becomes 1, and declaring `max: 3` is rejected — the webclient cannot fill a multi-select column inside a table.
+
+**A text column's `max` defaults to 1000 characters** (0.17.0+), not the 5000 of a standalone `textinput`. In the simplified format, a `textinput` column that leaves out `max` is sent with `max: 1000`, where earlier versions sent 5000; the raw format sends a column as written. So the first apply of an unchanged YAML over a column stored with 5000 lowers it to 1000 — `Would UPDATE` in a dry run, with the column's `max` in the diff — and the applies after it change nothing. `surveys export` leaves out a text column's `max` only when it is 1000 and writes any other value, 5000 included, so re-applying an export made with 0.17.0, on a server without the 1000-character cap, keeps the column as stored. An export made with an earlier `cotctl` left out the 5000, so its first apply lowers the column to 1000; an export made with 0.17.0, applied with an earlier `cotctl`, writes 5000 again. Nothing to do for a column whose answers fit in 1000 characters; a longer text belongs in a standalone `textinput` question, which keeps its 5000.
+
+**A text column's `min` may not exceed its `max`** (0.17.0+). `validate` fails such a column with exit `1`, and every apply, `--dry-run` included, refuses it with exit `2` before writing anything, with a message that names the column:
+
+```
+column "observaciones": min (1500) exceeds the max of 1000 a text column is sent with when it leaves max out — the webclient could not fill the cell with any text. Lower min to 1000 or below
+```
+
+In the simplified format a column that leaves out `max` is compared with the 1000 it is sent with, and a quoted `min` or `max` counts as the number it spells, as the server reads it; a raw-format column without `max` is sent without one and is not compared. `cotctl` used to send such a column and the server stored it, but its `min` is never usable as written: a webclient or server without the 1000-character cap refuses every non-empty cell, and only one that applies the cap lowers the `min` to the `max`. Fix it by lowering the `min` to the `max` or below — to 1000 when the column declares no `max` — or, for a `min` of 1000 or less, by raising the `max` to it. That includes a column exported as stored: neither the webclient's survey builder nor the server compares the two, so the export of a survey that stores one is refused whole, even when the change being applied does not touch the table. It is a semantic check, so `--skip-semantic-validation` turns it off.
+
+<div className="alert alert--info">
+
+**A server may cap a table's text column at 1000 characters.** Where it does, it refuses a column `min` or `max` above 1000, which `cotctl` still accepts: to apply the YAML there, lower it to 1000, or move the longer text to a standalone `textinput` question. A webclient whose survey builder applies the same cap marks such a column invalid and limits its cells to 1000 characters. An answer already stored with a cell over 1000 characters still shows, but editing it in the webclient needs that cell shortened.
+
+</div>
 
 <div className="alert alert--warning">
 

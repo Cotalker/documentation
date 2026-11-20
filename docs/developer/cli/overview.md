@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/index.ts @ a9168d68 (2026-10-23) -->
+<!-- the release-notes command: repositories/cotctl/src/commands/release-notes.ts @ acc260a9 (2026-11-14) -->
 
 <span className="hero__title">Cotalker CLI — cotctl</span>
 <br/>
@@ -66,6 +67,7 @@ On top of the resource groups sit the commands that operate on them and the tool
 | `cotctl logs` | Read what a routine did when it ran: list the runs and download their logs as JSON (see [logs](./commands/logs.md)) |
 | `cotctl skills` / `cotctl mcp` | Install the Claude Code Skills and connect the documentation RAG for [AI-assisted authoring](./ai-authoring.md) |
 | `cotctl update` | Update `cotctl` to the latest version — it also checks before every command, from 0.14.0 (see [update](./commands/update.md)) |
+| `cotctl release-notes` | Print what each `cotctl` version changed for YAML files, written for an AI agent upgrading them — from 0.17.0 (see [release-notes](./commands/release-notes.md)) |
 
 Don't worry about learning all of these at once. Most partners start with surveys and workflows and pick up the rest as projects require them.
 

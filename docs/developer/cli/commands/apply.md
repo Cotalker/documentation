@@ -4,7 +4,7 @@ sidebar_label: apply
 displayed_sidebar: developer
 ---
 
-<!-- source: repositories/cotctl/src/commands/apply.ts @ 18d0110b (2026-11-04) -->
+<!-- source: repositories/cotctl/src/commands/apply.ts, src/lib/yaml-discovery.ts, src/lib/survey-validator.ts, src/lib/migration-diagnostics.ts, docs/commands/apply.md @ acc260a9 (2026-11-14) -->
 
 `cotctl apply` is the command that actually changes a Cotalker environment. It takes your YAML and makes the platform match it — creating resources that don't exist and updating those that do. This is the verb you'll use most, so it's worth understanding well.
 
@@ -13,7 +13,7 @@ There are two ways to run it, depending on whether you're deploying one file or 
 | Mode | Flag | Purpose |
 |---|---|---|
 | Single file | `-f <file>` | Apply one YAML file of the seven kinds marked ✅ below; the other five go through their own command (`cotctl bots apply`, …) or `--dir` |
-| Directory | `--dir <path>` | Apply every YAML file in a folder, in the correct dependency order between kinds |
+| Directory | `--dir <path>` | Apply the YAML files below a folder, in the correct dependency order between kinds — hidden folders and `node_modules` skipped since 0.17.0 |
 
 <div className="alert alert--primary">
 
@@ -67,13 +67,13 @@ The unified `apply` is deliberately lean — a common core plus a few kind-speci
 | `--dry-run` | all | Validate and show what *would* be sent, without applying |
 | `--diff <mode>` | PropertyType, Property, Workflow, Survey | **New in 0.14.0.** How much per-field diff a `--dry-run` prints under each `Would CREATE` / `Would UPDATE` line: `off`, `compact` (default) or `verbose`. Since 0.16.0, `verbose` also lists what an entity with nothing to change keeps, under its `No changes` line |
 | `-y, --yes` | all | Skip confirmation prompts (warnings still print to stderr) — all but one: emptying the `accessRoles` of the system `admin` or `bot` JobTitle asks you to type its code even with `-y` |
-| `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind |
+| `--skip-semantic-validation` | Survey only | Skip semantic checks — hard error on any other kind. Since 0.17.0 it does not silence the [migration warnings](./validate.md#migration-diagnostics) about a Survey's legacy forms |
 | `--skip-remote-validation` | Survey only | Skip the remote checks — identifiers, references (Survey, PropertyType, JobTitle, Property) and permission names — hard error on any other kind. A missing sub-survey and an unknown AccessRole in `permissions` still stop the apply, which resolves both before writing; a `--dry-run` with the flag doesn't report them. A YAML that sets the survey's `id` still has its `code` compared with the server's, and a `--dry-run` does report that one |
 | `--allow-reactivate` | User, JobTitle | Permit `isActive: true` on a currently-inactive record (otherwise blocked) |
 | `--notify-email` | User only | Send the welcome email on create (incompatible with a `password` in the YAML) |
 | `--lax-code` | JobTitle only | On *update* only, downgrade the code-format check to a warning when the existing record's code is already non-conforming |
 | `--rollback` | Workflow only | On a mid-apply error, deactivate the resources created during the partial apply |
-| `-q, --quiet` | all | Suppress advisory warnings and the `--dry-run` diff. Errors and destructive findings still surface |
+| `-q, --quiet` | all | Suppress advisory warnings and the `--dry-run` diff — since 0.17.0 also the [migration warnings](./validate.md#migration-diagnostics) about a Survey's legacy forms, which used to print regardless. Errors and destructive findings still surface |
 | `--allow-script-bots` | Workflow | Opt in to `PBScript` / `CCJS` / `ESMCode` bot stages, which run arbitrary JavaScript. Without it the apply is refused before any write |
 | `--legacy-replace-workflows` | Workflow only | Escape hatch that restores pre-0.7.0 destructive replace semantics. Prints a warning to stderr. **Deprecated, with no removal version announced** — earlier releases promised 0.8.0, which never happened |
 
@@ -158,6 +158,10 @@ The dry run is meant to reach the apply's verdict. Since **0.16.0** it refuses, 
 - **A Workflow whose state machines reference something that does not exist** — a `cardLabels` or `allowedExtensions` code, the state machine's `propertyType`, its asset's `propertyType`, a generic asset's `property`, or a State's `property`. It reports `PropertyType "<code>" not found` or `Property "<code>" not found` and exits `1`, for a Workflow the server has and for one it does not have yet. Under `apply --dir --dry-run`, a PropertyType or Property the same directory declares counts as present. When the dry run cannot read the Properties a state machine references, it says so in a warning and leaves the verdict to the apply.
 - **A Survey under `--skip-semantic-validation`** that the apply refuses when it builds the survey, such as a single-value `personFilter.jobs`: the dry run now reports that error with exit `2`.
 - **Properties and PropertyTypes** — see the next section.
+
+**Since 0.17.0, every apply — `--dry-run` included — refuses a table's text column whose `min` is above its `max`**, with exit `2` before writing anything, naming the column. In the simplified format a column that leaves out `max` is compared with the 1000 it is sent with. `cotctl` used to send such a column, and the server stored it, but its `min` is never usable as written. A Survey exported as stored is refused whole when it holds one, even when the change being applied does not touch the table: lower that `min` first. `--skip-semantic-validation` turns the check off. See [Question types → `table`](../resources/surveys/question-types.md#table--a-grid-of-repeating-rows).
+
+A Survey form a later version no longer accepts (`M2`) stops that Survey before it is sent, with a pointer to the release-notes entry that explains it: a multi-document `surveys apply -f` goes on with the other Surveys, while `apply --dir` stops there unless `--continue-on-error` is given. No form is removed yet; the forms still accepted only warn (`M1`).
 
 ### Properties and PropertyTypes
 
@@ -255,6 +259,8 @@ For anything beyond a single file — and especially for a scaffolded workflow, 
 ```bash
 cotctl apply --dir <path> -c <profile> [options]
 ```
+
+It reads every `.yaml` and `.yml` file below the directory, at any depth. **From 0.17.0, hidden files and folders and `node_modules` below it are skipped** without a message — a name that starts with `.`, such as `.git/`, `.claude/` or `.gitlab-ci.yml`. Before, in a repository with the [Skills](../skills.md) installed locally, the example YAMLs under `.claude/skills/` were read too: the preview listed them, and with `-y` they joined the batch, most often failing it. The directory you pass is read even when its own name starts with `.`. To apply YAML kept in a hidden folder, move it out of that folder, pass that folder to `--dir`, or pass each file to `-f`. Symbolic links below the directory are not followed.
 
 ### Why order matters (and why you don't have to think about it)
 

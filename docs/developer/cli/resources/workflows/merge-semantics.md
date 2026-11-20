@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/docs/workflows/merge-semantics.md, src/lib/apply-helpers.ts @ 82e613d (2026-10-10) -->
+<!-- taskExportPermissions: repositories/cotctl/src/lib/apply-helpers.ts, src/lib/update-plan.ts @ acc260a9 (2026-11-14) -->
 
 This is the most important page to read before you edit a workflow that's already live. It explains what `cotctl workflows apply` does with the fields you *didn't* write — and why an innocent-looking `bots: []` can silently wipe automation that someone built in the web builder.
 
@@ -53,7 +54,7 @@ Now say you apply this instead:
 ## Which fields this applies to
 
 - **Workflow (Group):** `nameDisplay`, `nameTranslations` (a declared object keeps the languages it omits), `color`, `icon`, `weight`, `isActive`.
-- **TaskGroup:** the five permission arrays, `hideClosedAfterDays`, `availableViews`, `defaultView`, `taskPaginationLimit`, `defaultSelectedTaskTab`, `defaultSortBy`. A declared permission list replaces the stored one, and when it leaves out entries the TaskGroup has, `apply` names them on stderr, list by list.
+- **TaskGroup:** the six permission arrays (`taskExportPermissions` among them since 0.17.0), `hideClosedAfterDays`, `availableViews`, `defaultView`, `taskPaginationLimit`, `defaultSelectedTaskTab`, `defaultSortBy`. A declared permission list replaces the stored one, and when it leaves out entries the TaskGroup has, `apply` names them on stderr, list by list.
 - **Each level is applied by presence.** The Group is patched only when your YAML declares one of its fields, and the TaskGroup only when it declares one of its own — so a YAML that sets only `nameDisplay` sends no TaskGroup update, and the reverse. A YAML that declares **no** root field at all runs in [SM-only mode](../workflows.md#sm-only-mode).
 - **State machine:** `name`, `description`, `isActive`; a declared `asset` is completed from the stored one (its `property` only while the asset keeps its `propertyType`); `cardLabels` and `allowedExtensions` as described on the [Workflows](../workflows.md#card-labels-task-extensions-and-the-default-tab) page.
 - **State machine — `requiredSurvey`:** when you omit the whole block, the server's StartForm (survey, bots, permissions) is left fully intact. If you write a partial block, each sub-field follows YAML-wins-else-preserve.
@@ -122,7 +123,7 @@ If you genuinely want the old destructive behavior — omitted fields wiped on t
 cotctl workflows apply -f workflow.yaml --legacy-replace-workflows
 ```
 
-It builds every level without the server's existing state, filling in the create defaults, so anything you didn't write is cleared. Since 0.14.0 its `--dry-run` shows that write: a permission list it would empty is a `DANGER` finding, so `--fail-on-destructive` exits `2` on it. Since 0.16.0 it names every `cardLabels` slot of a state machine it updates, `null` where the YAML declares none, so a backend that protects stored labels from an empty body doesn't refuse it; the labels end up cleared as before. It prints a warning and applies only to workflows. It was announced for removal in 0.8.0, which did not happen, and no removal version is announced now — treat it as deprecated and declare the fields you want to keep instead. You almost never want it.
+It builds every level without the server's existing state, filling in the create defaults, so anything you didn't write is cleared. Since 0.14.0 its `--dry-run` shows that write: a permission list it would empty is a `DANGER` finding, so `--fail-on-destructive` exits `2` on it. Since 0.16.0 it names every `cardLabels` slot of a state machine it updates, `null` where the YAML declares none, so a backend that protects stored labels from an empty body doesn't refuse it; the labels end up cleared as before. Since 0.17.0 that includes `taskExportPermissions`: a YAML that declares a root field besides `kind`, `id`, `nameCode` and `stateMachines` but leaves it out empties the stored list — and every YAML written for an earlier `cotctl` leaves it out. A YAML with no root field besides those four does not write the Workflow's lists. It prints a warning and applies only to workflows. It was announced for removal in 0.8.0, which did not happen, and no removal version is announced now — treat it as deprecated and declare the fields you want to keep instead. You almost never want it.
 
 ## See also
 

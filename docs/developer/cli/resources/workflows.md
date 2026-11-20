@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/src/commands/workflows.ts, src/schemas/workflow.schema.ts, src/resources/workflow.resource.ts (~208-221), docs/workflows/yaml-structure.md @ a9168d68 (2026-10-23) -->
+<!-- taskExportPermissions: repositories/cotctl/src/schemas/workflow.schema.ts, src/lib/apply-helpers.ts, src/lib/update-plan.ts, src/lib/dry-run-destructive.ts, docs/workflows/yaml-structure.md @ acc260a9 (2026-11-14) -->
 
 A **workflow** models a process: a task that moves through a series of states, from creation to closure. Workflows are the most powerful — and the most structured — resource in Cotalker. You rarely write one from scratch: [`cotctl workflows scaffold`](../commands/scaffolding.md) generates a correct skeleton, and this page explains what that skeleton contains so you can customize it with confidence.
 
@@ -56,6 +57,7 @@ The schema defines these top-level fields:
 | `readPermissions` | No | Permission codes — who can read tasks |
 | `writePermissions` | No | Permission codes — who can create tasks |
 | `taskImportPermissions` | No | Permission codes — who can import tasks |
+| `taskExportPermissions` | No | Permission codes — who can export tasks (0.17.0+). See [below](#who-may-export-tasks-taskexportpermissions) |
 | `taskFollowerPermissions` | No | Permission codes — who can be added as followers |
 | `taskEditorPermissions` | No | Permission codes — who can edit tasks |
 | `availableViews`, `defaultView` | No | Which UI views (e.g. kanban, list) are available |
@@ -84,11 +86,39 @@ For both, `--dry-run` shows the change in the workflow's diff, and `workflows ex
 
 </div>
 
+#### Who may export Tasks: `taskExportPermissions`
+
+**New in 0.17.0.** A list of permission codes, like the other five permission lists, that says who may export the Workflow's Tasks:
+
+```yaml
+taskImportPermissions:
+  - purchase_orders:admin
+taskExportPermissions:
+  - purchase_orders:admin
+  - purchase_orders:view-all
+```
+
+The webclient offers the export only in the Table view (`grid`), and only to a user holding one of the codes, so an empty list offers it to nobody. **It only hides the export in the webclient: the API does not restrict it.**
+
+- **Leaving it out keeps what the workflow has.** A new workflow gets `[]`, as one created in the webclient does. A workflow stored before the field existed has none, which reads as empty: its export leaves the key out, and writing `taskExportPermissions: []` over it sends nothing.
+- **The dry run checks it with the other lists.** A `--dry-run` refuses a code no AccessRole grants, reports a `danger` finding when the YAML empties the list — which `--fail-on-destructive` turns into exit `2` — and a `warning` when it drops some of its codes. `validate --dir` and the `validate --workflow` checklist read it with the other lists.
+- **`workflows export` writes it** when the workflow stores it, and `workflows get` prints it as `Task export permissions`.
+
+<div className="alert alert--warning">
+
+**It needs a backend that stores the field.** An older one accepts the request and drops the key, so the apply reports success and the next `--dry-run` lists the same change again.
+
+**An export written by 0.17.0 carries the key**, and an older `cotctl` cannot apply it as is: 0.14.0 through 0.16.0 refuse it as an unrecognized root key (exit `1`), and earlier versions drop the key without a word.
+
+**Under `--legacy-replace-workflows`, leaving it out empties it.** A Workflow YAML that declares a root field besides `kind`, `id`, `nameCode` and `stateMachines` — such as `nameDisplay` or `readPermissions` — but leaves `taskExportPermissions` out empties the stored list, as it empties the other five lists the YAML leaves out; a YAML with no root field besides those four does not write the Workflow's lists. Every Workflow YAML written for an earlier `cotctl` leaves it out, so `workflows apply --dry-run --fail-on-destructive` with that flag exits `2` over a workflow that stores codes, such as ones set in the webclient. Declare the list, or apply without the flag. See [The escape hatch](./workflows/merge-semantics.md#the-escape-hatch).
+
+</div>
+
 Since 0.14.0 a key the root doesn't declare is **refused**, by `validate` and every apply (exit `1`), instead of dropped without a word. The usual cause is a state-machine field written one level too high — `cardLabels` at the root — and the message says where it goes (`stateMachines[].cardLabels`); a root `code` or `name` is pointed at `nameCode` or `nameDisplay`.
 
 <div className="alert alert--danger">
 
-**Permission fields are literal permission codes — not AccessRole names.** The five permission arrays (`readPermissions`, `writePermissions`, `taskImportPermissions`, `taskFollowerPermissions`, `taskEditorPermissions`) hold **permission code strings** like `web-admin-write` or `purchase_orders:view`, and `cotctl` sends them to the server **verbatim** — it does *not* resolve them to AccessRole IDs. This is different from surveys, whose `permissions` field *does* take AccessRole names. Put the permission code itself here, exactly as it appears on the role that grants it. (Older workflows may still carry raw ObjectIds in these fields from a previous `cotctl` version; export surfaces those with a legacy marker so you can replace them.)
+**Permission fields are literal permission codes — not AccessRole names.** The six permission arrays (`readPermissions`, `writePermissions`, `taskImportPermissions`, `taskExportPermissions`, `taskFollowerPermissions`, `taskEditorPermissions`) hold **permission code strings** like `web-admin-write` or `purchase_orders:view`, and `cotctl` sends them to the server **verbatim** — it does *not* resolve them to AccessRole IDs. This is different from surveys, whose `permissions` field *does* take AccessRole names. Put the permission code itself here, exactly as it appears on the role that grants it. (Older workflows may still carry raw ObjectIds in these fields from a previous `cotctl` version; export surfaces those with a legacy marker so you can replace them.)
 
 </div>
 

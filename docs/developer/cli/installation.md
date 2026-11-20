@@ -5,6 +5,7 @@ displayed_sidebar: developer
 ---
 
 <!-- source: repositories/cotctl/package.json @ 82e613d (2026-10-10) -->
+<!-- the Skills after an update: repositories/cotctl/src/lib/skills-refresh.ts, docs/installation.md @ acc260a9 (2026-11-14) -->
 
 In this page you'll get `cotctl` installed on your machine and confirm it's working. It takes about two minutes. If you've ever installed a global npm package before, this will feel familiar.
 
@@ -71,6 +72,8 @@ From **0.14.0**, `cotctl` checks for a newer version before every command. On a 
 Automatic updates apply only to a copy installed with `npm install -g`. An earlier version never looks for an update, so moving to 0.14.0 takes the `npm install -g @cotctl/cli` above, once. The details — and `COTCTL_NO_UPDATE_CHECK`, which turns the update notice off — are on the [update](./commands/update.md) page.
 
 From **0.16.0**, the check does more than announce on a version with a known data loss: a command a published advisory names does not run, and exits `5` with the version that fixes it. `COTCTL_NO_UPDATE_CHECK` does not turn that off; see [Data-loss advisories](./commands/update.md#data-loss-advisories). An earlier version never reads advisories.
+
+From **0.17.0**, the next command after an update also brings the Claude Code Skills installed with [`cotctl skills install`](./skills.md) up to the new version, leaving alone any Skill someone edited — except Skills that 0.16.0 or earlier installed: the first command a 0.17.0 or later `cotctl` runs where they are installed copies each to `~/.cotctl/skills-backup/<date>/` and rewrites it, edited or not, unless its files already match. `COTCTL_NO_SKILLS_REFRESH=1` turns that step off; see [Keeping the Skills in step with cotctl](./skills.md#keeping-the-skills-in-step-with-cotctl). To see what a new version changed for your YAML files, run [`cotctl release-notes`](./commands/release-notes.md).
 
 **In a CI pipeline, pin the version instead** — `npm install -g @cotctl/cli@<version>` — and set `COTCTL_NO_UPDATE_CHECK=1`, so a job runs the version it names until you move the pin. [CI/CD](./ci-cd.md#new-cotctl-versions-in-a-pipeline) has the worked example.
 

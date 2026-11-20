@@ -350,6 +350,7 @@ module.exports = {
             'developer/cli/commands/scaffolding',
             'developer/cli/commands/logs',
             'developer/cli/commands/update',
+            'developer/cli/commands/release-notes',
           ],
         },
         {
