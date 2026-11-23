@@ -201,7 +201,7 @@ Two things still travel exactly as written: **each question a survey YAML declar
 
 </div>
 
-**Where the backend supports it, the server reports the changes a Routine update made** (0.16.0), unless the YAML reorders `body.stages`: that update is still written as on older backends, with a warning saying so. Otherwise, there, a routine input written over another stored one keeps nothing of it, and `--dry-run` asks the server to validate the update without saving it; a profile without write permission gets `cotctl`'s own preview, with a warning. See [Routines](../resources/routines.md#immutability-and-updates).
+**Where the backend supports it, the server reports the changes a Routine update made** (0.16.0), unless the YAML reorders `body.stages`: that update is still written as on older backends, with a warning saying so. On such a backend, when the YAML keeps the order of `body.stages`, a routine input written over another stored one keeps nothing of it, and `--dry-run` asks the server to validate the update without saving it; a profile without write permission gets `cotctl`'s own preview, with a warning. See [Routines](../resources/routines.md#immutability-and-updates).
 
 **An apply whose write the server answers with no document** now says `could not confirm the write`, since `cotctl` cannot know whether anything was written; the run still exits `1`. Before 0.16.0 every SLA create and update ended that way, with `nothing was written` and exit `1`, although the write had happened: `slas apply` and `apply --dir` now report the SLA `created` or `updated` and exit `0`.
 
