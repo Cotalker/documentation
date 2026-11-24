@@ -73,7 +73,7 @@ These are documentation-and-contract only — `cotctl` doesn't check that the gr
 
 On an update, each input is matched with the stored input of the same `key`, wherever you place it, and keeps the fields it omits — an input that omits `required` keeps its stored value. An input with no stored match is sent with `required: false` when it omits it. `dataType: []` removes every input.
 
-What happens to an input with no stored match, or one that moved, depends on the route the update takes (see [How an update reaches the server](#how-an-update-reaches-the-server)). The keyed route, which servers that have it use since 0.16.0, replaces `dataType` whole: such an input is written exactly as the update sends it, keeps nothing of the stored input at its position, and draws no warning. Through `PATCH /api/v2/pbscripts/:id` the server updates the list **by position**, so the input is written over the stored input at its position and keeps any other key it omits — its `description` or `type` — and `apply` warns on stderr which, in a `--dry-run` as well. Write those keys — empty where needed — to replace them.
+What happens to an input with no stored match, or one that moved, depends on the backend and on the order of `body.stages`. Where the backend supports it, and the YAML keeps the order of `body.stages`, `dataType` is replaced whole (`cotctl` 0.16.0 and later): such an input is written exactly as the update sends it, keeps nothing of the stored input at its position, and draws no warning. On older backends, and in any update whose YAML reorders `body.stages` (see [Immutability and updates](#immutability-and-updates)), the server updates the list **by position**, so the input is written over the stored input at its position and keeps any other key it omits — its `description` or `type` — and `apply` warns on stderr which, in a `--dry-run` as well. Write those keys — empty where needed — to replace them.
 
 ## The automation graph: `body`
 
@@ -154,7 +154,7 @@ cotctl routines export rutina_saludo_simple -o rutina.yaml
 
 # Write
 cotctl routines apply -f rutina.yaml --dry-run
-cotctl routines apply -f rutina.yaml --dry-run --json   # one JSON line per routine, with the server's ops
+cotctl routines apply -f rutina.yaml --dry-run --json   # one JSON line per routine, with the server's ops when it reports them
 cotctl routines apply -f rutina.yaml -y
 
 # Run for real
@@ -185,7 +185,7 @@ cotctl routines test rutina_saludo_simple --context ctx.json
 
 ## Immutability and updates
 
-`code` is immutable and identifies the routine — there's no in-place rename. On update, `cotctl` sends only the fields the backend allows to change (`display`, `description`, `type`, `isActive`, `dataType`, and `body`) — and of those, only what differs from the stored routine. A key you omit keeps its stored value, inside `body` too: each stage is paired with the stored stage of the same `key`. But a declared `body.stages` is the complete list, so a stage it leaves out is removed.
+`code` is immutable and identifies the routine — there's no in-place rename. An update can change only `display`, `description`, `type`, `isActive`, `dataType`, and `body`, and only where your YAML differs from the stored routine. A key you omit keeps its stored value, inside `body` too: each stage is paired with the stored stage of the same `key`. But a declared `body.stages` is the complete list, so a stage it leaves out is removed.
 
 That is why **a routine is retired from its export, never from a stub.** The schema requires `display` and a full `body`, so a YAML can't carry `isActive: false` alone, and a stub with a placeholder stage would replace the routine's real stages. Export it, set `isActive: false`, and apply it back:
 
@@ -196,29 +196,7 @@ cotctl routines apply -f rutina_obsoleta.yaml -c acme --dry-run
 cotctl routines apply -f rutina_obsoleta.yaml -c acme -y
 ```
 
-### How an update reaches the server
-
-**New in 0.16.0.** `routines apply` and `apply --dir` send an update through the server's **keyed route**, `PATCH /api/v2/pbscripts` with the `code` in the body, wherever the server has it, and through `PATCH /api/v2/pbscripts/:id` otherwise. The routine ends up the same either way, except for the `dataType` inputs described [above](#declared-inputs-datatype).
-
-- **Fallback.** The first update is the attempt: a server without the keyed route answers it with an HTML 404, which writes nothing, and `cotctl` sends the same update through `PATCH /api/v2/pbscripts/:id`. That costs one attempt per run, remembered per API URL; nothing is kept on disk. A JSON error from the keyed route — `ENTITY_NOT_FOUND` included — fails without trying the other route.
-- **Reordering stages.** The keyed route keeps the stored order of `body.stages`, so a YAML that reorders them is sent through `PATCH /api/v2/pbscripts/:id`, the only route that writes an order, with a warning saying so.
-- **`--dry-run` asks the server.** Where the keyed route exists, the update is sent with `?dryRun=true`, which validates it without saving anything. A profile without write permission, and a server without the route, get `cotctl`'s own preview as before. `routines apply` dry-runs every document before it writes, and so does `apply --dir` without `-y`, so there an update reaches the server twice.
-- **The server's `ops` check the diff.** `cotctl` warns when the keyed route announces an operation the local diff did not predict — a warning `-q` does not silence — and notes a predicted change the server does not announce. An answer with no operation saved nothing, so the routine is reported `unchanged` (`no-op` in a dry run). The route's own warnings print too — a violation the stored routine already had, a `dataType` that repeats a `key` — and its errors list the fields it refuses or the violations an update would introduce. With `--json`, a result the keyed route answered carries its `ops` exactly as the server sent them (so does the Routine line of `apply --dir --json`), a `partial: true` update carries the stages it keeps as `preservedElements`, and an error the route answered keeps its `code` and `data` in the line's `error` object.
-
-<div className="alert alert--warning">
-
-**A stored routine whose stages repeat a `key`, or lack one, can't be updated by key.** The keyed route refuses such an update with a 409 `STORED_KEY_CONFLICT`, in a dry run too, and writes nothing — and `cotctl` does not retry it through the other route. It stops before sending, naming the routine, the stored stage by its index and the repeated key, and exits `1`:
-
-```text
-Error: rt_x: Routine "rt_x" cannot be updated by key (STORED_KEY_CONFLICT): the stored stage at body.stages[2] repeats the key "request" of an earlier stage, so it cannot be paired with a stage of the YAML. The update wrote nothing.
-Fix the stored Routine, then re-run: give that stage a unique key in the webclient's Routine editor or through PATCH /api/v2/pbscripts/:id.
-```
-
-Until `cotctl` knows the route is there, it asks with a dry run first. Any other JSON error to that dry run fails as the route sent it; a dry run the route accepts — the routine changed after `cotctl` read it — stops and asks you to re-run; and a profile without write permission stops saying so, since the route could not tell. Those last two carry no `code` in `--json`. A server without the keyed route still takes such an update through the old route.
-
-</div>
-
-**`COTCTL_LEGACY_PATCH=1` sends every update through the old route**, without trying the keyed one. `1`, `true`, `yes` and `on` set it; `0`, `false`, `no`, `off` or no value leave detection on; any other value is refused before anything is sent, and `apply` exits `2`. It exists for the transition and will be removed in a later release.
+Where the backend supports it, the server reports the changes an update made. A YAML that reorders `body.stages` — moving a stage, or putting a new one before a stored one — is still written there as on older backends, the only way that writes an order, with a warning saying so: the result carries no `ops`, `--dry-run` shows `cotctl`'s own preview, and `dataType` is updated by position, as [described above](#declared-inputs-datatype). On current backends, an update that changes the `body.stages` of a routine whose stored stages repeat a `key`, or lack one — reordering them or not — stops with exit `1`, `--dry-run` included, and writes nothing, naming the stored stage by its position: give that stage a unique `key` in the webclient's Routine editor, then re-run. On older ones the update goes through.
 
 There's no delete endpoint, and no `cotctl routines logs` subcommand: to read what a routine did when it ran — the context it received, what each stage returned, its error — use [`cotctl logs`](../commands/logs.md), for example `cotctl logs pull --routine <code> --since 24h`.
 

@@ -201,7 +201,7 @@ Two things still travel exactly as written: **each question a survey YAML declar
 
 </div>
 
-**A Routine update uses the server's keyed route** where the server has it (0.16.0): `PATCH /api/v2/pbscripts` with the `code` in the body, falling back to `PATCH /api/v2/pbscripts/:id` on a server without it. There, a routine input written over another stored one keeps nothing of it, and `--dry-run` asks the server to validate the update without saving it. Setting `COTCTL_LEGACY_PATCH=1` (also `true`, `yes`, `on`) sends every update through the old routes; any value other than those or `0`, `false`, `no`, `off` is refused, exit `2`. The variable exists for the transition and will be removed in a later release. See [Routines](../resources/routines.md).
+**Where the backend supports it, the server reports the changes a Routine update made** (0.16.0), unless the YAML reorders `body.stages`: that update is still written as on older backends, with a warning saying so. On such a backend, when the YAML keeps the order of `body.stages`, a routine input written over another stored one keeps nothing of it, and `--dry-run` asks the server to validate the update without saving it; a profile without write permission gets `cotctl`'s own preview, with a warning. See [Routines](../resources/routines.md#immutability-and-updates).
 
 **An apply whose write the server answers with no document** now says `could not confirm the write`, since `cotctl` cannot know whether anything was written; the run still exits `1`. Before 0.16.0 every SLA create and update ended that way, with `nothing was written` and exit `1`, although the write had happened: `slas apply` and `apply --dir` now report the SLA `created` or `updated` and exit `0`.
 
@@ -388,7 +388,7 @@ With `--json` (new in 0.14.0), stdout carries one JSON object per result instead
 {"file":"schedules/digest.yaml","entity":"Schedule","identifier":"sched_daily_digest","action":"updated","statusCall":"activate"}
 ```
 
-A Routine result the server's keyed route answered also carries `ops`, the operations it announced, exactly as the server sent them (an empty list means nothing was saved). A failed document is a line with `"action": "would-error"` and an `error` object — with the server's `code` and `data` when the keyed route refused a Routine update; a skipped one has `"action": "skipped"`; a resource `--rollback` deactivated has `"action": "rolled-back"`. No summary is printed and the exit codes do not change. Without `-y`, the preview, the prompt and `Apply cancelled.` go to **stderr**, so stdout carries nothing but JSON.
+A Routine result also carries `ops` when the server reports them. `ops` lists the changes the server reported; empty means nothing was saved. A failed document is a line with `"action": "would-error"` and an `error` object — with the server's `code` and `data` when the server refused a Routine update, where the backend supports it; a skipped one has `"action": "skipped"`; a resource `--rollback` deactivated has `"action": "rolled-back"`. No summary is printed and the exit codes do not change. Without `-y`, the preview, the prompt and `Apply cancelled.` go to **stderr**, so stdout carries nothing but JSON.
 
 ### It's safe to run twice
 
